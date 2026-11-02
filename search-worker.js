@@ -19,26 +19,29 @@ function tokenize(s) {
   for (const w of s.toLowerCase().split(/[^\p{L}\p{N}]+/u)) if (w.length >= 2 && !STOP.has(w)) out.push(stem(w));
   return out;
 }
-let docs = [], chunks = [], post = new Map(), lens = [], avg = 0, titleTok = [], ready = false;
+let docs = [], chunks = [], post = new Map(), lens = [], avg = 0, titleTok = [], ready = false, full = false;
+let shardsLoaded = 0, shardsTotal = 0, totalToks = 0;
+// Index each shard as soon as it arrives, so search works after the first one. The first shard
+// holds our guides plus every document's title and description; page text follows.
 async function load(base) {
   const man = await (await fetch(base + 'data/manifest.json', { cache: 'no-cache' })).json();
   docs = await (await fetch(base + 'data/' + man.docs)).json();
-  let loaded = 0;
+  titleTok = docs.map(d => new Set(tokenize(d.t + ' ' + d.f)));
+  shardsTotal = man.shards.length;
   for (const f of man.shards) {
     const arr = await (await fetch(base + 'data/' + f)).json();
-    for (const c of arr) chunks.push(c);
-    loaded++; postMessage({ type: 'progress', loaded, total: man.shards.length });
+    for (const c of arr) {
+      const i = chunks.length; chunks.push(c);
+      const toks = tokenize(c[2]); const tf = new Map();
+      for (const t of toks) tf.set(t, (tf.get(t) || 0) + 1);
+      for (const [t, n] of tf) { let p = post.get(t); if (!p) post.set(t, p = []); p.push(i, n); }
+      lens[i] = toks.length; totalToks += toks.length;
+    }
+    avg = totalToks / Math.max(1, chunks.length);
+    shardsLoaded++; ready = true;
+    postMessage({ type: 'progress', loaded: shardsLoaded, total: shardsTotal, docs: docs.length });
   }
-  let total = 0;
-  chunks.forEach((c, i) => {
-    const toks = tokenize(c[2]); const tf = new Map();
-    for (const t of toks) tf.set(t, (tf.get(t) || 0) + 1);
-    for (const [t, n] of tf) { let p = post.get(t); if (!p) post.set(t, p = []); p.push(i, n); }
-    lens[i] = toks.length; total += toks.length;
-  });
-  avg = total / Math.max(1, chunks.length);
-  titleTok = docs.map(d => new Set(tokenize(d.t + ' ' + d.f)));
-  ready = true;
+  full = true;
   postMessage({ type: 'ready', docs: docs.length, chunks: chunks.length, built: man.built });
 }
 function snippet(text, terms, width = 45) {
@@ -80,6 +83,6 @@ function search(q, n) {
 onmessage = async e => {
   const m = e.data;
   if (m.type === 'load') { try { await load(m.base); } catch (err) { postMessage({ type: 'error', message: String(err) }); } }
-  else if (m.type === 'search') postMessage({ type: 'results', id: m.id, results: search(m.q, m.n) });
+  else if (m.type === 'search') postMessage({ type: 'results', id: m.id, results: search(m.q, m.n), partial: !full, loaded: shardsLoaded, total: shardsTotal });
   else if (m.type === 'docs') postMessage({ type: 'docs', docs });
 };

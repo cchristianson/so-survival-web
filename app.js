@@ -9,7 +9,7 @@ const store = { get: k => { try { return localStorage.getItem(k); } catch { retu
                 set: (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch {} } };
 const BASE = new URL('./', location.href).href;
 
-let mode = 'public', server = {}, manifest = null, worker = null, workerReady = false, workerInfo = {};
+let mode = 'public', server = {}, manifest = null, worker = null, workerReady = false, workerSearchable = false, workerInfo = {};
 const ai = { kind: 'none', engine: null, label: '', loading: false, error: '' };
 
 // ------------------------------------------------------------------ start-up
@@ -47,20 +47,25 @@ function startWorker() {
   worker = new Worker('search-worker.js');
   worker.onmessage = e => {
     const m = e.data;
-    if (m.type === 'progress') { workerInfo.progress = `${m.loaded}/${m.total}`; renderStatus(); }
-    else if (m.type === 'ready') { workerReady = true; workerInfo = m; renderStatus(); }
+    if (m.type === 'progress') { workerSearchable = true; workerInfo.progress = `${m.loaded}/${m.total}`; renderStatus(); }
+    else if (m.type === 'ready') { workerReady = workerSearchable = true; workerInfo = m; renderStatus(); }
     else if (m.type === 'error') { workerInfo.error = m.message; renderStatus(); }
-    else if (m.type === 'results' && pending.has(m.id)) { pending.get(m.id)(m.results); pending.delete(m.id); }
+    else if (m.type === 'results' && pending.has(m.id)) { pending.get(m.id)(m); pending.delete(m.id); }
     else if (m.type === 'docs' && docsWaiter) { docsWaiter(m.docs); docsWaiter = null; }
   };
   worker.postMessage({ type: 'load', base: BASE });
 }
 const pending = new Map(); let reqId = 0, docsWaiter = null;
+// Resolves { results, partial, loaded, total } or { results: [], notReady: true }.
 function workerSearch(q, n) {
   return new Promise(res => {
-    if (!workerReady) {   // still loading: wait a little
-      const t = setInterval(() => { if (workerReady) { clearInterval(t); workerSearch(q, n).then(res); } }, 300);
-      setTimeout(() => { clearInterval(t); res([]); }, 30000); return;
+    if (!workerSearchable) {   // first part of the library still downloading: wait for it (never fail silently)
+      const t0 = Date.now();
+      const t = setInterval(() => {
+        if (workerSearchable) { clearInterval(t); workerSearch(q, n).then(res); }
+        else if (workerInfo.error || Date.now() - t0 > 90000) { clearInterval(t); res({ results: [], notReady: true }); }
+      }, 300);
+      return;
     }
     const id = ++reqId; pending.set(id, res); worker.postMessage({ type: 'search', q, n, id });
   });
@@ -77,7 +82,7 @@ function renderStatus() {
     h += pill(server.docs ? 'ready' : 'off', 'Documents', server.docs ? `${server.docs} files` : 'index missing');
   } else {
     h += pill(navigator.onLine ? 'ready' : 'starting', navigator.onLine ? 'Online' : 'Offline', navigator.onLine ? '' : '— using saved copy');
-    h += pill(workerReady ? 'ready' : 'starting', 'Search', workerReady ? `${workerInfo.docs} documents` : workerInfo.error ? 'failed to load' : 'loading…');
+    h += pill(workerReady ? 'ready' : 'starting', 'Search', workerReady ? `${workerInfo.docs} documents` : workerInfo.error ? 'failed to load' : workerSearchable ? `ready, still loading ${workerInfo.progress}` : 'loading…');
     h += pill(ai.kind === 'webllm' ? 'ready' : ai.loading ? 'starting' : 'off', 'AI', ai.kind === 'webllm' ? esc(ai.label) : ai.loading ? 'loading…' : 'off — turn on in ⚙️');
   }
   $('status').innerHTML = h;
@@ -115,21 +120,25 @@ async function ask() {
   document.querySelector('#tabs [data-tab=ask]').click();
 
   const nWiki = useWiki ? Math.max(1, Math.round(n / 3)) : 0, nDoc = n - nWiki;
-  let docs = [], wiki = [];
+  let docs = [], wiki = [], note = '';
   if (mode === 'drive') {
     [docs, wiki] = await Promise.all([
       fetch('api/search?q=' + encodeURIComponent(q) + '&n=' + nDoc).then(r => r.json()).catch(() => []),
       nWiki ? fetch('api/kiwix?q=' + encodeURIComponent(q) + '&n=' + nWiki).then(r => r.json()).catch(() => []) : [],
     ]);
   } else {
-    [docs, wiki] = await Promise.all([workerSearch(q, nDoc), nWiki && navigator.onLine ? wikiSearch(q, nWiki) : []]);
+    let ws; [ws, wiki] = await Promise.all([workerSearch(q, nDoc), nWiki && navigator.onLine ? wikiSearch(q, nWiki) : []]);
+    docs = ws.results;
+    if (ws.notReady) note = ' ⚠️ The library search is still downloading — try again in a minute (needs a connection the first time).';
+    else if (ws.partial) note = ` ⏳ Library still loading (${ws.loaded} of ${ws.total} parts): guides and book titles were searched; ask again in a minute to search inside every page.`;
   }
   const srcs = [], d = docs.slice(), z = wiki.slice();
   while (d.length || z.length) { if (d.length) srcs.push(d.shift()); if (d.length) srcs.push(d.shift()); if (z.length) srcs.push(z.shift()); }
   renderSources(id, srcs);
   const meta = $('m' + id);
-  if (!srcs.length) meta.textContent = 'Nothing in the library matched. Try other words (e.g. "bleeding" instead of "cut").';
+  if (!srcs.length) meta.textContent = note ? '' : 'Nothing in the library matched. Try other words (e.g. "bleeding" instead of "cut").';
   else meta.textContent = `${srcs.length} sources found.`;
+  meta.textContent += note;
   if (!useAI) return;
   if (mode === 'drive') {
     if (server.llm === 'off') { meta.textContent += ' The AI is not available on this computer.'; return; }
@@ -290,7 +299,7 @@ async function saveOffline(which) {
 let LIB = null;
 async function loadLibrary() {
   if (mode === 'drive') { try { LIB = (await (await fetch('api/docs')).json()).map(d => ({ t: d.title, f: d.folder, d: d.desc, u: '/lib/' + d.path.split('/').map(encodeURIComponent).join('/'), o: 1 })); } catch { LIB = []; } }
-  else { await waitFor(() => workerReady || workerInfo.error); LIB = await new Promise(res => { docsWaiter = res; worker.postMessage({ type: 'docs' }); }); }
+  else { await waitFor(() => workerSearchable || workerInfo.error); LIB = await new Promise(res => { docsWaiter = res; worker.postMessage({ type: 'docs' }); }); }
   $('libnote').innerHTML = mode === 'drive' ? 'Everything here is on this drive. Click a title to open it.'
     : 'Documents marked <span class="tag">full text</span> are searchable inside; the rest are searchable by title and open on the original publisher’s website (they can’t be republished here). The drive edition has every file.';
   renderLibrary();
