@@ -1,0 +1,200 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>⚡ EMP, Solar Storms &amp; Faraday Cages</title><style>:root{--bg:#0f1420;--card:#171f2e;--ink:#e7ecf3;--muted:#9fb0c3;--accent:#4fd1c5;--accent2:#f6ad55;--line:#273246;--code:#0b0f17}@media(prefers-color-scheme:light){:root{--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--code:#f1f5f9}}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,Segoe UI,Roboto,Arial,sans-serif}.wrap{max-width:900px;margin:0 auto;padding:28px 20px 80px}h1{font-size:28px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}h2{font-size:22px;border-bottom:2px solid var(--line);padding-bottom:6px;margin-top:30px}h3{font-size:17px;color:var(--accent)}h4{font-size:15px;color:var(--accent2)}a{color:var(--accent)}code{background:var(--code);padding:2px 6px;border-radius:6px;font-family:Consolas,monospace;font-size:14px}pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow-x:auto}pre code{background:none;padding:0}table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}th{background:rgba(127,127,127,.12)}blockquote{border-left:4px solid var(--accent);background:rgba(79,209,197,.08);padding:10px 16px;border-radius:0 10px 10px 0}hr{border:none;border-top:1px solid var(--line);margin:26px 0}ul,ol{padding-left:26px}table{display:block;overflow-x:auto;max-width:100%}code,a{overflow-wrap:anywhere}img{max-width:100%}a.lib{text-decoration-style:dotted}a.lib::before{content:"📖 ";text-decoration:none}.deeper{font-size:15px;opacity:.95}a.wiki::before{content:"📷 "}a.lib::before,a.wiki::before{display:inline-block;margin-right:3px}</style></head><body><div class="wrap"><p><a href="../">&larr; SO Survival Library</a></p>
+<h1 id="-emp-solar-storms--faraday-cages">⚡ EMP, Solar Storms &amp; Faraday Cages</h1>
+<p>What a nuclear electromagnetic pulse (EMP) or a severe solar storm would really do, how to protect radios, solar gear and this library, how to build and test a Faraday container, what to do when a solar-storm warning comes, and how to check and repair equipment afterward. It's based on what <strong>government tests actually measured</strong>, not internet stories. The reports are in <code>EMP-Solar-Storms\</code> (<code>Effects-and-Threat</code>, <code>Protection-Shielding</code>, <code>Grounding-Surge</code>, <code>Recovery</code>).</p>
+<blockquote>
+<h3 id="the-short-version">The short version</h3>
+<ul>
+<li><strong>The danger comes in through long wires</strong> — power lines, antennas, long cables. Small gear that isn't plugged into anything mostly survives.</li>
+<li><strong>Unplugged, switched-off cars and trucks were not affected in tests;</strong> a few running ones stalled and restarted.</li>
+<li><strong>A solar storm threatens the power grid, not your phone.</strong> You'd get 1–3 days' warning.</li>
+<li><strong>The real long-term problem is the grid going down for months.</strong> Plan for that (see the off-grid power section of the <a class="guide" href="ILLINOIS-VALLEY-START-HERE.html">Illinois Valley guide</a>).</li>
+<li><strong>Keep spares and a second copy of this library in a metal container</strong>, sealed at the seams.</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="-two-different-threats">⚡ Two different threats</h2>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Nuclear EMP</strong> (a bomb exploded high above the U.S.)</th>
+<th><strong>Solar storm</strong> (geomagnetic storm, like 1859, 1921, 1989, May 2024)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Warning</td>
+<td>None</td>
+<td><strong>18–72 hours</strong> after the Sun erupts; 20–45 min final warning (<a class="lib" target="_blank" rel="noopener" href="https://www.cisa.gov/sites/default/files/publications/19_0307_CISA_EMP-Protection-Resilience-Guidelines.pdf#page=21" title="EMP Protection and Resilience Guidelines for Critical Infrastructure and Equipment (CISA 2019).pdf — page 21">CISA, p. 21</a>)</td>
+</tr>
+<tr class="even">
+<td>Parts</td>
+<td><strong>E1:</strong> a pulse rising in billionths of a second — hits electronics through wires and antennas. <strong>E2:</strong> like lightning over a huge area. <strong>E3:</strong> slow, seconds to minutes — like a solar storm (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_ADA484497/DTIC_ADA484497.pdf#page=13" title="EMP Commission Executive Report (2004).pdf — page 13">EMP Commission 2004, p. 13</a>)</td>
+<td>Like a weak, hours-long E3 only — <strong>no fast pulse</strong></td>
+</tr>
+<tr class="odd">
+<td>What it hits</td>
+<td>Electronics connected to wires/antennas; computers and control systems; the power grid</td>
+<td><strong>Very long conductors</strong>: power lines, big transformers, pipelines, long phone cables. Also <strong>GPS and HF radio</strong></td>
+</tr>
+<tr class="even">
+<td>What it doesn't</td>
+<td>People (a high-altitude burst puts <strong>no radiation on the ground</strong>)</td>
+<td>Unplugged phones, laptops, radios, cars, solar panels</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why only long wires matter in a solar storm:</strong> the storm induces a few volts <strong>per kilometer</strong> — measured worst cases are about 7–20 V/km, and under 1.1 V/km in Colorado during the May 2024 storm (<a class="lib" target="_blank" rel="noopener" href="https://www.ferc.gov/sites/default/files/2020-05/ferc_meta-r-319.pdf" title="Meta-R-319 Geomagnetic Storms and Their Impacts on the US Power Grid (Metatech for ORNL-FERC 2010).pdf">Meta-R-319</a>; <a class="lib" target="_blank" rel="noopener" href="https://www.osti.gov/servlets/purl/3023347" title="Ground Effects of the May 2024 Mothers Day Superstorm (LANL 2026).pdf">LANL 2024 storm study</a>). A 6-ft cord sees hundredths of a volt; a 100-mile power line sees hundreds to thousands <em>(rule of thumb arithmetic)</em>. In 1989 that was enough to collapse Quebec's grid in 90 seconds and destroy a large transformer in New Jersey — and big transformers take about a year to replace (<a class="lib" target="_blank" rel="noopener" href="https://www.ferc.gov/sites/default/files/2020-05/ferc_meta-r-319.pdf#page=149" title="Meta-R-319 Geomagnetic Storms and Their Impacts on the US Power Grid (Metatech for ORNL-FERC 2010).pdf — page 149">Meta-R-319, p. 149</a>).</p>
+<p><strong>E1 isn't the same strength everywhere:</strong> it's strongest south of the point under the burst, and averages only about a tenth of the peak over the affected area (<a class="lib" target="_blank" rel="noopener" href="https://www.ferc.gov/sites/default/files/2020-05/ferc_meta-r-320.pdf#page=38" title="Meta-R-320 Early-Time E1 HEMP and the US Power Grid (Metatech for ORNL-FERC 2010).pdf — page 38">Meta-R-320, p. 38</a>).</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_ADA484497/DTIC_ADA484497.pdf" title="EMP Commission Executive Report (2004).pdf">EMP Commission Executive Report</a> — the plain overview; <a class="lib" target="_blank" rel="noopener" href="https://www.swpc.noaa.gov/sites/default/files/images/u33/primer_2010_new.pdf" title="A Profile of Space Weather (NOAA SWPC 2010).pdf">NOAA <em>A Profile of Space Weather</em></a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Nuclear_electromagnetic_pulse" data-title="Nuclear_electromagnetic_pulse" target="_blank" rel="noopener" title="Wikipedia: Nuclear electromagnetic pulse (offline copy with photos when opened through the Library Assistant)">Wikipedia: nuclear EMP</a> · <a class="wiki" href="https://en.wikipedia.org/wiki/Geomagnetic_storm" data-title="Geomagnetic_storm" target="_blank" rel="noopener" title="Wikipedia: Geomagnetic storm (offline copy with photos when opened through the Library Assistant)">geomagnetic storm</a> · <a class="wiki" href="https://en.wikipedia.org/wiki/Carrington_Event" data-title="Carrington_Event" target="_blank" rel="noopener" title="Wikipedia: Carrington Event (offline copy with photos when opened through the Library Assistant)">Carrington Event</a>.</p>
+<h2 id="-what-the-tests-actually-found">🔬 What the tests actually found</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Claim</th>
+<th>What testing showed</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"Every car will die."</td>
+<td><strong>37 cars and 18 trucks</strong> were tested up to about 50 kV/m. <strong>Vehicles that were off: no effects.</strong> Of running cars, 3 stalled (at 30 kV/m or more) and needed a restart; one had dashboard electronics damaged; most just had blinking lights. Of running trucks, 3 stalled — 2 restarted at once, 1 needed towing (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_ADA484672/DTIC_ADA484672.pdf#page=131" title="EMP Commission Critical National Infrastructures Report (2008).pdf — page 131">EMP Commission 2008, p. 131</a>).</td>
+</tr>
+<tr class="even">
+<td>"All electronics fry."</td>
+<td>Handheld and vehicle radios — stored, idle or operating — had <strong>no damage up to 50 kV/m</strong>; some locked up and worked after switching off and on (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_ADA484672/DTIC_ADA484672.pdf#page=169" title="EMP Commission Critical National Infrastructures Report (2008).pdf — page 169">EMP Commission 2008, p. 169</a>). Plugged-in household gear: at 6.7 kV/m 20% were upset (fixed by power-cycling); at 16.6 kV/m about 6% were damaged — <strong>mostly items on antenna cables</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_ADA210505/DTIC_ADA210505.pdf#page=44" title="Consumer Electronics Testing to Fast-Rise EMP (Harry Diamond Labs 1989).pdf — page 44">Harry Diamond Labs, p. 44</a>).</td>
+</tr>
+<tr class="odd">
+<td>"Pocket radios are useless after."</td>
+<td>Small battery radios weren't damaged unless near cables carrying huge currents (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_ADA014489/DTIC_ADA014489.pdf" title="Electromagnetic Pulse and Civil Preparedness - An Overview (DCPA 1975).pdf">DCPA 1975</a>).</td>
+</tr>
+<tr class="even">
+<td>"Solar panels get destroyed."</td>
+<td>Panels hit with <strong>up to 100 kV/m</strong> showed only very minor change (<a class="lib" target="_blank" rel="noopener" href="https://www.osti.gov/servlets/purl/1614961#page=39" title="HEMP Testing of Photovoltaic Modules (Sandia 2020).pdf — page 39">Sandia, p. 39</a>); rooftop microinverters survived 20–60 kV pulses (<a class="lib" target="_blank" rel="noopener" href="https://www.osti.gov/servlets/purl/1670521" title="Effects of EMP Testing on Residential Solar Microinverters (Sandia 2020).pdf">Sandia microinverter tests</a>). <strong>The surge travels down the panel wires toward the charge controller/inverter — that's the part to keep a spare of.</strong></td>
+</tr>
+<tr class="odd">
+<td>"A surge strip or the breaker protects me."</td>
+<td>Lightning-rated surge suppressors <strong>don't stop E1</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www.osti.gov/servlets/purl/1769004" title="E1 HEMP Effects on Transient Voltage Surge Suppressors (Sandia 2020).pdf">Sandia TVSS tests</a>); circuit breakers survive but give <strong>no real protection — some pulse passes even when they're off</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www.osti.gov/servlets/purl/1868138#page=6" title="EMP Testing of UL489 Circuit Breakers (Sandia 2022).pdf — page 6">Sandia, p. 6</a>).</td>
+</tr>
+<tr class="even">
+<td>"Ham radios are toast."</td>
+<td>15 ham stations survived repeated simulated pulses <strong>when the power cord was unplugged and the coax disconnected</strong>; with protectors on both lines they were also fine (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_ADA164430/DTIC_ADA164430.pdf" title="EMP and Transient Protection Devices for Amateur and MARS Radio Vol 1 (NCS TIB 85-10 1985).pdf">NCS TIB 85-10</a>).</td>
+</tr>
+<tr class="odd">
+<td>"Networked computers will be fine."</td>
+<td>They're the weak point — dispatch computers began failing at 3–6 kV/m, and every industrial control system tested failed (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_ADA484672/DTIC_ADA484672.pdf" title="EMP Commission Critical National Infrastructures Report (2008).pdf">EMP Commission 2008</a>).</td>
+</tr>
+</tbody>
+</table>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_ADA484672/DTIC_ADA484672.pdf#page=131" title="EMP Commission Critical National Infrastructures Report (2008).pdf — page 131">EMP Commission Critical Infrastructures Report — vehicles, p. 131</a>; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_ADA210505/DTIC_ADA210505.pdf" title="Consumer Electronics Testing to Fast-Rise EMP (Harry Diamond Labs 1989).pdf">Consumer Electronics Testing</a>.</p>
+<h2 id="-rule-one-unplug-and-disconnect">🔌 Rule one: unplug and disconnect</h2>
+<p><strong>Wires are the antennas.</strong> Even a few feet of cable can pick up thousands of volts from E1; long power and antenna lines pick up far more (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_ADA114320/DTIC_ADA114320.pdf" title="Low Cost EMP Protection Concept for Emergency Operations Centers (Navy NCEL 1982).pdf">Low Cost EMP Protection (Navy 1982)</a>). (<a class="lib" target="_blank" rel="noopener" href="https://www.cisa.gov/sites/default/files/publications/19_0307_CISA_EMP-Protection-Resilience-Guidelines.pdf#page=44" title="EMP Protection and Resilience Guidelines for Critical Infrastructure and Equipment (CISA 2019).pdf — page 44">CISA guidelines, p. 44</a>)</p>
+<ul>
+<li><strong>Unplug at the device</strong> — power, data and antenna cables — not just at the wall. Coil any cable you can't remove.</li>
+<li><strong>Pull battery packs</strong> from small electronics in storage; turn phones and radios off and take them off chargers.</li>
+<li><strong>Disconnect outdoor antennas and coax</strong> from radios when not in use.</li>
+<li><strong>Unplug everything or nothing:</strong> pulling only a TV's power cord while it stays on cable or phone lines removes its ground path (<a class="lib" target="_blank" rel="noopener" href="https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication960-6.pdf#page=11" title="Surges Happen - How to Protect the Appliances in Your Home (NIST SP 960-6 2001).pdf — page 11">NIST <em>Surges Happen</em>, p. 11</a>).</li>
+<li><strong>Backup generators:</strong> don't leave one connected to the grid through an automatic transfer switch without strong surge protection — the utility line can carry the pulse in (<a class="lib" target="_blank" rel="noopener" href="https://www.cisa.gov/sites/default/files/publications/19_0307_CISA_EMP-Protection-Resilience-Guidelines.pdf#page=45" title="EMP Protection and Resilience Guidelines for Critical Infrastructure and Equipment (CISA 2019).pdf — page 45">CISA, p. 45</a>). A generator stored disconnected is far better off.</li>
+<li>Surge protectors still help with lightning and the surge when power comes back — just don't count on them for E1. Keep <strong>spare</strong> protectors and fuses.</li>
+</ul>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://www.cisa.gov/sites/default/files/publications/19_0307_CISA_EMP-Protection-Resilience-Guidelines.pdf#page=44" title="EMP Protection and Resilience Guidelines for Critical Infrastructure and Equipment (CISA 2019).pdf — page 44">CISA <em>EMP Protection and Resilience Guidelines</em> — Level 1 steps, p. 44</a>; <a class="lib" target="_blank" rel="noopener" href="https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication960-6.pdf" title="Surges Happen - How to Protect the Appliances in Your Home (NIST SP 960-6 2001).pdf">NIST <em>Surges Happen</em></a>; <a class="lib" target="_blank" rel="noopener" href="https://www.wbdg.org/FFC/NAVFAC/DMMHNAV/hdbk419a_vol2.pdf" title="MIL-HDBK-419A Grounding Bonding and Shielding Vol 2 Applications (DoD 1987).pdf">MIL-HDBK-419A Vol 2 — grounding and surge arresters</a>.</p>
+<h2 id="️-faraday-containers-building-one-that-works">🗑️ Faraday containers: building one that works</h2>
+<p><strong>How it works:</strong> a closed metal shell keeps the pulse on the outside. It only works if the shell is <strong>continuous</strong> — the leaks are at <strong>seams, lid edges and holes</strong>, and a long narrow slot leaks far more than a round hole. <strong>Seams must be bare metal touching bare metal</strong> (no paint) (<a class="lib" target="_blank" rel="noopener" href="https://www.wbdg.org/FFC/NAVFAC/DMMHNAV/hdbk419a_vol1.pdf#page=275" title="MIL-HDBK-419A Grounding Bonding and Shielding Vol 1 Basic Theory (DoD 1987).pdf — page 275">MIL-HDBK-419A Vol 1, p. 275</a>). <strong>A plain metal box is not automatically a Faraday cage</strong> — ordinary cabinets gave little protection until their seams were taped and gasketed (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_ADA114320/DTIC_ADA114320.pdf" title="Low Cost EMP Protection Concept for Emergency Operations Centers (Navy NCEL 1982).pdf">Navy 1982</a>).</p>
+<p><strong>Options, best to simplest</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www.cisa.gov/sites/default/files/publications/19_0307_CISA_EMP-Protection-Resilience-Guidelines.pdf#page=45" title="EMP Protection and Resilience Guidelines for Critical Infrastructure and Equipment (CISA 2019).pdf — page 45">CISA, pp. 45, 86</a>):</p>
+<ol type="1">
+<li><strong>Metal can with a tight metal lid</strong> (galvanized trash can, paint can, cookie tin, steel ammo can):
+<ul>
+<li>Wrap each item in a <strong>plastic or paper bag or cardboard</strong> so it doesn't touch the metal.</li>
+<li><strong>Seal the lid seam with conductive tape</strong> (aluminum or copper foil tape — the kind with conductive glue) all the way around. Trash cans leak at the <strong>lid, handles and base</strong> unless sealed.</li>
+<li><strong>Ammo cans:</strong> the rubber gasket breaks metal contact — scrape a strip of bare metal at the rim and add conductive tape over the closed lid seam <em>(rule of thumb)</em>.</li>
+<li><strong>No wires passing through.</strong> Don't drill holes.</li>
+</ul></li>
+<li><strong>Foil wrap:</strong> item in a plastic bag, then <strong>2 or more layers of heavy-duty foil</strong>, every seam folded and overlapped, any cables inside the wrap.</li>
+<li><strong>Nesting adds protection:</strong> a foil-wrapped item inside a sealed metal can is better than either alone.</li>
+<li><strong>Microwave oven</strong> (unplugged, never switched on): an expedient shield for small items — test it first.</li>
+</ol>
+<p><strong>Weak or useless:</strong> Mylar food bags (little protection); refrigerators (plastic liner and rubber gasket); many cheap "Faraday bags" (the closure leaks).</p>
+<p><strong>Does it need a ground wire?</strong> No — a closed storage container doesn't need to be grounded <em>(rule of thumb)</em>.</p>
+<p><strong>How good is good enough?</strong> For stored spare electronics, CISA considers <strong>20 dB</strong> of shielding adequate (<a class="lib" target="_blank" rel="noopener" href="https://www.cisa.gov/sites/default/files/publications/19_0307_CISA_EMP-Protection-Resilience-Guidelines.pdf#page=126" title="EMP Protection and Resilience Guidelines for Critical Infrastructure and Equipment (CISA 2019).pdf — page 126">CISA appendix, p. 126</a>); critical military gear uses 80 dB (<a class="lib" target="_blank" rel="noopener" href="https://www.dhs.gov/sites/default/files/2022-09/22_0902_st_emp_mitigation_best_practices.pdf" title="EMP Shielding Mitigations Best Practices (DHS S&amp;T 2022).pdf">DHS 2022</a>).</p>
+<p><strong>Testing yours (and what it doesn't prove):</strong></p>
+<ul>
+<li>Put a <strong>phone</strong> inside and call it, and a <strong>battery AM/FM radio</strong> tuned to a station. If the call won't ring and the radio goes silent, the shell has no big leaks at those frequencies.</li>
+<li>This is a <strong>rough check, not a measurement</strong> — silence just means the signal dropped below what the radio can hear. The <strong>AM test matters most</strong> (low frequencies are hardest to block). Close the lid the same way every time (<a class="lib" target="_blank" rel="noopener" href="https://www.cisa.gov/sites/default/files/publications/19_0307_CISA_EMP-Protection-Resilience-Guidelines.pdf#page=45" title="EMP Protection and Resilience Guidelines for Critical Infrastructure and Equipment (CISA 2019).pdf — page 45">CISA, p. 45</a>).</li>
+</ul>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://www.cisa.gov/sites/default/files/publications/19_0307_CISA_EMP-Protection-Resilience-Guidelines.pdf#page=45" title="EMP Protection and Resilience Guidelines for Critical Infrastructure and Equipment (CISA 2019).pdf — page 45">CISA guidelines — foil and container methods, pp. 45 &amp; 86</a>; <a class="lib" target="_blank" rel="noopener" href="https://www.wbdg.org/FFC/NAVFAC/DMMHNAV/hdbk419a_vol1.pdf#page=275" title="MIL-HDBK-419A Grounding Bonding and Shielding Vol 1 Basic Theory (DoD 1987).pdf — page 275">MIL-HDBK-419A Vol 1 — seams and slots, p. 275</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Faraday_cage" data-title="Faraday_cage" target="_blank" rel="noopener" title="Wikipedia: Faraday cage (offline copy with photos when opened through the Library Assistant)">Wikipedia: Faraday cage</a>.</p>
+<h2 id="-what-to-keep-in-it">📦 What to keep in it</h2>
+<p>From CISA's list plus practical extras <em>(rule of thumb where not cited)</em>:</p>
+<ul>
+<li><strong>A second copy of this library</strong> on a USB drive or small SSD — and a cheap laptop or tablet with its charger to read it.</li>
+<li><strong>Battery AM/FM/NOAA weather radio</strong>, and a handheld ham or GMRS radio with a spare antenna (<a class="lib" target="_blank" rel="noopener" href="https://www.cisa.gov/sites/default/files/publications/19_0307_CISA_EMP-Protection-Resilience-Guidelines.pdf#page=44" title="EMP Protection and Resilience Guidelines for Critical Infrastructure and Equipment (CISA 2019).pdf — page 44">CISA, p. 44</a>).</li>
+<li><strong>Spare solar charge controller and a small inverter</strong> — the parts of a solar system most at risk.</li>
+<li><strong>Multimeter</strong>, LED flashlights/headlamps, rechargeable batteries and a small USB solar charger.</li>
+<li><strong>Spare fuses</strong> (vehicle, equipment, solar), spare surge protectors and MOVs.</li>
+<li>Small spare electronics you depend on (a phone, a radio's spare power supply).</li>
+<li>For older vehicles, a spare ignition module or electronic part if you can get one.</li>
+</ul>
+<p>Handheld gear with no long wires attached is fairly tough anyway; the container is cheap insurance (<a class="lib" target="_blank" rel="noopener" href="https://www.cisa.gov/sites/default/files/publications/19_0307_CISA_EMP-Protection-Resilience-Guidelines.pdf#page=45" title="EMP Protection and Resilience Guidelines for Critical Infrastructure and Equipment (CISA 2019).pdf — page 45">CISA, p. 45</a>).</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_AD0773423/DTIC_AD0773423.pdf" title="Effects of EMP on State and Local Radio Communications (ORNL Barnes 1973).pdf">ORNL — radio communications and spare-equipment procedures</a>; <a class="guide" href="RADIO-GUIDE.html">Radio guide</a>.</p>
+<h2 id="️-when-a-solar-storm-warning-comes">☀️ When a solar-storm warning comes</h2>
+<p>NOAA rates geomagnetic storms <strong>G1 to G5</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www.swpc.noaa.gov/sites/default/files/images/NOAAscales.pdf#page=1" title="NOAA Space Weather Scales (NOAA SWPC).pdf — page 1">NOAA Space Weather Scales</a>):</p>
+<table>
+<thead>
+<tr class="header">
+<th>Level</th>
+<th>How often (per 11-year cycle)</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>G3 strong</td>
+<td>~200</td>
+<td>Grid voltage corrections; GPS and HF radio come and go; auroras as far south as Oregon</td>
+</tr>
+<tr class="even">
+<td>G4 severe</td>
+<td>~100</td>
+<td>Widespread grid voltage problems; some protection systems trip; GPS degraded for hours</td>
+</tr>
+<tr class="odd">
+<td>G5 extreme</td>
+<td>~4</td>
+<td><strong>Grid collapse and transformer damage possible</strong>; HF radio out 1–2 days; GPS degraded for days</td>
+</tr>
+</tbody>
+</table>
+<p><strong>For a G4–G5 warning</strong> <em>(rule of thumb)</em>:</p>
+<ol type="1">
+<li><strong>Charge</strong> batteries, power banks, radios and laptops; <strong>fill water containers</strong>; get fuel.</li>
+<li><strong>Unplug sensitive electronics</strong> from the wall — the risk is outages and surges when power returns.</li>
+<li><strong>Disconnect long outdoor antennas and feedlines.</strong></li>
+<li>Expect <strong>GPS and HF radio</strong> to be unreliable; have paper maps (<code>Maps\</code>) and use VHF/UHF locally.</li>
+<li><strong>Solar panels don't need protecting</strong> from a solar storm — their wiring is far too short. (S5 "solar panel damage" on NOAA's scale means <em>satellites</em>.)</li>
+<li>Have the generator ready, connected only through a transfer switch or interlock — <strong>never backfeed</strong>.</li>
+</ol>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://www.swpc.noaa.gov/sites/default/files/images/NOAAscales.pdf#page=1" title="NOAA Space Weather Scales (NOAA SWPC).pdf — page 1">NOAA scales, p. 1</a>; <a class="lib" target="_blank" rel="noopener" href="https://www.osti.gov/servlets/purl/3023347" title="Ground Effects of the May 2024 Mothers Day Superstorm (LANL 2026).pdf">LANL May 2024 storm study</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/May_2024_solar_storms" data-title="May_2024_solar_storms" target="_blank" rel="noopener" title="Wikipedia: May 2024 solar storms (offline copy with photos when opened through the Library Assistant)">Wikipedia: May 2024 solar storms</a>.</p>
+<h2 id="-after-an-event-check-and-repair">🔧 After an event: check and repair</h2>
+<ol type="1">
+<li><strong>Power-cycle</strong> anything that's locked up — in tests most "upsets" cleared this way (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_ADA210505/DTIC_ADA210505.pdf#page=44" title="Consumer Electronics Testing to Fast-Rise EMP (Harry Diamond Labs 1989).pdf — page 44">Harry Diamond Labs, p. 44</a>).</li>
+<li><strong>Vehicles:</strong> restart. If one won't run, <strong>disconnect the battery for several minutes</strong> to reset the electronics, then check fuses (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_ADA484672/DTIC_ADA484672.pdf#page=131" title="EMP Commission Critical National Infrastructures Report (2008).pdf — page 131">EMP Commission 2008, p. 131</a>).</li>
+<li><strong>Fuses and breakers:</strong> a surge protector firing can blow the equipment's fuse — check and replace. Breakers are likely fine; reset them (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_AD0773423/DTIC_AD0773423.pdf" title="Effects of EMP on State and Local Radio Communications (ORNL Barnes 1973).pdf">ORNL radio study</a>; <a class="lib" target="_blank" rel="noopener" href="https://www.osti.gov/servlets/purl/1868138" title="EMP Testing of UL489 Circuit Breakers (Sandia 2022).pdf">Sandia breakers</a>).</li>
+<li><strong>Surge protectors</strong> fail one of two ways: no power, or power with no protection left. Replace any that took a hit (<a class="lib" target="_blank" rel="noopener" href="https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication960-6.pdf#page=7" title="Surges Happen - How to Protect the Appliances in Your Home (NIST SP 960-6 2001).pdf — page 7">NIST <em>Surges Happen</em>, p. 7</a>).</li>
+<li><strong>Look and sniff:</strong> burnt smell, scorch marks, swollen or leaking capacitors. <strong>Discharge big capacitors before touching</strong> (inverters, microwaves, power supplies).</li>
+<li><strong>Radios:</strong> if dead, suspect the <strong>antenna input stage and power supply</strong> first — those took the damage in tests (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_AD0773423/DTIC_AD0773423.pdf" title="Effects of EMP on State and Local Radio Communications (ORNL Barnes 1973).pdf">ORNL radio study</a>).</li>
+<li><strong>Solar:</strong> panels are probably fine; test the charge controller and inverter; <strong>swap in shielded spares</strong>.</li>
+<li><strong>Generators:</strong> check the output breaker, brushes and voltage regulator — see the <a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html">Engines guide</a>.</li>
+<li><strong>Expect the grid to stay down a long time</strong> — the EMP Commission expected <strong>months to years</strong> for recovery (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_ADA484497/DTIC_ADA484497.pdf#page=27" title="EMP Commission Executive Report (2004).pdf — page 27">Executive Report, p. 27</a>). Switch to off-grid power, radios and the rest of this library.</li>
+</ol>
+<p><strong>Repair skills</strong> — finding and replacing burned parts, using a multimeter, soldering, salvaging parts — are in the electronics section of the <a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html">Make-Do Household Guide</a> and the Navy NEETS modules in <code>Off-Grid-Power\Electrical-Basics</code>.</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://www.osti.gov/servlets/purl/6535803" title="HEMP Emergency Planning and Operating Procedures for Electric Power Systems (ORNL 1991).pdf">ORNL <em>HEMP Emergency Planning for Electric Power Systems</em></a> — why grid recovery is slow; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_ADA484672/DTIC_ADA484672.pdf" title="EMP Commission Critical National Infrastructures Report (2008).pdf">EMP Commission 2008</a>.</p>
+<hr />
+<h2 id="-related-guides">🔗 Related guides</h2>
+<ul>
+<li><a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html">Make-Do Household Guide</a> — electronics repair and salvage</li>
+<li><a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html">Engines, Motors and Generators</a></li>
+<li><a class="guide" href="RADIO-GUIDE.html">Emergency Radio Guide</a></li>
+<li><a class="guide" href="NUCLEAR-FALLOUT-GUIDE.html">Nuclear Fallout Guide</a> — if the EMP came from a nuclear attack</li>
+<li><a class="guide" href="FUEL-GUIDE.html">Fuel Guide</a></li>
+<li><a class="guide" href="ILLINOIS-VALLEY-START-HERE.html">Illinois Valley — Start Here</a></li>
+</ul>
+</div></body></html>

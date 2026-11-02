@@ -1,61 +1,153 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>⚒️ Blacksmithing and Hand Tools</title><style>:root{--bg:#0f1420;--card:#171f2e;--ink:#e7ecf3;--muted:#9fb0c3;--accent:#4fd1c5;--accent2:#f6ad55;--line:#273246;--code:#0b0f17}@media(prefers-color-scheme:light){:root{--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--code:#f1f5f9}}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,Segoe UI,Roboto,Arial,sans-serif}.wrap{max-width:900px;margin:0 auto;padding:28px 20px 80px}h1{font-size:28px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}h2{font-size:22px;border-bottom:2px solid var(--line);padding-bottom:6px;margin-top:30px}h3{font-size:17px;color:var(--accent)}h4{font-size:15px;color:var(--accent2)}a{color:var(--accent)}code{background:var(--code);padding:2px 6px;border-radius:6px;font-family:Consolas,monospace;font-size:14px}pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow-x:auto}pre code{background:none;padding:0}table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}th{background:rgba(127,127,127,.12)}blockquote{border-left:4px solid var(--accent);background:rgba(79,209,197,.08);padding:10px 16px;border-radius:0 10px 10px 0}hr{border:none;border-top:1px solid var(--line);margin:26px 0}ul,ol{padding-left:26px}table{display:block;overflow-x:auto;max-width:100%}code,a{overflow-wrap:anywhere}img{max-width:100%}</style></head><body><div class="wrap"><p><a href="../">&larr; SO Survival Library</a></p>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>⚒️ Blacksmithing and Hand Tools</title><style>:root{--bg:#0f1420;--card:#171f2e;--ink:#e7ecf3;--muted:#9fb0c3;--accent:#4fd1c5;--accent2:#f6ad55;--line:#273246;--code:#0b0f17}@media(prefers-color-scheme:light){:root{--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--code:#f1f5f9}}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,Segoe UI,Roboto,Arial,sans-serif}.wrap{max-width:900px;margin:0 auto;padding:28px 20px 80px}h1{font-size:28px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}h2{font-size:22px;border-bottom:2px solid var(--line);padding-bottom:6px;margin-top:30px}h3{font-size:17px;color:var(--accent)}h4{font-size:15px;color:var(--accent2)}a{color:var(--accent)}code{background:var(--code);padding:2px 6px;border-radius:6px;font-family:Consolas,monospace;font-size:14px}pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow-x:auto}pre code{background:none;padding:0}table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}th{background:rgba(127,127,127,.12)}blockquote{border-left:4px solid var(--accent);background:rgba(79,209,197,.08);padding:10px 16px;border-radius:0 10px 10px 0}hr{border:none;border-top:1px solid var(--line);margin:26px 0}ul,ol{padding-left:26px}table{display:block;overflow-x:auto;max-width:100%}code,a{overflow-wrap:anywhere}img{max-width:100%}a.lib{text-decoration-style:dotted}a.lib::before{content:"📖 ";text-decoration:none}.deeper{font-size:15px;opacity:.95}a.wiki::before{content:"📷 "}a.lib::before,a.wiki::before{display:inline-block;margin-right:3px}</style></head><body><div class="wrap"><p><a href="../">&larr; SO Survival Library</a></p>
 <h1 id="️-blacksmithing-and-hand-tools">⚒️ Blacksmithing and Hand Tools</h1>
-<p>How to set up a simple forge, pick the right scrap steel, forge and heat-treat it, and make or repair basic hand tools — chisels, punches, tongs, knives, axes — plus how to sharpen and re-handle the tools you already have. The full books are in <code>Blacksmithing-Tools\</code> (<code>Blacksmithing</code>, <code>Heat-Treating-Steel</code>, <code>Hand-Tools</code>); axe and crosscut-saw manuals are in <code>Engines-Motors\Chainsaws-and-Saws</code>.</p>
+<p>How to set up a simple forge, pick the right scrap steel, forge and heat-treat it, and make or repair basic hand tools — chisels, punches, tongs, knives, axes — plus how to sharpen and re-handle the tools you already have. The full books are in <code>Blacksmithing-Tools\</code> (<code>Blacksmithing</code>, <code>Heat-Treating-Steel</code>, <code>Hand-Tools</code>); axe and crosscut-saw manuals are in <code>Engines-Motors\Chainsaws-and-Saws</code>. Farm blacksmithing (plow shares) and a short Practical Action brief are in <code>Homestead-Skills\Food-Crafts-Tools</code>.</p>
 <blockquote>
 <h3 id="️-rules-that-prevent-the-worst-injuries">⚠️ Rules that prevent the worst injuries</h3>
 <ul>
 <li><strong>Hot steel looks exactly like cold steel.</strong> Assume everything near the forge is hot; pick things up with tongs, and set hot pieces down where no one will grab them.</li>
-<li><strong>Eye protection</strong> at the anvil, grinder and when quenching. Never use a cracked grinding wheel, never wear gloves at the wheel, stand aside when you switch it on. (Navy <em>Steelworker</em>)</li>
-<li><strong>Never heat galvanized (zinc-coated) metal indoors</strong> — the fumes cause "metal fume fever." Strip the zinc first <em>(rule of thumb: soak overnight in vinegar)</em> and work outdoors. Drinking milk does not help, despite old advice. (TM 10-440)</li>
-<li><strong>Quench oil can catch fire.</strong> Use a metal container with a close-fitting metal lid next to it, enough oil to fully cover the piece, and plunge it in quickly and completely. <strong>Never put water on an oil fire</strong> — smother it with the lid. <em>(Rule of thumb)</em></li>
+<li><strong>Eye protection</strong> at the anvil, grinder and when quenching. Never use a cracked grinding wheel, never wear gloves at the wheel, stand aside when you switch it on. (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/steelworker1/steelworker1.pdf#page=22" title="US Navy NAVEDTRA 14250 - Steelworker Vol 1 (1996).pdf — page 22">Navy <em>Steelworker</em>, p. 22</a>)</li>
+<li><strong>Never heat galvanized (zinc-coated) metal indoors</strong> — the fumes cause "metal fume fever." Strip the zinc first <em>(rule of thumb: soak overnight in vinegar)</em> and work outdoors. Drinking milk does not help, despite old advice (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/TM10-440/TM10-440.pdf#page=60" title="US Army TM 10-440 - The Blacksmith and the Welder (1941).pdf — page 60">TM 10-440, p. 60</a> still recommends it — ignore that).</li>
+<li><strong>Quench oil can catch fire.</strong> Use a metal container with a close-fitting metal lid next to it, enough oil to fully cover the piece, and plunge it in quickly and completely. <strong>Never put water on an oil fire</strong> — smother it with the lid. <em>(Rule of thumb)</em> Oil fires usually start when there's too little oil for the piece. (<a class="lib" target="_blank" rel="noopener" href="https://infohub.practicalaction.org/server/api/core/bitstreams/dcb9795c-10fb-41f5-a86d-a04d3c66f60c/content#page=3" title="Practical Action - Blacksmithing Technical Brief.pdf — page 3">Practical Action <em>Blacksmithing</em>, p. 3</a>)</li>
 <li><strong>A coal or charcoal forge makes carbon monoxide</strong> — work outdoors or under an open-sided roof.</li>
+<li><strong>Fire season:</strong> Illinois Valley summers are dry. Keep a full water bucket or trough by the forge for embers as well as quenching (<a class="lib" target="_blank" rel="noopener" href="https://infohub.practicalaction.org/server/api/core/bitstreams/dcb9795c-10fb-41f5-a86d-a04d3c66f60c/content#page=2" title="Practical Action - Blacksmithing Technical Brief.pdf — page 2">Practical Action, pp. 1–2</a>), clear dry grass and leaves well back from the forge, and never leave a fire unattended. <em>(Rule of thumb)</em></li>
+<li><strong>Oily rags can catch fire by themselves.</strong> Throw them out or keep them in a bucket of water. (<a class="lib" target="_blank" rel="noopener" href="https://www.fs.usda.gov/t-d/pubs/pdfpubs/pdf99232823/pdf99232823Pdpi300.pdf#page=34" title="USFS An Ax to Grind - A Practical Ax Manual (1999).pdf — page 34">USFS <em>An Ax to Grind</em>, p. 34</a>)</li>
 </ul>
 </blockquote>
 <hr />
 <h2 id="-a-simple-forge-and-anvil">🔥 A simple forge and anvil</h2>
 <p><em>Rule-of-thumb setups; the books have full plans.</em></p>
 <ul>
-<li><strong>Forge:</strong> anything that holds a fist-sized pile of burning fuel with air blown up into the middle — a brake drum or steel tub lined with clay, or a brick or stone hearth with a pipe coming in at the bottom (the "tuyere"). The ICS <em>Shop Equipment</em> book and the Peace Corps manual show how to build forges and <strong>bellows</strong>.</li>
+<li><strong>Forge:</strong> anything that holds a fist-sized pile of burning fuel with air blown up into the middle — a brake drum or steel tub lined with clay, or a brick or stone hearth with a pipe coming in at the bottom (the "tuyere"). The ICS <em>Shop Equipment</em> book and the Peace Corps manual show how to build forges and <strong>bellows</strong>. (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/shopequipmenthan00inte/shopequipmenthan00inte.pdf#page=21" title="ICS - Blacksmith Shop Equipment Hand Forging and Tool Dressing (1916).pdf — page 21">ICS, p. 21</a>)</li>
 <li><strong>Air:</strong> a hand-crank blower, homemade bellows, a hair dryer or a small fan with a valve or gate to control it. Too much air wastes fuel and burns steel.</li>
-<li><strong>Fuel:</strong> <strong>charcoal</strong> (easy to make — see <code>Homestead-Skills\Fuels</code>), or coal turned to coke in the fire. Keep the fire clean: rake out clinker (glassy lumps), and work in the hot center.</li>
-<li><strong>Anvil:</strong> a real anvil is best, but a chunk of <strong>railroad rail</strong>, a big block of steel, or a sledgehammer head set in a stump works. Set the face at about <strong>knuckle height</strong> when you stand with your arm hanging.</li>
+<li><strong>Fuel:</strong> <strong>charcoal</strong> (easy to make — see <code>Homestead-Skills\Fuels</code>), or coal turned to coke in the fire. Keep the fire clean: rake out clinker (glassy lumps), and work in the hot center. Screen coke to get rid of dust before you use it. (<a class="lib" target="_blank" rel="noopener" href="https://infohub.practicalaction.org/server/api/core/bitstreams/dcb9795c-10fb-41f5-a86d-a04d3c66f60c/content#page=2" title="Practical Action - Blacksmithing Technical Brief.pdf — page 2">Practical Action, p. 2</a>)</li>
+<li><strong>Anvil:</strong> a real anvil is best, but a chunk of <strong>railroad rail</strong>, a big block of steel, or a sledgehammer head set in a stump works. Set the face at about <strong>knuckle height</strong> when you stand with your arm hanging. Practical Action also shows a stone with an iron insert and an old casting used as anvils. (<a class="lib" target="_blank" rel="noopener" href="https://infohub.practicalaction.org/server/api/core/bitstreams/dcb9795c-10fb-41f5-a86d-a04d3c66f60c/content#page=3" title="Practical Action - Blacksmithing Technical Brief.pdf — page 3">Practical Action, p. 3</a>)</li>
 <li><strong>First tools:</strong> a 2–3 lb cross-peen hammer, a pair of tongs (or make them — they're a classic first project), a bucket of water, a file, and a magnet.</li>
+<li><strong>Water trough:</strong> big enough to sink the whole piece — at least about <strong>5 gallons</strong>. (<a class="lib" target="_blank" rel="noopener" href="https://infohub.practicalaction.org/server/api/core/bitstreams/dcb9795c-10fb-41f5-a86d-a04d3c66f60c/content#page=2" title="Practical Action - Blacksmithing Technical Brief.pdf — page 2">Practical Action, p. 2</a>)</li>
 </ul>
+<p><strong>Running the fire</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/TM10-440/TM10-440.pdf#page=27" title="US Army TM 10-440 - The Blacksmith and the Welder (1941).pdf — page 27">TM 10-440, pp. 26–27</a>):</p>
+<ul>
+<li>The <strong>hottest spot is about 5–7 inches above the tuyere.</strong> Keep the fire just big enough to surround the piece with glowing coals.</li>
+<li>A <strong>thin fire</strong> lets unburned air reach the steel and covers it in scale (an "oxidizing" fire). A <strong>deep fire</strong> uses up the air first — slower, but it doesn't scale the steel.</li>
+<li>Pack <strong>wet, unburned fuel around the edges</strong> to keep the fire from spreading; it cokes there and feeds the center as you need it.</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Fire problem</th>
+<th>Likely cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Steel comes out heavily scaled</td>
+<td>Fire too thin, too much air</td>
+<td>Build the fire deeper; less blast</td>
+</tr>
+<tr class="even">
+<td>Fire won't get hot</td>
+<td>Clinker choking the tuyere; wet or dusty fuel</td>
+<td>Rake out clinker; screen fuel</td>
+</tr>
+<tr class="odd">
+<td>Fire spreads and wastes fuel</td>
+<td>Too much loose fuel, no banking</td>
+<td>Pack damp fuel around the edges</td>
+</tr>
+</tbody>
+</table>
+<p>📷 <a class="wiki" href="https://en.wikipedia.org/wiki/Anvil" data-title="Anvil" target="_blank" rel="noopener" title="Wikipedia: Anvil (offline copy with photos when opened through the Library Assistant)">Anvil</a>, <a class="wiki" href="https://en.wikipedia.org/wiki/Tuyere" data-title="Tuyere" target="_blank" rel="noopener" title="Wikipedia: Tuyere (offline copy with photos when opened through the Library Assistant)">Tuyere</a>, <a class="wiki" href="https://en.wikipedia.org/wiki/Bellows" data-title="Bellows" target="_blank" rel="noopener" title="Wikipedia: Bellows (offline copy with photos when opened through the Library Assistant)">Bellows</a>, <a class="wiki" href="https://en.wikipedia.org/wiki/Swage_block" data-title="Swage_block" target="_blank" rel="noopener" title="Wikipedia: Swage block (offline copy with photos when opened through the Library Assistant)">Swage block</a>, <a class="wiki" href="https://en.wikipedia.org/wiki/Hardy_tool" data-title="Hardy_tool" target="_blank" rel="noopener" title="Wikipedia: Hardy tool (offline copy with photos when opened through the Library Assistant)">Hardy tool</a>.</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/shopequipmenthan00inte/shopequipmenthan00inte.pdf#page=15" title="ICS - Blacksmith Shop Equipment Hand Forging and Tool Dressing (1916).pdf — page 15">ICS <em>Blacksmith Shop Equipment</em></a> — forges, blowers, bellows and anvil tools; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/micro_IA41153448_0043/micro_IA41153448_0043.pdf#page=20" title="Peace Corps - Basic Techniques of Blacksmithing Manual for Trainers (1982).pdf — page 20">Peace Corps <em>Basic Techniques of Blacksmithing</em></a> — building a forge and tools from scrap; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/TM10-440/TM10-440.pdf#page=26" title="US Army TM 10-440 - The Blacksmith and the Welder (1941).pdf — page 26">TM 10-440</a> — fuel and fire management; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/ERIC_ED243687/ERIC_ED243687.pdf" title="Peace Corps - Small Scale Charcoal Making Manual (1982).pdf">Peace Corps <em>Charcoal Making</em></a> — making forge charcoal.</p>
 <h2 id="️-heat-colors-in-shade-not-sunlight">🌡️ Heat colors (in shade, not sunlight)</h2>
 <table>
 <thead>
 <tr class="header">
 <th>Color</th>
+<th>About °F</th>
 <th>What it's for</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>Dull red</td>
+<td>1,050–1,175</td>
 <td><strong>Stop hammering</strong> — steel worked colder than this cracks.</td>
 </tr>
 <tr class="even">
 <td>Cherry red</td>
+<td>1,250–1,375</td>
 <td>Hardening temperature for most carbon steel; bending.</td>
 </tr>
 <tr class="odd">
 <td>Orange to yellow</td>
+<td>1,725–1,975</td>
 <td>Normal <strong>forging</strong> heat — hammer here.</td>
 </tr>
 <tr class="even">
 <td>Bright yellow-white, "flowing" surface</td>
+<td>about 2,000</td>
 <td><strong>Forge welding</strong> (mild steel and wrought iron, about 2,000 °F).</td>
 </tr>
 <tr class="odd">
 <td>White with sparks shooting off</td>
+<td>2,200 and up</td>
 <td><strong>Burned.</strong> The steel is ruined — cut that part off.</td>
 </tr>
 </tbody>
 </table>
-<p>High-carbon steel burns at a lower heat than mild steel, so forge tool steel no hotter than orange-yellow. (TM 10-440)</p>
+<p>(°F from <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/TM10-440/TM10-440.pdf#page=25" title="US Army TM 10-440 - The Blacksmith and the Welder (1941).pdf — page 25">TM 10-440's color table, p. 25</a>; colors look different in different light and to different eyes, so learn them on your own forge.)</p>
+<p>High-carbon steel burns at a lower heat than mild steel, so forge tool steel no hotter than orange-yellow. <strong>Burned steel can't be fixed by any later heat treatment.</strong> Keep hammering until the steel cools to a low red — forging refines the grain and makes it tougher. (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/TM10-440/TM10-440.pdf#page=24" title="US Army TM 10-440 - The Blacksmith and the Welder (1941).pdf — page 24">TM 10-440, p. 24</a>)</p>
 <p><strong>Basic moves:</strong> <em>drawing out</em> (hammering thinner and longer), <em>upsetting</em> (hammering the hot end to make it thicker), <em>bending</em> over the anvil horn or edge, <em>punching</em> holes hot, <em>cutting</em> on a hardy (a chisel set in the anvil), <em>twisting</em>, and <em>forge welding</em>. Ilgen's <em>Forge Work</em> and the Selvidge <em>Shop Manual</em> walk through each one step by step.</p>
+<p><strong>Punching a hole</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/TM10-440/TM10-440.pdf#page=33" title="US Army TM 10-440 - The Blacksmith and the Welder (1941).pdf — page 33">TM 10-440, p. 33</a>): center-punch the spot, heat to a good working heat, drive the punch <strong>two-thirds of the way through</strong>, flip the piece, and punch out from the other side over the anvil's round (pritchel) hole. Cool the punch often so it doesn't soften, and drop a little dry coal in a deep hole to stop the punch sticking.</p>
+<p><strong>Forge welding, step by step</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/in.ernet.dli.2015.19455/2015.19455.Blacksmithing_text.pdf#page=45" title="Selvidge and Allton - Blacksmithing Shop Manual (1925).pdf — page 45">Selvidge, pp. 45–47</a>; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/TM10-440/TM10-440.pdf#page=30" title="US Army TM 10-440 - The Blacksmith and the Welder (1941).pdf — page 30">TM 10-440, pp. 30–31</a>):</p>
+<ol type="1">
+<li><strong>Prepare:</strong> upset each end to about 1½ times its thickness, then hammer a <strong>scarf</strong> (a bevel) on each, slightly <strong>rounded, not hollow</strong>, so scale squeezes out from the middle.</li>
+<li><strong>Clean fire, clean anvil:</strong> rake out clinker, have plenty of coke ready, brush scale off the anvil face, and set your hammer where you can grab it.</li>
+<li><strong>Heat slowly</strong> under a covering of live coals, turning the pieces so both heat evenly.</li>
+<li>At <strong>bright red</strong>, sprinkle <strong>flux — borax or clean sand</strong> — on the scarfs; it keeps air off and melts the scale so it can squeeze out.</li>
+<li>Keep heating until the surface looks <strong>wet and flowing</strong>. Pull both pieces, knock off loose scale, lap the scarfs and strike <strong>light blows first, then heavier</strong>.</li>
+<li><strong>Don't keep hammering once it drops below welding heat.</strong> If it doesn't stick, cut off the tips, re-scarf and try again. Use as few heats as possible.</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th>Forging problem</th>
+<th>Likely cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cracks while hammering</td>
+<td>Worked below dull red</td>
+<td>Reheat sooner; stop at dull red</td>
+</tr>
+<tr class="even">
+<td>Sparks and a crumbly end</td>
+<td>Burned</td>
+<td>Cut back to sound metal</td>
+</tr>
+<tr class="odd">
+<td>Weld won't stick</td>
+<td>Not hot enough, dirty fire, no flux, scale between faces</td>
+<td>Clean fire, flux at bright red, reach full welding heat</td>
+</tr>
+<tr class="even">
+<td>Weld lets go later</td>
+<td>Hammered after it cooled; hollow scarfs trapped scale</td>
+<td>Round the scarfs; weld in fewer, hotter heats</td>
+</tr>
+<tr class="odd">
+<td>Thin tip burns before the thick part is hot</td>
+<td>Fast heating</td>
+<td>Heat slowly and keep the thin end back from the hot spot (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/cu31924003588450/cu31924003588450.pdf#page=63" title="Drew - Farm Blacksmithing (1910).pdf — page 63">Drew, p. 63</a>)</td>
+</tr>
+</tbody>
+</table>
+<p>📷 <a class="wiki" href="https://en.wikipedia.org/wiki/Forge_welding" data-title="Forge_welding" target="_blank" rel="noopener" title="Wikipedia: Forge welding (offline copy with photos when opened through the Library Assistant)">Forge welding</a>.</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/in.ernet.dli.2015.19455/2015.19455.Blacksmithing_text.pdf#page=45" title="Selvidge and Allton - Blacksmithing Shop Manual (1925).pdf — page 45">Selvidge <em>Blacksmithing Shop Manual</em></a> — every basic operation as a one-page job sheet; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/cu31924003587023/cu31924003587023.pdf" title="Ilgen - Forge Work (1912).pdf">Ilgen <em>Forge Work</em></a> — drawing, upsetting, bending and welding explained; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/TM10-440/TM10-440.pdf#page=24" title="US Army TM 10-440 - The Blacksmith and the Welder (1941).pdf — page 24">TM 10-440</a> — heat colors, forging and welding in brief.</p>
 <h2 id="-which-scrap-steel-to-use">🔩 Which scrap steel to use</h2>
-<p>(Peace Corps <em>Basic Techniques of Blacksmithing</em>)</p>
+<p>(<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/micro_IA41153448_0043/micro_IA41153448_0043.pdf#page=31" title="Peace Corps - Basic Techniques of Blacksmithing Manual for Trainers (1982).pdf — page 31">Peace Corps <em>Basic Techniques of Blacksmithing</em>, p. 31</a>)</p>
 <table>
 <thead>
 <tr class="header">
@@ -82,18 +174,23 @@
 </tr>
 </tbody>
 </table>
+<p><strong>Sources disagree on springs.</strong> The Peace Corps puts car springs, axles and torsion bars in the medium-carbon group; Practical Action calls coil springs, leaf springs and torsion bars <strong>high carbon</strong>. Test each piece and treat springs as hardening steel either way. Practical Action also warns that <strong>rebar often has a bit more carbon than true mild steel.</strong> (<a class="lib" target="_blank" rel="noopener" href="https://infohub.practicalaction.org/server/api/core/bitstreams/dcb9795c-10fb-41f5-a86d-a04d3c66f60c/content#page=5" title="Practical Action - Blacksmithing Technical Brief.pdf — page 5">Practical Action, p. 5</a>)</p>
 <ul>
-<li><strong>Quick test:</strong> heat the tip to light cherry red and quench it in water. If a file <strong>skates over it like glass</strong>, it will harden. If the file bites, it's low-carbon.</li>
-<li><strong>Spark test</strong> on a grinder: low-carbon steel throws long streams with few forks; <strong>high-carbon throws shorter, bushier streams full of bright bursts</strong>; cast iron throws short dull red sparks. Practice on known pieces first. (Navy <em>Steelworker</em>)</li>
+<li><strong>Quick test:</strong> heat the tip to light cherry red and quench it in water. If a file <strong>skates over it like glass</strong>, it will harden. If the file bites, it's low-carbon. (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/micro_IA41153448_0043/micro_IA41153448_0043.pdf#page=32" title="Peace Corps - Basic Techniques of Blacksmithing Manual for Trainers (1982).pdf — page 32">Peace Corps, p. 32</a>)</li>
+<li><strong>Spark test</strong> on a grinder: low-carbon steel throws long streams with few forks; <strong>high-carbon throws shorter, bushier streams full of bright bursts</strong>; cast iron throws short dull red sparks. Practice on known pieces first. In the Navy <em>Steelworker</em>'s pictures the low-carbon stream runs about <strong>70 inches</strong>, high-carbon about <strong>55 inches</strong> with more volume, and gray cast iron only about <strong>25 inches</strong>, red near the wheel and straw-colored at the end. Watch a spot about a third of the way back from the tip of the stream. (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/steelworker1/steelworker1.pdf#page=22" title="US Navy NAVEDTRA 14250 - Steelworker Vol 1 (1996).pdf — page 22">Steelworker, pp. 22–24</a>)</li>
+<li><strong>Other clues</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/micro_IA41153448_0043/micro_IA41153448_0043.pdf#page=32" title="Peace Corps - Basic Techniques of Blacksmithing Manual for Trainers (1982).pdf — page 32">Peace Corps, p. 32</a>): drop it on concrete and compare the ring with known pieces; see whether a cold chisel nicks it easily; and <strong>think about its old job</strong> — anything that had to be springy, tough or wear-resistant is probably medium or high carbon.</li>
 </ul>
+<p>📷 <a class="wiki" href="https://en.wikipedia.org/wiki/Spark_testing" data-title="Spark_testing" target="_blank" rel="noopener" title="Wikipedia: Spark testing (offline copy with photos when opened through the Library Assistant)">Spark testing</a>, <a class="wiki" href="https://en.wikipedia.org/wiki/Leaf_spring" data-title="Leaf_spring" target="_blank" rel="noopener" title="Wikipedia: Leaf spring (offline copy with photos when opened through the Library Assistant)">Leaf spring</a>.</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/micro_IA41153448_0043/micro_IA41153448_0043.pdf#page=31" title="Peace Corps - Basic Techniques of Blacksmithing Manual for Trainers (1982).pdf — page 31">Peace Corps manual, scrap identification</a> — what's in scrap and how to test it; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/steelworker1/steelworker1.pdf#page=21" title="US Navy NAVEDTRA 14250 - Steelworker Vol 1 (1996).pdf — page 21">Navy <em>Steelworker</em> Vol 1</a> — spark and chip tests with pictures; <a class="lib" target="_blank" rel="noopener" href="https://infohub.practicalaction.org/server/api/core/bitstreams/dcb9795c-10fb-41f5-a86d-a04d3c66f60c/content#page=5" title="Practical Action - Blacksmithing Technical Brief.pdf — page 5">Practical Action <em>Blacksmithing</em> brief</a> — mild, medium and high carbon steel from old vehicles.</p>
 <h2 id="-hardening-and-tempering">🧪 Hardening and tempering</h2>
 <ol type="1">
-<li><strong>Anneal (soften) old steel before reshaping it cold or filing it:</strong> heat slowly to red, then bury it in <strong>dry wood ashes</strong>, lime or powdered charcoal and leave it until cold. (Selvidge)</li>
+<li><strong>Anneal (soften) old steel before reshaping it cold or filing it:</strong> heat slowly to red, then bury it in <strong>dry wood ashes</strong>, lime or powdered charcoal and leave it until cold. (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/in.ernet.dli.2015.19455/2015.19455.Blacksmithing_text.pdf#page=56" title="Selvidge and Allton - Blacksmithing Shop Manual (1925).pdf — page 56">Selvidge, p. 56</a>)</li>
 <li><strong>Harden:</strong> heat evenly to <strong>cherry red</strong> — <em>rule of thumb: just past the point where a magnet stops sticking to it</em> — and quench.
 <ul>
-<li><strong>Plain carbon steel</strong> (springs, files, most scrap): water or <strong>brine</strong> (about ¾ lb salt per gallon) cools fastest and most evenly. Thin or very high-carbon pieces (files, knives) can crack in water — <strong>warm oil</strong> (80–150 °F; vegetable oil works) is gentler.</li>
+<li><strong>Plain carbon steel</strong> (springs, files, most scrap): water or <strong>brine</strong> (about ¾ lb salt per gallon) cools fastest and most evenly. Thin or very high-carbon pieces (files, knives) can crack in water — <strong>warm oil</strong> (80–150 °F; vegetable oil works) is gentler. (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/steelworker1/steelworker1.pdf#page=35" title="US Navy NAVEDTRA 14250 - Steelworker Vol 1 (1996).pdf — page 35">Steelworker, pp. 35–36</a>)</li>
 <li><strong>Alloy steels:</strong> oil only.</li>
-<li>The steel is now <strong>glass-hard and brittle</strong> — temper it right away, before it's fully cold. (Navy <em>Steelworker</em>)</li>
+<li><strong>Keep the piece moving</strong> in the quench. Steam and gas bubbles otherwise cling to it and leave <strong>soft spots</strong>, which can later crack or warp. (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/in.ernet.dli.2015.19455/2015.19455.Blacksmithing_text.pdf#page=57" title="Selvidge and Allton - Blacksmithing Shop Manual (1925).pdf — page 57">Selvidge, p. 57</a>; Steelworker, p. 35)</li>
+<li>The steel is now <strong>glass-hard and brittle</strong> — temper it right away, before it's fully cold. The Navy <em>Steelworker</em> manual takes parts out of the quench at about <strong>200 °F</strong> — still too hot to touch — rather than letting them cool through the "cracking range" below that. (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/steelworker1/steelworker1.pdf#page=31" title="US Navy NAVEDTRA 14250 - Steelworker Vol 1 (1996).pdf — page 31">Steelworker, p. 31</a>)</li>
 </ul></li>
 <li><strong>Temper:</strong> polish a spot bright with sandpaper or a stone, then reheat gently (over the fire, on a hot plate, or in an oven) and watch the colors run. Quench when the edge reaches the color you want:</li>
 </ol>
@@ -138,31 +235,145 @@
 </tr>
 </tbody>
 </table>
-<p>The further toward blue, the softer and tougher. <strong>Books disagree a little</strong> — one old table puts most chisels and knives at light blue — so test your tool and adjust. (Selvidge; Bacon; TM 10-440)</p>
-<p><strong>One-heat method for chisels and punches:</strong> heat the working end to cherry red, quench only the tip inch or so (bob it up and down), pull it out, quickly polish the tip, and watch the heat from the shank run colors toward the edge. When the right color reaches the edge, quench the whole tool. (Selvidge; <em>Steelworker</em>)</p>
+<p>The further toward blue, the softer and tougher. <strong>Books disagree a little</strong> — one old table puts most chisels and knives at light blue — so test your tool and adjust. (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/forgepracticehea00baco/forgepracticehea00baco.pdf#page=263" title="Bacon - Forge Practice and Heat Treatment of Steel (1919).pdf — page 263">Bacon, p. 263</a>; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/in.ernet.dli.2015.19455/2015.19455.Blacksmithing_text.pdf#page=59" title="Selvidge and Allton - Blacksmithing Shop Manual (1925).pdf — page 59">Selvidge, p. 59</a>; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/TM10-440/TM10-440.pdf#page=26" title="US Army TM 10-440 - The Blacksmith and the Welder (1941).pdf — page 26">TM 10-440, p. 26</a>)</p>
+<p><strong>One-heat method for chisels and punches:</strong> heat the working end to cherry red, quench only the tip inch or so (bob it up and down), pull it out, quickly polish the tip, and watch the heat from the shank run colors toward the edge. When the right color reaches the edge, quench the whole tool. (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/steelworker1/steelworker1.pdf#page=34" title="US Navy NAVEDTRA 14250 - Steelworker Vol 1 (1996).pdf — page 34">Steelworker, p. 34</a>; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/in.ernet.dli.2015.19455/2015.19455.Blacksmithing_text.pdf#page=58" title="Selvidge and Allton - Blacksmithing Shop Manual (1925).pdf — page 58">Selvidge, p. 58</a>)</p>
+<p><strong>Many pieces at once:</strong> temper them in a pot of oil over the fire with a thermometer instead of by color — steadier and more even. (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/forgepracticehea00baco/forgepracticehea00baco.pdf#page=264" title="Bacon - Forge Practice and Heat Treatment of Steel (1919).pdf — page 264">Bacon, pp. 263–264</a>)</p>
+<p><strong>If the tool doesn't work right:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Problem</th>
+<th>Likely cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Edge <strong>chips or breaks</strong> in use</td>
+<td>Too hard</td>
+<td>Reheat gently to the next softer color and quench (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/in.ernet.dli.2015.19455/2015.19455.Blacksmithing_text.pdf#page=59" title="Selvidge and Allton - Blacksmithing Shop Manual (1925).pdf — page 59">Selvidge, p. 59</a>)</td>
+</tr>
+<tr class="even">
+<td>Edge <strong>bends or dulls fast</strong></td>
+<td>Too soft — tempered too far, or never got hard</td>
+<td>Re-harden and temper less <em>(rule of thumb)</em></td>
+</tr>
+<tr class="odd">
+<td>File still bites after quenching</td>
+<td>Low-carbon steel, or not hot enough</td>
+<td>Test the steel; heat to full cherry red</td>
+</tr>
+<tr class="even">
+<td><strong>Soft spots</strong></td>
+<td>Steam pockets in the quench</td>
+<td>Move the piece in the quench; use brine</td>
+</tr>
+<tr class="odd">
+<td><strong>Cracked</strong> in the quench</td>
+<td>Too hot, quench too harsh, thick-and-thin shape, sharp inside corners</td>
+<td>Harden at cherry, not hotter; use oil for thin or high-carbon pieces</td>
+</tr>
+<tr class="even">
+<td><strong>Warped</strong></td>
+<td>Uneven heat or uneven entry into the quench</td>
+<td>Heat evenly; plunge straight in, thick end first (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/cu31924003588450/cu31924003588450.pdf#page=64" title="Drew - Farm Blacksmithing (1910).pdf — page 64">Drew, p. 64</a>)</td>
+</tr>
+</tbody>
+</table>
+<p>📷 <a class="wiki" href="https://en.wikipedia.org/wiki/Tempering_%28metallurgy%29" data-title="Tempering_(metallurgy)" target="_blank" rel="noopener" title="Wikipedia: Tempering (metallurgy) (offline copy with photos when opened through the Library Assistant)">Tempering colors</a>.</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/forgepracticehea00baco/forgepracticehea00baco.pdf#page=263" title="Bacon - Forge Practice and Heat Treatment of Steel (1919).pdf — page 263">Bacon <em>Forge Practice and Heat Treatment of Steel</em></a> — temper colors and oil-bath tempering; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/hardeningtemperi00wood/hardeningtemperi00wood.pdf" title="Woodworth - Hardening Tempering Annealing and Forging of Steel (1903).pdf">Woodworth <em>Hardening, Tempering, Annealing</em></a> — deep detail on heat-treating tools; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/steelworker1/steelworker1.pdf#page=28" title="US Navy NAVEDTRA 14250 - Steelworker Vol 1 (1996).pdf — page 28">Navy <em>Steelworker</em> Vol 1</a> — annealing, hardening, quench media; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/in.ernet.dli.2015.19455/2015.19455.Blacksmithing_text.pdf#page=56" title="Selvidge and Allton - Blacksmithing Shop Manual (1925).pdf — page 56">Selvidge</a> — annealing, hardening and tempering job sheets.</p>
 <h2 id="️-making-basic-tools">🛠️ Making basic tools</h2>
 <ul>
-<li><strong>Cold chisel</strong> (first real project): a 6–8 inch piece of <strong>coil spring or axle</strong>. Straighten it, draw one end to a wedge, grind or file the edge to about 60°, harden and temper to purple at the edge (one-heat method). Leave the striking end soft.</li>
+<li><strong>Cold chisel</strong> (first real project): a 6–8 inch piece of <strong>coil spring or axle</strong>. Straighten it, draw one end to a wedge, grind or file the edge to about 60°, harden and temper to purple at the edge (one-heat method). Leave the striking end soft. (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/TM10-440/TM10-440.pdf#page=33" title="US Army TM 10-440 - The Blacksmith and the Welder (1941).pdf — page 33">TM 10-440, pp. 33–34</a>)</li>
+<li><strong>Hot chisel vs cold chisel:</strong> a <strong>hot chisel</strong> is left soft and used <strong>only on hot steel</strong>; a <strong>cold chisel</strong> is hardened and tempered and used <strong>only on cold steel.</strong> Don't swap them. (<a class="lib" target="_blank" rel="noopener" href="https://infohub.practicalaction.org/server/api/core/bitstreams/dcb9795c-10fb-41f5-a86d-a04d3c66f60c/content#page=4" title="Practical Action - Blacksmithing Technical Brief.pdf — page 4">Practical Action, p. 4</a>)</li>
 <li><strong>Center punch / drift:</strong> same steel, drawn to a round taper; temper the point straw to brown.</li>
 <li><strong>Tongs:</strong> two matching pieces of mild steel, forged with jaws and a boss, punched and riveted together. Richardson Vol 2 and Selvidge have patterns.</li>
 <li><strong>Knife:</strong> from an <strong>old file</strong> or saw blade. Anneal first, forge or grind to shape (on a grinder, dip often — blue on the edge means you've ruined the temper), harden in oil, temper straw to brown.</li>
 <li><strong>Axe, hoe, hammer:</strong> the Peace Corps manual covers forging each from scrap, including punching the eye with a drift.</li>
+<li><strong>Fullers</strong> (grooving tools) and other top and bottom tools can be made of plain mild steel. (<a class="lib" target="_blank" rel="noopener" href="https://infohub.practicalaction.org/server/api/core/bitstreams/dcb9795c-10fb-41f5-a86d-a04d3c66f60c/content#page=4" title="Practical Action - Blacksmithing Technical Brief.pdf — page 4">Practical Action, p. 4</a>)</li>
 <li><strong>Repairing tools ("dressing"):</strong> reforge mushroomed chisel heads, re-point picks, and redraw worn hoes and drill bits — ICS <em>Shop Equipment, Hand Forging and Tool Dressing</em>.</li>
 </ul>
+<p><strong>Sharpening a plow share</strong> — gardens and fields here depend on it (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/cu31924003588450/cu31924003588450.pdf#page=62" title="Drew - Farm Blacksmithing (1910).pdf — page 62">Drew <em>Farm Blacksmithing</em>, pp. 62–64</a>):</p>
+<ol type="1">
+<li>Use a <strong>round-faced 2½–3 lb hammer.</strong> Draw the edge out by hammering the <strong>top</strong> side while the bottom lies flat on the anvil.</li>
+<li><strong>Don't burn the edge</strong> while heating — it's thin and heats fast.</li>
+<li>If the point bends over, rest the edge on a <strong>hardwood block</strong>, not the anvil, while you drive it back.</li>
+<li>Harden a good-steel share at full red, plunging it <strong>thick side first</strong> into water or brine. For stony ground, leave it less hard so it doesn't chip.</li>
+<li>A worn-out point can be replaced by welding on a piece of old plow steel (not a rasp — too high in carbon to weld easily), using borax as flux. Practice on scrap first. Skip the old book's chemical hardening powder.</li>
+</ol>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/micro_IA41153448_0043/micro_IA41153448_0043.pdf#page=65" title="Peace Corps - Basic Techniques of Blacksmithing Manual for Trainers (1982).pdf — page 65">Peace Corps manual</a> — axe, hoe, tongs and hammer projects; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/shopequipmenthan00inte/shopequipmenthan00inte.pdf#page=137" title="ICS - Blacksmith Shop Equipment Hand Forging and Tool Dressing (1916).pdf — page 137">ICS <em>Tool Dressing</em></a> — reforging and re-tempering worn tools; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/cu31924003588450/cu31924003588450.pdf#page=51" title="Drew - Farm Blacksmithing (1910).pdf — page 51">Drew <em>Farm Blacksmithing</em></a> — farm repairs, chisels and plow work; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/gri_33125007986793/gri_33125007986793.pdf" title="Richardson - Practical Blacksmithing Vol 2 (1889).pdf">Richardson <em>Practical Blacksmithing</em> Vol 2</a> — tongs and shop-made tools.</p>
 <h2 id="-keeping-hand-tools-working">🪓 Keeping hand tools working</h2>
-<p><strong>Hanging an axe handle</strong> (USFS <em>An Ax to Grind</em>):</p>
+<p><strong>Hanging an axe handle</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www.fs.usda.gov/t-d/pubs/pdfpubs/pdf99232823/pdf99232823Pdpi300.pdf#page=24" title="USFS An Ax to Grind - A Practical Ax Manual (1999).pdf — page 24">USFS <em>An Ax to Grind</em></a>):</p>
 <ul>
-<li>Line the edge up with the center of the handle. Laid flat, the blade should touch the table one third of the way from the heel.</li>
-<li>Saw the wedge slot about two-thirds of the depth of the eye. Drive the head on by <strong>striking the end of the handle</strong> on a block, not the head.</li>
-<li>Drive a <strong>hardwood wedge</strong> in until it stops, leaving ¼–½ inch, then trim. <strong>No metal wedges, screws or epoxy.</strong> Soaking a loose head in water only works for a day.</li>
-<li>Good handle woods: straight-grained ash (Oregon ash grows here), hickory, oak. <em>(Rule of thumb)</em></li>
+<li>First check whether you need a new handle at all — often just a new wedge will do. (<a class="lib" target="_blank" rel="noopener" href="https://www.fs.usda.gov/t-d/pubs/pdfpubs/pdf99232823/pdf99232823Pdpi300.pdf#page=28" title="USFS An Ax to Grind - A Practical Ax Manual (1999).pdf — page 28"><em>An Ax to Grind</em>, p. 28</a>)</li>
+<li>Line the edge up with the center of the handle. Laid flat, the blade should touch the table one third of the way from the heel. (<a class="lib" target="_blank" rel="noopener" href="https://www.fs.usda.gov/t-d/pubs/pdfpubs/pdf99232823/pdf99232823Pdpi300.pdf#page=24" title="USFS An Ax to Grind - A Practical Ax Manual (1999).pdf — page 24">p. 24</a>)</li>
+<li>Saw the wedge slot about two-thirds of the depth of the eye. Drive the head on by <strong>striking the end of the handle</strong> on a block, not the head. (<a class="lib" target="_blank" rel="noopener" href="https://www.fs.usda.gov/t-d/pubs/pdfpubs/pdf99232823/pdf99232823Pdpi300.pdf#page=30" title="USFS An Ax to Grind - A Practical Ax Manual (1999).pdf — page 30">pp. 30–31</a>)</li>
+<li>Drive a <strong>hardwood wedge</strong> in until it stops, leaving ¼–½ inch, then trim. <strong>No metal wedges, screws or epoxy.</strong> Soaking a loose head in water only works for a day. (<a class="lib" target="_blank" rel="noopener" href="https://www.fs.usda.gov/t-d/pubs/pdfpubs/pdf99232823/pdf99232823Pdpi300.pdf#page=32" title="USFS An Ax to Grind - A Practical Ax Manual (1999).pdf — page 32">pp. 32–33</a>) Soaking the head in <strong>linseed oil</strong> is a better temporary fix. (p. 33)</li>
+<li>Good handle woods: straight-grained ash (Oregon ash grows here), hickory, oak. <em>(Rule of thumb)</em> The grain should run straight along the handle and in line with the wedge slot. (<a class="lib" target="_blank" rel="noopener" href="https://www.fs.usda.gov/t-d/pubs/pdfpubs/pdf99232823/pdf99232823Pdpi300.pdf#page=26" title="USFS An Ax to Grind - A Practical Ax Manual (1999).pdf — page 26">p. 26</a>)</li>
 </ul>
 <p><strong>Sharpening:</strong></p>
 <ul>
-<li><strong>Never sharpen an axe on a fast dry bench grinder</strong> — it draws the temper (the edge turns blue). Use a <strong>file</strong> (cuts on the push stroke only; lift on the return, wear gloves and use a knuckle guard), a slow wet grindstone, then a whetstone. File until a burr forms, then switch sides. Aim for about <strong>25°</strong>, slightly convex. (<em>An Ax to Grind</em>; <em>Handtools for Trail Work</em>)</li>
-<li><strong>Chisels and plane irons:</strong> grind at about 25°, then hone on an oilstone or water stone until a fine burr forms, flip and flatten the back, and strop. (Griffith <em>Essentials of Woodworking</em>)</li>
-<li><strong>Hand saws</strong> (Disston): clamp with the gullets just above the jaws. <strong>Joint</strong> the teeth level with a flat file, <strong>set</strong> them (never deeper than half the tooth), then file. <strong>Crosscut:</strong> every other tooth with the file angled about 45° toward the handle, then turn the saw around for the rest. <strong>Rip:</strong> straight across at 90°.</li>
-<li><strong>Files:</strong> keep them dry and separate (files dull each other), clean them with a file card or a nail, and use chalk on the teeth for soft metals. (Nicholson <em>Treatise on Files and Rasps</em>)</li>
+<li><strong>Never sharpen an axe on a fast dry bench grinder</strong> — it draws the temper (the edge turns blue). Use a <strong>file</strong> (cuts on the push stroke only; lift on the return, wear gloves and use a knuckle guard), a slow wet grindstone, then a whetstone. File until a burr forms, then switch sides. Aim for about <strong>25°</strong>, slightly convex. (<a class="lib" target="_blank" rel="noopener" href="https://www.fs.usda.gov/t-d/pubs/pdfpubs/pdf99232823/pdf99232823Pdpi300.pdf#page=34" title="USFS An Ax to Grind - A Practical Ax Manual (1999).pdf — page 34"><em>An Ax to Grind</em>, pp. 34–36</a>; <a class="lib" target="_blank" rel="noopener" href="https://www.fs.usda.gov/t-d/pubs/pdfpubs/pdf05232810/pdf05232810dpi300.pdf#page=22" title="USFS MTDC - Handtools for Trail Work (2005).pdf — page 22"><em>Handtools for Trail Work</em>, p. 22</a>)</li>
+<li>If you do blue an edge, the temper is gone for at least <strong>3/16 inch</strong> back — grind or file past it. On a pedal grindstone, keep it wet and turn it <strong>toward you, into the edge.</strong> File in a <strong>fan shape</strong> 2–3 inches back from the middle of the edge, and hone every morning you use the axe. (<a class="lib" target="_blank" rel="noopener" href="https://www.fs.usda.gov/t-d/pubs/pdfpubs/pdf99232823/pdf99232823Pdpi300.pdf#page=35" title="USFS An Ax to Grind - A Practical Ax Manual (1999).pdf — page 35"><em>An Ax to Grind</em>, pp. 34–36</a>)</li>
+<li><strong>Chisels and plane irons:</strong> grind at about 25°, then hone on an oilstone or water stone until a fine burr forms, flip and flatten the back, and strop. The grindstone shapes; <strong>only the stone sharpens</strong> — hone at a hair steeper angle than you ground. (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/essentialsofwood00grif/essentialsofwood00grif.pdf#page=68" title="Griffith - Essentials of Woodworking (1908).pdf — page 68">Griffith <em>Essentials of Woodworking</em>, pp. 68–69</a>)</li>
+<li><strong>Hand saws</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DisstonSawToolFile1929/Disston%20Saw%20Tool%20File%201929_text.pdf#page=34" title="Disston - Saw Tool and File Book (1929).pdf — page 34">Disston</a>): clamp with the gullets just above the jaws. <strong>Joint</strong> the teeth level with a flat file, <strong>set</strong> them (never deeper than half the tooth), then file. <strong>Crosscut:</strong> every other tooth with the file angled about 45° toward the handle, then turn the saw around for the rest. <strong>Rip:</strong> straight across at 90°. (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DisstonSawToolFile1929/Disston%20Saw%20Tool%20File%201929_text.pdf#page=35" title="Disston - Saw Tool and File Book (1929).pdf — page 35">Disston, pp. 35–38</a>)</li>
+<li><strong>Files:</strong> keep them dry and separate (files dull each other), clean them with a file card or a nail, and use chalk on the teeth for soft metals. (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/ATreatiseOnFilesAndRasps1878/A%20Treatise%20on%20Files%20and%20Rasps%201878.pdf#page=101" title="Nicholson - Treatise on Files and Rasps (1878).pdf — page 101">Nicholson <em>Treatise on Files and Rasps</em>, pp. 101–102</a>; <a class="lib" target="_blank" rel="noopener" href="https://www.fs.usda.gov/t-d/pubs/pdfpubs/pdf99232823/pdf99232823Pdpi300.pdf#page=35" title="USFS An Ax to Grind - A Practical Ax Manual (1999).pdf — page 35"><em>An Ax to Grind</em>, p. 35</a>)</li>
+</ul>
+<p><strong>Edge angles for digging and trail tools</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www.fs.usda.gov/t-d/pubs/pdfpubs/pdf05232810/pdf05232810dpi300.pdf#page=25" title="USFS MTDC - Handtools for Trail Work (2005).pdf — page 25">USFS <em>Handtools for Trail Work</em></a>):</p>
+<table>
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>Bevel</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Axe</td>
+<td>About 25°, slightly convex, fan-shaped 2–3 in back</td>
+</tr>
+<tr class="even">
+<td>Pulaski</td>
+<td>Axe blade like an axe; adze (grub) blade with about a ⅜-inch bevel (<a class="lib" target="_blank" rel="noopener" href="https://www.fs.usda.gov/t-d/pubs/pdfpubs/pdf05232810/pdf05232810dpi300.pdf#page=25" title="USFS MTDC - Handtools for Trail Work (2005).pdf — page 25">p. 25</a>)</td>
+</tr>
+<tr class="odd">
+<td>McLeod and draw hoes</td>
+<td>45° on the outside edge; no need to hone (<a class="lib" target="_blank" rel="noopener" href="https://www.fs.usda.gov/t-d/pubs/pdfpubs/pdf05232810/pdf05232810dpi300.pdf#page=26" title="USFS MTDC - Handtools for Trail Work (2005).pdf — page 26">pp. 26, 28</a>)</td>
+</tr>
+<tr class="even">
+<td>Mattock grubbing blade</td>
+<td>35° on the underside (<a class="lib" target="_blank" rel="noopener" href="https://www.fs.usda.gov/t-d/pubs/pdfpubs/pdf05232810/pdf05232810dpi300.pdf#page=27" title="USFS MTDC - Handtools for Trail Work (2005).pdf — page 27">p. 27</a>)</td>
+</tr>
+<tr class="odd">
+<td>Shovel</td>
+<td>About 45° on the top (inside) face, filed from below the foot rest to the point (<a class="lib" target="_blank" rel="noopener" href="https://www.fs.usda.gov/t-d/pubs/pdfpubs/pdf05232810/pdf05232810dpi300.pdf#page=29" title="USFS MTDC - Handtools for Trail Work (2005).pdf — page 29">p. 29</a>)</td>
+</tr>
+<tr class="even">
+<td>Carpenter's adze</td>
+<td>30° on the underside, then whetstone (<a class="lib" target="_blank" rel="noopener" href="https://www.fs.usda.gov/t-d/pubs/pdfpubs/pdf05232810/pdf05232810dpi300.pdf#page=46" title="USFS MTDC - Handtools for Trail Work (2005).pdf — page 46">p. 46</a>)</td>
+</tr>
+<tr class="odd">
+<td>Digging bar</td>
+<td>Keep the factory bevel (<a class="lib" target="_blank" rel="noopener" href="https://www.fs.usda.gov/t-d/pubs/pdfpubs/pdf05232810/pdf05232810dpi300.pdf#page=30" title="USFS MTDC - Handtools for Trail Work (2005).pdf — page 30">p. 30</a>)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Hammers and grinders</strong> (Army <em>TM 9-243 Use and Care of Hand Tools</em>):</p>
+<ul>
+<li>Replace a hammer with a <strong>chipped or cracked face</strong> — chips fly off. (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/use-and-care-of-hand-tools-and-measuring-tools-1983/Use%20and%20Care%20of%20Hand%20Tools%20and%20Measuring%20Tools%201983.pdf#page=122" title="TM 9-243 Use and Care of Hand Tools.pdf — page 122">TM 9-243, p. 122</a>)</li>
+<li>Replace cracked handles. To get a stuck one out, saw it off close to the head and <strong>drive the stub out through the large end of the eye</strong> with a drift. Rub linseed oil into wooden handles now and then. (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/use-and-care-of-hand-tools-and-measuring-tools-1983/Use%20and%20Care%20of%20Hand%20Tools%20and%20Measuring%20Tools%201983.pdf#page=126" title="TM 9-243 Use and Care of Hand Tools.pdf — page 126">TM 9-243, pp. 126–128</a>)</li>
+<li><strong>Before mounting a grinding wheel, tap it lightly</strong> with a mallet: a clear <strong>ring</strong> means sound, a <strong>dull thud</strong> means it may be cracked — don't use it. (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/use-and-care-of-hand-tools-and-measuring-tools-1983/Use%20and%20Care%20of%20Hand%20Tools%20and%20Measuring%20Tools%201983.pdf#page=185" title="TM 9-243 Use and Care of Hand Tools.pdf — page 185">TM 9-243, p. 185</a>)</li>
+<li>Never grind brass, copper or aluminum on a steel-grinding wheel — it clogs and can unbalance the wheel until it flies apart. (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/steelworker1/steelworker1.pdf#page=22" title="US Navy NAVEDTRA 14250 - Steelworker Vol 1 (1996).pdf — page 22">Steelworker, p. 22</a>)</li>
+</ul>
+<p>📷 <a class="wiki" href="https://en.wikipedia.org/wiki/Axe" data-title="Axe" target="_blank" rel="noopener" title="Wikipedia: Axe (offline copy with photos when opened through the Library Assistant)">Axe</a>, <a class="wiki" href="https://en.wikipedia.org/wiki/Pulaski_%28tool%29" data-title="Pulaski_(tool)" target="_blank" rel="noopener" title="Wikipedia: Pulaski (tool) (offline copy with photos when opened through the Library Assistant)">Pulaski</a>, <a class="wiki" href="https://en.wikipedia.org/wiki/Mattock" data-title="Mattock" target="_blank" rel="noopener" title="Wikipedia: Mattock (offline copy with photos when opened through the Library Assistant)">Mattock</a>, <a class="wiki" href="https://en.wikipedia.org/wiki/File_%28tool%29" data-title="File_(tool)" target="_blank" rel="noopener" title="Wikipedia: File (tool) (offline copy with photos when opened through the Library Assistant)">File</a>, <a class="wiki" href="https://en.wikipedia.org/wiki/Whetstone" data-title="Whetstone" target="_blank" rel="noopener" title="Wikipedia: Whetstone (offline copy with photos when opened through the Library Assistant)">Whetstone</a>.</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://www.fs.usda.gov/t-d/pubs/pdfpubs/pdf99232823/pdf99232823Pdpi300.pdf#page=28" title="USFS An Ax to Grind - A Practical Ax Manual (1999).pdf — page 28">USFS <em>An Ax to Grind</em></a> — hanging and sharpening axes step by step; <a class="lib" target="_blank" rel="noopener" href="https://www.fs.usda.gov/t-d/pubs/pdfpubs/pdf05232810/pdf05232810dpi300.pdf#page=25" title="USFS MTDC - Handtools for Trail Work (2005).pdf — page 25">USFS <em>Handtools for Trail Work</em></a> — using and sharpening digging and cutting tools; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DisstonSawToolFile1929/Disston%20Saw%20Tool%20File%201929_text.pdf#page=34" title="Disston - Saw Tool and File Book (1929).pdf — page 34">Disston <em>Saw, Tool and File Book</em></a> — jointing, setting and filing hand saws; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/use-and-care-of-hand-tools-and-measuring-tools-1983/Use%20and%20Care%20of%20Hand%20Tools%20and%20Measuring%20Tools%201983.pdf#page=122" title="TM 9-243 Use and Care of Hand Tools.pdf — page 122">TM 9-243</a> — Army care and repair of every common hand tool.</p>
+<h2 id="-related-guides">🔗 Related guides</h2>
+<ul>
+<li><a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html">Engines, motors and generators</a> — chainsaws, crosscut saws, and motor repair.</li>
+<li><a class="guide" href="FUEL-GUIDE.html">Fuel guide</a> — charcoal, wood gas and keeping fuel safe near a forge.</li>
+<li><a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html">Make-do household guide</a> — mending and making what you need at home.</li>
+<li><a class="guide" href="HORSE-GUIDE.html">Horse guide</a> — working animals that need shoes, harness hardware and tools.</li>
+<li><a class="guide" href="ILLINOIS-VALLEY-START-HERE.html">Illinois Valley start here</a> — the local picture and where everything is on the drive.</li>
 </ul>
 <hr />
 <p><em>The old books use coal forges and some chemicals now known to be dangerous (cyanide for case-hardening, asbestos). Use their methods, not their chemicals.</em></p>
