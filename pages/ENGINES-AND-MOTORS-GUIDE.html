@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>🔧 Engines, Motors and Generators</title><style>:root{--bg:#0f1420;--card:#171f2e;--ink:#e7ecf3;--muted:#9fb0c3;--accent:#4fd1c5;--accent2:#f6ad55;--line:#273246;--code:#0b0f17}@media(prefers-color-scheme:light){:root{--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--code:#f1f5f9}}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,Segoe UI,Roboto,Arial,sans-serif}.wrap{max-width:900px;margin:0 auto;padding:28px 20px 80px}h1{font-size:28px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}h2{font-size:22px;border-bottom:2px solid var(--line);padding-bottom:6px;margin-top:30px}h3{font-size:17px;color:var(--accent)}h4{font-size:15px;color:var(--accent2)}a{color:var(--accent)}code{background:var(--code);padding:2px 6px;border-radius:6px;font-family:Consolas,monospace;font-size:14px}pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow-x:auto}pre code{background:none;padding:0}table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}th{background:rgba(127,127,127,.12)}blockquote{border-left:4px solid var(--accent);background:rgba(79,209,197,.08);padding:10px 16px;border-radius:0 10px 10px 0}hr{border:none;border-top:1px solid var(--line);margin:26px 0}ul,ol{padding-left:26px}table{display:block;overflow-x:auto;max-width:100%}code,a{overflow-wrap:anywhere}img{max-width:100%}</style></head><body><div class="wrap"><p><a href="../">&larr; SO Survival Library</a></p>
+<h1 id="-engines-motors-and-generators">🔧 Engines, Motors and Generators</h1>
+<p>How to keep small gas engines, chainsaws and generators running, how to test and rebuild electric motors, and how to turn motors and car alternators into generators for charging batteries. The full shop manuals are in <code>Engines-Motors\</code> (<code>Small-Engines</code>, <code>Chainsaws-and-Saws</code>, <code>Electric-Motors</code>, <code>Motors-as-Generators</code>). Creek hydro and solar are in <code>Off-Grid-Power\</code>; electricity basics are in the Navy NEETS modules there.</p>
+<blockquote>
+<h3 id="️-rules-that-prevent-the-worst-accidents">⚠️ Rules that prevent the worst accidents</h3>
+<ul>
+<li><strong>Never run an engine or generator indoors</strong>, in a garage, shed or crawlspace — carbon monoxide kills in minutes, even with doors open.</li>
+<li><strong>Never refuel a hot or running engine.</strong> Keep the can touching the tank while pouring (stops static sparks).</li>
+<li><strong>Never plug a generator into a wall outlet</strong> ("backfeeding") — use a transfer switch or interlock. It can kill someone working on the lines.</li>
+<li><strong>Capacitors bite.</strong> Motor capacitors (and microwave ovens) can hold a deadly charge after unplugging. Discharge across the terminals with an insulated screwdriver or a resistor before touching.</li>
+<li><strong>Pull the spark plug wire</strong> before working on a mower blade, saw chain or anything the engine turns.</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="-small-gas-engines-why-it-wont-start">⛽ Small gas engines: why it won't start</h2>
+<p>Every engine needs three things: <strong>compression, spark and fuel.</strong> Find which one is missing. (MAVCC <em>Small Engine Repair</em>)</p>
+<ol type="1">
+<li><strong>Fuel:</strong> pull the plug, cover the hole with a finger and pull the starter 2–3 times. A <strong>wet finger</strong> means fuel is arriving. If dry, check: fuel in the tank, shutoff valve open, <strong>cap vent</strong> not blocked, carburetor bowl (drain it — water or gum?), fuel filter and line.</li>
+<li><strong>Spark:</strong> put a spare plug on the plug wire, rest it against the metal head and crank. A <strong>bright blue spark</strong> is good. Yellow, weak or none = clean or replace the plug, check the kill-switch wire, then the coil/magneto.</li>
+<li><strong>Compression:</strong> spin the flywheel backward against compression — a <strong>sharp rebound</strong> is good. Weak = loose plug or head, stuck valve, worn rings.</li>
+</ol>
+<p><strong>Old fuel is the #1 problem.</strong> Gas goes stale in about <strong>60 days</strong> without stabilizer (sooner with ethanol). For longer storage, <strong>drain the tank and run the carburetor dry</strong>, or add stabilizer and run it a few minutes so it reaches the carburetor. Keep cans sealed — water in ethanol gas separates and ruins engines. (Oklahoma Extension BAE-1746)</p>
+<p><strong>Cleaning a carburetor</strong> (AAVIM <em>Small Engines</em> Vol 2):</p>
+<ul>
+<li>Take a photo before you take it apart. Soak <strong>metal</strong> parts several hours in carb cleaner, then blow out every passage with air.</li>
+<li><strong>Plastic or nylon parts no more than 30 minutes; never soak cork or coated floats.</strong></li>
+<li><strong>Don't poke jets with wire</strong> — it enlarges them. Use a bristle, fishing line or air.</li>
+<li>Always fit new gaskets. Float too high = floods; too low = starves.</li>
+</ul>
+<p><strong>Two-stroke fuel</strong> (chainsaws, trimmers): mix oil at the ratio printed on the engine or in its manual. <strong>Never run straight gas</strong> — it seizes the engine in minutes. <em>Rule of thumb:</em> most modern saws are <strong>50:1 (about 2.6 oz of 2-stroke oil per gallon)</strong>; older gear is often 16:1–32:1. Don't mix mineral and synthetic 2-stroke oils.</p>
+<p><strong>Routine care:</strong> check oil every use (4-strokes), clean the air filter often (a choked filter makes an engine run rich and weak), keep cooling fins clear, replace the plug yearly.</p>
+<h2 id="-chainsaws-crosscut-saws-and-axes">🪚 Chainsaws, crosscut saws and axes</h2>
+<ul>
+<li><strong>A sharp chain throws chips; a dull one makes dust</strong> — and dust clogs the filter and raises kickback risk. (USFS <em>Chain Saw and Crosscut Saw Training Course</em>)</li>
+<li><strong>Filing:</strong> use the file size for your chain, with a guide. Hold the file level with about one-fifth of it above the cutter's top plate, guide mark parallel to the chain. File from the inside of each cutter outward, all of one side, then turn the saw around. <strong>Keep all cutters the same length.</strong></li>
+<li><strong>Depth gauges</strong> (the little humps in front of each cutter): check with a gauge tool every few sharpenings, file down only to the tool, and round off the front.</li>
+<li><strong>Running out of fuel isn't the end of cutting.</strong> A sharp crosscut saw and ax still fell and buck trees. Raker depth for a crosscut: <strong>0.008 in</strong> for hard, dry wood up to <strong>0.030 in</strong> for soft, springy wood; start at about <strong>0.012 in</strong>. (USFS <em>Crosscut Saw Manual</em>, <em>Saws That Sing</em>, <em>An Ax to Grind</em>)</li>
+</ul>
+<h2 id="-generators">🔋 Generators</h2>
+<ul>
+<li><strong>Maintenance:</strong> oil change every 50–100 hours (sooner when new), clean air filter, fresh or stabilized fuel, run it under load for 20–30 minutes once a month.</li>
+<li><strong>Load:</strong> add up the running watts of what you'll plug in, plus the <strong>start surge</strong> of motors (fridges, pumps, power tools can need 2–3× their running watts for a second). Keep steady load under about 80% of the generator's rating.</li>
+<li><strong>Grounding:</strong> follow the generator's own manual. (The Army 3 kW set procedure is a ground rod at least 8 ft deep with No. 6 copper wire — <code>TM 5-6115-271-14</code>.)</li>
+<li><strong>No output but the engine runs?</strong> Check the breaker on the generator, then the brushes and voltage regulator (most small generators). A generator that sat unused can <strong>lose its residual magnetism</strong> — see "flashing the field" below.</li>
+</ul>
+<h2 id="️-electric-motors-testing-and-repair">⚙️ Electric motors: testing and repair</h2>
+<p><strong>Single-phase motor hums but won't start</strong> (pumps, compressors, shop tools): suspect the <strong>start capacitor</strong> or the <strong>centrifugal start switch</strong>, which should click open at about ¾ speed. Discharge the capacitor, check it (a bulged or leaking one is dead; a meter with a capacitance setting tells for sure), and replace with the <strong>same microfarads and same or higher voltage</strong>. (TM 5-683; Illinois <em>Electric Motors for Farm Use</em>)</p>
+<p><strong>Basic winding checks with a meter</strong> (Navy <em>Electrician's Mate</em>):</p>
+<ul>
+<li>Windings must have <strong>no opens</strong> (infinite ohms through a winding), <strong>no shorts</strong> (much lower reading than its twin), and <strong>no grounds</strong> (any reading from a winding to the frame).</li>
+<li>The three windings of a 3-phase motor should read nearly the same resistance.</li>
+<li><strong>Insulation test (megger):</strong> right after shutdown while warm and dry, with capacitors disconnected. At least <strong>0.5 megohm</strong> for motors 250 V and under, <strong>1 megohm</strong> up to 1000 V. (TM 5-683)</li>
+<li><strong>Armatures</strong> (brushed motors): test bar-to-bar on the commutator with a low-ohm meter; a "growler" finds shorted coils (a hacksaw blade buzzes over the bad coil).</li>
+</ul>
+<p><strong>Bearings:</strong> a rumbling or hot bearing is the most common motor failure. Replace with the same number stamped on it. Fit new bearings by heating them to about <strong>200 °F</strong> (oil bath or oven, not a flame). <strong>Never wash sealed bearings in solvent.</strong></p>
+<p><strong>Brushes and commutators</strong> (drills, saws, mixers, car starters, DC motors): replace brushes before they're shorter than about ¼ in. Seat new brushes by pulling fine sandpaper (grit toward the brush) under them around the commutator, then blow out the carbon dust. A blackened, grooved commutator can be cleaned with a commutator stone or fine sandpaper, or turned lightly on a lathe (no more than 0.010 in per cut).</p>
+<p><strong>Rewinding a burned motor</strong> (Braymer &amp; Roe <em>Rewinding Small Motors</em>; DOE <em>Repair Specifications</em>):</p>
+<ul>
+<li><strong>Before stripping, record everything:</strong> turns per coil, wire size, coil span (slots), how coils connect, and lead markings. Photograph each step.</li>
+<li>Strip old windings at no more than about <strong>680 °F (360 °C)</strong> or the iron core is damaged.</li>
+<li>Rewind with the <strong>same total copper area per turn and same turns</strong> (two thinner wires in parallel can replace one thick one). Varnish and bake below about <strong>195 °F</strong> to dry.</li>
+<li>Small burned motors are often easier to replace from salvage than to rewind — keep a stock.</li>
+</ul>
+<h2 id="-motors-as-generators">🔁 Motors as generators</h2>
+<p><strong>What works best, easiest first:</strong></p>
+<ol type="1">
+<li><strong>Permanent-magnet DC motors</strong> (treadmill motors, wheelchair, scooter, some cordless tool motors): spin them and they make DC directly. Output voltage rises with speed, so choose one that makes <strong>at least 14–15 V at the speed you can actually turn it</strong> to charge a 12 V battery. Add a <strong>blocking diode</strong> so the battery can't run it as a motor. <em>(Rule of thumb)</em></li>
+<li><strong>Car alternators:</strong> built-in rectifier and regulator, but they need <strong>about 1,500+ rpm</strong> (step-up pulleys or belts for wind, water or pedals) and a <strong>battery connected</strong> to power their field — they are not self-starting. The field draws about 3 A, which wastes a lot at low power. (ED021119 <em>Alternator and Regulator Servicing</em>)</li>
+<li><strong>Induction motors (ordinary AC motors) as generators:</strong> drive it <strong>faster than its synchronous speed</strong> by about as much as its rated slip — e.g. a motor rated <strong>1725 rpm</strong> (1800 synchronous) is driven at about <strong>1875 rpm</strong>. On its own (not tied to the grid) it needs <strong>capacitors</strong> across the windings to excite it. (DOE <em>Microhydropower Handbook</em> Vol 2, in <code>Off-Grid-Power\Micro-Hydro</code>)
+<ul>
+<li><em>Rule of thumb:</em> start with run capacitors whose current at rated voltage roughly matches the motor's no-load current, then trim until voltage and frequency are right. Use <strong>AC motor-run (film) capacitors</strong>, never electrolytic start capacitors.</li>
+<li>Expect about <strong>70–80% of the motor's rating</strong> as output. Needs a <strong>ballast (dump) load or controller</strong> so voltage doesn't swing as loads switch. Aging capacitors make frequency creep up; a capacitor running hotter than the others is failing. (Practical Action <em>Micro-Hydro O&amp;M</em>)</li>
+</ul></li>
+<li><strong>Build a permanent-magnet alternator</strong> from magnets and magnet wire for a wind turbine or slow water wheel — full plans in Hugh Piggott's <em>Axial Flux Alternator</em> and <em>PMG Construction Manual</em>.</li>
+</ol>
+<p><strong>Rules for any homemade generator:</strong></p>
+<ul>
+<li><strong>Never let a wind or water generator run with no load</strong> — it overspeeds and can destroy itself. Use a <strong>diversion (dump-load) charge controller</strong>, not a solar controller (solar controllers disconnect the source). (DFID-ITDG <em>Small Wind Systems</em>)</li>
+<li><strong>Flashing the field:</strong> if a generator or self-excited induction generator won't build up voltage, touch a <strong>12 V battery</strong> briefly across one field or winding to restore residual magnetism, then try again. <em>(Rule of thumb)</em></li>
+<li>Old method: the 1939 North Dakota circular shows turning a <strong>car generator</strong> into a 6-volt wind charger, and the DOE <em>Wind Power for Farms</em> handbook covers matching any generator to a rotor.</li>
+</ul>
+<hr />
+<p><em>Measurements and settings in old manuals are fine for methods; for your specific engine, motor or generator, its own nameplate and manual come first.</em></p>
+</div></body></html>
