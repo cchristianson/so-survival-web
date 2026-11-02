@@ -1,0 +1,398 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>🧭 Navigation &amp; Weather Without GPS or Forecasts</title><style>:root{--bg:#0f1420;--card:#171f2e;--ink:#e7ecf3;--muted:#9fb0c3;--accent:#4fd1c5;--accent2:#f6ad55;--line:#273246;--code:#0b0f17}@media(prefers-color-scheme:light){:root{--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--code:#f1f5f9}}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,Segoe UI,Roboto,Arial,sans-serif}.wrap{max-width:900px;margin:0 auto;padding:28px 20px 80px}h1{font-size:28px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}h2{font-size:22px;border-bottom:2px solid var(--line);padding-bottom:6px;margin-top:30px}h3{font-size:17px;color:var(--accent)}h4{font-size:15px;color:var(--accent2)}a{color:var(--accent)}code{background:var(--code);padding:2px 6px;border-radius:6px;font-family:Consolas,monospace;font-size:14px}pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow-x:auto}pre code{background:none;padding:0}table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}th{background:rgba(127,127,127,.12)}blockquote{border-left:4px solid var(--accent);background:rgba(79,209,197,.08);padding:10px 16px;border-radius:0 10px 10px 0}hr{border:none;border-top:1px solid var(--line);margin:26px 0}ul,ol{padding-left:26px}table{display:block;overflow-x:auto;max-width:100%}code,a{overflow-wrap:anywhere}img{max-width:100%}a.lib{text-decoration-style:dotted}a.lib::before{content:"📖 ";text-decoration:none}.deeper{font-size:15px;opacity:.95}a.wiki::before{content:"📷 "}a.lib::before,a.wiki::before{display:inline-block;margin-right:3px}</style></head><body><div class="wrap"><p><a href="../">&larr; SO Survival Library</a></p>
+<h1 id="-navigation--weather-without-gps-or-forecasts">🧭 Navigation &amp; Weather Without GPS or Forecasts</h1>
+<p>How to find your way in the hills around the Illinois Valley with a paper map and compass — or with neither — and how to read the weather coming when there is no forecast: map reading, declination, pace count, terrain association, finding yourself when lost, the sun and stars, clouds and wind, our local weather from valley fog to east-wind fire days, lightning, and a home weather log. The books are in <code>Navigation-Weather\Land-Navigation</code> and <code>Navigation-Weather\Weather</code>; the local topo maps are in <code>Maps\Topo-USGS</code> and <code>Maps\Forest-Service</code> (see the Maps section of the <a class="guide" href="ILLINOIS-VALLEY-START-HERE.html">Illinois Valley guide</a>).</p>
+<blockquote>
+<h3 id="️-rules-that-prevent-the-worst-outcomes">⚠️ Rules that prevent the worst outcomes</h3>
+<ul>
+<li><strong>Set your compass to 14° East.</strong> Older maps print bigger numbers; always use the newest. Ignoring declination puts you about a quarter mile off for every mile you walk.</li>
+<li><strong>Leave a written trip plan</strong> with someone who stays home. With no search and rescue, nobody comes unless someone knows your route and your return time (<a class="lib" target="_blank" rel="noopener" href="https://www.nps.gov/subjects/healthandsafety/upload/fillable-sample-trip-plan-final-508c.pdf#page=1" title="NPS Sample Trip Plan Form 10-1700 (NPS 2023).pdf — page 1">NPS Trip Plan</a>).</li>
+<li><strong>When you hear thunder, move:</strong> off peaks and ridges, away from taller trees, and <strong>out of rock overhangs and cave mouths</strong>. Wait 30 minutes after the last thunder (<a class="lib" target="_blank" rel="noopener" href="https://www.weather.gov/media/owlie/backcountry_lightning.pdf#page=1" title="Backcountry Lightning Risk Management for Campers and Hikers (NWS - Gookin 2012).pdf — page 1">Backcountry Lightning, pp. 1–2</a>).</li>
+<li><strong>Never cross fast water.</strong> Six inches can knock you off your feet; two feet carries away most vehicles (<a class="lib" target="_blank" rel="noopener" href="https://www.weather.gov/media/pqr/skywarn/SpotterGuide-2011.pdf#page=12" title="Weather Spotters Field Guide (NWS 2011).pdf — page 12">Spotter Guide, p. 12</a>).</li>
+<li><strong>A dry east wind after a front in late summer or fall is extreme fire weather</strong> — the pattern behind the September 2020 fires. Be ready to leave.</li>
+<li><strong>Sun, watch, moon and moss methods are rough.</strong> Check any no-compass direction with a second method before you commit to a long walk.</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="️-reading-a-topo-map">🗺️ Reading a topo map</h2>
+<p><strong>Scale.</strong> The library's local quads (US Topo and FSTopo) are <strong>1:24,000: 1 inch = 2,000 ft</strong>. On the 1:100,000 Forest Service sheet, 1 inch is about 1.6 miles. Map distance is "as the crow flies"; walking a steep slope is farther (<a class="lib" target="_blank" rel="noopener" href="https://pubs.usgs.gov/fs/2001/0035/report.pdf#page=1" title="Finding Your Way with Map and Compass FS 035-01 (USGS 2001).pdf — page 1">USGS FS 035-01, p. 1</a>; <a class="lib" target="_blank" rel="noopener" href="https://fs-prod-nwcg.s3.us-gov-west-1.amazonaws.com/s3fs-public/publication/pms475.pdf#page=133" title="Basic Land Navigation PMS 475 (NWCG 2016).pdf — page 133">PMS 475, p. 133</a>).</p>
+<p><strong>Contour lines</strong> (<a class="lib" target="_blank" rel="noopener" href="https://pubs.usgs.gov/fs/2001/0035/report.pdf#page=1" title="Finding Your Way with Map and Compass FS 035-01 (USGS 2001).pdf — page 1">FS 035-01, p. 1</a>; <a class="lib" target="_blank" rel="noopener" href="https://fs-prod-nwcg.s3.us-gov-west-1.amazonaws.com/s3fs-public/publication/pms475.pdf#page=41" title="Basic Land Navigation PMS 475 (NWCG 2016).pdf — page 41">PMS 475, pp. 41–42</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Contour_line" data-title="Contour_line" target="_blank" rel="noopener" title="Wikipedia: Contour line (offline copy with photos when opened through the Library Assistant)">Contour line</a>):</p>
+<ul>
+<li>Brown lines join points of <strong>equal height</strong>; the heavier, labeled ones are index contours.</li>
+<li><strong>Close together = steep. Far apart = gentle.</strong> Circles inside circles = a hilltop.</li>
+<li><strong>V-shaped bends point uphill and upstream</strong> — creeks and draws.</li>
+<li><strong>U-shaped bends point down a ridge</strong> — spurs and ridge ends.</li>
+</ul>
+<p><strong>Name the land.</strong> Learn to spot these on the map and on the ground — it is the heart of navigating without GPS (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM3-25x26/FM3-25x26.pdf#page=115" title="FM 3-25.26 Map Reading and Land Navigation (US Army 2001).pdf — page 115">FM 3-25.26, pp. 115–118</a>):</p>
+<table>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>On the map</th>
+<th>On the ground</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Hill</strong></td>
+<td>Closed rings</td>
+<td>Ground falls away on all sides</td>
+</tr>
+<tr class="even">
+<td><strong>Saddle</strong></td>
+<td>Hourglass between two hills</td>
+<td>Low dip between two high points</td>
+</tr>
+<tr class="odd">
+<td><strong>Valley</strong></td>
+<td>V or U contours with a stream</td>
+<td>Low ground between ridges</td>
+</tr>
+<tr class="even">
+<td><strong>Ridge</strong></td>
+<td>Long line of high ground</td>
+<td>Ground falls away on three sides</td>
+</tr>
+<tr class="odd">
+<td><strong>Depression</strong></td>
+<td>Ring with tick marks inside</td>
+<td>A hollow</td>
+</tr>
+<tr class="even">
+<td><strong>Draw</strong></td>
+<td>Small V pointing uphill</td>
+<td>Small gully</td>
+</tr>
+<tr class="odd">
+<td><strong>Spur</strong></td>
+<td>Small U pointing downhill</td>
+<td>Finger of high ground off a ridge</td>
+</tr>
+<tr class="even">
+<td><strong>Cliff</strong></td>
+<td>Contours touching or merged</td>
+<td>Near-vertical drop</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Symbols:</strong> <a class="lib" target="_blank" rel="noopener" href="https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/media/files/US%20Topo%20Map%20Symbols.pdf" title="US Topo Map Symbols (USGS 2023).pdf">US Topo Map Symbols (2023)</a> matches the library's GeoPDF maps; the older <a class="lib" target="_blank" rel="noopener" href="https://pubs.usgs.gov/gip/TopographicMapSymbols/topomapsymbols.pdf" title="Topographic Map Symbols (USGS 2005).pdf">USGS symbol booklet</a> matches older quads and FSTopo.</p>
+<p><strong>Grid position.</strong> The valley is in <strong>UTM Zone 10</strong> ("10T" on the quads). Grid lines are every 1,000 m. Read <strong>right first (easting), then up (northing)</strong> (<a class="lib" target="_blank" rel="noopener" href="https://pubs.usgs.gov/fs/2001/0077/report.pdf#page=1" title="The Universal Transverse Mercator Grid FS 077-01 (USGS 2001).pdf — page 1">USGS FS 077-01, pp. 1–2</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system" data-title="Universal_Transverse_Mercator_coordinate_system" target="_blank" rel="noopener" title="Wikipedia: Universal Transverse Mercator coordinate system (offline copy with photos when opened through the Library Assistant)">UTM</a>).</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM3-25x26/FM3-25x26.pdf#page=115" title="FM 3-25.26 Map Reading and Land Navigation (US Army 2001).pdf — page 115">FM 3-25.26</a> — the Army's full map-reading course; <a class="lib" target="_blank" rel="noopener" href="https://fs-prod-nwcg.s3.us-gov-west-1.amazonaws.com/s3fs-public/publication/pms475.pdf#page=41" title="Basic Land Navigation PMS 475 (NWCG 2016).pdf — page 41">PMS 475</a> — firefighter workbook with exercises; <a class="lib" target="_blank" rel="noopener" href="https://data.fs.usda.gov/geodata/rastergateway/data3/42123/fstopo/FSTopo%20Cave%20Junction%20420712337.pdf" title="FSTopo - Cave Junction OR (2025).pdf">FSTopo Cave Junction</a> — practice on your home sheet.</p>
+<h2 id="-compass-and-declination">🧭 Compass and declination</h2>
+<p><strong>Use 14° East for the Illinois Valley.</strong> NOAA's model gives 13.9° E for Cave Junction in November 2026, shrinking about 0.1° a year. The <a class="lib" target="_blank" rel="noopener" href="https://data.fs.usda.gov/geodata/rastergateway/data3/42123/fstopo/FSTopo%20Cave%20Junction%20420712337.pdf#page=1" title="FSTopo - Cave Junction OR (2025).pdf — page 1">FSTopo Cave Junction sheet</a> prints 14°8′ (2024) and the <a class="lib" target="_blank" rel="noopener" href="https://prd-tnm.s3.amazonaws.com/StagedProducts/Maps/USTopo/PDF/OR/OR_Cave_Junction_20231212_TM_geo.pdf#page=1" title="USGS Topo - Cave Junction OR (2023).pdf — page 1">US Topo sheet</a> 14°18′ (2023). Older maps print larger numbers — <strong>use the newest value</strong>. See <a class="wiki" href="https://en.wikipedia.org/wiki/Magnetic_declination" data-title="Magnetic_declination" target="_blank" rel="noopener" title="Wikipedia: Magnetic declination (offline copy with photos when opened through the Library Assistant)">Magnetic declination</a>.</p>
+<p><strong>Which way to correct</strong> (<a class="lib" target="_blank" rel="noopener" href="https://pubs.usgs.gov/fs/2001/0035/report.pdf#page=2" title="Finding Your Way with Map and Compass FS 035-01 (USGS 2001).pdf — page 2">FS 035-01, p. 2</a>; <a class="lib" target="_blank" rel="noopener" href="https://fs-prod-nwcg.s3.us-gov-west-1.amazonaws.com/s3fs-public/publication/pms475.pdf#page=86" title="Basic Land Navigation PMS 475 (NWCG 2016).pdf — page 86">PMS 475, p. 86</a>):</p>
+<ul>
+<li>Here the magnetic north (MN) arrow sits to the <strong>right</strong> (east) of true north.</li>
+<li><strong>Map → compass: subtract 14°.</strong> A map bearing of 90° becomes 76° on an unadjusted compass.</li>
+<li><strong>Compass → map: add 14°.</strong></li>
+<li>Memory aid: "declination east, compass least."</li>
+<li><strong>Easiest:</strong> set the compass's declination screw to 14° E once and forget it.</li>
+</ul>
+<p><strong>Why it matters:</strong> 1° of error puts you about <strong>920 ft off in 10 miles</strong> (<a class="lib" target="_blank" rel="noopener" href="https://fs-prod-nwcg.s3.us-gov-west-1.amazonaws.com/s3fs-public/publication/pms475.pdf#page=86" title="Basic Land Navigation PMS 475 (NWCG 2016).pdf — page 86">PMS 475, p. 86</a>). Ignoring all 14° puts you about <strong>1,300 ft off for every mile</strong> <em>(general practice: worked out from the angle)</em>.</p>
+<p><strong>Grid north</strong> on the Cave Junction quad is only about half a degree from true north — ignore it on foot. That's why the margin shows three norths (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM3-25x26/FM3-25x26.pdf#page=62" title="FM 3-25.26 Map Reading and Land Navigation (US Army 2001).pdf — page 62">FM 3-25.26, p. 62</a>).</p>
+<p><strong>The way back (back azimuth):</strong> add 180° if the bearing is 180° or less; subtract 180° if more. A slip here can be disastrous — <strong>check it twice</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM3-25x26/FM3-25x26.pdf#page=58" title="FM 3-25.26 Map Reading and Land Navigation (US Army 2001).pdf — page 58">FM 3-25.26, p. 58</a>).</p>
+<p><strong>Compass habits</strong> (<a class="lib" target="_blank" rel="noopener" href="https://fs-prod-nwcg.s3.us-gov-west-1.amazonaws.com/s3fs-public/publication/pms475.pdf#page=84" title="Basic Land Navigation PMS 475 (NWCG 2016).pdf — page 84">PMS 475, p. 84</a>; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM3-25x26/FM3-25x26.pdf#page=97" title="FM 3-25.26 Map Reading and Land Navigation (US Army 2001).pdf — page 97">FM 3-25.26, p. 97</a>):</p>
+<ul>
+<li>Hold it <strong>level at waist height</strong>, take every bearing <strong>twice</strong>, and walk where the direction-of-travel arrow points, not where your hunch says.</li>
+<li><strong>Keep away from metal:</strong> 55 m (180 ft) from high-voltage lines, 18 m (60 ft) from a truck, 10 m (33 ft) from barbed wire or phone lines, half a meter from a rifle. Belt buckles and clipboards throw it off too.</li>
+</ul>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://pubs.usgs.gov/fs/2001/0035/report.pdf#page=2" title="Finding Your Way with Map and Compass FS 035-01 (USGS 2001).pdf — page 2">USGS <em>Finding Your Way</em></a> — taking a bearing off a topo map; <a class="lib" target="_blank" rel="noopener" href="https://fs-prod-nwcg.s3.us-gov-west-1.amazonaws.com/s3fs-public/publication/pms475.pdf#page=82" title="Basic Land Navigation PMS 475 (NWCG 2016).pdf — page 82">PMS 475, pp. 82–86</a> — parts of a compass and setting declination.</p>
+<h2 id="-pace-count-measuring-distance-on-foot">👣 Pace count: measuring distance on foot</h2>
+<p>(<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM3-25x26/FM3-25x26.pdf#page=52" title="FM 3-25.26 Map Reading and Land Navigation (US Army 2001).pdf — page 52">FM 3-25.26, pp. 52–53</a>; <a class="lib" target="_blank" rel="noopener" href="https://fs-prod-nwcg.s3.us-gov-west-1.amazonaws.com/s3fs-public/publication/pms475.pdf#page=133" title="Basic Land Navigation PMS 475 (NWCG 2016).pdf — page 133">PMS 475, pp. 133–134</a>)</p>
+<ol type="1">
+<li><strong>Measure a 100 m (328 ft) course</strong> on ground like where you'll travel — a road shoulder with a tape or a measured fence line works <em>(rule of thumb)</em>.</li>
+<li><strong>Walk it naturally and count your steps.</strong> The Army's example is about 120 steps per 100 m. Walk it several times and average.</li>
+<li><strong>Expect more steps</strong> uphill, into a headwind, in mud, sand, snow or brush, in rain, and in fog or darkness.</li>
+<li><strong>Keep a separate, shorter night count</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM3-25x26/FM3-25x26.pdf#page=141" title="FM 3-25.26 Map Reading and Land Navigation (US Army 2001).pdf — page 141">p. 141</a>).</li>
+<li><strong>Don't try to remember the count.</strong> Move a pebble from one pocket to the other, or tie a knot, every 100 m.</li>
+</ol>
+<p>⚠️ The Forest Service (NWCG) counts a "pace" as <strong>two</strong> steps — every time the same foot lands. The Army counts every step. <strong>Pick one and never mix them.</strong></p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://fs-prod-nwcg.s3.us-gov-west-1.amazonaws.com/s3fs-public/publication/pms475.pdf#page=133" title="Basic Land Navigation PMS 475 (NWCG 2016).pdf — page 133">PMS 475, p. 133</a> — pacing worksheet; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM3-25x26/FM3-25x26.pdf#page=52" title="FM 3-25.26 Map Reading and Land Navigation (US Army 2001).pdf — page 52">FM 3-25.26, p. 52</a> — pace count and other ways to measure distance.</p>
+<h2 id="️-terrain-association-handrails-catching-features-aiming-off">🏞️ Terrain association: handrails, catching features, aiming off</h2>
+<p><strong>Match the map to the ground as you go.</strong> It is far more forgiving than walking a compass line, because you keep comparing what you expected to see with what you do see. Pure compass walking piles up errors with every detour (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM3-25x26/FM3-25x26.pdf#page=131" title="FM 3-25.26 Map Reading and Land Navigation (US Army 2001).pdf — page 131">FM 3-25.26, pp. 131, 139</a>). Keep the map turned so its north matches the land (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM3-25x26/FM3-25x26.pdf#page=140" title="FM 3-25.26 Map Reading and Land Navigation (US Army 2001).pdf — page 140">p. 140</a>).</p>
+<p><strong>Plan a route this way</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM3-25x26/FM3-25x26.pdf#page=140" title="FM 3-25.26 Map Reading and Land Navigation (US Army 2001).pdf — page 140">FM 3-25.26, p. 140</a>):</p>
+<ul>
+<li><strong>Handrail:</strong> a line you follow without careful compass work — a road, stream, ridge or power line. Ours include <strong>Hwy 199</strong>, the <strong>Illinois River</strong> and its <strong>East and West Forks</strong>, the <strong>Caves Highway (OR 46)</strong>, and numbered Forest Service roads on the FSTopo sheets <em>(local: rule of thumb)</em>.</li>
+<li><strong>Catching feature:</strong> something across your path that tells you you've gone too far.</li>
+<li><strong>Attack point:</strong> a sure landmark no more than about 500 m from the goal. From there, walk an exact bearing and pace count.</li>
+</ul>
+<p><strong>Aim off on purpose</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM3-25x26/FM3-25x26.pdf#page=100" title="FM 3-25.26 Map Reading and Land Navigation (US Army 2001).pdf — page 100">FM 3-25.26, p. 100</a>). Heading for a spot on a road or creek, aim about <strong>10° to one side</strong>. When you hit the road, you know which way to turn. Each degree moves you about 18 m sideways per 1,000 m walked, so 10° is about 180 m.</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM3-25x26/FM3-25x26.pdf#page=126" title="FM 3-25.26 Map Reading and Land Navigation (US Army 2001).pdf — page 126">FM 3-25.26, ch. 11</a> — terrain association in depth; <a class="lib" target="_blank" rel="noopener" href="https://www.fs.usda.gov/sites/nfs/files/legacy-media/rogue-siskiyou/Wild%20Rivers%20MVUM%202019.pdf" title="USFS MVUM - Wild Rivers Ranger District (2019).pdf">MVUM Wild Rivers</a> — which forest roads are real roads.</p>
+<h2 id="-finding-yourself-on-the-map-resection">📍 Finding yourself on the map (resection)</h2>
+<p><strong>Resection</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM3-25x26/FM3-25x26.pdf#page=68" title="FM 3-25.26 Map Reading and Land Navigation (US Army 2001).pdf — page 68">FM 3-25.26, p. 68</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Position_resection_and_intersection" data-title="Position_resection_and_intersection" target="_blank" rel="noopener" title="Wikipedia: Position resection and intersection (offline copy with photos when opened through the Library Assistant)">Position resection</a>):</p>
+<ol type="1">
+<li>Orient the map.</li>
+<li>Take compass bearings to <strong>two or three landmarks</strong> you can name on the map.</li>
+<li>Turn each into a map bearing (<strong>add 14°</strong>, unless your compass is already set), then into its <strong>back azimuth</strong> (±180°).</li>
+<li>Draw each line back from its landmark. <strong>Where they cross is you.</strong> Three lines make a small triangle — you are inside it.</li>
+</ol>
+<p>Local candidates are peaks on the FSTopo sheets such as <strong>Grayback Mountain, Kerby Peak and Eight Dollar Mountain</strong> — check on the sheet which you can really see from where you stand <em>(rule of thumb)</em>.</p>
+<p><strong>Modified resection</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM3-25x26/FM3-25x26.pdf#page=70" title="FM 3-25.26 Map Reading and Land Navigation (US Army 2001).pdf — page 70">p. 70</a>): if you know you're on a road, river or ridgeline, <strong>one</strong> bearing to one landmark is enough. You are where that line crosses your road or ridge.</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM3-25x26/FM3-25x26.pdf#page=68" title="FM 3-25.26 Map Reading and Land Navigation (US Army 2001).pdf — page 68">FM 3-25.26, pp. 68–70</a> — intersection, resection and modified resection with drawings.</p>
+<h2 id="️-direction-without-a-compass--and-how-wrong-each-can-be">☀️ Direction without a compass — and how wrong each can be</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>How</th>
+<th>How far off</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Shadow stick</strong></td>
+<td>Push a 3-ft stick into level ground and mark the shadow tip. Wait 10–15 min and mark it again. The line runs <strong>west → east; the first mark is always west</strong>. First mark on your left = you face north. Works by bright moonlight too.</td>
+<td>Gives an <em>approximate</em> east–west line (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/fm-21-76-us-army-survival-manual/FM%2021-76%20US%20ARMY%20SURVIVAL%20MANUAL.pdf#page=231" title="FM 21-76 Army Survival Manual.pdf — page 231">FM 21-76, pp. 231–232</a>; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM3-25x26/FM3-25x26.pdf#page=102" title="FM 3-25.26 Map Reading and Land Navigation (US Army 2001).pdf — page 102">FM 3-25.26, pp. 102, 141</a>)</td>
+</tr>
+<tr class="even">
+<td><strong>Watch</strong></td>
+<td>Point the hour hand at the sun. <strong>South is halfway between the hour hand and 12</strong> (halfway to <strong>1</strong> on daylight time).</td>
+<td>The Army warns it can be in error and <strong>cause circling</strong> — recheck with a shadow stick after an hour (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM3-25x26/FM3-25x26.pdf#page=102" title="FM 3-25.26 Map Reading and Land Navigation (US Army 2001).pdf — page 102">FM 3-25.26, pp. 102–103</a>). Here the sun is due south about <strong>12:15 PST / 1:15 PDT</strong>, give or take up to 16 minutes by season <em>(computed)</em></td>
+</tr>
+<tr class="odd">
+<td><strong>Sunrise / sunset</strong></td>
+<td>The sun rises <strong>due east only in March and September</strong>.</td>
+<td>At our latitude, sunrise is about <strong>32° north of east in late June</strong> and <strong>32° south of east in late December</strong> <em>(computed)</em></td>
+</tr>
+<tr class="even">
+<td><strong>North Star</strong> (<a class="wiki" href="https://en.wikipedia.org/wiki/Polaris" data-title="Polaris" target="_blank" rel="noopener" title="Wikipedia: Polaris (offline copy with photos when opened through the Library Assistant)">Polaris</a>)</td>
+<td>Follow the two "pointer" stars at the end of the <a class="wiki" href="https://en.wikipedia.org/wiki/Big_Dipper" data-title="Big_Dipper" target="_blank" rel="noopener" title="Wikipedia: Big Dipper (offline copy with photos when opened through the Library Assistant)">Big Dipper</a>'s cup about <strong>five times their spacing</strong>.</td>
+<td>Within <strong>1°</strong> of true north — the best no-compass method. Here it sits about 42° up, a bit under halfway up the northern sky (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM3-25x26/FM3-25x26.pdf#page=103" title="FM 3-25.26 Map Reading and Land Navigation (US Army 2001).pdf — page 103">FM 3-25.26, p. 103</a>; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/fm-21-76-us-army-survival-manual/FM%2021-76%20US%20ARMY%20SURVIVAL%20MANUAL.pdf#page=234" title="FM 21-76 Army Survival Manual.pdf — page 234">FM 21-76, p. 234</a>)</td>
+</tr>
+<tr class="odd">
+<td><strong>Moon</strong></td>
+<td>Rises before sunset: lit side faces <strong>west</strong>. Rises after midnight: lit side faces <strong>east</strong>.</td>
+<td>Rough east–west only (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/fm-21-76-us-army-survival-manual/FM%2021-76%20US%20ARMY%20SURVIVAL%20MANUAL.pdf#page=233" title="FM 21-76 Army Survival Manual.pdf — page 233">FM 21-76, p. 233</a>)</td>
+</tr>
+<tr class="even">
+<td><strong>Moss</strong></td>
+<td>—</td>
+<td><strong>Not a compass</strong> — moss can grow all the way around a tree (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/fm-21-76-us-army-survival-manual/FM%2021-76%20US%20ARMY%20SURVIVAL%20MANUAL.pdf#page=235" title="FM 21-76 Army Survival Manual.pdf — page 235">FM 21-76, p. 235</a>)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Use Polaris to check your compass</strong> on a clear night: it should read about 346° on an unadjusted compass, or 0° once declination is set <em>(worked from 14° E)</em>. The noon sun stands about 71° high in June but only about 24° in December, so winter shadows are long <em>(computed for 42° N)</em>.</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/fm-21-76-us-army-survival-manual/FM%2021-76%20US%20ARMY%20SURVIVAL%20MANUAL.pdf#page=231" title="FM 21-76 Army Survival Manual.pdf — page 231">FM 21-76, pp. 231–235</a> — sun, moon and stars with drawings; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM3-25x26/FM3-25x26.pdf#page=102" title="FM 3-25.26 Map Reading and Land Navigation (US Army 2001).pdf — page 102">FM 3-25.26, pp. 102–103</a> — field-expedient direction finding.</p>
+<h2 id="-getting-un-lost">🆘 Getting un-lost</h2>
+<p><strong>STOP: Stop, Think, Observe, Plan</strong> (<a class="lib" target="_blank" rel="noopener" href="https://assets.kalkomey.com/hunter/pdfs/newyork/todays-hunter-ny-manual.pdf#page=80" title="Todays Hunter in New York - Hunter Education Manual.pdf — page 80"><em>Today's Hunter</em>, p. 80</a>):</p>
+<ol type="1">
+<li><strong>Stop.</strong> Admit you're turned around. Sit down.</li>
+<li><strong>Think.</strong> Retrace your route in your head: the last place you were <em>sure</em> of, and what you've passed since.</li>
+<li><strong>Observe.</strong> Look for the five terrain features, a peak you can name, the sound of a road or the river. Try a resection.</li>
+<li><strong>Plan.</strong> Pick the nearest big handrail on the map (a road or river) and walk a bearing to it, <strong>aiming off</strong> so you know which way to turn when you reach it.</li>
+</ol>
+<ul>
+<li><strong>If you can't get back before dark,</strong> stop early and spend the effort on shelter, warmth and a signal (<a class="lib" target="_blank" rel="noopener" href="https://assets.kalkomey.com/hunter/pdfs/newyork/todays-hunter-ny-manual.pdf#page=80" title="Todays Hunter in New York - Hunter Education Manual.pdf — page 80">p. 80</a>; <a class="guide" href="SIGNALS-MORSE-GUIDE.html">Signals guide</a>).</li>
+<li><strong>Staying put only works if someone will come.</strong> That page assumes searchers in "a few days." Now it works only if someone at home has your trip plan.</li>
+<li><strong>Never shelter under a rock overhang in a thunderstorm</strong> — lightning arcs across the gap.</li>
+</ul>
+<p><strong>Trip plan before every trip into the hills</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www.nps.gov/subjects/healthandsafety/upload/fillable-sample-trip-plan-final-508c.pdf#page=1" title="NPS Sample Trip Plan Form 10-1700 (NPS 2023).pdf — page 1">NPS Trip Plan, pp. 1–2</a>): who is going, the route, start and return times, a backup plan, the vehicle and the gear. Leave it with someone who isn't going, <strong>check in when you're back</strong>, and agree that they act at the deadline.</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://www.nps.gov/subjects/healthandsafety/upload/fillable-sample-trip-plan-final-508c.pdf#page=1" title="NPS Sample Trip Plan Form 10-1700 (NPS 2023).pdf — page 1">NPS Trip Plan form</a> — print a stack; <a class="lib" target="_blank" rel="noopener" href="https://assets.kalkomey.com/hunter/pdfs/newyork/todays-hunter-ny-manual.pdf#page=80" title="Todays Hunter in New York - Hunter Education Manual.pdf — page 80"><em>Today's Hunter</em>, pp. 80–84</a> — shelter, fire, signals, cold and heat.</p>
+<h2 id="️-reading-the-sky-clouds-wind-and-barometer">☁️ Reading the sky: clouds, wind and barometer</h2>
+<p><strong>Clouds that warn</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www.frames.gov/documents/behaveplus/publications/Schroeder_and_Buck_1970_PMS-425-1_NFES-1174_Fire_Wx_all.pdf#page=163" title="Fire Weather - Agriculture Handbook 360 (Schroeder and Buck USFS 1970).pdf — page 163">AH 360, pp. 163–164</a>; <a class="lib" target="_blank" rel="noopener" href="https://www.weather.gov/media/fgz/cloudwise_poster_8x11.pdf#page=1" title="Cloudwise Ten Basic Clouds Poster (NWS 2019).pdf — page 1">Cloudwise poster</a>; <a class="lib" target="_blank" rel="noopener" href="https://www.weather.gov/media/arh/brochures/CloudChart.pdf#page=1" title="Sky Watcher Cloud Chart (NOAA and NASA 2007).pdf — page 1">Sky Watcher chart</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/List_of_cloud_types" data-title="List_of_cloud_types" target="_blank" rel="noopener" title="Wikipedia: List of cloud types (offline copy with photos when opened through the Library Assistant)">List of cloud types</a>):</p>
+<table>
+<thead>
+<tr class="header">
+<th>You see</th>
+<th>It often means</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>High, thin wisps (cirrus) thickening to a milky veil (cirrostratus)</td>
+<td>A warm front and rain coming; from the southwest in spring/summer, often 24–48 hours ahead at Roseburg (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/cu31924011801754/cu31924011801754.pdf#page=137" title="Weather Folk-Lore and Local Weather Signs Bulletin 33 (US Weather Bureau Garriott 1903).pdf — page 137">Garriott, p. 137</a>)</td>
+</tr>
+<tr class="even">
+<td>Rows of small, high puffs (cirrocumulus) from the south or southwest in fall/winter</td>
+<td>Rain in 12–24 hours (same page)</td>
+</tr>
+<tr class="odd">
+<td>Turreted, castle-top clouds (castellanus) in the morning</td>
+<td>Thunderstorms that afternoon</td>
+</tr>
+<tr class="even">
+<td>Smooth, lens-shaped clouds over the ridges (<a class="wiki" href="https://en.wikipedia.org/wiki/Lenticular_cloud" data-title="Lenticular_cloud" target="_blank" rel="noopener" title="Wikipedia: Lenticular cloud (offline copy with photos when opened through the Library Assistant)">lenticular</a>)</td>
+<td>Strong winds aloft</td>
+</tr>
+<tr class="odd">
+<td>Towering cumulus growing into an anvil (cumulonimbus)</td>
+<td>Thunderstorm, lightning, a gusty "gust front" that can arrive before the rain (<a class="lib" target="_blank" rel="noopener" href="https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_00-6B.pdf#page=167" title="Aviation Weather AC 00-6B (FAA and NWS 2016).pdf — page 167">AC 00-6B, pp. 167–168</a>)</td>
+</tr>
+<tr class="even">
+<td>Low gray layer with steady rain (nimbostratus)</td>
+<td>Steady rain or snow</td>
+</tr>
+</tbody>
+</table>
+<p>Rain falls mainly from cumulus, cumulonimbus and nimbostratus. A thunderstorm cell lives about 30 minutes, but its gust front can set off new ones (<a class="lib" target="_blank" rel="noopener" href="https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_00-6B.pdf#page=167" title="Aviation Weather AC 00-6B (FAA and NWS 2016).pdf — page 167">AC 00-6B, pp. 167–168</a>).</p>
+<p><strong>Wind signs:</strong></p>
+<ul>
+<li><strong>Roseburg (nearest station in the 1903 Weather Bureau study):</strong> in spring and summer, rain follows <strong>southwest winds and a falling barometer by 12–24 hours</strong>; in winter, southerly winds by about 12 hours (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/cu31924011801754/cu31924011801754.pdf#page=137" title="Weather Folk-Lore and Local Weather Signs Bulletin 33 (US Weather Bureau Garriott 1903).pdf — page 137">Garriott, p. 137</a>).</li>
+<li><strong>Portland, Oregon:</strong> wind turning from northwest through northeast to southeast means rain; a shift to <strong>northwest means clearing</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/cu31924011801754/cu31924011801754.pdf#page=131" title="Weather Folk-Lore and Local Weather Signs Bulletin 33 (US Weather Bureau Garriott 1903).pdf — page 131">p. 131</a>).</li>
+<li><strong>Cold front:</strong> wind from the south or southwest before it, then an <strong>abrupt shift to west, northwest or north</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www.frames.gov/documents/behaveplus/publications/Schroeder_and_Buck_1970_PMS-425-1_NFES-1174_Fire_Wx_all.pdf#page=101" title="Fire Weather - Agriculture Handbook 360 (Schroeder and Buck USFS 1970).pdf — page 101">AH 360, p. 101</a>).</li>
+<li><strong>Back to the wind, low pressure is on your left and a little ahead</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www.frames.gov/documents/behaveplus/publications/Schroeder_and_Buck_1970_PMS-425-1_NFES-1174_Fire_Wx_all.pdf#page=84" title="Fire Weather - Agriculture Handbook 360 (Schroeder and Buck USFS 1970).pdf — page 84">AH 360, p. 84</a>).</li>
+<li>⚠️ Valley winds are bent by the hills. Judge by <strong>cloud movement or ridgetop wind</strong>.</li>
+</ul>
+<p><strong>Barometer:</strong> watch the <strong>trend</strong>, not the number. A drop of more than about 0.06 inch in 3 hours means change is coming; about 0.18 inch or more in 3 hours means a strong storm <em>(general practice)</em>. The old Roseburg rule "rain after the barometer falls to 29.90" uses sea-level readings; at our ~1,300 ft an unadjusted barometer reads about 1.3–1.4 inches lower <em>(general practice)</em>.</p>
+<p><strong>Sayings that hold up (somewhat):</strong> "Evening red and morning gray…" has a basis, because weather mostly moves west to east (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/cu31924011801754/cu31924011801754.pdf#page=18" title="Weather Folk-Lore and Local Weather Signs Bulletin 33 (US Weather Bureau Garriott 1903).pdf — page 18">Garriott, p. 18</a>). Hard, greasy, ragged clouds mean wind (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/cu31924013977677/cu31924013977677.pdf#page=183" title="Shifts and Expedients of Camp Life Travel and Exploration (1871).pdf — page 183"><em>Shifts and Expedients</em>, p. 183</a>). Forecasts weeks ahead from the moon, almanacs or animals "can not stand the test of verification" (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/cu31924011801754/cu31924011801754.pdf#page=35" title="Weather Folk-Lore and Local Weather Signs Bulletin 33 (US Weather Bureau Garriott 1903).pdf — page 35">Garriott, p. 35</a>).</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/cu31924011801754/cu31924011801754.pdf#page=137" title="Weather Folk-Lore and Local Weather Signs Bulletin 33 (US Weather Bureau Garriott 1903).pdf — page 137">Garriott 1903</a> — station-by-station signs for Roseburg, Portland and Eureka; <a class="lib" target="_blank" rel="noopener" href="https://www.weather.gov/media/arh/brochures/CloudChart.pdf#page=1" title="Sky Watcher Cloud Chart (NOAA and NASA 2007).pdf — page 1">Sky Watcher chart</a> — photos of 27 cloud types; <a class="lib" target="_blank" rel="noopener" href="https://www.frames.gov/documents/behaveplus/publications/Schroeder_and_Buck_1970_PMS-425-1_NFES-1174_Fire_Wx_all.pdf#page=163" title="Fire Weather - Agriculture Handbook 360 (Schroeder and Buck USFS 1970).pdf — page 163">AH 360</a> — clouds, fronts and mountain winds.</p>
+<h2 id="️-illinois-valley-weather-through-the-year">🌦️ Illinois Valley weather through the year</h2>
+<p><strong>The baseline</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/usda-foreword/usda-foreword.pdf#page=5" title="NRCS - Soil Survey of Josephine County Oregon 1983 (text edition).pdf — page 5">NRCS soil survey, p. 5</a>): winter averages 40°F at Cave Junction (record low −6°F, December 1972), with about 24 inches of snow a season; summer averages 67°F, and Grants Pass has hit 108°F. Only about 15% of the rain falls April to September, and summer afternoon humidity runs 25–30%. It cools 3–5°F for every 1,000 ft you climb, and above about 4,500 ft it can freeze in any month. Most winters bring one or two damaging windstorms; every few years a continental air mass from the east brings days well below freezing in winter, or a sweltering week in summer.</p>
+<p><strong>Valley fog and inversions</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www.frames.gov/documents/behaveplus/publications/Schroeder_and_Buck_1970_PMS-425-1_NFES-1174_Fire_Wx_all.pdf#page=35" title="Fire Weather - Agriculture Handbook 360 (Schroeder and Buck USFS 1970).pdf — page 35">AH 360, p. 35</a>; <a class="lib" target="_blank" rel="noopener" href="https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_00-6B.pdf#page=146" title="Aviation Weather AC 00-6B (FAA and NWS 2016).pdf — page 146">AC 00-6B, p. 146</a>; <a class="lib" target="_blank" rel="noopener" href="https://www.epa.gov/system/files/documents/2026-06/wildfire-guide-for-public-health-officials-2026.pdf#page=26" title="EPA Wildfire Smoke Guide 2026.pdf — page 26">EPA Smoke Guide, p. 26</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Inversion_%28meteorology%29" data-title="Inversion_(meteorology)" target="_blank" rel="noopener" title="Wikipedia: Inversion (meteorology) (offline copy with photos when opened through the Library Assistant)">Inversion</a>):</p>
+<ul>
+<li>On clear, calm nights cold air drains off the slopes and pools on the valley floor, deepening until about midnight. Fog forms if the air is moist.</li>
+<li>Fog is common the morning after rain then clearing, and usually burns off by noon unless cloud moves in above it.</li>
+<li>In winter an inversion can trap fog and <strong>woodstove smoke</strong> for days. Burn hot and dry (<a class="guide" href="FIREWOOD-GUIDE.html">Firewood guide</a>).</li>
+</ul>
+<p><strong>Frost</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/cu31924011801754/cu31924011801754.pdf#page=137" title="Weather Folk-Lore and Local Weather Signs Bulletin 33 (US Weather Bureau Garriott 1903).pdf — page 137">Garriott, p. 137</a>; <a class="lib" target="_blank" rel="noopener" href="https://www.frames.gov/documents/behaveplus/publications/Schroeder_and_Buck_1970_PMS-425-1_NFES-1174_Fire_Wx_all.pdf#page=35" title="Fire Weather - Agriculture Handbook 360 (Schroeder and Buck USFS 1970).pdf — page 35">AH 360, p. 35</a>): heavy frost follows a <strong>high or rising barometer, evening temperature at 40°F or below, clearing sky and light wind</strong>. Frost hits low spots first. The <strong>mid-slope "thermal belt" stays warmest at night</strong> — the best spot for tender crops, and also where wildfires stay active all night.</p>
+<p><strong>Winter storms off the Pacific</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/usda-foreword/usda-foreword.pdf#page=5" title="NRCS - Soil Survey of Josephine County Oregon 1983 (text edition).pdf — page 5">NRCS, p. 5</a>; <a class="lib" target="_blank" rel="noopener" href="https://www.weather.gov/media/pqr/skywarn/SpotterGuide-2011.pdf#page=12" title="Weather Spotters Field Guide (NWS 2011).pdf — page 12">Spotter Guide, p. 12</a>): warm storms carrying a long plume of subtropical moisture (an <a class="wiki" href="https://en.wikipedia.org/wiki/Atmospheric_river" data-title="Atmospheric_river" target="_blank" rel="noopener" title="Wikipedia: Atmospheric river (offline copy with photos when opened through the Library Assistant)">atmospheric river</a>) bring several inches of rain a day, high snow levels and fast-rising rivers <em>(general practice)</em>. Cave Junction got <strong>8.12 inches in one day</strong> on 22 December 1964. Stay off low crossings and out of creeks when they rise.</p>
+<p><strong>Summer thunderstorms</strong> are most frequent over the mountains (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/usda-foreword/usda-foreword.pdf#page=5" title="NRCS - Soil Survey of Josephine County Oregon 1983 (text edition).pdf — page 5">NRCS, p. 5</a>). In fire season, watch the ridges for smoke for a day or two after lightning <em>(rule of thumb)</em>.</p>
+<p><strong>Heat:</strong> in a hot spell, take regular breaks in shade and drink often; do heavy work in the cool morning <em>(rule of thumb)</em>. Heat exhaustion — heavy sweat, pale clammy skin, dizziness, nausea — means shade, rest, water and cool wet cloths. <strong>Confusion or collapse is heat stroke, a life-threatening emergency</strong> — cool them fast (<a class="lib" target="_blank" rel="noopener" href="https://armypubs.army.mil/epubs/DR_pubs/DR_a/ARN46159-ATP_4-02.11-000-WEB-1.pdf#page=188" title="ATP 4-02.11 Casualty Response Tactical Combat Casualty Care and First Aid (US Army 2026).pdf — page 188">ATP 4-02.11, pp. 188–189</a>; <a class="guide" href="FIELD-CARE-GUIDE.html">Field care guide</a>).</p>
+<p><strong>East wind = fire weather</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www.frames.gov/documents/behaveplus/publications/Schroeder_and_Buck_1970_PMS-425-1_NFES-1174_Fire_Wx_all.pdf#page=211" title="Fire Weather - Agriculture Handbook 360 (Schroeder and Buck USFS 1970).pdf — page 211">AH 360, p. 211</a>; <a class="lib" target="_blank" rel="noopener" href="https://www.weather.gov/media/mfr/ClimateSummaries/Sep_2020_Climate_Summary.pdf#page=14" title="Southern Oregon Climate Summary September 2020 - Labor Day East Wind Fires (NWS Medford).pdf — page 14">NWS Medford, pp. 14–15</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Foehn_wind" data-title="Foehn_wind" target="_blank" rel="noopener" title="Wikipedia: Foehn wind (offline copy with photos when opened through the Library Assistant)">Foehn wind</a>): in late summer and fall, after a cold front, high pressure inland can send <strong>strong, dry north-to-east winds</strong> downslope, warming and drying as they come. On 7–9 September 2020, Medford's humidity fell to about 7% and Slater Butte (4,600 ft, near where the Slater Fire started south of Takilma and O'Brien) recorded gusts of 55–60 mph. <strong>Warning signs:</strong> very clear air, warm dry nights, and east wind on the ridges after a front. Pack the car and watch for smoke. Another nearby east-wind fire: the <a class="wiki" href="https://en.wikipedia.org/wiki/Chetco_Bar_Fire" data-title="Chetco_Bar_Fire" target="_blank" rel="noopener" title="Wikipedia: Chetco Bar Fire (offline copy with photos when opened through the Library Assistant)">Chetco Bar Fire</a>.</p>
+<p><strong>Smoke:</strong> inversions hold smoke in the valley at night. With no air-quality reports, judge smoke by <strong>how far you can see</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www.epa.gov/system/files/documents/2026-06/wildfire-guide-for-public-health-officials-2026.pdf#page=95" title="EPA Wildfire Smoke Guide 2026.pdf — page 95">EPA Smoke Guide, pp. 95–96</a>) — in daylight, not at sunrise or sunset, only when humidity is under 65%, looking at dark landmarks at known distances:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Farthest dark landmark you can see</th>
+<th>Healthy adults</th>
+<th>Children, elders, pregnant, heart or lung disease</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>More than 10 miles</strong></td>
+<td>Watch for changes</td>
+<td>Watch; shorten activity if you feel it</td>
+</tr>
+<tr class="even">
+<td><strong>5–10 miles</strong></td>
+<td>Shorten and ease outdoor work</td>
+<td>Minimize or avoid outdoor activity</td>
+</tr>
+<tr class="odd">
+<td><strong>Under 5 miles</strong></td>
+<td>Minimize or avoid outdoor activity</td>
+<td>Stay indoors in cleaner air</td>
+</tr>
+</tbody>
+</table>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://www.frames.gov/documents/behaveplus/publications/Schroeder_and_Buck_1970_PMS-425-1_NFES-1174_Fire_Wx_all.pdf#page=35" title="Fire Weather - Agriculture Handbook 360 (Schroeder and Buck USFS 1970).pdf — page 35">AH 360</a> — inversions, slope winds, east winds; <a class="lib" target="_blank" rel="noopener" href="https://www.weather.gov/media/mfr/ClimateSummaries/Sep_2020_Climate_Summary.pdf#page=14" title="Southern Oregon Climate Summary September 2020 - Labor Day East Wind Fires (NWS Medford).pdf — page 14">NWS Medford Sept 2020</a> — the Labor Day east wind, hour by hour; <a class="lib" target="_blank" rel="noopener" href="https://www.epa.gov/system/files/documents/2026-06/wildfire-guide-for-public-health-officials-2026.pdf#page=61" title="EPA Wildfire Smoke Guide 2026.pdf — page 61">EPA Smoke Guide, p. 61</a> — a cleaner-air room.</p>
+<h2 id="-lightning-safety">⚡ Lightning safety</h2>
+<p>(<a class="lib" target="_blank" rel="noopener" href="https://www.weather.gov/media/owlie/backcountry_lightning.pdf#page=1" title="Backcountry Lightning Risk Management for Campers and Hikers (NWS - Gookin 2012).pdf — page 1">Backcountry Lightning, pp. 1–2</a>; <a class="lib" target="_blank" rel="noopener" href="https://www.weather.gov/media/owlie/Lightning-Brochure18.pdf#page=2" title="Lightning Safety for You and Your Family NOAA PA 201752 (NWS 2017).pdf — page 2">NWS Lightning brochure, p. 2</a>; <a class="lib" target="_blank" rel="noopener" href="https://www.weather.gov/media/pqr/skywarn/SpotterGuide-2011.pdf#page=13" title="Weather Spotters Field Guide (NWS 2011).pdf — page 13">Spotter Guide, p. 13</a>)</p>
+<ul>
+<li><strong>If you can hear thunder, lightning is within about 10 miles.</strong> Start moving to shelter then.</li>
+<li><strong>Flash to bang:</strong> count the seconds and divide by 5 for miles. Don't stake your life on it.</li>
+<li><strong>Stay sheltered 30 minutes after the last thunder.</strong> People are struck going out too soon.</li>
+<li><strong>Ground current is the big danger, not a direct strike:</strong> about half of casualties come from current spreading through the ground; direct strikes cause only 3–5% of deaths.</li>
+<li><strong>Caught outside:</strong> get off peaks and ridges, away from taller trees, out of overhangs and cave mouths. <strong>Spread a group 20 ft apart</strong>, so one strike can't hurt everyone. Crouch with <strong>feet together</strong>.</li>
+<li><strong>A struck person carries no charge.</strong> Start CPR or rescue breathing right away (<a class="guide" href="FIELD-CARE-GUIDE.html">Field care guide</a>).</li>
+<li>The US averages about 300 people struck and about 30 killed a year.</li>
+<li>At home: unplug radios and ground antennas (<a class="guide" href="RADIO-GUIDE.html">Radio guide</a>).</li>
+</ul>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://www.weather.gov/media/owlie/backcountry_lightning.pdf#page=1" title="Backcountry Lightning Risk Management for Campers and Hikers (NWS - Gookin 2012).pdf — page 1">Backcountry Lightning</a> — picking terrain, group spacing, the lightning position; <a class="lib" target="_blank" rel="noopener" href="https://www.weather.gov/media/owlie/Lightning-Brochure18.pdf#page=2" title="Lightning Safety for You and Your Family NOAA PA 201752 (NWS 2017).pdf — page 2">NWS brochure</a> — family rules and first aid.</p>
+<h2 id="-a-simple-home-weather-log">📓 A simple home weather log</h2>
+<p>With no forecasts, your own notes teach you the local signs. Read the same things at the <strong>same times every day</strong>, say 7 am and 5 pm <em>(rule of thumb)</em>:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Date</th>
+<th>Time</th>
+<th>Temp °F</th>
+<th>Barometer (3-hr change)</th>
+<th>Wind from (clouds / ridgetop)</th>
+<th>Clouds</th>
+<th>Rain (in)</th>
+<th>Farthest landmark seen</th>
+<th>Notes: fog, frost, thunder, smoke</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Rain gauge:</strong> a straight-sided can on a post in the open; measure the depth with a ruler and empty it <em>(rule of thumb)</em>.</li>
+<li><strong>Visibility landmarks:</strong> pick three dark ridges or peaks and measure their distance on the topo map — one near 5 miles, one near 10, one farther — for the smoke table above <em>(rule of thumb)</em>.</li>
+<li><strong>Frost dates:</strong> record the first and last frost each year for the garden (<a class="guide" href="SEED-BANK-GUIDE.html">Seed bank guide</a>).</li>
+<li><strong>After a year,</strong> compare your notes with Garriott's Roseburg signs and write down the ones that work at your place.</li>
+</ul>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/cu31924011801754/cu31924011801754.pdf#page=18" title="Weather Folk-Lore and Local Weather Signs Bulletin 33 (US Weather Bureau Garriott 1903).pdf — page 18">Garriott 1903</a> — which sayings hold up and why; <a class="lib" target="_blank" rel="noopener" href="https://www.weather.gov/media/fgz/cloudwise_poster_8x11.pdf#page=1" title="Cloudwise Ten Basic Clouds Poster (NWS 2019).pdf — page 1">Cloudwise poster</a> — print and post next to the log.</p>
+<h2 id="️-old-advice-in-the-library-to-ignore">⚠️ Old advice in the library to ignore</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Book and page</th>
+<th>What it says</th>
+<th>Do this instead</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a class="lib" target="_blank" rel="noopener" href="https://www.dfw.state.or.us/education/hunter/instructors/docs/INSTRUCTOR%20MANUAL%20Today%27s%20Hunter%20in%20Oregon.pdf#page=37" title="ODFW Todays Hunter in Oregon Instructor Guide (2007).pdf — page 37">ODFW <em>Today's Hunter</em> instructor guide, p. 37</a></td>
+<td>Magnetic north is "in the Hudson Bay area"</td>
+<td>Long out of date — it is now near the geographic pole, on the Siberian side <em>(general practice)</em>. Use the declination printed on the newest map: <strong>14° E</strong>.</td>
+</tr>
+<tr class="even">
+<td>Any older local map</td>
+<td>Larger declination numbers</td>
+<td>Use 14° E (2024–2026 value).</td>
+</tr>
+<tr class="odd">
+<td><a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/fm-21-76-us-army-survival-manual/FM%2021-76%20US%20ARMY%20SURVIVAL%20MANUAL.pdf#page=235" title="FM 21-76 Army Survival Manual.pdf — page 235">FM 21-76, p. 235</a></td>
+<td>Tree rings are wider on the south side</td>
+<td>Don't rely on it — ring width depends mostly on slope, lean and crowding <em>(general practice)</em>.</td>
+</tr>
+<tr class="even">
+<td><a class="lib" target="_blank" rel="noopener" href="https://assets.kalkomey.com/hunter/pdfs/newyork/todays-hunter-ny-manual.pdf#page=80" title="Todays Hunter in New York - Hunter Education Manual.pdf — page 80"><em>Today's Hunter</em> (NY), p. 80</a></td>
+<td>Shelter under a rock overhang; you'll be "found in a few days"</td>
+<td>Never use an overhang in a thunderstorm. No one is coming unless someone has your trip plan.</td>
+</tr>
+<tr class="odd">
+<td><a class="lib" target="_blank" rel="noopener" href="https://bready.sd.gov/bReady/areyouready_full.pdf#page=75" title="FEMA Are You Ready Citizen Preparedness Guide (2004 Full Edition).pdf — page 75">FEMA <em>Are You Ready?</em> 2004, p. 75</a></td>
+<td>80 lightning deaths a year</td>
+<td>Out of date: about 30 a year now (<a class="lib" target="_blank" rel="noopener" href="https://www.weather.gov/media/owlie/Lightning-Brochure18.pdf#page=2" title="Lightning Safety for You and Your Family NOAA PA 201752 (NWS 2017).pdf — page 2">NWS, p. 2</a>).</td>
+</tr>
+<tr class="even">
+<td><a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/cu31924011801754/cu31924011801754.pdf#page=27" title="Weather Folk-Lore and Local Weather Signs Bulletin 33 (US Weather Bureau Garriott 1903).pdf — page 27">Garriott 1903, p. 27</a></td>
+<td>"Three foggy mornings indicate rain (Oregon)"</td>
+<td>Often fails here in winter, when valley fog sits under high pressure for days with no rain.</td>
+</tr>
+<tr class="odd">
+<td><a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/cu31924011801754/cu31924011801754.pdf#page=137" title="Weather Folk-Lore and Local Weather Signs Bulletin 33 (US Weather Bureau Garriott 1903).pdf — page 137">Garriott 1903, p. 137</a></td>
+<td>Rain when the barometer reaches 29.90</td>
+<td>Sea-level readings. Watch the 3-hour trend on your own barometer.</td>
+</tr>
+<tr class="even">
+<td><a class="lib" target="_blank" rel="noopener" href="https://www.frames.gov/documents/behaveplus/publications/Schroeder_and_Buck_1970_PMS-425-1_NFES-1174_Fire_Wx_all.pdf" title="Fire Weather - Agriculture Handbook 360 (Schroeder and Buck USFS 1970).pdf">AH 360 (1970)</a></td>
+<td>Fire-control procedures</td>
+<td>Predates satellites and modern fire-danger ratings. Weather science sound; fire tactics are history.</td>
+</tr>
+<tr class="odd">
+<td><a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM3-25x26/FM3-25x26.pdf#page=102" title="FM 3-25.26 Map Reading and Land Navigation (US Army 2001).pdf — page 102">FM 3-25.26, p. 102</a> / <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/fm-21-76-us-army-survival-manual/FM%2021-76%20US%20ARMY%20SURVIVAL%20MANUAL.pdf#page=233" title="FM 21-76 Army Survival Manual.pdf — page 233">FM 21-76, p. 233</a></td>
+<td>Watch method for direction</td>
+<td>Rough; can make you walk in circles. Check with a shadow stick or the North Star.</td>
+</tr>
+</tbody>
+</table>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM3-25x26/FM3-25x26.pdf#page=56" title="FM 3-25.26 Map Reading and Land Navigation (US Army 2001).pdf — page 56">FM 3-25.26, ch. 6</a> — current Army methods for direction and declination; <a class="lib" target="_blank" rel="noopener" href="https://www.weather.gov/media/owlie/Lightning-Brochure18.pdf#page=2" title="Lightning Safety for You and Your Family NOAA PA 201752 (NWS 2017).pdf — page 2">NWS lightning brochure</a> — up-to-date lightning facts.</p>
+<hr />
+<h2 id="-related-guides">🔗 Related guides</h2>
+<ul>
+<li><a class="guide" href="ILLINOIS-VALLEY-START-HERE.html">Illinois Valley — Start Here</a> — which topo map covers what, evacuation levels, walking routes out</li>
+<li><a class="guide" href="SIGNALS-MORSE-GUIDE.html">Signals, Morse &amp; Messages</a> — signaling when lost, ground-to-air symbols, signal-fire danger</li>
+<li><a class="guide" href="RADIO-GUIDE.html">Radio guide</a> — NOAA weather radio frequencies and the SAME code</li>
+<li><a class="guide" href="SHELTER-BUILDING-GUIDE.html">Shelter building</a> — a night out when you can't get home</li>
+<li><a class="guide" href="FIELD-CARE-GUIDE.html">Field care guide</a> — lightning strikes, heat illness, cold and injuries far from help</li>
+<li><a class="guide" href="BICYCLES-CARTS-GUIDE.html">Bicycles and carts</a> — traveling the roads and handrails in this guide</li>
+<li><a class="guide" href="SEED-BANK-GUIDE.html">Seed bank guide</a> — frost dates and the thermal belt for planting</li>
+</ul>
+</div></body></html>
