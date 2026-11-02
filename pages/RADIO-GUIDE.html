@@ -1,0 +1,235 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Emergency Radio Communications Guide</title><style>:root{--bg:#0f1420;--card:#171f2e;--ink:#e7ecf3;--muted:#9fb0c3;--accent:#4fd1c5;--accent2:#f6ad55;--line:#273246;--code:#0b0f17}@media(prefers-color-scheme:light){:root{--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--code:#f1f5f9}}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,Segoe UI,Roboto,Arial,sans-serif}.wrap{max-width:900px;margin:0 auto;padding:28px 20px 80px}h1{font-size:28px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}h2{font-size:22px;border-bottom:2px solid var(--line);padding-bottom:6px;margin-top:30px}h3{font-size:17px;color:var(--accent)}h4{font-size:15px;color:var(--accent2)}a{color:var(--accent)}code{background:var(--code);padding:2px 6px;border-radius:6px;font-family:Consolas,monospace;font-size:14px}pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow-x:auto}pre code{background:none;padding:0}table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}th{background:rgba(127,127,127,.12)}blockquote{border-left:4px solid var(--accent);background:rgba(79,209,197,.08);padding:10px 16px;border-radius:0 10px 10px 0}hr{border:none;border-top:1px solid var(--line);margin:26px 0}ul,ol{padding-left:26px}table{display:block;overflow-x:auto;max-width:100%}code,a{overflow-wrap:anywhere}img{max-width:100%}</style></head><body><div class="wrap"><p><a href="../">&larr; SO Survival Library</a></p>
+<h1 id="emergency-radio-communications-guide">Emergency Radio Communications Guide</h1>
+<h3 id="ham-amateur-cb-shortwave-gmrsfrs--murs--how-they-work-and-how-to-use-them">Ham (Amateur), CB, Shortwave, GMRS/FRS &amp; MURS — how they work and how to use them</h3>
+<p>This guide explains, in plain language, how to communicate by radio when the internet and phones are down. It covers what each type of radio is, what it can do, which frequencies/channels matter in an emergency, and the basic procedures for calling for help.</p>
+<blockquote>
+<p><strong>Legal note (normal times):</strong> Transmitting on <strong>ham (amateur)</strong> frequencies requires a license (easy to get — see below). <strong>GMRS</strong> requires a cheap license (no test). <strong>CB, FRS, MURS</strong> need <strong>no license</strong>. <strong>Shortwave listening</strong> needs no license (you're only receiving). <strong>In a genuine life-threatening emergency, FCC rules (47 CFR §97.405) let anyone use any means of radio to call for help.</strong> Listening is always legal. Learn and practice <em>before</em> you need it.</p>
+</blockquote>
+<hr />
+<h2 id="1-the-quick-version--what-to-grab-and-what-to-know">1. The quick version — what to grab and what to know</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Need</th>
+<th>Best tool</th>
+<th>License</th>
+<th>Range (typical)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Talk to family nearby (same property / neighborhood)</td>
+<td><strong>FRS / GMRS</strong> walkie-talkie</td>
+<td>FRS none; GMRS cheap</td>
+<td>0.5–2 mi (up to 5+ with GMRS + height)</td>
+</tr>
+<tr class="even">
+<td>Talk across town / coordinate a group</td>
+<td><strong>GMRS</strong> (with repeater) or <strong>Ham VHF/UHF</strong></td>
+<td>GMRS cheap; Ham test</td>
+<td>5–50 mi via repeater</td>
+</tr>
+<tr class="odd">
+<td>Talk regionally / long distance / into other states</td>
+<td><strong>Ham HF</strong></td>
+<td>Ham (General class)</td>
+<td>100s–1000s mi</td>
+</tr>
+<tr class="even">
+<td>Hear news &amp; official broadcasts from anywhere</td>
+<td><strong>Shortwave receiver</strong></td>
+<td>none (listening)</td>
+<td>Worldwide</td>
+</tr>
+<tr class="odd">
+<td>Road / vehicle convoy, truckers</td>
+<td><strong>CB</strong></td>
+<td>none</td>
+<td>1–15 mi</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Three things everyone should know:</strong></p>
+<ol type="1">
+<li><strong>Monitor, don't just transmit.</strong> A cheap receiver tells you what's happening.</li>
+<li><strong>Higher antenna = more range.</strong> Antenna height matters more than watts.</li>
+<li><strong>Have a plan:</strong> agree on a channel/frequency and check-in times with your group <em>in advance</em> (write them down — see the card at the end).</li>
+</ol>
+<hr />
+<h2 id="2-how-radio-actually-works-the-60-second-version">2. How radio actually works (the 60-second version)</h2>
+<ul>
+<li>A radio turns your voice into <strong>radio waves</strong> at a certain <strong>frequency</strong> (measured in kilohertz <strong>kHz</strong> or megahertz <strong>MHz</strong>). Another radio tuned to the same frequency turns the wave back into sound.</li>
+<li><strong>Both radios must be on the same frequency/channel AND the same mode</strong> (e.g. FM, AM, SSB) to hear each other.</li>
+<li><strong>Only one person talks at a time.</strong> You press <strong>PTT</strong> (push-to-talk) to transmit, release it to listen. You cannot hear others while you hold PTT.</li>
+<li><strong>Frequency bands</strong> behave very differently:
+<ul>
+<li><strong>VHF/UHF (high frequency numbers, ~30 MHz–3 GHz):</strong> travel in roughly straight "line of sight." Great locally, blocked by hills/buildings. Used by FRS, GMRS, MURS, and ham 2m/70cm. Extended by <strong>repeaters</strong> (see below).</li>
+<li><strong>HF / shortwave (low numbers, ~3–30 MHz):</strong> can <strong>bounce off the ionosphere</strong> and travel hundreds or thousands of miles ("skip"). Used by ham HF, CB (27 MHz), and shortwave broadcasters. Range changes with time of day and the sun.</li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="3-cb-radio-citizens-band--no-license-simple-vehicle-friendly">3. CB Radio (Citizens Band) — no license, simple, vehicle-friendly</h2>
+<ul>
+<li><strong>What it is:</strong> 40 channels around <strong>27 MHz</strong> (in the HF band). No license needed. Cheap, everywhere, popular with truckers and off-roaders.</li>
+<li><strong>Range:</strong> usually <strong>1–15 miles</strong> (more in flat/open terrain; occasionally hundreds of miles when "skip" conditions bounce signals off the ionosphere).</li>
+<li><strong>Power limit:</strong> 4 watts AM / 12 watts SSB (SSB radios reach farther).</li>
+<li><strong>Key channels:</strong>
+<ul>
+<li><strong>Channel 9</strong> — traditional <strong>emergency / help</strong> channel.</li>
+<li><strong>Channel 19</strong> — highway / trucker channel (road conditions, traffic, convoys).</li>
+<li><strong>Channel 1–40</strong> — general use; pick an unused one for your group.</li>
+</ul></li>
+<li><strong>Modes:</strong> Most CB is <strong>AM</strong>. Higher-end radios add <strong>SSB</strong> (USB/LSB) for more range — but both radios must use the same mode.</li>
+<li><strong>Good for:</strong> vehicle-to-vehicle, convoys, short local coordination with zero setup.</li>
+</ul>
+<hr />
+<h2 id="4-frs--gmrs--murs--the-walkie-talkie-families">4. FRS / GMRS / MURS — the walkie-talkie families</h2>
+<p>These are the little handheld radios ("walkie-talkies"). Great for family/group.</p>
+<h3 id="frs-family-radio-service--no-license">FRS (Family Radio Service) — no license</h3>
+<ul>
+<li>The blister-pack walkie-talkies. <strong>22 channels</strong> in <strong>UHF (462/467 MHz)</strong>.</li>
+<li>Low power (0.5–2 W), fixed antenna. <strong>Range ~0.5–2 miles.</strong></li>
+<li>No license, no setup. Good for keeping a family/group in touch on foot.</li>
+</ul>
+<h3 id="gmrs-general-mobile-radio-service--cheap-license-no-test">GMRS (General Mobile Radio Service) — cheap license, no test</h3>
+<ul>
+<li>Shares channels with FRS but allows <strong>higher power (up to 50 W)</strong>, <strong>detachable antennas</strong>, and <strong>repeaters</strong> — so range can reach <strong>5–50+ miles</strong> via a repeater.</li>
+<li>One <strong>GMRS license (~$35, no exam)</strong> covers your <strong>entire family</strong> for 10 years.</li>
+<li><strong>Best all-round family emergency radio:</strong> cheap, legal, powerful, easy.</li>
+</ul>
+<h3 id="murs-multi-use-radio-service--no-license">MURS (Multi-Use Radio Service) — no license</h3>
+<ul>
+<li><strong>5 channels</strong> in <strong>VHF (151/154 MHz)</strong>, up to 2 W. No license.</li>
+<li>VHF often works better outdoors/rural than FRS/GMRS UHF. Good for property/farm.</li>
+</ul>
+<hr />
+<h2 id="5-ham-amateur-radio--the-serious-emergency-option">5. Ham (Amateur) Radio — the serious emergency option</h2>
+<p><strong>Ham radio is the backbone of emergency communications.</strong> When everything else fails, hams relay health-and-welfare traffic, weather, and coordination across towns, states, and continents.</p>
+<h3 id="licensing-usa--easier-than-you-think">Licensing (USA) — easier than you think</h3>
+<p>Three license levels, each a multiple-choice test (questions are public — you can study the exact pool):</p>
+<ol type="1">
+<li><strong>Technician</strong> — entry level. Grants <strong>VHF/UHF</strong> (local, repeaters) plus some HF. Enough for local/regional emergency comms. ~1 evening of study.</li>
+<li><strong>General</strong> — adds most <strong>HF</strong> privileges → <strong>long-distance / cross-country</strong>.</li>
+<li><strong>Amateur Extra</strong> — full privileges.</li>
+</ol>
+<blockquote>
+<p>Get at least a <strong>Technician</strong> license now while it's easy, and ideally <strong>General</strong> so you can use HF for long distance. In a true emergency you may legally transmit without a license to save life/property — but you'll be far more effective if you've practiced.</p>
+</blockquote>
+<h3 id="the-main-ham-bands-and-what-they-do">The main ham bands and what they do</h3>
+<ul>
+<li><strong>2 meters (144–148 MHz, VHF)</strong> and <strong>70 cm (420–450 MHz, UHF):</strong> local simplex + <strong>repeaters</strong>. Your everyday "talk around town" bands.</li>
+<li><strong>HF bands (e.g. 80m, 40m, 20m):</strong> long distance.
+<ul>
+<li><strong>40m (7 MHz):</strong> reliable regional (100s of miles), day and night — great for a state/region emergency net.</li>
+<li><strong>20m (14 MHz):</strong> long-distance (cross-country / international) in daytime.</li>
+<li><strong>80m (3.5 MHz):</strong> regional at night.</li>
+</ul></li>
+</ul>
+<h3 id="repeaters--how-hams-get-range-from-a-handheld">Repeaters — how hams get range from a handheld</h3>
+<p>A <strong>repeater</strong> is a radio on a tower/hilltop that <strong>receives your weak signal and re-transmits it with a big antenna and power</strong>, massively extending range. To use one you set your radio to the repeater's <strong>output frequency</strong>, an <strong>offset</strong> (so it transmits on the input), and sometimes a <strong>CTCSS "tone."</strong> Local repeater lists (and emergency nets) are worth printing out for your area.</p>
+<h3 id="simplex-radio-to-radio-no-repeater">Simplex (radio-to-radio, no repeater)</h3>
+<p>If repeaters are down, you talk <strong>simplex</strong> — directly, radio to radio, line of sight. The national 2m simplex calling frequency is <strong>146.520 MHz</strong>.</p>
+<h3 id="ham-digital--data-advanced-fyi">Ham digital &amp; data (advanced, FYI)</h3>
+<p>Hams can also send text/email/images with no internet via <strong>Winlink</strong> (email over radio), <strong>FT8</strong> (weak-signal), and <strong>APRS</strong> (position/text). Useful but needs more gear and practice.</p>
+<hr />
+<h2 id="6-shortwave-swl--hearing-the-outside-world">6. Shortwave (SWL) — hearing the outside world</h2>
+<ul>
+<li><strong>What it is:</strong> Using a <strong>shortwave receiver</strong> to <em>listen</em> to broadcasts on the HF bands (roughly <strong>1.8–30 MHz</strong>). <strong>No license needed to listen.</strong></li>
+<li><strong>Why it matters:</strong> When local media and internet are down, shortwave lets you hear <strong>international news, government/emergency broadcasts, and ham traffic</strong> from far away — because HF signals bounce worldwide.</li>
+<li><strong>What to listen for:</strong>
+<ul>
+<li><strong>International broadcasters</strong> (news from outside the affected area).</li>
+<li><strong>NOAA Weather Radio</strong> (VHF <strong>162.400–162.550 MHz</strong>) — continuous US weather &amp; emergency alerts. <em>Every emergency kit should have a NOAA weather radio.</em></li>
+<li><strong>Ham bands</strong> (40m/20m) — to hear emergency nets and relays.</li>
+<li><strong>AM/FM broadcast</strong> and <strong>Emergency Alert System (EAS)</strong> on a normal radio.</li>
+</ul></li>
+<li><strong>Modes:</strong> Broadcasts are usually <strong>AM</strong>; ham/utility voice is often <strong>SSB</strong> (USB/LSB). A radio with SSB hears far more.</li>
+<li><strong>Tip:</strong> A simple long wire antenna dramatically improves shortwave reception.</li>
+</ul>
+<hr />
+<h2 id="7-antennas-power--range-the-practical-stuff">7. Antennas, power &amp; range (the practical stuff)</h2>
+<ul>
+<li><strong>Antenna height beats power.</strong> Getting the antenna up high (roof, tree, mast) adds more range than buying a bigger amplifier.</li>
+<li><strong>Use the right antenna for the band.</strong> A proper <strong>resonant</strong> antenna (correct length for the frequency) works far better than a random wire.</li>
+<li><strong>Line of sight (VHF/UHF):</strong> range ≈ limited by the horizon and obstructions. Height = range. Repeaters overcome this.</li>
+<li><strong>HF skip:</strong> range changes with the <strong>time of day</strong> and <strong>solar conditions</strong>. Lower bands (80m) are better at night; higher bands (20m) are better in daytime.</li>
+<li><strong>Power:</strong> keep radios charged. Stock <strong>spare batteries, a 12V battery, a solar panel, and car-charging cables.</strong> A radio with a dead battery is a paperweight.</li>
+<li><strong>Grounding &amp; safety:</strong> never put an antenna where it can touch power lines; ground equipment to reduce static/lightning risk.</li>
+</ul>
+<hr />
+<h2 id="8-how-to-call-for-help-procedure">8. How to call for help (procedure)</h2>
+<ol type="1">
+<li><strong>Listen first.</strong> Make sure you're not interrupting other emergency traffic.</li>
+<li><strong>Use the emergency call:</strong>
+<ul>
+<li>Voice distress: say <strong>"MAYDAY, MAYDAY, MAYDAY"</strong> (life-threatening) or <strong>"PAN-PAN"</strong> (urgent but not immediately life-threatening), then your info.</li>
+<li>On CB, call on <strong>Channel 9</strong>. On ham, break into the local <strong>emergency net</strong> or call on a repeater / <strong>146.520</strong> simplex.</li>
+</ul></li>
+<li><strong>Give the essentials — slowly, clearly, repeat:</strong>
+<ul>
+<li><strong>Who</strong> you are (name / call sign).</li>
+<li><strong>Where</strong> you are (address, cross-streets, GPS coords, landmarks).</li>
+<li><strong>What</strong> the emergency is (injury, fire, trapped, etc.).</li>
+<li><strong>What</strong> you need (medical, rescue, relay a message).</li>
+</ul></li>
+<li><strong>Spell hard words with the phonetic alphabet</strong> (below).</li>
+<li><strong>Stay on, don't wander off frequency.</strong> Keep the radio on so responders can call back. Repeat your message at intervals if no answer.</li>
+</ol>
+<h3 id="nato-phonetic-alphabet">NATO phonetic alphabet</h3>
+<p>Alpha Bravo Charlie Delta Echo Foxtrot Golf Hotel India Juliet Kilo Lima Mike November Oscar Papa Quebec Romeo Sierra Tango Uniform Victor Whiskey X-ray Yankee Zulu. Numbers: say digits individually ("one-two-zero").</p>
+<h3 id="common-pro-words">Common "pro-words"</h3>
+<ul>
+<li><strong>"Over"</strong> = I'm done talking, your turn.</li>
+<li><strong>"Out"</strong> = conversation finished (don't say "over and out").</li>
+<li><strong>"Roger" / "Copy"</strong> = I received and understand.</li>
+<li><strong>"Say again"</strong> = repeat (don't say "repeat").</li>
+<li><strong>"Affirmative / Negative"</strong> = yes / no.</li>
+<li><strong>"Break"</strong> = pause / someone with emergency traffic wants in.</li>
+</ul>
+<hr />
+<h2 id="9-a-sensible-emergency-radio-kit-shopping--checklist">9. A sensible emergency radio kit (shopping / checklist)</h2>
+<ul class="task-list">
+<li><label><input type="checkbox" /><strong>NOAA weather radio</strong> (hand-crank/solar + battery) — alerts &amp; forecasts.</label></li>
+<li><label><input type="checkbox" /><strong>Shortwave receiver with SSB</strong> — hear news &amp; ham traffic worldwide (RX only).</label></li>
+<li><label><input type="checkbox" /><strong>A pair+ of GMRS radios</strong> (and a <strong>GMRS license</strong>) — family/group, best bang for buck. FRS works with no license at shorter range.</label></li>
+<li><label><input type="checkbox" /><strong>A dual-band (2m/70cm) ham handheld (HT)</strong> — cheap; huge capability with a Technician license. Add a better antenna.</label></li>
+<li><label><input type="checkbox" /><strong>(Advanced) An HF ham radio</strong> + General license — true long distance.</label></li>
+<li><label><input type="checkbox" /><strong>CB</strong> if you travel by vehicle/convoy.</label></li>
+<li><label><input type="checkbox" /><strong>Power:</strong> spare batteries, 12V battery, <strong>solar panel</strong>, car charger.</label></li>
+<li><label><input type="checkbox" /><strong>Better antennas</strong> + coax; a roll of wire for an HF/long-wire antenna.</label></li>
+<li><label><input type="checkbox" /><strong>Printed frequency card</strong> (below), local repeater list, notebook &amp; pencil.</label></li>
+</ul>
+<hr />
+<h2 id="10-print-and-keep-frequency-card">10. Print-and-keep frequency card</h2>
+<p>Fill in your group's agreed channels and local repeaters, then print this page.</p>
+<pre><code>=====================  EMERGENCY RADIO CARD  =====================
+ Our group PRIMARY channel : _______________   Mode: _______
+ Our group BACKUP channel  : _______________   Mode: _______
+ Check-in times (daily)    : _______  _______  _______
+
+ CB emergency / help ....... Channel 9
+ CB highway / travel ....... Channel 19
+ Ham 2m simplex calling .... 146.520 MHz  (FM)
+ NOAA Weather Radio ........ 162.400 / 162.425 / 162.450 /
+                             162.475 / 162.500 / 162.525 / 162.550 MHz
+ FRS/GMRS family channel ... _______   (GMRS license #: __________)
+
+ Local repeaters (output / offset / tone):
+   1) ________ MHz  /  ____  /  tone ______  (____________)
+   2) ________ MHz  /  ____  /  tone ______  (____________)
+   3) ________ MHz  /  ____  /  tone ______  (____________)
+
+ Distress voice: &quot;MAYDAY x3&quot; (life threat) or &quot;PAN-PAN x3&quot; (urgent)
+ Say: WHO you are - WHERE you are - WHAT&#39;s wrong - WHAT you need
+==================================================================</code></pre>
+<hr />
+<h2 id="11-where-to-learn-more-offline-already-in-this-kit">11. Where to learn more offline (already in this kit)</h2>
+<ul>
+<li><strong>Appropedia</strong> and <strong>iFixit</strong> archives (in <code>E:\Manuals\</code>, via the Kiwix reader) include antenna, electronics and repair articles.</li>
+<li><strong>WikiMed / Wikipedia-medicine</strong> (<code>E:\Medical\</code>) for treating injuries while you wait for help.</li>
+<li>Study the <strong>ham license question pools</strong> (download them now while you have internet; the exact questions and answers are public) so you can get licensed quickly.</li>
+</ul>
+<blockquote>
+<p>Practice now: tune around, learn your radios' menus, program the channels above, and do a test check-in with your group. Skills and muscle memory matter more than gear.</p>
+</blockquote>
+</div></body></html>

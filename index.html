@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SO Survival Library</title>
+<meta name="description" content="A free survival and self-reliance library for southern Oregon that keeps working offline, with an AI that answers from the library.">
+<meta name="theme-color" content="#0f1420">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="SO Survival">
+<style>
+:root{--bg:#0f1420;--card:#171f2e;--ink:#e7ecf3;--muted:#9fb0c3;--accent:#4fd1c5;--accent2:#f6ad55;--line:#273246;--code:#0b0f17;--ok:#48bb78;--warn:#f6ad55;--off:#718096;--danger:#fc8181}
+@media(prefers-color-scheme:light){:root{--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--code:#f1f5f9;--ok:#2f855a;--warn:#b45309;--off:#718096;--danger:#c53030}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:920px;margin:0 auto;padding:16px 16px 100px}
+header h1{font-size:24px;margin:4px 0 2px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--muted);font-size:14px;margin:0 0 10px}
+.status{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 10px}
+.pill{font-size:12.5px;padding:3px 10px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--muted)}
+.pill b{font-weight:600;color:var(--ink)}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;background:var(--off);vertical-align:middle}
+.dot.ready{background:var(--ok)}.dot.starting{background:var(--warn)}
+nav{display:flex;gap:4px;border-bottom:1px solid var(--line);margin:8px 0 14px;overflow-x:auto}
+nav button{background:none;border:none;border-bottom:3px solid transparent;color:var(--muted);font:inherit;font-weight:600;padding:8px 12px;cursor:pointer;white-space:nowrap}
+nav button.on{color:var(--accent);border-bottom-color:var(--accent)}
+section[hidden]{display:none}
+form.ask{display:flex;gap:8px;position:sticky;top:0;background:var(--bg);padding:6px 0;z-index:2}
+textarea,input[type=search]{flex:1;width:100%;font:inherit;padding:11px 12px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+textarea{min-height:50px;max-height:200px;resize:vertical}
+button.main{font:inherit;font-weight:600;padding:0 18px;border-radius:12px;border:none;background:var(--accent);color:#04201d;cursor:pointer;min-height:44px}
+button.sec{font:inherit;font-size:14px;padding:6px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+button.sec:disabled{opacity:.5;cursor:default}
+.opts{display:flex;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:14px;margin:4px 0 14px}
+.opts label{display:flex;align-items:center;gap:6px}
+select{font:inherit;font-size:14px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:2px 6px}
+.examples{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.ex{font-size:13px;padding:6px 10px;border-radius:999px;border:1px dashed var(--line);color:var(--muted);cursor:pointer;background:transparent;font-family:inherit}
+.qa,.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:0 0 14px}
+.q{font-weight:600;font-size:18px;margin-bottom:8px}
+.answer p{margin:0 0 10px}.answer ul,.answer ol{margin:0 0 10px;padding-left:24px}
+.answer .cite{color:var(--accent);text-decoration:none;font-weight:600;font-size:13px;vertical-align:super}
+.meta{color:var(--muted);font-size:13px;margin:4px 0 8px}
+.sources{margin-top:10px;border-top:1px solid var(--line);padding-top:8px}
+.sources h4{margin:0 0 6px;font-size:14px;color:var(--muted);font-weight:600}
+.src{display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--line)}.src:last-child{border-bottom:none}
+.num{flex:0 0 26px;height:26px;border-radius:50%;background:var(--code);color:var(--accent);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+a{color:var(--accent)}.src a{font-weight:600;text-decoration:none}
+.where{color:var(--muted);font-size:13px}.snip{font-size:14px;margin-top:2px}
+.spin{display:inline-block;width:12px;height:12px;border:2px solid var(--muted);border-top-color:transparent;border-radius:50%;animation:s 1s linear infinite;vertical-align:middle;margin-right:6px}
+@keyframes s{to{transform:rotate(360deg)}}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.tool{display:block;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.tool b{display:block;font-size:17px;margin-bottom:4px;color:var(--accent)}.tool span{color:var(--muted);font-size:14px}
+.cat h3{margin:18px 0 6px;font-size:16px;color:var(--accent2)}
+.doc{padding:6px 0;border-bottom:1px dashed var(--line)}.doc:last-child{border-bottom:none}
+.doc a{font-weight:600;text-decoration:none}.doc .d{color:var(--muted);font-size:14px}
+.tag{display:inline-block;font-size:11px;font-weight:600;padding:0 7px;border-radius:999px;border:1px solid var(--line);color:var(--muted);margin-left:6px;vertical-align:middle}
+.bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden;margin:8px 0}.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
+.note{border-left:4px solid var(--accent2);background:rgba(246,173,85,.08);padding:8px 12px;border-radius:0 8px 8px 0;font-size:14px;color:var(--muted);margin:8px 0}
+.radio{display:block;padding:8px 10px;border:1px solid var(--line);border-radius:10px;margin:6px 0;cursor:pointer}
+.radio small{color:var(--muted)}
+footer{color:var(--muted);font-size:13px;margin-top:26px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>🏔️ SO Survival Library</h1>
+  <p class="sub" id="tagline">Survival and self-reliance knowledge for southern Oregon — searchable, with an AI that answers from the library. Save it to your device and it keeps working with no internet.</p>
+  <div class="status" id="status"></div>
+</header>
+<nav id="tabs">
+  <button data-tab="ask" class="on">💬 Ask</button>
+  <button data-tab="library">📚 Library</button>
+  <button data-tab="tools">🧰 Guides</button>
+  <button data-tab="setup">⚙️ Offline</button>
+</nav>
+
+<section id="ask">
+  <form class="ask" id="f">
+    <textarea id="q" placeholder="Ask anything — e.g. How do I purify creek water?" required></textarea>
+    <button type="submit" class="main" id="go">Ask</button>
+  </form>
+  <div class="opts">
+    <label><input type="checkbox" id="useai" checked> AI writes an answer</label>
+    <label>Sources <select id="nsrc"><option value="4">4 (faster)</option><option value="6" selected>6</option><option value="8">8</option></select></label>
+    <label><input type="checkbox" id="usewiki" checked> <span id="wikilabel">Include Wikipedia</span></label>
+  </div>
+  <div class="examples" id="examples"></div>
+  <div id="out"></div>
+</section>
+
+<section id="library" hidden>
+  <input type="search" id="libq" placeholder="Filter the library by title or topic…">
+  <p class="note" id="libnote"></p>
+  <div id="libout"><p class="meta"><span class="spin"></span>Loading…</p></div>
+</section>
+
+<section id="tools" hidden>
+  <div class="grid" id="toolgrid"></div>
+</section>
+
+<section id="setup" hidden>
+  <div class="card">
+    <h3 style="margin-top:0">🤖 Offline AI</h3>
+    <p id="aiinfo" class="meta"></p>
+    <div id="aichoices">
+      <label class="radio"><input type="radio" name="model" value="small" checked> <b>Small</b> — Llama 3.2 1B · about 0.9 GB download<br><small>Best for phones and tablets. Quick, but a basic writer — always check its sources.</small></label>
+      <label class="radio"><input type="radio" name="model" value="medium"> <b>Medium</b> — Llama 3.2 3B · about 2.3 GB download<br><small>Better answers. For laptops and desktops with 8 GB+ memory.</small></label>
+    </div>
+    <p><button class="sec" id="aion">Download &amp; turn on the AI</button> <button class="sec" id="aioff" hidden>Turn off</button></p>
+    <div class="bar" id="aibarw" hidden><i id="aibar"></i></div>
+    <p class="meta" id="aiprog"></p>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0">📥 Save for offline use</h3>
+    <p class="meta">Once saved, search, guides and tools work on this device with no internet. The AI model (above) is saved separately when you turn it on.</p>
+    <p><button class="sec" id="savelib">Save library &amp; guides</button> <span class="meta" id="savelibsize"></span></p>
+    <p><button class="sec" id="saveroutes">Also save walking routes</button> <span class="meta" id="saveroutessize"></span></p>
+    <div class="bar" id="savebarw" hidden><i id="savebar"></i></div>
+    <p class="meta" id="saveprog"></p>
+    <p class="meta" id="storage"></p>
+    <div class="note"><b>Keep it on your home screen.</b> iPhone/iPad: in Safari tap <b>Share → Add to Home Screen</b>. Android: in Chrome tap <b>⋮ → Install app</b>. Computers: the install icon in the address bar. Phones may clear saved data for websites you haven't opened in a while unless they're on the home screen — open it now and then.</div>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0">ℹ️ About</h3>
+    <p class="meta" id="about"></p>
+  </div>
+</section>
+
+<footer>Answers come from a small AI and can be wrong — check the numbered sources, especially for medical, electrical, chemical or structural questions. This is reference material, not professional advice.</footer>
+</div>
+<script type="module" src="app.js"></script>
+</body>
+</html>

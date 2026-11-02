@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pill Identifier (offline)</title>
+<style>
+:root{--bg:#0f1420;--card:#171f2e;--ink:#e7ecf3;--muted:#9fb0c3;--accent:#4fd1c5;--accent2:#f6ad55;--line:#273246;--danger:#fc8181}
+@media(prefers-color-scheme:light){:root{--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--danger:#c53030}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:960px;margin:0 auto;padding:20px 16px 80px}
+h1{font-size:26px;margin:0 0 6px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.warn{border-left:4px solid var(--danger);background:rgba(252,129,129,.08);padding:10px 14px;border-radius:0 10px 10px 0;margin:12px 0;font-size:15px}
+.warn b{color:var(--danger)}
+.form{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:10px;margin:16px 0}
+@media(max-width:700px){.form{grid-template-columns:1fr 1fr}}
+label{display:block;font-size:13px;color:var(--muted);margin-bottom:3px}
+input,select{width:100%;font:inherit;padding:9px 10px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.count{color:var(--muted);font-size:14px;margin:6px 0 10px}
+.pill{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 10px}
+.name{font-weight:700;font-size:17px}.str{margin:2px 0}.meta{color:var(--muted);font-size:14px}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:1px 8px;border-radius:999px;border:1px solid var(--line);margin-right:6px}
+.tag.ctl{border-color:var(--danger);color:var(--danger)}
+code{font-family:Consolas,monospace;background:rgba(127,127,127,.15);padding:1px 6px;border-radius:6px}
+.tips{color:var(--muted);font-size:14px}
+</style>
+</head>
+<body><div class="wrap">
+<h1>💊 Pill Identifier</h1>
+<p>Identify a loose tablet or capsule by the <b>code printed on it</b>, plus its color, shape and size. Works with no internet. Data: about 32,000 US prescription, over-the-counter and veterinary pills from the National Library of Medicine's Pillbox database (frozen in 2020).</p>
+<div class="warn"><b>Before you take or give anything:</b>
+<ul style="margin:6px 0 0;padding-left:20px">
+<li>A match only tells you what a pill <i>should</i> be. <b>Pills not from a pharmacy can be counterfeit</b> — fake "M30" oxycodone, Xanax and Adderall pressed with fentanyl kill people. Never take street pills.</li>
+<li>Check the <b>size and color too</b>, not just the code: "I2" can be ibuprofen 200 mg <i>or</i> amitriptyline 25 mg depending on size.</li>
+<li>Look up the drug in the <b>WHO Model Formulary</b> or <b>MSF Essential Drugs</b> (in <code>Medical\Medicines</code>) for what it treats, the dose, and who must not take it. Allergies, interactions, children's doses and acetaminophen/opioid overdoses are the big dangers.</li>
+<li>Possible poisoning: <b>Poison Center 1-800-222-1222</b>.</li></ul></div>
+<div class="form">
+  <div><label for="imp">Code on the pill (both sides, any order)</label><input id="imp" placeholder="e.g. M367  or  IP 109  or  L484" autofocus></div>
+  <div><label for="col">Color</label><select id="col"><option value="">any</option></select></div>
+  <div><label for="shp">Shape</label><select id="shp"><option value="">any</option></select></div>
+  <div><label for="sz">Size in mm (± 1)</label><input id="sz" inputmode="numeric" placeholder="e.g. 10"></div>
+</div>
+<div class="count" id="count">Type the code to search.</div>
+<div id="res"></div>
+<p class="tips"><b>Tips:</b> Type the code exactly as printed, letters and numbers (spaces and dashes don't matter). If two sides have markings, type both, e.g. <code>N 4</code>. Capsules often have the code on both halves. Measure the long side in millimetres. No results? Try just part of the code, or remove the color/shape filters — colors are named differently by different makers.</p>
+<p class="tips">Data: NLM Pillbox (retired January 2021; Open Database License). NLM notes it is no longer updated — newer or foreign pills won't be listed.</p>
+</div>
+<script src="pills-data.js"></script>
+<script>
+const D = window.PILLDATA, $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const norm = s => s.toUpperCase().replace(/[^A-Z0-9]/g, '');
+const baseColors = [...new Set(D.colors.flatMap(c => c.split(';')).filter(c => c && c !== '?'))].sort();
+$('col').insertAdjacentHTML('beforeend', baseColors.map(c => `<option>${esc(c)}</option>`).join(''));
+$('shp').insertAdjacentHTML('beforeend', D.shapes.filter(s => s !== '?').sort().map(s => `<option>${esc(s)}</option>`).join(''));
+// pre-compute normalised imprints: whole code and each side
+const P = D.pills.map(p => ({ p, all: norm(p[0]), sides: p[0].split(';').map(norm) }));
+const nice = s => s.toLowerCase().replace(/(^|[\s(;])([a-z])/g, (m, a, b) => a + b.toUpperCase());
+function search(){
+  const raw = $('imp').value.trim(), q = norm(raw), col = $('col').value, shp = $('shp').value, sz = parseInt($('sz').value, 10);
+  if (!q && !col && !shp && !sz) { $('count').textContent = 'Type the code to search.'; $('res').innerHTML = ''; return; }
+  const words = raw.toUpperCase().split(/[\s;,/]+/).map(norm).filter(Boolean);
+  const hits = [];
+  for (const x of P) {
+    const p = x.p;
+    if (q) {
+      // match if the whole code matches, or every typed word is on some side of the pill
+      const whole = x.all.includes(q);
+      const perSide = words.length > 1 && words.every(w => x.sides.some(s => s.includes(w)));
+      if (!whole && !perSide) continue;
+    }
+    if (col && !D.colors[p[1]].split(';').includes(col)) continue;
+    if (shp && D.shapes[p[2]] !== shp) continue;
+    if (sz && Math.abs(p[3] - sz) > 1) continue;
+    // rank: every typed word is exactly one side (or the whole code) > code contains it > partial per-side
+    const exactSides = words.length > 1 ? words.every(w => x.sides.includes(w)) : x.sides.includes(q);
+    const rank = (exactSides || x.all === q) ? 0 : x.all.includes(q) ? 1 : 2;
+    hits.push([rank, x.all.length, p]);
+  }
+  hits.sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+  $('count').textContent = hits.length ? `${hits.length} match${hits.length > 1 ? 'es' : ''}${hits.length > 150 ? ' — showing the first 150; add color, shape or size to narrow it down' : ''}.` : 'No match. Try part of the code, or remove the color/shape/size filters.';
+  $('res').innerHTML = hits.slice(0, 150).map(([, , p]) => {
+    const [imp, c, s, size, score, name, strength, ing, maker, type, dea] = p;
+    const typ = {Rx: 'Prescription', OTC: 'Over the counter', Vet: 'Veterinary', Other: 'Other'}[type] || type;
+    const ctl = dea ? `<span class="tag ctl">Controlled ${esc(dea)}${/CII$/.test(dea) ? ' — high overdose risk' : ''}</span>` : '';
+    return `<div class="pill"><div class="name">${esc(name)}</div>
+      <div class="str">${esc(strength.toLowerCase())}</div>
+      <div class="meta"><span class="tag">${esc(typ)}</span>${ctl}Active: ${esc(ing)}</div>
+      <div class="meta">Code <code>${esc(imp.replace(/;/g, ' | '))}</code> · ${esc(nice(D.colors[c].replace(/;/g, ' / ')))} · ${esc(nice(D.shapes[s]))}${size ? ' · ' + size + ' mm' : ''}${score > 1 ? ' · scored' : ''} · ${esc(D.makers[maker])}</div></div>`;
+  }).join('');
+}
+let t; ['imp','col','shp','sz'].forEach(id => $(id).addEventListener('input', () => { clearTimeout(t); t = setTimeout(search, 150); }));
+const q0 = new URLSearchParams(location.search).get('code'); if (q0) { $('imp').value = q0; search(); }
+</script>
+</body></html>
