@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>🧰 Make-Do Household Guide</title><style>:root{--bg:#0f1420;--card:#171f2e;--ink:#e7ecf3;--muted:#9fb0c3;--accent:#4fd1c5;--accent2:#f6ad55;--line:#273246;--code:#0b0f17}@media(prefers-color-scheme:light){:root{--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--code:#f1f5f9}}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,Segoe UI,Roboto,Arial,sans-serif}.wrap{max-width:900px;margin:0 auto;padding:28px 20px 80px}h1{font-size:28px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}h2{font-size:22px;border-bottom:2px solid var(--line);padding-bottom:6px;margin-top:30px}h3{font-size:17px;color:var(--accent)}h4{font-size:15px;color:var(--accent2)}a{color:var(--accent)}code{background:var(--code);padding:2px 6px;border-radius:6px;font-family:Consolas,monospace;font-size:14px}pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow-x:auto}pre code{background:none;padding:0}table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}th{background:rgba(127,127,127,.12)}blockquote{border-left:4px solid var(--accent);background:rgba(79,209,197,.08);padding:10px 16px;border-radius:0 10px 10px 0}hr{border:none;border-top:1px solid var(--line);margin:26px 0}ul,ol{padding-left:26px}table{display:block;overflow-x:auto;max-width:100%}code,a{overflow-wrap:anywhere}img{max-width:100%}</style></head><body><div class="wrap"><p><a href="../">&larr; SO Survival Library</a></p>
 <h1 id="-make-do-household-guide">🧰 Make-Do Household Guide</h1>
-<p>How to make or replace everyday necessities when the store is gone — from basic supplies, things you can scavenge, and what grows around the Illinois Valley. Each section points to the detailed manuals in <code>Homestead-Skills\</code> (especially <code>Household-Make-Do\</code>, <code>Soap-Candles\</code> and <code>Sanitation-Water\</code>).</p>
+<p>How to make or replace everyday necessities when the store is gone — from basic supplies, things you can scavenge, and what grows around the Illinois Valley. Each section points to the detailed manuals in <code>Homestead-Skills\</code> (especially <code>Household-Make-Do\</code>, <code>Soap-Candles\</code> and <code>Sanitation-Water\</code>) and <code>Electronics-Repair\</code>.</p>
 <blockquote>
 <h3 id="️-rules-that-prevent-the-worst-accidents">⚠️ Rules that prevent the worst accidents</h3>
 <ul>
@@ -69,6 +69,36 @@
 <li><strong>Dripping faucet:</strong> shut the water off first, then replace the washer. A temporary washer can be cut from <strong>leather (cold taps)</strong> or <strong>rubber (hot taps)</strong>.</li>
 <li><strong>Frozen pipe:</strong> open the faucet and thaw <strong>from the faucet end back toward the supply</strong> — never from the middle, where trapped water can burst the pipe. Thaw drains from the low end upward. (USDA <em>Simple Plumbing Repairs</em>.)</li>
 </ul>
+<h2 id="-electronics-repair-and-salvage">🔌 Electronics: repair and salvage</h2>
+<p>Manuals are in <code>Electronics-Repair\</code> (and device-by-device guides in the <strong>iFixit</strong> archive in Kiwix). Start with the Navy safety manual and the Kuphaldt multimeter and soldering guides.</p>
+<p><strong>Safety first</strong></p>
+<ul>
+<li><strong>Unplugged isn't safe.</strong> Capacitors hold a charge after unplugging. Discharge them with an insulated tool or shorting probe across the terminals and to the metal chassis, and recheck.</li>
+<li><strong>Microwave ovens can kill</strong>: the capacitor holds about <strong>2,000 volts</strong>. Short it out before touching anything inside, never run the oven with the cover off, and don't break the magnetron's ceramic parts (toxic). Old <strong>tube TVs and monitors (CRTs)</strong> hold high voltage and can implode — leave them alone unless you know how.</li>
+<li><strong>Household 120 V can kill</strong> — especially with wet hands. Work with one hand when anything might be live.</li>
+<li><strong>Lithium batteries</strong> (laptops, phones, tools): throw out any that are <strong>swollen, dented, hot, or below about 2.5 volts</strong>. Charge only with a proper lithium charger, on a non-flammable surface, never unattended.</li>
+</ul>
+<p><strong>Finding the fault</strong> — check the simple things first: power cord and plug, fuse, switch, batteries and their contacts, loose wires. Then measure voltages, then test parts. Test a part in the circuit before you desolder it. <strong>Bulging or leaking capacitors</strong> are the most common failure in power supplies and chargers.</p>
+<p><strong>Multimeter quick tests</strong></p>
+<ul>
+<li><strong>Continuity</strong> (beep): fuses, switches, cords, broken wires.</li>
+<li><strong>Diode:</strong> conducts one way only — about 0.5–0.7 V on the diode setting forward, nothing backward. Both ways = shorted; neither = open.</li>
+<li><strong>Transistor:</strong> test it like two diodes back to back (base-emitter, base-collector), and check collector-emitter reads high both ways.</li>
+<li><strong>Capacitor</strong> (discharged first): on the ohms setting a good one shows a brief "kick" then rising resistance; no kick = open, steady low reading = shorted.</li>
+</ul>
+<p><strong>Resistor color code:</strong> black 0, brown 1, red 2, orange 3, yellow 4, green 5, blue 6, violet 7, gray 8, white 9. Bands 1–2 are digits, band 3 is the number of zeros, the last band is tolerance (gold 5%, silver 10%). Example: yellow–violet–orange–gold = 47,000 Ω ±5%.</p>
+<p><strong>Soldering:</strong> use <strong>rosin-core</strong> solder (never acid-core plumbing solder); a 25-watt iron for circuit boards. Make the wires hold mechanically first, <strong>heat the joint, not the solder</strong>, and don't move it while it cools. Remove old solder with copper wick or a solder sucker.</p>
+<p><strong>What to salvage</strong> before throwing anything out:</p>
+<ul>
+<li><strong>Radios and clock radios:</strong> power transformers, cords, switches, knobs, speakers.</li>
+<li><strong>Computer power supplies:</strong> 12 V and 5 V power, fans, heat sinks, wire, connectors.</li>
+<li><strong>Printers and scanners:</strong> small motors, gears, rods, belts, switches.</li>
+<li><strong>Microwaves</strong> (after discharging!): fan and turntable motors, door switches, fuses, magnets.</li>
+<li><strong>Cars:</strong> batteries, alternators (12 V charging), lights, wire, fuses, relays — see Army TM 9-8000 in <code>Manuals\ArmyFieldManuals</code>.</li>
+<li>Also: LEDs, magnet wire from motors and transformers, fuses, batteries, cords.</li>
+<li>Motor <strong>run</strong> capacitors can be reused; motor <strong>start</strong> capacitors can burst if used continuously.</li>
+</ul>
+<p><strong>Crystal radio — no batteries needed</strong> (NBS Circular 120, 1922): a long wire antenna (about 75 ft, on insulators), a ground wire to a <strong>water pipe (never gas)</strong> or a rod in damp soil, a tuning coil wound on an oatmeal box, a <strong>germanium diode</strong> salvaged from an old radio as the detector, and a high-impedance earphone. It picks up AM stations with no power at all.</p>
 <h2 id="-hay-box-cooking-saves-fuel">🍲 Hay-box cooking (saves fuel)</h2>
 <p>Bring the pot to a <strong>full boil</strong>, then nest it tightly in hay, wool, newspaper or blankets in a box with a padded lid; it keeps cooking for hours on its own heat. Bring food back to a boil before eating if it has cooled below hot (food is safest kept above 140 °F).</p>
 <h2 id="-containers-and-storage">🫙 Containers and storage</h2>
