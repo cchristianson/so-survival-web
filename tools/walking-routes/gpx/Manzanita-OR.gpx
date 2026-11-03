@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gpx version="1.1" creator="so-survival offline library" xmlns="http://www.topografix.com/GPX/1/1">
-<metadata><name>Cave Junction to Manzanita, OR on foot</name><desc>Map data (c) OpenStreetMap contributors, ODbL. Routing: OSRM / FOSSGIS. Track 1 = back-road route (avoids freeways); track 2 = highway route (uses freeways).</desc></metadata>
+<metadata><name>Cave Junction to Manzanita, OR on foot</name><desc>Map data (c) OpenStreetMap contributors, ODbL. Routing: OSRM / FOSSGIS. Track 1 = back-road route (avoids freeways); track 2 = highway route (uses freeways); track 3 = bicycle route.</desc></metadata>
 <wpt lat="42.16666" lon="-123.64810"><name>Cave Junction (start)</name></wpt>
 <wpt lat="45.71658" lon="-123.93510"><name>Manzanita, OR (end)</name></wpt>
 <trk><name>Highway route (US-199 / I-5 / US-101): 355 mi</name><trkseg>

@@ -451,7 +451,7 @@ const GUIDE_CARDS = { // guide cards, by shelf (same order as the Library tab)
     ['conv', '🔢 Unit converter & calculators', 'Any measurement converted; area, concrete, roof pitch, tanks, rainwater, water pressure, volts and watts, batteries, wire size, recipes, fuel mix, doses.'],
     ['iv', '🏔️ Illinois Valley quick reference', 'Alerts, weather radio, ham repeaters, local contacts, evacuation levels, frost dates, hunting units, key distances.'],
     ['device', '📱 Start on any device', 'Run the library on a computer, an old phone or tablet, or share it to iPhones over Wi-Fi.'],
-    ['walk', '🥾 Walking routes', 'On-foot routes from Cave Junction to 359 Oregon and N. California cities, with GPS tracks.'],
+    ['walk', '🥾 Routes: walk, bike, drive', 'From Cave Junction to 359 Oregon and N. California cities: walking days, bicycle riding hours and normal driving times, with turn-by-turn directions and GPS tracks.'],
     ['all', '📚 Everything on the drive', 'The full index of every file, archive and program.']],
   health: [['fieldcare', '🩹 Injuries, no help coming', 'Bleeding, wounds, burns, fractures, snakebite, nursing someone for weeks'],
     ['med', '💊 Medical & found medicines', 'What medical books there are and how to use found or expired medicines safely.'],
