@@ -8,6 +8,8 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': 
 const store = { get: k => { try { return localStorage.getItem(k); } catch { return null; } },
                 set: (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch {} } };
 const BASE = new URL('./', location.href).href;
+// older phones (Safari before iOS 16) lack AbortSignal.timeout
+if (!AbortSignal.timeout) AbortSignal.timeout = ms => { const c = new AbortController(); setTimeout(() => c.abort(), ms); return c.signal; };
 
 let mode = 'public', server = {}, manifest = null, worker = null, workerReady = false, workerSearchable = false, workerInfo = {};
 const ai = { kind: 'none', engine: null, label: '', loading: false, error: '' };
@@ -16,14 +18,15 @@ const ai = { kind: 'none', engine: null, label: '', loading: false, error: '' };
 init();
 async function init() {
   bindUI();
-  // the drive edition is always served by the Library Assistant on this computer
-  if (['127.0.0.1', 'localhost'].includes(location.hostname)) try {
+  // the drive edition is served by the Library Assistant: on this device, or shared over Wi-Fi from another
+  if (location.protocol !== 'file:') try {
     const r = await fetch('api/status', { signal: AbortSignal.timeout(1500) });
     if (r.ok) { const s = await r.json(); if (s && 'docs' in s) { mode = 'drive'; server = s; } }
   } catch {}
   if (mode === 'drive') {
-    $('tagline').textContent = 'Searches every manual, guide and offline encyclopedia on this drive, then has the offline AI answer from what it finds. Everything runs on this computer — no internet.';
+    $('tagline').textContent = 'Searches every manual, guide and offline encyclopedia on this drive, then has the offline AI answer from what it finds. Everything runs on this device (or the one sharing it with you) — no internet.';
     $('wikilabel').textContent = 'Include Wikipedia & archives';
+    document.querySelector('#tabs [data-tab=setup]').textContent = '⚙️ Settings';
     setInterval(refreshServer, 5000);
   } else {
     try { manifest = await (await fetch('data/manifest.json', { cache: 'no-cache' })).json(); } catch {}
@@ -108,6 +111,8 @@ function bindUI() {
   $('aioff').addEventListener('click', async () => { store.set('aiModel', null); try { await ai.engine?.unload?.(); } catch {} ai.engine = null; ai.kind = 'none'; renderSetup(); renderStatus(); });
   $('savelib').addEventListener('click', () => saveOffline('library'));
   $('saveroutes').addEventListener('click', () => saveOffline('routes'));
+  $('shareon').addEventListener('click', () => setShare(true));
+  $('shareoff').addEventListener('click', () => setShare(false));
 }
 
 // ------------------------------------------------------------------ asking
@@ -133,7 +138,7 @@ async function ask() {
     if (ws.notReady) note = ' ⚠️ The library search is still downloading — try again in a minute (needs a connection the first time).';
     else if (ws.partial) note = ` ⏳ Library still loading (${ws.loaded} of ${ws.total} parts): guides and book titles were searched; ask again in a minute to search inside every page.`;
   }
-  const srcs = [], d = docs.slice(), z = wiki.slice();
+  const srcs = [], d = Array.isArray(docs) ? docs.slice() : [], z = Array.isArray(wiki) ? wiki.slice() : [];
   while (d.length || z.length) { if (d.length) srcs.push(d.shift()); if (d.length) srcs.push(d.shift()); if (z.length) srcs.push(z.shift()); }
   renderSources(id, srcs);
   const meta = $('m' + id);
@@ -142,7 +147,7 @@ async function ask() {
   meta.textContent += note;
   if (!useAI) return;
   if (mode === 'drive') {
-    if (server.llm === 'off') { meta.textContent += ' The AI is not available on this computer.'; return; }
+    if (server.llm === 'off') { meta.innerHTML += ' <span>' + esc(server.llmError || 'The AI is turned off on this device.') + ' You can change the AI in <a href="#" onclick="document.querySelector(\'[data-tab=setup]\').click();return false">⚙️ Settings</a>.</span>'; return; }
     if (server.llm !== 'ready') { meta.innerHTML = '<span class="spin"></span>Waiting for the AI to finish loading…'; await waitFor(() => server.llm === 'ready' || server.llm === 'off'); }
     if (server.llm === 'ready') await answer(id, q, srcs, 'server');
   } else {
@@ -181,7 +186,10 @@ const SYSTEM = 'You are an offline survival and reference assistant for a househ
 
 async function answer(id, q, srcs, kind) {
   const meta = $('m' + id), out = $('a' + id);
-  const words = kind === 'webllm' ? 110 : 220;   // the in-browser models have a 4k-token window
+  // how much the AI reads: the in-browser models have a 4k-token window; on the drive the size of
+  // the AI chosen for this device decides (the Quick AI reads fewer, shorter passages)
+  const words = kind === 'webllm' ? 110 : (server.words || 220);
+  if (kind === 'server' && server.sources) srcs = srcs.slice(0, server.sources);
   const ctx = srcs.map((s, i) => `[${i + 1}] ${s.title} (${s.where})\n${String(s.text).split(/\s+/).slice(0, words).join(' ')}`).join('\n\n');
   const messages = [{ role: 'system', content: SYSTEM }, { role: 'user', content: `Sources:\n\n${ctx || '(no matching sources)'}\n\nQuestion: ${q}` }];
   const t0 = Date.now(); let text = '', stopped = false, ctrl = new AbortController();
@@ -259,7 +267,7 @@ async function initWebLLM(key, auto) {
 function mb(bytes) { return bytes >= 1e9 ? (bytes / 1e9).toFixed(1) + ' GB' : Math.round(bytes / 1e6) + ' MB'; }
 async function renderSetup() {
   if (mode === 'drive') {
-    $('aiinfo').textContent = 'On the drive, the AI runs as a program on this computer (chosen when you started the Library Assistant). The in-browser AI below is only needed on phones and tablets.';
+    $('webai').hidden = true; $('driveai').hidden = false; loadTiers();
   } else {
     $('aiinfo').textContent = ai.error || (ai.kind === 'webllm' ? `On: ${ai.label}. Saved on this device.` : ai.loading ? 'Loading…' :
       'The AI runs entirely inside your browser and is saved on this device after one download. It needs a recent browser with WebGPU.');
@@ -276,6 +284,60 @@ async function renderSetup() {
     Documents that are public domain or openly licensed are searchable in full; others are listed by title and open on the publisher's website.
     Map and route data © OpenStreetMap contributors (ODbL); pill data: US National Library of Medicine Pillbox (ODbL); AI: Meta Llama 3.2 via WebLLM (Apache-2.0).
     ${manifest ? 'Library version ' + esc(manifest.built) + '.' : ''}`;
+}
+
+// ------------------------------------------------------------------ drive: which AI this device runs
+async function loadTiers() {
+  try { renderTiers(await (await fetch('api/settings')).json()); } catch {}
+}
+function renderTiers(st) {
+  const d = st.device || {}, speed = st.wordsPerSecond || {};
+  $('devinfo').textContent = `This device: ${d.name || 'computer'}` + (d.ramGB ? ` · ${Math.round(d.ramGB)} GB memory` : '') + (d.cores ? ` · ${d.cores} cores` : '') + '.';
+  const rec = (st.tiers || []).find(t => t.key === st.recommended);
+  const opt = (value, title, body, ok = true) =>
+    `<label class="radio${ok ? '' : ' off'}"><input type="radio" name="tier" value="${value}"${st.mode === value ? ' checked' : ''}${ok ? '' : ' disabled'}>${title}<br><small>${body}</small></label>`;
+  let h = opt('auto', `<b>Automatic</b> <span class="rec">— recommended</span>`,
+    `Picks the best AI for this device${rec ? ` (now: <b>${esc(rec.name)}</b>)` : ''}, then steps down if it turns out too slow.`);
+  for (const t of st.tiers || []) {
+    const sp = speed[t.key] ? ` Measured here: about ${speed[t.key]} words a second.` : '';
+    const missing = t.have ? '' : ' <b>Not on this drive.</b>';
+    h += opt(t.key, `<b>${esc(t.name)}</b> — ${esc(t.model)}${t.key === st.recommended ? ' <span class="rec">✓ fits this device</span>' : ''}`, esc(t.hint) + sp + missing, t.have);
+  }
+  $('tierlist').innerHTML = h;
+  $('tierlist').querySelectorAll('input[name=tier]').forEach(r => { r.onchange = () => chooseTier(r.value); if (!st.local) r.disabled = true; });
+  $('remotenote').hidden = st.local !== false;
+  renderShare(st.share || {});
+  const cur = (st.tiers || []).find(t => t.key === st.tier);
+  const words = { starting: 'loading… (this can take a minute or two)', ready: 'ready', off: 'off — search only', failed: 'could not start' }[st.state] || st.state;
+  $('tierstate').innerHTML = `Running now: <b>${esc(cur ? cur.name : st.tier)}</b> — ${esc(words)}`;
+  $('tiernote').hidden = !st.note; $('tiernote').textContent = st.note || '';
+  if (st.state === 'starting') setTimeout(loadTiers, 3000);
+}
+function renderShare(sh) {
+  $('sharecard').hidden = !sh.local;
+  if (!sh.local) return;
+  $('shareon').hidden = !!sh.on; $('shareoff').hidden = !sh.on;
+  $('sharelinks').innerHTML = sh.on
+    ? (sh.links && sh.links.length
+        ? '<p class="meta">On the other phone or tablet, connect to the same Wi-Fi, open the web browser and type:</p>' +
+          sh.links.map(l => `<p style="font-size:21px;margin:4px 0"><b>${esc(l.replace(/\/$/, ''))}</b></p>`).join('') +
+          '<p class="meta">Then tap <b>Share → Add to Home Screen</b> (iPhone) or <b>⋮ → Add to Home screen</b> (Android) so it has an icon.</p>'
+        : '<p class="meta">Sharing is on, but this device isn\'t connected to a Wi-Fi network yet. Connect it (or turn on its hotspot), then reopen Settings.</p>')
+    : (sh.error ? `<p class="meta">${esc(sh.error)}</p>` : '');
+}
+async function setShare(on) {
+  try {
+    const r = await fetch('api/share', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ on }) });
+    renderShare(await r.json());
+  } catch {}
+}
+
+async function chooseTier(m) {
+  $('tierstate').innerHTML = '<span class="spin"></span>Switching the AI…';
+  try {
+    const r = await fetch('api/settings', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ mode: m }) });
+    renderTiers(await r.json()); refreshServer();
+  } catch { $('tierstate').textContent = 'Could not change the AI. Is the Library Assistant still running?'; }
 }
 
 async function saveOffline(which) {
@@ -317,8 +379,8 @@ function renderLibrary() {
 }
 function renderTools() {
   const P = mode === 'drive'
-    ? { iv: '/lib/Southern-Oregon/ILLINOIS-VALLEY-START-HERE.html', md: '/lib/Southern-Oregon/MAKE-DO-HOUSEHOLD-GUIDE.html', food: '/lib/Southern-Oregon/FOOD-FROM-SCRATCH-GUIDE.html', natural: '/lib/Southern-Oregon/NATURAL-BUILDING-GUIDE.html', smallstock: '/lib/Southern-Oregon/RABBITS-CHICKENS-GUIDE.html', shelter: '/lib/Southern-Oregon/SHELTER-BUILDING-GUIDE.html', bikes: '/lib/Southern-Oregon/BICYCLES-CARTS-GUIDE.html', community: '/lib/Southern-Oregon/COMMUNITY-BARTER-GUIDE.html', fieldcare: '/lib/Southern-Oregon/FIELD-CARE-GUIDE.html', scarce: '/lib/Southern-Oregon/FOOD-SECURITY-GUIDE.html', nav: '/lib/Southern-Oregon/NAVIGATION-WEATHER-GUIDE.html', signals: '/lib/Southern-Oregon/SIGNALS-MORSE-GUIDE.html', firewood: '/lib/Southern-Oregon/FIREWOOD-GUIDE.html', purify: '/lib/Southern-Oregon/WATER-PURIFICATION-GUIDE.html', wells: '/lib/Southern-Oregon/WATER-WELLS-GUIDE.html', emp: '/lib/Southern-Oregon/EMP-GUIDE.html', seeds: '/lib/Southern-Oregon/SEED-BANK-GUIDE.html', cellar: '/lib/Southern-Oregon/ROOT-CELLAR-GUIDE.html', horse: '/lib/Southern-Oregon/HORSE-GUIDE.html', fuel: '/lib/Southern-Oregon/FUEL-GUIDE.html', smith: '/lib/Southern-Oregon/BLACKSMITHING-GUIDE.html', mush: '/lib/Southern-Oregon/MUSHROOM-GUIDE.html', nuke: '/lib/Southern-Oregon/NUCLEAR-FALLOUT-GUIDE.html', eng: '/lib/Southern-Oregon/ENGINES-AND-MOTORS-GUIDE.html', med: '/lib/Medical/READ-ME-FIRST.html', radio: '/lib/Manuals/Radio-Communications/RADIO-GUIDE.html', pill: '/lib/Medical/Pill-Identifier/PILL-IDENTIFIER.html', walk: '/lib/Southern-Oregon/Walking-Routes/WALKING-ROUTES.html', all: '/lib/README.html' }
-    : { iv: 'pages/ILLINOIS-VALLEY-START-HERE.html', md: 'pages/MAKE-DO-HOUSEHOLD-GUIDE.html', food: 'pages/FOOD-FROM-SCRATCH-GUIDE.html', natural: 'pages/NATURAL-BUILDING-GUIDE.html', smallstock: 'pages/RABBITS-CHICKENS-GUIDE.html', shelter: 'pages/SHELTER-BUILDING-GUIDE.html', bikes: 'pages/BICYCLES-CARTS-GUIDE.html', community: 'pages/COMMUNITY-BARTER-GUIDE.html', fieldcare: 'pages/FIELD-CARE-GUIDE.html', scarce: 'pages/FOOD-SECURITY-GUIDE.html', nav: 'pages/NAVIGATION-WEATHER-GUIDE.html', signals: 'pages/SIGNALS-MORSE-GUIDE.html', firewood: 'pages/FIREWOOD-GUIDE.html', purify: 'pages/WATER-PURIFICATION-GUIDE.html', wells: 'pages/WATER-WELLS-GUIDE.html', emp: 'pages/EMP-GUIDE.html', seeds: 'pages/SEED-BANK-GUIDE.html', cellar: 'pages/ROOT-CELLAR-GUIDE.html', horse: 'pages/HORSE-GUIDE.html', fuel: 'pages/FUEL-GUIDE.html', smith: 'pages/BLACKSMITHING-GUIDE.html', mush: 'pages/MUSHROOM-GUIDE.html', nuke: 'pages/NUCLEAR-FALLOUT-GUIDE.html', eng: 'pages/ENGINES-AND-MOTORS-GUIDE.html', med: 'pages/Medical-READ-ME-FIRST.html', radio: 'pages/RADIO-GUIDE.html', pill: 'tools/pill-identifier/PILL-IDENTIFIER.html', walk: 'tools/walking-routes/WALKING-ROUTES.html' };
+    ? { iv: '/lib/Southern-Oregon/ILLINOIS-VALLEY-START-HERE.html', md: '/lib/Southern-Oregon/MAKE-DO-HOUSEHOLD-GUIDE.html', food: '/lib/Southern-Oregon/FOOD-FROM-SCRATCH-GUIDE.html', clothing: '/lib/Southern-Oregon/CLOTHING-LEATHER-GUIDE.html', birth: '/lib/Southern-Oregon/CHILDBIRTH-CHILDREN-GUIDE.html', dairy: '/lib/Southern-Oregon/GOATS-DAIRY-BEES-GUIDE.html', huntfish: '/lib/Southern-Oregon/HUNTING-TRAPPING-FISHING-GUIDE.html', preserve: '/lib/Southern-Oregon/PRESERVING-FOOD-GUIDE.html', offgrid: '/lib/Southern-Oregon/OFF-GRID-POWER-GUIDE.html', sanit: '/lib/Southern-Oregon/SANITATION-GUIDE.html', natural: '/lib/Southern-Oregon/NATURAL-BUILDING-GUIDE.html', smallstock: '/lib/Southern-Oregon/RABBITS-CHICKENS-GUIDE.html', shelter: '/lib/Southern-Oregon/SHELTER-BUILDING-GUIDE.html', bikes: '/lib/Southern-Oregon/BICYCLES-CARTS-GUIDE.html', community: '/lib/Southern-Oregon/COMMUNITY-BARTER-GUIDE.html', fieldcare: '/lib/Southern-Oregon/FIELD-CARE-GUIDE.html', scarce: '/lib/Southern-Oregon/FOOD-SECURITY-GUIDE.html', nav: '/lib/Southern-Oregon/NAVIGATION-WEATHER-GUIDE.html', signals: '/lib/Southern-Oregon/SIGNALS-MORSE-GUIDE.html', firewood: '/lib/Southern-Oregon/FIREWOOD-GUIDE.html', purify: '/lib/Southern-Oregon/WATER-PURIFICATION-GUIDE.html', wells: '/lib/Southern-Oregon/WATER-WELLS-GUIDE.html', emp: '/lib/Southern-Oregon/EMP-GUIDE.html', seeds: '/lib/Southern-Oregon/SEED-BANK-GUIDE.html', cellar: '/lib/Southern-Oregon/ROOT-CELLAR-GUIDE.html', horse: '/lib/Southern-Oregon/HORSE-GUIDE.html', fuel: '/lib/Southern-Oregon/FUEL-GUIDE.html', smith: '/lib/Southern-Oregon/BLACKSMITHING-GUIDE.html', mush: '/lib/Southern-Oregon/MUSHROOM-GUIDE.html', nuke: '/lib/Southern-Oregon/NUCLEAR-FALLOUT-GUIDE.html', eng: '/lib/Southern-Oregon/ENGINES-AND-MOTORS-GUIDE.html', med: '/lib/Medical/READ-ME-FIRST.html', radio: '/lib/Manuals/Radio-Communications/RADIO-GUIDE.html', pill: '/lib/Medical/Pill-Identifier/PILL-IDENTIFIER.html', walk: '/lib/Southern-Oregon/Walking-Routes/WALKING-ROUTES.html', all: '/lib/README.html' }
+    : { iv: 'pages/ILLINOIS-VALLEY-START-HERE.html', md: 'pages/MAKE-DO-HOUSEHOLD-GUIDE.html', food: 'pages/FOOD-FROM-SCRATCH-GUIDE.html', clothing: 'pages/CLOTHING-LEATHER-GUIDE.html', birth: 'pages/CHILDBIRTH-CHILDREN-GUIDE.html', dairy: 'pages/GOATS-DAIRY-BEES-GUIDE.html', huntfish: 'pages/HUNTING-TRAPPING-FISHING-GUIDE.html', preserve: 'pages/PRESERVING-FOOD-GUIDE.html', offgrid: 'pages/OFF-GRID-POWER-GUIDE.html', sanit: 'pages/SANITATION-GUIDE.html', natural: 'pages/NATURAL-BUILDING-GUIDE.html', smallstock: 'pages/RABBITS-CHICKENS-GUIDE.html', shelter: 'pages/SHELTER-BUILDING-GUIDE.html', bikes: 'pages/BICYCLES-CARTS-GUIDE.html', community: 'pages/COMMUNITY-BARTER-GUIDE.html', fieldcare: 'pages/FIELD-CARE-GUIDE.html', scarce: 'pages/FOOD-SECURITY-GUIDE.html', nav: 'pages/NAVIGATION-WEATHER-GUIDE.html', signals: 'pages/SIGNALS-MORSE-GUIDE.html', firewood: 'pages/FIREWOOD-GUIDE.html', purify: 'pages/WATER-PURIFICATION-GUIDE.html', wells: 'pages/WATER-WELLS-GUIDE.html', emp: 'pages/EMP-GUIDE.html', seeds: 'pages/SEED-BANK-GUIDE.html', cellar: 'pages/ROOT-CELLAR-GUIDE.html', horse: 'pages/HORSE-GUIDE.html', fuel: 'pages/FUEL-GUIDE.html', smith: 'pages/BLACKSMITHING-GUIDE.html', mush: 'pages/MUSHROOM-GUIDE.html', nuke: 'pages/NUCLEAR-FALLOUT-GUIDE.html', eng: 'pages/ENGINES-AND-MOTORS-GUIDE.html', med: 'pages/Medical-READ-ME-FIRST.html', radio: 'pages/RADIO-GUIDE.html', pill: 'tools/pill-identifier/PILL-IDENTIFIER.html', walk: 'tools/walking-routes/WALKING-ROUTES.html' };
   const T = [['iv', '🏔️ Illinois Valley quick reference', 'Alerts, weather radio, ham repeaters, local contacts, evacuation levels, frost dates, hunting units, key distances.'],
     ['md', '🧰 Make-Do household guide', 'Cleaners, laundry soap, tooth powder, fire starters, oil lamps, glue, mending, plumbing, electronics repair and salvage.'],
     ['food', '🌾 Food from scratch', 'Acorn and grain flour, masa, sourdough, salt, maple syrup, lard — then bread, tortillas, pasta, hardtack and beans.'],
@@ -343,6 +405,13 @@ function renderTools() {
     ['shelter', '🏠 Shelter & building', 'Roof leaks, one warm room, rot, log and earth building, quake and fire hardening'],
     ['smallstock', '🐇 Rabbits & chickens', 'Meat and eggs on little bought feed: housing, breeding, hatching, butchering'],
     ['natural', '🧱 Natural building', 'Cob, straw bale, light clay, hempcrete, earth and lime plasters, making lime, thatch'],
+    ['sanit', '🧼 Sanitation & disease', 'Toilets with no sewer, handwashing, laundry, stopping outbreaks, safe burial'],
+    ['offgrid', '☀️ Off-grid power', 'Solar sizing for our sun, salvaged panels and batteries, wiring safely, creek hydro'],
+    ['preserve', '🫙 Preserving food', 'Safe canning at our elevation, drying, smoking, curing, fermenting, eggs'],
+    ['huntfish', '🦌 Hunting, trapping & fishing', 'Local game, field dressing in hot weather, snares, nets, game diseases'],
+    ['dairy', '🐐 Goats, dairy & bees', 'Milk goats, butter, cheese and homemade rennet, beekeeping and swarms'],
+    ['birth', '👶 Childbirth & small kids', 'Birth with no hospital, newborn care, child illness, teaching kids at home'],
+    ['clothing', '🧵 Clothing, leather & shoes', 'Dressing for wet winters, mending, wool to yarn, tanning, shoe repair'],
     ['med', '💊 Medical & found medicines', 'What medical books there are and how to use found or expired medicines safely.'],
     ['pill', '🔍 Pill identifier', 'Identify a loose pill by the code printed on it — about 32,000 US pills.'],
     ['walk', '🥾 Walking routes', 'On-foot routes from Cave Junction to 359 Oregon and N. California cities, with GPS tracks.'],

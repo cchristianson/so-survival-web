@@ -26,6 +26,8 @@ header h1{font-size:24px;margin:4px 0 2px;background:linear-gradient(135deg,var(
 nav{display:flex;gap:4px;border-bottom:1px solid var(--line);margin:8px 0 14px;overflow-x:auto}
 nav button{background:none;border:none;border-bottom:3px solid transparent;color:var(--muted);font:inherit;font-weight:600;padding:8px 12px;cursor:pointer;white-space:nowrap}
 nav button.on{color:var(--accent);border-bottom-color:var(--accent)}
+@media(max-width:440px){nav{gap:0}nav button{padding:8px 6px;font-size:14.5px}}
+@media(max-width:345px){nav button{padding:8px 4px;font-size:13px}}
 section[hidden]{display:none}
 form.ask{display:flex;gap:8px;position:sticky;top:0;background:var(--bg);padding:6px 0;z-index:2}
 textarea,input[type=search]{flex:1;width:100%;font:inherit;padding:11px 12px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
@@ -62,6 +64,7 @@ a{color:var(--accent)}.src a{font-weight:600;text-decoration:none}
 .note{border-left:4px solid var(--accent2);background:rgba(246,173,85,.08);padding:8px 12px;border-radius:0 8px 8px 0;font-size:14px;color:var(--muted);margin:8px 0}
 .radio{display:block;padding:8px 10px;border:1px solid var(--line);border-radius:10px;margin:6px 0;cursor:pointer}
 .radio small{color:var(--muted)}
+.radio.off{opacity:.55;cursor:default}.radio .rec{color:var(--accent);font-weight:600}.radio input{margin-right:6px}
 footer{color:var(--muted);font-size:13px;margin-top:26px}
 </style>
 </head>
@@ -104,7 +107,23 @@ footer{color:var(--muted);font-size:13px;margin-top:26px}
 </section>
 
 <section id="setup" hidden>
-  <div class="card">
+  <div class="card" id="driveai" hidden>
+    <h3 style="margin-top:0">🤖 AI on this device</h3>
+    <p id="devinfo" class="meta"></p>
+    <div id="tierlist"></div>
+    <p id="tierstate" class="meta"></p>
+    <div class="note" id="tiernote" hidden></div>
+    <p class="meta">Not sure? Leave it on <b>Automatic</b>. It picks what this device can handle, times a test answer, and steps down if it's too slow. Your choice is remembered for this device.</p>
+    <div class="note" id="remotenote" hidden>You're using the library shared from another device. Only that device can change the AI or stop sharing.</div>
+  </div>
+  <div class="card" id="sharecard" hidden>
+    <h3 style="margin-top:0">📡 Share with phones nearby</h3>
+    <p class="meta">Let every phone, tablet or laptop on the same Wi-Fi use this library in its web browser — <b>iPhones too</b>. No internet needed: the search and the AI run on this device.</p>
+    <p><button class="sec" id="shareon">Turn on sharing</button> <button class="sec" id="shareoff" hidden>Stop sharing</button></p>
+    <div id="sharelinks"></div>
+    <div class="note">No Wi-Fi? Turn on a phone's <b>hotspot</b> (mobile data can stay off) or use a small travel router, and connect this device and the other phones to it. If Windows or the Mac asks whether to allow network access, choose <b>Allow</b>.</div>
+  </div>
+  <div class="card" id="webai">
     <h3 style="margin-top:0">🤖 Offline AI</h3>
     <p id="aiinfo" class="meta"></p>
     <div id="aichoices">

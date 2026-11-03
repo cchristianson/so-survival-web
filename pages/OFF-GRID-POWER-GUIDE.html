@@ -1,0 +1,402 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>☀️ Off-Grid Power: Solar, Batteries &amp; Creek Hydro</title><style>:root{--bg:#0f1420;--card:#171f2e;--ink:#e7ecf3;--muted:#9fb0c3;--accent:#4fd1c5;--accent2:#f6ad55;--line:#273246;--code:#0b0f17}@media(prefers-color-scheme:light){:root{--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--code:#f1f5f9}}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,Segoe UI,Roboto,Arial,sans-serif}.wrap{max-width:900px;margin:0 auto;padding:28px 20px 80px}h1{font-size:28px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}h2{font-size:22px;border-bottom:2px solid var(--line);padding-bottom:6px;margin-top:30px}h3{font-size:17px;color:var(--accent)}h4{font-size:15px;color:var(--accent2)}a{color:var(--accent)}code{background:var(--code);padding:2px 6px;border-radius:6px;font-family:Consolas,monospace;font-size:14px}pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow-x:auto}pre code{background:none;padding:0}table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}th{background:rgba(127,127,127,.12)}blockquote{border-left:4px solid var(--accent);background:rgba(79,209,197,.08);padding:10px 16px;border-radius:0 10px 10px 0}hr{border:none;border-top:1px solid var(--line);margin:26px 0}ul,ol{padding-left:26px}table{display:block;overflow-x:auto;max-width:100%}code,a{overflow-wrap:anywhere}img{max-width:100%}a.lib{text-decoration-style:dotted}a.lib::before{content:"📖 ";text-decoration:none}.deeper{font-size:15px;opacity:.95}a.wiki::before{content:"📷 "}a.lib::before,a.wiki::before{display:inline-block;margin-right:3px}html{scroll-behavior:smooth}h2{scroll-margin-top:12px}.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 16px;margin:18px 0 8px}.toc summary{cursor:pointer;font-weight:600;color:var(--accent);font-size:17px}.toc ol{margin:8px 0 4px;padding-left:26px;columns:2 260px;column-gap:28px}.toc li{margin:4px 0;break-inside:avoid}.toc a{text-decoration:none}.toc a:hover{text-decoration:underline}.totop{position:fixed;right:14px;bottom:max(14px,env(safe-area-inset-bottom));background:var(--card);color:var(--accent);border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:14px;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:5}@media print{.totop{display:none}.toc details{display:block}}</style></head><body><div class="wrap"><p><a href="../">&larr; SO Survival Library</a></p>
+<h1 id="️-off-grid-power-solar-batteries--creek-hydro">☀️ Off-Grid Power: Solar, Batteries &amp; Creek Hydro</h1>
+<p>Making and storing electricity with no grid: what you really need, sizing solar for our dark winters, salvaging panels, controllers and inverters, keeping lead-acid and lithium batteries alive and safe, wiring, charging from a generator or car, and creek hydro, which is strongest when solar is weakest. The books are in <code>Off-Grid-Power\</code> (<code>Solar-PV</code>, <code>Batteries</code>, <code>Electrical-Basics</code>, <code>Micro-Hydro</code>), with homemade generators in <code>Engines-Motors\Motors-as-Generators</code>, solar well pumps in <code>Water-Wells-Pumps\Pumps-No-Grid</code>, and Practical Action's battery and lighting briefs in <code>Homestead-Skills\Household-Make-Do</code>. The short version is in <a class="guide" href="ILLINOIS-VALLEY-START-HERE.html">Illinois Valley — Start Here</a>.</p>
+<blockquote>
+<h3 id="️-rules-that-prevent-the-worst-outcomes">⚠️ Rules that prevent the worst outcomes</h3>
+<ul>
+<li><strong>Batteries give off hydrogen, which explodes at just 4% in air</strong> (<a class="lib" target="_blank" rel="noopener" href="https://everyspec.com/DOE/DOE-HDBK/download.php?spec=DOE-HDBK-1084.003301.pdf#page=22" title="DOE Primer on Lead-Acid Storage Batteries (DOE-HDBK-1084-95).pdf — page 22">DOE-HDBK-1084, p. 22</a>). Vent the top of the room, and never mount a controller, switch or relay in or above a battery box (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_05.pdf#page=53" title="IEA PVPS Recommended Practices for Charge Controllers.pdf — page 53">IEA, p. 53</a>).</li>
+<li><strong>A shorted battery can explode.</strong> One golf-cart battery can push about <strong>8,000 amps</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www.osti.gov/servlets/purl/808812#page=15" title="Sandia PV Systems and the National Electrical Code - Suggested Practices.pdf — page 15">Sandia, p. 15</a>). Fuse at the + terminal, connect the battery last, and if a tool shorts it, <strong>don't grab it: get away</strong> (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_06.pdf#page=22" title="IEA PVPS Lead-Acid Battery Guide for Stand-Alone PV.pdf — page 22">IEA, p. 22</a>).</li>
+<li><strong>Never plug a generator into a wall outlet.</strong> Backfeeding can kill line workers and neighbors. Generators run outdoors only (<a class="lib" target="_blank" rel="noopener" href="https://www.cpsc.gov/s3fs-public/5123_SafetyAlert_PortableGenerators_102021.pdf#page=1" title="CPSC Portable Generator Hazards - CO Backfeed and Fuel Safety.pdf — page 1">CPSC, p. 1</a>).</li>
+<li><strong>Panels are live whenever light hits them.</strong> Cover them with an opaque tarp before touching wiring (<a class="lib" target="_blank" rel="noopener" href="https://www.cleanegroup.org/wp-content/uploads/Residential-Lithium-Ion-Battery-Storage-Fire-Safety.pdf#page=3" title="Home Lithium-Ion Battery Fire Safety FAQ.pdf — page 3">fire FAQ, p. 3</a>).</li>
+<li><strong>Lithium: never charge below 32 °F, never "equalize" it, and never cover or pick up a burning pack</strong>; soak it with water from a distance (<a class="lib" target="_blank" rel="noopener" href="https://www.faa.gov/sites/faa.gov/files/other_visit/aviation_industry/airline_operators/airline_safety/SAFO09013.pdf#page=1" title="FAA SAFO 09013 Fighting Fires Caused by Lithium Batteries (FAA 2009).pdf — page 1">FAA SAFO 09013</a>).</li>
+<li><strong>Battery acid blinds.</strong> Goggles and rubber gloves; flush skin or eyes with water <strong>at least 15 minutes</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/NEETSModules/NEETS%20Module%2001%20-%20Introduction%20to%20Matter%20Energy%20and%20Direct%20Current.pdf#page=96" title="NEETS Module 01 - Matter Energy and Direct Current.pdf — page 96">NEETS 1, p. 96</a>).</li>
+</ul>
+</blockquote>
+<hr />
+<nav class="toc" id="contents" aria-label="Contents"><details open><summary>📑 Contents</summary><ol><li><a href="#start-with-a-load-list">📋 Start with a load list</a></li><li><a href="#our-sun-month-by-month">☀️ Our sun, month by month</a></li><li><a href="#a-worked-example">🧮 A worked example</a></li><li><a href="#salvaging-and-testing-panels">🔍 Salvaging and testing panels</a></li><li><a href="#charge-controllers-and-inverters">🎛️ Charge controllers and inverters</a></li><li><a href="#choosing-batteries-and-reading-their-charge">🔋 Choosing batteries and reading their charge</a></li><li><a href="#keeping-lead-acid-alive">💧 Keeping lead-acid alive</a></li><li><a href="#battery-safety">💥 Battery safety</a></li><li><a href="#lithium-lifepo4-and-salvaged-packs">🔥 Lithium, LiFePO4 and salvaged packs</a></li><li><a href="#wiring-fuses-and-grounding">🔌 Wiring, fuses and grounding</a></li><li><a href="#generators-cars-and-backfeed">⛽ Generators, cars and backfeed</a></li><li><a href="#creek-hydro-and-why-not-wind">🌊 Creek hydro, and why not wind</a></li><li><a href="#old-advice-in-the-library-to-ignore">⚠️ Old advice in the library to ignore</a></li><li><a href="#related-guides">🔗 Related guides</a></li></ol></details></nav>
+<h2 id="start-with-a-load-list">📋 Start with a load list</h2>
+<p>For each thing you'll run, multiply <strong>watts × hours a day = watt-hours (Wh) a day</strong>, and add them up (<a class="lib" target="_blank" rel="noopener" href="https://www.osti.gov/servlets/purl/1599703#page=16" title="Sandia Sizing Small Off-Grid Solar Systems for Rural Homes.pdf — page 16">Sandia, p. 16</a>). Take watts from the nameplate or a plug-in watt meter. An example <em>(use your own numbers)</em>:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>Watts</th>
+<th>Hours a day</th>
+<th>Wh a day</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>4 LED bulbs</td>
+<td>40</td>
+<td>5</td>
+<td>200</td>
+</tr>
+<tr class="even">
+<td>Laptop</td>
+<td>50</td>
+<td>4</td>
+<td>200</td>
+</tr>
+<tr class="odd">
+<td>Radio and phone charging</td>
+<td>20</td>
+<td>5</td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td>Fridge or freezer (watt-meter reading)</td>
+<td>—</td>
+<td>—</td>
+<td>450</td>
+</tr>
+<tr class="odd">
+<td>Inverter idling</td>
+<td>10</td>
+<td>5</td>
+<td>50</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td></td>
+<td></td>
+<td><strong>1,000 Wh = 1 kWh</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Kill hidden loads.</strong> Standby "phantom" loads can add up to <strong>100 W around the clock</strong> (<a class="lib" target="_blank" rel="noopener" href="https://energypedia.info/images/5/5d/Micro_Hydropower_System_-_A_Buyer%27s_Guide.pdf#page=14" title="NRCan Micro-Hydropower Systems - A Buyers Guide.pdf — page 14">NRCan, p. 14</a>): 2.4 kWh a day. An idling inverter uses 10–50 W; switch it off <em>(rule of thumb)</em>.</li>
+<li><strong>Skip the inverter</strong> for 12 V lights, fans, pumps and USB chargers (<a class="lib" target="_blank" rel="noopener" href="https://extension.arizona.edu/sites/default/files/2024-08/az1983-2022.pdf#page=5" title="Univ of Arizona Extension - Stand-Alone Solar PV System Components.pdf — page 5">Arizona, p. 5</a>).</li>
+<li><strong>Motors need about 6 times their running current to start</strong>: a 1 hp motor may need 6 kW for a moment (<a class="lib" target="_blank" rel="noopener" href="https://www1.eere.energy.gov/water/pdfs/doewater-10107-vol.1-pt1.pdf#page=67" title="DOE Microhydropower Handbook Vol 1 Part 1 (Site Head Flow Turbines Intake).pdf — page 67">DOE Microhydro, p. 67</a>).</li>
+<li><strong>Store water, not electricity.</strong> A solar pump run from its panels through its own controller, filling a raised tank, needs no battery: the tank is the storage (<a class="lib" target="_blank" rel="noopener" href="https://www.nrcs.usda.gov/sites/default/files/2023-10/ND%20Technical%20Note%201%20-%20Solar-Powered%20Water%20Pump%20Systems%20for%20Stockwater%20Design_1_0.pdf#page=27" title="Design of Small Solar-Powered Water Pump Systems - Tech Note 1 (NRCS North Dakota 2017).pdf — page 27">NRCS, pp. 9, 27</a>). Keep 3–5 days of water in the tank (<a class="lib" target="_blank" rel="noopener" href="https://infohub.practicalaction.org/server/api/core/bitstreams/bcd19798-1bc7-4862-82ea-89166f161177/content#page=2" title="Solar Photovoltaic Water Pumping (Practical Action 2012).pdf — page 2">Practical Action, p. 2</a>).</li>
+</ul>
+<p><strong>Pick the system voltage</strong> (<a class="lib" target="_blank" rel="noopener" href="https://extension.arizona.edu/sites/default/files/2024-08/az1983-2022.pdf#page=5" title="Univ of Arizona Extension - Stand-Alone Solar PV System Components.pdf — page 5">Arizona, p. 5</a>):</p>
+<table>
+<thead>
+<tr class="header">
+<th>Daily load</th>
+<th>Battery voltage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Under 1 kWh</td>
+<td>12 V</td>
+</tr>
+<tr class="even">
+<td>1–4 kWh</td>
+<td>24 V</td>
+</tr>
+<tr class="odd">
+<td>Over 4 kWh</td>
+<td>48 V</td>
+</tr>
+</tbody>
+</table>
+<p>Keep steady current under 100 A (<a class="lib" target="_blank" rel="noopener" href="https://www.nrcs.usda.gov/sites/default/files/2023-10/ND%20Technical%20Note%201%20-%20Solar-Powered%20Water%20Pump%20Systems%20for%20Stockwater%20Design_1_0.pdf#page=31" title="Design of Small Solar-Powered Water Pump Systems - Tech Note 1 (NRCS North Dakota 2017).pdf — page 31">NRCS, p. 31</a>).</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://www.osti.gov/servlets/purl/1599703#page=16" title="Sandia Sizing Small Off-Grid Solar Systems for Rural Homes.pdf — page 16">Sandia <em>Sizing Small Off-Grid Solar Systems</em></a> — the load worksheet; <a class="lib" target="_blank" rel="noopener" href="https://extension.arizona.edu/sites/default/files/2024-08/az1983-2022.pdf#page=2" title="Univ of Arizona Extension - Stand-Alone Solar PV System Components.pdf — page 2">Arizona Extension <em>Stand-Alone PV Components</em></a> — every part, in plain words.</p>
+<h2 id="our-sun-month-by-month">☀️ Our sun, month by month</h2>
+<p>Average "peak sun hours" a day at Medford, the nearest station, for a panel facing south tilted at our latitude, 42° (<a class="lib" target="_blank" rel="noopener" href="https://pages.mtu.edu/~jstallen/courses/MEEM4200/lectures/solar/NREL_TP-463-5607_1994.pdf#page=181" title="NREL Solar Radiation Data Manual for Flat-Plate Collectors - Redbook (NREL 1994).pdf — page 181">NREL Redbook, p. 181</a>):</p>
+<table>
+<thead>
+<tr class="header">
+<th>Jan</th>
+<th>Feb</th>
+<th>Mar</th>
+<th>Apr</th>
+<th>May</th>
+<th>Jun</th>
+<th>Jul</th>
+<th>Aug</th>
+<th>Sep</th>
+<th>Oct</th>
+<th>Nov</th>
+<th>Dec</th>
+<th>Year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2.3</td>
+<td>3.5</td>
+<td>4.6</td>
+<td>5.6</td>
+<td>6.2</td>
+<td>6.5</td>
+<td>7.1</td>
+<td>6.9</td>
+<td>6.4</td>
+<td>4.8</td>
+<td>2.4</td>
+<td>1.9</td>
+<td>4.9</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>A panel makes 3½–4 times more in July than in December.</strong> The worst December on record averaged only 1.2.</li>
+<li>The county has "persistent cloudiness in winter" (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/usda-foreword/usda-foreword.pdf#page=5" title="NRCS - Soil Survey of Josephine County Oregon 1983 (text edition).pdf — page 5">Soil Survey, p. 5</a>). Plan on Medford's numbers or a little less at Cave Junction, and expect wildfire smoke to cut output in August and September <em>(rule of thumb)</em>.</li>
+<li><strong>Tilt steeply for winter.</strong> At latitude + 15° (about 57°) a panel gets 2.0 in December; laid flat, only 1.2 (Redbook, p. 181). If your mount adjusts, go steeper in winter and flatter in summer, and never below 10°, so rain washes the glass (<a class="lib" target="_blank" rel="noopener" href="https://infohub.practicalaction.org/server/api/core/bitstreams/e3a4fd70-0593-45f3-80ee-9c1fbbfe35bf/content#page=3" title="Practical Action - Solar Photovoltaic Energy Technical Brief.pdf — page 3">Practical Action, p. 3</a>).</li>
+<li><strong>Snow:</strong> Cave Junction averages 24 in a season (Soil Survey, p. 5). Steep panels shed it; brush off the rest with a soft broom <em>(rule of thumb)</em>.</li>
+<li><strong>Winter shade:</strong> the December sun is low, so a ridge or tree to the south can shade a panel all day. Check the site in December <em>(rule of thumb)</em>.</li>
+</ul>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://pages.mtu.edu/~jstallen/courses/MEEM4200/lectures/solar/NREL_TP-463-5607_1994.pdf#page=181" title="NREL Solar Radiation Data Manual for Flat-Plate Collectors - Redbook (NREL 1994).pdf — page 181">NREL <em>Solar Radiation Data Manual</em></a> — Medford, every tilt, every month; <a class="lib" target="_blank" rel="noopener" href="https://infohub.practicalaction.org/server/api/core/bitstreams/e3a4fd70-0593-45f3-80ee-9c1fbbfe35bf/content#page=3" title="Practical Action - Solar Photovoltaic Energy Technical Brief.pdf — page 3">Practical Action <em>Solar PV</em></a> — tilt and sizing basics.</p>
+<h2 id="a-worked-example">🧮 A worked example</h2>
+<p><strong>Panels:</strong> panel kW = (kWh a day ÷ sun hours) × 1.2 for losses (<a class="lib" target="_blank" rel="noopener" href="https://www.osti.gov/servlets/purl/1599703#page=20" title="Sandia Sizing Small Off-Grid Solar Systems for Rural Homes.pdf — page 20">Sandia, p. 20</a>). For the 1 kWh load above:</p>
+<ul>
+<li><strong>December:</strong> 1 ÷ 1.9 × 1.2 ≈ <strong>630 W of panels</strong>.</li>
+<li><strong>July:</strong> 1 ÷ 7.1 × 1.2 ≈ <strong>170 W</strong>.</li>
+</ul>
+<p>Check: each rated panel watt gives about 0.85 Wh per sun hour (<a class="lib" target="_blank" rel="noopener" href="https://infohub.practicalaction.org/server/api/core/bitstreams/e3a4fd70-0593-45f3-80ee-9c1fbbfe35bf/content#page=4" title="Practical Action - Solar Photovoltaic Energy Technical Brief.pdf — page 4">Practical Action, p. 4</a>), and 630 × 0.85 × 1.9 ≈ 1,020 Wh.</p>
+<p><strong>Batteries:</strong> only <strong>40% of a lead-acid label</strong> is usable (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_06.pdf#page=17" title="IEA PVPS Lead-Acid Battery Guide for Stand-Alone PV.pdf — page 17">IEA, p. 17</a>), so label Wh needed = daily Wh × days of backup ÷ 0.4. Above 40° latitude the IEA suggests <strong>7–9 days</strong> of backup for solar alone (same page): 17,500–22,500 Wh of label for 1 kWh a day. Four 6 V, 220 Ah golf-cart batteries in series make 24 V × 220 Ah = 5,280 Wh, about <strong>2 days</strong> at 40% <em>(arithmetic)</em>.</p>
+<p><strong>The cheaper fix:</strong> use less in winter, add panels (salvaged ones are plentiful), and fill the gap with creek hydro or a generator. When either more panels or more batteries would do, <strong>add panels</strong>; don't put a new battery into an aged bank (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_05.pdf#page=38" title="IEA PVPS Recommended Practices for Charge Controllers.pdf — page 38">IEA, p. 38</a>).</p>
+<p><strong>Controller:</strong> at 24 V with an MPPT controller, 630 W ÷ 24 V × 1.25 ≈ 33 A, so a 40 A controller (<a class="lib" target="_blank" rel="noopener" href="https://extension.arizona.edu/sites/default/files/2024-08/az1983-2022.pdf#page=4" title="Univ of Arizona Extension - Stand-Alone Solar PV System Components.pdf — page 4">Arizona, p. 4</a>).</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://www.osti.gov/servlets/purl/1599703#page=20" title="Sandia Sizing Small Off-Grid Solar Systems for Rural Homes.pdf — page 20">Sandia, p. 20</a> — a full worked example; <a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_06.pdf#page=17" title="IEA PVPS Lead-Acid Battery Guide for Stand-Alone PV.pdf — page 17">IEA <em>Lead-Acid Battery Guide</em>, p. 17</a> — battery sizing.</p>
+<h2 id="salvaging-and-testing-panels">🔍 Salvaging and testing panels</h2>
+<p><strong>Count the cells:</strong> 36 cells is a "12 V" panel; 60 cells give about 30 V, and 72 cells about 36 V (<a class="lib" target="_blank" rel="noopener" href="https://extension.arizona.edu/sites/default/files/2024-08/az1983-2022.pdf#page=2" title="Univ of Arizona Extension - Stand-Alone Solar PV System Components.pdf — page 2">Arizona, p. 2</a>). House-roof panels are 60- or 72-cell; they charge a 12 or 24 V bank well only through an MPPT controller <em>(rule of thumb)</em>.</p>
+<p><strong>Rooftop grid-tie systems go dead when the grid does.</strong> A grid-tied inverter "cannot operate disconnected from the grid" (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_ADA152299/DTIC_ADA152299.pdf#page=23" title="Maintenance of Photovoltaic Power Systems (Navy NWC TP 6563 1984).pdf — page 23">Navy NWC TP 6563, p. 23</a>); modern string and micro-inverters shut down the same way, by design <em>(rule of thumb)</em>. The panels are fine: rewire them through a charge controller to batteries.</p>
+<p><strong>Testing a used panel</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_ADA152299/DTIC_ADA152299.pdf#page=50" title="Maintenance of Photovoltaic Power Systems (Navy NWC TP 6563 1984).pdf — page 50">Navy, pp. 26, 50–51</a>):</p>
+<ol type="1">
+<li>Look for cracked glass and peeling layers (delamination).</li>
+<li>In clear sun, face the panel squarely at the sun.</li>
+<li><strong>Open-circuit voltage</strong> (nothing connected): within 10% of the label, allowing for heat (hot panels read lower).</li>
+<li><strong>Short-circuit current:</strong> meter on its 10 A range across the leads, one panel at a time <em>(rule of thumb)</em>: within 20% of the label.</li>
+</ol>
+<p>A 20-year-old panel usually still makes 80–90% of its label <em>(rule of thumb)</em>. Wash panels with plain water <strong>early in the morning</strong>, so cold water can't crack hot glass (p. 26). <strong>Bypass diodes</strong> let current flow around a dead module; a <strong>blocking diode</strong> stops the battery draining back through the panels at night (p. 19).</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_ADA152299/DTIC_ADA152299.pdf#page=50" title="Maintenance of Photovoltaic Power Systems (Navy NWC TP 6563 1984).pdf — page 50">Navy <em>Maintenance of Photovoltaic Power Systems</em></a> — testing and troubleshooting with only a voltmeter.</p>
+<h2 id="charge-controllers-and-inverters">🎛️ Charge controllers and inverters</h2>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th><a class="wiki" href="https://en.wikipedia.org/wiki/Charge_controller" data-title="Charge_controller" target="_blank" rel="noopener" title="Wikipedia: Charge controller (offline copy with photos when opened through the Library Assistant)">PWM</a></th>
+<th><a class="wiki" href="https://en.wikipedia.org/wiki/Maximum_power_point_tracking" data-title="Maximum_power_point_tracking" target="_blank" rel="noopener" title="Wikipedia: Maximum power point tracking (offline copy with photos when opened through the Library Assistant)">MPPT</a></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Panels</td>
+<td>Must match the battery (36-cell for 12 V)</td>
+<td>Any higher-voltage string, including 60/72-cell house panels</td>
+</tr>
+<tr class="even">
+<td>Wire</td>
+<td>Heavier</td>
+<td>Thinner, at higher voltage</td>
+</tr>
+<tr class="odd">
+<td>Size it at</td>
+<td>Panel short-circuit amps × parallel strings × 1.25</td>
+<td>Array watts ÷ battery volts × 1.25</td>
+</tr>
+</tbody>
+</table>
+<p>(<a class="lib" target="_blank" rel="noopener" href="https://extension.arizona.edu/sites/default/files/2024-08/az1983-2022.pdf#page=3" title="Univ of Arizona Extension - Stand-Alone Solar PV System Components.pdf — page 3">Arizona, pp. 3–4</a>.) The IEA uses × 1.3, because sun off cloud edges can reach 1,300 W/m² (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_05.pdf#page=41" title="IEA PVPS Recommended Practices for Charge Controllers.pdf — page 41">IEA, p. 41</a>).</p>
+<p><strong>A good controller has</strong> (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_06.pdf#page=21" title="IEA PVPS Lead-Acid Battery Guide for Stand-Alone PV.pdf — page 21">IEA, p. 21</a>):</p>
+<ul>
+<li>an equalize mode and a charge display;</li>
+<li>battery temperature compensation, about −5 mV per °C per cell (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_05.pdf#page=26" title="IEA PVPS Recommended Practices for Charge Controllers.pdf — page 26">IEA, p. 26</a>);</li>
+<li>a <strong>low-voltage load disconnect</strong>, typically off at 12.0 V and back on at 13.2 V for a 12 V battery (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_05.pdf#page=36" title="IEA PVPS Recommended Practices for Charge Controllers.pdf — page 36">p. 36</a>);</li>
+<li>a fuse and lightning protection.</li>
+</ul>
+<p><strong><a class="wiki" href="https://en.wikipedia.org/wiki/Power_inverter" data-title="Power_inverter" target="_blank" rel="noopener" title="Wikipedia: Power inverter (offline copy with photos when opened through the Library Assistant)">Inverters</a>:</strong> use <strong>pure sine-wave</strong> for electronics and radios (<a class="lib" target="_blank" rel="noopener" href="https://extension.arizona.edu/sites/default/files/2024-08/az1983-2022.pdf#page=7" title="Univ of Arizona Extension - Stand-Alone Solar PV System Components.pdf — page 7">Arizona, p. 7</a>), and size for the motor-start surge. Keep a spare controller and inverter in a Faraday can (<a class="guide" href="EMP-GUIDE.html">EMP guide</a>).</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_05.pdf#page=36" title="IEA PVPS Recommended Practices for Charge Controllers.pdf — page 36">IEA <em>Recommended Practices for Charge Controllers</em></a> — set points and features; <a class="lib" target="_blank" rel="noopener" href="https://extension.arizona.edu/sites/default/files/2024-08/az1983-2022.pdf#page=7" title="Univ of Arizona Extension - Stand-Alone Solar PV System Components.pdf — page 7">Arizona, p. 7</a> — inverter types.</p>
+<h2 id="choosing-batteries-and-reading-their-charge">🔋 Choosing batteries and reading their charge</h2>
+<p><strong>Best to worst for solar:</strong> solar batteries; then leisure, golf-cart and traction batteries; then truck starting batteries. <strong>Avoid car batteries</strong> (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_06.pdf#page=13" title="IEA PVPS Lead-Acid Battery Guide for Stand-Alone PV.pdf — page 13">IEA, p. 13</a>). A car battery survives about <strong>20 deep discharges</strong>. A <a class="wiki" href="https://en.wikipedia.org/wiki/Deep-cycle_battery" data-title="Deep-cycle_battery" target="_blank" rel="noopener" title="Wikipedia: Deep-cycle battery (offline copy with photos when opened through the Library Assistant)">deep-cycle</a> battery emptied 80% each time lasts about 800 cycles; emptied 20%, about 6,000 (<a class="lib" target="_blank" rel="noopener" href="https://infohub.practicalaction.org/server/api/core/bitstreams/28e3aa71-19ea-4417-988f-c3450a884410/content#page=5" title="Practical Action - Batteries Technical Brief.pdf — page 5">Practical Action <em>Batteries</em>, p. 5</a>).</p>
+<p><strong>Count on 40% of the label:</strong> a battery is worn out at 80% of new capacity, and should give at most half of that a day: 0.8 × 0.5 = 0.4 (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_06.pdf#page=17" title="IEA PVPS Lead-Acid Battery Guide for Stand-Alone PV.pdf — page 17">IEA, p. 17</a>). Series adds volts; parallel adds amp-hours. No more than 3–4 strings in parallel, all the same age and size, with equal cables (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_06.pdf#page=18" title="IEA PVPS Lead-Acid Battery Guide for Stand-Alone PV.pdf — page 18">p. 18</a>).</p>
+<p><strong>How full is it?</strong></p>
+<ul>
+<li><strong>Voltage at rest:</strong> a 12 V <a class="wiki" href="https://en.wikipedia.org/wiki/Lead%E2%80%93acid_battery" data-title="Lead–acid_battery" target="_blank" rel="noopener" title="Wikipedia: Lead–acid battery (offline copy with photos when opened through the Library Assistant)">lead–acid battery</a> reads 12.0 V empty to 12.9 V full (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_06.pdf#page=26" title="IEA PVPS Lead-Acid Battery Guide for Stand-Alone PV.pdf — page 26">IEA, p. 26</a>). Half-full is about 12.4 V <em>(rule of thumb)</em>.</li>
+<li><strong>Under load,</strong> never below about <strong>10.8 V</strong> (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_06.pdf#page=15" title="IEA PVPS Lead-Acid Battery Guide for Stand-Alone PV.pdf — page 15">p. 15</a>).</li>
+<li><strong><a class="wiki" href="https://en.wikipedia.org/wiki/Hydrometer" data-title="Hydrometer" target="_blank" rel="noopener" title="Wikipedia: Hydrometer (offline copy with photos when opened through the Library Assistant)">Hydrometer</a>:</strong> full is about 1.280; recharge below 1.250 (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/constelect1/constelect1.pdf#page=68" title="US Navy Construction Electrician Basic (NAVEDTRA 14026).pdf — page 68">Navy CE, p. 68</a>). In cycled solar batteries it reads true only after an equalizing charge (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_06.pdf#page=26" title="IEA PVPS Lead-Acid Battery Guide for Stand-Alone PV.pdf — page 26">IEA, p. 26</a>).</li>
+</ul>
+<p><strong>Heat and cold:</strong> at 14 °F a battery gives only 60% of its capacity, and every 18 °F above 68 °F doubles plate corrosion (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_06.pdf#page=18" title="IEA PVPS Lead-Acid Battery Guide for Stand-Alone PV.pdf — page 18">IEA, pp. 18–19</a>). A <strong>discharged battery can freeze and crack</strong>; protect it below about 19 °F (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_05.pdf#page=31" title="IEA PVPS Recommended Practices for Charge Controllers.pdf — page 31">IEA controllers, p. 31</a>). Here: shade batteries from 100 °F summer heat and insulate them for January cold snaps (the record low is −6 °F) <em>(rule of thumb)</em>.</p>
+<p><strong>Storage:</strong> recharge stored lead-acid batteries every 3–6 months (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_06.pdf#page=23" title="IEA PVPS Lead-Acid Battery Guide for Stand-Alone PV.pdf — page 23">IEA, p. 23</a>), sealed ones every 3 (<a class="lib" target="_blank" rel="noopener" href="https://infohub.practicalaction.org/server/api/core/bitstreams/28e3aa71-19ea-4417-988f-c3450a884410/content#page=6" title="Practical Action - Batteries Technical Brief.pdf — page 6">Practical Action, p. 6</a>).</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_06.pdf#page=13" title="IEA PVPS Lead-Acid Battery Guide for Stand-Alone PV.pdf — page 13">IEA <em>Lead-Acid Battery Guide for Stand-Alone PV</em></a> — choosing, sizing and care; <a class="lib" target="_blank" rel="noopener" href="https://infohub.practicalaction.org/server/api/core/bitstreams/28e3aa71-19ea-4417-988f-c3450a884410/content#page=5" title="Practical Action - Batteries Technical Brief.pdf — page 5">Practical Action <em>Batteries</em></a> — plain-language basics.</p>
+<h2 id="keeping-lead-acid-alive">💧 Keeping lead-acid alive</h2>
+<p><strong>Watering:</strong> use <strong>distilled water, added after charging</strong>, up to the fill line. In freezing weather add water only if a charge follows, or it may freeze before it mixes (<a class="lib" target="_blank" rel="noopener" href="https://everyspec.com/DOE/DOE-HDBK/download.php?spec=DOE-HDBK-1084.003301.pdf#page=44" title="DOE Primer on Lead-Acid Storage Batteries (DOE-HDBK-1084-95).pdf — page 44">DOE-HDBK-1084, p. 44</a>). If the plates show, top up at once; clean rainwater will do now and then (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_06.pdf#page=25" title="IEA PVPS Lead-Acid Battery Guide for Stand-Alone PV.pdf — page 25">IEA, p. 25</a>). <strong>Adding acid doesn't recharge a battery</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/NEETSModules/NEETS%20Module%2001%20-%20Introduction%20to%20Matter%20Energy%20and%20Direct%20Current.pdf#page=97" title="NEETS Module 01 - Matter Energy and Direct Current.pdf — page 97">NEETS 1, p. 97</a>).</p>
+<p><strong>Equalizing</strong> is a deliberate overcharge that brings every cell up and stirs the acid (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_05.pdf#page=27" title="IEA PVPS Recommended Practices for Charge Controllers.pdf — page 27">IEA, p. 27</a>):</p>
+<ul>
+<li><strong>Flooded:</strong> hold about 2.45–2.50 V per cell (<strong>14.7–15.0 V</strong> on 12 V) for about 5 hours.</li>
+<li><strong>AGM:</strong> only about 2.35 V per cell (<strong>14.1 V</strong>) for about 8 hours (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_05.pdf#page=46" title="IEA PVPS Recommended Practices for Charge Controllers.pdf — page 46">p. 46</a>). Gel or AGM higher only if the maker allows (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_05.pdf#page=21" title="IEA PVPS Recommended Practices for Charge Controllers.pdf — page 21">p. 21</a>).</li>
+<li>Remove catalytic recombiner caps first (p. 27).</li>
+<li><strong>With a hydrometer:</strong> charge at about 5 A until specific gravity stays steady for 4 hours, easing off if the acid reaches 110 °F (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/constelect1/constelect1.pdf#page=67" title="US Navy Construction Electrician Basic (NAVEDTRA 14026).pdf — page 67">Navy CE, p. 67</a>).</li>
+<li><strong>How often:</strong> monthly, or when cells drift apart <em>(rule of thumb)</em>. <strong>Never equalize lithium.</strong></li>
+</ul>
+<p><strong>"Desulfators":</strong> plate sulfate from sitting deeply discharged "can never be recovered" (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_06.pdf#page=23" title="IEA PVPS Lead-Acid Battery Guide for Stand-Alone PV.pdf — page 23">IEA, p. 23</a>); equalizing restores cells that were only undercharged (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_06.pdf#page=20" title="IEA PVPS Lead-Acid Battery Guide for Stand-Alone PV.pdf — page 20">p. 20</a>). Treat pulse gadgets as unproven: equalize, then time the battery under a known load before trusting it <em>(rule of thumb)</em>.</p>
+<p><strong>Cleaning:</strong> neutralize spilled acid with about 1 kg baking soda in 4 L water (2 lb per gallon), then rinse (<a class="lib" target="_blank" rel="noopener" href="https://everyspec.com/DOE/DOE-HDBK/download.php?spec=DOE-HDBK-1084.003301.pdf#page=44" title="DOE Primer on Lead-Acid Storage Batteries (DOE-HDBK-1084-95).pdf — page 44">DOE-HDBK-1084, pp. 44–45</a>). Grease the terminals (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_06.pdf#page=25" title="IEA PVPS Lead-Acid Battery Guide for Stand-Alone PV.pdf — page 25">IEA, p. 25</a>).</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://everyspec.com/DOE/DOE-HDBK/download.php?spec=DOE-HDBK-1084.003301.pdf#page=44" title="DOE Primer on Lead-Acid Storage Batteries (DOE-HDBK-1084-95).pdf — page 44">DOE <em>Primer on Lead-Acid Storage Batteries</em></a> — watering, charging and care; <a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_05.pdf#page=46" title="IEA PVPS Recommended Practices for Charge Controllers.pdf — page 46">IEA controllers, p. 46</a> — charge set points.</p>
+<h2 id="battery-safety">💥 Battery safety</h2>
+<p><strong>Hydrogen</strong> (<a class="lib" target="_blank" rel="noopener" href="https://everyspec.com/DOE/DOE-HDBK/download.php?spec=DOE-HDBK-1084.003301.pdf#page=46" title="DOE Primer on Lead-Acid Storage Batteries (DOE-HDBK-1084-95).pdf — page 46">DOE-HDBK-1084, pp. 22, 46</a>):</p>
+<ul>
+<li>Overcharging makes about 0.42 L of hydrogen per amp-hour, and 4% in air can explode.</li>
+<li>Many explosions follow <strong>long, unregulated charging of a battery out of its vehicle</strong>: moving it vents gas, and a spark sets it off.</li>
+<li>Vent from the <strong>highest point</strong> of the room; hydrogen collects under the ceiling (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_06.pdf#page=24" title="IEA PVPS Lead-Acid Battery Guide for Stand-Alone PV.pdf — page 24">IEA, p. 24</a>). Put conduit openings below the battery tops (<a class="lib" target="_blank" rel="noopener" href="https://www.osti.gov/servlets/purl/808812#page=51" title="Sandia PV Systems and the National Electrical Code - Suggested Practices.pdf — page 51">Sandia, p. 51</a>).</li>
+<li>Check water with a flashlight, <strong>never a flame</strong> (<a class="lib" target="_blank" rel="noopener" href="https://infohub.practicalaction.org/server/api/core/bitstreams/28e3aa71-19ea-4417-988f-c3450a884410/content#page=6" title="Practical Action - Batteries Technical Brief.pdf — page 6">Practical Action, p. 6</a>).</li>
+</ul>
+<p><strong>Shorts:</strong> put the main fuse right at the battery's + terminal, and connect the battery last, after all wiring is checked (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_06.pdf#page=28" title="IEA PVPS Lead-Acid Battery Guide for Stand-Alone PV.pdf — page 28">IEA, p. 28</a>). Take off rings and watches, and tape wrench handles <em>(rule of thumb)</em>.</p>
+<p><strong>Acid and gases:</strong> goggles and rubber gloves; flush for 15 minutes. Overcharged batteries can also give off toxic arsine and stibine; the venting that keeps hydrogen low keeps them low too (<a class="lib" target="_blank" rel="noopener" href="https://everyspec.com/DOE/DOE-HDBK/download.php?spec=DOE-HDBK-1084.003301.pdf#page=46" title="DOE Primer on Lead-Acid Storage Batteries (DOE-HDBK-1084-95).pdf — page 46">DOE-HDBK-1084, p. 46</a>).</p>
+<p><strong>Where batteries go:</strong> out of living areas and not under electrical panels. A lockable polyethylene tool box holds four L-16 batteries (<a class="lib" target="_blank" rel="noopener" href="https://www.osti.gov/servlets/purl/808812#page=52" title="Sandia PV Systems and the National Electrical Code - Suggested Practices.pdf — page 52">Sandia, p. 52</a>). Up to about 20 six-volt batteries in a large, drafty room may not need forced venting (p. 51).</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://everyspec.com/DOE/DOE-HDBK/download.php?spec=DOE-HDBK-1084.003301.pdf#page=22" title="DOE Primer on Lead-Acid Storage Batteries (DOE-HDBK-1084-95).pdf — page 22">DOE-HDBK-1084</a> — hydrogen, acid and toxic gases; <a class="lib" target="_blank" rel="noopener" href="https://www.osti.gov/servlets/purl/808812#page=51" title="Sandia PV Systems and the National Electrical Code - Suggested Practices.pdf — page 51">Sandia, p. 51</a> — battery rooms and boxes.</p>
+<h2 id="lithium-lifepo4-and-salvaged-packs">🔥 Lithium, LiFePO4 and salvaged packs</h2>
+<p><strong>Types</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www.lightingglobal.org/wp-content/uploads/2019/06/Lithium-Ion_TechNote-2019_update-1.pdf#page=3" title="Lighting Global - Lithium-ion Batteries Part I Overview (World Bank 2019).pdf — page 3">Lighting Global, pp. 3, 10</a>):</p>
+<ul>
+<li><strong><a class="wiki" href="https://en.wikipedia.org/wiki/Lithium_iron_phosphate_battery" data-title="Lithium_iron_phosphate_battery" target="_blank" rel="noopener" title="Wikipedia: Lithium iron phosphate battery (offline copy with photos when opened through the Library Assistant)">LiFePO4 (LFP)</a></strong>, 3.2 V per cell: the safest and longest-lived (1,000+ full cycles), but bulkier.</li>
+<li><strong>Phone, laptop, tool and e-bike cells</strong> pack more energy but are less stable.</li>
+<li><strong>Every pack needs a <a class="wiki" href="https://en.wikipedia.org/wiki/Battery_management_system" data-title="Battery_management_system" target="_blank" rel="noopener" title="Wikipedia: Battery management system (offline copy with photos when opened through the Library Assistant)">battery management system (BMS)</a>.</strong></li>
+</ul>
+<p><strong>Charging rules</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www.lightingglobal.org/wp-content/uploads/2019/06/Lithium-Ion_TechNote-2019_update-1.pdf#page=6" title="Lighting Global - Lithium-ion Batteries Part I Overview (World Bank 2019).pdf — page 6">Lighting Global, pp. 6–8</a>):</p>
+<ul>
+<li>Overcharge tolerance can be <strong>50 mV or less</strong> per cell, and cells in series must be balanced.</li>
+<li><strong>Never charge below 32 °F (0 °C)</strong> or above about 113 °F: cold charging grows metal "dendrites" that short the cell and start fires. NFPA says 32–105 °F (<a class="lib" target="_blank" rel="noopener" href="https://www.nfpa.org/-/media/Project/Storefront/Catalog/Files/Safety-tip-sheets/LithiumIonBatterySafetyTips.pdf#page=1" title="NFPA Lithium-Ion Battery Safety Tip Sheet (NFPA 2025).pdf — page 1">NFPA, p. 1</a>).</li>
+<li>Draining a cell below 2.5–3 V can ruin it. <strong>Store at 20–40% charge</strong> near room temperature.</li>
+<li>A 12.8 V LiFePO4 bank charges at about 14.2–14.6 V and needs no equalizing; follow the maker's datasheet <em>(rule of thumb)</em>. In our winters, keep it where it stays above freezing, or use a BMS with a cold-charge cutoff <em>(rule of thumb)</em>.</li>
+</ul>
+<p><strong>Salvaged e-bike and tool packs:</strong> stop using one that smells, changes color, heats, swells, leaks or makes odd noises. Charge it with its own charger, never on a bed or couch, and not after it's full (<a class="lib" target="_blank" rel="noopener" href="https://www.nfpa.org/-/media/Project/Storefront/Catalog/Files/Safety-tip-sheets/LithiumIonBatterySafetyTips.pdf#page=1" title="NFPA Lithium-Ion Battery Safety Tip Sheet (NFPA 2025).pdf — page 1">NFPA, p. 1</a>). Discard swollen, dented or long-dead packs; never build packs from mixed salvaged cells without a balancing BMS; in fire season, charge in a detached shed, on stone <em>(rule of thumb)</em>.</p>
+<p><strong>If one burns</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www.faa.gov/sites/faa.gov/files/other_visit/aviation_industry/airline_operators/airline_safety/SAFO09013.pdf#page=1" title="FAA SAFO 09013 Fighting Fires Caused by Lithium Batteries (FAA 2009).pdf — page 1">FAA SAFO 09013</a>): one cell's <a class="wiki" href="https://en.wikipedia.org/wiki/Thermal_runaway" data-title="Thermal_runaway" target="_blank" rel="noopener" title="Wikipedia: Thermal runaway (offline copy with photos when opened through the Library Assistant)">thermal runaway</a> sets off the next, and the fire flares again and again.</p>
+<ol type="1">
+<li>Put out the flames with water or any extinguisher.</li>
+<li><strong>Soak the pack with water to cool it.</strong> Don't cover it, use ice, or pick it up.</li>
+<li>Get out of a room with a burning battery bank: the gas is toxic and flammable, and a pack can reignite hours or days later (<a class="lib" target="_blank" rel="noopener" href="https://www.cleanegroup.org/wp-content/uploads/Residential-Lithium-Ion-Battery-Storage-Fire-Safety.pdf#page=2" title="Home Lithium-Ion Battery Fire Safety FAQ.pdf — page 2">fire FAQ, pp. 2–3</a>).</li>
+</ol>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://www.lightingglobal.org/wp-content/uploads/2019/06/Lithium-Ion_TechNote-2019_update-1.pdf#page=6" title="Lighting Global - Lithium-ion Batteries Part I Overview (World Bank 2019).pdf — page 6">Lighting Global <em>Lithium-ion Batteries</em></a> — types, charging and storage; <a class="lib" target="_blank" rel="noopener" href="https://www.cleanegroup.org/wp-content/uploads/Residential-Lithium-Ion-Battery-Storage-Fire-Safety.pdf#page=2" title="Home Lithium-Ion Battery Fire Safety FAQ.pdf — page 2">Home Lithium-Ion Battery Fire Safety FAQ</a> — fire behavior.</p>
+<h2 id="wiring-fuses-and-grounding">🔌 Wiring, fuses and grounding</h2>
+<p><strong>Voltage drop:</strong> volts lost = 2 × one-way feet × amps × (ohms per 1,000 ft) ÷ 1,000. Aim for 3–5% loss between array and battery (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_05.pdf#page=53" title="IEA PVPS Recommended Practices for Charge Controllers.pdf — page 53">IEA, p. 53</a>). <strong>Longest one-way run for a 3% drop at 10 amps</strong> (copper; halve it for 20 A, double it for 5 A), from <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/NEETSModules/NEETS%20Module%2004%20-%20Introduction%20to%20Electrical%20Conductors%2C%20Wiring%20Techniques%2C%20and%20Schematic%20Reading.pdf#page=20" title="NEETS Module 04 - Conductors Wiring Techniques and Schematics.pdf — page 20">NEETS 4, p. 20</a> <em>(arithmetic)</em>:</p>
+<table>
+<thead>
+<tr class="header">
+<th><a class="wiki" href="https://en.wikipedia.org/wiki/American_wire_gauge" data-title="American_wire_gauge" target="_blank" rel="noopener" title="Wikipedia: American wire gauge (offline copy with photos when opened through the Library Assistant)">Wire</a></th>
+<th>Ohms per 1,000 ft</th>
+<th>12 V</th>
+<th>24 V</th>
+<th>48 V</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>10 AWG</td>
+<td>1.02</td>
+<td>18 ft</td>
+<td>35 ft</td>
+<td>71 ft</td>
+</tr>
+<tr class="even">
+<td>8 AWG</td>
+<td>0.641</td>
+<td>28 ft</td>
+<td>56 ft</td>
+<td>112 ft</td>
+</tr>
+<tr class="odd">
+<td>6 AWG</td>
+<td>0.403</td>
+<td>45 ft</td>
+<td>89 ft</td>
+<td>179 ft</td>
+</tr>
+<tr class="even">
+<td>4 AWG</td>
+<td>0.253</td>
+<td>71 ft</td>
+<td>142 ft</td>
+<td>285 ft</td>
+</tr>
+<tr class="odd">
+<td>2 AWG</td>
+<td>0.159</td>
+<td>113 ft</td>
+<td>226 ft</td>
+<td>453 ft</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Example: 240 W at 12 V (20 A) over 50 ft of 10 AWG loses 2 V, about 17%. At 24 V it loses 1 V, about 4% <em>(arithmetic)</em>.</li>
+<li>Hot wire loses more: Sandia figures <strong>11.2 V lost</strong> in 400 ft of 8 AWG at 36 A (<a class="lib" target="_blank" rel="noopener" href="https://www.osti.gov/servlets/purl/808812#page=102" title="Sandia PV Systems and the National Electrical Code - Suggested Practices.pdf — page 102">p. 102</a>). Round up a size.</li>
+<li>Minimum: 14 AWG on a 10 A fuse, 12 AWG on a 20 A fuse (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_06.pdf#page=33" title="IEA PVPS Lead-Acid Battery Guide for Stand-Alone PV.pdf — page 33">IEA, p. 33</a>).</li>
+</ul>
+<p><strong>Fuses must be DC-rated.</strong> Car blade and glass fuses have no DC interrupting rating and a 32 V maximum; keep them off battery and array circuits (<a class="lib" target="_blank" rel="noopener" href="https://www.osti.gov/servlets/purl/808812#page=42" title="Sandia PV Systems and the National Electrical Code - Suggested Practices.pdf — page 42">Sandia, p. 42</a>). Protect the battery cable with a current-limiting DC fuse (class T or RK5) close to the battery (p. 45). Use time-delay fuses where motors start (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/NEETSModules/NEETS%20Module%2003-%20Introduction%20to%20Circuit%20Protection%2C%20Control%2C%20and%20Measurement.pdf#page=94" title="NEETS Module 03 - Circuit Protection Control and Measurement.pdf — page 94">NEETS 3, p. 94</a>).</p>
+<p><strong><a class="wiki" href="https://en.wikipedia.org/wiki/Ground_%28electricity%29" data-title="Ground_(electricity)" target="_blank" rel="noopener" title="Wikipedia: Ground (electricity) (offline copy with photos when opened through the Library Assistant)">Grounding</a>:</strong> bond the DC negative to ground at <strong>one point only</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www.osti.gov/servlets/purl/808812#page=31" title="Sandia PV Systems and the National Electrical Code - Suggested Practices.pdf — page 31">Sandia, p. 31</a>). Drive ground rods 8 ft deep with #6 copper (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/fm-5-424-theater-of-operations-electrical-systems-1997/FM%205-424%20Theater%20Of%20Operations%20Electrical%20Systems%20%201997.pdf#page=49" title="US Army FM 5-424 Electrical Systems (Wiring Grounding Generators).pdf — page 49">FM 5-424, p. 49</a>), about 6 ft apart if you use several (p. 117). For lightning, use one ground electrode, bond all metal frames, and run + and − wires side by side so they don't form loops (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep03_14.pdf#page=7" title="IEA PVPS Lightning Protection for Stand-Alone PV.pdf — page 7">IEA <em>Lightning</em>, pp. 7, 13</a>).</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://www.osti.gov/servlets/purl/808812#page=42" title="Sandia PV Systems and the National Electrical Code - Suggested Practices.pdf — page 42">Sandia <em>PV Systems and the NEC</em></a> — fuses, disconnects, grounding; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/fm-5-424-theater-of-operations-electrical-systems-1997/FM%205-424%20Theater%20Of%20Operations%20Electrical%20Systems%20%201997.pdf#page=49" title="US Army FM 5-424 Electrical Systems (Wiring Grounding Generators).pdf — page 49">Army FM 5-424</a> — ground rods.</p>
+<h2 id="generators-cars-and-backfeed">⛽ Generators, cars and backfeed</h2>
+<ul>
+<li><strong>Never backfeed.</strong> A generator plugged into a wall outlet sends power out onto the lines and can electrocute line workers and neighbors on the same transformer (<a class="lib" target="_blank" rel="noopener" href="https://www.cpsc.gov/s3fs-public/5123_SafetyAlert_PortableGenerators_102021.pdf#page=1" title="CPSC Portable Generator Hazards - CO Backfeed and Fuel Safety.pdf — page 1">CPSC, p. 1</a>). Use a <a class="wiki" href="https://en.wikipedia.org/wiki/Transfer_switch" data-title="Transfer_switch" target="_blank" rel="noopener" title="Wikipedia: Transfer switch (offline copy with photos when opened through the Library Assistant)">transfer switch</a>, or plug appliances straight into the generator. <strong>Outdoors only</strong>: carbon monoxide.</li>
+<li><strong>Run a generator under full load:</strong> charge batteries while it does other work (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_05.pdf#page=46" title="IEA PVPS Recommended Practices for Charge Controllers.pdf — page 46">IEA, p. 46</a>). Violent gassing means the charge rate is too high (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/constelect1/constelect1.pdf#page=67" title="US Navy Construction Electrician Basic (NAVEDTRA 14026).pdf — page 67">Navy CE, p. 67</a>).</li>
+<li>A generator's small "12 V DC" outlet is a weak, unregulated charger; a proper multi-stage charger on its AC is better <em>(rule of thumb)</em>.</li>
+<li><strong>From a car:</strong> connect + to +, − to − (<a class="lib" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED021119.pdf#page=48" title="Alternator and Regulator Servicing and Testing (1967).pdf — page 48"><em>Alternator and Regulator Servicing</em>, p. 48</a>). Disconnect a car's battery before putting a fast charger on it, or you can burn out the car's diodes (p. 47). A car alternator rarely fills a deep-cycle bank, and idling for hours wastes fuel and makes CO <em>(rule of thumb)</em>.</li>
+</ul>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://www.cpsc.gov/s3fs-public/5123_SafetyAlert_PortableGenerators_102021.pdf#page=1" title="CPSC Portable Generator Hazards - CO Backfeed and Fuel Safety.pdf — page 1">CPSC <em>Portable Generator Hazards</em></a> — CO and backfeed; <a class="lib" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED021119.pdf#page=47" title="Alternator and Regulator Servicing and Testing (1967).pdf — page 47"><em>Alternator and Regulator Servicing</em></a> — charging and testing.</p>
+<h2 id="creek-hydro-and-why-not-wind">🌊 Creek hydro, and why not wind</h2>
+<p><em>While Oregon's water laws are enforced,</em> most Illinois Valley creeks are closed to hydro by state rule (see <a class="guide" href="ILLINOIS-VALLEY-START-HERE.html">Start Here</a>).</p>
+<p><strong>Measure the drop (head):</strong> run a hose full of water downhill with a pressure gauge at the bottom; <strong>psi × 2.31 = feet of head</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www.ncat.org/wp-content/uploads/2025/12/microhydrodesign.pdf#page=6" title="NCAT ATTRA Micro-Hydro Power - Beginners Guide.pdf — page 6">NCAT, p. 6</a>).</p>
+<p><strong>Measure the flow:</strong> time how long the creek takes to fill a container: a 55-gal drum in 40 seconds is 82.5 gallons a minute (gpm) (<a class="lib" target="_blank" rel="noopener" href="https://www.ncat.org/wp-content/uploads/2025/12/microhydrodesign.pdf#page=3" title="NCAT ATTRA Micro-Hydro Power - Beginners Guide.pdf — page 3">NCAT, p. 3</a>). For a bigger creek: width × average depth (sq ft) × float speed (ft per second) × 0.25 for a shallow rocky bed, up to 0.75 for a smooth one, gives cubic feet per second (cfs); 1 cfs = 449 gpm (p. 4).</p>
+<p><strong>Power ≈ gpm × feet of head ÷ 10 watts</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www.ncat.org/wp-content/uploads/2025/12/microhydrodesign.pdf#page=8" title="NCAT ATTRA Micro-Hydro Power - Beginners Guide.pdf — page 8">NCAT, pp. 8–9</a>). A real case: 100 gpm with 35 ft of head left at the turbine (15 psi) gives <strong>about 200 W around the clock</strong>, nearly 5 kWh a day, to a 24 V bank (<a class="lib" target="_blank" rel="noopener" href="https://energypedia.info/images/5/5d/Micro_Hydropower_System_-_A_Buyer%27s_Guide.pdf#page=29" title="NRCan Micro-Hydropower Systems - A Buyers Guide.pdf — page 29">NRCan, p. 29</a>). The rule predicts 350 W: small systems often fall short.</p>
+<p><strong>Pipe size matters.</strong> Head lost per 100 ft of PVC (<a class="lib" target="_blank" rel="noopener" href="https://www.ncat.org/wp-content/uploads/2025/12/microhydrodesign.pdf#page=7" title="NCAT ATTRA Micro-Hydro Power - Beginners Guide.pdf — page 7">NCAT, p. 7</a>):</p>
+<table>
+<thead>
+<tr class="header">
+<th>Flow</th>
+<th>2-in</th>
+<th>3-in</th>
+<th>4-in</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>25 gpm</td>
+<td>1.3 ft</td>
+<td>0.2 ft</td>
+<td>0.04 ft</td>
+</tr>
+<tr class="even">
+<td>50 gpm</td>
+<td>4.7 ft</td>
+<td>0.7 ft</td>
+<td>0.2 ft</td>
+</tr>
+<tr class="odd">
+<td>100 gpm</td>
+<td>16.8 ft</td>
+<td>2.3 ft</td>
+<td>0.6 ft</td>
+</tr>
+<tr class="even">
+<td>200 gpm</td>
+<td>60.6 ft</td>
+<td>8.4 ft</td>
+<td>2.0 ft</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Size for late-summer low flow</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www.ncat.org/wp-content/uploads/2025/12/microhydrodesign.pdf#page=2" title="NCAT ATTRA Micro-Hydro Power - Beginners Guide.pdf — page 2">NCAT, p. 2</a>; <a class="lib" target="_blank" rel="noopener" href="https://energypedia.info/images/5/5d/Micro_Hydropower_System_-_A_Buyer%27s_Guide.pdf#page=12" title="NRCan Micro-Hydropower Systems - A Buyers Guide.pdf — page 12">NRCan, p. 12</a>). Only about 15% of the county's rain falls April–September (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/usda-foreword/usda-foreword.pdf#page=5" title="NRCS - Soil Survey of Josephine County Oregon 1983 (text edition).pdf — page 5">Soil Survey, p. 5</a>), and small creeks shrink sharply or dry up. Measure yours in September and in winter <em>(rule of thumb)</em>.</li>
+<li><strong>Hydro is strongest in winter, when solar is weakest.</strong> A 400 W turbine with batteries and an inverter can still supply 5 kW peaks (<a class="lib" target="_blank" rel="noopener" href="https://energypedia.info/images/5/5d/Micro_Hydropower_System_-_A_Buyer%27s_Guide.pdf#page=28" title="NRCan Micro-Hydropower Systems - A Buyers Guide.pdf — page 28">NRCan, p. 28</a>).</li>
+<li>Use a <strong>dump-load (diversion) controller</strong>, not a solar controller (<a class="lib" target="_blank" rel="noopener" href="https://www.ncat.org/wp-content/uploads/2025/12/microhydrodesign.pdf#page=18" title="NCAT ATTRA Micro-Hydro Power - Beginners Guide.pdf — page 18">NCAT, p. 18</a>). See <a class="wiki" href="https://en.wikipedia.org/wiki/Micro_hydro" data-title="Micro_hydro" target="_blank" rel="noopener" title="Wikipedia: Micro hydro (offline copy with photos when opened through the Library Assistant)">micro hydro</a> and the <a class="wiki" href="https://en.wikipedia.org/wiki/Pelton_wheel" data-title="Pelton_wheel" target="_blank" rel="noopener" title="Wikipedia: Pelton wheel (offline copy with photos when opened through the Library Assistant)">Pelton wheel</a>.</li>
+<li><strong>Screen the intake:</strong> openings no larger than 3/32 in; passive screen area (sq ft) = flow (cfs) ÷ 0.2, (<a class="lib" target="_blank" rel="noopener" href="https://www.dfw.state.or.us/fish/screening/docs/Fish-Screening-Criteria-For-Water-Diversions.pdf#page=1" title="Oregon ODFW Fish Screening Criteria for Water Diversions.pdf — page 1">ODFW, p. 1</a>). For 100 gpm, about 1.1 sq ft <em>(arithmetic)</em>.</li>
+</ul>
+<p><strong><a class="wiki" href="https://en.wikipedia.org/wiki/Small_wind_turbine" data-title="Small_wind_turbine" target="_blank" rel="noopener" title="Wikipedia: Small wind turbine (offline copy with photos when opened through the Library Assistant)">Small wind</a> is usually poor here.</strong> An off-grid wind system needs an average of at least <strong>9 mph</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www.govinfo.gov/content/pkg/GOVPUB-E10-PURL-LPS101495/pdf/GOVPUB-E10-PURL-LPS101495.pdf#page=20" title="DOE Small Wind Electric Systems Consumers Guide.pdf — page 20">DOE <em>Small Wind</em>, p. 20</a>). Medford averages <strong>4.7 mph</strong>, and 3.6 in December (<a class="lib" target="_blank" rel="noopener" href="https://pages.mtu.edu/~jstallen/courses/MEEM4200/lectures/solar/NREL_TP-463-5607_1994.pdf#page=181" title="NREL Solar Radiation Data Manual for Flat-Plate Collectors - Redbook (NREL 1994).pdf — page 181">Redbook, p. 181</a>). Power rises with the cube of wind speed, so half the wind gives one-eighth the power (<a class="lib" target="_blank" rel="noopener" href="https://www.govinfo.gov/content/pkg/GOVPUB-E10-PURL-LPS101495/pdf/GOVPUB-E10-PURL-LPS101495.pdf#page=11" title="DOE Small Wind Electric Systems Consumers Guide.pdf — page 11">p. 11</a>), and the rotor must sit 30 ft above anything within 300 ft (<a class="lib" target="_blank" rel="noopener" href="https://www.govinfo.gov/content/pkg/GOVPUB-E10-PURL-LPS101495/pdf/GOVPUB-E10-PURL-LPS101495.pdf#page=7" title="DOE Small Wind Electric Systems Consumers Guide.pdf — page 7">p. 7</a>). Only exposed ridgetops are worth testing; put money into solar and hydro first <em>(rule of thumb)</em>.</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://www.ncat.org/wp-content/uploads/2025/12/microhydrodesign.pdf#page=3" title="NCAT ATTRA Micro-Hydro Power - Beginners Guide.pdf — page 3">NCAT <em>Micro-Hydro Power</em></a> — measuring and sizing; <a class="lib" target="_blank" rel="noopener" href="https://energypedia.info/images/5/5d/Micro_Hydropower_System_-_A_Buyer%27s_Guide.pdf#page=28" title="NRCan Micro-Hydropower Systems - A Buyers Guide.pdf — page 28">NRCan <em>Buyer's Guide</em></a> — battery systems; <a class="lib" target="_blank" rel="noopener" href="https://www.govinfo.gov/content/pkg/GOVPUB-E10-PURL-LPS101495/pdf/GOVPUB-E10-PURL-LPS101495.pdf#page=20" title="DOE Small Wind Electric Systems Consumers Guide.pdf — page 20">DOE <em>Small Wind</em></a>.</p>
+<h2 id="old-advice-in-the-library-to-ignore">⚠️ Old advice in the library to ignore</h2>
+<ul>
+<li><strong>MPPT called "less important" and a risk to reliability</strong> (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_06.pdf#page=21" title="IEA PVPS Lead-Acid Battery Guide for Stand-Alone PV.pdf — page 21">IEA, p. 21</a>), worth only 5–10% (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_05.pdf#page=39" title="IEA PVPS Recommended Practices for Charge Controllers.pdf — page 39">IEA controllers, p. 39</a>). It is now standard and reliable, and essential for salvaged house panels on a 12 or 24 V bank.</li>
+<li><strong>Equalizing weekly at 2.5–2.6 V per cell</strong> (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_06.pdf#page=20" title="IEA PVPS Lead-Acid Battery Guide for Stand-Alone PV.pdf — page 20">IEA, p. 20</a>) or every 2 weeks (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_05.pdf#page=26" title="IEA PVPS Recommended Practices for Charge Controllers.pdf — page 26">IEA controllers, p. 26</a>). Modern makers say monthly, or when cells drift <em>(rule of thumb)</em>; never past the limit on AGM or gel; never on lithium.</li>
+<li><strong>LEDs at 25–50 lumens per watt</strong> (<a class="lib" target="_blank" rel="noopener" href="https://infohub.practicalaction.org/server/api/core/bitstreams/454e8d1a-e4cf-44d2-8423-f691a4383cff/content#page=3" title="Practical Action - Rural Lighting Technical Brief.pdf — page 3">Practical Action <em>Rural Lighting</em>, p. 3</a>). Modern LEDs give about 80–150, so a 9–10 W LED replaces a 60 W bulb.</li>
+<li><strong>The 1983 appliance table</strong> of 300 W fridges and tube radios (<a class="lib" target="_blank" rel="noopener" href="https://www1.eere.energy.gov/water/pdfs/doewater-10107-vol.1-pt1.pdf#page=66" title="DOE Microhydropower Handbook Vol 1 Part 1 (Site Head Flow Turbines Intake).pdf — page 66">DOE Microhydro, p. 66</a>). Measure your own.</li>
+<li><strong>"Waking up" NiCd cells by fully discharging them</strong> (<a class="lib" target="_blank" rel="noopener" href="https://infohub.practicalaction.org/server/api/core/bitstreams/28e3aa71-19ea-4417-988f-c3450a884410/content#page=4" title="Practical Action - Batteries Technical Brief.pdf — page 4">Practical Action <em>Batteries</em>, p. 4</a>). Only for old sealed NiCd, never NiMH or lithium. (Its warning that a flat series pack can reverse-charge its weakest cell still holds.)</li>
+<li><strong>Car batteries for lighting</strong> (<a class="lib" target="_blank" rel="noopener" href="https://infohub.practicalaction.org/server/api/core/bitstreams/454e8d1a-e4cf-44d2-8423-f691a4383cff/content#page=5" title="Practical Action - Rural Lighting Technical Brief.pdf — page 5"><em>Rural Lighting</em>, p. 5</a>). About 20 deep cycles: a stopgap only.</li>
+<li><strong>Sandia's NEC section numbers</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www.osti.gov/servlets/purl/808812#page=15" title="Sandia PV Systems and the National Electrical Code - Suggested Practices.pdf — page 15">Sandia</a>) are from the 1999 code; the principles still hold.</li>
+<li><strong>1930s–70s wind and generator books</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/fe_Home_Built_6-Volt_Wind_Electric_Plants/Home_Built_6-Volt_Wind_Electric_Plants.pdf" title="Homemade Six-Volt Wind-Electric Plants (North Dakota Extension 1939).pdf"><em>Homemade Six-Volt Wind-Electric Plants</em></a>, <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/fe_Wind_Power_for_Farms_and_Homes/Wind_Power_for_Farms_and_Homes.pdf" title="Wind Power for Farms Homes and Small Industry (US DOE 1978).pdf"><em>Wind Power for Farms</em></a>) predate modern charge control. Add a dump-load controller and a fused battery.</li>
+<li><strong>"Water is useless on lithium fires."</strong> It won't stop the chemistry, but it is the best way to cool the cells and stop the spread (<a class="lib" target="_blank" rel="noopener" href="https://www.faa.gov/sites/faa.gov/files/other_visit/aviation_industry/airline_operators/airline_safety/SAFO09013.pdf#page=1" title="FAA SAFO 09013 Fighting Fires Caused by Lithium Batteries (FAA 2009).pdf — page 1">FAA</a>; <a class="lib" target="_blank" rel="noopener" href="https://www.lightingglobal.org/wp-content/uploads/2019/06/Lithium-Ion_TechNote-2019_update-1.pdf#page=8" title="Lighting Global - Lithium-ion Batteries Part I Overview (World Bank 2019).pdf — page 8">Lighting Global, p. 8</a>). Use lots, from a distance, outdoors if you can, and expect flare-ups.</li>
+</ul>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://www.lightingglobal.org/wp-content/uploads/2019/06/Lithium-Ion_TechNote-2019_update-1.pdf#page=10" title="Lighting Global - Lithium-ion Batteries Part I Overview (World Bank 2019).pdf — page 10">Lighting Global</a> — modern battery chemistries compared.</p>
+<hr />
+<h2 id="related-guides">🔗 Related guides</h2>
+<ul>
+<li><a class="guide" href="ILLINOIS-VALLEY-START-HERE.html">Illinois Valley — Start Here</a> — the short version and the closed-creek list</li>
+<li><a class="guide" href="EMP-GUIDE.html">EMP Guide</a> — spare controllers and inverters in a Faraday can</li>
+<li><a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html">Engines, Motors and Generators</a> — generator repair, motors as generators, dump loads</li>
+<li><a class="guide" href="FUEL-GUIDE.html">Fuel Guide</a> — keeping generator fuel good</li>
+<li><a class="guide" href="WATER-WELLS-GUIDE.html">Water Wells, Pumps, Springs &amp; Cisterns</a> — the well pump, solar and ram pumps</li>
+<li><a class="guide" href="RADIO-GUIDE.html">Radio Guide</a> — what you'll most want to power</li>
+</ul>
+</div><a class="totop" href="#contents" aria-label="Back to contents">↑ Contents</a></body></html>
