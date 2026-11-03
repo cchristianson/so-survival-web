@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Unit Converter &amp; Calculators (offline)</title>
+<style>
+:root{--bg:#0f1420;--card:#171f2e;--ink:#e7ecf3;--muted:#9fb0c3;--accent:#4fd1c5;--accent2:#f6ad55;--line:#273246;--danger:#fc8181}
+@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--danger:#c53030}}:root[data-theme=light]{--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--danger:#c53030}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:960px;margin:0 auto;padding:18px 16px 90px}
+.topnav{font-size:14.5px;margin:0 0 6px;color:var(--muted)}.topnav a{text-decoration:none;white-space:nowrap}
+a{color:var(--accent)}
+h1{font-size:26px;margin:6px 0 4px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+h1 .e{-webkit-text-fill-color:initial;color:var(--ink)}
+h2{font-size:20px;margin:26px 0 8px;border-bottom:2px solid var(--line);padding-bottom:4px}
+.sub{color:var(--muted);margin:0 0 12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:12px 0}
+label{display:block;font-size:13px;color:var(--muted);margin:6px 0 3px}
+input,select{font:inherit;padding:9px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);width:100%;min-width:0}
+input[type=number]{-moz-appearance:textfield}
+.big{font-size:20px;padding:12px 14px}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:4px 12px}
+.pair{display:grid;grid-template-columns:1fr 110px;gap:6px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.chip{font:inherit;font-size:14px;padding:6px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.chip.on{background:var(--accent);color:#04201d;border-color:var(--accent);font-weight:600}
+table{border-collapse:collapse;width:100%;margin:8px 0;font-size:15px}
+td{border-bottom:1px solid var(--line);padding:7px 6px;vertical-align:top}
+td.v{font-weight:600;text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+td.u{color:var(--muted)}
+td .f{display:block;font-weight:400;color:var(--muted);font-size:13px}
+tr.src td{background:rgba(79,209,197,.10)}
+.out{margin-top:10px}
+.res{background:rgba(79,209,197,.08);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;padding:8px 12px;margin:8px 0}
+.res b{font-variant-numeric:tabular-nums}
+.note{color:var(--muted);font-size:14px}
+.warn{border-left:4px solid var(--danger);background:rgba(252,129,129,.08);padding:10px 14px;border-radius:0 10px 10px 0;margin:10px 0;font-size:15px}
+.warn b{color:var(--danger)}
+details.calc{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:10px 0}
+details.calc>summary{cursor:pointer;padding:12px 16px;font-weight:700;font-size:17px;list-style:none}
+details.calc>summary::-webkit-details-marker{display:none}
+details.calc>summary::before{content:'▸ ';color:var(--muted)}details.calc[open]>summary::before{content:'▾ '}
+details.calc>summary small{display:block;font-weight:400;color:var(--muted);font-size:13.5px;margin-left:16px}
+.body{padding:0 16px 14px}
+.grp{font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--accent2);margin:22px 0 4px;font-weight:700}
+textarea{font:inherit;width:100%;min-height:120px;padding:9px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+@media print{.chips,.topnav{display:none}details.calc{break-inside:avoid}}
+</style>
+<style>:root{color-scheme:dark}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){color-scheme:light}}:root[data-theme=light]{color-scheme:light}.themebtn{font:inherit;font-size:14px;line-height:1.3;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:3px 11px;cursor:pointer;white-space:nowrap;text-decoration:none}.themefloat{position:absolute;top:10px;right:12px;z-index:9}@media print{.themebtn{display:none}}</style><script>/* so-theme: light or dark screen */(function(){var K="so-theme",d=document.documentElement,L={auto:"\uD83C\uDF13 Auto",dark:"\uD83C\uDF19 Dark",light:"\u2600\uFE0F Light"},N={auto:"dark",dark:"light",light:"auto"},cur="auto";try{cur=localStorage.getItem(K)||"auto"}catch(e){}function a(){if(cur==="dark"||cur==="light")d.setAttribute("data-theme",cur);else d.removeAttribute("data-theme");var b=document.querySelectorAll(".themebtn");for(var i=0;i<b.length;i++){b[i].textContent=L[cur]||L.auto;b[i].title="Screen: "+cur+" - tap to change (Auto follows this device)"}}a();window.soTheme=function(){cur=N[cur]||"dark";try{localStorage.setItem(K,cur)}catch(e){}a()};function btn(){var b=document.createElement("button");b.type="button";b.className="themebtn";return b}document.addEventListener("DOMContentLoaded",function(){if(!document.querySelector(".themebtn")){var n=document.querySelector(".topnav"),b=btn();if(n){n.appendChild(document.createTextNode(" \u00B7 "));n.appendChild(b)}else{b.className+=" themefloat";document.body.appendChild(b)}}var all=document.querySelectorAll(".themebtn");for(var i=0;i<all.length;i++)all[i].onclick=window.soTheme;a()})})();</script></head>
+<body>
+<div class="wrap">
+<p class="topnav"><a href="../#tools">🏠 Library</a> · <a href="EMERGENCY-FINDER.html">🆘 Emergency</a> · <a href="SUBJECT-INDEX.html">📇 Index A–Z</a></p>
+<h1><span class="e">🔢</span> Unit Converter &amp; Calculators</h1>
+<p class="sub">Works with no internet. Type an amount, or pick a kind of measurement. The calculators below do the
+everyday math for building, water, power, food and travel. For how the formulas work, see the
+<a href="PRACTICAL-MATH-GUIDE.html">Practical Math guide</a>.</p>
+
+<div class="card">
+  <label for="quick">Type an amount and a unit — for example <b>5 gal</b>, <b>3/4 cup</b>, <b>72 F</b>, <b>2.5 acres</b>, <b>6 ft 2 in</b></label>
+  <input id="quick" class="big" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="5 gallons">
+  <div id="quickout" class="out"></div>
+</div>
+
+<div class="card">
+  <div class="note">Or pick a kind of measurement:</div>
+  <div class="chips" id="cats"></div>
+  <div id="ingrow" hidden><label for="ing">Food (cups ↔ weight — about; spoon it in loosely, don't pack it unless it says packed)</label><select id="ing"></select></div>
+  <div class="pair" style="margin-top:8px"><div><label for="val">Amount</label><input id="val" class="big" type="text" inputmode="decimal" value="1"></div>
+  <div><label for="unit">Unit</label><select id="unit" class="big"></select></div></div>
+  <div id="convout" class="out"></div>
+</div>
+
+<h2>🧮 Calculators</h2>
+<p class="note">Tap one to open it. Every result is also shown in metric. These do arithmetic only — check anything that matters
+(a load, a dose, a wire size) against the guides and books.</p>
+<div id="calcs"></div>
+
+<p class="note" style="margin-top:28px">Conversion factors are the exact legal definitions (1 inch = 2.54 cm; 1 pound = 0.45359237 kg;
+1 US gallon = 231 cubic inches). Food weights per cup are averages from USDA food tables and vary with how you fill the cup.</p>
+</div>
+<script>
+'use strict';
+const $ = id => document.getElementById(id);
+
+// ------------------------------------------------------------------ number helpers
+function num(s) {                      // "1 1/2", "3/4", "2.5", "½", "1,200" -> number (NaN if none)
+  if (typeof s === 'number') return s;
+  s = String(s || '').trim().replace(/,/g, '').replace(/½/g, ' 1/2').replace(/¼/g, ' 1/4').replace(/¾/g, ' 3/4')
+    .replace(/⅓/g, ' 1/3').replace(/⅔/g, ' 2/3').replace(/⅛/g, ' 1/8').replace(/⅜/g, ' 3/8').replace(/⅝/g, ' 5/8').replace(/⅞/g, ' 7/8').trim();
+  let m = s.match(/^(-?\d+(?:\.\d+)?)\s+(\d+)\/(\d+)$/);
+  if (m) return (+m[1]) + (m[1].startsWith('-') ? -1 : 1) * (+m[2]) / (+m[3]);
+  m = s.match(/^(-?\d+)\/(\d+)$/); if (m) return (+m[1]) / (+m[2]);
+  m = s.match(/^-?(\d+(\.\d*)?|\.\d+)(e-?\d+)?$/i); if (m) return parseFloat(s);
+  return NaN;
+}
+function fmt(x) {
+  if (!isFinite(x)) return '—';
+  const a = Math.abs(x);
+  if (a !== 0 && a < 0.0001) return x.toPrecision(2);
+  const r = Number(x.toPrecision(5));
+  const d = a < 1 ? 5 : a < 10 ? 3 : a < 100 ? 2 : a < 10000 ? 1 : 0;
+  return r.toLocaleString('en-US', { maximumFractionDigits: d });
+}
+const GLYPH = { '1/2': '½', '1/3': '⅓', '2/3': '⅔', '1/4': '¼', '3/4': '¾', '1/8': '⅛', '3/8': '⅜', '5/8': '⅝', '7/8': '⅞' };
+function frac(x, dens, tol) {          // 3.375 -> "3 ⅜" when close to a simple fraction
+  if (!isFinite(x) || x <= 0) return '';
+  for (const d of dens) {
+    const n = Math.round(x * d);
+    if (n && Math.abs(n / d - x) <= (tol || Math.max(0.004, x * 0.005))) {
+      const w = Math.floor(n / d), r = n % d;
+      if (!r) return '';
+      const g = gcd(r, d), key = (r / g) + '/' + (d / g);
+      return (w ? w + ' ' : '') + (GLYPH[key] || key);
+    }
+  }
+  return '';
+}
+function gcd(a, b) { return b ? gcd(b, a % b) : a; }
+function ftin(feet) {                  // 5.52 ft -> "5 ft 6 ¼ in"
+  if (!isFinite(feet) || feet <= 0 || feet > 100000) return '';
+  let f = Math.floor(feet), inch = (feet - f) * 12;
+  inch = Math.round(inch * 16) / 16; if (inch >= 12) { f += 1; inch -= 12; }
+  const w = Math.floor(inch), r = Math.round((inch - w) * 16);
+  const fr = r ? ' ' + (r % 8 === 0 ? '½' : r % 4 === 0 ? ['¼', '½', '¾'][r / 4 - 1] : r % 2 === 0 ? ['⅛', '¼', '⅜', '½', '⅝', '¾', '⅞'][r / 2 - 1] : r + '/16') : '';
+  return `${f} ft ${w}${fr} in`;
+}
+
+// ------------------------------------------------------------------ units (factor = how many base units in one)
+const CATS = [
+  { k: 'length', name: '📏 Length', base: 'm', units: [
+    ['in', 'inches', 0.0254, 16], ['ft', 'feet', 0.3048], ['yd', 'yards', 0.9144], ['mi', 'miles', 1609.344],
+    ['mm', 'millimeters', 0.001], ['cm', 'centimeters', 0.01], ['m', 'meters', 1], ['km', 'kilometers', 1000],
+    ['rod', 'rods (16½ ft)', 5.0292], ['chain', 'chains (66 ft, surveyor)', 20.1168], ['furlong', 'furlongs', 201.168],
+    ['hand', 'hands (horse height, 4 in)', 0.1016], ['fathom', 'fathoms (6 ft)', 1.8288], ['nmi', 'nautical miles', 1852]] },
+  { k: 'area', name: '⬛ Area', base: 'm²', units: [
+    ['sqin', 'square inches', 0.00064516], ['sqft', 'square feet', 0.09290304], ['sqyd', 'square yards', 0.83612736],
+    ['acre', 'acres', 4046.8564224], ['sqmi', 'square miles', 2589988.110336], ['square', 'roofing squares (100 sq ft)', 9.290304],
+    ['sqcm', 'square centimeters', 0.0001], ['sqm', 'square meters', 1], ['ha', 'hectares', 10000], ['sqkm', 'square kilometers', 1e6]] },
+  { k: 'volume', name: '🪣 Volume', base: 'L', units: [
+    ['tsp', 'teaspoons', 0.00492892159375, 8], ['tbsp', 'tablespoons', 0.01478676478125, 8], ['floz', 'fluid ounces (US)', 0.0295735295625],
+    ['cup', 'cups (US)', 0.2365882365, 8], ['pt', 'pints (US)', 0.473176473], ['qt', 'quarts (US)', 0.946352946], ['gal', 'gallons (US)', 3.785411784],
+    ['ml', 'milliliters', 0.001], ['l', 'liters', 1], ['m3', 'cubic meters', 1000],
+    ['cuin', 'cubic inches', 0.016387064], ['cuft', 'cubic feet', 28.316846592], ['cuyd', 'cubic yards', 764.554857984],
+    ['impgal', 'gallons (UK / imperial)', 4.54609], ['bbl', 'barrels (oil, 42 gal)', 158.987294928], ['drum', 'drums (55 gal)', 208.19764812],
+    ['bu', 'bushels (US, dry)', 35.23907016688], ['pk', 'pecks (dry)', 8.80976754172], ['bf', 'board feet (lumber)', 2.359737216],
+    ['cord', 'cords of wood (128 cu ft stacked)', 3624.556363776], ['acft', 'acre-feet', 1233481.83754752]] },
+  { k: 'weight', name: '⚖️ Weight', base: 'kg', units: [
+    ['oz', 'ounces', 0.028349523125], ['lb', 'pounds', 0.45359237], ['st', 'stone (14 lb)', 6.35029318], ['ton', 'tons (US, 2,000 lb)', 907.18474],
+    ['mg', 'milligrams', 1e-6], ['g', 'grams', 0.001], ['kg', 'kilograms', 1], ['t', 'metric tonnes', 1000],
+    ['gr', 'grains (bullets, powder)', 0.00006479891], ['ozt', 'troy ounces (gold, silver)', 0.0311034768], ['ct', 'carats', 0.0002],
+    ['lton', 'long tons (UK, 2,240 lb)', 1016.0469088]] },
+  { k: 'temp', name: '🌡️ Temperature', special: 'temp', units: [['F', '°F (Fahrenheit)'], ['C', '°C (Celsius)'], ['K', 'kelvin']] },
+  { k: 'cooking', name: '🍞 Cooking', special: 'food', units: [
+    ['cup', 'cups (US)', 1, 8], ['tbsp', 'tablespoons', 1 / 16, 8], ['tsp', 'teaspoons', 1 / 48, 8],
+    ['g', 'grams', 'g'], ['kg', 'kilograms', 'kg'], ['oz', 'ounces (weight)', 'oz'], ['lb', 'pounds', 'lb']] },
+  { k: 'speed', name: '🚶 Speed', base: 'm/s', units: [
+    ['mph', 'miles per hour', 0.44704], ['kmh', 'kilometers per hour', 1 / 3.6], ['ms', 'meters per second', 1], ['fts', 'feet per second', 0.3048],
+    ['kn', 'knots', 1852 / 3600], ['mpd', 'miles per day (24 h)', 1609.344 / 86400]] },
+  { k: 'pressure', name: '🎈 Pressure', base: 'Pa', units: [
+    ['psi', 'psi (pounds per sq inch)', 6894.757293168], ['bar', 'bar', 100000], ['kpa', 'kilopascals', 1000], ['atm', 'atmospheres', 101325],
+    ['inhg', 'inches of mercury (barometer)', 3386.389], ['mmhg', 'mm of mercury (blood pressure)', 133.322387415],
+    ['fth2o', 'feet of water (head)', 2989.0669], ['mh2o', 'meters of water (head)', 9806.65], ['mbar', 'millibars (hPa)', 100]] },
+  { k: 'energy', name: '🔥 Energy', base: 'J', units: [
+    ['kcal', 'food Calories (kcal)', 4184], ['cal', 'calories (small)', 4.184], ['btu', 'BTU', 1055.05585262], ['therm', 'therms', 105505585.262],
+    ['wh', 'watt-hours', 3600], ['kwh', 'kilowatt-hours', 3.6e6], ['j', 'joules', 1], ['kj', 'kilojoules', 1000], ['mj', 'megajoules', 1e6],
+    ['ftlb', 'foot-pounds', 1.3558179483314]] },
+  { k: 'power', name: '⚡ Power', base: 'W', units: [
+    ['w', 'watts', 1], ['kw', 'kilowatts', 1000], ['hp', 'horsepower', 745.69987158227], ['btuh', 'BTU per hour', 0.29307107017],
+    ['kcalh', 'food Calories per hour', 4184 / 3600], ['mhp', 'metric horsepower', 735.49875]] },
+  { k: 'flow', name: '🚿 Water flow', base: 'L/min', units: [
+    ['gpm', 'gallons per minute', 3.785411784], ['gph', 'gallons per hour', 3.785411784 / 60], ['gpd', 'gallons per day', 3.785411784 / 1440],
+    ['lpm', 'liters per minute', 1], ['lps', 'liters per second', 60], ['m3h', 'cubic meters per hour', 1000 / 60], ['cfs', 'cubic feet per second', 1699.0107955]] },
+  { k: 'fuel', name: '⛽ Fuel use', special: 'fuel', units: [['mpg', 'miles per gallon (US)'], ['kml', 'km per liter'], ['l100', 'liters per 100 km'], ['mpgimp', 'miles per gallon (UK)']] },
+  { k: 'slope', name: '📐 Slope & angle', special: 'slope', units: [['deg', 'degrees'], ['pct', 'percent grade'], ['pitch', 'roof pitch (inches rise per 12 in run)'], ['ratio', 'one in … (1 : n)'], ['mil', 'mils (6400 to a circle)'], ['rad', 'radians']] },
+  { k: 'time', name: '⏱️ Time', base: 's', units: [
+    ['s', 'seconds', 1], ['min', 'minutes', 60], ['h', 'hours', 3600], ['d', 'days', 86400], ['wk', 'weeks', 604800], ['mo', 'months (average)', 2629746], ['yr', 'years (365¼ days)', 31557600]] }
+];
+// grams per level US cup (USDA food tables, rounded) - an average; packing changes it
+const FOODS = [['Water', 236.6], ['Milk', 244], ['Flour, all-purpose (spooned)', 125], ['Flour, whole wheat', 120], ['Cornmeal', 122],
+  ['Sugar, white', 200], ['Sugar, brown (packed)', 220], ['Honey', 339], ['Salt, table', 292], ['Butter', 227], ['Lard', 205],
+  ['Vegetable oil', 218], ['Rice, white, uncooked', 185], ['Oats, rolled', 81], ['Beans, dry (pinto)', 193], ['Lentils, dry', 192],
+  ['Powdered milk (nonfat, instant)', 68], ['Wheat berries', 192]];
+const WEIGHT_G = { g: 1, kg: 1000, oz: 28.349523125, lb: 453.59237 };
+
+// words people type -> [category, unit]
+const ALIAS = {};
+function al(cat, unit, ...words) { for (const w of words) ALIAS[w] = ALIAS[w] || []; for (const w of words) ALIAS[w].push([cat, unit]); }
+al('length', 'in', 'in', 'inch', 'inches', '"', '″'); al('length', 'ft', 'ft', 'foot', 'feet', "'", '′'); al('length', 'yd', 'yd', 'yard', 'yards');
+al('length', 'mi', 'mi', 'mile', 'miles'); al('length', 'mm', 'mm', 'millimeter', 'millimeters', 'millimetre', 'millimetres');
+al('length', 'cm', 'cm', 'centimeter', 'centimeters', 'centimetre', 'centimetres'); al('length', 'm', 'm', 'meter', 'meters', 'metre', 'metres');
+al('length', 'km', 'km', 'kilometer', 'kilometers', 'kilometre', 'kilometres', 'k'); al('length', 'rod', 'rod', 'rods'); al('length', 'chain', 'chain', 'chains');
+al('length', 'hand', 'hand', 'hands', 'hh'); al('length', 'fathom', 'fathom', 'fathoms'); al('length', 'furlong', 'furlong', 'furlongs');
+al('area', 'sqft', 'sqft', 'sq ft', 'ft2', 'ft²', 'square feet', 'square foot', 'sf'); al('area', 'sqin', 'sqin', 'sq in', 'in2', 'in²', 'square inches');
+al('area', 'sqyd', 'sqyd', 'sq yd', 'yd2', 'square yards'); al('area', 'acre', 'acre', 'acres', 'ac'); al('area', 'sqmi', 'sq mi', 'sqmi', 'square miles', 'mi2', 'section', 'sections');
+al('area', 'sqm', 'sqm', 'sq m', 'm2', 'm²', 'square meters', 'square metres'); al('area', 'ha', 'ha', 'hectare', 'hectares'); al('area', 'square', 'square', 'squares');
+al('area', 'sqkm', 'km2', 'km²', 'sq km', 'square kilometers');
+al('volume', 'tsp', 'tsp', 'teaspoon', 'teaspoons', 't'); al('volume', 'tbsp', 'tbsp', 'tbs', 'tablespoon', 'tablespoons', 'T');
+al('volume', 'floz', 'fl oz', 'floz', 'fluid ounce', 'fluid ounces'); al('volume', 'cup', 'cup', 'cups');
+al('volume', 'pt', 'pt', 'pint', 'pints'); al('volume', 'qt', 'qt', 'quart', 'quarts'); al('volume', 'gal', 'gal', 'gallon', 'gallons', 'gals');
+al('volume', 'ml', 'ml', 'milliliter', 'milliliters', 'millilitre', 'cc'); al('volume', 'l', 'l', 'liter', 'liters', 'litre', 'litres', 'ltr');
+al('volume', 'm3', 'm3', 'm³', 'cubic meter', 'cubic meters'); al('volume', 'cuft', 'cu ft', 'cuft', 'ft3', 'ft³', 'cubic feet', 'cubic foot');
+al('volume', 'cuin', 'cu in', 'in3', 'cubic inches'); al('volume', 'cuyd', 'cu yd', 'yd3', 'cubic yards', 'cubic yard', 'yards of concrete');
+al('volume', 'bu', 'bu', 'bushel', 'bushels'); al('volume', 'pk', 'peck', 'pecks'); al('volume', 'bbl', 'bbl', 'barrel', 'barrels');
+al('volume', 'drum', 'drum', 'drums'); al('volume', 'cord', 'cord', 'cords'); al('volume', 'bf', 'bf', 'bd ft', 'board feet', 'board foot', 'fbm');
+al('volume', 'impgal', 'imp gal', 'imperial gallon', 'imperial gallons', 'uk gallon'); al('volume', 'acft', 'acre-feet', 'acre feet', 'acre-foot', 'ac-ft');
+al('weight', 'oz', 'oz', 'ounce', 'ounces'); al('weight', 'lb', 'lb', 'lbs', 'pound', 'pounds', '#'); al('weight', 'ton', 'ton', 'tons');
+al('weight', 'mg', 'mg', 'milligram', 'milligrams'); al('weight', 'g', 'g', 'gram', 'grams', 'gm'); al('weight', 'kg', 'kg', 'kilo', 'kilos', 'kilogram', 'kilograms');
+al('weight', 't', 'tonne', 'tonnes', 'metric ton'); al('weight', 'gr', 'gr', 'grain', 'grains'); al('weight', 'st', 'stone'); al('weight', 'ozt', 'troy oz', 'ozt');
+al('temp', 'F', 'f', '°f', 'deg f', 'fahrenheit', 'degrees f', 'degrees fahrenheit'); al('temp', 'C', 'c', '°c', 'deg c', 'celsius', 'centigrade', 'degrees c', 'degrees celsius'); al('temp', 'K', 'kelvin');
+al('speed', 'mph', 'mph', 'miles per hour'); al('speed', 'kmh', 'kmh', 'km/h', 'kph', 'kilometers per hour'); al('speed', 'ms', 'm/s'); al('speed', 'kn', 'knot', 'knots', 'kt', 'kts'); al('speed', 'fts', 'ft/s', 'fps');
+al('pressure', 'psi', 'psi'); al('pressure', 'bar', 'bar'); al('pressure', 'kpa', 'kpa'); al('pressure', 'atm', 'atm'); al('pressure', 'inhg', 'inhg', 'in hg', 'inches of mercury');
+al('pressure', 'mmhg', 'mmhg', 'mm hg'); al('pressure', 'mbar', 'mbar', 'millibar', 'millibars', 'hpa'); al('pressure', 'fth2o', 'ft of water', 'feet of head', 'ft head');
+al('energy', 'kcal', 'kcal', 'calories', 'calorie', 'cal', 'food calories'); al('energy', 'btu', 'btu', 'btus'); al('energy', 'wh', 'wh', 'watt-hours', 'watt hours');
+al('energy', 'kwh', 'kwh', 'kilowatt-hours', 'kilowatt hours'); al('energy', 'j', 'j', 'joule', 'joules'); al('energy', 'kj', 'kj'); al('energy', 'mj', 'mj'); al('energy', 'therm', 'therm', 'therms');
+al('power', 'w', 'w', 'watt', 'watts'); al('power', 'kw', 'kw', 'kilowatt', 'kilowatts'); al('power', 'hp', 'hp', 'horsepower'); al('power', 'btuh', 'btu/h', 'btuh', 'btu per hour');
+al('flow', 'gpm', 'gpm', 'gallons per minute', 'gal/min'); al('flow', 'gph', 'gph', 'gal/h'); al('flow', 'gpd', 'gpd', 'gallons per day'); al('flow', 'lpm', 'lpm', 'l/min', 'liters per minute'); al('flow', 'lps', 'l/s', 'lps'); al('flow', 'cfs', 'cfs');
+al('fuel', 'mpg', 'mpg', 'miles per gallon'); al('fuel', 'l100', 'l/100km', 'l/100 km'); al('fuel', 'kml', 'km/l');
+al('slope', 'deg', 'deg', 'degree', 'degrees', '°'); al('slope', 'pct', '%', 'percent', 'pct', 'grade', '% grade'); al('slope', 'pitch', 'pitch', 'in 12', '/12', 'in/12');
+al('time', 's', 'sec', 'secs', 'second', 'seconds'); al('time', 'min', 'min', 'mins', 'minute', 'minutes'); al('time', 'h', 'h', 'hr', 'hrs', 'hour', 'hours');
+al('time', 'd', 'day', 'days'); al('time', 'wk', 'wk', 'week', 'weeks'); al('time', 'yr', 'yr', 'yrs', 'year', 'years'); al('time', 'mo', 'month', 'months');
+
+const catOf = k => CATS.find(c => c.k === k);
+const unitOf = (c, u) => c.units.find(x => x[0] === u);
+
+// convert value v in unit u of category c to every unit -> [[unit, value], ...]
+function convertAll(c, u, v, food) {
+  if (c.special === 'temp') {
+    const C = u === 'C' ? v : u === 'F' ? (v - 32) * 5 / 9 : v - 273.15;
+    return [['F', C * 9 / 5 + 32], ['C', C], ['K', C + 273.15]];
+  }
+  if (c.special === 'fuel') {
+    const kml = u === 'kml' ? v : u === 'mpg' ? v * 1.609344 / 3.785411784 : u === 'mpgimp' ? v * 1.609344 / 4.54609 : 100 / v;
+    return [['mpg', kml * 3.785411784 / 1.609344], ['kml', kml], ['l100', 100 / kml], ['mpgimp', kml * 4.54609 / 1.609344]];
+  }
+  if (c.special === 'slope') {
+    let deg;
+    if (u === 'deg') deg = v; else if (u === 'pct') deg = Math.atan(v / 100) * 180 / Math.PI; else if (u === 'pitch') deg = Math.atan(v / 12) * 180 / Math.PI;
+    else if (u === 'ratio') deg = Math.atan(1 / v) * 180 / Math.PI; else if (u === 'mil') deg = v * 360 / 6400; else deg = v * 180 / Math.PI;
+    const t = Math.tan(deg * Math.PI / 180);
+    return [['deg', deg], ['pct', t * 100], ['pitch', t * 12], ['ratio', t ? 1 / t : Infinity], ['mil', deg * 6400 / 360], ['rad', deg * Math.PI / 180]];
+  }
+  if (c.special === 'food') {
+    const gpc = FOODS[food || 0][1];
+    const unit = unitOf(c, u);
+    const grams = typeof unit[2] === 'number' ? v * unit[2] * gpc : v * WEIGHT_G[unit[2]];
+    return c.units.map(x => [x[0], typeof x[2] === 'number' ? grams / gpc / x[2] : grams / WEIGHT_G[x[2]]]);
+  }
+  const base = v * unitOf(c, u)[2];
+  return c.units.map(x => [x[0], base / x[2]]);
+}
+function extra(c, u, v) {
+  const x = unitOf(c, u), out = [];
+  if (c.k === 'length' && u === 'ft') { const s = ftin(v); if (s) out.push(s); }
+  if (c.k === 'length' && u === 'in' && v >= 12) { const s = ftin(v / 12); if (s) out.push(s); }
+  if (c.k === 'length' && u === 'm' && v >= 0.3) { const s = ftin(v / 0.3048); if (s) out.push(s); }
+  if (x && x[3]) { const f = x[3] === 16 ? frac(v, [2, 4, 8, 16], 1 / 32) : frac(v, [2, 4, 8, 3]); if (f) out.push('≈ ' + f); }
+  return out.join(' · ');
+}
+function table(c, u, v, food) {
+  const rows = convertAll(c, u, v, food);
+  return '<table>' + rows.map(([k, r]) => {
+    const unit = unitOf(c, k), ex = extra(c, k, r);
+    return `<tr class="${k === u ? 'src' : ''}"><td class="v">${fmt(r)}${ex ? `<span class="f">${ex}</span>` : ''}</td><td class="u">${unit[1]}</td></tr>`;
+  }).join('') + '</table>';
+}
+
+// ------------------------------------------------------------------ the typed box
+function parseQuick(s) {
+  s = s.trim().toLowerCase().replace(/\s+/g, ' ');
+  if (!s) return null;
+  // 6 ft 2 in / 6' 2" / 6'2"
+  let m = s.match(/^(\d+(?:\.\d+)?)\s*(?:ft|foot|feet|')\s*(\d+(?:\.\d+)?(?:\s+\d+\/\d+)?)\s*(?:in|inch|inches|"|″)?$/);
+  if (m) return [{ cat: 'length', unit: 'ft', v: +m[1] + num(m[2]) / 12 }];
+  m = s.match(/^(-?[\d.,\/ ½¼¾⅓⅔⅛⅜⅝⅞]+?)\s*([a-z°'"″′²³#%][a-z0-9°'"″′²³ \/.%-]*)$/i);
+  if (!m) return null;
+  const v = num(m[1]); let w = m[2].trim().replace(/\.$/, '');
+  if (!isFinite(v)) return null;
+  if (w === 'oz' || w === 'ounce' || w === 'ounces') return [{ cat: 'weight', unit: 'oz', v }, { cat: 'volume', unit: 'floz', v, note: 'If you meant fluid ounces (liquid):' }];
+  let hits = ALIAS[w] || ALIAS[w.replace(/s$/, '')] || ALIAS[w.replace(/^degrees? /, '')];
+  if (!hits && /^t$/i.test(m[2].trim())) hits = m[2].trim() === 'T' ? ALIAS.T : ALIAS.t;
+  if (!hits) return null;
+  return hits.map(([cat, unit]) => ({ cat, unit, v }));
+}
+function doQuick() {
+  const raw = $('quick').value, s = raw.trim();
+  // keep "T" (tablespoon) and "t" (teaspoon) apart before lowering case
+  const tb = s.match(/^(.*?\d)\s*(T|t)$/);
+  const hits = tb ? [{ cat: 'volume', unit: tb[2] === 'T' ? 'tbsp' : 'tsp', v: num(tb[1]) }] : parseQuick(s);
+  if (!s) { $('quickout').innerHTML = ''; return; }
+  if (!hits) { $('quickout').innerHTML = '<p class="note">Type a number and a unit, like <b>12 gal</b>, <b>1 1/2 cups</b>, <b>350 F</b> or <b>40 acres</b>.</p>'; return; }
+  $('quickout').innerHTML = hits.map(h => { const c = catOf(h.cat); return (h.note ? `<p class="note">${h.note}</p>` : `<p class="note">${c.name}</p>`) + table(c, h.unit, h.v); }).join('');
+}
+
+// ------------------------------------------------------------------ pick-a-category converter
+let cur = 'length';
+function setCat(k) {
+  cur = k; const c = catOf(k);
+  document.querySelectorAll('#cats .chip').forEach(b => b.classList.toggle('on', b.dataset.k === k));
+  $('unit').innerHTML = c.units.map(u => `<option value="${u[0]}">${u[1]}</option>`).join('');
+  $('ingrow').hidden = c.special !== 'food';
+  const dflt = { length: 'ft', area: 'acre', volume: 'gal', weight: 'lb', temp: 'F', cooking: 'cup', speed: 'mph', pressure: 'psi', energy: 'kwh', power: 'w', flow: 'gpm', fuel: 'mpg', slope: 'pitch', time: 'h' }[k];
+  if (dflt) $('unit').value = dflt;
+  if (k === 'temp' && $('val').value === '1') $('val').value = '70';
+  if (k === 'slope' && $('val').value === '1') $('val').value = '4';
+  doConv();
+}
+function doConv() {
+  const c = catOf(cur), v = num($('val').value);
+  $('convout').innerHTML = isFinite(v) ? table(c, $('unit').value, v, +$('ing').value) : '<p class="note">Type a number (fractions like 1 1/2 are fine).</p>';
+}
+$('cats').innerHTML = CATS.map(c => `<button type="button" class="chip" data-k="${c.k}">${c.name}</button>`).join('');
+$('cats').addEventListener('click', e => { const b = e.target.closest('.chip'); if (b) setCat(b.dataset.k); });
+$('ing').innerHTML = FOODS.map((f, i) => `<option value="${i}">${f[0]} — about ${f[1]} g per cup</option>`).join('');
+['val', 'unit', 'ing'].forEach(id => $(id).addEventListener(id === 'val' ? 'input' : 'change', doConv));
+$('quick').addEventListener('input', doQuick);
+
+// ------------------------------------------------------------------ calculators
+// each: [group, id, title, blurb, fields, compute]   field: [id, label, default, units?]  units: 'len'|'short'|'vol'|'wt'|...
+const LEN = [['ft', 'feet', 0.3048], ['in', 'inches', 0.0254], ['yd', 'yards', 0.9144], ['m', 'meters', 1], ['cm', 'centimeters', 0.01]];
+const SHORT = [['in', 'inches', 0.0254], ['ft', 'feet', 0.3048], ['cm', 'centimeters', 0.01], ['m', 'meters', 1]];
+const VOL = [['gal', 'gallons', 3.785411784], ['l', 'liters', 1], ['qt', 'quarts', 0.946352946], ['cup', 'cups', 0.2365882365], ['floz', 'fl oz', 0.0295735295625], ['ml', 'mL', 0.001]];
+const WT = [['lb', 'pounds', 0.45359237], ['kg', 'kilograms', 1]];
+const DIST = [['mi', 'miles', 1609.344], ['km', 'km', 1000]];
+const UNITSETS = { len: LEN, short: SHORT, vol: VOL, wt: WT, dist: DIST };
+const L = v => `<b>${fmt(v)}</b>`;
+const lenOut = m => { const ft = m / 0.3048, fi = ftin(ft); return `${L(ft)} ft${fi && ft < 1000 && !/ 0 in$/.test(fi) ? ` (${fi})` : ''} · ${L(m)} m`; };
+const areaOut = a => `${L(a / 0.09290304)} sq ft · ${L(a)} m² · ${L(a / 4046.8564224)} acres · ${L(a / 10000)} hectares`;
+const volOut = l => `${L(l / 3.785411784)} gallons · ${L(l)} liters · ${L(l / 28.316846592)} cu ft · ${L(l / 764.554857984)} cu yd`;
+const AWG = [['18', 6.385], ['16', 4.016], ['14', 2.525], ['12', 1.588], ['10', 0.9989], ['8', 0.6282], ['6', 0.3951], ['4', 0.2485], ['2', 0.1563], ['1', 0.1239], ['1/0', 0.09827], ['2/0', 0.07793], ['4/0', 0.04901]];
+const MM2 = [1.5, 2.5, 4, 6, 10, 16, 25, 35, 50];
+const CALCS = [
+  ['🏠 Building and land', 'area', 'Area, fence and posts', 'Rectangle, circle or a 3-sided plot: area in sq ft, acres and m², fence length and posts', [
+    ['shape', 'Shape', 'rect', [['rect', 'rectangle'], ['circle', 'circle (give the width across)'], ['tri', 'triangle (give all 3 sides)']]],
+    ['a', 'Length / width across / side 1', '100', 'len'], ['b', 'Width / — / side 2', '50', 'len'], ['c', 'Side 3 (triangle only)', '', 'len'], ['sp', 'Post spacing (feet)', '8']],
+    f => {
+      let A, P;
+      if (f.shape === 'circle') { const r = f.a / 2; A = Math.PI * r * r; P = Math.PI * f.a; }
+      else if (f.shape === 'tri') { const s = (f.a + f.b + f.c) / 2; A = Math.sqrt(Math.max(0, s * (s - f.a) * (s - f.b) * (s - f.c))); P = f.a + f.b + f.c; if (!(A > 0)) return 'Those three sides can’t make a triangle — the two shorter sides must add up to more than the longest.'; }
+      else { A = f.a * f.b; P = 2 * (f.a + f.b); }
+      const posts = isFinite(f.sp_raw) && f.sp_raw > 0 ? Math.ceil(P / 0.3048 / f.sp_raw) : NaN;
+      return `Area: ${areaOut(A)}<br>Around the edge (fence): ${lenOut(P)}` + (isFinite(posts) ? `<br>Posts: about ${L(posts)} at ${fmt(f.sp_raw)} ft apart for a closed fence (add 1 for a straight run, plus extra for corners and gates)` : '');
+    }],
+  ['🏠 Building and land', 'vol', 'Concrete, gravel, soil or mulch', 'Length × width × depth → cubic yards, bags, weight', [
+    ['a', 'Length', '10', 'len'], ['b', 'Width', '10', 'len'], ['d', 'Depth / thickness', '4', 'short'], ['n', 'How many (same size)', '1']],
+    f => {
+      const V = f.a * f.b * f.d * (f.n_raw > 0 ? f.n_raw : 1) * 1000;   // liters
+      return `Volume: ${volOut(V)}<br>Premixed concrete: about ${L(Math.ceil(V / 28.316846592 / 0.6))} bags of 80 lb (each makes about 0.6 cu ft) — add 5–10% for waste<br>Weight if concrete (about 145 lb per cu ft): ${L(V / 28.316846592 * 145)} lb; if gravel or wet soil (about 100 lb per cu ft): ${L(V / 28.316846592 * 100)} lb <span class="note">(rules of thumb)</span>`;
+    }],
+  ['🏠 Building and land', 'slope', 'Roof pitch, slope and rafter length', 'Rise and run → pitch, % grade, degrees, and the sloped length', [
+    ['rise', 'Rise (how much it goes up)', '4', 'len'], ['run', 'Run (level distance)', '12', 'len']],
+    f => {
+      const t = f.rise / f.run, deg = Math.atan(t) * 180 / Math.PI, hyp = Math.hypot(f.rise, f.run);
+      return `Pitch: ${L(t * 12)} in 12 · Grade: ${L(t * 100)}% · Angle: ${L(deg)}° · 1 in ${fmt(1 / t)}<br>Sloped length (rafter, ramp or ditch side, before overhang): ${lenOut(hyp)}<br>Multiply flat roof area by ${L(hyp / f.run)} to get the real roof surface.`;
+    }],
+  ['🏠 Building and land', 'square', 'Square corners (3-4-5) and diagonals', 'The diagonal that proves a corner or a rectangle is square', [
+    ['a', 'Side A', '12', 'len'], ['b', 'Side B', '16', 'len']],
+    f => {
+      const d = Math.hypot(f.a, f.b);
+      return `Diagonal should be ${lenOut(d)}.<br>For a whole rectangle, measure both diagonals — when they are equal the corners are square.<br>Small layouts: 3-4-5 (ft or m). Bigger: 6-8-10, 9-12-15, 12-16-20, 15-20-25.`;
+    }],
+  ['🏠 Building and land', 'lumber', 'Board feet and cords', 'Lumber by the board foot; stacked firewood by the cord', [
+    ['t', 'Board thickness (inches)', '2'], ['w', 'Board width (inches)', '6'], ['l', 'Board length (feet)', '8'], ['n', 'Number of boards', '10'],
+    ['sl', 'Woodpile length (feet)', '8'], ['sh', 'Woodpile height (feet)', '4'], ['sd', 'Woodpile depth (feet)', '4']],
+    f => {
+      const bf = f.t_raw * f.w_raw * f.l_raw / 12 * (f.n_raw || 1);
+      const cu = f.sl_raw * f.sh_raw * f.sd_raw;
+      return `Lumber: ${L(bf)} board feet (thickness in × width in × length ft ÷ 12)<br>Woodpile: ${L(cu)} cu ft = ${L(cu / 128)} cords (a full cord is 4 × 4 × 8 ft = 128 cu ft stacked)`;
+    }],
+  ['🏠 Building and land', 'tree', 'Height of a tree or building', 'With shadows, or with a measured angle', [
+    ['ys', 'Your shadow (or a stick’s shadow)', '6', 'len'], ['yh', 'Your height (or the stick’s height)', '6', 'len'], ['ts', 'The tree’s shadow', '60', 'len'],
+    ['dist', 'Or: distance to the tree', '', 'len'], ['ang', 'Angle up to the top (degrees)', ''], ['eye', 'Your eye height', '5', 'len']],
+    f => {
+      let out = '';
+      if (f.ys > 0 && f.ts > 0) out += `By shadows: ${lenOut(f.yh * f.ts / f.ys)} (measure both shadows at the same moment)`;
+      if (f.dist > 0 && f.ang_raw > 0) out += (out ? '<br>' : '') + `By angle: ${lenOut(f.dist * Math.tan(f.ang_raw * Math.PI / 180) + (f.eye || 0))} (at 45° the height is simply your distance plus eye height)`;
+      return out || 'Fill in the shadows, or the distance and angle.';
+    }],
+  ['💧 Water', 'tank', 'Tank, barrel or well volume', 'Box, upright round tank, lying-down tank (part full) or a well casing', [
+    ['shape', 'Shape', 'up', [['up', 'upright round (barrel, round tank, well)'], ['side', 'round, lying on its side'], ['box', 'box / rectangular']]],
+    ['d', 'Diameter (or box width)', '23', 'short'], ['h', 'Water depth (box: depth; lying tank: depth of liquid)', '33', 'short'], ['l', 'Length (box or lying tank only)', '', 'short']],
+    f => {
+      let V;
+      if (f.shape === 'box') V = f.d * f.h * f.l * 1000;
+      else if (f.shape === 'side') {
+        const r = f.d / 2, h = Math.min(Math.max(f.h, 0), f.d);
+        const seg = r * r * Math.acos((r - h) / r) - (r - h) * Math.sqrt(Math.max(0, 2 * r * h - h * h));
+        V = seg * f.l * 1000;
+      } else V = Math.PI * (f.d / 2) ** 2 * f.h * 1000;
+      if (!isFinite(V) || V <= 0) return 'Fill in all the sizes for that shape.';
+      const perFt = f.shape === 'up' ? Math.PI * (f.d / 2) ** 2 * 0.3048 * 1000 / 3.785411784 : NaN;
+      return `Holds ${volOut(V)}<br>Water weight: ${L(V * 0.99904 / 0.45359237)} lb (${L(V * 0.99904)} kg) — about 8.34 lb per gallon` + (isFinite(perFt) ? `<br>${L(perFt)} gallons per foot of depth` : '');
+    }],
+  ['💧 Water', 'rain', 'Rainwater from a roof', 'How much a roof catches from a storm or a year', [
+    ['a', 'Roof length (measure the footprint, not the slope)', '40', 'len'], ['b', 'Roof width (footprint)', '30', 'len'], ['r', 'Rain (inches)', '1'], ['e', 'Share you actually catch (%)', '80']],
+    f => {
+      const sqft = f.a * f.b / 0.09290304, gal = sqft * f.r_raw * 0.6233766;
+      return `${L(sqft)} sq ft of roof × ${fmt(f.r_raw)} in of rain = ${L(gal)} gallons (${L(gal * 3.785411784)} L) in theory<br>At ${fmt(f.e_raw)}% caught (gutter spill, first flush, evaporation): ${L(gal * f.e_raw / 100)} gallons <span class="note">(1 inch on 1 sq ft = 0.623 gal; 1 mm on 1 m² = 1 L)</span>`;
+    }],
+  ['💧 Water', 'head', 'Water pressure from height', 'How much pressure a tank or spring gives for each foot of drop', [
+    ['h', 'Height of the water surface above the tap', '30', 'len'], ['psi', 'Or: the pressure you need (psi)', '']],
+    f => {
+      let out = '';
+      if (f.h > 0) { const psi = f.h / 0.3048 * 0.4335; out += `${L(psi)} psi (${L(psi * 6.894757)} kPa, ${L(psi * 0.06894757)} bar) when the water isn't flowing — flowing water loses some in the pipe`; }
+      if (f.psi_raw > 0) out += (out ? '<br>' : '') + `${fmt(f.psi_raw)} psi needs the water about ${L(f.psi_raw * 2.307)} ft (${L(f.psi_raw * 2.307 * 0.3048)} m) above the tap`;
+      return out + '<br><span class="note">Every 2.31 ft of height gives 1 psi.</span>';
+    }],
+  ['💧 Water', 'flow', 'Flow of a spring, creek pipe or pump', 'Time how long it takes to fill a bucket', [
+    ['v', 'Bucket size', '5', 'vol'], ['s', 'Seconds to fill it', '20']],
+    f => {
+      const lpm = f.v / f.s_raw * 60;
+      return `${L(lpm / 3.785411784)} gallons per minute · ${L(lpm)} liters per minute · ${L(lpm / 60)} liters per second<br>${L(lpm / 3.785411784 * 1440)} gallons a day if it keeps running`;
+    }],
+  ['💧 Water', 'mix', 'Mixing and diluting (bleach, fertilizer, any strength)', 'How much of a strong liquid to add to water to get a weaker one', [
+    ['c1', 'Strength of what you have (%)', '6'], ['c2', 'Strength you want (%)', '0.5'], ['v2', 'How much you want to end up with', '1', 'vol']],
+    f => {
+      if (!(f.c1_raw > f.c2_raw && f.c2_raw > 0)) return 'The strength you have must be stronger than the strength you want.';
+      const v1 = f.v2 * f.c2_raw / f.c1_raw, w = f.v2 - v1;
+      const show = l => `${fmt(l / 3.785411784)} gal = ${fmt(l / 0.2365882365)} cups = ${fmt(l * 1000)} mL`;
+      return `Use <b>${show(v1)}</b> of the strong liquid<br>and top up with <b>${show(w)}</b> of clean water.<br><span class="note">Strength × amount stays the same: C1 × V1 = C2 × V2. Get the strengths to use from the Sanitation and Water guides.</span>`;
+    }],
+  ['💧 Water', 'hydro', 'Power from a creek (rough)', 'Drop (head) and flow → about how many watts a small turbine could make', [
+    ['h', 'Drop from intake to turbine', '50', 'len'], ['q', 'Flow (gallons per minute)', '50'], ['e', 'Overall efficiency (%)', '50']],
+    f => {
+      const W = 9.81 * (f.q_raw * 3.785411784 / 60) * f.h * f.e_raw / 100;
+      return `About ${L(W)} watts, or ${L(W * 24 / 1000)} kWh a day if it runs all day.<br><span class="note">Power = 9.81 × flow (L/s) × drop (m) × efficiency. Small systems often reach only 40–60% — see the Off-grid power guide before you build.</span>`;
+    }],
+  ['⚡ Power and electricity', 'ohm', 'Volts, amps, watts and ohms', 'Fill in any two — the other two are worked out', [
+    ['v', 'Volts', '12'], ['i', 'Amps', ''], ['r', 'Ohms (resistance)', ''], ['p', 'Watts', '60']],
+    f => {
+      let { v_raw: V, i_raw: I, r_raw: R, p_raw: P } = f;
+      const has = x => isFinite(x) && x > 0, n = [V, I, R, P].filter(has).length;
+      if (n < 2) return 'Fill in any two of the four.';
+      if (has(V) && has(I)) { R = V / I; P = V * I; } else if (has(V) && has(R)) { I = V / R; P = V * I; } else if (has(V) && has(P)) { I = P / V; R = V / I; }
+      else if (has(I) && has(R)) { V = I * R; P = V * I; } else if (has(I) && has(P)) { V = P / I; R = V / I; } else if (has(R) && has(P)) { I = Math.sqrt(P / R); V = I * R; }
+      return `${L(V)} volts · ${L(I)} amps · ${L(R)} ohms · ${L(P)} watts<br><span class="note">Watts = volts × amps; amps = volts ÷ ohms.</span>`;
+    }],
+  ['⚡ Power and electricity', 'batt', 'How long a battery will last', 'Battery size and the load → hours of use', [
+    ['v', 'Battery voltage', '12'], ['ah', 'Amp-hours (Ah)', '100'], ['n', 'How many batteries (in the same bank)', '1'],
+    ['dod', 'Share you can use (%) — about 50 for lead-acid, 80 for LiFePO₄', '50'], ['load', 'Load (watts)', '60'], ['inv', 'Through an inverter? efficiency %', '100']],
+    f => {
+      const wh = f.v_raw * f.ah_raw * (f.n_raw || 1), use = wh * f.dod_raw / 100 * (f.inv_raw || 100) / 100, hrs = use / f.load_raw;
+      return `Stored: ${L(wh)} watt-hours (${L(wh / 1000)} kWh) · usable about ${L(use)} Wh<br>Runs ${fmt(f.load_raw)} W for about <b>${fmt(hrs)} hours</b> (${fmt(hrs / 24)} days)<br><span class="note">Use 85–90% efficiency for an inverter; cold batteries hold less (rules of thumb).</span>`;
+    }],
+  ['⚡ Power and electricity', 'solar', 'How many solar panels', 'Daily use and winter sun → panels needed', [
+    ['wh', 'Energy you use per day (watt-hours)', '1000'], ['pw', 'Panel size (watts on the label)', '300'], ['sun', 'Sun hours per day (see the Off-grid guide for each month)', '2'], ['derate', 'Real-world share of the label (%)', '75']],
+    f => {
+      const per = f.pw_raw * f.sun_raw * f.derate_raw / 100;
+      return `Each panel gives about ${L(per)} Wh a day → you need about <b>${fmt(Math.ceil(f.wh_raw / per))}</b> panels (${L(f.wh_raw / per)} exactly)`;
+    }],
+  ['⚡ Power and electricity', 'vdrop', 'Wire size and voltage drop', 'Copper wire, there and back → volts lost', [
+    ['v', 'System voltage', '12'], ['i', 'Current (amps)', '10'], ['l', 'One-way length of the run', '50', 'len'],
+    ['g', 'Wire size', '10', AWG.map(a => [a[0], a[0] + ' AWG']).concat(MM2.map(x => ['mm' + x, x + ' mm²']))]],
+    f => {
+      const ohmPerM = f.g.startsWith('mm') ? 0.0172 / +f.g.slice(2) : AWG.find(a => a[0] === f.g)[1] / 304.8;
+      const vd = 2 * f.l * f.i_raw * ohmPerM, pct = vd / f.v_raw * 100;
+      let best = '';
+      for (const a of AWG) { const d = 2 * f.l * f.i_raw * a[1] / 304.8; if (d / f.v_raw * 100 <= 3) { best = a[0]; break; } }
+      return `Loses ${L(vd)} volts = <b>${fmt(pct)}%</b> of ${fmt(f.v_raw)} V, and wastes ${L(vd * f.i_raw)} watts as heat.<br>` +
+        (pct > 3 ? `More than 3% — use thicker wire${best ? ` (about ${best} AWG keeps it under 3%)` : ''}, a shorter run or a higher voltage.` : 'Under 3% — fine for most uses.') +
+        '<br><span class="note">Also check the wire is rated for the amps and fused at the battery (see the Off-grid guide). Copper at room temperature.</span>';
+    }],
+  ['🍞 Food, travel and everyday', 'recipe', 'Scale a recipe', 'Paste the ingredient list; every amount is multiplied', [
+    ['from', 'Recipe makes (servings or loaves)', '4'], ['to', 'You want', '10'],
+    ['txt', 'Ingredients (one per line)', '2 1/4 cups flour\n1 tsp salt\n1 1/2 cups warm water\n2 tbsp lard', 'text']],
+    f => {
+      const k = f.to_raw / f.from_raw;
+      if (!(k > 0)) return 'Fill in both numbers.';
+      const lines = String(f.txt || '').split('\n').map(line => {
+        const m = line.match(/^\s*((?:\d+\s+)?\d+\/\d+|\d+(?:\.\d+)?|[½¼¾⅓⅔⅛⅜⅝⅞])(?:\s*(?:-|to)\s*((?:\d+\s+)?\d+\/\d+|\d+(?:\.\d+)?))?\s*(.*)$/);
+        if (!m) return esc(line);
+        const a = num(m[1]) * k, b = m[2] ? num(m[2]) * k : null;
+        const nice = x => { const fr = frac(x, [2, 4, 8, 3]); return fr && x < 20 ? fr : fmt(x); };
+        return `<b>${nice(a)}${b ? '–' + nice(b) : ''}</b> ${esc(m[3])}`;
+      });
+      return `Multiply by ${L(k)}:<br>${lines.join('<br>')}<br><span class="note">Salt, spices, yeast and leavening often need a bit less than straight scaling; baking time changes with pan size.</span>`;
+    }],
+  ['🍞 Food, travel and everyday', 'fuelmix', 'Two-stroke fuel mix', 'Oil to add to gas for chainsaws, trimmers and outboards', [
+    ['ratio', 'Mix ratio (the first number, e.g. 50 for 50:1)', '50'], ['gas', 'Amount of gas', '1', 'vol']],
+    f => {
+      const oil = f.gas / f.ratio_raw;
+      return `Add <b>${fmt(oil / 0.0295735295625)} fl oz</b> (${fmt(oil * 1000)} mL) of two-stroke oil.<br><span class="note">Use the ratio printed on the tool or its manual.</span>`;
+    }],
+  ['🍞 Food, travel and everyday', 'walk', 'Walking time and distance', 'How long a trip takes on foot', [
+    ['d', 'Distance', '30', 'dist'], ['s', 'Walking speed (mph) — about 2.5–3 on roads, slower with a load or uphill', '2.5'], ['h', 'Hours of walking per day', '6']],
+    f => {
+      const mi = f.d / 1609.344, hrs = mi / f.s_raw;
+      return `${L(hrs)} hours of walking = about <b>${fmt(Math.ceil(hrs / f.h_raw * 10) / 10)} days</b> at ${fmt(f.h_raw)} hours a day (${L(mi)} mi / ${L(f.d / 1000)} km)<br><span class="note">Add about an hour for every 2,000 ft of climb (a common rule of thumb). The Walking routes give real distances from Cave Junction.</span>`;
+    }],
+  ['🍞 Food, travel and everyday', 'pct', 'Percent and change', 'What percent, a percent of, and how much something changed', [
+    ['a', 'Number A', '15'], ['b', 'Number B', '60']],
+    f => `${fmt(f.a_raw)} is <b>${fmt(f.a_raw / f.b_raw * 100)}%</b> of ${fmt(f.b_raw)}<br>${fmt(f.a_raw)}% of ${fmt(f.b_raw)} is <b>${fmt(f.a_raw / 100 * f.b_raw)}</b><br>From ${fmt(f.a_raw)} to ${fmt(f.b_raw)} is a change of <b>${fmt((f.b_raw - f.a_raw) / f.a_raw * 100)}%</b>`],
+  ['💊 Medicine arithmetic', 'dose', 'Dose by body weight (arithmetic only)', 'mg per kg × weight → mg, and mL of a liquid', [
+    ['w', 'Body weight', '40', 'wt'], ['mgkg', 'Dose from the guide or book (mg per kg)', ''], ['conc', 'Liquid strength: mg in …', '250'], ['per', '… this many mL', '5'], ['max', 'Maximum single dose from the book (mg), if given', '']],
+    f => {
+      if (!(f.mgkg_raw > 0)) return 'Enter the mg-per-kg dose exactly as the guide or book gives it.';
+      let mg = f.w * f.mgkg_raw, capped = false;
+      if (f.max_raw > 0 && mg > f.max_raw) { mg = f.max_raw; capped = true; }
+      const ml = f.conc_raw > 0 && f.per_raw > 0 ? mg / (f.conc_raw / f.per_raw) : NaN;
+      return `${L(f.w)} kg × ${fmt(f.mgkg_raw)} mg/kg = <b>${fmt(mg)} mg</b>${capped ? ' (held at the maximum dose)' : ''}` + (isFinite(ml) ? `<br>Of a liquid with ${fmt(f.conc_raw)} mg in ${fmt(f.per_raw)} mL: <b>${fmt(ml)} mL</b> — measure with a syringe, not a kitchen spoon` : '');
+    }, '<div class="warn"><b>Only use a dose, a maximum and a schedule from the medical guides or books on this drive.</b> This box only multiplies. Check the weight unit, check the strength printed on the bottle, and have a second person repeat the math. Drops are not a safe way to measure medicine.</div>']
+];
+function esc(s) { return String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]); }
+function fieldHTML(cid, [id, label, dflt, units]) {
+  const fid = `${cid}-${id}`;
+  if (units === 'text') return `<div style="grid-column:1/-1"><label for="${fid}">${label}</label><textarea id="${fid}">${esc(dflt)}</textarea></div>`;
+  if (Array.isArray(units)) return `<div><label for="${fid}">${label}</label><select id="${fid}">${units.map(u => `<option value="${u[0]}"${u[0] === dflt ? ' selected' : ''}>${u[1]}</option>`).join('')}</select></div>`;
+  const set = UNITSETS[units];
+  return `<div><label for="${fid}">${label}</label>` + (set ? `<div class="pair"><input id="${fid}" type="text" inputmode="decimal" value="${esc(dflt)}"><select id="${fid}-u">${set.map(u => `<option value="${u[0]}">${u[1]}</option>`).join('')}</select></div>`
+    : `<input id="${fid}" type="text" inputmode="decimal" value="${esc(dflt)}">`) + '</div>';
+}
+function runCalc(c) {
+  const [, cid, , , fields, fn] = c, f = {};
+  for (const [id, , , units] of fields) {
+    const el = $(`${cid}-${id}`);
+    if (units === 'text' || Array.isArray(units)) { f[id] = el.value; continue; }
+    const raw = num(el.value); f[id + '_raw'] = raw;
+    const set = UNITSETS[units];
+    f[id] = set ? raw * set.find(u => u[0] === $(`${cid}-${id}-u`).value)[2] : raw;   // in meters / liters / kg
+  }
+  let html;
+  try { html = fn(f); } catch (e) { html = 'Check the numbers.'; }
+  if (/NaN|Infinity/.test(html)) html = 'Fill in the boxes with numbers (fractions like 1 1/2 are fine).';
+  $(`${cid}-out`).innerHTML = html;
+}
+let lastGroup = '';
+$('calcs').innerHTML = CALCS.map(c => {
+  const [grp, cid, title, blurb, fields, , warn] = c;
+  const head = grp !== lastGroup ? `<div class="grp">${grp}</div>` : ''; lastGroup = grp;
+  return head + `<details class="calc" id="calc-${cid}"><summary>${title}<small>${blurb}</small></summary><div class="body">${warn || ''}<div class="row">${fields.map(fl => fieldHTML(cid, fl)).join('')}</div><div class="res" id="${cid}-out"></div></div></details>`;
+}).join('');
+for (const c of CALCS) {
+  const box = $(`calc-${c[1]}`);
+  box.addEventListener('input', () => runCalc(c)); box.addEventListener('change', () => runCalc(c));
+  runCalc(c);
+}
+// keep each calculator's lengths in the units people expect: inches for small sizes
+[['vol-d', 'in'], ['tank-d', 'in'], ['tank-h', 'in'], ['tank-l', 'in']].forEach(([id, u]) => { const s = $(id + '-u'); if (s) s.value = u; });
+CALCS.forEach(runCalc);
+setCat('length');
+try { const q = new URLSearchParams(location.search).get('q'); if (q) { $('quick').value = q; doQuick(); } } catch (e) {}
+</script>
+</body>
+</html>

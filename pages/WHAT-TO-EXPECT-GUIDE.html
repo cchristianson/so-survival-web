@@ -1,0 +1,815 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>⏳ What to Expect: Disaster Scenarios &amp; Timelines</title><style>:root{--bg:#0f1420;--card:#171f2e;--ink:#e7ecf3;--muted:#9fb0c3;--accent:#4fd1c5;--accent2:#f6ad55;--line:#273246;--code:#0b0f17}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--code:#f1f5f9}}:root[data-theme=light]{--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--code:#f1f5f9}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,Segoe UI,Roboto,Arial,sans-serif}.wrap{max-width:900px;margin:0 auto;padding:28px 20px 80px}h1{font-size:28px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}h2{font-size:22px;border-bottom:2px solid var(--line);padding-bottom:6px;margin-top:30px}h3{font-size:17px;color:var(--accent)}h4{font-size:15px;color:var(--accent2)}a{color:var(--accent)}code{background:var(--code);padding:2px 6px;border-radius:6px;font-family:Consolas,monospace;font-size:14px}pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow-x:auto}pre code{background:none;padding:0}table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}th{background:rgba(127,127,127,.12)}blockquote{border-left:4px solid var(--accent);background:rgba(79,209,197,.08);padding:10px 16px;border-radius:0 10px 10px 0}hr{border:none;border-top:1px solid var(--line);margin:26px 0}ul,ol{padding-left:26px}table{display:block;overflow-x:auto;max-width:100%}code,a{overflow-wrap:anywhere}img{max-width:100%}a.lib{text-decoration-style:dotted}a.lib::before{content:"📖 ";text-decoration:none}.deeper{font-size:15px;opacity:.95}a.wiki::before{content:"📷 "}a.lib.pic::before{content:"🖼️ "}a.lib::before,a.wiki::before{display:inline-block;margin-right:3px}html{scroll-behavior:smooth}h2{scroll-margin-top:12px}.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 16px;margin:18px 0 8px}.toc summary{cursor:pointer;font-weight:600;color:var(--accent);font-size:17px}.toc ol{margin:8px 0 4px;padding-left:26px;columns:2 260px;column-gap:28px}.toc li{margin:4px 0;break-inside:avoid}.toc a{text-decoration:none}.toc a:hover{text-decoration:underline}.totop{position:fixed;right:14px;bottom:max(14px,env(safe-area-inset-bottom));background:var(--card);color:var(--accent);border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:14px;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:5}@media print{.totop{display:none}.toc details{display:block}}.topnav{font-size:14.5px;margin:0 0 4px;color:var(--muted)}.topnav a{text-decoration:none;white-space:nowrap}h1 .h1e{-webkit-text-fill-color:initial;color:var(--ink);background:none}.azbar{display:flex;flex-wrap:wrap;gap:4px;background:var(--bg);padding:8px 0;margin:10px 0;border-bottom:1px solid var(--line)}.azbar a{display:inline-block;min-width:30px;text-align:center;padding:4px 6px;border:1px solid var(--line);border-radius:8px;background:var(--card);text-decoration:none;font-weight:600}</style><style>:root{color-scheme:dark}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){color-scheme:light}}:root[data-theme=light]{color-scheme:light}.themebtn{font:inherit;font-size:14px;line-height:1.3;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:3px 11px;cursor:pointer;white-space:nowrap;text-decoration:none}.themefloat{position:absolute;top:10px;right:12px;z-index:9}@media print{.themebtn{display:none}}</style><script>/* so-theme: light or dark screen */(function(){var K="so-theme",d=document.documentElement,L={auto:"\uD83C\uDF13 Auto",dark:"\uD83C\uDF19 Dark",light:"\u2600\uFE0F Light"},N={auto:"dark",dark:"light",light:"auto"},cur="auto";try{cur=localStorage.getItem(K)||"auto"}catch(e){}function a(){if(cur==="dark"||cur==="light")d.setAttribute("data-theme",cur);else d.removeAttribute("data-theme");var b=document.querySelectorAll(".themebtn");for(var i=0;i<b.length;i++){b[i].textContent=L[cur]||L.auto;b[i].title="Screen: "+cur+" - tap to change (Auto follows this device)"}}a();window.soTheme=function(){cur=N[cur]||"dark";try{localStorage.setItem(K,cur)}catch(e){}a()};function btn(){var b=document.createElement("button");b.type="button";b.className="themebtn";return b}document.addEventListener("DOMContentLoaded",function(){if(!document.querySelector(".themebtn")){var n=document.querySelector(".topnav"),b=btn();if(n){n.appendChild(document.createTextNode(" \u00B7 "));n.appendChild(b)}else{b.className+=" themefloat";document.body.appendChild(b)}}var all=document.querySelectorAll(".themebtn");for(var i=0;i<all.length;i++)all[i].onclick=window.soTheme;a()})})();</script></head><body><div class="wrap"><p class="topnav"><a class="guide" href="../#tools">🏠 Library</a> · <a class="guide" href="EMERGENCY-FINDER.html">🆘 Emergency</a> · <a class="guide" href="SUBJECT-INDEX.html">📇 Index A–Z</a></p>
+<h1 id="-what-to-expect-disaster-scenarios--timelines"><span class="h1e">⏳</span> What to Expect: Disaster Scenarios &amp; Timelines</h1>
+<p>What really happens, hour by hour and month by month, in the disasters most likely to hit the Illinois Valley, and what to do at each stage. The timelines come from official plans and after-action reports: the Oregon Resilience Plan, the Josephine County hazard plan, the state's review of the 2020 Labor Day fires, federal and state power-outage and fuel plans, and fifty years of disaster research. The books are in <code>Disaster-Scenarios\</code> (<code>Cascadia-Earthquake</code>, <code>Local-Hazards</code>, <code>Fire-Heat-Drought</code>, <code>Grid-Supply-Pandemic</code>, <code>How-People-Respond</code>), with more in <code>Wildfire\</code>, <code>Earthquake-Tsunami\</code>, <code>Nuclear-Radiation\</code> and <code>EMP-Solar-Storms\</code>.</p>
+<blockquote>
+<h3 id="️-five-rules-that-hold-in-every-scenario">⚠️ Five rules that hold in every scenario</h3>
+<ol type="1">
+<li><strong>Plan to be on your own for at least two weeks.</strong> The state's own Cascadia exercise said so (<a class="lib" target="_blank" rel="noopener" href="https://www.oregon.gov/oem/Documents/CR16-AAR-Final.PDF#page=12" title="Cascadia Rising 2016 Exercise - Oregon Statewide After-Action Report (Oregon OEM 2017).pdf — page 12">Cascadia Rising, p. 12</a>). At the end of one highway, plan longer.</li>
+<li><strong>Leave early.</strong> Alerts fail when cell towers burn or lose power (<a class="lib" target="_blank" rel="noopener" href="https://apps.oregonlegislature.gov/liz/2021R1/Downloads/CommitteeMeetingDocument/242362#page=9" title="State of Oregon After-Action Review - September 2020 Wildland Fire and Wind Event (Oregon 2021).pdf — page 9">2020 fire review, p. 9</a>). A Level 3 notice may be the last one.</li>
+<li><strong>Check on people who live alone.</strong> Most who died in the 2021 heat dome lived alone (<a class="lib" target="_blank" rel="noopener" href="https://multco.us/file/final_report:_health_impacts_from_excessive_heat_events_in_multnomah_county,_oregon,_2021/download#page=10" title="Health Impacts from Excessive Heat Events in Multnomah County 2021 (Multnomah County Health Department 2022).pdf — page 10">heat report, p. 10</a>).</li>
+<li><strong>Generators, grills and camp stoves stay outdoors.</strong> Carbon monoxide kills in every outage (<a class="lib" target="_blank" rel="noopener" href="https://www.cpsc.gov/s3fs-public/464.pdf" title="CPSC - Carbon Monoxide The Invisible Killer.pdf">CPSC</a>).</li>
+<li><strong>Expect neighbors to help, and be one.</strong> Panic and looting are rare; survivors do most of the rescuing (<a class="lib" target="_blank" rel="noopener" href="https://udspace.udel.edu/server/api/core/bitstreams/03ad7552-52e7-4784-a8bd-d8f4654d261f/content#page=16" title="Conventional Beliefs and Counterintuitive Realities - Disaster Behavior Research (Quarantelli - Disaster Research Center 2008).pdf — page 16">Quarantelli, p. 16</a>).</li>
+</ol>
+</blockquote>
+<hr />
+<nav class="toc" id="contents" aria-label="Contents"><details open><summary>📑 Contents</summary><ol><li><a href="#how-to-use-this-guide">🧭 How to use this guide</a></li><li><a href="#1-wildfire-and-smoke">🔥 1. Wildfire and smoke</a></li><li><a href="#2-winter-storm-ice-flood-and-landslides">❄️ 2. Winter storm, ice, flood and landslides</a></li><li><a href="#3-extreme-heat-and-drought">🌡️ 3. Extreme heat and drought</a></li><li><a href="#4-long-power-outage-including-fire-season-shutoffs">🔌 4. Long power outage, including fire-season shutoffs</a></li><li><a href="#5-pandemic">🦠 5. Pandemic</a></li><li><a href="#6-economic-crisis-fuel-and-supply-chain-breakdown">⛽ 6. Economic crisis, fuel and supply-chain breakdown</a></li><li><a href="#7-cascadia-m9-earthquake-and-the-coast-tsunami">🌎 7. Cascadia M9 earthquake (and the coast tsunami)</a></li><li><a href="#8-riots-and-law-and-order-breaking-down">🚨 8. Riots and law and order breaking down</a></li><li><a href="#9-solar-storm-or-emp">☀️ 9. Solar storm or EMP</a></li><li><a href="#10-nuclear-attack-and-fallout">☢️ 10. Nuclear attack and fallout</a></li><li><a href="#11-volcanic-ash">🌋 11. Volcanic ash</a></li><li><a href="#what-every-scenario-has-in-common">🤝 What every scenario has in common</a></li><li><a href="#when-disasters-stack">🔁 When disasters stack</a></li><li><a href="#pictures-diagrams">🖼️ Pictures &amp; diagrams</a></li><li><a href="#related-guides">🔗 Related guides</a></li></ol></details></nav>
+<h2 id="how-to-use-this-guide">🧭 How to use this guide</h2>
+<ol type="1">
+<li><strong>Find your scenario</strong> in the table below, or the one closest to what is happening.</li>
+<li><strong>Read its timeline</strong> for the stage you are in: what is happening around you, and what to do.</li>
+<li><strong>Do its "Get ready now" list</strong> while things are normal. Most items point to another guide.</li>
+<li>Read <strong>What every scenario has in common</strong> once. It applies to all of them.</li>
+</ol>
+<p><strong>How likely</strong> and <strong>how bad</strong> use Josephine County's own ratings where it has them. The county counts a hazard as <em>high</em> probability if one is expected in the next 10–35 years, <em>moderate</em> for 35–75 years and <em>low</em> for 75–100 years; <em>high</em> vulnerability means more than 10% of people or property could be hit, <em>moderate</em> 1–10%, <em>low</em> under 1% (<a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=39" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 39">county plan, p. 39</a>; <a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=64" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 64">p. 64</a>; <a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=68" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 68">p. 68</a>). Ratings the county didn't make are marked <em>(estimate)</em>. The "signs it's getting worse or better" lists are rules of thumb.</p>
+<table>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Scenario</th>
+<th>How likely here</th>
+<th>How bad here</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>🔥 Wildfire and smoke</td>
+<td><strong>High</strong> — 1,175 fires in the county 2010–2019</td>
+<td><strong>High</strong> — the county's #1 hazard</td>
+<td><a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=28" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 28">County plan, pp. 28–29</a></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>❄️ Winter storm, ice, flood, landslide</td>
+<td><strong>High</strong> — storms "a couple times every year, to every other year"</td>
+<td><strong>High</strong> for storms; moderate for floods; low for landslides</td>
+<td><a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=64" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 64">County plan, p. 64</a></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>🌡️ Extreme heat and drought</td>
+<td><strong>High</strong></td>
+<td><strong>Moderate</strong> — deadly for people alone without cooling</td>
+<td><a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=28" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 28">County plan, p. 28</a>; <a class="lib" target="_blank" rel="noopener" href="https://multco.us/file/final_report:_health_impacts_from_excessive_heat_events_in_multnomah_county,_oregon,_2021/download#page=2" title="Health Impacts from Excessive Heat Events in Multnomah County 2021 (Multnomah County Health Department 2022).pdf — page 2">heat report, p. 2</a></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>🔌 Power out for weeks</td>
+<td><strong>High</strong> for days-long outages; weeks-long less often <em>(estimate)</em></td>
+<td><strong>Moderate</strong>; worse in winter or a heat wave</td>
+<td><a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=140" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 140">County plan, p. 140</a></td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>🦠 Pandemic</td>
+<td><strong>Moderate</strong> — flu pandemics in 1918, 1957, 1968 and 2009, then COVID-19 in 2020</td>
+<td><strong>Low to very high</strong>, depending on the germ</td>
+<td><a class="lib" target="_blank" rel="noopener" href="https://extranet.who.int/sph/sites/default/files/document-library/document/WHO-WHE-IHM-GIP-2017.1-eng.pdf#page=52" title="Pandemic Influenza Risk Management - A WHO Guide (WHO 2017).pdf — page 52">WHO, p. 52</a></td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>⛽ Economic crisis, fuel and supply breakdown</td>
+<td><strong>Moderate</strong> for short shortages; a long breakdown is less likely <em>(estimate)</em></td>
+<td><strong>Moderate</strong>; stations hold 2–3 days of fuel</td>
+<td><a class="lib" target="_blank" rel="noopener" href="https://www.oregon.gov/energy/safety-resiliency/Documents/Oregon-Fuel-Action-Plan.pdf#page=11" title="Oregon Fuel Action Plan (Oregon Department of Energy 2017).pdf — page 11">Fuel plan, p. 11</a></td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>🌎 Cascadia M9 earthquake</td>
+<td><strong>Moderate</strong> — 37–43% chance of a Cascadia quake in 50 years; 7–12% for the full M9</td>
+<td><strong>Very high</strong> — the worst disaster we are likely to see</td>
+<td><a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=39" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 39">County plan, p. 39</a></td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>🚨 Riots, law and order breaking down</td>
+<td><strong>Low</strong> on its own; higher during a long breakdown <em>(estimate)</em></td>
+<td><strong>Moderate to high</strong> where it happens</td>
+<td><a class="lib" target="_blank" rel="noopener" href="https://udspace.udel.edu/server/api/core/bitstreams/03ad7552-52e7-4784-a8bd-d8f4654d261f/content#page=12" title="Conventional Beliefs and Counterintuitive Realities - Disaster Behavior Research (Quarantelli - Disaster Research Center 2008).pdf — page 12">Quarantelli, pp. 12–14</a></td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>☀️ Solar storm or EMP</td>
+<td><strong>Low</strong> for one that wrecks the grid <em>(estimate)</em></td>
+<td><strong>Very high</strong> — grid down for months or more</td>
+<td><a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_ADA484497/DTIC_ADA484497.pdf#page=27" title="EMP Commission Executive Report (2004).pdf — page 27">EMP Commission, p. 27</a></td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>☢️ Nuclear attack and fallout</td>
+<td><strong>Low</strong>; no one can give honest odds <em>(estimate)</em></td>
+<td><strong>Very high</strong> if we are downwind</td>
+<td><a class="lib" target="_blank" rel="noopener" href="https://remm.hhs.gov/PlanningGuidanceNuclearDetonation_2023.pdf#page=54" title="Planning Guidance for Response to a Nuclear Detonation - 3rd Edition (FEMA 2022).pdf — page 54">FEMA <em>Planning Guidance</em>, p. 54</a></td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>🌋 Volcanic ash</td>
+<td><strong>Low</strong> — about 1 in 10,000 a year for 0.4 in of ash</td>
+<td><strong>Low</strong></td>
+<td><a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=68" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 68">County plan, p. 68</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>About the Cascadia numbers:</strong> the Oregon Resilience Plan gives restoration times by zone. The county plan puts most of Josephine County in its <strong>Valley zone</strong>, with parts in the <strong>Coastal zone</strong> (<a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=39" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 39">p. 39</a>), so the valley numbers below are a best case for us.</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=29" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 29">County hazard plan, p. 29</a> — how the county ranked every hazard; <a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=118" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 118">Cave Junction's own ratings, p. 118</a>; <a class="lib" target="_blank" rel="noopener" href="https://www.oregon.gov/oem/Documents/Oregon_Resilience_Plan_Final.pdf#page=22" title="Oregon Resilience Plan - Full Report (OSSPAC 2013).pdf — page 22">Oregon Resilience Plan, p. 22</a> — the restoration-time table.</p>
+<h2 id="1-wildfire-and-smoke">🔥 1. Wildfire and smoke</h2>
+<p><strong>What it is and how likely here.</strong> Fires start here every summer: 1,175 in 2010–2019, about 80% started by people (<a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=72" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 72">county plan, pp. 72–73</a>). Burn probability is "considerably higher along highway 199 between Grants Pass and Cave Junction," so a fire could cut the valley off (<a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=71" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 71">p. 71</a>). In September 2020 the <a class="wiki" href="https://en.wikipedia.org/wiki/Slater_and_Devil_fires" data-title="Slater_and_Devil_fires" target="_blank" rel="noopener" title="Wikipedia: Slater and Devil fires (offline copy with photos when opened through the Library Assistant)">Slater Fire</a> burned over 166,000 acres and closed highways around the county (<a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=73" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 73">p. 73</a>), while east winds spread fires statewide: over 500,000 Oregonians were under some level of evacuation notice (<a class="lib" target="_blank" rel="noopener" href="https://apps.oregonlegislature.gov/liz/2021R1/Downloads/CommitteeMeetingDocument/242362#page=20" title="State of Oregon After-Action Review - September 2020 Wildland Fire and Wind Event (Oregon 2021).pdf — page 20">state review, p. 20</a>).</p>
+<p><strong>Warning you'll get:</strong> days for the weather (the Weather Service warned of the Labor Day winds ahead of time); <strong>minutes to hours</strong> for a fire near you.</p>
+<table>
+<thead>
+<tr class="header">
+<th>When</th>
+<th>What's happening</th>
+<th>What you do</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>First minutes–hours</td>
+<td>Fire runs with the wind; embers start new fires ahead of it. Levels 1–2–3 go out, but some cell towers burned in 2020 and alerts failed (<a class="lib" target="_blank" rel="noopener" href="https://apps.oregonlegislature.gov/liz/2021R1/Downloads/CommitteeMeetingDocument/242362#page=9" title="State of Oregon After-Action Review - September 2020 Wildland Fire and Wind Event (Oregon 2021).pdf — page 9">p. 9</a>). Power cut or lines down. Roads jam.</td>
+<td>Go at Level 2 if you can; at Level 3 go now. Two routes out. N95 masks. Move livestock early, in daylight.</td>
+</tr>
+<tr class="even">
+<td>First 3 days</td>
+<td>Shelters open (in 2020 the Red Cross ran 15, with almost 2,000 people — <a class="lib" target="_blank" rel="noopener" href="https://apps.oregonlegislature.gov/liz/2021R1/Downloads/CommitteeMeetingDocument/242362#page=20" title="State of Oregon After-Action Review - September 2020 Wildland Fire and Wind Event (Oregon 2021).pdf — page 20">p. 20</a>). US-199 may close. Thick smoke. No power means no well water.</td>
+<td>Stay out until allowed back. Keep the sick, old and young in a cleaner-air room. Check in with family by radio or text.</td>
+</tr>
+<tr class="odd">
+<td>1–2 weeks</td>
+<td>Big fires can burn for weeks <em>(estimate)</em>; smoke comes and goes. Re-entry begins; burned poles and lines are replaced; weakened trees fall.</td>
+<td>Shock-chlorinate and test the well before drinking (<a class="lib" target="_blank" rel="noopener" href="https://www.oregon.gov/owrd/WRDPublications1/Drought_and_Wells_Fire_Related_Final.pdf" title="OWRD - Maintaining Your Well After Wildfire.pdf">OWRD</a>). N95, gloves and boots in ash.</td>
+</tr>
+<tr class="even">
+<td>1–3 months</td>
+<td>Fall rains usually end the season <em>(rule of thumb)</em>. Burned slopes can let go as debris flows in the first big storms (<a class="lib" target="_blank" rel="noopener" href="https://bready.sd.gov/bReady/areyouready_full.pdf#page=107" title="FEMA Are You Ready Citizen Preparedness Guide (2004 Full Edition).pdf — page 107">FEMA, p. 107</a>).</td>
+<td>Watch burned slopes above houses and roads when it pours. Help neighbors clear debris. Plan winter shelter if a house is lost.</td>
+</tr>
+<tr class="odd">
+<td>3–12 months</td>
+<td>Debris removal and rebuilding; housing is scarce.</td>
+<td>Rebuild with a fire-resistant roof, ember-proof vents and a 5-ft clear zone.</td>
+</tr>
+<tr class="even">
+<td>1 year+</td>
+<td>"Recovery efforts will be on-going for many years" (<a class="lib" target="_blank" rel="noopener" href="https://apps.oregonlegislature.gov/liz/2021R1/Downloads/CommitteeMeetingDocument/242362#page=14" title="State of Oregon After-Action Review - September 2020 Wildland Fire and Wind Event (Oregon 2021).pdf — page 14">p. 14</a>).</td>
+<td>Redo defensible space every spring.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Signs it's getting worse:</strong> dry east wind, humidity in the teens, a red flag warning, a smoke column building in the afternoon (<a class="wiki" href="https://en.wikipedia.org/wiki/Cumulonimbus_flammagenitus" data-title="Cumulonimbus_flammagenitus" target="_blank" rel="noopener" title="Wikipedia: Cumulonimbus flammagenitus (offline copy with photos when opened through the Library Assistant)">Pyrocumulonimbus</a>), ash falling, power shut off ahead of wind. <strong>Getting better:</strong> wind turns back from the west, humidity rises, rain, containment numbers climb.</p>
+<p><strong>Get ready now</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox" />Clear 5 ft and 30 ft around the house; 1/8-in metal mesh on vents — <a class="guide" href="ILLINOIS-VALLEY-START-HERE.html">Illinois Valley guide</a>, <a class="guide" href="SHELTER-BUILDING-GUIDE.html">Shelter &amp; repair</a></label></li>
+<li><label><input type="checkbox" />Sign up for Citizen Alert; write down your evacuation zone — <a class="guide" href="ILLINOIS-VALLEY-START-HERE.html">Illinois Valley guide</a></label></li>
+<li><label><input type="checkbox" />A battery radio and the local stations — <a class="guide" href="RADIO-GUIDE.html">Radio guide</a></label></li>
+<li><label><input type="checkbox" />Go-kit with N95s, medicines, papers and water; a plan for animals — <a class="guide" href="HORSE-GUIDE.html">Horses</a>, <a class="guide" href="GOATS-DAIRY-BEES-GUIDE.html">Goats, Dairy &amp; Bees</a></label></li>
+<li><label><input type="checkbox" />Water that doesn't need the well pump — <a class="guide" href="WATER-WELLS-GUIDE.html">Water wells</a></label></li>
+<li><label><input type="checkbox" />Burn care supplies — <a class="guide" href="FIELD-CARE-GUIDE.html">Field care</a></label></li>
+</ul>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://apps.oregonlegislature.gov/liz/2021R1/Downloads/CommitteeMeetingDocument/242362#page=20" title="State of Oregon After-Action Review - September 2020 Wildland Fire and Wind Event (Oregon 2021).pdf — page 20">2020 fire review, p. 20</a> — the Labor Day fires as they happened; <a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=71" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 71">County plan, p. 71</a> — the burn-probability map; <a class="lib" target="_blank" rel="noopener" href="https://des.mt.gov/Preparedness/Wildfire-Action-Guide.pdf" title="Ready Set Go Wildland Fire Action Guide (IAFC 10th Edition).pdf"><em>Ready, Set, Go!</em></a> — evacuating; <a class="lib" target="_blank" rel="noopener" href="https://www.epa.gov/system/files/documents/2026-06/wildfire-guide-for-public-health-officials-2026.pdf#page=61" title="EPA Wildfire Smoke Guide 2026.pdf — page 61">EPA smoke guide, p. 61</a> — the cleaner-air room.</p>
+<h2 id="2-winter-storm-ice-flood-and-landslides">❄️ 2. Winter storm, ice, flood and landslides</h2>
+<p><strong>What it is and how likely here.</strong> The county rates winter storms #2 of all hazards: high probability, high vulnerability. Recent ones: in February 2019 fallen trees closed US-199 at the California line and 2,500 customers lost power around Grants Pass, Cave Junction and O'Brien; in January 2021 snow left <strong>45,000 customers</strong> in the area without power (<a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=64" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 64">county plan, p. 64</a>). The valley is "one way in, one way out": a storm on US-199 can strand Cave Junction and cut the whole valley's power "for an extended period" (<a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=140" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 140">p. 140</a>). Floods are rated high probability, moderate damage. The benchmark is the <a class="wiki" href="https://en.wikipedia.org/wiki/Christmas_flood_of_1964" data-title="Christmas_flood_of_1964" target="_blank" rel="noopener" title="Wikipedia: Christmas flood of 1964 (offline copy with photos when opened through the Library Assistant)">Christmas flood of 1964</a>: 10 inches of rain in six days, the Rogue and Illinois Valleys cut off and I-5 closed (<a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=45" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 45">p. 45</a>). In 2015, water covered US-199 near Selma and closed roads near O'Brien (<a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=46" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 46">p. 46</a>).</p>
+<p><strong>Warning you'll get:</strong> usually <strong>days</strong> (forecasts of snow, ice or an <a class="wiki" href="https://en.wikipedia.org/wiki/Atmospheric_river" data-title="Atmospheric_river" target="_blank" rel="noopener" title="Wikipedia: Atmospheric river (offline copy with photos when opened through the Library Assistant)">atmospheric river</a>); <strong>minutes</strong> for a flash flood or landslide.</p>
+<table>
+<thead>
+<tr class="header">
+<th>When</th>
+<th>What's happening</th>
+<th>What you do</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>First minutes–hours</td>
+<td>Trees and lines come down; roads blocked; creeks rise fast.</td>
+<td>Stay off the roads. Never drive into flooded roads (<a class="lib" target="_blank" rel="noopener" href="https://bready.sd.gov/bReady/areyouready_full.pdf#page=54" title="FEMA Are You Ready Citizen Preparedness Guide (2004 Full Edition).pdf — page 54">FEMA, p. 54</a>). Get water stored before the pump stops.</td>
+</tr>
+<tr class="even">
+<td>First 3 days</td>
+<td>Power out across the valley; phones fade as tower batteries run down (<a class="lib" target="_blank" rel="noopener" href="https://www.sworm.gov/publications/2017/poia.pdf#page=107" title="Power Outage Incident Annex - Managing the Cascading Impacts from a Long-Term Power Outage (FEMA DOE 2017).pdf — page 107">outage annex, p. 107</a>). Stores and stations closed or empty.</td>
+<td>Heat one room. Generator outdoors only. Check on neighbors, especially older people alone.</td>
+</tr>
+<tr class="odd">
+<td>1–2 weeks</td>
+<td>Most past big-storm outages were fixed within about two weeks (<a class="lib" target="_blank" rel="noopener" href="https://www.sworm.gov/publications/2017/poia.pdf#page=10" title="Power Outage Incident Annex - Managing the Cascading Impacts from a Long-Term Power Outage (FEMA DOE 2017).pdf — page 10">outage annex, p. 10</a>); far-out rural lines come last <em>(estimate)</em>. Slides close roads.</td>
+<td>Ration fuel and firewood. Watch slopes for warning signs (below).</td>
+</tr>
+<tr class="even">
+<td>1–3 months</td>
+<td>Landslide and washout repairs; some roads one lane or closed.</td>
+<td>Plan longer trips around closures; keep a spare week of supplies.</td>
+</tr>
+<tr class="odd">
+<td>3–12 months</td>
+<td>Bigger slides on highways can take many months <em>(estimate)</em>.</td>
+<td>Fix drainage above the house before next winter.</td>
+</tr>
+<tr class="even">
+<td>1 year+</td>
+<td>Back to normal for most.</td>
+<td>Restock.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Signs it's getting worse:</strong> freezing rain (ice on lines and trees), a second storm forecast behind the first, rising creeks at night. <strong>Landslide warning signs:</strong> doors or windows that suddenly stick, new cracks in walls or ground, tilting trees or poles, water bursting from new places, a rumble that gets louder (<a class="lib" target="_blank" rel="noopener" href="https://bready.sd.gov/bReady/areyouready_full.pdf#page=108" title="FEMA Are You Ready Citizen Preparedness Guide (2004 Full Edition).pdf — page 108">FEMA, p. 108</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Landslide" data-title="Landslide" target="_blank" rel="noopener" title="Wikipedia: Landslide (offline copy with photos when opened through the Library Assistant)">Landslide</a>). <strong>Getting better:</strong> temperatures above freezing, rivers falling, crews working on the main lines.</p>
+<p><strong>Get ready now</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox" />Dry firewood for a whole winter and a safe stove — <a class="guide" href="FIREWOOD-GUIDE.html">Firewood</a></label></li>
+<li><label><input type="checkbox" />Backup power, wired safely — <a class="guide" href="OFF-GRID-POWER-GUIDE.html">Off-grid power</a>; chainsaw running — <a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html">Engines</a></label></li>
+<li><label><input type="checkbox" />Water for when the pump stops — <a class="guide" href="WATER-WELLS-GUIDE.html">Water wells</a></label></li>
+<li><label><input type="checkbox" />Warm clothes, dry boots — <a class="guide" href="CLOTHING-LEATHER-GUIDE.html">Clothing</a>; hypothermia care — <a class="guide" href="FIELD-CARE-GUIDE.html">Field care</a></label></li>
+<li><label><input type="checkbox" />Gutters, culverts and ditches clear before November <em>(rule of thumb)</em> — <a class="guide" href="SHELTER-BUILDING-GUIDE.html">Shelter &amp; repair</a></label></li>
+</ul>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=45" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 45">County plan, pp. 45–46</a> — local flood history; <a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=52" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 52">p. 52</a> — landslide history; <a class="lib" target="_blank" rel="noopener" href="https://bready.sd.gov/bReady/areyouready_full.pdf#page=81" title="FEMA Are You Ready Citizen Preparedness Guide (2004 Full Edition).pdf — page 81">FEMA <em>Are You Ready?</em>, p. 81</a> — winter storms and extreme cold.</p>
+<h2 id="3-extreme-heat-and-drought">🌡️ 3. Extreme heat and drought</h2>
+<p><strong>What it is and how likely here.</strong> The county rates heat waves high probability, moderate damage. Days with a heat index over 90 °F are expected to rise from about 13 a year to about 40 by the 2050s (<a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=57" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 57">county plan, p. 57</a>). In the <a class="wiki" href="https://en.wikipedia.org/wiki/2021_Western_North_America_heat_wave" data-title="2021_Western_North_America_heat_wave" target="_blank" rel="noopener" title="Wikipedia: 2021 Western North America heat wave (offline copy with photos when opened through the Library Assistant)">June 2021 heat dome</a> Josephine County saw 92–108 °F, with two more heat waves later that summer (<a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=58" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 58">p. 58</a>). In Portland it killed <strong>72 people</strong>; in a normal year, none. Most were 60 or older and lived alone, and half had only a fan (<a class="lib" target="_blank" rel="noopener" href="https://multco.us/file/final_report:_health_impacts_from_excessive_heat_events_in_multnomah_county,_oregon,_2021/download#page=2" title="Health Impacts from Excessive Heat Events in Multnomah County 2021 (Multnomah County Health Department 2022).pdf — page 2">heat report, pp. 2, 8–12</a>). Drought is also rated high probability: extreme drought years 1924, 1977 and 2001, severe ones as recently as 2014 and 2020 (<a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=33" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 33">p. 33</a>).</p>
+<p><strong>Warning you'll get:</strong> <strong>days</strong> for heat; <strong>months</strong> for drought (a dry winter and low snow).</p>
+<table>
+<thead>
+<tr class="header">
+<th>When</th>
+<th>What's happening</th>
+<th>What you do</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>First minutes–hours</td>
+<td>Afternoons over 100 °F; houses don't cool at night. Fire danger jumps; power may be shut off for fire risk.</td>
+<td>Cool one room (shade, wet cloths, a basement). Above the upper 90s a fan only moves hot air (<a class="lib" target="_blank" rel="noopener" href="https://multco.us/file/final_report:_health_impacts_from_excessive_heat_events_in_multnomah_county,_oregon,_2021/download#page=12" title="Health Impacts from Excessive Heat Events in Multnomah County 2021 (Multnomah County Health Department 2022).pdf — page 12">heat report, p. 12</a>).</td>
+</tr>
+<tr class="even">
+<td>First 3 days</td>
+<td>Deaths peak after the hottest day — in Portland the worst day was the day after 116 °F (<a class="lib" target="_blank" rel="noopener" href="https://multco.us/file/final_report:_health_impacts_from_excessive_heat_events_in_multnomah_county,_oregon,_2021/download#page=7" title="Health Impacts from Excessive Heat Events in Multnomah County 2021 (Multnomah County Health Department 2022).pdf — page 7">heat report, p. 7</a>).</td>
+<td>Visit or call anyone living alone twice a day. Do outdoor work at dawn <em>(rule of thumb)</em>.</td>
+</tr>
+<tr class="odd">
+<td>1–2 weeks</td>
+<td>Heat breaks, then can return; Josephine had three heat waves in summer 2021. Creeks and shallow wells drop.</td>
+<td>Cut water use; shade gardens and animals.</td>
+</tr>
+<tr class="even">
+<td>1–3 months</td>
+<td>Drought: wells yield less in late summer (<a class="lib" target="_blank" rel="noopener" href="https://www.oregon.gov/owrd/programs/policylawandrules/LegislativeAndBudget/Documents/wellsanddrought.pdf#page=1" title="Water Wells and Drought (OWRD 2026).pdf — page 1">OWRD</a>); pastures brown early; fire season long.</td>
+<td>Water the garden at the roots; save seed from survivors.</td>
+</tr>
+<tr class="odd">
+<td>3–12 months</td>
+<td>Short harvests; hay expensive or gone <em>(estimate)</em>.</td>
+<td>Plan feed and food for winter early.</td>
+</tr>
+<tr class="even">
+<td>1 year+</td>
+<td>Droughts can run for years: severe or extreme in 1924, 1926, 1931 and 1934 (<a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=33" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 33">p. 33</a>).</td>
+<td>Store rainwater; plant drought-tough crops.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Signs it's getting worse:</strong> night lows staying in the 70s, a forecast of more days over 100 °F, confusion or no sweating in someone hot (<a class="wiki" href="https://en.wikipedia.org/wiki/Heat_stroke" data-title="Heat_stroke" target="_blank" rel="noopener" title="Wikipedia: Heat stroke (offline copy with photos when opened through the Library Assistant)">Heat stroke</a> — an emergency). <strong>Getting better:</strong> marine air and cooler nights; fall rains.</p>
+<p><strong>Get ready now</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox" />Know heat exhaustion from heat stroke and how to cool someone fast — <a class="guide" href="FIELD-CARE-GUIDE.html">Field care</a></label></li>
+<li><label><input type="checkbox" />A cool room that works with no power: shade cloth, a basement, wet sheets — <a class="guide" href="SHELTER-BUILDING-GUIDE.html">Shelter &amp; repair</a></label></li>
+<li><label><input type="checkbox" />Water storage, and a plan for a weak well — <a class="guide" href="WATER-WELLS-GUIDE.html">Water wells</a></label></li>
+<li><label><input type="checkbox" />Drought-hardy seed — <a class="guide" href="SEED-BANK-GUIDE.html">Seed bank</a></label></li>
+<li><label><input type="checkbox" />Shade and water for animals — <a class="guide" href="RABBITS-CHICKENS-GUIDE.html">Rabbits &amp; chickens</a></label></li>
+</ul>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://multco.us/file/final_report:_health_impacts_from_excessive_heat_events_in_multnomah_county,_oregon,_2021/download#page=2" title="Health Impacts from Excessive Heat Events in Multnomah County 2021 (Multnomah County Health Department 2022).pdf — page 2">Heat report</a> — who died and why; <a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=32" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 32">County plan, p. 32</a> — drought here; <a class="lib" target="_blank" rel="noopener" href="https://bready.sd.gov/bReady/areyouready_full.pdf#page=87" title="FEMA Are You Ready Citizen Preparedness Guide (2004 Full Edition).pdf — page 87">FEMA <em>Are You Ready?</em>, p. 87</a> — extreme heat.</p>
+<h2 id="4-long-power-outage-including-fire-season-shutoffs">🔌 4. Long power outage, including fire-season shutoffs</h2>
+<p><strong>What it is and how likely here.</strong> Storms knock out power almost every winter (scenario 2). Pacific Power has mapped areas near Cave Junction where it may cut power on purpose in dangerous fire weather, called a <strong>public safety power shutoff</strong> (<a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=140" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 140">county plan, p. 140</a>; <a class="lib" target="_blank" rel="noopener" href="https://apps.oregonlegislature.gov/liz/2021R1/Downloads/CommitteeMeetingDocument/242362#page=10" title="State of Oregon After-Action Review - September 2020 Wildland Fire and Wind Event (Oregon 2021).pdf — page 10">state fire review, p. 10</a>). Longer outages come with bigger disasters: about two weeks after Hurricane Sandy and Katrina in most places, 11 days in Connecticut in 2011 (<a class="lib" target="_blank" rel="noopener" href="https://www.sworm.gov/publications/2017/poia.pdf#page=10" title="Power Outage Incident Annex - Managing the Cascading Impacts from a Long-Term Power Outage (FEMA DOE 2017).pdf — page 10">outage annex, p. 10</a>), <strong>1–3 months</strong> after a Cascadia quake (<a class="lib" target="_blank" rel="noopener" href="https://www.oregon.gov/oem/Documents/Oregon_Resilience_Plan_Final.pdf#page=22" title="Oregon Resilience Plan - Full Report (OSSPAC 2013).pdf — page 22">Resilience Plan, p. 22</a>), months to years after a grid-wrecking solar storm or EMP (scenario 9).</p>
+<p><strong>Warning you'll get:</strong> shutoffs are usually announced ahead by the utility <em>(verify with Pacific Power)</em>; storm outages give hours; quake or EMP none.</p>
+<table>
+<thead>
+<tr class="header">
+<th>When</th>
+<th>What's happening</th>
+<th>What you do</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>First minutes–hours</td>
+<td>Well pumps, furnaces, fridges stop. Phones and towers run on batteries or generators for "hours to a few days" (<a class="lib" target="_blank" rel="noopener" href="https://www.sworm.gov/publications/2017/poia.pdf#page=107" title="Power Outage Incident Annex - Managing the Cascading Impacts from a Long-Term Power Outage (FEMA DOE 2017).pdf — page 107">outage annex, p. 107</a>).</td>
+<td>Fill containers if any pressure is left. Keep fridge and freezer shut.</td>
+</tr>
+<tr class="even">
+<td>First 3 days</td>
+<td>Gas stations can't pump without power, as after Hurricane Sandy (<a class="lib" target="_blank" rel="noopener" href="https://aeecenter.naseo.org/Data/Sites/1/documents/tk-news/petro-shortage-planning-feb-2018.pdf#page=72" title="Guidance for States on Petroleum Shortage Response Planning (NASEO 2018).pdf — page 72">NASEO, p. 72</a>); stores close. Septic pumps stop (<a class="lib" target="_blank" rel="noopener" href="https://texashelp.tamu.edu/wp-content/uploads/2016/02/waste-systems-blackouts-floods-1.pdf" title="Septic Systems - Responding to Electrical Power Outages and Floods (Texas AgriLife Extension ER-001).pdf">Texas AgriLife</a>). Cell service fades.</td>
+<td>Cook the thawing food first. Generator outdoors, through a transfer switch only. AM radio for news.</td>
+</tr>
+<tr class="odd">
+<td>1–2 weeks</td>
+<td>Most storm outages end here. Fuel for generators runs short.</td>
+<td>Run the generator a few hours a day. Bucket toilet if the septic pump is out.</td>
+</tr>
+<tr class="even">
+<td>1–3 months</td>
+<td>Cascadia-scale outage. Water systems, clinics and stations with no fuel shut down <em>(estimate)</em>.</td>
+<td>Off-grid power for the essentials; preserve food without a freezer.</td>
+</tr>
+<tr class="odd">
+<td>3–12 months</td>
+<td>A big transformer takes about a year to replace (<a class="lib" target="_blank" rel="noopener" href="https://www.ferc.gov/sites/default/files/2020-05/ferc_meta-r-319.pdf#page=149" title="Meta-R-319 Geomagnetic Storms and Their Impacts on the US Power Grid (Metatech for ORNL-FERC 2010).pdf — page 149">Meta-R-319, p. 149</a>).</td>
+<td>Shift to wood heat, hand pumps, root cellar, daylight hours.</td>
+</tr>
+<tr class="even">
+<td>1 year+</td>
+<td>Only after EMP or a huge solar storm <em>(estimate)</em>.</td>
+<td>Long-term off-grid living — this library.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Signs it's getting worse:</strong> no restoration estimate from the utility, damage to big lines or substations, fuel shortages. <strong>Getting better:</strong> crews in the area, power back in town first.</p>
+<p><strong>Get ready now</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox" />Safe backup power and fuel — <a class="guide" href="OFF-GRID-POWER-GUIDE.html">Off-grid power</a>, <a class="guide" href="FUEL-GUIDE.html">Fuel</a></label></li>
+<li><label><input type="checkbox" />A hand pump or other well water with no power — <a class="guide" href="WATER-WELLS-GUIDE.html">Water wells</a></label></li>
+<li><label><input type="checkbox" />Food that needs no freezer — <a class="guide" href="PRESERVING-FOOD-GUIDE.html">Preserving food</a>, <a class="guide" href="ROOT-CELLAR-GUIDE.html">Root cellar</a></label></li>
+<li><label><input type="checkbox" />A toilet plan for a dead septic pump — <a class="guide" href="SANITATION-GUIDE.html">Sanitation</a></label></li>
+<li><label><input type="checkbox" />A battery CO alarm near the bedrooms (<a class="lib" target="_blank" rel="noopener" href="https://www.cpsc.gov/s3fs-public/5123_SafetyAlert_PortableGenerators_102021.pdf" title="CPSC Portable Generator Hazards - CO Backfeed and Fuel Safety.pdf">CPSC</a>)</label></li>
+</ul>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://www.sworm.gov/publications/2017/poia.pdf#page=10" title="Power Outage Incident Annex - Managing the Cascading Impacts from a Long-Term Power Outage (FEMA DOE 2017).pdf — page 10">Power outage annex, p. 10</a> — how long big outages lasted; <a class="lib" target="_blank" rel="noopener" href="https://www.sworm.gov/publications/2017/poia.pdf#page=17" title="Power Outage Incident Annex - Managing the Cascading Impacts from a Long-Term Power Outage (FEMA DOE 2017).pdf — page 17">p. 17</a> — how much fuel generators burn; <a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=140" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 140">County plan, p. 140</a> — the Cave Junction shutoff map.</p>
+<h2 id="5-pandemic">🦠 5. Pandemic</h2>
+<p><strong>What it is and how likely here.</strong> A new germ spreads around the world, usually "within several weeks or months." The last century had flu pandemics in 1918, 1957, 1968 and 2009 (<a class="lib" target="_blank" rel="noopener" href="https://extranet.who.int/sph/sites/default/files/document-library/document/WHO-WHE-IHM-GIP-2017.1-eng.pdf#page=51" title="Pandemic Influenza Risk Management - A WHO Guide (WHO 2017).pdf — page 51">WHO, pp. 51–52</a>), and then <a class="wiki" href="https://en.wikipedia.org/wiki/COVID-19_pandemic" data-title="COVID-19_pandemic" target="_blank" rel="noopener" title="Wikipedia: COVID-19 pandemic (offline copy with photos when opened through the Library Assistant)">COVID-19</a> — so expect one or two in a lifetime <em>(estimate)</em>. A pandemic comes in <strong>waves of several weeks to a few months</strong>, and a later wave can be worse: the mild spring wave of 1918 came before the deadly autumn one (<a class="lib" target="_blank" rel="noopener" href="https://extranet.who.int/sph/sites/default/files/document-library/document/WHO-WHE-IHM-GIP-2017.1-eng.pdf#page=52" title="Pandemic Influenza Risk Management - A WHO Guide (WHO 2017).pdf — page 52">p. 52</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Spanish_flu" data-title="Spanish_flu" target="_blank" rel="noopener" title="Wikipedia: Spanish flu (offline copy with photos when opened through the Library Assistant)">Spanish flu</a>).</p>
+<p><strong>Warning you'll get:</strong> <strong>weeks to months</strong> from the first news to cases here.</p>
+<table>
+<thead>
+<tr class="header">
+<th>When</th>
+<th>What's happening</th>
+<th>What you do</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>First minutes–hours</td>
+<td>(Weeks of news first.) Panic buying can empty shelves even when supply is fine, as after Japan's 2011 quake (<a class="lib" target="_blank" rel="noopener" href="https://www.cna.org/reports/2017/01/supply-chain-resilience-groceries-in-catastrophe.pdf#page=41" title="The Role of Groceries in Response to Catastrophes (CNA 2017).pdf — page 41">CNA, p. 41</a>).</td>
+<td>Buy steadily, not in a panic; fill gaps in medicines and soap.</td>
+</tr>
+<tr class="even">
+<td>First 3 days</td>
+<td>Cases appear locally; schools may close; rumors spread.</td>
+<td>Plan a sickroom; decide how the household will isolate a sick person.</td>
+</tr>
+<tr class="odd">
+<td>1–2 weeks</td>
+<td>The first wave builds. More people miss work than are sick (<a class="lib" target="_blank" rel="noopener" href="https://extranet.who.int/sph/sites/default/files/document-library/document/WHO-WHE-IHM-GIP-2017.1-eng.pdf#page=51" title="Pandemic Influenza Risk Management - A WHO Guide (WHO 2017).pdf — page 51">WHO, p. 51</a>); school closures alone may keep about 16% home (<a class="lib" target="_blank" rel="noopener" href="https://extranet.who.int/sph/sites/default/files/document-library/document/WHO-WHE-IHM-GIP-2017.1-eng.pdf#page=52" title="Pandemic Influenza Risk Management - A WHO Guide (WHO 2017).pdf — page 52">p. 52</a>). Clinics are crowded.</td>
+<td>Keep sick people apart; wash hands; nurse at home with fluids.</td>
+</tr>
+<tr class="even">
+<td>1–3 months</td>
+<td>A wave peaks and falls; early waves use up masks and medicines (<a class="lib" target="_blank" rel="noopener" href="https://extranet.who.int/sph/sites/default/files/document-library/document/WHO-WHE-IHM-GIP-2017.1-eng.pdf#page=51" title="Pandemic Influenza Risk Management - A WHO Guide (WHO 2017).pdf — page 51">p. 51</a>).</td>
+<td>Restock between waves. Teach children at home.</td>
+</tr>
+<tr class="odd">
+<td>3–12 months</td>
+<td>More waves, of different sizes.</td>
+<td>Don't let your guard down after the first wave.</td>
+</tr>
+<tr class="even">
+<td>1 year+</td>
+<td>The "transition" phase: the risk falls and emergency measures wind down (<a class="lib" target="_blank" rel="noopener" href="https://extranet.who.int/sph/sites/default/files/document-library/document/WHO-WHE-IHM-GIP-2017.1-eng.pdf#page=14" title="Pandemic Influenza Risk Management - A WHO Guide (WHO 2017).pdf — page 14">WHO, p. 14</a>).</td>
+<td>Repair what was put off.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Signs it's getting worse:</strong> sick people in more than one household nearby, health workers falling ill, shortages of medicines. <strong>Getting better:</strong> fewer new cases week after week, schools reopening.</p>
+<p><strong>Get ready now</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox" />Handwashing, safe toilets, isolating the sick — <a class="guide" href="SANITATION-GUIDE.html">Sanitation</a></label></li>
+<li><label><input type="checkbox" />Nursing a bedridden person for weeks — <a class="guide" href="FIELD-CARE-GUIDE.html">Field care</a>, <a class="guide" href="Medical-READ-ME-FIRST.html">Medical guide</a></label></li>
+<li><label><input type="checkbox" />Three months of food so you can stay home <em>(rule of thumb)</em> — <a class="guide" href="FOOD-SECURITY-GUIDE.html">Food security</a></label></li>
+<li><label><input type="checkbox" />Schooling at home — <a class="guide" href="CHILDBIRTH-CHILDREN-GUIDE.html">Childbirth &amp; children</a></label></li>
+<li><label><input type="checkbox" />Who checks on whom in the neighborhood — <a class="guide" href="COMMUNITY-BARTER-GUIDE.html">Community &amp; barter</a></label></li>
+</ul>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://extranet.who.int/sph/sites/default/files/document-library/document/WHO-WHE-IHM-GIP-2017.1-eng.pdf#page=51" title="Pandemic Influenza Risk Management - A WHO Guide (WHO 2017).pdf — page 51">WHO pandemic guide, p. 51</a> — waves, absenteeism and past pandemics; <a class="lib" target="_blank" rel="noopener" href="https://iris.who.int/server/api/core/bitstreams/a724030b-5825-4b5e-8577-b94ffa807f2d/content" title="Communicable Disease Control in Emergencies - A Field Manual (WHO 2005).pdf">WHO field manual</a> — isolating cases in an outbreak.</p>
+<h2 id="6-economic-crisis-fuel-and-supply-chain-breakdown">⛽ 6. Economic crisis, fuel and supply-chain breakdown</h2>
+<p><strong>What it is and how likely here.</strong> Oregon has no refineries; more than 90% of its fuel comes from four refineries near Seattle, mostly through one pipeline to the Portland fuel hub (<a class="lib" target="_blank" rel="noopener" href="https://www.oregon.gov/energy/safety-resiliency/Documents/Oregon-Fuel-Action-Plan.pdf#page=9" title="Oregon Fuel Action Plan (Oregon Department of Energy 2017).pdf — page 9">fuel plan, p. 9</a>). Gas stations hold <strong>about two to three days</strong> of fuel (<a class="lib" target="_blank" rel="noopener" href="https://www.oregon.gov/energy/safety-resiliency/Documents/Oregon-Fuel-Action-Plan.pdf#page=11" title="Oregon Fuel Action Plan (Oregon Department of Energy 2017).pdf — page 11">p. 11</a>). Groceries hold more shelf-stable food than most people think; the real problem in a catastrophe is <strong>delivery</strong>, not supply (<a class="lib" target="_blank" rel="noopener" href="https://www.cna.org/reports/2017/01/supply-chain-resilience-groceries-in-catastrophe.pdf#page=9" title="The Role of Groceries in Response to Catastrophes (CNA 2017).pdf — page 9">CNA, p. 9</a>). In the 1970s oil shortages states used odd-even days to cut gas lines (<a class="lib" target="_blank" rel="noopener" href="https://aeecenter.naseo.org/Data/Sites/1/documents/tk-news/petro-shortage-planning-feb-2018.pdf#page=45" title="Guidance for States on Petroleum Shortage Response Planning (NASEO 2018).pdf — page 45">NASEO, p. 45</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/1973_oil_crisis" data-title="1973_oil_crisis" target="_blank" rel="noopener" title="Wikipedia: 1973 oil crisis (offline copy with photos when opened through the Library Assistant)">1973 oil crisis</a>). In the <a class="wiki" href="https://en.wikipedia.org/wiki/Great_Depression" data-title="Great_Depression" target="_blank" rel="noopener" title="Wikipedia: Great Depression (offline copy with photos when opened through the Library Assistant)">Great Depression</a> people formed barter associations to trade work and goods (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/organizationoper26brau/organizationoper26brau.pdf#page=5" title="Organization and Operation of Barter Associations in California (Braun - UC Extension 1933).pdf — page 5">Braun 1933, p. 5</a>).</p>
+<p><strong>Warning you'll get:</strong> <strong>days to months</strong> — prices rise, then shortages begin.</p>
+<table>
+<thead>
+<tr class="header">
+<th>When</th>
+<th>What's happening</th>
+<th>What you do</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>First minutes–hours</td>
+<td>News of a shortage starts a run on fuel and food (<a class="wiki" href="https://en.wikipedia.org/wiki/Panic_buying" data-title="Panic_buying" target="_blank" rel="noopener" title="Wikipedia: Panic buying (offline copy with photos when opened through the Library Assistant)">panic buying</a>); even a "don't top off your tank" message does (<a class="lib" target="_blank" rel="noopener" href="https://www.oregon.gov/energy/safety-resiliency/Documents/Oregon-Fuel-Action-Plan.pdf#page=87" title="Oregon Fuel Action Plan (Oregon Department of Energy 2017).pdf — page 87">fuel plan, p. 87</a>).</td>
+<td>Don't join the run if you're stocked; top up slowly beforehand.</td>
+</tr>
+<tr class="even">
+<td>First 3 days</td>
+<td>Stations run dry; shelves empty of staples; cash only if card systems fail <em>(estimate)</em>.</td>
+<td>Keep some cash in small bills. Stay home; save fuel.</td>
+</tr>
+<tr class="odd">
+<td>1–2 weeks</td>
+<td>Rationing: odd/even days, purchase limits (<a class="lib" target="_blank" rel="noopener" href="https://www.oregon.gov/energy/safety-resiliency/Documents/Oregon-Fuel-Action-Plan.pdf#page=54" title="Oregon Fuel Action Plan (Oregon Department of Energy 2017).pdf — page 54">fuel plan, p. 54</a>).</td>
+<td>Combine trips; carpool; bike.</td>
+</tr>
+<tr class="even">
+<td>1–3 months</td>
+<td>Jobs and wages hit; neighbors start trading <em>(estimate)</em>.</td>
+<td>Trade skills and surplus fairly; start a garden bed.</td>
+</tr>
+<tr class="odd">
+<td>3–12 months</td>
+<td>A real depression: barter groups and local scrip appear, as in 1932–33 (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/organizationoper26brau/organizationoper26brau.pdf#page=17" title="Organization and Operation of Barter Associations in California (Braun - UC Extension 1933).pdf — page 17">Braun, p. 17</a>).</td>
+<td>Organize a skills list and a barter day.</td>
+</tr>
+<tr class="even">
+<td>1 year+</td>
+<td>A depression can last years <em>(estimate)</em>.</td>
+<td>Grow, preserve and repair locally.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Signs it's getting worse:</strong> stations limiting gallons, stores limiting items, delivery trucks skipping the valley. <strong>Getting better:</strong> limits lifted, prices steady.</p>
+<p><strong>Get ready now</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox" />A year of staple food, stored right — <a class="guide" href="FOOD-SECURITY-GUIDE.html">Food security</a></label></li>
+<li><label><input type="checkbox" />Stored fuel kept fresh — <a class="guide" href="FUEL-GUIDE.html">Fuel</a></label></li>
+<li><label><input type="checkbox" />Bike or cart for errands — <a class="guide" href="BICYCLES-CARTS-GUIDE.html">Bicycles &amp; carts</a></label></li>
+<li><label><input type="checkbox" />Seed and a garden that already works — <a class="guide" href="SEED-BANK-GUIDE.html">Seed bank</a></label></li>
+<li><label><input type="checkbox" />Neighbors who know each other's skills — <a class="guide" href="COMMUNITY-BARTER-GUIDE.html">Community &amp; barter</a></label></li>
+</ul>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://www.oregon.gov/energy/safety-resiliency/Documents/Oregon-Fuel-Action-Plan.pdf#page=5" title="Oregon Fuel Action Plan (Oregon Department of Energy 2017).pdf — page 5">Fuel plan, p. 5</a> — the worst case; <a class="lib" target="_blank" rel="noopener" href="https://www.cna.org/reports/2017/01/supply-chain-resilience-groceries-in-catastrophe.pdf#page=9" title="The Role of Groceries in Response to Catastrophes (CNA 2017).pdf — page 9">CNA groceries report, p. 9</a> — why the problem is delivery; <a class="lib" target="_blank" rel="noopener" href="https://www.clevelandfed.org/-/media/project/clevelandfedtenant/clevelandfedsite/publications/economic-commentary/1998/ec-19980401-private-money-everything-old-is-new-again-pdf.pdf" title="Private Money - Local Currencies and LETS (Federal Reserve Bank of Cleveland 1998).pdf">Private money and LETS</a> — local currencies.</p>
+<h2 id="7-cascadia-m9-earthquake-and-the-coast-tsunami">🌎 7. Cascadia M9 earthquake (and the coast tsunami)</h2>
+<p><strong>What it is and how likely here.</strong> The <a class="wiki" href="https://en.wikipedia.org/wiki/Cascadia_subduction_zone" data-title="Cascadia_subduction_zone" target="_blank" rel="noopener" title="Wikipedia: Cascadia subduction zone (offline copy with photos when opened through the Library Assistant)">Cascadia subduction zone</a> last broke on January 26, 1700 (<a class="wiki" href="https://en.wikipedia.org/wiki/1700_Cascadia_earthquake" data-title="1700_Cascadia_earthquake" target="_blank" rel="noopener" title="Wikipedia: 1700 Cascadia earthquake (offline copy with photos when opened through the Library Assistant)">1700 Cascadia earthquake</a>). About half of past quakes were centered off the southern Oregon coast; the odds of one hitting southern Oregon in the next 50 years are about <strong>37%</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www.oregon.gov/oem/Documents/Oregon_Resilience_Plan_Final.pdf#page=31" title="Oregon Resilience Plan - Full Report (OSSPAC 2013).pdf — page 31">Resilience Plan, p. 31</a>). The county puts it at 37–43% for any Cascadia quake and 7–12% for the full M9, and rates our vulnerability <strong>high</strong> (<a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=39" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 39">county plan, p. 39</a>). Studies estimate 650–5,000 deaths from the quake and another 600–5,000 from the tsunami (<a class="lib" target="_blank" rel="noopener" href="https://www.oregon.gov/oem/Documents/Oregon_Resilience_Plan_Final.pdf#page=40" title="Oregon Resilience Plan - Full Report (OSSPAC 2013).pdf — page 40">Resilience Plan, p. 40</a>).</p>
+<p><strong>Warning you'll get:</strong> <strong>none.</strong> The shaking is the warning. It lasts <strong>4–6 minutes</strong> (<a class="lib" target="_blank" rel="noopener" href="https://pubs.oregon.gov/dogami/ofr/O-13-22.pdf#page=10" title="CREW Cascadia M9 Earthquake Scenario.pdf — page 10">CREW, p. 10</a>).</p>
+<table>
+<thead>
+<tr class="header">
+<th>When</th>
+<th>What's happening (Valley zone unless noted)</th>
+<th>What you do</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>First minutes–hours</td>
+<td>Shaking 4–6 minutes; landslides on mountain roads; chimneys and older houses damaged <em>(estimate)</em>. The <a class="wiki" href="https://en.wikipedia.org/wiki/Tsunami" data-title="Tsunami" target="_blank" rel="noopener" title="Wikipedia: Tsunami (offline copy with photos when opened through the Library Assistant)">tsunami</a> reaches parts of the coast within 15 minutes (<a class="lib" target="_blank" rel="noopener" href="https://www.oregon.gov/energy/safety-resiliency/Documents/Oregon-Fuel-Action-Plan.pdf#page=5" title="Oregon Fuel Action Plan (Oregon Department of Energy 2017).pdf — page 5">fuel plan, p. 5</a>). Phones jammed or dead.</td>
+<td>Drop, cover, hold on. Then injuries and fires. Smell gas or propane? Get out first, then shut it off (<a class="lib" target="_blank" rel="noopener" href="https://www.oregon.gov/oem/Documents/B2WR-Complete-Tool-Kit-EN.pdf#page=80" title="Oregon Be 2 Weeks Ready Complete Toolkit.pdf — page 80">Be 2 Weeks Ready, p. 80</a>). Don't drive.</td>
+</tr>
+<tr class="even">
+<td>First 3 days</td>
+<td>Aftershocks, a few possibly over M7 (<a class="lib" target="_blank" rel="noopener" href="https://pubs.oregon.gov/dogami/ofr/O-13-22.pdf#page=13" title="CREW Cascadia M9 Earthquake Scenario.pdf — page 13">CREW, p. 13</a>). No outside help. US-199 likely blocked. Stations' 2–3 days of fuel goes.</td>
+<td>Check every neighbor. Set up water, toilet and a cooking spot outdoors. Listen to AM radio and the ham nets.</td>
+</tr>
+<tr class="odd">
+<td>1–2 weeks</td>
+<td>Oregon's fuel terminals hold only 3–5 days of fuel and sit on shaky ground (<a class="lib" target="_blank" rel="noopener" href="https://www.oregon.gov/oem/Documents/Oregon_Resilience_Plan_Final.pdf#page=318" title="Oregon Resilience Plan - Full Report (OSSPAC 2013).pdf — page 318">Resilience Plan, p. 318</a>); fuel rationing. Coast towns are cut off and need shelter and food (<a class="lib" target="_blank" rel="noopener" href="https://www.oregon.gov/oem/Documents/Oregon_Resilience_Plan_Final.pdf#page=33" title="Oregon Resilience Plan - Full Report (OSSPAC 2013).pdf — page 33">p. 33</a>); some people may come inland over US-199 when it opens <em>(estimate)</em>.</td>
+<td>Organize the neighborhood: water, food sharing, a first-aid post. Plan how to take in or help coast refugees.</td>
+</tr>
+<tr class="even">
+<td>1–3 months</td>
+<td><strong>Electricity back in 1–3 months</strong> in the valley zone (3–6 on the coast); police and fire stations 2–4 months (<a class="lib" target="_blank" rel="noopener" href="https://www.oregon.gov/oem/Documents/Oregon_Resilience_Plan_Final.pdf#page=22" title="Oregon Resilience Plan - Full Report (OSSPAC 2013).pdf — page 22">Resilience Plan, p. 22</a>).</td>
+<td>Off-grid power, wood heat. Repair the house before winter.</td>
+</tr>
+<tr class="odd">
+<td>3–12 months</td>
+<td><strong>Water and sewer: 1 month to 1 year</strong> (coast 1–3 years). <strong>Top highways partly open: 6–12 months.</strong> Fuel system: months or longer (<a class="lib" target="_blank" rel="noopener" href="https://www.oregon.gov/energy/safety-resiliency/Documents/Oregon-Fuel-Action-Plan.pdf#page=5" title="Oregon Fuel Action Plan (Oregon Department of Energy 2017).pdf — page 5">fuel plan, p. 5</a>). A strong aftershock months later can do more damage (<a class="lib" target="_blank" rel="noopener" href="https://pubs.oregon.gov/dogami/ofr/O-13-22.pdf#page=13" title="CREW Cascadia M9 Earthquake Scenario.pdf — page 13">CREW, p. 13</a>).</td>
+<td>Garden, preserve, barter. Expect hauling by bike, cart or horse.</td>
+</tr>
+<tr class="even">
+<td>1 year+</td>
+<td><strong>Hospitals: 18 months</strong> (coast 3 years or more). The plan warns of a possible "lost generation" of economic decline (<a class="lib" target="_blank" rel="noopener" href="https://www.oregon.gov/oem/Documents/Oregon_Resilience_Plan_Final.pdf#page=22" title="Oregon Resilience Plan - Full Report (OSSPAC 2013).pdf — page 22">p. 22</a>).</td>
+<td>Long-term local living. Help rebuild.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Signs it's getting worse:</strong> fires spreading in town, a dam or bridge reported out, strong aftershocks, fuel gone. <strong>Getting better:</strong> a Grants Pass route open, radio reports of supply points, power back in town.</p>
+<p><strong>Get ready now</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox" />Bolt the house to its foundation, strap the water heater — <a class="guide" href="SHELTER-BUILDING-GUIDE.html">Shelter &amp; repair</a></label></li>
+<li><label><input type="checkbox" />Two weeks of water at least; a way to treat more — <a class="guide" href="WATER-PURIFICATION-GUIDE.html">Water purification</a></label></li>
+<li><label><input type="checkbox" />Months of food, not days — <a class="guide" href="FOOD-SECURITY-GUIDE.html">Food security</a></label></li>
+<li><label><input type="checkbox" />Trauma and broken-bone care — <a class="guide" href="FIELD-CARE-GUIDE.html">Field care</a></label></li>
+<li><label><input type="checkbox" />Toilets with no sewer — <a class="guide" href="SANITATION-GUIDE.html">Sanitation</a></label></li>
+<li><label><input type="checkbox" />A radio plan and a neighborhood meeting spot — <a class="guide" href="RADIO-GUIDE.html">Radio</a>, <a class="guide" href="COMMUNITY-BARTER-GUIDE.html">Community &amp; barter</a></label></li>
+</ul>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://www.oregon.gov/oem/Documents/Oregon_Resilience_Plan_Final.pdf#page=40" title="Oregon Resilience Plan - Full Report (OSSPAC 2013).pdf — page 40">Resilience Plan, p. 40</a> — expected damage and restoration times; <a class="lib" target="_blank" rel="noopener" href="https://www.oregon.gov/oem/Documents/CR16-AAR-Final.PDF#page=11" title="Cascadia Rising 2016 Exercise - Oregon Statewide After-Action Report (Oregon OEM 2017).pdf — page 11">Cascadia Rising report, p. 11</a> — what the state learned in its exercise; <a class="lib" target="_blank" rel="noopener" href="https://pubs.oregon.gov/dogami/ofr/O-13-22.pdf" title="CREW Cascadia M9 Earthquake Scenario.pdf">CREW scenario</a> — the quake explained; <a class="lib" target="_blank" rel="noopener" href="https://www.oregon.gov/oem/Documents/15022_OEM_Shaky%20Ground_2018%20v4.pdf" title="Living on Shaky Ground Oregon Earthquake and Tsunami Guide.pdf"><em>Living on Shaky Ground</em></a> — Oregon's quake guide.</p>
+<h2 id="8-riots-and-law-and-order-breaking-down">🚨 8. Riots and law and order breaking down</h2>
+<p><strong>What it is and how likely here.</strong> Fifty years of disaster research found panic flight so rare that fire researchers stopped using the idea, and looting "unusual in the typical natural and technological disasters" of countries like ours (<a class="lib" target="_blank" rel="noopener" href="https://udspace.udel.edu/server/api/core/bitstreams/03ad7552-52e7-4784-a8bd-d8f4654d261f/content#page=6" title="Conventional Beliefs and Counterintuitive Realities - Disaster Behavior Research (Quarantelli - Disaster Research Center 2008).pdf — page 6">Quarantelli, pp. 6–7, 11–12</a>). Mass looting did happen after Hurricane Hugo on St. Croix and after <a class="wiki" href="https://en.wikipedia.org/wiki/Hurricane_Katrina" data-title="Hurricane_Katrina" target="_blank" rel="noopener" title="Wikipedia: Hurricane Katrina (offline copy with photos when opened through the Library Assistant)">Hurricane Katrina</a>, where three things came together: many poor people living beside obvious wealth, organized youth gangs, and a police force that was ineffective or corrupt (<a class="lib" target="_blank" rel="noopener" href="https://udspace.udel.edu/server/api/core/bitstreams/03ad7552-52e7-4784-a8bd-d8f4654d261f/content#page=13" title="Conventional Beliefs and Counterintuitive Realities - Disaster Behavior Research (Quarantelli - Disaster Research Center 2008).pdf — page 13">pp. 13–14</a>). Even there, help between people "swamped" the theft, and after the first emergency days reported crime usually <strong>drops</strong> (<a class="lib" target="_blank" rel="noopener" href="https://udspace.udel.edu/server/api/core/bitstreams/03ad7552-52e7-4784-a8bd-d8f4654d261f/content#page=14" title="Conventional Beliefs and Counterintuitive Realities - Disaster Behavior Research (Quarantelli - Disaster Research Center 2008).pdf — page 14">p. 14</a>). The EMP Commission warns that disorder becomes more likely when shortages cause conflict and police are absent for a long time (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_ADA484672/DTIC_ADA484672.pdf#page=167" title="EMP Commission Critical National Infrastructures Report (2008).pdf — page 167">EMP Commission 2008, p. 167</a>).</p>
+<p><strong>Warning you'll get:</strong> usually <strong>days to weeks</strong> of growing shortages or anger first.</p>
+<table>
+<thead>
+<tr class="header">
+<th>When</th>
+<th>What's happening</th>
+<th>What you do</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>First minutes–hours</td>
+<td>Rumors travel faster than facts.</td>
+<td>Check rumors with someone who saw it. Stay home and calm.</td>
+</tr>
+<tr class="even">
+<td>First 3 days</td>
+<td>In most disasters crime falls; neighbors help.</td>
+<td>Be visible helping; know who on your road is alone.</td>
+</tr>
+<tr class="odd">
+<td>1–2 weeks</td>
+<td>If supply and police fail together: theft of fuel, food and tools <em>(estimate)</em>.</td>
+<td>Lock up fuel and tools; keep a low profile with supplies.</td>
+</tr>
+<tr class="even">
+<td>1–3 months</td>
+<td>Neighborhood watch, shared patrols, local agreements <em>(estimate)</em>.</td>
+<td>Join or start a watch group; settle disputes early and fairly.</td>
+</tr>
+<tr class="odd">
+<td>3–12 months</td>
+<td>Communities that organized recover order first <em>(estimate)</em>.</td>
+<td>Support a fair local council and rules.</td>
+</tr>
+<tr class="even">
+<td>1 year+</td>
+<td>Order rebuilds from local groups up <em>(estimate)</em>.</td>
+<td>Keep records of agreements and trades.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Signs it's getting worse:</strong> police no longer answering, groups moving road to road, threats over fuel or water. <strong>Getting better:</strong> regular patrols, markets reopening, people out in daylight.</p>
+<p><strong>Get ready now</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox" />Meet the neighbors now; agree on a meeting place and signals — <a class="guide" href="COMMUNITY-BARTER-GUIDE.html">Community &amp; barter</a>, <a class="guide" href="SIGNALS-MORSE-GUIDE.html">Signals</a></label></li>
+<li><label><input type="checkbox" />Learn to calm an angry person — <a class="guide" href="COMMUNITY-BARTER-GUIDE.html">Community &amp; barter</a></label></li>
+<li><label><input type="checkbox" />Protect the house and supplies — <a class="guide" href="HOME-DEFENSE-GUIDE.html">Home protection</a></label></li>
+<li><label><input type="checkbox" />Radios for the neighborhood watch — <a class="guide" href="RADIO-GUIDE.html">Radio</a></label></li>
+</ul>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://udspace.udel.edu/server/api/core/bitstreams/03ad7552-52e7-4784-a8bd-d8f4654d261f/content#page=11" title="Conventional Beliefs and Counterintuitive Realities - Disaster Behavior Research (Quarantelli - Disaster Research Center 2008).pdf — page 11">Quarantelli, p. 11</a> — what really happens about looting; <a class="lib" target="_blank" rel="noopener" href="https://www.redmond.gov/DocumentCenter/View/1580/Neighborhood-Watch-Manual-PDF" title="Neighborhood Watch Manual (BJA and National Sheriffs Association 2009).pdf">Neighborhood Watch manual</a>; <a class="lib" target="_blank" rel="noopener" href="https://personnel.ky.gov/Documents/KEAP%20Documents/Verbal%20De-Escalation%20Skills%20Presentation%20(1).pdf" title="Using Verbal De-Escalation (Kentucky Employee Assistance Program).pdf">Verbal de-escalation</a>.</p>
+<h2 id="9-solar-storm-or-emp">☀️ 9. Solar storm or EMP</h2>
+<p><strong>What it is and how likely here.</strong> A severe <a class="wiki" href="https://en.wikipedia.org/wiki/Geomagnetic_storm" data-title="Geomagnetic_storm" target="_blank" rel="noopener" title="Wikipedia: Geomagnetic storm (offline copy with photos when opened through the Library Assistant)">geomagnetic storm</a> or a nuclear burst high above the country (EMP) mainly threatens the <strong>power grid</strong>. NOAA counts about four extreme (G5) storms per 11-year solar cycle (<a class="lib" target="_blank" rel="noopener" href="https://www.swpc.noaa.gov/sites/default/files/images/NOAAscales.pdf#page=1" title="NOAA Space Weather Scales (NOAA SWPC).pdf — page 1">NOAA scales, p. 1</a>), but most do not wreck grids; a <a class="wiki" href="https://en.wikipedia.org/wiki/Carrington_Event" data-title="Carrington_Event" target="_blank" rel="noopener" title="Wikipedia: Carrington Event (offline copy with photos when opened through the Library Assistant)">Carrington Event</a>-size storm is rare <em>(estimate)</em>. Details, tests and protecting gear: <a class="guide" href="EMP-GUIDE.html">EMP guide</a>.</p>
+<p><strong>Warning you'll get:</strong> solar storm <strong>18–72 hours</strong>, with a 20–45 minute final warning (<a class="lib" target="_blank" rel="noopener" href="https://www.cisa.gov/sites/default/files/publications/19_0307_CISA_EMP-Protection-Resilience-Guidelines.pdf#page=21" title="EMP Protection and Resilience Guidelines for Critical Infrastructure and Equipment (CISA 2019).pdf — page 21">CISA, p. 21</a>); EMP <strong>none</strong>.</p>
+<table>
+<thead>
+<tr class="header">
+<th>When</th>
+<th>What's happening</th>
+<th>What you do</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>First minutes–hours</td>
+<td>Grid may collapse (Quebec's went down in 90 seconds in 1989 — <a class="lib" target="_blank" rel="noopener" href="https://www.ferc.gov/sites/default/files/2020-05/ferc_meta-r-319.pdf#page=149" title="Meta-R-319 Geomagnetic Storms and Their Impacts on the US Power Grid (Metatech for ORNL-FERC 2010).pdf — page 149">Meta-R-319, p. 149</a>); GPS and HF radio unreliable. After an EMP some running cars stall and restart; parked cars were not affected in tests (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_ADA484672/DTIC_ADA484672.pdf#page=131" title="EMP Commission Critical National Infrastructures Report (2008).pdf — page 131">EMP Commission 2008, p. 131</a>).</td>
+<td>Unplug electronics; disconnect antennas; get the shielded spares out afterward.</td>
+</tr>
+<tr class="even">
+<td>First 3 days</td>
+<td>Like any long outage (scenario 4), across a whole region.</td>
+<td>Water, food, heat; don't waste fuel.</td>
+</tr>
+<tr class="odd">
+<td>1–2 weeks</td>
+<td>No outside help coming from cities also in the dark.</td>
+<td>Organize the neighborhood.</td>
+</tr>
+<tr class="even">
+<td>1–3 months</td>
+<td>Big transformers damaged; each takes about a year to replace (<a class="lib" target="_blank" rel="noopener" href="https://www.ferc.gov/sites/default/files/2020-05/ferc_meta-r-319.pdf#page=149" title="Meta-R-319 Geomagnetic Storms and Their Impacts on the US Power Grid (Metatech for ORNL-FERC 2010).pdf — page 149">Meta-R-319, p. 149</a>).</td>
+<td>Off-grid power and hand tools.</td>
+</tr>
+<tr class="odd">
+<td>3–12 months</td>
+<td>The EMP Commission expected <strong>months to years</strong> for recovery (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_ADA484497/DTIC_ADA484497.pdf#page=27" title="EMP Commission Executive Report (2004).pdf — page 27">EMP Commission, p. 27</a>).</td>
+<td>Full local self-reliance.</td>
+</tr>
+<tr class="even">
+<td>1 year+</td>
+<td>Slow rebuilding of the grid.</td>
+<td>Same.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Signs it's getting worse:</strong> auroras over Oregon (<a class="wiki" href="https://en.wikipedia.org/wiki/Aurora" data-title="Aurora" target="_blank" rel="noopener" title="Wikipedia: Aurora (offline copy with photos when opened through the Library Assistant)">Aurora</a>), a G4–G5 watch, widespread outage with no restoration estimate. <strong>Getting better:</strong> power back in Grants Pass.</p>
+<p><strong>Get ready now</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox" />Spare radio, charge controller and this library in a sealed metal can — <a class="guide" href="EMP-GUIDE.html">EMP guide</a></label></li>
+<li><label><input type="checkbox" />Solar power you can run alone — <a class="guide" href="OFF-GRID-POWER-GUIDE.html">Off-grid power</a></label></li>
+<li><label><input type="checkbox" />Non-electric ways to get water — <a class="guide" href="WATER-WELLS-GUIDE.html">Water wells</a></label></li>
+<li><label><input type="checkbox" />Paper maps — <a class="guide" href="NAVIGATION-WEATHER-GUIDE.html">Navigation &amp; weather</a></label></li>
+</ul>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_ADA484497/DTIC_ADA484497.pdf" title="EMP Commission Executive Report (2004).pdf">EMP Commission executive report</a> — the plain overview; <a class="lib" target="_blank" rel="noopener" href="https://www.cisa.gov/sites/default/files/publications/19_0307_CISA_EMP-Protection-Resilience-Guidelines.pdf#page=44" title="EMP Protection and Resilience Guidelines for Critical Infrastructure and Equipment (CISA 2019).pdf — page 44">CISA guidelines, p. 44</a> — simple protection steps.</p>
+<h2 id="10-nuclear-attack-and-fallout">☢️ 10. Nuclear attack and fallout</h2>
+<p><strong>What it is and how likely here.</strong> A nuclear detonation somewhere upwind could drop fallout on the valley. No source on this drive gives honest odds; treat it as low but not zero <em>(estimate)</em>. Everything about sheltering is in the <a class="guide" href="NUCLEAR-FALLOUT-GUIDE.html">Nuclear Fallout Guide</a>.</p>
+<p><strong>Warning you'll get:</strong> <strong>minutes or none.</strong> A 3–5 minute wavering siren tone is the attack warning (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/h-20-protection-in-the-nuclear-age-1985/H-20%20Protection%20In%20The%20Nuclear%20Age%20%201985.pdf#page=12" title="Protection in the Nuclear Age (FEMA H-20 1985).pdf — page 12">FEMA H-20, p. 12</a>). Fallout near a blast can arrive in 15–30 minutes; 100–200 miles downwind, often 5–10 hours or more (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/h-20-protection-in-the-nuclear-age-1985/H-20%20Protection%20In%20The%20Nuclear%20Age%20%201985.pdf#page=7" title="Protection in the Nuclear Age (FEMA H-20 1985).pdf — page 7">H-20, p. 7</a>).</p>
+<table>
+<thead>
+<tr class="header">
+<th>When</th>
+<th>What's happening</th>
+<th>What you do</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>First minutes–hours</td>
+<td>Officials tell everyone within about 50 miles to shelter (<a class="lib" target="_blank" rel="noopener" href="https://remm.hhs.gov/PlanningGuidanceNuclearDetonation_2023.pdf#page=54" title="Planning Guidance for Response to a Nuclear Detonation - 3rd Edition (FEMA 2022).pdf — page 54"><em>Planning Guidance</em>, p. 54</a>). Fallout dust may begin to fall.</td>
+<td><strong>Get inside, stay inside, stay tuned.</strong> Best shelter you can reach before fallout arrives.</td>
+</tr>
+<tr class="even">
+<td>First 3 days</td>
+<td>Radiation drops 90% in 7 hours and 99% in 2 days (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/h-20-protection-in-the-nuclear-age-1985/H-20%20Protection%20In%20The%20Nuclear%20Age%20%201985.pdf#page=8" title="Protection in the Nuclear Age (FEMA H-20 1985).pdf — page 8">H-20, p. 8</a>).</td>
+<td>Stay sheltered at least 12–24 hours unless told otherwise (<a class="lib" target="_blank" rel="noopener" href="https://remm.hhs.gov/PlanningGuidanceNuclearDetonation_2023.pdf#page=53" title="Planning Guidance for Response to a Nuclear Detonation - 3rd Edition (FEMA 2022).pdf — page 53"><em>Planning Guidance</em>, p. 53</a>).</td>
+</tr>
+<tr class="odd">
+<td>1–2 weeks</td>
+<td>In heavy fallout, shelter "several days to two weeks," with short trips out later (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/h-20-protection-in-the-nuclear-age-1985/H-20%20Protection%20In%20The%20Nuclear%20Age%20%201985.pdf#page=9" title="Protection in the Nuclear Age (FEMA H-20 1985).pdf — page 9">H-20, p. 9</a>).</td>
+<td>Decontaminate on entry; stored and canned food is fine.</td>
+</tr>
+<tr class="even">
+<td>1–3 months</td>
+<td>Fresh milk unsafe while radioactive iodine decays (USDA says 30–60 days — <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/CAT31305038/CAT31305038.pdf#page=8" title="Fallout and Your Farm Food (USDA PA-515 1962).pdf — page 8">PA-515, p. 8</a>).</td>
+<td>Wash and peel garden produce; use stored milk for babies.</td>
+</tr>
+<tr class="odd">
+<td>3–12 months</td>
+<td>Recovery depends on how many cities were hit; supply chains may be broken nationwide <em>(estimate)</em>.</td>
+<td>See scenarios 4 and 6.</td>
+</tr>
+<tr class="even">
+<td>1 year+</td>
+<td>Long-term living with shortages <em>(estimate)</em>.</td>
+<td>This library.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Signs it's getting worse:</strong> a meter reading that is rising, fallout dust visible on cars. <strong>Getting better:</strong> readings falling by the 7-10 rule; officials saying it's clear.</p>
+<p><strong>Get ready now</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox" />Pick your shelter now — most local houses need extra shielding — <a class="guide" href="NUCLEAR-FALLOUT-GUIDE.html">Nuclear guide</a></label></li>
+<li><label><input type="checkbox" />Two weeks of shelter water, food and a toilet bucket — <a class="guide" href="SANITATION-GUIDE.html">Sanitation</a></label></li>
+<li><label><input type="checkbox" />Potassium iodide for the family, and the dose table — <a class="guide" href="NUCLEAR-FALLOUT-GUIDE.html">Nuclear guide</a></label></li>
+<li><label><input type="checkbox" />A battery radio — <a class="guide" href="RADIO-GUIDE.html">Radio</a></label></li>
+</ul>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/h-20-protection-in-the-nuclear-age-1985/H-20%20Protection%20In%20The%20Nuclear%20Age%20%201985.pdf#page=7" title="Protection in the Nuclear Age (FEMA H-20 1985).pdf — page 7">FEMA H-20</a> — warning, fallout timing and shelter; <a class="lib" target="_blank" rel="noopener" href="https://stacks.cdc.gov/view/cdc/23989/cdc_23989_DS1.pdf#page=1" title="Where to Go in a Radiation Emergency - Get Inside Stay Inside Stay Tuned (CDC).pdf — page 1">CDC: where to go</a> — on one page.</p>
+<h2 id="11-volcanic-ash">🌋 11. Volcanic ash</h2>
+<p><strong>What it is and how likely here.</strong> The nearest potentially active volcanoes are Crater Lake, Medicine Lake, <a class="wiki" href="https://en.wikipedia.org/wiki/Mount_Shasta" data-title="Mount_Shasta" target="_blank" rel="noopener" title="Wikipedia: Mount Shasta (offline copy with photos when opened through the Library Assistant)">Mount Shasta</a>, Newberry and the Three Sisters. The chance of 0.4 inch or more of <a class="wiki" href="https://en.wikipedia.org/wiki/Volcanic_ash" data-title="Volcanic_ash" target="_blank" rel="noopener" title="Wikipedia: Volcanic ash (offline copy with photos when opened through the Library Assistant)">ash</a> here is about <strong>1 in 10,000 a year</strong>; the risks are ashfall, bad air and disruption (<a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=68" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 68">county plan, p. 68</a>). Winds usually carry ash east of the Cascades, away from us (<a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=68" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 68">p. 68</a>).</p>
+<p><strong>Warning you'll get:</strong> usually <strong>days to weeks</strong> of earthquakes and steam before a big eruption <em>(rule of thumb)</em>; hours as an ash cloud drifts.</p>
+<table>
+<thead>
+<tr class="header">
+<th>When</th>
+<th>What's happening</th>
+<th>What you do</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>First minutes–hours</td>
+<td>Sky darkens; gritty ash falls.</td>
+<td>Inside; windows shut. Goggles and a dust mask outside (<a class="lib" target="_blank" rel="noopener" href="https://bready.sd.gov/bReady/areyouready_full.pdf#page=104" title="FEMA Are You Ready Citizen Preparedness Guide (2004 Full Edition).pdf — page 104">FEMA, p. 104</a>).</td>
+</tr>
+<tr class="even">
+<td>First 3 days</td>
+<td>Ash on roofs, roads and gardens; engines clog.</td>
+<td>Clear heavy ash from roofs and gutters (<a class="lib" target="_blank" rel="noopener" href="https://bready.sd.gov/bReady/areyouready_full.pdf#page=104" title="FEMA Are You Ready Citizen Preparedness Guide (2004 Full Edition).pdf — page 104">FEMA, p. 104</a>); cover the well and water tanks.</td>
+</tr>
+<tr class="odd">
+<td>1–2 weeks</td>
+<td>Cleanup; air filters and engines need changing.</td>
+<td>Wash produce; keep animals off ashy pasture if you can <em>(rule of thumb)</em>.</td>
+</tr>
+<tr class="even">
+<td>1–3 months</td>
+<td>Mostly back to normal unless eruptions continue <em>(estimate)</em>.</td>
+<td>Watch the radio for new eruptions.</td>
+</tr>
+<tr class="odd">
+<td>3–12 months</td>
+<td>Ash washes into creeks and gardens with the rains <em>(estimate)</em>.</td>
+<td>Settle and filter creek water before treating it.</td>
+</tr>
+<tr class="even">
+<td>1 year+</td>
+<td>No lasting change expected from a thin ashfall <em>(estimate)</em>.</td>
+<td>Restock masks and filters.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Signs it's getting worse / better:</strong> more ash forecasts, or skies clearing and rain washing it down.</p>
+<p><strong>Get ready now</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox" />Goggles and N95 masks for everyone — <a class="guide" href="FIELD-CARE-GUIDE.html">Field care</a></label></li>
+<li><label><input type="checkbox" />Covers for the cistern and rain barrels — <a class="guide" href="WATER-PURIFICATION-GUIDE.html">Water purification</a></label></li>
+<li><label><input type="checkbox" />Spare air filters for engines — <a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html">Engines</a></label></li>
+</ul>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=66" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 66">County plan, p. 66</a> — volcano hazard here; <a class="lib" target="_blank" rel="noopener" href="https://bready.sd.gov/bReady/areyouready_full.pdf#page=104" title="FEMA Are You Ready Citizen Preparedness Guide (2004 Full Edition).pdf — page 104">FEMA <em>Are You Ready?</em>, p. 104</a> — during and after an eruption.</p>
+<h2 id="what-every-scenario-has-in-common">🤝 What every scenario has in common</h2>
+<p><strong>The first 72 hours.</strong> No outside help, so neighbors are the first responders. In the first half hour after a disaster, about a third of survivors search for missing people and about one in ten actively rescue them (<a class="lib" target="_blank" rel="noopener" href="https://udspace.udel.edu/server/api/core/bitstreams/03ad7552-52e7-4784-a8bd-d8f4654d261f/content#page=16" title="Conventional Beliefs and Counterintuitive Realities - Disaster Behavior Research (Quarantelli - Disaster Research Center 2008).pdf — page 16">Quarantelli, p. 16</a>). Your jobs: injuries, fires, water, a toilet, warmth or cooling, and checking the people next door.</p>
+<p><strong>The 2-week mark.</strong> Oregon tells everyone to be ready for at least two weeks (<a class="lib" target="_blank" rel="noopener" href="https://www.oregon.gov/oem/Documents/B2WR-Complete-Tool-Kit-EN.pdf#page=2" title="Oregon Be 2 Weeks Ready Complete Toolkit.pdf — page 2">Be 2 Weeks Ready, p. 2</a>). The old 2004 FEMA book's "at least three days" (<a class="lib" target="_blank" rel="noopener" href="https://bready.sd.gov/bReady/areyouready_full.pdf#page=33" title="FEMA Are You Ready Citizen Preparedness Guide (2004 Full Edition).pdf — page 33">p. 33</a>) is too short for here. Two weeks is also about when most big storm outages have ended, and the longest disruption most businesses can stand (<a class="lib" target="_blank" rel="noopener" href="https://www.oregon.gov/oem/Documents/Oregon_Resilience_Plan_Final.pdf#page=22" title="Oregon Resilience Plan - Full Report (OSSPAC 2013).pdf — page 22">Resilience Plan, p. 22</a>).</p>
+<p><strong>When things usually improve.</strong> Most storm, fire and heat emergencies ease within days to weeks. A Cascadia quake, EMP or national crisis takes <strong>months to years</strong> (see the tables). Plan for the long tail, not just the first days.</p>
+<p><strong>Why most neighbors help.</strong> After disasters, help and sharing far outweigh theft, even in the worst cases (<a class="lib" target="_blank" rel="noopener" href="https://udspace.udel.edu/server/api/core/bitstreams/03ad7552-52e7-4784-a8bd-d8f4654d261f/content#page=14" title="Conventional Beliefs and Counterintuitive Realities - Disaster Behavior Research (Quarantelli - Disaster Research Center 2008).pdf — page 14">Quarantelli, p. 14</a>); citizen groups spring up to clear debris, move supplies and pass messages (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_ADA484672/DTIC_ADA484672.pdf#page=167" title="EMP Commission Critical National Infrastructures Report (2008).pdf — page 167">EMP Commission 2008, p. 167</a>). Plan on cooperating, and organize early.</p>
+<p><strong>Rumor control.</strong> Rumors make things worse. Pick one trusted source (a radio station, the ham net, a neighborhood runner) and write down news with the time and who said it <em>(rule of thumb)</em>; help correct misinformation (<a class="lib" target="_blank" rel="noopener" href="https://www.ptsd.va.gov/disaster_events/for_providers/PFA/PFA_2ndEditionwithappendices.pdf#page=35" title="Psychological First Aid Field Operations Guide 2nd Edition (NCTSN and NCPTSD 2006).pdf — page 35">Psychological First Aid, p. 35</a>).</p>
+<p><strong>Mental health.</strong> Feeling overwhelmed, confused, afraid or numb is a normal reaction (<a class="lib" target="_blank" rel="noopener" href="https://iris.who.int/server/api/core/bitstreams/e7e129fb-b306-496d-84a5-67bb70abc130/content#page=9" title="Psychological First Aid - Guide for Field Workers (WHO 2011).pdf — page 9">WHO Psychological First Aid, p. 9</a>). Keep routines, give everyone a job, keep children close and talking, and watch for anyone who stops eating or caring for themselves <em>(rule of thumb)</em>. How-to: <a class="guide" href="COMMUNITY-BARTER-GUIDE.html">Community &amp; barter</a> and <a class="wiki" href="https://en.wikipedia.org/wiki/Psychological_first_aid" data-title="Psychological_first_aid" target="_blank" rel="noopener" title="Wikipedia: Psychological first aid (offline copy with photos when opened through the Library Assistant)">Psychological first aid</a>.</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://udspace.udel.edu/server/api/core/bitstreams/03ad7552-52e7-4784-a8bd-d8f4654d261f/content#page=16" title="Conventional Beliefs and Counterintuitive Realities - Disaster Behavior Research (Quarantelli - Disaster Research Center 2008).pdf — page 16">Quarantelli</a> — how people really behave; <a class="lib" target="_blank" rel="noopener" href="https://psychiatry.uw.edu/wp-content/uploads/2020/07/SPR_Manual.pdf#page=9" title="Skills for Psychological Recovery Field Operations Guide (NCPTSD and NCTSN 2010).pdf — page 9">Skills for Psychological Recovery</a> — the weeks after; <a class="lib" target="_blank" rel="noopener" href="https://em.uci.edu/training/_pdf/cert-participant-manual-english.pdf" title="CERT Basic Training Participant Manual (FEMA 2019).pdf">CERT manual</a> — neighborhood search, first aid and organizing.</p>
+<h2 id="when-disasters-stack">🔁 When disasters stack</h2>
+<p>Disasters often come together. Plan for the pairs most likely here <em>(estimates, from the scenarios above)</em>:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Combination</th>
+<th>Why it is worse</th>
+<th>What to add</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Cascadia quake + winter</strong></td>
+<td>Power out 1–3 months with no heat; roads blocked by snow and slides.</td>
+<td>Firewood stacked for the whole winter; a warm room you can heat without power.</td>
+</tr>
+<tr class="even">
+<td><strong>Wildfire + heat + power shutoff</strong></td>
+<td>No fans or pump in 100 °F heat while you wait to evacuate; smoke keeps windows shut.</td>
+<td>Stored water, a cool room, a car ready to leave early.</td>
+</tr>
+<tr class="odd">
+<td><strong>Pandemic + fire or flood</strong></td>
+<td>Crowded shelters spread illness — the 2020 fires had to shelter people during COVID-19 (<a class="lib" target="_blank" rel="noopener" href="https://apps.oregonlegislature.gov/liz/2021R1/Downloads/CommitteeMeetingDocument/242362#page=29" title="State of Oregon After-Action Review - September 2020 Wildland Fire and Wind Event (Oregon 2021).pdf — page 29">state review, p. 29</a>).</td>
+<td>Evacuate to friends or family instead of a shelter; carry masks and soap.</td>
+</tr>
+<tr class="even">
+<td><strong>Pandemic + economic crisis</strong></td>
+<td>Jobs lost while people are sick; supplies short.</td>
+<td>Deep food storage and barter skills.</td>
+</tr>
+<tr class="odd">
+<td><strong>Drought + wildfire</strong></td>
+<td>Dry wells and dry forest in the same summer.</td>
+<td>Water storage and defensible space together.</td>
+</tr>
+<tr class="even">
+<td><strong>Solar storm or EMP + winter</strong></td>
+<td>Grid down for months in the cold.</td>
+<td>Wood heat, hand water pump, food that doesn't need a freezer.</td>
+</tr>
+</tbody>
+</table>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://www.oregon.gov/oem/Documents/Oregon_Resilience_Plan_Final.pdf#page=40" title="Oregon Resilience Plan - Full Report (OSSPAC 2013).pdf — page 40">Resilience Plan, p. 40</a> — how one failure spreads to others; <a class="lib" target="_blank" rel="noopener" href="https://www.sworm.gov/publications/2017/poia.pdf#page=14" title="Power Outage Incident Annex - Managing the Cascading Impacts from a Long-Term Power Outage (FEMA DOE 2017).pdf — page 14">Power outage annex, p. 14</a> — how power, fuel, water and phones depend on each other.</p>
+<hr />
+<h2 id="pictures-diagrams">🖼️ Pictures &amp; diagrams</h2>
+<p>Look before you try it. 🖼️ = drawings in the books on this drive; 📷 = photos in the offline Wikipedia.</p>
+<p><strong>Local hazards and risk maps</strong></p>
+<ul>
+<li>Wildfire burn probability around the county and US-199 — <a class="lib pic" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=71" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 71">county plan, p. 71</a></li>
+<li>Where big fires burned, 2000–2022 — <a class="lib pic" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=73" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 73">county plan, p. 73</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Biscuit_Fire" data-title="Biscuit_Fire" target="_blank" rel="noopener" title="Wikipedia: Biscuit Fire (offline copy with photos when opened through the Library Assistant)">Biscuit Fire</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Slater_and_Devil_fires" data-title="Slater_and_Devil_fires" target="_blank" rel="noopener" title="Wikipedia: Slater and Devil fires (offline copy with photos when opened through the Library Assistant)">Slater Fire</a></li>
+<li>Flood hazard areas — <a class="lib pic" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=45" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 45">county plan, p. 45</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Christmas_flood_of_1964" data-title="Christmas_flood_of_1964" target="_blank" rel="noopener" title="Wikipedia: Christmas flood of 1964 (offline copy with photos when opened through the Library Assistant)">Christmas flood of 1964</a></li>
+<li>Landslide-prone ground — <a class="lib pic" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=51" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 51">county plan, p. 51</a>; <a class="lib pic" target="_blank" rel="noopener" href="https://www.wbdg.org/FFC/DHS/fema232.pdf#page=26" title="FEMA 232 Homebuilders Guide to Earthquake-Resistant Design and Construction (FEMA 2006).pdf — page 26">FEMA 232, p. 26</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Landslide" data-title="Landslide" target="_blank" rel="noopener" title="Wikipedia: Landslide (offline copy with photos when opened through the Library Assistant)">Landslide</a></li>
+<li>Drought years since 1896 — <a class="lib pic" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=33" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 33">county plan, p. 33</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Drought" data-title="Drought" target="_blank" rel="noopener" title="Wikipedia: Drought (offline copy with photos when opened through the Library Assistant)">Drought</a></li>
+<li>Cave Junction power-shutoff areas — <a class="lib pic" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=140" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 140">county plan, p. 140</a></li>
+</ul>
+<p><strong>Fire, smoke and heat</strong></p>
+<ul>
+<li>Defensible-space zones — <a class="lib pic" target="_blank" rel="noopener" href="https://defensiblespace.org/wp-content/uploads/2021/01/FEMA_2008_P-737-Home-Builders-Guide-to-Construction-in-Wildfire-Zones.pdf#page=23" title="FEMA P-737 Home Builders Guide to Construction in Wildfire Zones (FEMA 2008).pdf — page 23">FEMA P-737, p. 23</a></li>
+<li>How smoke travels hundreds of miles — <a class="lib pic" target="_blank" rel="noopener" href="https://www.epa.gov/system/files/documents/2026-06/wildfire-guide-for-public-health-officials-2026.pdf#page=25" title="EPA Wildfire Smoke Guide 2026.pdf — page 25">EPA smoke guide, p. 25</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/N95_respirator" data-title="N95_respirator" target="_blank" rel="noopener" title="Wikipedia: N95 respirator (offline copy with photos when opened through the Library Assistant)">N95 respirator</a></li>
+<li>Fire clouds — <a class="wiki" href="https://en.wikipedia.org/wiki/Cumulonimbus_flammagenitus" data-title="Cumulonimbus_flammagenitus" target="_blank" rel="noopener" title="Wikipedia: Cumulonimbus flammagenitus (offline copy with photos when opened through the Library Assistant)">Pyrocumulonimbus</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/2020_Oregon_wildfires" data-title="2020_Oregon_wildfires" target="_blank" rel="noopener" title="Wikipedia: 2020 Oregon wildfires (offline copy with photos when opened through the Library Assistant)">2020 Oregon wildfires</a></li>
+<li>Heat deaths by day in the 2021 heat dome — <a class="lib pic" target="_blank" rel="noopener" href="https://multco.us/file/final_report:_health_impacts_from_excessive_heat_events_in_multnomah_county,_oregon,_2021/download#page=7" title="Health Impacts from Excessive Heat Events in Multnomah County 2021 (Multnomah County Health Department 2022).pdf — page 7">heat report, p. 7</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/2021_Western_North_America_heat_wave" data-title="2021_Western_North_America_heat_wave" target="_blank" rel="noopener" title="Wikipedia: 2021 Western North America heat wave (offline copy with photos when opened through the Library Assistant)">2021 heat wave</a></li>
+</ul>
+<p><strong>Cascadia earthquake</strong></p>
+<ul>
+<li>10,000 years of Cascadia quakes — <a class="lib pic" target="_blank" rel="noopener" href="https://www.oregon.gov/oem/Documents/Oregon_Resilience_Plan_Final.pdf#page=32" title="Oregon Resilience Plan - Full Report (OSSPAC 2013).pdf — page 32">Resilience Plan, p. 32</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/1700_Cascadia_earthquake" data-title="1700_Cascadia_earthquake" target="_blank" rel="noopener" title="Wikipedia: 1700 Cascadia earthquake (offline copy with photos when opened through the Library Assistant)">1700 Cascadia earthquake</a></li>
+<li>Shaking map for an M9 — <a class="lib pic" target="_blank" rel="noopener" href="https://www.oregon.gov/oem/Documents/Oregon_Resilience_Plan_Final.pdf#page=34" title="Oregon Resilience Plan - Full Report (OSSPAC 2013).pdf — page 34">Resilience Plan, p. 34</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Cascadia_subduction_zone" data-title="Cascadia_subduction_zone" target="_blank" rel="noopener" title="Wikipedia: Cascadia subduction zone (offline copy with photos when opened through the Library Assistant)">Cascadia subduction zone</a></li>
+<li>Impact zones: tsunami, coast, valley, east — <a class="lib pic" target="_blank" rel="noopener" href="https://www.oregon.gov/oem/Documents/Oregon_Resilience_Plan_Final.pdf#page=35" title="Oregon Resilience Plan - Full Report (OSSPAC 2013).pdf — page 35">Resilience Plan, p. 35</a></li>
+<li>Where landslides and liquefaction are expected — <a class="lib pic" target="_blank" rel="noopener" href="https://www.oregon.gov/oem/Documents/Oregon_Resilience_Plan_Final.pdf#page=36" title="Oregon Resilience Plan - Full Report (OSSPAC 2013).pdf — page 36">Resilience Plan, p. 36</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Soil_liquefaction" data-title="Soil_liquefaction" target="_blank" rel="noopener" title="Wikipedia: Soil liquefaction (offline copy with photos when opened through the Library Assistant)">Soil liquefaction</a></li>
+<li>Strapping the water heater — <a class="lib pic" target="_blank" rel="noopener" href="https://www.wbdg.org/FFC/DHS/fema232.pdf#page=155" title="FEMA 232 Homebuilders Guide to Earthquake-Resistant Design and Construction (FEMA 2006).pdf — page 155">FEMA 232, p. 155</a></li>
+<li>Tsunami — <a class="wiki" href="https://en.wikipedia.org/wiki/Tsunami" data-title="Tsunami" target="_blank" rel="noopener" title="Wikipedia: Tsunami (offline copy with photos when opened through the Library Assistant)">Tsunami</a></li>
+</ul>
+<p><strong>Grid, fuel, food and sickness</strong></p>
+<ul>
+<li>Where Oregon's fuel comes from — <a class="lib pic" target="_blank" rel="noopener" href="https://www.oregon.gov/energy/safety-resiliency/Documents/Oregon-Fuel-Action-Plan.pdf#page=9" title="Oregon Fuel Action Plan (Oregon Department of Energy 2017).pdf — page 9">fuel plan, p. 9</a>; <a class="lib pic" target="_blank" rel="noopener" href="https://www.oregon.gov/oem/Documents/Oregon_Resilience_Plan_Final.pdf#page=190" title="Oregon Resilience Plan - Full Report (OSSPAC 2013).pdf — page 190">Portland fuel tank farms, Resilience Plan p. 190</a></li>
+<li>The power grid's regions — <a class="lib pic" target="_blank" rel="noopener" href="https://www.sworm.gov/publications/2017/poia.pdf#page=60" title="Power Outage Incident Annex - Managing the Cascading Impacts from a Long-Term Power Outage (FEMA DOE 2017).pdf — page 60">outage annex, p. 60</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Northeast_blackout_of_2003" data-title="Northeast_blackout_of_2003" target="_blank" rel="noopener" title="Wikipedia: Northeast blackout of 2003 (offline copy with photos when opened through the Library Assistant)">Northeast blackout of 2003</a></li>
+<li>Grocery supply after Japan's 2011 quake — <a class="lib pic" target="_blank" rel="noopener" href="https://www.cna.org/reports/2017/01/supply-chain-resilience-groceries-in-catastrophe.pdf#page=40" title="The Role of Groceries in Response to Catastrophes (CNA 2017).pdf — page 40">CNA, p. 40</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Panic_buying" data-title="Panic_buying" target="_blank" rel="noopener" title="Wikipedia: Panic buying (offline copy with photos when opened through the Library Assistant)">Panic buying</a></li>
+<li>How a pandemic rises and falls — <a class="lib pic" target="_blank" rel="noopener" href="https://extranet.who.int/sph/sites/default/files/document-library/document/WHO-WHE-IHM-GIP-2017.1-eng.pdf#page=13" title="Pandemic Influenza Risk Management - A WHO Guide (WHO 2017).pdf — page 13">WHO, p. 13</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Spanish_flu" data-title="Spanish_flu" target="_blank" rel="noopener" title="Wikipedia: Spanish flu (offline copy with photos when opened through the Library Assistant)">Spanish flu</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/COVID-19_pandemic" data-title="COVID-19_pandemic" target="_blank" rel="noopener" title="Wikipedia: COVID-19 pandemic (offline copy with photos when opened through the Library Assistant)">COVID-19 pandemic</a></li>
+</ul>
+<p><strong>Fallout, solar storms and ash</strong></p>
+<ul>
+<li>How fallout comes down — <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/h-6-fallout-protection-what-to-know-and-do-about-nuclear-attack/H-6%20Fallout%20Protection-%20What%20To%20Know%20And%20Do%20About%20Nuclear%20Attack.pdf#page=14" title="Fallout Protection - What to Know and Do About Nuclear Attack (OCD H-6 1961).pdf — page 14"><em>Fallout Protection</em>, p. 14</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Nuclear_fallout" data-title="Nuclear_fallout" target="_blank" rel="noopener" title="Wikipedia: Nuclear fallout (offline copy with photos when opened through the Library Assistant)">Nuclear fallout</a></li>
+<li>The 7-10 rule chart — <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/h-20-protection-in-the-nuclear-age-1985/H-20%20Protection%20In%20The%20Nuclear%20Age%20%201985.pdf#page=8" title="Protection in the Nuclear Age (FEMA H-20 1985).pdf — page 8">FEMA H-20, p. 8</a></li>
+<li>How far the 1989 solar storm reached — <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_ADA484497/DTIC_ADA484497.pdf#page=25" title="EMP Commission Executive Report (2004).pdf — page 25">EMP Commission, p. 25</a>; <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_ADA484672/DTIC_ADA484672.pdf#page=47" title="EMP Commission Critical National Infrastructures Report (2008).pdf — page 47">damaged transformer</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Carrington_Event" data-title="Carrington_Event" target="_blank" rel="noopener" title="Wikipedia: Carrington Event (offline copy with photos when opened through the Library Assistant)">Carrington Event</a></li>
+<li>Volcanic ash maps — <a class="lib pic" target="_blank" rel="noopener" href="https://cms9files.revize.com/josephinecountyor/JoCo%20NHMP%202022%20Update-public.pdf#page=67" title="Josephine County Multi-Jurisdictional Natural Hazard Mitigation Plan (Josephine County 2022).pdf — page 67">county plan, p. 67</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Volcanic_ash" data-title="Volcanic_ash" target="_blank" rel="noopener" title="Wikipedia: Volcanic ash (offline copy with photos when opened through the Library Assistant)">Volcanic ash</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Mount_Shasta" data-title="Mount_Shasta" target="_blank" rel="noopener" title="Wikipedia: Mount Shasta (offline copy with photos when opened through the Library Assistant)">Mount Shasta</a></li>
+</ul>
+<h2 id="related-guides">🔗 Related guides</h2>
+<ul>
+<li><a class="guide" href="EMERGENCY-FINDER.html">Emergency finder</a> — something is happening right now: where to look</li>
+<li><a class="guide" href="ILLINOIS-VALLEY-START-HERE.html">Illinois Valley — Start Here</a> — alerts, contacts, evacuation, local maps</li>
+<li><a class="guide" href="NUCLEAR-FALLOUT-GUIDE.html">Nuclear Fallout Guide</a> and <a class="guide" href="EMP-GUIDE.html">EMP &amp; solar storms</a> — the details for scenarios 9 and 10</li>
+<li><a class="guide" href="WATER-PURIFICATION-GUIDE.html">Water purification</a> and <a class="guide" href="WATER-WELLS-GUIDE.html">Water wells</a> — water in every scenario</li>
+<li><a class="guide" href="FOOD-SECURITY-GUIDE.html">Food when it's scarce</a> — storing and rationing for months</li>
+<li><a class="guide" href="FIELD-CARE-GUIDE.html">Injuries &amp; illness, no help coming</a> — first aid when the hospital is cut off</li>
+<li><a class="guide" href="SHELTER-BUILDING-GUIDE.html">Shelter, building &amp; repair</a> — quake bolting, fire hardening, repairs</li>
+<li><a class="guide" href="COMMUNITY-BARTER-GUIDE.html">Community &amp; barter</a> — organizing neighbors, watch, trade, grief</li>
+<li><a class="guide" href="HOME-DEFENSE-GUIDE.html">Home protection</a> — securing the house and supplies</li>
+<li><a class="guide" href="OFF-GRID-POWER-GUIDE.html">Off-grid power</a> and <a class="guide" href="FUEL-GUIDE.html">Fuel</a> — when the grid is down</li>
+<li><a class="guide" href="SIGNALS-MORSE-GUIDE.html">Signals &amp; Morse</a> and <a class="guide" href="RADIO-GUIDE.html">Radio</a> — when phones are gone</li>
+</ul>
+</div><a class="totop" href="#contents" aria-label="Back to contents">↑ Contents</a></body></html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>🆘 Emergency Finder</title><style>:root{--bg:#0f1420;--card:#171f2e;--ink:#e7ecf3;--muted:#9fb0c3;--accent:#4fd1c5;--accent2:#f6ad55;--line:#273246;--code:#0b0f17}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--code:#f1f5f9}}:root[data-theme=light]{--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--code:#f1f5f9}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,Segoe UI,Roboto,Arial,sans-serif}.wrap{max-width:900px;margin:0 auto;padding:28px 20px 80px}h1{font-size:28px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}h2{font-size:22px;border-bottom:2px solid var(--line);padding-bottom:6px;margin-top:30px}h3{font-size:17px;color:var(--accent)}h4{font-size:15px;color:var(--accent2)}a{color:var(--accent)}code{background:var(--code);padding:2px 6px;border-radius:6px;font-family:Consolas,monospace;font-size:14px}pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow-x:auto}pre code{background:none;padding:0}table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}th{background:rgba(127,127,127,.12)}blockquote{border-left:4px solid var(--accent);background:rgba(79,209,197,.08);padding:10px 16px;border-radius:0 10px 10px 0}hr{border:none;border-top:1px solid var(--line);margin:26px 0}ul,ol{padding-left:26px}table{display:block;overflow-x:auto;max-width:100%}code,a{overflow-wrap:anywhere}img{max-width:100%}a.lib{text-decoration-style:dotted}a.lib::before{content:"📖 ";text-decoration:none}.deeper{font-size:15px;opacity:.95}a.wiki::before{content:"📷 "}a.lib.pic::before{content:"🖼️ "}a.lib::before,a.wiki::before{display:inline-block;margin-right:3px}html{scroll-behavior:smooth}h2{scroll-margin-top:12px}.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 16px;margin:18px 0 8px}.toc summary{cursor:pointer;font-weight:600;color:var(--accent);font-size:17px}.toc ol{margin:8px 0 4px;padding-left:26px;columns:2 260px;column-gap:28px}.toc li{margin:4px 0;break-inside:avoid}.toc a{text-decoration:none}.toc a:hover{text-decoration:underline}.totop{position:fixed;right:14px;bottom:max(14px,env(safe-area-inset-bottom));background:var(--card);color:var(--accent);border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:14px;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:5}@media print{.totop{display:none}.toc details{display:block}}.topnav{font-size:14.5px;margin:0 0 4px;color:var(--muted)}.topnav a{text-decoration:none;white-space:nowrap}h1 .h1e{-webkit-text-fill-color:initial;color:var(--ink);background:none}.azbar{display:flex;flex-wrap:wrap;gap:4px;background:var(--bg);padding:8px 0;margin:10px 0;border-bottom:1px solid var(--line)}.azbar a{display:inline-block;min-width:30px;text-align:center;padding:4px 6px;border:1px solid var(--line);border-radius:8px;background:var(--card);text-decoration:none;font-weight:600}</style><style>:root{color-scheme:dark}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){color-scheme:light}}:root[data-theme=light]{color-scheme:light}.themebtn{font:inherit;font-size:14px;line-height:1.3;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:3px 11px;cursor:pointer;white-space:nowrap;text-decoration:none}.themefloat{position:absolute;top:10px;right:12px;z-index:9}@media print{.themebtn{display:none}}</style><script>/* so-theme: light or dark screen */(function(){var K="so-theme",d=document.documentElement,L={auto:"\uD83C\uDF13 Auto",dark:"\uD83C\uDF19 Dark",light:"\u2600\uFE0F Light"},N={auto:"dark",dark:"light",light:"auto"},cur="auto";try{cur=localStorage.getItem(K)||"auto"}catch(e){}function a(){if(cur==="dark"||cur==="light")d.setAttribute("data-theme",cur);else d.removeAttribute("data-theme");var b=document.querySelectorAll(".themebtn");for(var i=0;i<b.length;i++){b[i].textContent=L[cur]||L.auto;b[i].title="Screen: "+cur+" - tap to change (Auto follows this device)"}}a();window.soTheme=function(){cur=N[cur]||"dark";try{localStorage.setItem(K,cur)}catch(e){}a()};function btn(){var b=document.createElement("button");b.type="button";b.className="themebtn";return b}document.addEventListener("DOMContentLoaded",function(){if(!document.querySelector(".themebtn")){var n=document.querySelector(".topnav"),b=btn();if(n){n.appendChild(document.createTextNode(" \u00B7 "));n.appendChild(b)}else{b.className+=" themefloat";document.body.appendChild(b)}}var all=document.querySelectorAll(".themebtn");for(var i=0;i<all.length;i++)all[i].onclick=window.soTheme;a()})})();</script></head><body><div class="wrap"><p class="topnav"><a class="guide" href="../#tools">🏠 Library</a> · <a class="guide" href="EMERGENCY-FINDER.html">🆘 Emergency</a> · <a class="guide" href="SUBJECT-INDEX.html">📇 Index A–Z</a></p>
+<h1 id="-emergency-finder"><span class="h1e">🆘</span> Emergency Finder</h1>
+<blockquote>
+<p><strong>Something is happening right now?</strong> Find it below and tap the link — it opens the exact section of the guide. No search, AI or internet needed. Print this page and keep it with the first-aid kit. For everything else use the <a class="guide" href="SUBJECT-INDEX.html">📇 Subject index A–Z</a>.</p>
+</blockquote>
+<nav class="toc" id="contents" aria-label="Contents"><details open><summary>📑 Contents</summary><ol><li><a href="#someone-is-hurt">🩸 Someone is hurt</a></li><li><a href="#someone-is-sick">🤒 Someone is sick</a></li><li><a href="#pregnancy-birth-and-babies">👶 Pregnancy, birth and babies</a></li><li><a href="#fire-earthquake-fallout">🔥 Fire, earthquake, fallout</a></li><li><a href="#shelter-and-heat">🏠 Shelter and heat</a></li><li><a href="#water-and-food">💧 Water and food</a></li><li><a href="#lost-cut-off-need-help">📡 Lost, cut off, need help</a></li><li><a href="#animals">🐐 Animals</a></li><li><a href="#something-stopped-working">🔧 Something stopped working</a></li></ol></details></nav>
+<h2 id="someone-is-hurt">🩸 Someone is hurt</h2>
+<table>
+<thead>
+<tr class="header">
+<th>What is happening</th>
+<th>Go to</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Don't know where to start — unconscious, not breathing, badly hurt</td>
+<td><a class="guide" href="FIELD-CARE-GUIDE.html#the-first-look-check-in-this-order">Injuries › The first look: check in this order</a><br><a class="guide" href="Medical-READ-ME-FIRST.html#the-first-few-minutes">Medicines › The first few minutes</a></td>
+</tr>
+<tr class="even">
+<td>Bleeding badly or spurting</td>
+<td><a class="guide" href="FIELD-CARE-GUIDE.html#stopping-life-threatening-bleeding-then-shock">Injuries › Stopping life-threatening bleeding, then shock</a></td>
+</tr>
+<tr class="odd">
+<td>Burned</td>
+<td><a class="guide" href="FIELD-CARE-GUIDE.html#burns">Injuries › Burns</a></td>
+</tr>
+<tr class="even">
+<td>Broken bone, sprain, bad fall, head or neck injury</td>
+<td><a class="guide" href="FIELD-CARE-GUIDE.html#broken-bones-sprains-spine-and-head">Injuries › Broken bones, sprains, spine and head</a></td>
+</tr>
+<tr class="odd">
+<td>Deep cut, or a wound turning red, hot or full of pus</td>
+<td><a class="guide" href="FIELD-CARE-GUIDE.html#wounds-and-infection-when-there-s-no-hospital">Injuries › Wounds and infection when there's no hospital</a></td>
+</tr>
+<tr class="even">
+<td>Rattlesnake bite, spider bite, bee or wasp sting</td>
+<td><a class="guide" href="FIELD-CARE-GUIDE.html#rattlesnakes-spiders-and-stings">Injuries › Rattlesnakes, spiders and stings</a></td>
+</tr>
+<tr class="odd">
+<td>Too hot (heat stroke) or too cold (hypothermia)</td>
+<td><a class="guide" href="FIELD-CARE-GUIDE.html#heat-and-cold-in-the-valley">Injuries › Heat and cold in the Valley</a></td>
+</tr>
+<tr class="even">
+<td>Toothache, knocked-out tooth, swollen face</td>
+<td><a class="guide" href="FIELD-CARE-GUIDE.html#teeth-pain-and-emergencies">Injuries › Teeth: pain and emergencies</a></td>
+</tr>
+<tr class="odd">
+<td>Thunderstorm coming, or someone struck by lightning</td>
+<td><a class="guide" href="NAVIGATION-WEATHER-GUIDE.html#lightning-safety">Navigation &amp; weather › Lightning safety</a></td>
+</tr>
+<tr class="even">
+<td>Someone may not survive</td>
+<td><a class="guide" href="FIELD-CARE-GUIDE.html#knowing-when-someone-can-t-be-saved">Injuries › Knowing when someone can't be saved</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="someone-is-sick">🤒 Someone is sick</h2>
+<table>
+<thead>
+<tr class="header">
+<th>What is happening</th>
+<th>Go to</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Diarrhea or vomiting, getting dried out</td>
+<td><a class="guide" href="Medical-READ-ME-FIRST.html#diarrhea-and-dehydration-the-homemade-drink">Medicines › Diarrhea and dehydration: the homemade drink</a></td>
+</tr>
+<tr class="even">
+<td>A child under 5 with fever, fast breathing or diarrhea</td>
+<td><a class="guide" href="CHILDBIRTH-CHILDREN-GUIDE.html#sick-children-under-5-fever-breathing-diarrhea-measles-worms">Childbirth &amp; kids › Sick children under 5: fever, breathing, diarrhea, measles, worms</a></td>
+</tr>
+<tr class="odd">
+<td>Several people sick at once</td>
+<td><a class="guide" href="SANITATION-GUIDE.html#how-germs-spread-and-stopping-an-outbreak">Sanitation › How germs spread, and stopping an outbreak</a></td>
+</tr>
+<tr class="even">
+<td>Ate a wild mushroom and feels sick</td>
+<td><a class="guide" href="MUSHROOM-GUIDE.html#if-someone-may-have-eaten-a-bad-mushroom">Mushrooms › If someone may have eaten a bad mushroom</a></td>
+</tr>
+<tr class="odd">
+<td>Ate a wild plant that might be poisonous</td>
+<td><a class="guide" href="FOOD-SECURITY-GUIDE.html#foraging-safety-rules">Food when scarce › Foraging safety rules</a><br><a class="guide" href="ILLINOIS-VALLEY-START-HERE.html#wild-plants-the-deadly-look-alikes">Illinois Valley › Wild plants — the deadly look-alikes</a></td>
+</tr>
+<tr class="even">
+<td>Only found or expired medicine to use</td>
+<td><a class="guide" href="Medical-READ-ME-FIRST.html#using-found-or-expired-medicines">Medicines › Using found or expired medicines</a></td>
+</tr>
+<tr class="odd">
+<td>Mouse droppings in the house (hantavirus), fleas</td>
+<td><a class="guide" href="SANITATION-GUIDE.html#mice-hantavirus-fleas-and-plague">Sanitation › Mice, hantavirus, fleas and plague</a></td>
+</tr>
+<tr class="even">
+<td>Lice or scabies</td>
+<td><a class="guide" href="SANITATION-GUIDE.html#flies-mosquitoes-lice-and-scabies">Sanitation › Flies, mosquitoes, lice and scabies</a></td>
+</tr>
+<tr class="odd">
+<td>Someone starving, or starting to eat again after hunger</td>
+<td><a class="guide" href="FOOD-SECURITY-GUIDE.html#starvation-and-refeeding-slowly">Food when scarce › Starvation and refeeding slowly</a></td>
+</tr>
+<tr class="even">
+<td>Someone in shock, grieving or panicking</td>
+<td><a class="guide" href="COMMUNITY-BARTER-GUIDE.html#grief-stress-and-psychological-first-aid">Community &amp; barter › Grief, stress and psychological first aid</a></td>
+</tr>
+<tr class="odd">
+<td>Someone angry or threatening</td>
+<td><a class="guide" href="COMMUNITY-BARTER-GUIDE.html#calming-an-angry-person">Community &amp; barter › Calming an angry person</a></td>
+</tr>
+<tr class="even">
+<td>Someone has died</td>
+<td><a class="guide" href="SANITATION-GUIDE.html#caring-for-the-dead">Sanitation › Caring for the dead</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="pregnancy-birth-and-babies">👶 Pregnancy, birth and babies</h2>
+<table>
+<thead>
+<tr class="header">
+<th>What is happening</th>
+<th>Go to</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Pregnant and bleeding, bad headache, swelling or fits</td>
+<td><a class="guide" href="CHILDBIRTH-CHILDREN-GUIDE.html#pregnancy-checkups-and-danger-signs">Childbirth &amp; kids › Pregnancy: checkups and danger signs</a></td>
+</tr>
+<tr class="even">
+<td>Labor has started</td>
+<td><a class="guide" href="CHILDBIRTH-CHILDREN-GUIDE.html#labor-and-birth-what-helpers-do">Childbirth &amp; kids › Labor and birth: what helpers do</a></td>
+</tr>
+<tr class="odd">
+<td>Heavy bleeding after the birth</td>
+<td><a class="guide" href="CHILDBIRTH-CHILDREN-GUIDE.html#heavy-bleeding-after-birth-the-1-killer">Childbirth &amp; kids › Heavy bleeding after birth: the #1 killer</a></td>
+</tr>
+<tr class="even">
+<td>Baby stuck at the shoulders, or coming bottom first</td>
+<td><a class="guide" href="CHILDBIRTH-CHILDREN-GUIDE.html#stuck-shoulders-and-breech">Childbirth &amp; kids › Stuck shoulders and breech</a></td>
+</tr>
+<tr class="odd">
+<td>Newborn not breathing</td>
+<td><a class="guide" href="CHILDBIRTH-CHILDREN-GUIDE.html#a-baby-who-isn-t-breathing">Childbirth &amp; kids › A baby who isn't breathing</a></td>
+</tr>
+<tr class="even">
+<td>Newborn cold, very small or sick</td>
+<td><a class="guide" href="CHILDBIRTH-CHILDREN-GUIDE.html#warmth-small-babies-and-newborn-danger-signs">Childbirth &amp; kids › Warmth, small babies and newborn danger signs</a></td>
+</tr>
+<tr class="odd">
+<td>Child swallowed something poisonous, burned, or nearly drowned</td>
+<td><a class="guide" href="CHILDBIRTH-CHILDREN-GUIDE.html#accidents-drowning-burns-poisoning">Childbirth &amp; kids › Accidents: drowning, burns, poisoning</a></td>
+</tr>
+<tr class="even">
+<td>No milk or formula for a baby</td>
+<td><a class="guide" href="FOOD-SECURITY-GUIDE.html#babies-and-toddlers-in-a-shortage">Food when scarce › Babies and toddlers in a shortage</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="fire-earthquake-fallout">🔥 Fire, earthquake, fallout</h2>
+<table>
+<thead>
+<tr class="header">
+<th>What is happening</th>
+<th>Go to</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Wildfire nearby, or an evacuation level is called</td>
+<td><a class="guide" href="ILLINOIS-VALLEY-START-HERE.html#evacuation-levels-josephine-county">Illinois Valley › Evacuation levels (Josephine County)</a><br><a class="guide" href="ILLINOIS-VALLEY-START-HERE.html#wildfire">Illinois Valley › Wildfire</a></td>
+</tr>
+<tr class="even">
+<td>Heavy wildfire smoke</td>
+<td><a class="guide" href="ILLINOIS-VALLEY-START-HERE.html#smoke">Illinois Valley › Smoke</a></td>
+</tr>
+<tr class="odd">
+<td>Chimney fire, or a stove that smokes or roars</td>
+<td><a class="guide" href="FIREWOOD-GUIDE.html#burning-safely-stoves-chimneys-ashes">Firewood › Burning safely: stoves, chimneys, ashes</a><br><a class="guide" href="SHELTER-BUILDING-GUIDE.html#chimneys-and-stovepipe">Shelter › Chimneys and stovepipe</a></td>
+</tr>
+<tr class="even">
+<td>A battery smoking, swelling or getting hot</td>
+<td><a class="guide" href="OFF-GRID-POWER-GUIDE.html#battery-safety">Off-grid power › Battery safety</a><br><a class="guide" href="OFF-GRID-POWER-GUIDE.html#lithium-lifepo4-and-salvaged-packs">Off-grid power › Lithium, LiFePO4 and salvaged packs</a></td>
+</tr>
+<tr class="odd">
+<td>Earthquake just happened</td>
+<td><a class="guide" href="ILLINOIS-VALLEY-START-HERE.html#earthquake-cascadia-and-tsunami">Illinois Valley › Earthquake (Cascadia) and tsunami</a></td>
+</tr>
+<tr class="even">
+<td>Nuclear flash, or a fallout warning</td>
+<td><a class="guide" href="NUCLEAR-FALLOUT-GUIDE.html#the-first-minutes">Nuclear fallout › The first minutes</a><br><a class="guide" href="NUCLEAR-FALLOUT-GUIDE.html#where-to-shelter">Nuclear fallout › Where to shelter</a></td>
+</tr>
+<tr class="odd">
+<td>How long to stay inside after fallout</td>
+<td><a class="guide" href="NUCLEAR-FALLOUT-GUIDE.html#how-long-to-stay-in">Nuclear fallout › How long to stay in</a></td>
+</tr>
+<tr class="even">
+<td>Potassium iodide (KI): who takes it, how much</td>
+<td><a class="guide" href="NUCLEAR-FALLOUT-GUIDE.html#potassium-iodide-ki">Nuclear fallout › Potassium iodide (KI)</a></td>
+</tr>
+<tr class="odd">
+<td>Solar-storm or EMP warning</td>
+<td><a class="guide" href="EMP-GUIDE.html#when-a-solar-storm-warning-comes">EMP › When a solar-storm warning comes</a><br><a class="guide" href="EMP-GUIDE.html#rule-one-unplug-and-disconnect">EMP › Rule one: unplug and disconnect</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="shelter-and-heat">🏠 Shelter and heat</h2>
+<table>
+<thead>
+<tr class="header">
+<th>What is happening</th>
+<th>Go to</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Roof leaking in a storm</td>
+<td><a class="guide" href="SHELTER-BUILDING-GUIDE.html#finding-and-patching-roof-leaks">Shelter › Finding and patching roof leaks</a></td>
+</tr>
+<tr class="even">
+<td>House damaged — need shelter tonight</td>
+<td><a class="guide" href="SHELTER-BUILDING-GUIDE.html#emergency-tarp-and-plastic-shelters">Shelter › Emergency tarp and plastic shelters</a></td>
+</tr>
+<tr class="odd">
+<td>House too cold, no heat</td>
+<td><a class="guide" href="SHELTER-BUILDING-GUIDE.html#one-warm-room-drafts-plastic-and-heat">Shelter › One warm room: drafts, plastic and heat</a></td>
+</tr>
+<tr class="even">
+<td>Running a generator (carbon monoxide, backfeed)</td>
+<td><a class="guide" href="OFF-GRID-POWER-GUIDE.html#generators-cars-and-backfeed">Off-grid power › Generators, cars and backfeed</a><br><a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html#generators">Engines › Generators</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="water-and-food">💧 Water and food</h2>
+<table>
+<thead>
+<tr class="header">
+<th>What is happening</th>
+<th>Go to</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>No safe drinking water</td>
+<td><a class="guide" href="WATER-PURIFICATION-GUIDE.html#which-method-does-what">Water purification › Which method does what</a><br><a class="guide" href="WATER-PURIFICATION-GUIDE.html#step-3-kill-the-germs">Water purification › Step 3 — Kill the germs</a></td>
+</tr>
+<tr class="even">
+<td>How much bleach to put in water</td>
+<td><a class="guide" href="SANITATION-GUIDE.html#chlorine-strengths-from-household-bleach">Sanitation › Chlorine strengths from household bleach</a></td>
+</tr>
+<tr class="odd">
+<td>Water after a wildfire</td>
+<td><a class="guide" href="WATER-PURIFICATION-GUIDE.html#after-a-wildfire">Water purification › After a wildfire</a></td>
+</tr>
+<tr class="even">
+<td>Well pump dead — no power</td>
+<td><a class="guide" href="WATER-WELLS-GUIDE.html#running-the-well-pump-without-the-grid">Wells &amp; pumps › Running the well pump without the grid</a><br><a class="guide" href="WATER-WELLS-GUIDE.html#getting-water-up-by-hand">Wells &amp; pumps › Getting water up by hand</a></td>
+</tr>
+<tr class="odd">
+<td>Food running low</td>
+<td><a class="guide" href="FOOD-SECURITY-GUIDE.html#setting-and-running-a-fair-ration">Food when scarce › Setting and running a fair ration</a><br><a class="guide" href="FOOD-SECURITY-GUIDE.html#how-much-food-people-need">Food when scarce › How much food people need</a></td>
+</tr>
+<tr class="even">
+<td>A bulging can or a jar that smells wrong (botulism)</td>
+<td><a class="guide" href="PRESERVING-FOOD-GUIDE.html#jars-lids-storage-and-spoilage">Preserving food › Jars, lids, storage and spoilage</a><br><a class="guide" href="PRESERVING-FOOD-GUIDE.html#botulism-why-low-acid-food-needs-a-pressure-canner">Preserving food › Botulism: why low-acid food needs a pressure canner</a></td>
+</tr>
+<tr class="odd">
+<td>Fresh meat in hot weather</td>
+<td><a class="guide" href="HUNTING-TRAPPING-FISHING-GUIDE.html#cooling-meat-in-our-heat">Hunting &amp; fishing › Cooling meat in our heat</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="lost-cut-off-need-help">📡 Lost, cut off, need help</h2>
+<table>
+<thead>
+<tr class="header">
+<th>What is happening</th>
+<th>Go to</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Lost in the woods</td>
+<td><a class="guide" href="NAVIGATION-WEATHER-GUIDE.html#getting-un-lost">Navigation &amp; weather › Getting un-lost</a></td>
+</tr>
+<tr class="even">
+<td>Signal a plane or searchers</td>
+<td><a class="guide" href="SIGNALS-MORSE-GUIDE.html#distress-signals-and-talking-to-aircraft">Signals &amp; Morse › Distress signals and talking to aircraft</a><br><a class="guide" href="SIGNALS-MORSE-GUIDE.html#ground-to-air-symbols-print-this">Signals &amp; Morse › Ground-to-air symbols (print this)</a></td>
+</tr>
+<tr class="odd">
+<td>Call for help by radio</td>
+<td><a class="guide" href="RADIO-GUIDE.html#9-how-to-call-for-help-procedure">Radio › 9. How to call for help (procedure)</a></td>
+</tr>
+<tr class="even">
+<td>Tell the neighbors you need help</td>
+<td><a class="guide" href="SIGNALS-MORSE-GUIDE.html#the-neighborhood-ok-help-plan">Signals &amp; Morse › The neighborhood OK/HELP plan</a></td>
+</tr>
+<tr class="odd">
+<td>Theft, or a dispute between neighbors</td>
+<td><a class="guide" href="COMMUNITY-BARTER-GUIDE.html#settling-disputes-and-dealing-with-theft">Community &amp; barter › Settling disputes and dealing with theft</a></td>
+</tr>
+<tr class="even">
+<td>Someone at the gate, or trying to break in</td>
+<td><a class="guide" href="HOME-DEFENSE-GUIDE.html#someone-at-the-gate-strangers-or-a-break-in">Home protection › Someone at the gate, strangers, or a break-in</a></td>
+</tr>
+<tr class="odd">
+<td>After a break-in or theft</td>
+<td><a class="guide" href="HOME-DEFENSE-GUIDE.html#someone-at-the-gate-strangers-or-a-break-in">Home protection › Someone at the gate, strangers, or a break-in</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="animals">🐐 Animals</h2>
+<table>
+<thead>
+<tr class="header">
+<th>What is happening</th>
+<th>Go to</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Goat sick, bloated, or trouble kidding</td>
+<td><a class="guide" href="GOATS-DAIRY-BEES-GUIDE.html#goat-health-with-no-vet">Goats, dairy &amp; bees › Goat health with no vet</a><br><a class="guide" href="GOATS-DAIRY-BEES-GUIDE.html#breeding-kidding-and-kids">Goats, dairy &amp; bees › Breeding, kidding and kids</a></td>
+</tr>
+<tr class="even">
+<td>Horse with colic, a wound or lameness</td>
+<td><a class="guide" href="HORSE-GUIDE.html#health-checks-and-first-aid">Horses › Health checks and first aid</a><br><a class="guide" href="HORSE-GUIDE.html#if-this-goes-wrong">Horses › If this goes wrong</a></td>
+</tr>
+<tr class="odd">
+<td>Chickens or rabbits sick</td>
+<td><a class="guide" href="RABBITS-CHICKENS-GUIDE.html#common-diseases-with-no-vet">Rabbits &amp; chickens › Common diseases with no vet</a></td>
+</tr>
+<tr class="even">
+<td>Animals in heat, smoke or fire</td>
+<td><a class="guide" href="RABBITS-CHICKENS-GUIDE.html#heat-smoke-and-fire-season">Rabbits &amp; chickens › Heat, smoke and fire season</a></td>
+</tr>
+<tr class="odd">
+<td>Bee swarm, stings, or a bear at the hives</td>
+<td><a class="guide" href="GOATS-DAIRY-BEES-GUIDE.html#honey-wax-bears-and-stings">Goats, dairy &amp; bees › Honey, wax, bears and stings</a></td>
+</tr>
+<tr class="even">
+<td>Livestock and gardens after fallout</td>
+<td><a class="guide" href="NUCLEAR-FALLOUT-GUIDE.html#livestock-and-gardens">Nuclear fallout › Livestock and gardens</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="something-stopped-working">🔧 Something stopped working</h2>
+<table>
+<thead>
+<tr class="header">
+<th>What is happening</th>
+<th>Go to</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Engine won't start</td>
+<td><a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html#small-gas-engines-why-it-won-t-start">Engines › Small gas engines: why it won't start</a></td>
+</tr>
+<tr class="even">
+<td>Is this old gas or diesel still good?</td>
+<td><a class="guide" href="FUEL-GUIDE.html#is-this-fuel-still-good">Fuel › Is this fuel still good?</a></td>
+</tr>
+<tr class="odd">
+<td>Out of fuel</td>
+<td><a class="guide" href="FUEL-GUIDE.html#getting-fuel-out-of-gas-station-tanks">Fuel › Getting fuel out of gas-station tanks</a></td>
+</tr>
+<tr class="even">
+<td>Electronics dead after a solar storm or EMP</td>
+<td><a class="guide" href="EMP-GUIDE.html#after-an-event-check-and-repair">EMP › After an event: check and repair</a></td>
+</tr>
+</tbody>
+</table>
+</div><a class="totop" href="#contents" aria-label="Back to contents">↑ Contents</a></body></html>

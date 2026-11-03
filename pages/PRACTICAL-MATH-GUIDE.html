@@ -1,0 +1,656 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>📐 Practical Math, Measuring &amp; Geometry</title><style>:root{--bg:#0f1420;--card:#171f2e;--ink:#e7ecf3;--muted:#9fb0c3;--accent:#4fd1c5;--accent2:#f6ad55;--line:#273246;--code:#0b0f17}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--code:#f1f5f9}}:root[data-theme=light]{--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--code:#f1f5f9}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,Segoe UI,Roboto,Arial,sans-serif}.wrap{max-width:900px;margin:0 auto;padding:28px 20px 80px}h1{font-size:28px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}h2{font-size:22px;border-bottom:2px solid var(--line);padding-bottom:6px;margin-top:30px}h3{font-size:17px;color:var(--accent)}h4{font-size:15px;color:var(--accent2)}a{color:var(--accent)}code{background:var(--code);padding:2px 6px;border-radius:6px;font-family:Consolas,monospace;font-size:14px}pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow-x:auto}pre code{background:none;padding:0}table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}th{background:rgba(127,127,127,.12)}blockquote{border-left:4px solid var(--accent);background:rgba(79,209,197,.08);padding:10px 16px;border-radius:0 10px 10px 0}hr{border:none;border-top:1px solid var(--line);margin:26px 0}ul,ol{padding-left:26px}table{display:block;overflow-x:auto;max-width:100%}code,a{overflow-wrap:anywhere}img{max-width:100%}a.lib{text-decoration-style:dotted}a.lib::before{content:"📖 ";text-decoration:none}.deeper{font-size:15px;opacity:.95}a.wiki::before{content:"📷 "}a.lib.pic::before{content:"🖼️ "}a.lib::before,a.wiki::before{display:inline-block;margin-right:3px}html{scroll-behavior:smooth}h2{scroll-margin-top:12px}.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 16px;margin:18px 0 8px}.toc summary{cursor:pointer;font-weight:600;color:var(--accent);font-size:17px}.toc ol{margin:8px 0 4px;padding-left:26px;columns:2 260px;column-gap:28px}.toc li{margin:4px 0;break-inside:avoid}.toc a{text-decoration:none}.toc a:hover{text-decoration:underline}.totop{position:fixed;right:14px;bottom:max(14px,env(safe-area-inset-bottom));background:var(--card);color:var(--accent);border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:14px;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:5}@media print{.totop{display:none}.toc details{display:block}}.topnav{font-size:14.5px;margin:0 0 4px;color:var(--muted)}.topnav a{text-decoration:none;white-space:nowrap}h1 .h1e{-webkit-text-fill-color:initial;color:var(--ink);background:none}.azbar{display:flex;flex-wrap:wrap;gap:4px;background:var(--bg);padding:8px 0;margin:10px 0;border-bottom:1px solid var(--line)}.azbar a{display:inline-block;min-width:30px;text-align:center;padding:4px 6px;border:1px solid var(--line);border-radius:8px;background:var(--card);text-decoration:none;font-weight:600}</style><style>:root{color-scheme:dark}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){color-scheme:light}}:root[data-theme=light]{color-scheme:light}.themebtn{font:inherit;font-size:14px;line-height:1.3;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:3px 11px;cursor:pointer;white-space:nowrap;text-decoration:none}.themefloat{position:absolute;top:10px;right:12px;z-index:9}@media print{.themebtn{display:none}}</style><script>/* so-theme: light or dark screen */(function(){var K="so-theme",d=document.documentElement,L={auto:"\uD83C\uDF13 Auto",dark:"\uD83C\uDF19 Dark",light:"\u2600\uFE0F Light"},N={auto:"dark",dark:"light",light:"auto"},cur="auto";try{cur=localStorage.getItem(K)||"auto"}catch(e){}function a(){if(cur==="dark"||cur==="light")d.setAttribute("data-theme",cur);else d.removeAttribute("data-theme");var b=document.querySelectorAll(".themebtn");for(var i=0;i<b.length;i++){b[i].textContent=L[cur]||L.auto;b[i].title="Screen: "+cur+" - tap to change (Auto follows this device)"}}a();window.soTheme=function(){cur=N[cur]||"dark";try{localStorage.setItem(K,cur)}catch(e){}a()};function btn(){var b=document.createElement("button");b.type="button";b.className="themebtn";return b}document.addEventListener("DOMContentLoaded",function(){if(!document.querySelector(".themebtn")){var n=document.querySelector(".topnav"),b=btn();if(n){n.appendChild(document.createTextNode(" \u00B7 "));n.appendChild(b)}else{b.className+=" themefloat";document.body.appendChild(b)}}var all=document.querySelectorAll(".themebtn");for(var i=0;i<all.length;i++)all[i].onclick=window.soTheme;a()})})();</script></head><body><div class="wrap"><p class="topnav"><a class="guide" href="../#tools">🏠 Library</a> · <a class="guide" href="EMERGENCY-FINDER.html">🆘 Emergency</a> · <a class="guide" href="SUBJECT-INDEX.html">📇 Index A–Z</a></p>
+<h1 id="-practical-math-measuring--geometry"><span class="h1e">📐</span> Practical Math, Measuring &amp; Geometry</h1>
+<p>Homestead math with no stores: measuring with your body and a string, mixing by ratio, squaring a foundation, areas, tanks, woodpiles and loads, slopes and heights you can't reach, and the numbers behind water, power and medicine — each with a worked Illinois Valley example. The books are in <code>Math-Measuring\Arithmetic-Geometry</code> (Navy <em>Mathematics</em> courses), <code>Math-Measuring\Measuring-Surveying</code> (USDA surveying, quantities, timber measuring) and <code>Math-Measuring\Units-Tables</code> (NIST unit tables, Army <em>Engineer Field Data</em>); Ray's arithmetic is in <code>Children-Learning\Arithmetic</code>, and FM 5-426 <em>Carpentry</em> and FM 5-125 <em>Rigging</em> in <code>Manuals\ArmyFieldManuals</code>. The interactive <strong>🔢 Unit converter &amp; calculators</strong> page (<a class="guide" href="UNIT-CONVERTER.html">Unit converter</a>) does the arithmetic; this guide shows how to do it with a pencil.</p>
+<blockquote>
+<h3 id="️-rules-that-prevent-the-worst-mistakes">⚠️ Rules that prevent the worst mistakes</h3>
+<ul>
+<li><strong>Same units before you multiply.</strong> Turn everything into feet (or inches) first. Mixing inches and feet is the commonest error — off by 12, 144 or 1,728 times.</li>
+<li><strong>A British or Canadian "gallon" is about 20% bigger</strong> than a US gallon (<a class="lib" target="_blank" rel="noopener" href="https://www.nist.gov/system/files/documents/2024/01/14/NIST%20HB%2044%202024%20Appendix%20C%20General%20Tables%20of%20Units%20of%20Measurement.pdf#page=8" title="NIST Handbook 44 Appendix C - General Tables of Units of Measurement (NIST 2024).pdf — page 8">NIST HB 44, p. 8</a>). Check where a recipe or manual came from.</li>
+<li><strong>Medicine: only doses printed in the medical books,</strong> in mg and mL, never drops. A second person redoes the arithmetic before anyone swallows it.</li>
+<li><strong>Loads are heavier than they look.</strong> A cubic yard of damp packed earth weighs about 2,600 lb (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM_5_34_E_F_D_1987/FM%205-34%20Engineer%20Field%20Data%20%281987%29.pdf#page=292" title="FM 5-34 Engineer Field Data (US Army 1987).pdf — page 292">FM 5-34, p. 292</a>). Never stand under a lift.</li>
+<li><strong>Measure twice, check a second way, and round the safe way:</strong> more posts, a bigger pipe, a smaller dose.</li>
+</ul>
+</blockquote>
+<hr />
+<nav class="toc" id="contents" aria-label="Contents"><details open><summary>📑 Contents</summary><ol><li><a href="#measuring-with-no-tools">📏 Measuring with no tools</a></li><li><a href="#fractions-percents-ratios-and-mixing">➗ Fractions, percents, ratios and mixing</a></li><li><a href="#right-angles-and-layout">📐 Right angles and layout</a></li><li><a href="#area-plots-fences-roofs-and-walls">🟩 Area: plots, fences, roofs and walls</a></li><li><a href="#volume-tanks-wells-piles-bins-and-woodpiles">🛢️ Volume: tanks, wells, piles, bins and woodpiles</a></li><li><a href="#slope-grade-pitch-and-stairs">⛰️ Slope, grade, pitch and stairs</a></li><li><a href="#heights-and-distances-you-can-t-reach">🌲 Heights and distances you can&#x27;t reach</a></li><li><a href="#levers-pulleys-and-loads">🏋️ Levers, pulleys and loads</a></li><li><a href="#electricity-by-the-numbers">⚡ Electricity by the numbers</a></li><li><a href="#water-flow-and-pressure">💧 Water flow and pressure</a></li><li><a href="#food-medicine-and-time-math">💊 Food, medicine and time math</a></li><li><a href="#quick-reference-tables-print-these">🧾 Quick-reference tables (print these)</a></li><li><a href="#old-advice-in-the-library-to-ignore">⚠️ Old advice in the library to ignore</a></li><li><a href="#pictures-diagrams">🖼️ Pictures &amp; diagrams</a></li><li><a href="#related-guides">🔗 Related guides</a></li></ol></details></nav>
+<h2 id="measuring-with-no-tools">📏 Measuring with no tools</h2>
+<p><strong>Your body is a ruler — measure yours once</strong> <em>(rule of thumb)</em>:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Measure</th>
+<th>What it is</th>
+<th>Typical adult</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Thumb width</td>
+<td>Across the knuckle</td>
+<td>about 1 in</td>
+</tr>
+<tr class="even">
+<td>Span</td>
+<td>Thumb tip to little-finger tip, spread</td>
+<td>8–9 in</td>
+</tr>
+<tr class="odd">
+<td>Cubit</td>
+<td>Elbow to fingertip</td>
+<td>17–19 in</td>
+</tr>
+<tr class="even">
+<td>Arm spread</td>
+<td>Fingertip to fingertip</td>
+<td>about your height</td>
+</tr>
+<tr class="odd">
+<td>Pace</td>
+<td>One step</td>
+<td>2–2½ ft</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pace count</strong> (<a class="lib" target="_blank" rel="noopener" href="https://directives.nrcs.usda.gov/sites/default/files2/1712930814/33252.pdf#page=33" title="NRCS Engineering Field Handbook Ch 1 - Surveying (USDA NRCS 2022).pdf — page 33">NRCS <em>Surveying</em>, p. 33</a>): walk a measured 500 ft until the count varies by no more than 2–3 paces. <strong>Pace factor = distance ÷ paces</strong>; pacing is good to about 2%. <em>Example:</em> 500 ft in 200 paces = 2.5 ft per pace, so 340 paces along a fence is 850 ft. The Army counts every step, the Forest Service every second step — pick one (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM3-25x26/FM3-25x26.pdf#page=52" title="FM 3-25.26 Map Reading and Land Navigation (US Army 2001).pdf — page 52">FM 3-25.26, p. 52</a>; <a class="guide" href="NAVIGATION-WEATHER-GUIDE.html">Navigation guide</a>). Hills and brush add steps; count with <a class="wiki" href="https://en.wikipedia.org/wiki/Pace_count_beads" data-title="Pace_count_beads" target="_blank" rel="noopener" title="Wikipedia: Pace count beads (offline copy with photos when opened through the Library Assistant)">pace count beads</a>.</p>
+<p><strong>Known sizes</strong> <em>(standard sizes)</em>: a dollar bill is 6.14 in long; a "2×4" is 1½ × 3½ in; letter paper 8½ × 11 in. A string knotted every foot is a tape.</p>
+<p><strong>Level, plumb and straight:</strong></p>
+<ul>
+<li><strong><a class="wiki" href="https://en.wikipedia.org/wiki/Water_level_%28device%29" data-title="Water_level_(device)" target="_blank" rel="noopener" title="Wikipedia: Water level (device) (offline copy with photos when opened through the Library Assistant)">Water level</a>:</strong> clear tubing full of water; both ends settle at the same height however long the tube <em>(rule of thumb: get every bubble out)</em>. With a measuring rod it also measures a creek's drop (<a class="lib" target="_blank" rel="noopener" href="https://energypedia.info/images/5/5d/Micro_Hydropower_System_-_A_Buyer%27s_Guide.pdf#page=42" title="NRCan Micro-Hydropower Systems - A Buyers Guide.pdf — page 42">NRCan, p. 42</a>).</li>
+<li><strong><a class="wiki" href="https://en.wikipedia.org/wiki/Plumb_bob" data-title="Plumb_bob" target="_blank" rel="noopener" title="Wikipedia: Plumb bob (offline copy with photos when opened through the Library Assistant)">Plumb bob</a>:</strong> any weight on a string — "use a rock, half-brick, or small piece of metal" (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/fm-5-426-carpentry-1995/FM%205-426%20Carpentry%201995.pdf#page=88" title="FM 5-426 Carpentry.pdf — page 88">FM 5-426, p. 88</a>).</li>
+<li><strong>Straight:</strong> a tight string or a snapped <a class="wiki" href="https://en.wikipedia.org/wiki/Chalk_line" data-title="Chalk_line" target="_blank" rel="noopener" title="Wikipedia: Chalk line (offline copy with photos when opened through the Library Assistant)">chalk line</a> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/fm-5-426-carpentry-1995/FM%205-426%20Carpentry%201995.pdf#page=44" title="FM 5-426 Carpentry.pdf — page 44">FM 5-426, p. 44</a>).</li>
+</ul>
+<p><strong>Equal parts</strong> (<a class="lib pic" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED064144.pdf#page=197" title="Mathematics Vol 1 - Arithmetic to Geometry and Trigonometry (US Navy NavPers 10069-C 1966).pdf — page 197">Navy <em>Mathematics</em> Vol. 1, p. 197</a>): for 5 equal strips, slant a ruler so 0 and 10 in touch the board's edges and mark at 2, 4, 6 and 8.</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://directives.nrcs.usda.gov/sites/default/files2/1712930814/33252.pdf#page=32" title="NRCS Engineering Field Handbook Ch 1 - Surveying (USDA NRCS 2022).pdf — page 32">NRCS <em>Surveying</em>, pp. 32–34</a> — pacing and taping on slopes; <a class="lib" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED064144.pdf#page=62" title="Mathematics Vol 1 - Arithmetic to Geometry and Trigonometry (US Navy NavPers 10069-C 1966).pdf — page 62">Navy Vol. 1, ch. 6</a> — percentage and measurement; <a class="wiki" href="https://en.wikipedia.org/wiki/Tape_measure" data-title="Tape_measure" target="_blank" rel="noopener" title="Wikipedia: Tape measure (offline copy with photos when opened through the Library Assistant)">Tape measure</a>.</p>
+<h2 id="fractions-percents-ratios-and-mixing">➗ Fractions, percents, ratios and mixing</h2>
+<p><strong>Percent = part ÷ whole × 100:</strong> 15 sick hens of 60 is 25% (<a class="lib" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED064144.pdf#page=62" title="Mathematics Vol 1 - Arithmetic to Geometry and Trigonometry (US Navy NavPers 10069-C 1966).pdf — page 62">Navy Vol. 1, pp. 62–64</a>).</p>
+<p><strong>Scaling a recipe:</strong> factor = amount wanted ÷ amount the recipe makes. Bread for 6 loaves, wanted 10: 10 ÷ 6 = 1⅔, so 3 cups of water becomes 5. Scale <strong>every</strong> ingredient (<a class="lib" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED064144.pdf#page=148" title="Mathematics Vol 1 - Arithmetic to Geometry and Trigonometry (US Navy NavPers 10069-C 1966).pdf — page 148">ratio and proportion, p. 148</a>).</p>
+<p><strong>Mixing by parts</strong> — add the parts; each part is the batch ÷ that total. All by volume, same bucket:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Mix</th>
+<th>Parts</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2-stroke fuel</td>
+<td>Ratio on the engine; most modern saws 50:1 = <strong>2.6 oz oil per gallon</strong> (40:1 = 3.2 oz; 32:1 = 4 oz)</td>
+<td><a class="lib" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED271558.pdf#page=186" title="Small Engine Repair Two-Stroke and Four-Stroke Cycle (MAVCC 1985).pdf — page 186">MAVCC, p. 186</a>; <em>(rule of thumb)</em></td>
+</tr>
+<tr class="even">
+<td>Concrete toilet slab</td>
+<td><strong>1 cement : 2 gravel : 3 sand</strong> + water till it holds together</td>
+<td><a class="lib pic" target="_blank" rel="noopener" href="https://hesperian.org/wp-content/uploads/pdf/en_cgeh_2012/en_cgeh_2012_07.pdf#page=20" title="Hesperian - Community Guide to Environmental Health Ch 7 Building Toilets (2012).pdf — page 20">Hesperian ch. 7, p. 20</a></td>
+</tr>
+<tr class="odd">
+<td>Chimney mortar</td>
+<td><strong>1 portland cement : 1 lime : 6 sand</strong></td>
+<td><a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/CAT87207967/farmbul1751rev1948.pdf#page=24" title="Roof Coverings for Farm Buildings and Their Repair (USDA FB 1751 1948).pdf — page 24">FB 1751, p. 24</a></td>
+</tr>
+</tbody>
+</table>
+<p><em>Example:</em> 3 cu ft of that concrete is 6 parts: ½ cu ft cement, 1 gravel, 1½ sand.</p>
+<p><strong>Dilution: C1 × V1 = C2 × V2</strong> (strength × amount before = strength × amount after). <strong>1 gallon of 0.2% chlorine from 6% bleach:</strong> V1 = 0.2 × 1 ÷ 6 = 1/30 gallon = <strong>8½ Tbsp, about ½ cup</strong>, topped up to 1 gallon with water — the same as the <a class="guide" href="SANITATION-GUIDE.html">Sanitation guide</a>'s table and the MSF rule <strong>parts of water = (bleach % ÷ % wanted) − 1</strong> (<a class="lib" target="_blank" rel="noopener" href="https://medicalguidelines.msf.org/sites/default/files/pdf/guideline-800-en.pdf#page=226" title="Management of a Cholera Epidemic (MSF 2018).pdf — page 226">MSF <em>Cholera</em>, p. 226</a>). Never mix bleach with ammonia or vinegar.</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/raysnewpractical00rayjrich/raysnewpractical00rayjrich.pdf" title="Rays New Practical Arithmetic (1877).pdf">Ray's <em>Practical Arithmetic</em></a> — fractions to percentage, with hundreds of problems; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/ERIC_ED621577/ED621577.pdf" title="Key to Rays New Arithmetics - Answers and Solutions for Parents (1907).pdf">Answers for parents</a>; <a class="lib" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED064144.pdf#page=35" title="Mathematics Vol 1 - Arithmetic to Geometry and Trigonometry (US Navy NavPers 10069-C 1966).pdf — page 35">Navy Vol. 1, chs. 4–6</a>.</p>
+<h2 id="right-angles-and-layout">📐 Right angles and layout</h2>
+<p><strong>The 3-4-5 triangle</strong> (<a class="wiki" href="https://en.wikipedia.org/wiki/Pythagorean_theorem" data-title="Pythagorean_theorem" target="_blank" rel="noopener" title="Wikipedia: Pythagorean theorem (offline copy with photos when opened through the Library Assistant)">Pythagorean theorem</a>): from the corner, mark 3 ft along one string and 4 ft along the other; when the marks are exactly 5 ft apart, the corner is square (<a class="lib pic" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED064144.pdf#page=199" title="Mathematics Vol 1 - Arithmetic to Geometry and Trigonometry (US Navy NavPers 10069-C 1966).pdf — page 199">Navy Vol. 1, p. 199</a>). Multiples work — <strong>6-8-10, 9-12-15, 12-16-20</strong> — and bigger is more accurate: never start under 6 ft; use 12-16-20 for a 50 × 100 ft layout (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/fm-5-426-carpentry-1995/FM%205-426%20Carpentry%201995.pdf#page=48" title="FM 5-426 Carpentry.pdf — page 48">FM 5-426, p. 48</a>).</p>
+<p><strong>Check the diagonals:</strong> a rectangle is square only when both diagonals are <strong>equal</strong> (same page). For a 20 × 30 ft shed, √(400 + 900) = <strong>36.06 ft (36 ft ⅝ in)</strong> each. Hang the lines on <strong>batter boards</strong> set back from the corners so they survive digging (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/fm-5-426-carpentry-1995/FM%205-426%20Carpentry%201995.pdf#page=46" title="FM 5-426 Carpentry.pdf — page 46">FM 5-426, p. 46</a>).</p>
+<p><strong>With a string and stakes</strong> (a rope compass):</p>
+<ul>
+<li><strong>Bisect a line:</strong> swing equal arcs from each end; the line through the crossings halves it at a right angle (<a class="lib pic" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED064144.pdf#page=198" title="Mathematics Vol 1 - Arithmetic to Geometry and Trigonometry (US Navy NavPers 10069-C 1966).pdf — page 198">Navy Vol. 1, p. 198</a>). <strong>Bisect an angle</strong> the same way from its arms (<a class="lib pic" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED064144.pdf#page=199" title="Mathematics Vol 1 - Arithmetic to Geometry and Trigonometry (US Navy NavPers 10069-C 1966).pdf — page 199">p. 199</a>).</li>
+<li><strong>Center of a round thing</strong> (tank, millstone): bisect two chords; the lines cross at the center (<a class="lib pic" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED064144.pdf#page=200" title="Mathematics Vol 1 - Arithmetic to Geometry and Trigonometry (US Navy NavPers 10069-C 1966).pdf — page 200">p. 200</a>).</li>
+<li><strong>Circle:</strong> string on a center stake; 10 ft of string gives 62.8 ft around (C = 2πr).</li>
+<li><strong>Oval (<a class="wiki" href="https://en.wikipedia.org/wiki/Ellipse" data-title="Ellipse" target="_blank" rel="noopener" title="Wikipedia: Ellipse (offline copy with photos when opened through the Library Assistant)">ellipse</a>) bed or pond, 20 × 12 ft</strong> <em>(geometry)</em>: two stakes 16 ft apart on the long center line (√(10² − 6²) = 8 ft each side of center), a <strong>loop of string 36 ft around</strong> (20 + 16) over both, pulled taut with a marking stick and walked around. A straightedge method is on <a class="lib pic" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED064144.pdf#page=200" title="Mathematics Vol 1 - Arithmetic to Geometry and Trigonometry (US Navy NavPers 10069-C 1966).pdf — page 200">p. 200</a>.</li>
+</ul>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED064144.pdf#page=197" title="Mathematics Vol 1 - Arithmetic to Geometry and Trigonometry (US Navy NavPers 10069-C 1966).pdf — page 197">Navy Vol. 1, ch. 18</a> — constructions; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/fm-5-426-carpentry-1995/FM%205-426%20Carpentry%201995.pdf#page=44" title="FM 5-426 Carpentry.pdf — page 44">FM 5-426, pp. 44–48</a> — layout tools, batter boards, squaring; <a class="wiki" href="https://en.wikipedia.org/wiki/Steel_square" data-title="Steel_square" target="_blank" rel="noopener" title="Wikipedia: Steel square (offline copy with photos when opened through the Library Assistant)">Steel square</a>.</p>
+<h2 id="area-plots-fences-roofs-and-walls">🟩 Area: plots, fences, roofs and walls</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Shape</th>
+<th>Area</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rectangle</td>
+<td>length × width</td>
+<td>60 × 40 ft garden = 2,400 sq ft</td>
+</tr>
+<tr class="even">
+<td>Triangle</td>
+<td>½ × base × height</td>
+<td>base 30, height 20 ft = 300 sq ft</td>
+</tr>
+<tr class="odd">
+<td>Circle</td>
+<td>π × r² (π ≈ 3.14)</td>
+<td>10-ft radius = 314 sq ft</td>
+</tr>
+<tr class="even">
+<td><a class="wiki" href="https://en.wikipedia.org/wiki/Trapezoid" data-title="Trapezoid" target="_blank" rel="noopener" title="Wikipedia: Trapezoid (offline copy with photos when opened through the Library Assistant)">Trapezoid</a></td>
+<td>½ × (a + b) × height</td>
+<td>parallel sides 120 and 80 ft, 60 ft apart = 6,000 sq ft</td>
+</tr>
+<tr class="odd">
+<td>Triangle, three sides known</td>
+<td>√(s(s−a)(s−b)(s−c)), s = half the perimeter</td>
+<td>below</td>
+</tr>
+</tbody>
+</table>
+<p>(<a class="lib" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED064144.pdf#page=191" title="Mathematics Vol 1 - Arithmetic to Geometry and Trigonometry (US Navy NavPers 10069-C 1966).pdf — page 191">Navy Vol. 1, pp. 191–196</a>; <a class="lib pic" target="_blank" rel="noopener" href="https://directives.nrcs.usda.gov/sites/default/files2/1712930744/17541.pdf#page=15" title="NRCS Construction Surveying and Quantity Computations - NEH Part 645 Ch 5 (USDA NRCS 2012).pdf — page 15">NRCS <em>Quantity Computations</em>, p. 15</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Heron%26%2339%3Bs_formula" data-title="Heron&amp;#39;s_formula" target="_blank" rel="noopener" title="Wikipedia: Heron&amp;#39;s formula (offline copy with photos when opened through the Library Assistant)">Heron's formula</a>)</p>
+<p><strong>Irregular plot:</strong> split it into triangles and <strong>measure all three sides of each</strong> — no angles needed. A pasture with sides 210, 180, 160 and 190 ft and a 250-ft diagonal gives triangles (210, 180, 250) and (250, 160, 190): 18,573 + 15,199 = <strong>33,772 sq ft = 0.78 acre</strong>. Measure <strong>level</strong> distance; a tape laid on a hillside reads long (<a class="lib" target="_blank" rel="noopener" href="https://directives.nrcs.usda.gov/sites/default/files2/1712930744/17541.pdf#page=14" title="NRCS Construction Surveying and Quantity Computations - NEH Part 645 Ch 5 (USDA NRCS 2012).pdf — page 14">NRCS <em>Quantity Computations</em>, p. 14</a>).</p>
+<p><strong>Acres:</strong> 1 <a class="wiki" href="https://en.wikipedia.org/wiki/Acre" data-title="Acre" target="_blank" rel="noopener" title="Wikipedia: Acre (offline copy with photos when opened through the Library Assistant)">acre</a> = <strong>43,560 sq ft</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www.nist.gov/system/files/documents/2024/01/14/NIST%20HB%2044%202024%20Appendix%20C%20General%20Tables%20of%20Units%20of%20Measurement.pdf#page=25" title="NIST Handbook 44 Appendix C - General Tables of Units of Measurement (NIST 2024).pdf — page 25">NIST HB 44, p. 25</a>), a square <strong>208.7 ft</strong> on a side (<a class="lib" target="_blank" rel="noopener" href="https://www.nist.gov/system/files/documents/2024/01/14/NIST%20HB%2044%202024%20Appendix%20C%20General%20Tables%20of%20Units%20of%20Measurement.pdf#page=13" title="NIST Handbook 44 Appendix C - General Tables of Units of Measurement (NIST 2024).pdf — page 13">p. 13</a>). Old deeds use the <strong>rod (16½ ft)</strong> and <strong>chain (66 ft)</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www.nist.gov/system/files/documents/2024/01/14/NIST%20HB%2044%202024%20Appendix%20C%20General%20Tables%20of%20Units%20of%20Measurement.pdf#page=24" title="NIST Handbook 44 Appendix C - General Tables of Units of Measurement (NIST 2024).pdf — page 24">pp. 24–25</a>); 10 square chains = 1 acre.</p>
+<p><strong>Fences:</strong> posts on a <strong>straight run = length ÷ spacing + 1</strong>; on a <strong>closed loop = perimeter ÷ spacing</strong>. A 1-acre square is 835 ft around: posts every 10 ft = <strong>84</strong>.</p>
+<p><strong>Roofs:</strong> roof area = flat (plan) area × the <strong>slope factor</strong> (table in the slope section). Roofing is sold by the <strong>square = 100 sq ft</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/raysnewpractical00rayjrich/raysnewpractical00rayjrich.pdf#page=330" title="Rays New Practical Arithmetic (1877).pdf — page 330">Ray's, p. 330</a>). A 30 × 20 ft cabin with 1-ft overhangs is 32 × 22 = 704 sq ft flat × 1.118 (6-in-12) = <strong>787 sq ft, 7.9 squares</strong>; add about 10% for waste <em>(rule of thumb)</em> → 9 squares.</p>
+<p><strong>Paint and plaster:</strong> wall area (perimeter × height, minus openings) ÷ what one batch <strong>actually covered</strong> on a test patch. <strong>Plaster volume = area × thickness:</strong> 400 sq ft at ½ in = <strong>16.7 cu ft</strong>.</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://directives.nrcs.usda.gov/sites/default/files2/1712930744/17541.pdf#page=14" title="NRCS Construction Surveying and Quantity Computations - NEH Part 645 Ch 5 (USDA NRCS 2012).pdf — page 14">NRCS <em>Quantity Computations</em>, pp. 14–16</a> — areas by triangles and coordinates; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/raysnewpractical00rayjrich/raysnewpractical00rayjrich.pdf#page=318" title="Rays New Practical Arithmetic (1877).pdf — page 318">Ray's, pp. 318–331</a> — mensuration for the old trades.</p>
+<h2 id="volume-tanks-wells-piles-bins-and-woodpiles">🛢️ Volume: tanks, wells, piles, bins and woodpiles</h2>
+<p><strong>Key numbers:</strong> 1 cu ft = 1,728 cu in = <strong>7.48 gallons</strong>; 1 gallon = 231 cu in; 1 cu yd = 27 cu ft (<a class="lib" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED064144.pdf#page=227" title="Mathematics Vol 1 - Arithmetic to Geometry and Trigonometry (US Navy NavPers 10069-C 1966).pdf — page 227">Navy Vol. 1, p. 227</a>; <a class="lib" target="_blank" rel="noopener" href="https://www.nist.gov/system/files/documents/2024/01/14/NIST%20HB%2044%202024%20Appendix%20C%20General%20Tables%20of%20Units%20of%20Measurement.pdf#page=27" title="NIST Handbook 44 Appendix C - General Tables of Units of Measurement (NIST 2024).pdf — page 27">NIST HB 44, p. 27</a>). Water weighs <strong>62.4 lb per cu ft</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www1.eere.energy.gov/water/pdfs/doewater-10107-vol.1-pt1.pdf#page=113" title="DOE Microhydropower Handbook Vol 1 Part 1 (Site Head Flow Turbines Intake).pdf — page 113">DOE <em>Microhydropower</em>, p. 113</a>), so 62.4 ÷ 7.48 = <strong>8.34 lb per gallon</strong>: a 5-gallon bucket is 42 lb, a full 55-gallon drum about 460 lb.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Shape</th>
+<th>Volume</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Box</td>
+<td>length × width × depth</td>
+<td>slab 10 × 12 ft × 4 in = 40 cu ft = 1.48 cu yd</td>
+</tr>
+<tr class="even">
+<td><a class="wiki" href="https://en.wikipedia.org/wiki/Cylinder" data-title="Cylinder" target="_blank" rel="noopener" title="Wikipedia: Cylinder (offline copy with photos when opened through the Library Assistant)">Cylinder</a> (tank, well, barrel)</td>
+<td>π × r² × height</td>
+<td>tank 8 ft across, 6 ft of water: π × 16 × 6 = 301.6 cu ft × 7.48 = <strong>2,256 gal</strong></td>
+</tr>
+<tr class="odd">
+<td><a class="wiki" href="https://en.wikipedia.org/wiki/Cone" data-title="Cone" target="_blank" rel="noopener" title="Wikipedia: Cone (offline copy with photos when opened through the Library Assistant)">Cone</a> (gravel, grain, sawdust pile)</td>
+<td>π × r² × height ÷ 3</td>
+<td>sawdust pile 10 ft across, 4 ft high = 105 cu ft ≈ 3.9 cu yd</td>
+</tr>
+</tbody>
+</table>
+<p>(<a class="lib pic" target="_blank" rel="noopener" href="https://directives.nrcs.usda.gov/sites/default/files2/1712930744/17541.pdf#page=17" title="NRCS Construction Surveying and Quantity Computations - NEH Part 645 Ch 5 (USDA NRCS 2012).pdf — page 17">NRCS <em>Quantity Computations</em>, p. 17</a>; <a class="lib pic" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED064144.pdf#page=203" title="Mathematics Vol 1 - Arithmetic to Geometry and Trigonometry (US Navy NavPers 10069-C 1966).pdf — page 203">cone, Navy Vol. 1, p. 203</a>; <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/FM_5_34_E_F_D_1987/FM%205-34%20Engineer%20Field%20Data%20%281987%29.pdf#page=300" title="FM 5-34 Engineer Field Data (US Army 1987).pdf — page 300">all shapes, FM 5-34, p. 300</a>)</p>
+<p><strong>Well casing:</strong> gallons per foot of water = <strong>0.0408 × (inside diameter in inches)²</strong>: 4-in 0.65, 6-in 1.5, 8-in 2.6 (<a class="lib" target="_blank" rel="noopener" href="https://www.oregon.gov/oha/PH/HEALTHYENVIRONMENTS/DRINKINGWATER/OPERATIONS/Documents/welldisinfection.pdf#page=2" title="OHA - Well Disinfection Technical Bulletin.pdf — page 2">OHA bulletin, p. 2</a>). A 6-in well with 120 ft of water (well depth − static water level, same page) holds about 180 gallons (<a class="guide" href="WATER-WELLS-GUIDE.html">Wells guide</a>).</p>
+<p><strong>Horizontal tank, partly full</strong> <em>(computed)</em>: depth ÷ diameter → percent of full capacity:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Depth ÷ diameter</th>
+<th>0.1</th>
+<th>0.2</th>
+<th>0.25</th>
+<th>0.3</th>
+<th>0.4</th>
+<th>0.5</th>
+<th>0.6</th>
+<th>0.7</th>
+<th>0.75</th>
+<th>0.8</th>
+<th>0.9</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>% full</td>
+<td>5</td>
+<td>14</td>
+<td>20</td>
+<td>25</td>
+<td>37</td>
+<td>50</td>
+<td>63</td>
+<td>75</td>
+<td>80</td>
+<td>86</td>
+<td>95</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Grain:</strong> 1 <a class="wiki" href="https://en.wikipedia.org/wiki/Bushel" data-title="Bushel" target="_blank" rel="noopener" title="Wikipedia: Bushel (offline copy with photos when opened through the Library Assistant)">bushel</a> = 2,150.42 cu in = 1.244 cu ft (<a class="lib" target="_blank" rel="noopener" href="https://www.nist.gov/system/files/documents/2024/01/14/NIST%20HB%2044%202024%20Appendix%20C%20General%20Tables%20of%20Units%20of%20Measurement.pdf#page=17" title="NIST Handbook 44 Appendix C - General Tables of Units of Measurement (NIST 2024).pdf — page 17">HB 44, p. 17</a>), so <strong>bushels ≈ cu ft × 0.8</strong> (Ray's: cubic inches ÷ 2,150.4, <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/raysnewpractical00rayjrich/raysnewpractical00rayjrich.pdf#page=332" title="Rays New Practical Arithmetic (1877).pdf — page 332">p. 332</a>). A bin 10 ft across, filled 8 ft deep: 3.14 × 25 × 8 = 628 cu ft → about <strong>505 bushels</strong>.</p>
+<p><strong>Firewood and lumber:</strong></p>
+<ul>
+<li><strong><a class="wiki" href="https://en.wikipedia.org/wiki/Cord_%28unit%29" data-title="Cord_(unit)" target="_blank" rel="noopener" title="Wikipedia: Cord (unit) (offline copy with photos when opened through the Library Assistant)">Cord</a></strong> = 4 × 4 × 8 ft = <strong>128 cu ft</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/CAT31294354/farmbul1210rev1955.pdf#page=5" title="Measuring and Marketing Farm Timber - Farmers Bulletin 1210 (USDA Forest Service 1955).pdf — page 5">FB 1210, p. 5</a>). A pile of 16-in wood 20 ft long and 5 ft high: 20 × 5 × 1.33 = 133 cu ft ≈ 1 cord (<a class="guide" href="FIREWOOD-GUIDE.html">Firewood guide</a>).</li>
+<li><strong><a class="wiki" href="https://en.wikipedia.org/wiki/Board_foot" data-title="Board_foot" target="_blank" rel="noopener" title="Wikipedia: Board foot (offline copy with photos when opened through the Library Assistant)">Board foot</a></strong> = 1 in × 12 in × 12 in (same page): <strong>thickness (in) × width (in) × length (ft) ÷ 12</strong>. A 12-ft 2×6 = 12 board feet.</li>
+<li><strong>Logs, Doyle rule:</strong> (small-end diameter in inches − 4)² = board feet in a 16-ft log (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/CAT31294354/farmbul1210rev1955.pdf#page=7" title="Measuring and Marketing Farm Timber - Farmers Bulletin 1210 (USDA Forest Service 1955).pdf — page 7">FB 1210, p. 7</a>). A 20-in log: 16² = <strong>256</strong>. Doyle short-changes small logs (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/CAT31294354/farmbul1210rev1955.pdf#page=6" title="Measuring and Marketing Farm Timber - Farmers Bulletin 1210 (USDA Forest Service 1955).pdf — page 6">p. 6</a>).</li>
+</ul>
+<p><strong>Concrete, cob and earth:</strong></p>
+<ul>
+<li><strong>Weight per cu ft:</strong> concrete 144 lb, damp packed earth 96, loose dry earth 76, dry loose sand and gravel 90–105 (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM_5_34_E_F_D_1987/FM%205-34%20Engineer%20Field%20Data%20%281987%29.pdf#page=292" title="FM 5-34 Engineer Field Data (US Army 1987).pdf — page 292">FM 5-34, p. 292</a>). That 40-cu-ft slab is about 5,760 lb.</li>
+<li><strong>Dug earth swells:</strong> 1 cu ft in the ground becomes 1.11 loose for sand, <strong>1.25 for loam, 1.43 for clay</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM_5_34_E_F_D_1987/FM%205-34%20Engineer%20Field%20Data%20%281987%29.pdf#page=296" title="FM 5-34 Engineer Field Data (US Army 1987).pdf — page 296">FM 5-34, p. 296</a>). A 4 × 4 × 6 ft loam pit (96 cu ft) makes a 120-cu-ft pile.</li>
+<li>Dry mix shrinks when wetted: have half again more than the finished volume <em>(rule of thumb)</em>.</li>
+</ul>
+<p><strong>Rain catchment:</strong> <strong>0.62 gallons per sq ft of roof per inch of rain</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www.twdb.texas.gov/publications/brochures/conservation/doc/RainwaterHarvestingManual_3rdedition.pdf#page=34" title="Texas Manual on Rainwater Harvesting 3rd ed (TWDB 2005).pdf — page 34">Texas <em>Rainwater</em>, p. 34</a>); real systems catch about 85% (<a class="lib" target="_blank" rel="noopener" href="https://www.twdb.texas.gov/publications/brochures/conservation/doc/RainwaterHarvestingManual_3rdedition.pdf#page=43" title="Texas Manual on Rainwater Harvesting 3rd ed (TWDB 2005).pdf — page 43">p. 43</a>). Only <strong>5–7 in</strong> falls April–September here (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/usda-foreword/usda-foreword.pdf#page=5" title="NRCS - Soil Survey of Josephine County Oregon 1983 (text edition).pdf — page 5">Josephine County Soil Survey, p. 5</a>): a 1,500-sq-ft roof catches 6 × 1,500 × 0.62 × 0.85 ≈ <strong>4,700 gallons all summer</strong> — store winter water. Cave Junction's record day, 8.12 in (same page), sheds about 7,500 gallons off it — size the overflow. <strong>Watering:</strong> 1 inch on 1,000 sq ft = 623 gallons.</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://directives.nrcs.usda.gov/sites/default/files2/1712930744/17541.pdf#page=17" title="NRCS Construction Surveying and Quantity Computations - NEH Part 645 Ch 5 (USDA NRCS 2012).pdf — page 17">NRCS <em>Quantity Computations</em>, pp. 17–20</a> — prisms, cones, cut and fill; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/CAT31294354/farmbul1210rev1955.pdf" title="Measuring and Marketing Farm Timber - Farmers Bulletin 1210 (USDA Forest Service 1955).pdf">FB 1210</a> — log rules and cord tables; <a class="wiki" href="https://en.wikipedia.org/wiki/Rainwater_harvesting" data-title="Rainwater_harvesting" target="_blank" rel="noopener" title="Wikipedia: Rainwater harvesting (offline copy with photos when opened through the Library Assistant)">Rainwater harvesting</a>.</p>
+<h2 id="slope-grade-pitch-and-stairs">⛰️ Slope, grade, pitch and stairs</h2>
+<p><strong>Three ways to say "how steep":</strong></p>
+<ul>
+<li><strong>Percent grade</strong> = rise ÷ run × 100 (<a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/FM3-25x26/FM3-25x26.pdf#page=112" title="FM 3-25.26 Map Reading and Land Navigation (US Army 2001).pdf — page 112">FM 3-25.26, p. 112</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Grade_%28slope%29" data-title="Grade_(slope)" target="_blank" rel="noopener" title="Wikipedia: Grade (slope) (offline copy with photos when opened through the Library Assistant)">Grade</a>).</li>
+<li><strong>Degrees</strong> ≈ rise × 57.3 ÷ run, good below 20° (<a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/FM3-25x26/FM3-25x26.pdf#page=114" title="FM 3-25.26 Map Reading and Land Navigation (US Army 2001).pdf — page 114">p. 114</a>).</li>
+<li><strong>Roof <a class="wiki" href="https://en.wikipedia.org/wiki/Roof_pitch" data-title="Roof_pitch" target="_blank" rel="noopener" title="Wikipedia: Roof pitch (offline copy with photos when opened through the Library Assistant)">pitch</a> "x in 12"</strong> = inches of rise per foot of run. Old books say "1/6 pitch" for 4 in 12, "¼" for 6 in 12, "½" for 12 in 12 (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/fm-5-426-carpentry-1995/FM%205-426%20Carpentry%201995.pdf#page=110" title="FM 5-426 Carpentry.pdf — page 110">FM 5-426, p. 110</a>).</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Roof pitch</th>
+<th>3 in 12</th>
+<th>4 in 12</th>
+<th>6 in 12</th>
+<th>8 in 12</th>
+<th>9 in 12</th>
+<th>12 in 12</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Percent</td>
+<td>25%</td>
+<td>33%</td>
+<td>50%</td>
+<td>67%</td>
+<td>75%</td>
+<td>100%</td>
+</tr>
+<tr class="even">
+<td>Degrees</td>
+<td>14°</td>
+<td>18.4°</td>
+<td>26.6°</td>
+<td>33.7°</td>
+<td>36.9°</td>
+<td>45°</td>
+</tr>
+<tr class="odd">
+<td>Slope factor (rafter ÷ run)</td>
+<td>1.031</td>
+<td>1.054</td>
+<td>1.118</td>
+<td>1.202</td>
+<td>1.250</td>
+<td>1.414</td>
+</tr>
+</tbody>
+</table>
+<p><em>(computed: factor = √(144 + rise²) ÷ 12)</em></p>
+<p><strong>Rafter length</strong> (Pythagoras): run = half the building's width. A 20-ft-wide cabin at 6 in 12: run 10 ft, rise 5 ft, rafter = √(100 + 25) = 11.18 ft = <strong>11 ft 2⅛ in</strong>, plus overhang. A square's <a class="wiki" href="https://en.wikipedia.org/wiki/Rafter" data-title="Rafter" target="_blank" rel="noopener" title="Wikipedia: Rafter (offline copy with photos when opened through the Library Assistant)">rafter</a> table agrees (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/fm-5-426-carpentry-1995/FM%205-426%20Carpentry%201995.pdf#page=107" title="FM 5-426 Carpentry.pdf — page 107">FM 5-426, pp. 107–110</a>).</p>
+<p><strong>Stairs:</strong> riser + tread = <strong>17–19 in</strong> and riser × tread = <strong>70–75</strong>; one fewer tread than risers (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/fm-5-426-carpentry-1995/FM%205-426%20Carpentry%201995.pdf#page=102" title="FM 5-426 Carpentry.pdf — page 102">FM 5-426, p. 102</a>). A porch 36 in high: 5 risers of 7.2 in and 4 treads of 10 in (sum 17.2, product 72) → 40 in of run.</p>
+<p><strong>Fall on pipes and ditches</strong> (inches per foot × 8.33 = percent):</p>
+<table>
+<thead>
+<tr class="header">
+<th>Use</th>
+<th>Slope</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Gutter</td>
+<td>1 in per 10 ft (0.8%)</td>
+<td><a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/WoodFrameHouseConstruction/WoodFrameHouseConstruction.pdf#page=169" title="Wood-Frame House Construction (USDA Agriculture Handbook 73 1955).pdf — page 169">Wood-Frame House, p. 169</a></td>
+</tr>
+<tr class="even">
+<td>Creek intake channel or pipe</td>
+<td>about 1%</td>
+<td><a class="lib" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED243688.pdf#page=209" title="Hydrams - Design Construction Operation Maintenance and Repair Workshop Manual (Peace Corps 1981).pdf — page 209"><em>Hydrams</em>, p. 209</a></td>
+</tr>
+<tr class="odd">
+<td>House drain</td>
+<td>¼ in per ft (2%)</td>
+<td><em>(rule of thumb)</em></td>
+</tr>
+<tr class="even">
+<td>Shelter trench floor</td>
+<td>½ in per ft (4%) or more</td>
+<td><a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/DTIC_AD0787483/DTIC_AD0787483.pdf#page=81" title="Expedient Shelter Handbook - ORNL-4941 (1974) incl Kearny Air Pump.pdf — page 81">ORNL <em>Expedient Shelter</em>, p. 81</a></td>
+</tr>
+</tbody>
+</table>
+<p>A 60-ft drain at ¼ in per ft drops 15 in — check the outlet first.</p>
+<p><strong>Measuring a slope:</strong></p>
+<ul>
+<li><strong>Board and level:</strong> one end of a straight 4-ft board on the uphill ground; lift the other until a <a class="wiki" href="https://en.wikipedia.org/wiki/Spirit_level" data-title="Spirit_level" target="_blank" rel="noopener" title="Wikipedia: Spirit level (offline copy with photos when opened through the Library Assistant)">spirit level</a> reads level and measure the gap: 6 in ÷ 48 in = 12.5%. Step it downhill to add up a creek's drop (<a class="lib pic" target="_blank" rel="noopener" href="https://energypedia.info/images/5/5d/Micro_Hydropower_System_-_A_Buyer%27s_Guide.pdf#page=42" title="NRCan Micro-Hydropower Systems - A Buyers Guide.pdf — page 42">NRCan, p. 42</a>).</li>
+<li><strong>Eye height and pace:</strong> sight level from the bottom to the spot at your eye height and pace to it: eye 5½ ft ÷ (10 paces × 2½ ft) = 22% (<a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/FM_5_34_E_F_D_1987/FM%205-34%20Engineer%20Field%20Data%20%281987%29.pdf#page=148" title="FM 5-34 Engineer Field Data (US Army 1987).pdf — page 148">FM 5-34, p. 148</a>).</li>
+<li><strong>Hand level or <a class="wiki" href="https://en.wikipedia.org/wiki/Topographic_Abney_level" data-title="Topographic_Abney_level" target="_blank" rel="noopener" title="Wikipedia: Topographic Abney level (offline copy with photos when opened through the Library Assistant)">Abney level</a>:</strong> a hand level carries rough levels 400–500 ft with sights under 50 ft; an Abney reads percent (<a class="lib pic" target="_blank" rel="noopener" href="https://directives.nrcs.usda.gov/sites/default/files2/1712930814/33252.pdf#page=47" title="NRCS Engineering Field Handbook Ch 1 - Surveying (USDA NRCS 2022).pdf — page 47">NRCS <em>Surveying</em>, p. 47</a>; <a class="lib pic" target="_blank" rel="noopener" href="https://directives.nrcs.usda.gov/sites/default/files2/1712930814/33252.pdf#page=51" title="NRCS Engineering Field Handbook Ch 1 - Surveying (USDA NRCS 2022).pdf — page 51">p. 51</a>).</li>
+<li><strong>Slope distance exceeds level distance:</strong> 175.6 ft taped on a 30% slope = 168.2 ft level (<a class="lib pic" target="_blank" rel="noopener" href="https://directives.nrcs.usda.gov/sites/default/files2/1712930814/33252.pdf#page=32" title="NRCS Engineering Field Handbook Ch 1 - Surveying (USDA NRCS 2022).pdf — page 32">p. 32</a>).</li>
+<li><strong>A-frame level for contours</strong> <em>(rule of thumb)</em>: two 6-ft poles in an "A" with a crossbar and a plumb line from the top. Mark where the string crosses the bar, flip it, mark again; halfway is level. Walk it across a hillside to stake a swale or terrace.</li>
+<li><strong>Angles at arm's length</strong> <em>(rule of thumb — check yours)</em>: a finger about 2°, a fist about 10°, a spread hand about 20°.</li>
+</ul>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM3-25x26/FM3-25x26.pdf#page=112" title="FM 3-25.26 Map Reading and Land Navigation (US Army 2001).pdf — page 112">FM 3-25.26, pp. 112–115</a> — percent, degrees, gradient; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/fm-5-426-carpentry-1995/FM%205-426%20Carpentry%201995.pdf#page=106" title="FM 5-426 Carpentry.pdf — page 106">FM 5-426, pp. 106–110</a> — laying out rafters; <a class="lib" target="_blank" rel="noopener" href="https://directives.nrcs.usda.gov/sites/default/files2/1712930814/33252.pdf#page=40" title="NRCS Engineering Field Handbook Ch 1 - Surveying (USDA NRCS 2022).pdf — page 40">NRCS <em>Surveying</em>, p. 40</a> — height from percent slope; <a class="wiki" href="https://en.wikipedia.org/wiki/Stairs" data-title="Stairs" target="_blank" rel="noopener" title="Wikipedia: Stairs (offline copy with photos when opened through the Library Assistant)">Stairs</a>.</p>
+<h2 id="heights-and-distances-you-can-t-reach">🌲 Heights and distances you can't reach</h2>
+<p><strong>Shadows (<a class="wiki" href="https://en.wikipedia.org/wiki/Similarity_%28geometry%29" data-title="Similarity_(geometry)" target="_blank" rel="noopener" title="Wikipedia: Similarity (geometry) (offline copy with photos when opened through the Library Assistant)">similar triangles</a>):</strong> height = your height × tree's shadow ÷ your shadow, at the same moment (<a class="lib pic" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED064144.pdf#page=207" title="Mathematics Vol 1 - Arithmetic to Geometry and Trigonometry (US Navy NavPers 10069-C 1966).pdf — page 207">Navy Vol. 1, p. 207</a>). You: 6 ft, 4½-ft shadow; the fir's shadow 48 ft → 6 × 48 ÷ 4.5 = <strong>64 ft</strong>.</p>
+<p><strong>Stick (45°) method</strong> <em>(similar triangles)</em>: hold a stick upright at arm's length with as much above your fist as from your eye to your fist. Back up until the fist lines up with the base and the stick top with the treetop: your distance from the trunk ≈ the height. A cruiser's stick does the same with printed marks (<a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/CAT31294354/farmbul1210rev1955.pdf#page=14" title="Measuring and Marketing Farm Timber - Farmers Bulletin 1210 (USDA Forest Service 1955).pdf — page 14">FB 1210, p. 14</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Biltmore_stick" data-title="Biltmore_stick" target="_blank" rel="noopener" title="Wikipedia: Biltmore stick (offline copy with photos when opened through the Library Assistant)">Biltmore stick</a>).</p>
+<p><strong>Abney or clinometer (percent):</strong> height = level distance × (top % − base %) ÷ 100, base negative if below your eye. At 66 ft, top +110%, base −8%: 66 × 1.18 = <strong>78 ft</strong>. Felling: see the <a class="guide" href="FIREWOOD-GUIDE.html">Firewood guide</a>.</p>
+<p><strong>Width of a river:</strong></p>
+<ul>
+<li><strong>Compass:</strong> at A, opposite tree B, read B's bearing; walk along the bank until it has changed by 45°. The distance walked = the width (<a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/FM_5_34_E_F_D_1987/FM%205-34%20Engineer%20Field%20Data%20%281987%29.pdf#page=162" title="FM 5-34 Engineer Field Data (US Army 1987).pdf — page 162">FM 5-34, p. 162</a>).</li>
+<li><strong>No compass</strong> <em>(geometry)</em>: from A pace 50 steps along the bank and plant a stick (C), 50 more to D; from D walk straight away from the river until C lines up with B. Those paces = the width.</li>
+</ul>
+<p><strong>Thumb jump</strong> <em>(rule of thumb)</em>: thumb at arm's length, close one eye then the other; it "jumps" along the far hillside. Judge the jump from a known width (a 60-ft barn) and multiply by <strong>10</strong> — arm's length is about ten times the space between your eyes. Check yours on a paced distance.</p>
+<p><strong>Maps:</strong> ground distance = map distance × the scale's bottom number (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM3-25x26/FM3-25x26.pdf#page=44" title="FM 3-25.26 Map Reading and Land Navigation (US Army 2001).pdf — page 44">FM 3-25.26, p. 44</a>): on a 1:24,000 map, 1 in = 2,000 ft. The contour interval is in the margin (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM3-25x26/FM3-25x26.pdf#page=17" title="FM 3-25.26 Map Reading and Land Navigation (US Army 2001).pdf — page 17">p. 17</a>): with a 40-ft interval, lines ¼ in apart = 40 ÷ 500 = <strong>8%</strong> (p. 113). More in the <a class="guide" href="NAVIGATION-WEATHER-GUIDE.html">Navigation guide</a>.</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED064144.pdf#page=206" title="Mathematics Vol 1 - Arithmetic to Geometry and Trigonometry (US Navy NavPers 10069-C 1966).pdf — page 206">Navy Vol. 1, ch. 19</a> — right triangles, with sine and tangent tables at <a class="lib" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED064144.pdf#page=220" title="Mathematics Vol 1 - Arithmetic to Geometry and Trigonometry (US Navy NavPers 10069-C 1966).pdf — page 220">p. 220</a>; <a class="lib" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED064145.pdf#page=62" title="Mathematics Vol 2 - Trigonometry Vectors and Forces (US Navy NavPers 10071-B 1968).pdf — page 62">Navy Vol. 2, ch. 5</a> — solving any triangle; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/CAT31294354/farmbul1210rev1955.pdf#page=8" title="Measuring and Marketing Farm Timber - Farmers Bulletin 1210 (USDA Forest Service 1955).pdf — page 8">FB 1210, pp. 8–14</a> — measuring standing trees.</p>
+<h2 id="levers-pulleys-and-loads">🏋️ Levers, pulleys and loads</h2>
+<p><strong><a class="wiki" href="https://en.wikipedia.org/wiki/Lever" data-title="Lever" target="_blank" rel="noopener" title="Wikipedia: Lever (offline copy with photos when opened through the Library Assistant)">Lever</a>:</strong> push × your side of the pivot = load × load side. The <strong>mechanical advantage</strong> is how many times it multiplies your push — 10 lb lifting 100 lb is 10 (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/u-s-army-guide-to-rigging/U.S.%20Army%20Guide%20to%20Rigging.pdf#page=105" title="FM 5-125 Army Guide to Rigging.pdf — page 105">FM 5-125, p. 105</a>). A 6-ft bar with the pivot 6 in from the load: 5½ ÷ ½ = 11, so a 100-lb push lifts about 1,100 lb.</p>
+<p><strong><a class="wiki" href="https://en.wikipedia.org/wiki/Block_and_tackle" data-title="Block_and_tackle" target="_blank" rel="noopener" title="Wikipedia: Block and tackle (offline copy with photos when opened through the Library Assistant)">Block and tackle</a>:</strong> count the rope lines holding the moving block — that's the advantage (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/u-s-army-guide-to-rigging/U.S.%20Army%20Guide%20to%20Rigging.pdf#page=110" title="FM 5-125 Army Guide to Rigging.pdf — page 110">FM 5-125, p. 110</a>; <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/u-s-army-guide-to-rigging/U.S.%20Army%20Guide%20to%20Rigging.pdf#page=112" title="FM 5-125 Army Guide to Rigging.pdf — page 112">p. 112</a>). Each sheave adds friction of about <strong>10% of the load</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/u-s-army-guide-to-rigging/U.S.%20Army%20Guide%20to%20Rigging.pdf#page=114" title="FM 5-125 Army Guide to Rigging.pdf — page 114">p. 114</a>); <strong>pull = (load + friction) ÷ advantage</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/u-s-army-guide-to-rigging/U.S.%20Army%20Guide%20to%20Rigging.pdf#page=115" title="FM 5-125 Army Guide to Rigging.pdf — page 115">p. 115</a>). A 600-lb engine on 4 lines over 4 sheaves: (600 + 240) ÷ 4 = <strong>210 lb</strong>. A person pulls about 100 lb straight down, 60 lb along the ground (same page): put three on it.</p>
+<p><strong>Ramps</strong> <em>(physics; friction adds more)</em>: push ≈ weight × height ÷ ramp length: a 500-lb log up a 12-ft skid onto a 3-ft wagon bed takes 125 lb plus friction (<a class="guide" href="BICYCLES-CARTS-GUIDE.html">Bicycles &amp; Carts guide</a>).</p>
+<p><strong>Rope:</strong> safe load = breaking strength ÷ at least <strong>4</strong>; knots, sharp bends and age cut strength up to 50%. Fiber rope rule: <strong>safe tons = diameter in inches squared</strong> — ½-in rope = ¼ ton (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/u-s-army-guide-to-rigging/U.S.%20Army%20Guide%20to%20Rigging.pdf#page=20" title="FM 5-125 Army Guide to Rigging.pdf — page 20">FM 5-125, p. 20</a>).</p>
+<p><strong>Weights for guessing loads</strong> (lb per cu ft, <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM_5_34_E_F_D_1987/FM%205-34%20Engineer%20Field%20Data%20%281987%29.pdf#page=291" title="FM 5-34 Engineer Field Data (US Army 1987).pdf — page 291">FM 5-34, pp. 291–292</a>):</p>
+<table>
+<thead>
+<tr class="header">
+<th>Material</th>
+<th>lb/cu ft</th>
+<th>Material</th>
+<th>lb/cu ft</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Water / ice</td>
+<td>62.4 / 56</td>
+<td>Seasoned softwood / medium / hardwood</td>
+<td>25 / 40 / 55</td>
+</tr>
+<tr class="even">
+<td>Earth, dry loose / damp packed</td>
+<td>76 / 96</td>
+<td>Hay and straw bales</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<td>Sand and gravel, wet</td>
+<td>118–120</td>
+<td>Common brick</td>
+<td>120</td>
+</tr>
+<tr class="even">
+<td>Concrete</td>
+<td>144</td>
+<td>Gasoline or diesel</td>
+<td>42</td>
+</tr>
+</tbody>
+</table>
+<p>Green wood is far heavier (<a class="guide" href="FIREWOOD-GUIDE.html">Firewood guide</a>).</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/u-s-army-guide-to-rigging/U.S.%20Army%20Guide%20to%20Rigging.pdf#page=105" title="FM 5-125 Army Guide to Rigging.pdf — page 105">FM 5-125, pp. 105–120</a> — blocks, tackle, hoists, winches; <a class="lib" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED064145.pdf#page=99" title="Mathematics Vol 2 - Trigonometry Vectors and Forces (US Navy NavPers 10071-B 1968).pdf — page 99">Navy Vol. 2, ch. 7</a> — forces in balance; <a class="wiki" href="https://en.wikipedia.org/wiki/Mechanical_advantage" data-title="Mechanical_advantage" target="_blank" rel="noopener" title="Wikipedia: Mechanical advantage (offline copy with photos when opened through the Library Assistant)">Mechanical advantage</a>.</p>
+<h2 id="electricity-by-the-numbers">⚡ Electricity by the numbers</h2>
+<ul>
+<li><strong>Watts = volts × amps</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/NEETSModules/NEETS%20Module%2001%20-%20Introduction%20to%20Matter%20Energy%20and%20Direct%20Current.pdf#page=120" title="NEETS Module 01 - Matter Energy and Direct Current.pdf — page 120">NEETS 1, p. 120</a>): a 12-V pump drawing 5 A uses 60 W.</li>
+<li><strong><a class="wiki" href="https://en.wikipedia.org/wiki/Ohm%26%2339%3Bs_law" data-title="Ohm&amp;#39;s_law" target="_blank" rel="noopener" title="Wikipedia: Ohm&amp;#39;s law (offline copy with photos when opened through the Library Assistant)">Ohm's law</a>: volts = amps × ohms</strong> — cover the one you want on the circle (<a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/NEETSModules/NEETS%20Module%2001%20-%20Introduction%20to%20Matter%20Energy%20and%20Direct%20Current.pdf#page=116" title="NEETS Module 01 - Matter Energy and Direct Current.pdf — page 116">NEETS 1, p. 116</a>). A 12-ohm heater on 120 V draws 10 A = 1,200 W.</li>
+<li><strong>Watt-hours = watts × hours</strong>; 1,000 Wh = 1 kWh (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/NEETSModules/NEETS%20Module%2001%20-%20Introduction%20to%20Matter%20Energy%20and%20Direct%20Current.pdf#page=126" title="NEETS Module 01 - Matter Energy and Direct Current.pdf — page 126">p. 126</a>). The pump 2 hours a day = 120 Wh.</li>
+<li><strong>Battery energy = volts × amp-hours.</strong> A 12-V, 100-Ah battery is 1,200 Wh on the label, but size a lead-acid bank on only 40% of that (<a class="lib" target="_blank" rel="noopener" href="https://iea-pvps.org/wp-content/uploads/2020/01/rep3_06.pdf#page=17" title="IEA PVPS Lead-Acid Battery Guide for Stand-Alone PV.pdf — page 17">IEA, p. 17</a>): 480 Wh → the pump for 4 days.</li>
+<li><strong>Long wires waste power:</strong> volts lost = 2 × one-way feet × amps × ohms per 1,000 ft ÷ 1,000. Use the <a class="guide" href="OFF-GRID-POWER-GUIDE.html">Off-Grid guide</a>'s wire table (<a class="wiki" href="https://en.wikipedia.org/wiki/Voltage_drop" data-title="Voltage_drop" target="_blank" rel="noopener" title="Wikipedia: Voltage drop (offline copy with photos when opened through the Library Assistant)">Voltage drop</a>).</li>
+<li><strong>1 horsepower = 746 W</strong> (<a class="lib" target="_blank" rel="noopener" href="https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication811e2008.pdf#page=62" title="NIST SP 811 - Guide for the Use of the International System of Units SI (NIST 2008).pdf — page 62">NIST SP 811, p. 62</a>).</li>
+</ul>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/NEETSModules/NEETS%20Module%2001%20-%20Introduction%20to%20Matter%20Energy%20and%20Direct%20Current.pdf#page=109" title="NEETS Module 01 - Matter Energy and Direct Current.pdf — page 109">NEETS Module 1, ch. 3</a> — Ohm's law, power and energy with practice questions; <a class="guide" href="OFF-GRID-POWER-GUIDE.html">Off-Grid Power guide</a> — load lists and battery sizing.</p>
+<h2 id="water-flow-and-pressure">💧 Water flow and pressure</h2>
+<ul>
+<li><strong>Flow by bucket and stopwatch:</strong> a 5-gallon bucket in 20 seconds = 5 ÷ 20 × 60 = <strong>15 gpm</strong>; a 55-gallon drum in 40 seconds = 82.5 gpm (<a class="lib" target="_blank" rel="noopener" href="https://www.ncat.org/wp-content/uploads/2025/12/microhydrodesign.pdf#page=3" title="NCAT ATTRA Micro-Hydro Power - Beginners Guide.pdf — page 3">NCAT, p. 3</a>).</li>
+<li><strong>Pressure from height (<a class="wiki" href="https://en.wikipedia.org/wiki/Hydraulic_head" data-title="Hydraulic_head" target="_blank" rel="noopener" title="Wikipedia: Hydraulic head (offline copy with photos when opened through the Library Assistant)">head</a>):</strong> each foot of water = <strong>0.433 psi</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www1.eere.energy.gov/water/pdfs/doewater-10107-vol.1-pt1.pdf#page=113" title="DOE Microhydropower Handbook Vol 1 Part 1 (Site Head Flow Turbines Intake).pdf — page 113">DOE, p. 113</a>); each psi = <strong>2.31 ft</strong> (<a class="lib" target="_blank" rel="noopener" href="https://energypedia.info/images/5/5d/Micro_Hydropower_System_-_A_Buyer%27s_Guide.pdf#page=41" title="NRCan Micro-Hydropower Systems - A Buyers Guide.pdf — page 41">NRCan, p. 41</a>). A tank 40 ft above the house gives 17 psi before pipe friction; 60 psi on a gauge at the bottom of a full hose = 139 ft of drop (<a class="lib pic" target="_blank" rel="noopener" href="https://www1.eere.energy.gov/water/pdfs/doewater-10107-vol.1-pt1.pdf#page=114" title="DOE Microhydropower Handbook Vol 1 Part 1 (Site Head Flow Turbines Intake).pdf — page 114">DOE, p. 114</a>).</li>
+<li><strong>Suction lift has a hard limit:</strong> <strong>21.2 ft at 1,000 ft elevation, 20.4 ft at 2,000 ft</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/CAT87204740/farmbul1448rev1933.pdf#page=28" title="Farmstead Water Supply - Farmers Bulletin 1448 (USDA 1933).pdf — page 28">USDA FB 1448, p. 28</a>). At our ~1,300 ft keep a suction pump within about 20 ft of the water; deeper, the pump goes down the well. A <a class="wiki" href="https://en.wikipedia.org/wiki/Siphon" data-title="Siphon" target="_blank" rel="noopener" title="Wikipedia: Siphon (offline copy with photos when opened through the Library Assistant)">siphon</a> has the same limit.</li>
+<li><strong>Creek power:</strong> watts ≈ gpm × feet of head ÷ 10, about what NCAT's table of typical outputs shows (<a class="lib" target="_blank" rel="noopener" href="https://www.ncat.org/wp-content/uploads/2025/12/microhydrodesign.pdf#page=9" title="NCAT ATTRA Micro-Hydro Power - Beginners Guide.pdf — page 9">NCAT, p. 9</a>): 30 gpm falling 50 ft ≈ 150 W, day and night. Pipes, summer flow, water law: <a class="guide" href="OFF-GRID-POWER-GUIDE.html">Off-Grid guide</a>.</li>
+</ul>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/CAT87204740/farmbul1448rev1933.pdf#page=27" title="Farmstead Water Supply - Farmers Bulletin 1448 (USDA 1933).pdf — page 27">USDA FB 1448, pp. 27–28</a> — pressure and suction tables; <a class="lib" target="_blank" rel="noopener" href="https://energypedia.info/images/5/5d/Micro_Hydropower_System_-_A_Buyer%27s_Guide.pdf#page=41" title="NRCan Micro-Hydropower Systems - A Buyers Guide.pdf — page 41">NRCan, pp. 41–44</a> — measuring head and flow; <a class="wiki" href="https://en.wikipedia.org/wiki/Micro_hydro" data-title="Micro_hydro" target="_blank" rel="noopener" title="Wikipedia: Micro hydro (offline copy with photos when opened through the Library Assistant)">Micro hydro</a>.</p>
+<h2 id="food-medicine-and-time-math">💊 Food, medicine and time math</h2>
+<p><strong>A year's food:</strong> people × calories a day × days, at <strong>2,100 kcal per person a day</strong> and about <strong>1,500 kcal per pound of dry grain</strong> (<a class="guide" href="FOOD-SECURITY-GUIDE.html">Food Security guide</a>): 4 × 2,100 × 365 = 3,066,000 kcal ≈ 2,000 lb of grain-equivalent for a family of 4. <strong>Days of supply = stock ÷ daily use:</strong> 50 lb of flour at 1½ lb a day = 33 days.</p>
+<blockquote>
+<h3 id="️-medicine-arithmetic--read-this-first">⚠️ Medicine arithmetic — read this first</h3>
+<ul>
+<li><strong>Use only doses printed in the medical books</strong> (<a class="guide" href="Medical-READ-ME-FIRST.html">Medical guide</a>; <a class="lib" target="_blank" rel="noopener" href="https://hesperian.org/wp-content/uploads/pdf/en_wtnd_2025/en_wtnd_2025_gp.pdf" title="Where There Is No Doctor - 24 Green Pages - Uses Dosage and Precautions for Medicines.pdf">WTND green pages</a>). This is arithmetic only.</li>
+<li><strong>Write the unit on every number</strong> — mg, mL, kg. Mixing mg and mL, or lb and kg, kills.</li>
+<li><strong>A second person redoes it</strong> without seeing yours. If the answers differ, stop.</li>
+<li><strong>Never measure medicine in drops</strong> or with unchecked kitchen spoons.</li>
+</ul>
+</blockquote>
+<p><strong>Dose by weight (mg/kg):</strong> kg = lb ÷ 2.2 (<a class="lib" target="_blank" rel="noopener" href="https://hesperian.org/wp-content/uploads/pdf/en_wtnd_2025/en_wtnd_2025_08.pdf#page=4" title="Where There Is No Doctor - 08 How to measure and give medicine.pdf — page 4">WTND ch. 8, p. 4</a>); mg = mg per kg × kg. <em>Made-up numbers, not a real dose for any medicine:</em> 10 mg/kg for a 44-lb child: 44 ÷ 2.2 = 20 kg; 20 × 10 = <strong>200 mg</strong>; from a liquid with 100 mg in 5 mL: 200 ÷ 100 × 5 = <strong>10 mL</strong>. Dosing an overweight child by actual weight can give far too much (<a class="lib" target="_blank" rel="noopener" href="https://iris.who.int/server/api/core/bitstreams/614b1dd8-8006-489d-a83c-51c657f8d3f2/content#page=15" title="WHO Model Formulary 2008.pdf — page 15">WHO Formulary, p. 15</a>).</p>
+<p><strong>Spoons:</strong> 1 tsp = 5 mL, 1 Tbsp = 15 mL. Household spoons vary — mark one at exactly 5 mL of water from a syringe (<a class="lib pic" target="_blank" rel="noopener" href="https://hesperian.org/wp-content/uploads/pdf/en_wtnd_2025/en_wtnd_2025_08.pdf#page=3" title="Where There Is No Doctor - 08 How to measure and give medicine.pdf — page 3">WTND ch. 8, p. 3</a>). <strong>Drops are unreliable:</strong> two books here put 64 (<a class="lib" target="_blank" rel="noopener" href="https://ccfruitandnuts.ucanr.edu/sites/default/files/2020-03/322172.pdf#page=20" title="Food Storage for Emergencies - Wheat Rice Oats Beans Oxygen Absorbers (USU Extension 2013).pdf — page 20">USU, p. 20</a>) and 75 (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/cu31924003643172/cu31924003643172.pdf#page=706" title="Henleys Twentieth Century Formulas Recipes and Processes (1916).pdf — page 706">Henley's, p. 706</a>) drops in a teaspoon, before the dropper or liquid changes.</p>
+<p><strong>Time:</strong> "every 8 hours" = 3 times a day; "every 6 hours" = 4.</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://hesperian.org/wp-content/uploads/pdf/en_wtnd_2025/en_wtnd_2025_08.pdf#page=1" title="Where There Is No Doctor - 08 How to measure and give medicine.pdf — page 1">WTND ch. 8</a> — grams, milligrams, spoons, child doses; <a class="lib" target="_blank" rel="noopener" href="https://iris.who.int/server/api/core/bitstreams/c6f336b9-0c36-4431-80fd-840c05344817/content#page=11" title="Food and Nutrition Needs in Emergencies - 2100 kcal Ration Planning (UNHCR UNICEF WFP WHO 2002).pdf — page 11"><em>Food and Nutrition Needs in Emergencies</em></a> — adjusting calories; <a class="guide" href="FIELD-CARE-GUIDE.html">Field Care guide</a>.</p>
+<h2 id="quick-reference-tables-print-these">🧾 Quick-reference tables (print these)</h2>
+<p>From <a class="lib" target="_blank" rel="noopener" href="https://www.nist.gov/system/files/documents/2024/01/14/NIST%20HB%2044%202024%20Appendix%20C%20General%20Tables%20of%20Units%20of%20Measurement.pdf#page=17" title="NIST Handbook 44 Appendix C - General Tables of Units of Measurement (NIST 2024).pdf — page 17">NIST HB 44, pp. 17–28</a> (US units), <a class="lib" target="_blank" rel="noopener" href="https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication811e2008.pdf#page=57" title="NIST SP 811 - Guide for the Use of the International System of Units SI (NIST 2008).pdf — page 57">NIST SP 811, pp. 57–68</a> (metric factors) and <a class="lib" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED064144.pdf#page=227" title="Mathematics Vol 1 - Arithmetic to Geometry and Trigonometry (US Navy NavPers 10069-C 1966).pdf — page 227">Navy Vol. 1, p. 227</a>.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Length</th>
+<th></th>
+<th>Area</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1 in</td>
+<td>2.54 cm (exact)</td>
+<td>1 sq ft</td>
+<td>144 sq in</td>
+</tr>
+<tr class="even">
+<td>1 ft</td>
+<td>12 in = 0.3048 m</td>
+<td>1 sq yd</td>
+<td>9 sq ft</td>
+</tr>
+<tr class="odd">
+<td>1 rod</td>
+<td>16½ ft</td>
+<td>1 acre</td>
+<td>43,560 sq ft = 0.405 ha</td>
+</tr>
+<tr class="even">
+<td>1 chain</td>
+<td>66 ft = 4 rods</td>
+<td>1 hectare</td>
+<td>2.471 acres</td>
+</tr>
+<tr class="odd">
+<td>1 mile</td>
+<td>5,280 ft = 1.609 km</td>
+<td>1 sq mile</td>
+<td>640 acres</td>
+</tr>
+<tr class="even">
+<td>1 m</td>
+<td>3.281 ft = 39.37 in</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Volume</th>
+<th></th>
+<th>Kitchen</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1 cu ft</td>
+<td>1,728 cu in = 7.48 gal</td>
+<td>3 tsp</td>
+<td>1 Tbsp (15 mL)</td>
+</tr>
+<tr class="even">
+<td>1 cu yd</td>
+<td>27 cu ft</td>
+<td>16 Tbsp</td>
+<td>1 cup (8 fl oz, 237 mL)</td>
+</tr>
+<tr class="odd">
+<td>1 US gallon</td>
+<td>4 qt = 128 fl oz = 3.785 L</td>
+<td>2 cups</td>
+<td>1 pint</td>
+</tr>
+<tr class="even">
+<td>1 liter</td>
+<td>1.057 qt</td>
+<td>1 tsp</td>
+<td>5 mL</td>
+</tr>
+<tr class="odd">
+<td>1 bushel</td>
+<td>4 pecks = 1.244 cu ft</td>
+<td>1 Imperial gallon</td>
+<td>1.2 US gallons</td>
+</tr>
+<tr class="even">
+<td>1 cord</td>
+<td>128 cu ft</td>
+<td>1 acre-foot</td>
+<td>43,560 cu ft</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Weight</th>
+<th></th>
+<th>Pressure and energy</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1 lb</td>
+<td>16 oz = 0.4536 kg</td>
+<td>1 ft of water</td>
+<td>0.433 psi</td>
+</tr>
+<tr class="even">
+<td>1 kg</td>
+<td>2.205 lb</td>
+<td>1 psi</td>
+<td>2.31 ft water = 6.895 kPa</td>
+</tr>
+<tr class="odd">
+<td>1 oz</td>
+<td>28.35 g</td>
+<td>Air at sea level</td>
+<td>33.9 ft water = 14.7 psi</td>
+</tr>
+<tr class="even">
+<td>1 short ton</td>
+<td>2,000 lb</td>
+<td>1 kWh</td>
+<td>3,412 BTU</td>
+</tr>
+<tr class="odd">
+<td>1 g</td>
+<td>1,000 mg</td>
+<td>1 horsepower</td>
+<td>746 W</td>
+</tr>
+<tr class="even">
+<td>1 gal water</td>
+<td>8.34 lb</td>
+<td>1 food Calorie</td>
+<td>4.184 kJ</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Temperature</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www.nist.gov/system/files/documents/2024/01/14/NIST%20HB%2044%202024%20Appendix%20C%20General%20Tables%20of%20Units%20of%20Measurement.pdf#page=23" title="NIST Handbook 44 Appendix C - General Tables of Units of Measurement (NIST 2024).pdf — page 23">HB 44, p. 23</a>): <strong>°F = °C × 1.8 + 32</strong>; <strong>°C = (°F − 32) ÷ 1.8</strong>.</p>
+<table>
+<thead>
+<tr class="header">
+<th>°F</th>
+<th>0</th>
+<th>32</th>
+<th>40</th>
+<th>50</th>
+<th>70</th>
+<th>98.6</th>
+<th>140</th>
+<th>165</th>
+<th>212</th>
+<th>250</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>°C</td>
+<td>−17.8</td>
+<td>0</td>
+<td>4.4</td>
+<td>10</td>
+<td>21.1</td>
+<td>37</td>
+<td>60</td>
+<td>73.9</td>
+<td>100</td>
+<td>121.1</td>
+</tr>
+</tbody>
+</table>
+<p>(Air pressure: <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/CAT87204740/farmbul1448rev1933.pdf#page=28" title="Farmstead Water Supply - Farmers Bulletin 1448 (USDA 1933).pdf — page 28">FB 1448, p. 28</a>, <a class="lib" target="_blank" rel="noopener" href="https://www.waterboards.ca.gov/waterrights/water_issues/programs/measurement_regulation/docs/water_measurement/usbr_water_measurement_manual.pdf#page=276" title="USBR Water Measurement Manual (Weirs and Stream Flow).pdf — page 276">USBR, p. 276</a>.)</p>
+<p>📚 <strong>Go deeper:</strong> <a class="lib" target="_blank" rel="noopener" href="https://www.nist.gov/system/files/documents/2024/01/14/NIST%20HB%2044%202024%20Appendix%20C%20General%20Tables%20of%20Units%20of%20Measurement.pdf" title="NIST Handbook 44 Appendix C - General Tables of Units of Measurement (NIST 2024).pdf">NIST HB 44 Appendix C</a> — every US unit, down to pecks and apothecary measures; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM_5_34_E_F_D_1987/FM%205-34%20Engineer%20Field%20Data%20%281987%29.pdf#page=296" title="FM 5-34 Engineer Field Data (US Army 1987).pdf — page 296">FM 5-34, pp. 296–308</a> — nail sizes, soil, trig and metric tables; <a class="wiki" href="https://en.wikipedia.org/wiki/United_States_customary_units" data-title="United_States_customary_units" target="_blank" rel="noopener" title="Wikipedia: United States customary units (offline copy with photos when opened through the Library Assistant)">United States customary units</a>.</p>
+<h2 id="old-advice-in-the-library-to-ignore">⚠️ Old advice in the library to ignore</h2>
+<ul>
+<li><strong>A child's aspirin dose by formula</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/hospital-corpsman-nonresident-training-course-navedtra-14295/Hospital%20Corpsman%20-%20Nonresident%20Training%20Course%20-%20NAVEDTRA%2014295.pdf#page=240" title="Hospital Corpsman Nonresident Training Course NAVEDTRA 14295 (US Navy 2000).pdf — page 240">Hospital Corpsman, p. 240</a>): no aspirin for children with fever, flu or chickenpox (Reye's syndrome, <a class="lib" target="_blank" rel="noopener" href="https://iris.who.int/server/api/core/bitstreams/ce78cf9a-ab0f-446e-a602-8b7e858cce41/content#page=39" title="WHO Model Formulary for Children 2010.pdf — page 39">WHO children's formulary, p. 39</a>); use the books' weight-based doses, not formulas.</li>
+<li><strong>White-lead and red-lead paint and their spreading rates</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/cu31924089480218/cu31924089480218.pdf#page=344" title="Household Discoveries - Encyclopaedia of Practical Recipes and Processes (1909).pdf — page 344">Household Discoveries, p. 344</a>; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/WoodFrameHouseConstruction/WoodFrameHouseConstruction.pdf#page=194" title="Wood-Frame House Construction (USDA Agriculture Handbook 73 1955).pdf — page 194">Wood-Frame House, p. 194</a>): lead is poison. Don't mix it; wet-scrape, don't sand, old paint.</li>
+<li><strong>Drop tables</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/cu31924003643172/cu31924003643172.pdf#page=706" title="Henleys Twentieth Century Formulas Recipes and Processes (1916).pdf — page 706">Henley's, p. 706</a>) are for flavoring syrup, not medicine.</li>
+<li><strong>The Doyle log rule and 1950s prices</strong> (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/CAT31294354/farmbul1210rev1955.pdf#page=6" title="Measuring and Marketing Farm Timber - Farmers Bulletin 1210 (USDA Forest Service 1955).pdf — page 6">FB 1210, pp. 6–7</a>): the bulletin itself says Doyle undercounts logs under 28 in.</li>
+<li><strong>Slide rules and log tables</strong> (<a class="lib" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED064144.pdf#page=87" title="Mathematics Vol 1 - Arithmetic to Geometry and Trigonometry (US Navy NavPers 10069-C 1966).pdf — page 87">Navy Vol. 1, ch. 8</a>): not wrong, just slow.</li>
+</ul>
+<h2 id="pictures-diagrams">🖼️ Pictures &amp; diagrams</h2>
+<p>Look before you try it. 🖼️ = drawings in the books on this drive; 📷 = photos in the offline Wikipedia.</p>
+<p><strong>Measuring and marking</strong></p>
+<ul>
+<li>Pacing; the measuring wheel — <a class="lib pic" target="_blank" rel="noopener" href="https://directives.nrcs.usda.gov/sites/default/files2/1712930814/33252.pdf#page=33" title="NRCS Engineering Field Handbook Ch 1 - Surveying (USDA NRCS 2022).pdf — page 33">NRCS <em>Surveying</em>, p. 33</a></li>
+<li>Equal parts on a line — <a class="lib pic" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED064144.pdf#page=197" title="Mathematics Vol 1 - Arithmetic to Geometry and Trigonometry (US Navy NavPers 10069-C 1966).pdf — page 197">Navy Vol. 1, p. 197</a></li>
+<li>Hand level, Abney level, clinometer — <a class="lib pic" target="_blank" rel="noopener" href="https://directives.nrcs.usda.gov/sites/default/files2/1712930814/33252.pdf#page=47" title="NRCS Engineering Field Handbook Ch 1 - Surveying (USDA NRCS 2022).pdf — page 47">NRCS <em>Surveying</em>, p. 47</a>, <a class="lib pic" target="_blank" rel="noopener" href="https://directives.nrcs.usda.gov/sites/default/files2/1712930814/33252.pdf#page=51" title="NRCS Engineering Field Handbook Ch 1 - Surveying (USDA NRCS 2022).pdf — page 51">p. 51</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Inclinometer" data-title="Inclinometer" target="_blank" rel="noopener" title="Wikipedia: Inclinometer (offline copy with photos when opened through the Library Assistant)">Inclinometer</a></li>
+</ul>
+<p><strong>Layout and geometry</strong></p>
+<ul>
+<li>3-4-5 corner with strings; bisecting an angle — <a class="lib pic" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED064144.pdf#page=199" title="Mathematics Vol 1 - Arithmetic to Geometry and Trigonometry (US Navy NavPers 10069-C 1966).pdf — page 199">Navy Vol. 1, p. 199</a></li>
+<li>Bisecting a line; a square corner at any point — <a class="lib pic" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED064144.pdf#page=198" title="Mathematics Vol 1 - Arithmetic to Geometry and Trigonometry (US Navy NavPers 10069-C 1966).pdf — page 198">p. 198</a></li>
+<li>Center of a circle; an ellipse — <a class="lib pic" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED064144.pdf#page=200" title="Mathematics Vol 1 - Arithmetic to Geometry and Trigonometry (US Navy NavPers 10069-C 1966).pdf — page 200">p. 200</a></li>
+</ul>
+<p><strong>Areas and volumes</strong></p>
+<ul>
+<li>Rectangle, circle, triangles — <a class="lib pic" target="_blank" rel="noopener" href="https://directives.nrcs.usda.gov/sites/default/files2/1712930744/17541.pdf#page=15" title="NRCS Construction Surveying and Quantity Computations - NEH Part 645 Ch 5 (USDA NRCS 2012).pdf — page 15">NRCS <em>Quantity Computations</em>, p. 15</a></li>
+<li>Trapezoid — <a class="lib pic" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED064144.pdf#page=194" title="Mathematics Vol 1 - Arithmetic to Geometry and Trigonometry (US Navy NavPers 10069-C 1966).pdf — page 194">Navy Vol. 1, p. 194</a></li>
+<li>Prism, cylinder, cone — <a class="lib pic" target="_blank" rel="noopener" href="https://directives.nrcs.usda.gov/sites/default/files2/1712930744/17541.pdf#page=17" title="NRCS Construction Surveying and Quantity Computations - NEH Part 645 Ch 5 (USDA NRCS 2012).pdf — page 17">NRCS, p. 17</a>, <a class="lib pic" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED064144.pdf#page=203" title="Mathematics Vol 1 - Arithmetic to Geometry and Trigonometry (US Navy NavPers 10069-C 1966).pdf — page 203">Navy Vol. 1, p. 203</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Cylinder" data-title="Cylinder" target="_blank" rel="noopener" title="Wikipedia: Cylinder (offline copy with photos when opened through the Library Assistant)">Cylinder</a></li>
+<li>Every formula on one page — <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/FM_5_34_E_F_D_1987/FM%205-34%20Engineer%20Field%20Data%20%281987%29.pdf#page=300" title="FM 5-34 Engineer Field Data (US Army 1987).pdf — page 300">FM 5-34, p. 300</a></li>
+<li>Cord of wood; log-scale stick — <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/CAT31294354/farmbul1210rev1955.pdf#page=17" title="Measuring and Marketing Farm Timber - Farmers Bulletin 1210 (USDA Forest Service 1955).pdf — page 17">FB 1210, p. 17</a>, <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/CAT31294354/farmbul1210rev1955.pdf#page=18" title="Measuring and Marketing Farm Timber - Farmers Bulletin 1210 (USDA Forest Service 1955).pdf — page 18">p. 18</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Board_foot" data-title="Board_foot" target="_blank" rel="noopener" title="Wikipedia: Board foot (offline copy with photos when opened through the Library Assistant)">Board foot</a></li>
+<li>Concrete slab step by step — <a class="lib pic" target="_blank" rel="noopener" href="https://hesperian.org/wp-content/uploads/pdf/en_cgeh_2012/en_cgeh_2012_07.pdf#page=20" title="Hesperian - Community Guide to Environmental Health Ch 7 Building Toilets (2012).pdf — page 20">Hesperian ch. 7, p. 20</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Concrete" data-title="Concrete" target="_blank" rel="noopener" title="Wikipedia: Concrete (offline copy with photos when opened through the Library Assistant)">Concrete</a></li>
+</ul>
+<p><strong>Slope, heights and distances</strong></p>
+<ul>
+<li>Slope diagram; percent and degrees — <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/FM3-25x26/FM3-25x26.pdf#page=112" title="FM 3-25.26 Map Reading and Land Navigation (US Army 2001).pdf — page 112">FM 3-25.26, p. 112</a>, <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/FM3-25x26/FM3-25x26.pdf#page=114" title="FM 3-25.26 Map Reading and Land Navigation (US Army 2001).pdf — page 114">p. 114</a></li>
+<li>Slope by eye height and pace — <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/FM_5_34_E_F_D_1987/FM%205-34%20Engineer%20Field%20Data%20%281987%29.pdf#page=148" title="FM 5-34 Engineer Field Data (US Army 1987).pdf — page 148">FM 5-34, p. 148</a></li>
+<li>Plank-and-level and Abney methods — <a class="lib pic" target="_blank" rel="noopener" href="https://energypedia.info/images/5/5d/Micro_Hydropower_System_-_A_Buyer%27s_Guide.pdf#page=42" title="NRCan Micro-Hydropower Systems - A Buyers Guide.pdf — page 42">NRCan, p. 42</a></li>
+<li>Slope versus level distance — <a class="lib pic" target="_blank" rel="noopener" href="https://directives.nrcs.usda.gov/sites/default/files2/1712930814/33252.pdf#page=32" title="NRCS Engineering Field Handbook Ch 1 - Surveying (USDA NRCS 2022).pdf — page 32">NRCS <em>Surveying</em>, p. 32</a></li>
+<li>Tree height by shadows — <a class="lib pic" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED064144.pdf#page=207" title="Mathematics Vol 1 - Arithmetic to Geometry and Trigonometry (US Navy NavPers 10069-C 1966).pdf — page 207">Navy Vol. 1, p. 207</a></li>
+<li>Cruiser's stick; homemade calipers — <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/CAT31294354/farmbul1210rev1955.pdf#page=14" title="Measuring and Marketing Farm Timber - Farmers Bulletin 1210 (USDA Forest Service 1955).pdf — page 14">FB 1210, p. 14</a>, <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/CAT31294354/farmbul1210rev1955.pdf#page=12" title="Measuring and Marketing Farm Timber - Farmers Bulletin 1210 (USDA Forest Service 1955).pdf — page 12">p. 12</a>, <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/CAT31294354/farmbul1210rev1955.pdf#page=13" title="Measuring and Marketing Farm Timber - Farmers Bulletin 1210 (USDA Forest Service 1955).pdf — page 13">p. 13</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Hypsometer" data-title="Hypsometer" target="_blank" rel="noopener" title="Wikipedia: Hypsometer (offline copy with photos when opened through the Library Assistant)">Hypsometer</a></li>
+<li>River width by compass; stream speed by float — <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/FM_5_34_E_F_D_1987/FM%205-34%20Engineer%20Field%20Data%20%281987%29.pdf#page=162" title="FM 5-34 Engineer Field Data (US Army 1987).pdf — page 162">FM 5-34, p. 162</a></li>
+</ul>
+<p><strong>Loads, power, water and doses</strong></p>
+<ul>
+<li>Tackle systems — <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/u-s-army-guide-to-rigging/U.S.%20Army%20Guide%20to%20Rigging.pdf#page=112" title="FM 5-125 Army Guide to Rigging.pdf — page 112">FM 5-125, p. 112</a>, <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/u-s-army-guide-to-rigging/U.S.%20Army%20Guide%20to%20Rigging.pdf#page=107" title="FM 5-125 Army Guide to Rigging.pdf — page 107">p. 107</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Block_and_tackle" data-title="Block_and_tackle" target="_blank" rel="noopener" title="Wikipedia: Block and tackle (offline copy with photos when opened through the Library Assistant)">Block and tackle</a></li>
+<li>Ohm's law circle — <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/NEETSModules/NEETS%20Module%2001%20-%20Introduction%20to%20Matter%20Energy%20and%20Direct%20Current.pdf#page=116" title="NEETS Module 01 - Matter Energy and Direct Current.pdf — page 116">NEETS 1, p. 116</a></li>
+<li>Head by pressure gauge — <a class="lib pic" target="_blank" rel="noopener" href="https://www1.eere.energy.gov/water/pdfs/doewater-10107-vol.1-pt1.pdf#page=114" title="DOE Microhydropower Handbook Vol 1 Part 1 (Site Head Flow Turbines Intake).pdf — page 114">DOE, p. 114</a></li>
+<li>A spoon marked at 5 mL — <a class="lib pic" target="_blank" rel="noopener" href="https://hesperian.org/wp-content/uploads/pdf/en_wtnd_2025/en_wtnd_2025_08.pdf#page=3" title="Where There Is No Doctor - 08 How to measure and give medicine.pdf — page 3">WTND ch. 8, p. 3</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Teaspoon" data-title="Teaspoon" target="_blank" rel="noopener" title="Wikipedia: Teaspoon (offline copy with photos when opened through the Library Assistant)">Teaspoon</a></li>
+</ul>
+<hr />
+<h2 id="related-guides">🔗 Related guides</h2>
+<ul>
+<li><a class="guide" href="UNIT-CONVERTER.html">Unit converter &amp; calculators</a> — does these sums for you</li>
+<li><a class="guide" href="NAVIGATION-WEATHER-GUIDE.html">Navigation &amp; Weather</a> — pace count, maps, compass</li>
+<li><a class="guide" href="SHELTER-BUILDING-GUIDE.html">Shelter &amp; Building</a> — carpentry, roofs, chimneys</li>
+<li><a class="guide" href="WATER-WELLS-GUIDE.html">Water Wells</a> — casing, pumps, cisterns</li>
+<li><a class="guide" href="OFF-GRID-POWER-GUIDE.html">Off-Grid Power</a> — batteries, wire sizes, creek hydro</li>
+<li><a class="guide" href="FIREWOOD-GUIDE.html">Firewood</a> — cords, felling distances</li>
+<li><a class="guide" href="FOOD-SECURITY-GUIDE.html">Food Security</a> — calories and rationing</li>
+</ul>
+</div><a class="totop" href="#contents" aria-label="Back to contents">↑ Contents</a></body></html>
