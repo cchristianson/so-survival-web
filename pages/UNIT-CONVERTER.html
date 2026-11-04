@@ -94,8 +94,9 @@ function num(s) {                      // "1 1/2", "3/4", "2.5", "½", "1,200" -
   m = s.match(/^-?(\d+(\.\d*)?|\.\d+)(e-?\d+)?$/i); if (m) return parseFloat(s);
   return NaN;
 }
+let fmtBad = false;                    // set when a calculator tried to show a non-number (blank box, divide by 0)
 function fmt(x) {
-  if (!isFinite(x)) return '—';
+  if (!isFinite(x)) { fmtBad = true; return '—'; }
   const a = Math.abs(x);
   if (a !== 0 && a < 0.0001) return x.toPrecision(2);
   const r = Number(x.toPrecision(5));
@@ -285,8 +286,8 @@ function parseQuick(s) {
 function doQuick() {
   const raw = $('quick').value, s = raw.trim();
   // keep "T" (tablespoon) and "t" (teaspoon) apart before lowering case
-  const tb = s.match(/^(.*?\d)\s*(T|t)$/);
-  const hits = tb ? [{ cat: 'volume', unit: tb[2] === 'T' ? 'tbsp' : 'tsp', v: num(tb[1]) }] : parseQuick(s);
+  const tb = s.match(/^(.*?\d)\s*(T|t)$/), tv = tb ? num(tb[1]) : NaN;
+  const hits = isFinite(tv) ? [{ cat: 'volume', unit: tb[2] === 'T' ? 'tbsp' : 'tsp', v: tv }] : parseQuick(s);
   if (!s) { $('quickout').innerHTML = ''; return; }
   if (!hits) { $('quickout').innerHTML = '<p class="note">Type a number and a unit, like <b>12 gal</b>, <b>1 1/2 cups</b>, <b>350 F</b> or <b>40 acres</b>.</p>'; return; }
   $('quickout').innerHTML = hits.map(h => { const c = catOf(h.cat); return (h.note ? `<p class="note">${h.note}</p>` : `<p class="note">${c.name}</p>`) + table(c, h.unit, h.v); }).join('');
@@ -327,8 +328,10 @@ const L = v => `<b>${fmt(v)}</b>`;
 const lenOut = m => { const ft = m / 0.3048, fi = ftin(ft); return `${L(ft)} ft${fi && ft < 1000 && !/ 0 in$/.test(fi) ? ` (${fi})` : ''} · ${L(m)} m`; };
 const areaOut = a => `${L(a / 0.09290304)} sq ft · ${L(a)} m² · ${L(a / 4046.8564224)} acres · ${L(a / 10000)} hectares`;
 const volOut = l => `${L(l / 3.785411784)} gallons · ${L(l)} liters · ${L(l / 28.316846592)} cu ft · ${L(l / 764.554857984)} cu yd`;
-const AWG = [['18', 6.385], ['16', 4.016], ['14', 2.525], ['12', 1.588], ['10', 0.9989], ['8', 0.6282], ['6', 0.3951], ['4', 0.2485], ['2', 0.1563], ['1', 0.1239], ['1/0', 0.09827], ['2/0', 0.07793], ['4/0', 0.04901]];
-const MM2 = [1.5, 2.5, 4, 6, 10, 16, 25, 35, 50];
+// [AWG, ohms per 1,000 ft (copper, 20 °C), amps]: amps from NEC Table 310.16, 60 °C copper column, and 240.4(D) for 14–18 AWG
+const AWG = [['18', 6.385, 7], ['16', 4.016, 10], ['14', 2.525, 15], ['12', 1.588, 20], ['10', 0.9989, 30], ['8', 0.6282, 40], ['6', 0.3951, 55], ['4', 0.2485, 70], ['2', 0.1563, 95], ['1', 0.1239, 110], ['1/0', 0.09827, 125], ['2/0', 0.07793, 145], ['4/0', 0.04901, 195]];
+// [mm², amps]: IEC 60364-5-52 method A1 (in conduit in an insulated wall), PVC, 2 loaded copper conductors
+const MM2 = [[1.5, 14.5], [2.5, 19.5], [4, 26], [6, 34], [10, 46], [16, 61], [25, 80], [35, 99], [50, 119]];
 const CALCS = [
   ['🏠 Building and land', 'area', 'Area, fence and posts', 'Rectangle, circle or a 3-sided plot: area in sq ft, acres and m², fence length and posts', [
     ['shape', 'Shape', 'rect', [['rect', 'rectangle'], ['circle', 'circle (give the width across)'], ['tri', 'triangle (give all 3 sides)']]],
@@ -336,7 +339,7 @@ const CALCS = [
     f => {
       let A, P;
       if (f.shape === 'circle') { const r = f.a / 2; A = Math.PI * r * r; P = Math.PI * f.a; }
-      else if (f.shape === 'tri') { const s = (f.a + f.b + f.c) / 2; A = Math.sqrt(Math.max(0, s * (s - f.a) * (s - f.b) * (s - f.c))); P = f.a + f.b + f.c; if (!(A > 0)) return 'Those three sides can’t make a triangle — the two shorter sides must add up to more than the longest.'; }
+      else if (f.shape === 'tri') { if (!(f.a > 0 && f.b > 0 && f.c > 0)) return 'Fill in all three sides.'; const s = (f.a + f.b + f.c) / 2; A = Math.sqrt(Math.max(0, s * (s - f.a) * (s - f.b) * (s - f.c))); P = f.a + f.b + f.c; if (!(A > 0)) return 'Those three sides can’t make a triangle — the two shorter sides must add up to more than the longest.'; }
       else { A = f.a * f.b; P = 2 * (f.a + f.b); }
       const posts = isFinite(f.sp_raw) && f.sp_raw > 0 ? Math.ceil(P / 0.3048 / f.sp_raw) : NaN;
       return `Area: ${areaOut(A)}<br>Around the edge (fence): ${lenOut(P)}` + (isFinite(posts) ? `<br>Posts: about ${L(posts)} at ${fmt(f.sp_raw)} ft apart for a closed fence (add 1 for a straight run, plus extra for corners and gates)` : '');
@@ -345,13 +348,13 @@ const CALCS = [
     ['a', 'Length', '10', 'len'], ['b', 'Width', '10', 'len'], ['d', 'Depth / thickness', '4', 'short'], ['n', 'How many (same size)', '1']],
     f => {
       const V = f.a * f.b * f.d * (f.n_raw > 0 ? f.n_raw : 1) * 1000;   // liters
-      return `Volume: ${volOut(V)}<br>Premixed concrete: about ${L(Math.ceil(V / 28.316846592 / 0.6))} bags of 80 lb (each makes about 0.6 cu ft) — add 5–10% for waste<br>Weight if concrete (about 145 lb per cu ft): ${L(V / 28.316846592 * 145)} lb; if gravel or wet soil (about 100 lb per cu ft): ${L(V / 28.316846592 * 100)} lb <span class="note">(rules of thumb)</span>`;
+      return `Volume: ${volOut(V)}<br>Premixed concrete: about ${L(Math.ceil(V / 28.316846592 / 0.6))} bags of 80 lb (each makes about 0.6 cu ft) — add 5–10% for waste<br>Weight if concrete (about 144 lb per cu ft): ${L(V / 28.316846592 * 144)} lb; if gravel or wet soil (about 100 lb per cu ft): ${L(V / 28.316846592 * 100)} lb <span class="note">(rules of thumb)</span>`;
     }],
   ['🏠 Building and land', 'slope', 'Roof pitch, slope and rafter length', 'Rise and run → pitch, % grade, degrees, and the sloped length', [
     ['rise', 'Rise (how much it goes up)', '4', 'len'], ['run', 'Run (level distance)', '12', 'len']],
     f => {
       const t = f.rise / f.run, deg = Math.atan(t) * 180 / Math.PI, hyp = Math.hypot(f.rise, f.run);
-      return `Pitch: ${L(t * 12)} in 12 · Grade: ${L(t * 100)}% · Angle: ${L(deg)}° · 1 in ${fmt(1 / t)}<br>Sloped length (rafter, ramp or ditch side, before overhang): ${lenOut(hyp)}<br>Multiply flat roof area by ${L(hyp / f.run)} to get the real roof surface.`;
+      return `Pitch: ${L(t * 12)} in 12 · Grade: ${L(t * 100)}% · Angle: ${L(deg)}°${t > 0 ? ` · 1 in ${fmt(1 / t)}` : ''}<br>Sloped length (rafter, ramp or ditch side, before overhang): ${lenOut(hyp)}<br>Multiply flat roof area by ${L(hyp / f.run)} to get the real roof surface.`;
     }],
   ['🏠 Building and land', 'square', 'Square corners (3-4-5) and diagonals', 'The diagonal that proves a corner or a rectangle is square', [
     ['a', 'Side A', '12', 'len'], ['b', 'Side B', '16', 'len']],
@@ -364,16 +367,18 @@ const CALCS = [
     ['sl', 'Woodpile length (feet)', '8'], ['sh', 'Woodpile height (feet)', '4'], ['sd', 'Woodpile depth (feet)', '4']],
     f => {
       const bf = f.t_raw * f.w_raw * f.l_raw / 12 * (f.n_raw || 1);
-      const cu = f.sl_raw * f.sh_raw * f.sd_raw;
-      return `Lumber: ${L(bf)} board feet (thickness in × width in × length ft ÷ 12)<br>Woodpile: ${L(cu)} cu ft = ${L(cu / 128)} cords (a full cord is 4 × 4 × 8 ft = 128 cu ft stacked)`;
+      const cu = f.sl_raw * f.sh_raw * f.sd_raw, out = [];
+      if (bf > 0) out.push(`Lumber: ${L(bf)} board feet (thickness in × width in × length ft ÷ 12)`);
+      if (cu > 0) out.push(`Woodpile: ${L(cu)} cu ft = ${L(cu / 128)} cords (a full cord is 4 × 4 × 8 ft = 128 cu ft stacked)`);
+      return out.join('<br>') || 'Fill in the board sizes, or the woodpile sizes.';
     }],
   ['🏠 Building and land', 'tree', 'Height of a tree or building', 'With shadows, or with a measured angle', [
     ['ys', 'Your shadow (or a stick’s shadow)', '6', 'len'], ['yh', 'Your height (or the stick’s height)', '6', 'len'], ['ts', 'The tree’s shadow', '60', 'len'],
     ['dist', 'Or: distance to the tree', '', 'len'], ['ang', 'Angle up to the top (degrees)', ''], ['eye', 'Your eye height', '5', 'len']],
     f => {
       let out = '';
-      if (f.ys > 0 && f.ts > 0) out += `By shadows: ${lenOut(f.yh * f.ts / f.ys)} (measure both shadows at the same moment)`;
-      if (f.dist > 0 && f.ang_raw > 0) out += (out ? '<br>' : '') + `By angle: ${lenOut(f.dist * Math.tan(f.ang_raw * Math.PI / 180) + (f.eye || 0))} (at 45° the height is simply your distance plus eye height)`;
+      if (f.ys > 0 && f.ts > 0 && f.yh > 0) out += `By shadows: ${lenOut(f.yh * f.ts / f.ys)} (measure both shadows at the same moment)`;
+      if (f.dist > 0 && f.ang_raw > 0) out += (out ? '<br>' : '') + (f.ang_raw < 90 ? `By angle: ${lenOut(f.dist * Math.tan(f.ang_raw * Math.PI / 180) + (f.eye || 0))} (at 45° the height is simply your distance plus eye height)` : 'The angle up to the top must be less than 90°.');
       return out || 'Fill in the shadows, or the distance and angle.';
     }],
   ['💧 Water', 'tank', 'Tank, barrel or well volume', 'Box, upright round tank, lying-down tank (part full) or a well casing', [
@@ -431,13 +436,15 @@ const CALCS = [
       let { v_raw: V, i_raw: I, r_raw: R, p_raw: P } = f;
       const has = x => isFinite(x) && x > 0, n = [V, I, R, P].filter(has).length;
       if (n < 2) return 'Fill in any two of the four.';
+      const used = has(V) && has(I) ? 'volts and amps' : has(V) && has(R) ? 'volts and ohms' : has(V) && has(P) ? 'volts and watts'
+        : has(I) && has(R) ? 'amps and ohms' : has(I) && has(P) ? 'amps and watts' : 'ohms and watts';
       if (has(V) && has(I)) { R = V / I; P = V * I; } else if (has(V) && has(R)) { I = V / R; P = V * I; } else if (has(V) && has(P)) { I = P / V; R = V / I; }
       else if (has(I) && has(R)) { V = I * R; P = V * I; } else if (has(I) && has(P)) { V = P / I; R = V / I; } else if (has(R) && has(P)) { I = Math.sqrt(P / R); V = I * R; }
-      return `${L(V)} volts · ${L(I)} amps · ${L(R)} ohms · ${L(P)} watts<br><span class="note">Watts = volts × amps; amps = volts ÷ ohms.</span>`;
+      return `${L(V)} volts · ${L(I)} amps · ${L(R)} ohms · ${L(P)} watts` + (n > 2 ? `<br><b>More than two boxes are filled in</b> — this used the ${used}. Empty the boxes you want worked out.` : '') + `<br><span class="note">Watts = volts × amps; amps = volts ÷ ohms.</span>`;
     }],
   ['⚡ Power and electricity', 'batt', 'How long a battery will last', 'Battery size and the load → hours of use', [
     ['v', 'Battery voltage', '12'], ['ah', 'Amp-hours (Ah)', '100'], ['n', 'How many batteries (in the same bank)', '1'],
-    ['dod', 'Share you can use (%) — about 50 for lead-acid, 80 for LiFePO₄', '50'], ['load', 'Load (watts)', '60'], ['inv', 'Through an inverter? efficiency %', '100']],
+    ['dod', 'Share you can use (%) — about 40 for lead-acid (see the Off-grid guide), 80 for LiFePO₄', '40'], ['load', 'Load (watts)', '60'], ['inv', 'Through an inverter? efficiency %', '100']],
     f => {
       const wh = f.v_raw * f.ah_raw * (f.n_raw || 1), use = wh * f.dod_raw / 100 * (f.inv_raw || 100) / 100, hrs = use / f.load_raw;
       return `Stored: ${L(wh)} watt-hours (${L(wh / 1000)} kWh) · usable about ${L(use)} Wh<br>Runs ${fmt(f.load_raw)} W for about <b>${fmt(hrs)} hours</b> (${fmt(hrs / 24)} days)<br><span class="note">Use 85–90% efficiency for an inverter; cold batteries hold less (rules of thumb).</span>`;
@@ -450,24 +457,31 @@ const CALCS = [
     }],
   ['⚡ Power and electricity', 'vdrop', 'Wire size and voltage drop', 'Copper wire, there and back → volts lost', [
     ['v', 'System voltage', '12'], ['i', 'Current (amps)', '10'], ['l', 'One-way length of the run', '50', 'len'],
-    ['g', 'Wire size', '10', AWG.map(a => [a[0], a[0] + ' AWG']).concat(MM2.map(x => ['mm' + x, x + ' mm²']))]],
+    ['g', 'Wire size', '10', AWG.map(a => [a[0], a[0] + ' AWG']).concat(MM2.map(x => ['mm' + x[0], x[0] + ' mm²']))]],
     f => {
-      const ohmPerM = f.g.startsWith('mm') ? 0.0172 / +f.g.slice(2) : AWG.find(a => a[0] === f.g)[1] / 304.8;
-      const vd = 2 * f.l * f.i_raw * ohmPerM, pct = vd / f.v_raw * 100;
-      let best = '';
-      for (const a of AWG) { const d = 2 * f.l * f.i_raw * a[1] / 304.8; if (d / f.v_raw * 100 <= 3) { best = a[0]; break; } }
+      const mm = f.g.startsWith('mm'), w = mm ? MM2.find(x => 'mm' + x[0] === f.g) : AWG.find(a => a[0] === f.g);
+      const ohmPerM = mm ? 0.0172 / w[0] : w[1] / 304.8, maxA = mm ? w[1] : w[2];
+      const vd = 2 * f.l * f.i_raw * ohmPerM, pct = vd / f.v_raw * 100, hot = f.i_raw > maxA;
+      let best = '';   // thinnest AWG that both carries the current and keeps the loss at 3% or less
+      for (const a of AWG) { const d = 2 * f.l * f.i_raw * a[1] / 304.8; if (d / f.v_raw * 100 <= 3 && a[2] >= f.i_raw) { best = a[0]; break; } }
+      const tip = best ? ` (about ${best} AWG carries ${fmt(f.i_raw)} A and keeps the loss under 3%)`
+        : f.i_raw > AWG[AWG.length - 1][2] ? ' (that is more current than one 4/0 copper wire carries — split the load or raise the voltage)' : '';
       return `Loses ${L(vd)} volts = <b>${fmt(pct)}%</b> of ${fmt(f.v_raw)} V, and wastes ${L(vd * f.i_raw)} watts as heat.<br>` +
-        (pct > 3 ? `More than 3% — use thicker wire${best ? ` (about ${best} AWG keeps it under 3%)` : ''}, a shorter run or a higher voltage.` : 'Under 3% — fine for most uses.') +
-        '<br><span class="note">Also check the wire is rated for the amps and fused at the battery (see the Off-grid guide). Copper at room temperature.</span>';
+        (hot ? `<b>Too thin for ${fmt(f.i_raw)} amps:</b> ${mm ? w[0] + ' mm²' : f.g + ' AWG'} copper is rated for only about ${fmt(maxA)} A — it can overheat and start a fire.<br>` : '') +
+        (hot ? `Use thicker wire${tip}.` : pct > 3 ? `More than 3% — use thicker wire${tip}, a shorter run or a higher voltage.` : 'Under 3% and within the wire’s amp rating — fine for most uses.') +
+        '<br><span class="note">Copper wire. Amp ratings are the cautious ones: NEC Table 310.16 (60 °C insulation) and 240.4(D) for 14–18 AWG; mm² from IEC 60364-5-52 (in conduit, PVC). Bundled wires, hot attics and engine rooms need thicker wire. Fuse it at the battery (see the Off-grid guide). Resistance is for copper at room temperature — hot wire loses a little more.</span>';
     }],
   ['🍞 Food, travel and everyday', 'recipe', 'Scale a recipe', 'Paste the ingredient list; every amount is multiplied', [
     ['from', 'Recipe makes (servings or loaves)', '4'], ['to', 'You want', '10'],
     ['txt', 'Ingredients (one per line)', '2 1/4 cups flour\n1 tsp salt\n1 1/2 cups warm water\n2 tbsp lard', 'text']],
     f => {
       const k = f.to_raw / f.from_raw;
-      if (!(k > 0)) return 'Fill in both numbers.';
+      if (!(k > 0 && isFinite(k))) return 'Fill in both numbers.';
+      // an amount: 1½ or 1 ½, 1 1/2, 1/2, 1,000, 2.5 or .5, 2 — optionally a range (2-3, 1/2 to 3/4)
+      const AMT = '(?:\\d+\\s*)?[½¼¾⅓⅔⅛⅜⅝⅞]|(?:\\d+\\s+)?\\d+\\/\\d+|\\d{1,3}(?:,\\d{3})+(?:\\.\\d+)?|\\d*\\.\\d+|\\d+';
+      const RE = new RegExp(`^\\s*(${AMT})(?:\\s*(?:-|–|to)\\s*(${AMT}))?\\s*(.*)$`);
       const lines = String(f.txt || '').split('\n').map(line => {
-        const m = line.match(/^\s*((?:\d+\s+)?\d+\/\d+|\d+(?:\.\d+)?|[½¼¾⅓⅔⅛⅜⅝⅞])(?:\s*(?:-|to)\s*((?:\d+\s+)?\d+\/\d+|\d+(?:\.\d+)?))?\s*(.*)$/);
+        const m = line.match(RE);
         if (!m) return esc(line);
         const a = num(m[1]) * k, b = m[2] ? num(m[2]) * k : null;
         const nice = x => { const fr = frac(x, [2, 4, 8, 3]); return fr && x < 20 ? fr : fmt(x); };
@@ -489,11 +503,17 @@ const CALCS = [
     }],
   ['🍞 Food, travel and everyday', 'pct', 'Percent and change', 'What percent, a percent of, and how much something changed', [
     ['a', 'Number A', '15'], ['b', 'Number B', '60']],
-    f => `${fmt(f.a_raw)} is <b>${fmt(f.a_raw / f.b_raw * 100)}%</b> of ${fmt(f.b_raw)}<br>${fmt(f.a_raw)}% of ${fmt(f.b_raw)} is <b>${fmt(f.a_raw / 100 * f.b_raw)}</b><br>From ${fmt(f.a_raw)} to ${fmt(f.b_raw)} is a change of <b>${fmt((f.b_raw - f.a_raw) / f.a_raw * 100)}%</b>`],
+    f => {
+      const a = f.a_raw, b = f.b_raw;
+      if (!isFinite(a) || !isFinite(b)) return 'Fill in both numbers.';
+      return [b ? `${fmt(a)} is <b>${fmt(a / b * 100)}%</b> of ${fmt(b)}` : '', `${fmt(a)}% of ${fmt(b)} is <b>${fmt(a / 100 * b)}</b>`,
+        a ? `From ${fmt(a)} to ${fmt(b)} is a change of <b>${fmt((b - a) / a * 100)}%</b>` : ''].filter(Boolean).join('<br>');
+    }],
   ['💊 Medicine arithmetic', 'dose', 'Dose by body weight (arithmetic only)', 'mg per kg × weight → mg, and mL of a liquid', [
-    ['w', 'Body weight', '40', 'wt'], ['mgkg', 'Dose from the guide or book (mg per kg)', ''], ['conc', 'Liquid strength: mg in …', '250'], ['per', '… this many mL', '5'], ['max', 'Maximum single dose from the book (mg), if given', '']],
+    ['w', 'Body weight', '40', 'wt'], ['mgkg', 'Dose from the guide or book (mg per kg, for one dose)', ''], ['conc', 'Liquid strength: mg in …', '250'], ['per', '… this many mL', '5'], ['max', 'Maximum single dose from the book (mg), if given', '']],
     f => {
       if (!(f.mgkg_raw > 0)) return 'Enter the mg-per-kg dose exactly as the guide or book gives it.';
+      if (!(f.w > 0)) return 'Enter the body weight.';
       let mg = f.w * f.mgkg_raw, capped = false;
       if (f.max_raw > 0 && mg > f.max_raw) { mg = f.max_raw; capped = true; }
       const ml = f.conc_raw > 0 && f.per_raw > 0 ? mg / (f.conc_raw / f.per_raw) : NaN;
@@ -519,8 +539,11 @@ function runCalc(c) {
     f[id] = set ? raw * set.find(u => u[0] === $(`${cid}-${id}-u`).value)[2] : raw;   // in meters / liters / kg
   }
   let html;
-  try { html = fn(f); } catch (e) { html = 'Check the numbers.'; }
-  if (/NaN|Infinity/.test(html)) html = 'Fill in the boxes with numbers (fractions like 1 1/2 are fine).';
+  fmtBad = false;
+  // sizes, amounts, weights and times can't be negative (only the percent box takes minus numbers)
+  const neg = cid !== 'pct' && Object.keys(f).some(k => k.endsWith('_raw') && f[k] < 0);
+  try { html = neg ? 'Use numbers above zero — a size, amount, weight or time can’t be negative.' : fn(f); } catch (e) { html = 'Check the numbers.'; }
+  if (fmtBad || /NaN|Infinity/.test(html)) html = 'Fill in the boxes with numbers (fractions like 1 1/2 are fine). Sizes, times, volts and amounts must be more than 0.';
   $(`${cid}-out`).innerHTML = html;
 }
 let lastGroup = '';
