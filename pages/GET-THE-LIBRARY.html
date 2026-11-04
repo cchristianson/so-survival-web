@@ -11,7 +11,7 @@
 </ul>
 </blockquote>
 <hr />
-<nav class="toc" id="contents" aria-label="Contents"><details open><summary>📑 Contents</summary><ol><li><a href="#step-1-download-the-kit">📥 Step 1: Download the kit</a></li><li><a href="#step-2-unzip-it-and-double-click-the-installer">🧰 Step 2: Unzip it and double-click the installer</a></li><li><a href="#step-3-pick-the-drive-and-press-start">✅ Step 3: Pick the drive and press Start</a></li><li><a href="#how-big-a-drive">📏 How big a drive?</a></li><li><a href="#using-it-copying-it-updating-it">🔁 Using it, copying it, updating it</a></li><li><a href="#if-something-goes-wrong">❓ If something goes wrong</a></li></ol></details></nav>
+<nav class="toc" id="contents" aria-label="Contents"><details open><summary>📑 Contents</summary><ol><li><a href="#step-1-download-the-kit">📥 Step 1: Download the kit</a></li><li><a href="#step-2-unzip-it-and-double-click-the-installer">🧰 Step 2: Unzip it and double-click the installer</a></li><li><a href="#step-3-pick-the-drive-and-press-start">✅ Step 3: Pick the drive and press Start</a></li><li><a href="#how-big-a-drive">📏 How big a drive?</a></li><li><a href="#make-the-drive-work-on-every-kind-of-device">🔌 Make the drive work on every kind of device</a></li><li><a href="#using-it-copying-it-updating-it">🔁 Using it, copying it, updating it</a></li><li><a href="#if-something-goes-wrong">❓ If something goes wrong</a></li></ol></details></nav>
 <h2 id="step-1-download-the-kit">📥 Step 1: Download the kit</h2>
 <p><strong><a href="../download/so-survival-kit.zip">⬇️ Download the installer kit (so-survival-kit.zip)</a></strong></p>
 <p>It is one zip file, about 85 MB. It works on <strong>Windows, Mac and Linux</strong> computers. (Phones and tablets can't make the drive, but they can <em>use</em> one afterwards. See <a class="guide" href="START-ON-ANY-DEVICE.html">Start on any device</a>.)</p>
@@ -85,6 +85,51 @@
 </tbody>
 </table>
 <p>Large USB 3 flash drives and small external SSDs are both fine. An SSD is faster and tougher.</p>
+<p><strong>If you tick the map viewer for computers,</strong> the installer keeps some of the drive <strong>empty on purpose</strong> (about 30 GB for maps of the whole USA). The viewer unpacks the maps into that space the first time you open it, so until then the drive shows more free space than you might expect. Phones use the maps as they are and don't need it.</p>
+<hr />
+<h2 id="make-the-drive-work-on-every-kind-of-device">🔌 Make the drive work on every kind of device</h2>
+<p>For a drive you'll plug into different computers and tablets, two things matter:</p>
+<ol type="1">
+<li><strong>Keep "Works on every kind of device" ticked.</strong> It adds the programs for Windows, Mac, Linux, Raspberry Pi and Android tablets. The installer ticks it for you on any USB or external drive.</li>
+<li><strong>The drive's format should be exFAT.</strong> The installer shows each drive's format and warns you if it isn't:</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th>Format</th>
+<th>Works on</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>exFAT</strong></td>
+<td>Windows, Mac, Linux, Raspberry Pi, most Android tablets</td>
+<td>✅ Best choice</td>
+</tr>
+<tr class="even">
+<td><strong>FAT32</strong></td>
+<td>Everything</td>
+<td>⚠️ Can't hold a file over 4 GB, so no Wikipedia and no large AI</td>
+</tr>
+<tr class="odd">
+<td><strong>NTFS</strong></td>
+<td>Windows and Linux. Macs can only read it</td>
+<td>⚠️ Most Android tablets can't open it</td>
+</tr>
+<tr class="even">
+<td><strong>APFS / Mac OS Extended</strong></td>
+<td>Macs only</td>
+<td>❌ Windows and Android can't open it</td>
+</tr>
+</tbody>
+</table>
+<p><strong>To switch a drive to exFAT</strong> (this <strong>erases everything</strong> on it, so copy off anything you want to keep first):</p>
+<ul>
+<li><strong>Windows:</strong> File Explorer → <strong>This PC</strong> → right-click the drive → <strong>Format…</strong> → File system <strong>exFAT</strong> → <strong>Start</strong>.</li>
+<li><strong>Mac:</strong> <strong>Disk Utility</strong> → View → Show All Devices → click the drive itself (the top line) → <strong>Erase</strong> → Format <strong>ExFAT</strong>, Scheme <strong>Master Boot Record</strong> → Erase.</li>
+</ul>
+<p>Most new USB drives over 32 GB already come as exFAT.</p>
 <hr />
 <h2 id="using-it-copying-it-updating-it">🔁 Using it, copying it, updating it</h2>
 <ul>
@@ -128,7 +173,15 @@
 </tr>
 <tr class="odd">
 <td>A drive says it <strong>can't hold a file that large</strong></td>
-<td>The drive is formatted FAT32 (4 GB file limit). Use a drive formatted <strong>exFAT</strong> (works on Windows and Mac) or NTFS</td>
+<td>The drive is formatted FAT32 (4 GB file limit). Switch it to <strong>exFAT</strong> (see <em>Make the drive work on every kind of device</em> above)</td>
+</tr>
+<tr class="even">
+<td>Lots of space is still <strong>free after it finished</strong></td>
+<td>You ticked the map viewer: that space is kept for it to unpack the maps the first time you open it (on the drive: <code>OsmAnd</code> → <code>MapViewer-Desktop</code> → <code>VIEW-MAPS-ON-PC</code>). The installer says how much when it finishes</td>
+</tr>
+<tr class="odd">
+<td>The drive won't open on a Mac or Android tablet</td>
+<td>Check its format (above). exFAT works everywhere</td>
 </tr>
 </tbody>
 </table>
