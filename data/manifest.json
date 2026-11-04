@@ -1,8 +1,8 @@
 {
-"built": "2026-11-04 17:32 UTC",
+"built": "2026-11-04 19:08 UTC",
 "docs": "docs-41e6f1d220.json",
 "shards": [
-"chunks00-1fd1b987b8.json",
+"chunks00-51745cdc93.json",
 "chunks01-03cf18502b.json",
 "chunks02-185e5c73a1.json",
 "chunks03-72c5acac7b.json",
@@ -68,7 +68,7 @@
 "icon-192.png",
 "icon-512.png",
 "data/docs-41e6f1d220.json",
-"data/chunks00-1fd1b987b8.json",
+"data/chunks00-51745cdc93.json",
 "data/chunks01-03cf18502b.json",
 "data/chunks02-185e5c73a1.json",
 "data/chunks03-72c5acac7b.json",
@@ -172,7 +172,7 @@
 "vendor/README.md",
 "vendor/web-llm-0.2.85.js"
 ],
-"bytes": 169641862
+"bytes": 169642790
 },
 "routes": {
 "files": [
