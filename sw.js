@@ -1,7 +1,7 @@
 // Service worker: keeps the app and the saved library available offline.
 // - "shell" cache: the app itself, replaced on each new version
 // - "content" cache: search data, guides, tools, walking routes — kept across versions
-const BUILD = '6b032e8939';
+const BUILD = '171a0f83b9';
 const SHELL = 'shell-' + BUILD, CONTENT = 'content-v1';
 const SHELL_FILES = ['./', 'index.html', 'app.js', 'search-worker.js', 'manifest.webmanifest', 'icon.svg', 'icon-192.png', 'icon-512.png', 'data/manifest.json'];
 const shellPaths = new Set(SHELL_FILES.map(f => new URL(f, self.registration.scope).pathname));
@@ -17,6 +17,7 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   const req = e.request, url = new URL(req.url);
   if (req.method !== 'GET' || url.origin !== location.origin) return; // Wikipedia, AI model downloads: handled elsewhere
+  if (url.pathname.includes('/download/')) return; // the installer kit zip: straight from the network, never stored
   const fresh = req.mode === 'navigate' || url.pathname.endsWith('/data/manifest.json') || shellPaths.has(url.pathname);
   e.respondWith(fresh ? networkFirst(req, url) : cacheFirst(req, url));
 });
