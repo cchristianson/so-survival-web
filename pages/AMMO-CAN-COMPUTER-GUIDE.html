@@ -56,11 +56,11 @@
 <tr class="odd">
 <td><strong>Computer</strong></td>
 <td><strong>Raspberry Pi 5, 8 GB</strong> memory (or <strong>16 GB</strong> for the bigger AI)</td>
-<td>8 GB runs the "Standard" AI; 16 GB can run "Smart". It has a <strong>power button</strong> for safe shutdown. A Pi 4 (4 GB or more) also works, but it's slower and has no button</td>
+<td>8 GB runs the "Standard" AI; 16 GB can run "Smart". It has a <strong>power button</strong> for safe shutdown. A <strong>Pi 4</strong> (4 GB or more) also works: a smaller, slower AI, but easier on batteries. Add a push button for a few dollars (<a href="#5-raspberry-pi-4-add-a-power-button">step 5</a>)</td>
 </tr>
 <tr class="even">
 <td><strong>Cooler</strong></td>
-<td>Raspberry Pi <strong>Active Cooler</strong> (clips on)</td>
+<td>Raspberry Pi <strong>Active Cooler</strong> (clips on). Pi 4: a heatsink set or a small fan case</td>
 <td>The AI works the chip hard. Without a cooler the Pi slows itself down</td>
 </tr>
 <tr class="odd">
@@ -104,6 +104,11 @@
 <td>Closes the gap the rubber gasket leaves (<a class="guide" href="EMP-GUIDE.html">EMP guide</a>)</td>
 </tr>
 <tr class="odd">
+<td><strong>Pi 4 only: power button</strong></td>
+<td>A small <strong>push button</strong> (the spring-back kind) on two wires with <strong>female jumper plugs</strong></td>
+<td>Becomes a safe shut-down and start button (<a href="#5-raspberry-pi-4-add-a-power-button">step 5</a>)</td>
+</tr>
+<tr class="even">
 <td><strong>For setup only</strong></td>
 <td>A TV or monitor, a <strong>micro-HDMI to HDMI</strong> cable, a USB keyboard and mouse</td>
 <td>Borrow them. You need them once</td>
@@ -140,17 +145,29 @@
 </ul></li>
 <li><strong>Write down the Wi-Fi name, password and address</strong> it shows, for example <code>http://192.168.4.1:8096</code>. Say <strong>y</strong> to restart.</li>
 </ol>
-<p>What the setup changed: the Pi now makes its <strong>own Wi-Fi</strong> every time it starts (instead of joining your home Wi-Fi), <strong>starts the library by itself</strong> and shares it, mounts the library drive in the same place every time, and <strong>turns off the desktop</strong>. That leaves more memory for the AI and makes one press of the power button a safe shutdown. Running <code>bash SETUP-Raspberry-Pi.sh --undo</code> puts it all back.</p>
-<h3 id="5-test-it-the-way-youll-use-it">5. Test it the way you'll use it</h3>
+<p>What the setup changed: the Pi now makes its <strong>own Wi-Fi</strong> every time it starts (instead of joining your home Wi-Fi), <strong>starts the library by itself</strong> and shares it, mounts the library drive in the same place every time, and <strong>turns off the desktop</strong>. That leaves more memory for the AI and makes one press of the power button a safe shutdown. On a Pi 4 it also turns two of the pins into a power button (next step). Running <code>bash SETUP-Raspberry-Pi.sh --undo</code> puts it all back.</p>
+<h3 id="5-raspberry-pi-4-add-a-power-button">5. Raspberry Pi 4: add a power button</h3>
+<p>A Pi 5 has a power button built in; skip to step 6. A Pi 4 doesn't, but the setup turned two of its pins into one. All you add is the button: five minutes, no soldering.</p>
+<p><strong>What to get:</strong> a small <strong>push button</strong> of the spring-back kind, on two wires ending in <strong>female jumper plugs</strong> (search for <em>push button female jumper wire Raspberry Pi</em>), or any small push button plus two female jumper wires. <strong>Not</strong> a switch that goes on the power cable: that just cuts the power, which is what you're avoiding.</p>
+<p><strong>Fitting it (with the Pi unplugged):</strong></p>
+<ol type="1">
+<li>Find the double row of 40 pins along one long edge of the Pi.</li>
+<li>Start at the end of that row <strong>farthest from the USB ports</strong>. Count <strong>three pairs</strong> of pins in. That third pair is <strong>pins 5 and 6</strong>.</li>
+<li>Push one wire onto each of those two pins. Either way round is fine.</li>
+<li>Lead the button out where you can reach it, or tape it to the foam tray.</li>
+</ol>
+<p><strong>Using it:</strong> press once and the Pi shuts down safely. Wait until the <strong>green light stays off</strong> (about 20 seconds), then unplug. If it's still plugged in, <strong>press again</strong> and it starts back up.</p>
+<h3 id="6-test-it-the-way-youll-use-it">6. Test it the way you'll use it</h3>
 <ol type="1">
 <li>Unplug the TV, keyboard and mouse. You won't need them again.</li>
 <li>Turn the Pi on and wait <strong>2–3 minutes</strong> (a bit longer the first time, while the AI times itself and picks its size).</li>
 <li>On the phone, open <strong>Settings → Wi-Fi</strong>, join <strong>Emergency-Library</strong> with the password. If it says <em>no internet</em>, tap <strong>Stay connected</strong> / <strong>Keep</strong>.</li>
 <li>Open the phone's browser and type the address <strong>exactly</strong>: <code>http://192.168.4.1:8096</code>.</li>
 <li>Search for something, open a guide, and ask the AI a question.</li>
+<li>Press the power button and check that the Pi shuts down (see above).</li>
 <li><strong>Now do it all again on the power bank</strong>, the way it'll run in an emergency.</li>
 </ol>
-<h3 id="6-print-the-wi-fi-card">6. Print the Wi-Fi card</h3>
+<h3 id="7-print-the-wi-fi-card">7. Print the Wi-Fi card</h3>
 <p>The setup saved <strong><code>PI-WIFI-CARD.html</code></strong> at the top of the library drive. It has the Wi-Fi name, password, address and the four steps for using the Pi. Plug the drive into your regular computer, open the card and print it (or copy it out by hand). Tape it inside the lid.</p>
 <hr />
 <h2 id="packing-the-can">📦 Packing the can</h2>
@@ -169,13 +186,13 @@
 <li><strong>Plug the Pi into power</strong> (power bank, 12-volt adapter or the wall supply). Plug in the library drive if it isn't already.</li>
 <li><strong>Wait 2–3 minutes.</strong></li>
 <li><strong>On each phone:</strong> join the Pi's Wi-Fi, open the browser, type the address from the card.</li>
-<li><strong>To shut down:</strong> press the Pi's power button <strong>once</strong>. Wait until its light turns <strong>red</strong>, then unplug. Pack it and <strong>tape the lid</strong> again.</li>
+<li><strong>To shut down:</strong> press the power button <strong>once</strong>. Wait until the light turns <strong>red</strong> (Pi 5) or the <strong>green light stays off</strong> (Pi 4), then unplug. Pack it and <strong>tape the lid</strong> again.</li>
 </ol>
 <p><strong>Is it safe to have it out?</strong> A nuclear EMP is over in seconds to minutes. A solar storm comes with 18–72 hours' warning. If a warning comes, shut the Pi down and seal the can (see <a class="guide" href="EMP-GUIDE.html">when a solar-storm warning comes</a>). Use it the rest of the time.</p>
 <p><strong>Save the battery:</strong> turn it off when nobody needs it. Searching and reading use little power; the AI uses the most.</p>
 <hr />
 <h2 id="power-how-long-it-runs">🔋 Power: how long it runs</h2>
-<p>The Pi 5 uses roughly <strong>3–5 watts</strong> while it sits waiting and around <strong>10 watts</strong> while the AI writes an answer, about the same as charging a phone <em>(rule of thumb)</em>.</p>
+<p>The Pi 5 uses roughly <strong>3–5 watts</strong> while it sits waiting and around <strong>10 watts</strong> while the AI writes an answer, about the same as charging a phone <em>(rule of thumb)</em>. A Pi 4 uses a bit less, so a battery lasts longer.</p>
 <table>
 <thead>
 <tr class="header">
@@ -238,10 +255,14 @@
 <td>Not enough power. Use the official supply or a stronger power bank</td>
 </tr>
 <tr class="odd">
+<td>The Pi 4 button does nothing</td>
+<td>Check it's on the <strong>third pair</strong> of pins from the end farthest from the USB ports. The setup switches those pins on, so run it on this Pi and restart once afterward</td>
+</tr>
+<tr class="even">
 <td>Forgot the Wi-Fi password</td>
 <td>Plug the drive into any computer and open <strong><code>PI-WIFI-CARD.html</code></strong></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Want home internet on the Pi again (for updates), or the desktop back</td>
 <td>Plug in a network cable for internet. For both, run the setup with <code>--undo</code> and restart. Run the setup again afterward; it keeps the same Wi-Fi name and password</td>
 </tr>
@@ -252,7 +273,7 @@
 <h2 id="every-few-months">🔄 Every few months</h2>
 <ul>
 <li><strong>Top up</strong> the power bank and phone to about half to three-quarters.</li>
-<li><strong>Power it up once</strong> and run through the test in step 5. Then shut down, pack it and re-tape the lid.</li>
+<li><strong>Power it up once</strong> and run through the test in step 6. Then shut down, pack it and re-tape the lid.</li>
 <li><strong>Updating the library:</strong> plug the drive into your regular computer and run the installer again (it adds what's new). Nothing needs to change on the Pi.</li>
 <li>Swap the foil tape if it's torn or stops sticking.</li>
 </ul>
