@@ -796,7 +796,7 @@ function screenKeyboard() {
     `<div class="r">${key('hide', '⌄ Hide', 'w')}${key('shift', '⇧ ABC', 'w')}${key(' ', 'space', 'sp')}${key('back', '⌫', 'w')}${key('enter', '⏎ Go', 'w go')}</div>`;
   document.body.appendChild(kb);
 
-  let target = null, shift = false;
+  let target = null, shift = false, physical = false;   // a real keyboard (a TV with a USB keyboard): ours steps aside
   const setShift = v => { shift = v; kb.querySelector('[data-k=shift]').classList.toggle('on', v);
     kb.querySelectorAll('[data-k]').forEach(b => { const k = b.dataset.k; if (/^[a-z]$/.test(k)) b.textContent = v ? k.toUpperCase() : k; }); };
   const show = el => {
@@ -818,7 +818,8 @@ function screenKeyboard() {
     else { let a = el.selectionStart ?? el.value.length; const z = el.selectionEnd ?? a; if (a === z && a > 0) a--; el.setRangeText('', a, z, 'end'); }
     changed(el);
   };
-  document.addEventListener('focusin', e => { if (typable(e.target)) show(e.target); });
+  document.addEventListener('focusin', e => { if (typable(e.target) && !physical) show(e.target); });
+  document.addEventListener('keydown', e => { if (e.isTrusted && !kb.contains(e.target)) { physical = true; hide(); } }, true);
   document.addEventListener('focusout', e => { if (e.target === target) setTimeout(() => { if (!typable(document.activeElement)) hide(); }, 0); });
   kb.addEventListener('pointerdown', e => e.preventDefault());   // a key press mustn't take the focus out of the text box
   kb.addEventListener('mousedown', e => e.preventDefault());
