@@ -27,8 +27,9 @@ header h1{font-size:24px;margin:4px 0 2px;background:linear-gradient(135deg,var(
 nav{display:flex;gap:4px;border-bottom:1px solid var(--line);margin:8px 0 14px;overflow-x:auto}
 nav button{background:none;border:none;border-bottom:3px solid transparent;color:var(--muted);font:inherit;font-weight:600;padding:8px 12px;cursor:pointer;white-space:nowrap}
 nav button.on{color:var(--accent);border-bottom-color:var(--accent)}
-@media(max-width:440px){nav{gap:0}nav button{padding:8px 6px;font-size:14.5px}}
-@media(max-width:345px){nav button{padding:8px 4px;font-size:13px}}
+@media(max-width:440px){nav{gap:0}nav button{padding:8px 4px;font-size:14px}}
+@media(max-width:375px){nav button{padding:8px 3px;font-size:13px}}
+@media(max-width:330px){nav button{padding:8px 2px;font-size:12px}}
 section[hidden],[hidden]{display:none!important}
 form.ask{display:flex;gap:8px;position:sticky;top:0;background:var(--bg);padding:6px 0;z-index:2}
 textarea,input[type=search]{flex:1;width:100%;font:inherit;padding:11px 12px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
@@ -95,6 +96,7 @@ footer{color:var(--muted);font-size:13px;margin-top:26px}
   <button data-tab="ask" class="on">💬 Ask</button>
   <button data-tab="library">📚 Library</button>
   <button data-tab="tools">🧰 Guides</button>
+  <button data-tab="kit">🧮 Tools</button>
   <button data-tab="setup">⚙️ Offline</button>
 </nav>
 
@@ -120,6 +122,11 @@ footer{color:var(--muted);font-size:13px;margin-top:26px}
 
 <section id="tools" hidden>
   <div id="toolgrid"></div>
+</section>
+
+<section id="kit" hidden>
+  <p class="meta">Tools that work with no internet, on this device.</p>
+  <div class="grid" id="kitgrid"></div>
 </section>
 
 <section id="setup" hidden>
