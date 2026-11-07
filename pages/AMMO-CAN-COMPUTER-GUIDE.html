@@ -12,7 +12,7 @@
 </ul>
 </blockquote>
 <hr />
-<nav class="toc" id="contents" aria-label="Contents"><details open><summary>📑 Contents</summary><ol><li><a href="#how-it-works">🧭 How it works</a></li><li><a href="#what-to-buy">🛒 What to buy</a></li><li><a href="#build-it-step-by-step">🔧 Build it, step by step</a></li><li><a href="#packing-the-can">📦 Packing the can</a></li><li><a href="#using-it-in-an-emergency">🆘 Using it in an emergency</a></li><li><a href="#power-how-long-it-runs">🔋 Power: how long it runs</a></li><li><a href="#if-something-goes-wrong">🛠️ If something goes wrong</a></li><li><a href="#every-few-months">🔄 Every few months</a></li><li><a href="#pictures-diagrams">🖼️ Pictures &amp; diagrams</a></li><li><a href="#related-guides">🔗 Related guides</a></li></ol></details></nav>
+<nav class="toc" id="contents" aria-label="Contents"><details open><summary>📑 Contents</summary><ol><li><a href="#how-it-works">🧭 How it works</a></li><li><a href="#what-to-buy">🛒 What to buy</a></li><li><a href="#build-it-step-by-step">🔧 Build it, step by step</a></li><li><a href="#option-a-touchscreen-on-the-pi">🖐️ Option: a touchscreen on the Pi</a></li><li><a href="#packing-the-can">📦 Packing the can</a></li><li><a href="#using-it-in-an-emergency">🆘 Using it in an emergency</a></li><li><a href="#power-how-long-it-runs">🔋 Power: how long it runs</a></li><li><a href="#if-something-goes-wrong">🛠️ If something goes wrong</a></li><li><a href="#every-few-months">🔄 Every few months</a></li><li><a href="#pictures-diagrams">🖼️ Pictures &amp; diagrams</a></li><li><a href="#related-guides">🔗 Related guides</a></li></ol></details></nav>
 <h2 id="how-it-works">🧭 How it works</h2>
 <table>
 <thead>
@@ -86,7 +86,7 @@
 </tr>
 <tr class="odd">
 <td><strong>Screen</strong></td>
-<td>An <strong>old phone or tablet</strong> with a web browser, and its charging cable</td>
+<td>An <strong>old phone or tablet</strong> with a web browser, and its charging cable. Or a <strong>7-inch touchscreen</strong> on the Pi itself (<a href="#option-a-touchscreen-on-the-pi">touchscreen option</a>)</td>
 <td>Any phone works, iPhones too. No phone plan needed</td>
 </tr>
 <tr class="even">
@@ -142,6 +142,7 @@
 <ul>
 <li><strong>Go ahead?</strong> y</li>
 <li><strong>Wi-Fi name</strong> (default <strong>Emergency-Library</strong>) and <strong>password</strong> (it makes one up for you)</li>
+<li><strong>Use a touchscreen on this Pi for the library?</strong> n, unless you added one (see the <a href="#option-a-touchscreen-on-the-pi">touchscreen option</a>)</li>
 <li><strong>Will this Pi ever run on a power bank or battery?</strong> y (on a Pi 5 this lets the library drive get enough power from a power bank)</li>
 </ul></li>
 <li><strong>Write down the Wi-Fi name, password and address</strong> it shows, for example <code>http://192.168.4.1:8096</code>. Say <strong>y</strong> to restart.</li>
@@ -171,6 +172,25 @@
 </ol>
 <h3 id="7-print-the-wi-fi-card">7. Print the Wi-Fi card</h3>
 <p>The setup saved <strong><code>PI-WIFI-CARD.html</code></strong> at the top of the library drive. It has the Wi-Fi name, password, address and the four steps for using the Pi. Plug the drive into your regular computer, open the card and print it (or copy it out by hand). Tape it inside the lid.</p>
+<hr />
+<h2 id="option-a-touchscreen-on-the-pi">🖐️ Option: a touchscreen on the Pi</h2>
+<p>A small touchscreen lets you use the library <strong>right on the Pi, with no phone</strong>. Phones can still join the Pi's Wi-Fi at the same time.</p>
+<p><strong>What to get:</strong> a <strong>7-inch touchscreen made for the Raspberry Pi</strong>, such as the official Raspberry Pi Touch Display 2, or a kit that comes in a case with a fan. Screens that plug into the Pi's flat <strong>ribbon-cable display connector</strong> (called DSI) need no extra cables or drivers. A 7-inch screen is about 7½ × 4¾ inches, so it fits a .50 cal can lying flat.</p>
+<p><strong>Setting it up:</strong></p>
+<ol type="1">
+<li>Connect the screen before the first start (step 3). You can do the whole setup on it; plug in a <strong>USB keyboard</strong> for typing, and you won't need it afterward.</li>
+<li>In step 4, answer <strong>y</strong> to <strong>Use a touchscreen on this Pi for the library?</strong> It suggests <strong>y</strong> by itself when a screen is plugged into the ribbon connector. (Or run the setup with <code>--screen</code>.)</li>
+<li>After the restart, the desktop comes up by itself and, <strong>2–3 minutes later</strong>, the library opens full-size on the screen.</li>
+</ol>
+<p>What changes: the setup <strong>keeps the desktop on</strong> (it normally switches it off) and opens the library in the web browser at every start. <code>--undo</code> removes that too.</p>
+<p><strong>Using it:</strong></p>
+<ul>
+<li><strong>Tap the question box</strong> and a keyboard appears at the bottom of the screen. Tap <strong>⏎ Go</strong> to ask, <strong>⌄ Hide</strong> to put it away; <strong>⇧ ABC</strong> gives one capital letter.</li>
+<li>The browser's <strong>back arrow</strong> (top left) and tabs work as usual, and the guides have their own <strong>← Back</strong>.</li>
+<li><strong>To turn it off:</strong> tap the <strong>raspberry menu</strong> (top left) → <strong>Shutdown</strong> → <strong>Shutdown</strong>. Wait until the green light stays off, then unplug. The power button works too; the screen may ask first.</li>
+<li><strong>Memory:</strong> a 4 GB Pi 4 runs the small "Quick" AI with or without the screen. On an 8 GB Pi the screen leaves plenty for the bigger AI.</li>
+<li><strong>Power:</strong> the screen adds a few watts <em>(rule of thumb)</em>. Turn the Pi off when nobody needs it.</li>
+</ul>
 <hr />
 <h2 id="packing-the-can">📦 Packing the can</h2>
 <ol type="1">
@@ -264,6 +284,14 @@
 <tr class="even">
 <td>Forgot the Wi-Fi password</td>
 <td>Plug the drive into any computer and open <strong><code>PI-WIFI-CARD.html</code></strong></td>
+</tr>
+<tr class="odd">
+<td>The touchscreen shows the desktop but not the library</td>
+<td>Wait 5 minutes: the first start is the slowest. Still nothing: tap the raspberry menu → <strong>Internet</strong> → <strong>Chromium</strong> and type <code>http://127.0.0.1:8095/?touch=1</code></td>
+</tr>
+<tr class="even">
+<td>The touchscreen shows no keyboard</td>
+<td>Open the library with <code>?touch=1</code> at the end of the address, as above. It remembers after that</td>
 </tr>
 <tr class="odd">
 <td>Want home internet on the Pi again (for updates), or the desktop back</td>
