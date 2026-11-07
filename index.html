@@ -29,7 +29,7 @@ nav button{background:none;border:none;border-bottom:3px solid transparent;color
 nav button.on{color:var(--accent);border-bottom-color:var(--accent)}
 @media(max-width:440px){nav{gap:0}nav button{padding:8px 6px;font-size:14.5px}}
 @media(max-width:345px){nav button{padding:8px 4px;font-size:13px}}
-section[hidden]{display:none}
+section[hidden],[hidden]{display:none!important}
 form.ask{display:flex;gap:8px;position:sticky;top:0;background:var(--bg);padding:6px 0;z-index:2}
 textarea,input[type=search]{flex:1;width:100%;font:inherit;padding:11px 12px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
 textarea{min-height:50px;max-height:200px;resize:vertical}

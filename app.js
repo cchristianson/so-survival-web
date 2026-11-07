@@ -35,7 +35,7 @@ async function init() {
     if (store.get('aiModel')) setTimeout(() => initWebLLM(store.get('aiModel'), true), 1500);
     addEventListener('online', renderStatus); addEventListener('offline', renderStatus);
   }
-  renderStatus(); renderTools(); renderSetup(); loadLibrary();
+  renderStatus(); renderTools(); renderSetup(); loadLibrary(); restoreAnswers();
   const tab = location.hash.slice(1); if (tab) document.querySelector(`#tabs [data-tab="${CSS.escape(tab)}"]`)?.click();
   const q0 = new URLSearchParams(location.search).get('q');
   if (q0) { $('q').value = q0; ask(); }
@@ -97,6 +97,7 @@ function bindUI() {
     const b = e.target.closest('button'); if (!b) return;
     document.querySelectorAll('#tabs button').forEach(x => x.classList.toggle('on', x === b));
     document.querySelectorAll('section').forEach(s => s.hidden = s.id !== b.dataset.tab);
+    try { if (location.hash.slice(1) !== b.dataset.tab) history.replaceState(history.state, '', '#' + b.dataset.tab); } catch {}
   });
   const EX = ['How do I purify creek water?', 'Signs of milk fever in a goat', 'How far is Grants Pass on foot?', 'How do I stop bleeding from a deep cut?',
     'How do I can venison safely?', 'How much power can a small creek make?', 'What plants here are poisonous?', 'How do I make soap from wood ash?',
@@ -106,6 +107,12 @@ function bindUI() {
   $('examples').addEventListener('click', e => { if (e.target.classList.contains('ex')) { $('q').value = e.target.textContent; ask(); } });
   $('f').addEventListener('submit', e => { e.preventDefault(); ask(); });
   $('q').addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); ask(); } });
+  // the example questions are only for an empty page: they go as soon as you type (and stay gone once there are answers)
+  $('q').addEventListener('input', () => { $('examples').hidden = !!$('q').value.trim() || !!$('out').children.length; });
+  $('out').addEventListener('click', e => {   // [1] in an answer: scroll to that source without changing the address
+    const a = e.target.closest('a.cite'); if (!a) return;
+    const t = document.getElementById(a.getAttribute('href').slice(1)); if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+  });
   $('libq').addEventListener('input', () => renderLibrary());
   for (const id of ['libout', 'toolgrid']) {
     $(id).addEventListener('toggle', rememberOpen, true);
@@ -128,6 +135,8 @@ async function ask() {
   box.innerHTML = `<div class="q">${esc(q)}</div><div class="meta" id="m${id}"><span class="spin"></span>Searching the library…</div><div class="answer" id="a${id}"></div><div class="sources" id="s${id}" hidden></div>`;
   $('out').prepend(box); $('q').value = ''; $('examples').hidden = true;
   document.querySelector('#tabs [data-tab=ask]').click();
+  if (box.getBoundingClientRect().top > innerHeight * 0.5) box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  saveAnswers();
 
   const nWiki = useWiki ? Math.max(1, Math.round(n / 3)) : 0, nDoc = n - nWiki;
   let docs = [], wiki = [], note = '';
@@ -149,6 +158,7 @@ async function ask() {
   if (!srcs.length) meta.textContent = note ? '' : 'Nothing in the library matched. Try other words (e.g. "bleeding" instead of "cut").';
   else meta.textContent = `${srcs.length} sources found.`;
   meta.textContent += note;
+  saveAnswers();
   if (!useAI) return;
   if (mode === 'drive') {
     if (server.llm === 'off') { meta.innerHTML += ' <span>' + esc(server.llmError || 'The AI is turned off on this device.') + ' You can change the AI in <a href="#" onclick="document.querySelector(\'[data-tab=setup]\').click();return false">⚙️ Settings</a>.</span>'; return; }
@@ -159,6 +169,24 @@ async function ask() {
     if (ai.kind === 'webllm') await answer(id, q, srcs, 'webllm');
     else meta.innerHTML += ' <span>To get written answers, turn on the AI in <a href="#" onclick="document.querySelector(\'[data-tab=setup]\').click();return false">⚙️ Offline</a>.</span>';
   }
+  saveAnswers();
+}
+
+// A copy of the answers lives in sessionStorage (this browser tab only), so if the page reloads in the
+// middle of an answer - phones do that when memory runs short while the AI is working - the answers come
+// back, and one that was cut off says so instead of just vanishing.
+let saveTimer = 0;
+function saveAnswers(soon) {
+  if (soon) { if (!saveTimer) saveTimer = setTimeout(() => { saveTimer = 0; saveAnswers(); }, 1500); return; }
+  try { sessionStorage.setItem('so-answers', JSON.stringify({ n: counter, html: $('out').innerHTML })); } catch {}
+}
+function restoreAnswers() {
+  let s = null; try { s = JSON.parse(sessionStorage.getItem('so-answers') || 'null'); } catch {}
+  if (!s || !s.html || $('out').children.length) return;
+  $('out').innerHTML = s.html; counter = Math.max(counter, s.n || 0); $('examples').hidden = true;
+  $('out').querySelectorAll('.meta').forEach(m => {   // still had a spinner = the page restarted mid-answer
+    if (m.querySelector('.spin')) m.textContent = '⚠️ This answer was cut off: the page restarted before it finished (phones do this when they run short of memory). Ask again, or close other tabs first.';
+  });
 }
 function waitFor(cond) { return new Promise(res => { const t = setInterval(() => { if (cond()) { clearInterval(t); res(); } }, 500); }); }
 
@@ -200,7 +228,7 @@ async function answer(id, q, srcs, kind) {
   const setMeta = (label) => { meta.innerHTML = `<span class="spin"></span>${label} <button class="sec" type="button">Stop</button> <span class="t"></span>`; meta.querySelector('button').onclick = () => { stopped = true; ctrl.abort(); try { ai.engine?.interruptGenerate?.(); } catch {} }; };
   setMeta('The AI is reading the sources…');
   const tick = setInterval(() => { const t = meta.querySelector('.t'); if (t) t.textContent = Math.round((Date.now() - t0) / 1000) + 's'; }, 1000);
-  const add = piece => { if (!text) setMeta('Writing…'); text += piece; out.innerHTML = render(text, id, srcs.length); };
+  const add = piece => { if (!text) setMeta('Writing…'); text += piece; out.innerHTML = render(text, id, srcs.length); saveAnswers(true); };
   try {
     if (kind === 'server') {
       const r = await fetch('llm/v1/chat/completions', { method: 'POST', signal: ctrl.signal, headers: { 'Content-Type': 'application/json' },
