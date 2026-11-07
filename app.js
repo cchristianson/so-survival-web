@@ -36,7 +36,8 @@ async function init() {
     addEventListener('online', renderStatus); addEventListener('offline', renderStatus);
   }
   renderStatus(); renderTools(); renderKit(); renderSetup(); loadLibrary(); restoreAnswers();
-  const tab = location.hash.slice(1); if (tab) document.querySelector(`#tabs [data-tab="${CSS.escape(tab)}"]`)?.click();
+  openFromHash(); restoreScroll(location.hash.slice(1).split(':')[0] || 'ask');
+  addEventListener('pagehide', saveScroll);
   const q0 = new URLSearchParams(location.search).get('q');
   if (q0) { $('q').value = q0; ask(); }
 }
@@ -97,8 +98,10 @@ function bindUI() {
     const b = e.target.closest('button'); if (!b) return;
     document.querySelectorAll('#tabs button').forEach(x => x.classList.toggle('on', x === b));
     document.querySelectorAll('section').forEach(s => s.hidden = s.id !== b.dataset.tab);
-    try { if (location.hash.slice(1) !== b.dataset.tab) history.replaceState(history.state, '', '#' + b.dataset.tab); } catch {}
+    try { if (location.hash.slice(1).split(':')[0] !== b.dataset.tab) history.replaceState(history.state, '', '#' + b.dataset.tab); } catch {}
+    const top = document.querySelector('header').getBoundingClientRect().bottom + scrollY; if (scrollY > top) scrollTo(0, top);   // the new tab starts at its top (the bar itself stays put)
   });
+  document.addEventListener('click', onLinkClick, true);
   const EX = ['How do I purify creek water?', 'Signs of milk fever in a goat', 'How far is Grants Pass on foot?', 'How do I stop bleeding from a deep cut?',
     'How do I can venison safely?', 'How much power can a small creek make?', 'What plants here are poisonous?', 'How do I make soap from wood ash?',
     'How long should I shelter after fallout?', 'How do I tell a chanterelle from a look-alike?',
@@ -128,7 +131,8 @@ function bindUI() {
 
 // ------------------------------------------------------------------ asking
 let counter = 0;
-async function ask() {
+async function ask() { writing++; try { await askOnce(); } finally { writing--; } }
+async function askOnce() {
   const q = $('q').value.trim(); if (!q) return;
   const id = ++counter, n = +$('nsrc').value, useAI = $('useai').checked, useWiki = $('usewiki').checked;
   const box = document.createElement('div'); box.className = 'qa';
@@ -210,7 +214,7 @@ function renderSources(id, srcs) {
   if (!srcs.length) return;
   const el = $('s' + id); el.hidden = false;
   el.innerHTML = '<h4>Sources</h4>' + srcs.map((s, i) => `<div class="src" id="src${id}-${i + 1}"><div class="num">${i + 1}</div><div>
-    <a href="${esc(s.link)}" target="_blank" rel="noopener">${s.kind === 'zim' ? '🌐' : '📄'} ${esc(s.title)}</a> <span class="where">${esc(s.where)}</span>
+    <a href="${esc(s.link)}">${s.kind === 'zim' ? '🌐' : '📄'} ${esc(s.title)}</a> <span class="where">${esc(s.where)}</span>
     ${mode === 'public' && s.kind === 'doc' && !s.open ? '<span class="tag">title only — opens the original</span>' : ''}
     <div class="snip">${esc(s.snippet)}</div></div></div>`).join('');
 }
@@ -284,7 +288,7 @@ function showBest(id, srcs, q) {
   const text = focus(around(s), qt, 110, QUANTITY.test(q));
   const marked = text.split(/([\p{L}\p{N}][\p{L}\p{N}'’-]*)/u)
     .map((p, k) => k % 2 && [...qterms(p)].some(t => qt.has(t)) ? `<mark>${esc(p)}</mark>` : esc(p)).join('');
-  $('a' + id).innerHTML = `<div class="best"><div class="bh">📖 Best match: <a href="${esc(s.link)}" target="_blank" rel="noopener">${esc(s.title)}</a> <a class="cite" href="#src${id}-${i}">[${i}]</a></div><p>${marked}</p></div>`;
+  $('a' + id).innerHTML = `<div class="best"><div class="bh">📖 Best match: <a href="${esc(s.link)}">${esc(s.title)}</a> <a class="cite" href="#src${id}-${i}">[${i}]</a></div><p>${marked}</p></div>`;
 }
 
 async function answer(id, q, srcs, kind) {
@@ -472,31 +476,41 @@ let LIB = null;
 async function loadLibrary() {
   if (mode === 'drive') { try { LIB = (await (await fetch('api/docs')).json()).map(d => ({ t: d.title, f: d.folder, d: d.desc, u: '/lib/' + d.path.split('/').map(encodeURIComponent).join('/'), o: 1 })); } catch { LIB = []; } }
   else { await waitFor(() => workerSearchable || workerInfo.error); LIB = await new Promise(res => { docsWaiter = res; worker.postMessage({ type: 'docs' }); }); }
-  $('libnote').innerHTML = mode === 'drive' ? 'Everything here is on this drive. Click a title to open it.'
+  $('libnote').innerHTML = mode === 'drive' ? 'Every book, manual, map and program on this drive, on the same shelves as the guides. Tap a title to open it; Back brings you here.'
     : 'Documents marked <span class="tag">full text</span> are searchable inside; the rest are searchable by title and open on the original publisher’s website (they can’t be republished here). The drive edition has every file.';
   renderLibrary();
 }
-// The library and the guides share one set of "shelves", in the order you'd reach for them.
+// The books and the guides share one set of "shelves", in the order you'd reach for them.
+// The same groups, in the same order, are in docs/START-HERE.md ("Guides by subject"), which the guide
+// pages use for their "Guides › group" bar and Previous / Next links; tools/guide_nav.py --check keeps them in step.
 const SHELVES = [
-  ['start', '🧭', 'Start here', 'Emergency finder, A–Z index, the local quick reference, starting the library on any device, the ammo-can computer'],
-  ['health', '🩹', 'Health & medicine', 'Injuries, medicines, childbirth and children, sanitation and disease'],
+  ['start', '🧭', 'Start here', 'Emergency finder, A–Z index, Illinois Valley quick reference'],
+  ['health', '🩹', 'Health & medicine', 'Injuries, medicines, childbirth and children, sanitation, garbage and disease'],
   ['water', '💧', 'Water', 'Purifying water, wells, pumps, springs and cisterns'],
-  ['food', '🍞', 'Food', 'Food when it is scarce, cooking from scratch, preserving, storing, seeds, mushrooms, hunting and fishing'],
+  ['food', '🍞', 'Food', 'Food when it is scarce, cooking from scratch, preserving, root cellars, seeds'],
+  ['wild', '🌲', 'Living off the land', 'Hunting, trapping and fishing, wild plants and mushrooms, skills of the valley’s first peoples'],
   ['animals', '🐐', 'Animals', 'Rabbits, chickens, goats, dairy, bees, horses and draft animals'],
-  ['shelter', '🏠', 'Shelter, heat & power', 'Building and repair, natural building, mortar, concrete and roads, firewood, off-grid power, storing energy, candles and lamps, fuel, engines'],
-  ['making', '🛠️', 'Making & repair', 'Practical math and measuring, household make-do, blacksmithing, clothing and leather, paper and ink, bicycles and carts, electronics'],
-  ['comms', '📡', 'Communication, community & protection', 'Radio, signals and Morse, maps, navigation and weather, organizing neighbors and barter, protecting your home'],
-  ['disaster', '🔥', 'Disasters', 'What to expect in each disaster, wildfire, earthquakes, nuclear fallout, EMP and solar storms'],
-  ['other', '📁', 'Programs & other files', 'Apps, readers and everything else on the drive']];
-const FOLDER_SHELF = { Guides: 'start', 'Southern-Oregon': 'start', Manuals: 'start', 'Local-Contacts': 'start',
+  ['shelter', '🏠', 'Shelter & building', 'Repairs and building, natural building, mortar, concrete and roads'],
+  ['power', '💡', 'Heat, light & power', 'Firewood, fuel, off-grid power, storing energy, candles and lamps, engines and generators'],
+  ['making', '🛠️', 'Making & repair', 'Practical math, household make-do, blacksmithing, clothing and leather, paper and ink, electronics'],
+  ['travel', '🥾', 'Getting around', 'Travel on foot, bicycles and carts, maps, navigation and weather'],
+  ['comms', '📡', 'Radio, community & protection', 'Radio, signals and Morse, organizing neighbors and barter, protecting your home'],
+  ['disaster', '🚨', 'Disasters', 'What to expect, wildfire, earthquakes, nuclear fallout, EMP and solar storms'],
+  ['library', '💾', 'Using this library', 'Starting it on any device, the ammo-can computer, getting the whole library, Wikipedia, apps and the offline AI'],
+  ['other', '📁', 'Programs & other files', 'Everything else on the drive']];
+const FOLDER_SHELF = { Guides: 'start', 'Southern-Oregon': 'start', 'Local-Contacts': 'start',
   Medical: 'health', 'Sanitation-Hygiene': 'health', 'Children-Learning': 'health',
   Water: 'water', 'Water-Purification': 'water', 'Water-Wells-Pumps': 'water',
-  'Food-Security': 'food', 'Food-From-Scratch': 'food', 'Food-Storage': 'food', 'Gardening-Food': 'food', 'Wild-Plants': 'food', Mushrooms: 'food', Hunting: 'food', Trapping: 'food', Fishing: 'food',
+  'Food-Security': 'food', 'Food-From-Scratch': 'food', 'Food-Storage': 'food', 'Gardening-Food': 'food',
+  'Wild-Plants': 'wild', Mushrooms: 'wild', Hunting: 'wild', Trapping: 'wild', Fishing: 'wild', 'Native-Skills': 'wild',
   Animals: 'animals', 'Small-Livestock': 'animals', 'Horses-Draft-Animals': 'animals',
-  'Shelter-Building': 'shelter', 'Natural-Building': 'shelter', Firewood: 'shelter', 'Off-Grid-Power': 'shelter', Fuel: 'shelter', 'Engines-Motors': 'shelter',
-  'Homestead-Skills': 'making', 'Math-Measuring': 'making', 'Blacksmithing-Tools': 'making', 'Clothing-Leather': 'making', 'Bicycles-Carts': 'making', 'Electronics-Repair': 'making',
-  'Comms-Signals': 'comms', 'Home-Security': 'comms', 'Radio-Weather': 'comms', 'Navigation-Weather': 'comms', 'Community-Barter': 'comms', Maps: 'comms', 'Radio-Communications': 'comms',
-  Wildfire: 'disaster', 'Disaster-Scenarios': 'disaster', 'Earthquake-Tsunami': 'disaster', 'Nuclear-Radiation': 'disaster', 'EMP-Solar-Storms': 'disaster' };
+  'Shelter-Building': 'shelter', 'Natural-Building': 'shelter',
+  Firewood: 'power', 'Off-Grid-Power': 'power', Fuel: 'power', 'Engines-Motors': 'power',
+  'Homestead-Skills': 'making', 'Math-Measuring': 'making', 'Blacksmithing-Tools': 'making', 'Clothing-Leather': 'making', 'Electronics-Repair': 'making',
+  'Travel-On-Foot': 'travel', 'Bicycles-Carts': 'travel', 'Navigation-Weather': 'travel', Maps: 'travel', OsmAnd: 'travel', 'Walking-Routes': 'travel',
+  'Comms-Signals': 'comms', 'Home-Security': 'comms', 'Radio-Weather': 'comms', 'Community-Barter': 'comms', 'Radio-Communications': 'comms',
+  Wildfire: 'disaster', 'Disaster-Scenarios': 'disaster', 'Earthquake-Tsunami': 'disaster', 'Nuclear-Radiation': 'disaster', 'EMP-Solar-Storms': 'disaster',
+  Manuals: 'library', 'AI-Offline': 'library', 'Kiwix-Reader': 'library', 'Phone-Apps': 'library', Wikipedia: 'library' };
 const OUR_GUIDES = 'Our guides';
 let guideShelf = null;              // guide page file name -> shelf key
 function shelfOf(folder, url) {     // -> [shelf key, sub-group label]
@@ -504,7 +518,7 @@ function shelfOf(folder, url) {     // -> [shelf key, sub-group label]
   let u = url || ''; try { u = decodeURIComponent(u); } catch {}
   if (guideShelf[u]) return [guideShelf[u], OUR_GUIDES];
   const seg = folder.split('\\').filter(Boolean);
-  if (!seg.length || (seg.length === 1 && /^(\(top folder\)|AI-Offline|Kiwix-Reader|OsmAnd|Phone-Apps|Manuals|Medical)$/.test(seg[0]))) return ['start', 'How to use this drive'];
+  if (!seg.length || (seg.length === 1 && /^(\(top folder\)|AI-Offline|Kiwix-Reader|Phone-Apps|Manuals)$/.test(seg[0]))) return ['library', 'How to use this drive'];
   if (seg[0] === 'Southern-Oregon' && seg.length === 1) return ['start', 'Local reference'];
   if (seg[0] === 'Southern-Oregon') seg.shift();
   if (seg[0] === 'Guides') return ['start', OUR_GUIDES];
@@ -534,7 +548,7 @@ function renderLibrary() {
     const sub = shelves.get(k) || shelves.get('other');
     if (!sub.has(g)) sub.set(g, []); sub.get(g).push(d);
   }
-  const doc = d => `<div class="doc"><a href="${esc(d.u)}" target="_blank" rel="noopener">${esc(d.t)}</a>${mode === 'public' && d.o ? '<span class="tag">full text</span>' : ''}<div class="d">${esc(d.d)}</div></div>`;
+  const doc = d => `<div class="doc"><a href="${esc(d.u)}">${esc(d.t)}</a>${mode === 'public' && d.o ? '<span class="tag">full text</span>' : ''}<div class="d">${esc(d.d)}</div></div>`;
   const filtering = words.length > 0;
   const html = SHELVES.map(([k, icon, name, blurb]) => {
     const subs = [...shelves.get(k)].sort((a, b) => (rank(a[0]) - rank(b[0]) || a[0].localeCompare(b[0])));
@@ -544,11 +558,10 @@ function renderLibrary() {
       : subs.map(([g, ds]) => `<details class="sub" data-k="lib:${esc(k)}:${esc(g)}"${filtering || isOpen('lib:' + k + ':' + g, false) ? ' open' : ''}><summary>${esc(g)} <span class="n">${ds.length}</span></summary>${ds.map(doc).join('')}</details>`).join('');
     return `<details class="shelf" data-k="lib:${k}"${filtering || isOpen('lib:' + k, false) ? ' open' : ''}><summary><span class="ic">${icon}</span><span class="nm">${esc(name)} <span class="n">${n}</span><small>${esc(blurb)}</small></span></summary><div class="shelfbody">${inner}</div></details>`;
   }).join('');
-  const P = guidePaths();
-  const jump = `<p class="meta">No search needed: <a href="${P.az}" target="_blank" rel="noopener"><b>📇 Subject index A–Z</b></a> · <a href="${P.sos}" target="_blank" rel="noopener"><b>🆘 Emergency finder</b></a></p>`;
-  $('libout').innerHTML = html ? jump + `<div class="openall"><button class="link" data-all="1">Open all</button> · <button class="link" data-all="0">Close all</button>${filtering ? ` <span class="meta">${items.length} match${items.length === 1 ? '' : 'es'}</span>` : ''}</div>` + html
+  $('libout').innerHTML = html ? `<div class="openall"><button class="link" data-all="1">Open all</button> · <button class="link" data-all="0">Close all</button>${filtering ? ` <span class="meta">${items.length} match${items.length === 1 ? '' : 'es'}</span>` : ''}</div>` + html
     : '<p class="meta">Nothing matches. Try fewer or shorter words.</p>';
   if (filtering) $('libout').querySelectorAll('details').forEach(d => d.dataset.filtering = '1');
+  restoreScroll('library');
 }
 // the Tools tab: calculators and other things you use rather than read
 const TOOL_CARDS = [['calc', '🧮 Calculator', 'Everyday sums on a big screen: + − × ÷, percent, and a history of your answers.'],
@@ -558,68 +571,143 @@ const TOOL_CARDS = [['calc', '🧮 Calculator', 'Everyday sums on a big screen: 
   ['walk', '🥾 Routes: walk, bike, drive', 'From Cave Junction to 359 Oregon and N. California cities: walking days, bicycle riding hours and normal driving times, with turn-by-turn directions and GPS tracks.']];
 function renderKit() {
   const P = guidePaths();
-  $('kitgrid').innerHTML = TOOL_CARDS.filter(([k]) => P[k]).map(([k, t, d]) => `<a class="tool" href="${P[k]}" target="_blank" rel="noopener"><b>${t}</b><span>${d}</span></a>`).join('');
+  $('kitgrid').innerHTML = TOOL_CARDS.filter(([k]) => P[k]).map(([k, t, d]) => `<a class="tool" href="${P[k]}"><b>${t}</b><span>${d}</span></a>`).join('');
 }
-const GUIDE_CARDS = { // guide cards, by shelf (same order as the Library tab)
+const GUIDE_CARDS = { // guide cards, by shelf (same groups and order as SHELVES and docs/START-HERE.md)
   start: [['sos', '🆘 Emergency finder', 'Something happening right now? Bleeding, not breathing, snakebite, a baby coming, fire, fallout — straight to the right page.'],
     ['az', '📇 Subject index A–Z', 'Look anything up like the index at the back of a book — no search or AI needed.'],
-    ['iv', '🏔️ Illinois Valley quick reference', 'Alerts, weather radio, ham repeaters, local contacts, evacuation levels, frost dates, hunting units, key distances.'],
-    ['device', '📱 Start on any device', 'Run the library on a computer, an old phone or tablet, or share it to iPhones over Wi-Fi.'],
-    ['ammocan', '🧰 Ammo-can library computer', 'A Raspberry Pi kept in a sealed steel ammo can, safe from EMP. Open it, plug in power, and every phone nearby gets the library and the AI over its own Wi-Fi.'],
-    ['get', '💾 Get the whole library', 'Put every book, all of Wikipedia, offline maps and an AI that needs no internet on a USB drive. Point-and-click installer for Windows, Mac and Linux.'],
-    ['all', '📚 Everything on the drive', 'The full index of every file, archive and program.']],
+    ['iv', '🏔️ Illinois Valley quick reference', 'Alerts, weather radio, ham repeaters, local contacts, evacuation levels, frost dates, hunting units, key distances.']],
   health: [['fieldcare', '🩹 Injuries, no help coming', 'Bleeding, wounds, burns, fractures, snakebite, nursing someone for weeks'],
     ['med', '💊 Medical & found medicines', 'What medical books there are and how to use found or expired medicines safely.'],
     ['birth', '👶 Childbirth & small kids', 'Birth with no hospital, newborn care, child illness, teaching kids at home'],
-    ['sanit', '🧼 Sanitation & disease', 'Toilets with no sewer, handwashing, laundry, stopping outbreaks, safe burial']],
+    ['sanit', '🧼 Sanitation, waste & disease', 'Toilets with no sewer, handwashing, laundry, garbage and compost, stopping outbreaks, safe burial']],
   water: [['purify', '🚰 Water purification', 'Settling, cloth, alum and ash, biosand and clay-pot filters, charcoal done right, boiling, bleach and pool shock, sunlight, solar stills, tests.'],
     ['wells', '💧 Wells, pumps, springs & cisterns', 'Your well records, running the well pump on a generator or solar, hand and rope pumps, ram pumps, spring boxes, cisterns, testing.']],
   food: [['scarce', '🥫 Food when it is scarce', 'A year of food, fair rationing, deficiency diseases, babies, foraging calendar'],
     ['food', '🌾 Food from scratch', 'Acorn and grain flour, masa, sourdough, salt, maple syrup, lard — then bread, tortillas, pasta, hardtack and beans.'],
     ['preserve', '🫙 Preserving food', 'Safe canning at our elevation, drying, smoking, curing, fermenting, eggs'],
     ['cellar', '🥔 Root cellars & food storage', 'Cellars, pits and buried barrels for our warm ground, what each crop needs, cooling without power, sun drying, curing meat, kraut and eggs.'],
-    ['seeds', '🌱 Your seed bank', 'Planting calendar for all 39 kit varieties, storing and testing seed, which varieties cross, saving seed from fruits, grafting fruit trees.'],
+    ['seeds', '🌱 Your seed bank', 'Planting calendar for all 39 kit varieties, storing and testing seed, which varieties cross, saving seed from fruits, grafting fruit trees.']],
+  wild: [['huntfish', '🦌 Hunting, trapping & fishing', 'Local game, field dressing in hot weather, snares, nets, game diseases'],
     ['mush', '🍄 Mushrooms', 'Local deadly mushrooms and their look-alikes, spore prints, what to do after a bad meal, good edibles, drying, and growing shiitake and oysters.'],
-    ['huntfish', '🦌 Hunting, trapping & fishing', 'Local game, field dressing in hot weather, snares, nets, game diseases']],
+    ['native', '🌰 Skills of the valley’s first peoples', 'How the Takelma and their neighbors lived here year-round: acorns, camas, salmon, cordage and baskets, houses, and tending the land with fire.']],
   animals: [['smallstock', '🐇 Rabbits & chickens', 'Meat and eggs on little bought feed: housing, breeding, hatching, butchering'],
     ['dairy', '🐐 Goats, dairy & bees', 'Milk goats, butter, cheese and homemade rennet, beekeeping and swarms'],
     ['horse', '🐴 Horses, mules & draft animals', 'Choosing, feeding and watering, teeth and worms, hoof care and shoeing, saddling and riding, packing, and harness work.']],
   shelter: [['shelter', '🏠 Shelter & building', 'Roof leaks, one warm room, rot, log and earth building, quake and fire hardening'],
     ['natural', '🧱 Natural building', 'Cob, straw bale, light clay, hempcrete, earth and lime plasters, making lime, thatch'],
-    ['masonry', '🏗️ Mortar, concrete & roads', 'Making lime, mortar and concrete by hand, curing, concrete without store cement, why asphalt cannot be made at home, and keeping gravel roads and driveways good.'],
-    ['firewood', '🪵 Firewood', 'Heat value of local trees, how much you need, felling and bucking safely, splitting, drying in a wet climate, chimneys, ashes, coppicing.'],
-    ['offgrid', '☀️ Off-grid power', 'Solar sizing for our sun, salvaged panels and batteries, wiring safely, creek hydro'],
-    ['storage', '🧱 Storing energy without batteries', 'Why gravity batteries hold so little, and what works: water tanks, hot water, masonry heaters, ice and cold water, timing the work.'],
-    ['light', '🕯️ Candles, lamps & lamp oil', 'Dipped and moulded candles, wicks, rushlights, which oils burn, homemade lamps, more light from a small flame, and fire safety.'],
+    ['masonry', '🏗️ Mortar, concrete & roads', 'Making lime, mortar and concrete by hand, curing, concrete without store cement, why asphalt cannot be made at home, and keeping gravel roads and driveways good.']],
+  power: [['firewood', '🪵 Firewood', 'Heat value of local trees, how much you need, felling and bucking safely, splitting, drying in a wet climate, chimneys, ashes, coppicing.'],
     ['fuel', '⛽ Fuel: storing, reviving, finding', 'How long gas and diesel keep, testing and rescuing old fuel, diesel care, and pumping fuel from station tanks, drums and vehicles with no power.'],
+    ['offgrid', '☀️ Off-grid power', 'Solar sizing for our sun, salvaged panels and batteries, wiring safely, creek hydro'],
+    ['storage', '🔋 Storing energy without batteries', 'Why gravity batteries hold so little, and what works: water tanks, hot water, masonry heaters, ice and cold water, timing the work.'],
+    ['light', '🕯️ Candles, lamps & lamp oil', 'Dipped and moulded candles, wicks, rushlights, which oils burn, homemade lamps, more light from a small flame, and fire safety.'],
     ['eng', '🔧 Engines, motors & generators', 'Why a small engine will not start, carburetors, chainsaw filing, generator care, testing and rewinding motors, turning motors into generators, and reusing a generator for water or wind when the fuel is gone.']],
   making: [['math', '📐 Practical math & measuring', 'Measuring with no tools, square corners, area and volume, slopes and roof pitch, heights and distances, levers, electricity and water math.'],
     ['md', '🧰 Make-Do household guide', 'Cleaners, laundry soap, tooth powder, fire starters, oil lamps, glue, mending, plumbing, electronics repair and salvage.'],
     ['smith', '⚒️ Blacksmithing & hand tools', 'A simple forge, which scrap steel to use, heat colors, hardening and tempering, making chisels, tongs and knives, axe handles and sharpening.'],
     ['clothing', '🧵 Clothing, leather & shoes', 'Dressing for wet winters, mending, wool to yarn, tanning, shoe repair'],
-    ['paper', '📜 Paper, ink & toilet paper', 'Making paper by hand, iron-gall and soot inks, pens, pencils and slates, and toilet paper alternatives with safe washing.'],
-    ['bikes', '🚲 Bicycles & carts', 'Hauling without fuel: loads, trailers, handcarts, bike repair with few tools']],
+    ['paper', '📜 Paper, ink & toilet paper', 'Making paper by hand, iron-gall and soot inks, pens, pencils and slates, and toilet paper alternatives with safe washing.']],
+  travel: [['onfoot', '🎒 On foot: backpacking & travel', 'Planning a trip, how much to carry, packs, feet and blisters, water and food on the move, safe camps, river crossings, snow, and staying safe on the road.'],
+    ['bikes', '🚲 Bicycles & carts', 'Hauling without fuel: loads, trailers, handcarts, bike repair with few tools'],
+    ['nav', '🧭 Navigation & weather', 'Map and compass, finding north without one, reading the sky, lightning']],
   comms: [['radio', '📻 Emergency radio guide', 'How ham, CB, GMRS and shortwave work, and emergency communication.'],
     ['signals', '📡 Signals & Morse code', 'Morse by ear, signal mirrors, ground-to-air codes, runners and message forms'],
-    ['nav', '🧭 Navigation & weather', 'Map and compass, finding north without one, reading the sky, lightning'],
     ['community', '🤝 Community & barter', 'Organizing neighbors, fair trade, keeping watch, settling disputes'],
-    ['defense', '🛡️ Home & property protection', 'Defensive only: not being a target, doors and locks, lighting and fences, early warning, a safe room, watch rosters, the law on self-defense.']],
+    ['defense', '🛡️ Home & property protection', 'Defensive only: not being a target, doors and locks, barriers and fences, early warning, a safe room, watch rosters, the law on self-defense.']],
   disaster: [['expect', '⏳ What to expect: scenarios & timelines', 'Wildfire, the big quake, storms, heat, long blackouts, pandemic, shortages, EMP, fallout — what happens hour by hour, week by week, and what to do.'],
+    ['wildfire', '🔥 Wildfire with no fire department', 'Reading fire danger, hardening the house, clearing with hand tools, water with no power, stay or go, the fire front, and the days after.'],
     ['nuke', '☢️ Nuclear fallout', 'Where to shelter, how long (the 7-10 rule), shielding, potassium iodide doses, decontamination, food, water and livestock.'],
     ['emp', '⚡ EMP, solar storms & Faraday cages', 'What tests really showed, unplugging, building and testing a Faraday container, solar-storm warnings, checking and repairing gear after.']],
+  library: [['device', '📱 Start on any device', 'Run the library on a computer, an old phone or tablet, or share it to iPhones over Wi-Fi.'],
+    ['ammocan', '🧰 Ammo-can library computer', 'A Raspberry Pi kept in a sealed steel ammo can, safe from EMP. Open it, plug in power, and every phone nearby gets the library and the AI over its own Wi-Fi.'],
+    ['get', '💾 Get the whole library', 'Put every book, all of Wikipedia, offline maps and an AI that needs no internet on a USB drive. Point-and-click installer for Windows, Mac and Linux.'],
+    ['all', '📚 Everything on the drive', 'The full index of every file, archive and program.']],
 };
+// Every page the cards link to: key -> the guide's file name. On the website it is pages/NAME.html; on the
+// drive Southern-Oregon/NAME.html, unless DRIVE_AT / WEB_AT say otherwise (null = not in that edition).
+const PAGES = { sos: 'EMERGENCY-FINDER', az: 'SUBJECT-INDEX', iv: 'ILLINOIS-VALLEY-START-HERE',
+  fieldcare: 'FIELD-CARE-GUIDE', med: 'Medical-READ-ME-FIRST', birth: 'CHILDBIRTH-CHILDREN-GUIDE', sanit: 'SANITATION-GUIDE',
+  purify: 'WATER-PURIFICATION-GUIDE', wells: 'WATER-WELLS-GUIDE',
+  scarce: 'FOOD-SECURITY-GUIDE', food: 'FOOD-FROM-SCRATCH-GUIDE', preserve: 'PRESERVING-FOOD-GUIDE', cellar: 'ROOT-CELLAR-GUIDE', seeds: 'SEED-BANK-GUIDE',
+  huntfish: 'HUNTING-TRAPPING-FISHING-GUIDE', mush: 'MUSHROOM-GUIDE', native: 'NATIVE-SKILLS-GUIDE',
+  smallstock: 'RABBITS-CHICKENS-GUIDE', dairy: 'GOATS-DAIRY-BEES-GUIDE', horse: 'HORSE-GUIDE',
+  shelter: 'SHELTER-BUILDING-GUIDE', natural: 'NATURAL-BUILDING-GUIDE', masonry: 'MASONRY-ROADS-GUIDE',
+  firewood: 'FIREWOOD-GUIDE', fuel: 'FUEL-GUIDE', offgrid: 'OFF-GRID-POWER-GUIDE', storage: 'STORING-ENERGY-GUIDE', light: 'LIGHTING-GUIDE', eng: 'ENGINES-AND-MOTORS-GUIDE',
+  math: 'PRACTICAL-MATH-GUIDE', md: 'MAKE-DO-HOUSEHOLD-GUIDE', smith: 'BLACKSMITHING-GUIDE', clothing: 'CLOTHING-LEATHER-GUIDE', paper: 'PAPER-INK-GUIDE',
+  onfoot: 'ON-FOOT-GUIDE', bikes: 'BICYCLES-CARTS-GUIDE', nav: 'NAVIGATION-WEATHER-GUIDE',
+  radio: 'RADIO-GUIDE', signals: 'SIGNALS-MORSE-GUIDE', community: 'COMMUNITY-BARTER-GUIDE', defense: 'HOME-DEFENSE-GUIDE',
+  expect: 'WHAT-TO-EXPECT-GUIDE', wildfire: 'WILDFIRE-GUIDE', nuke: 'NUCLEAR-FALLOUT-GUIDE', emp: 'EMP-GUIDE',
+  device: 'START-ON-ANY-DEVICE', ammocan: 'AMMO-CAN-COMPUTER-GUIDE', get: 'GET-THE-LIBRARY', all: 'README',
+  calc: 'CALCULATOR', sci: 'CALCULATOR', conv: 'UNIT-CONVERTER', pill: 'PILL-IDENTIFIER', walk: 'WALKING-ROUTES' };
+const DRIVE_AT = { sos: 'EMERGENCY-FINDER.html', az: 'SUBJECT-INDEX.html', med: 'Medical/READ-ME-FIRST.html', radio: 'Manuals/Radio-Communications/RADIO-GUIDE.html',
+  device: 'START-ON-ANY-DEVICE.html', ammocan: 'AMMO-CAN-COMPUTER-GUIDE.html', get: null, all: 'README.html',
+  calc: 'CALCULATOR.html#basic', sci: 'CALCULATOR.html#sci', conv: 'UNIT-CONVERTER.html',
+  pill: 'Medical/Pill-Identifier/PILL-IDENTIFIER.html', walk: 'Southern-Oregon/Walking-Routes/WALKING-ROUTES.html' };
+const WEB_AT = { all: null, calc: 'pages/CALCULATOR.html#basic', sci: 'pages/CALCULATOR.html#sci',
+  pill: 'tools/pill-identifier/PILL-IDENTIFIER.html', walk: 'tools/walking-routes/WALKING-ROUTES.html' };
+let pathCache = null;
 function guidePaths() {
-  return mode === 'drive'
-    ? { iv: '/lib/Southern-Oregon/ILLINOIS-VALLEY-START-HERE.html', md: '/lib/Southern-Oregon/MAKE-DO-HOUSEHOLD-GUIDE.html', food: '/lib/Southern-Oregon/FOOD-FROM-SCRATCH-GUIDE.html', clothing: '/lib/Southern-Oregon/CLOTHING-LEATHER-GUIDE.html', paper: '/lib/Southern-Oregon/PAPER-INK-GUIDE.html', birth: '/lib/Southern-Oregon/CHILDBIRTH-CHILDREN-GUIDE.html', dairy: '/lib/Southern-Oregon/GOATS-DAIRY-BEES-GUIDE.html', huntfish: '/lib/Southern-Oregon/HUNTING-TRAPPING-FISHING-GUIDE.html', preserve: '/lib/Southern-Oregon/PRESERVING-FOOD-GUIDE.html', offgrid: '/lib/Southern-Oregon/OFF-GRID-POWER-GUIDE.html', storage: '/lib/Southern-Oregon/STORING-ENERGY-GUIDE.html', light: '/lib/Southern-Oregon/LIGHTING-GUIDE.html', sanit: '/lib/Southern-Oregon/SANITATION-GUIDE.html', natural: '/lib/Southern-Oregon/NATURAL-BUILDING-GUIDE.html', masonry: '/lib/Southern-Oregon/MASONRY-ROADS-GUIDE.html', smallstock: '/lib/Southern-Oregon/RABBITS-CHICKENS-GUIDE.html', shelter: '/lib/Southern-Oregon/SHELTER-BUILDING-GUIDE.html', bikes: '/lib/Southern-Oregon/BICYCLES-CARTS-GUIDE.html', community: '/lib/Southern-Oregon/COMMUNITY-BARTER-GUIDE.html', fieldcare: '/lib/Southern-Oregon/FIELD-CARE-GUIDE.html', scarce: '/lib/Southern-Oregon/FOOD-SECURITY-GUIDE.html', nav: '/lib/Southern-Oregon/NAVIGATION-WEATHER-GUIDE.html', signals: '/lib/Southern-Oregon/SIGNALS-MORSE-GUIDE.html', firewood: '/lib/Southern-Oregon/FIREWOOD-GUIDE.html', purify: '/lib/Southern-Oregon/WATER-PURIFICATION-GUIDE.html', wells: '/lib/Southern-Oregon/WATER-WELLS-GUIDE.html', emp: '/lib/Southern-Oregon/EMP-GUIDE.html', seeds: '/lib/Southern-Oregon/SEED-BANK-GUIDE.html', cellar: '/lib/Southern-Oregon/ROOT-CELLAR-GUIDE.html', horse: '/lib/Southern-Oregon/HORSE-GUIDE.html', fuel: '/lib/Southern-Oregon/FUEL-GUIDE.html', smith: '/lib/Southern-Oregon/BLACKSMITHING-GUIDE.html', mush: '/lib/Southern-Oregon/MUSHROOM-GUIDE.html', nuke: '/lib/Southern-Oregon/NUCLEAR-FALLOUT-GUIDE.html', eng: '/lib/Southern-Oregon/ENGINES-AND-MOTORS-GUIDE.html', med: '/lib/Medical/READ-ME-FIRST.html', radio: '/lib/Manuals/Radio-Communications/RADIO-GUIDE.html', pill: '/lib/Medical/Pill-Identifier/PILL-IDENTIFIER.html', walk: '/lib/Southern-Oregon/Walking-Routes/WALKING-ROUTES.html', device: '/lib/START-ON-ANY-DEVICE.html', ammocan: '/lib/AMMO-CAN-COMPUTER-GUIDE.html', expect: '/lib/Southern-Oregon/WHAT-TO-EXPECT-GUIDE.html', defense: '/lib/Southern-Oregon/HOME-DEFENSE-GUIDE.html', conv: '/lib/UNIT-CONVERTER.html', calc: '/lib/CALCULATOR.html#basic', sci: '/lib/CALCULATOR.html#sci', math: '/lib/Southern-Oregon/PRACTICAL-MATH-GUIDE.html', sos: '/lib/EMERGENCY-FINDER.html', az: '/lib/SUBJECT-INDEX.html', all: '/lib/README.html' }
-    : { iv: 'pages/ILLINOIS-VALLEY-START-HERE.html', md: 'pages/MAKE-DO-HOUSEHOLD-GUIDE.html', food: 'pages/FOOD-FROM-SCRATCH-GUIDE.html', clothing: 'pages/CLOTHING-LEATHER-GUIDE.html', paper: 'pages/PAPER-INK-GUIDE.html', birth: 'pages/CHILDBIRTH-CHILDREN-GUIDE.html', dairy: 'pages/GOATS-DAIRY-BEES-GUIDE.html', huntfish: 'pages/HUNTING-TRAPPING-FISHING-GUIDE.html', preserve: 'pages/PRESERVING-FOOD-GUIDE.html', offgrid: 'pages/OFF-GRID-POWER-GUIDE.html', storage: 'pages/STORING-ENERGY-GUIDE.html', light: 'pages/LIGHTING-GUIDE.html', sanit: 'pages/SANITATION-GUIDE.html', natural: 'pages/NATURAL-BUILDING-GUIDE.html', masonry: 'pages/MASONRY-ROADS-GUIDE.html', smallstock: 'pages/RABBITS-CHICKENS-GUIDE.html', shelter: 'pages/SHELTER-BUILDING-GUIDE.html', bikes: 'pages/BICYCLES-CARTS-GUIDE.html', community: 'pages/COMMUNITY-BARTER-GUIDE.html', fieldcare: 'pages/FIELD-CARE-GUIDE.html', scarce: 'pages/FOOD-SECURITY-GUIDE.html', nav: 'pages/NAVIGATION-WEATHER-GUIDE.html', signals: 'pages/SIGNALS-MORSE-GUIDE.html', firewood: 'pages/FIREWOOD-GUIDE.html', purify: 'pages/WATER-PURIFICATION-GUIDE.html', wells: 'pages/WATER-WELLS-GUIDE.html', emp: 'pages/EMP-GUIDE.html', seeds: 'pages/SEED-BANK-GUIDE.html', cellar: 'pages/ROOT-CELLAR-GUIDE.html', horse: 'pages/HORSE-GUIDE.html', fuel: 'pages/FUEL-GUIDE.html', smith: 'pages/BLACKSMITHING-GUIDE.html', mush: 'pages/MUSHROOM-GUIDE.html', nuke: 'pages/NUCLEAR-FALLOUT-GUIDE.html', eng: 'pages/ENGINES-AND-MOTORS-GUIDE.html', med: 'pages/Medical-READ-ME-FIRST.html', radio: 'pages/RADIO-GUIDE.html', pill: 'tools/pill-identifier/PILL-IDENTIFIER.html', walk: 'tools/walking-routes/WALKING-ROUTES.html', device: 'pages/START-ON-ANY-DEVICE.html', ammocan: 'pages/AMMO-CAN-COMPUTER-GUIDE.html', get: 'pages/GET-THE-LIBRARY.html', expect: 'pages/WHAT-TO-EXPECT-GUIDE.html', defense: 'pages/HOME-DEFENSE-GUIDE.html', conv: 'pages/UNIT-CONVERTER.html', calc: 'pages/CALCULATOR.html#basic', sci: 'pages/CALCULATOR.html#sci', math: 'pages/PRACTICAL-MATH-GUIDE.html', sos: 'pages/EMERGENCY-FINDER.html', az: 'pages/SUBJECT-INDEX.html' };
+  if (pathCache && pathCache.mode === mode) return pathCache.P;
+  const P = {};
+  for (const [k, name] of Object.entries(PAGES)) {
+    const at = mode === 'drive' ? (k in DRIVE_AT ? DRIVE_AT[k] : 'Southern-Oregon/' + name + '.html') : (k in WEB_AT ? WEB_AT[k] : 'pages/' + name + '.html');
+    if (at) P[k] = (mode === 'drive' ? '/lib/' : '') + at;
+  }
+  pathCache = { mode, P }; return P;
 }
 function renderTools() {
   const P = guidePaths(), T = GUIDE_CARDS;
-  const card = ([k, t, d]) => `<a class="tool" href="${P[k]}" target="_blank" rel="noopener"><b>${t}</b><span>${d}</span></a>`;
-  const n = Object.values(T).flat().filter(([k]) => P[k]).length;
-  $('toolgrid').innerHTML = `<p class="meta">${n} guides and tools, grouped like the library. Tap a heading to open it. <button class="link" data-all="1">Open all</button> · <button class="link" data-all="0">Close all</button></p>` +
-    SHELVES.filter(([k]) => T[k] && T[k].some(([g]) => P[g])).map(([k, icon, name, blurb]) => {
+  const card = k => ([g, t, d]) => `<a class="tool" href="${P[g]}" data-shelf="${k}"><b>${t}</b><span>${d}</span></a>`;
+  const groups = SHELVES.filter(([k]) => T[k] && T[k].some(([g]) => P[g]));
+  $('toolgrid').innerHTML = `<p class="meta">Plain-English guides in ${groups.length} groups. Tap a group to open it; each guide links to the next one in its group. <button class="link" data-all="1">Open all</button> · <button class="link" data-all="0">Close all</button></p>` +
+    groups.map(([k, icon, name]) => {
       const list = T[k].filter(([g]) => P[g]);
-      return `<details class="shelf" data-k="tools:${k}"${isOpen('tools:' + k, k === 'start') ? ' open' : ''}><summary><span class="ic">${icon}</span><span class="nm">${esc(name)} <span class="n">${list.length}</span><small>${list.map(c => esc(c[1].replace(/^\S+\s/, ''))).join(' · ')}</small></span></summary><div class="grid shelfbody">${list.map(card).join('')}</div></details>`;
+      return `<details class="shelf" id="g-${k}" data-k="tools:${k}"${isOpen('tools:' + k, k === 'start') ? ' open' : ''}><summary><span class="ic">${icon}</span><span class="nm">${esc(name)} <span class="n">${list.length}</span><small>${list.map(c => esc(c[1].replace(/^\S+\s/, ''))).join(' · ')}</small></span></summary><div class="grid shelfbody">${list.map(card(k)).join('')}</div></details>`;
     }).join('');
+}
+
+// ------------------------------------------------------------------ getting around
+// Our own pages (guides, tools, the A-Z index) open right here: the browser's Back button, or the
+// "Guides" link at the top of every guide, brings you back to where you were. Other websites open in a
+// new tab so you keep your place. Two exceptions: on a phone's home-screen app there is no Back button,
+// so books and Wikipedia open in a new tab there; and so does anything tapped while an answer is still
+// being written, so the answer isn't cut off.
+const standalone = (() => { try { return matchMedia('(display-mode: standalone)').matches || navigator.standalone === true; } catch { return false; } })();
+let writing = 0;
+function linkFor(a) {
+  const href = a.getAttribute('href') || '';
+  if (!href || href.startsWith('#') || href.startsWith('javascript:') || a.hasAttribute('download')) return 'same';
+  let u; try { u = new URL(a.href, location.href); } catch { return 'same'; }
+  if (u.origin !== location.origin) return 'new';
+  const ourPage = /\.html?$/i.test(u.pathname) || u.pathname === location.pathname;
+  if (writing && $('out').contains(a)) return 'new';
+  return standalone && !ourPage ? 'new' : 'same';
+}
+function onLinkClick(e) {
+  const a = e.target.closest && e.target.closest('a[href]'); if (!a || e.defaultPrevented) return;
+  if (linkFor(a) === 'new') { a.target = '_blank'; a.rel = 'noopener'; } else a.removeAttribute('target');
+  // leaving for a guide from the Guides tab: remember its group, so Back (or the guide's "Guides" link) reopens it
+  const shelf = a.dataset.shelf;
+  if (shelf && !a.target) try { history.replaceState(history.state, '', '#tools:' + shelf); } catch {}
+}
+// "#tools:food" opens the Guides tab at the Food group; "#library" the Books tab, and so on
+function openFromHash() {
+  const [tab, grp] = decodeURIComponent(location.hash.slice(1)).split(':');
+  if (!tab) return;
+  document.querySelector(`#tabs [data-tab="${CSS.escape(tab)}"]`)?.click();
+  if (tab === 'tools' && grp) {
+    const d = document.getElementById('g-' + grp);
+    if (d) { d.open = true; requestAnimationFrame(() => d.scrollIntoView({ block: 'start' })); }
+    try { history.replaceState(history.state, '', '#tools:' + grp); } catch {}
+  }
+}
+// coming back to the app (Back button, or a reload by the phone): put the page where it was
+function saveScroll() { try { sessionStorage.setItem('so-scroll', JSON.stringify({ h: location.hash, y: scrollY })); } catch {} }
+const scrollDone = {};
+function restoreScroll(tab) {
+  if (scrollDone[tab]) return; scrollDone[tab] = 1;
+  let s = null; try { s = JSON.parse(sessionStorage.getItem('so-scroll') || 'null'); } catch {}
+  if (!s || !s.y || s.h.slice(1).split(':')[0] !== tab || location.hash !== s.h) return;
+  requestAnimationFrame(() => scrollTo(0, s.y));
 }
