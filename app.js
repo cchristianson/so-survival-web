@@ -543,6 +543,7 @@ const SHELVES = [
   ['travel', '🥾', 'Getting around', 'Travel on foot, bicycles and carts, maps, navigation and weather'],
   ['comms', '📡', 'Radio, community & protection', 'Radio, signals and Morse, organizing neighbors and barter, protecting your home'],
   ['disaster', '🚨', 'Disasters', 'What to expect, wildfire, earthquakes, nuclear fallout, EMP and solar storms'],
+  ['fun', '📖', 'Stories & fun', 'Classic books for every age, picture books and rhymes, games, songs and things to make'],
   ['library', '💾', 'Using this library', 'Starting it on any device, the ammo-can computer, getting the whole library, Wikipedia, apps and the offline AI'],
   ['other', '📁', 'Programs & other files', 'Everything else on the drive']];
 const FOLDER_SHELF = { Guides: 'start', 'Southern-Oregon': 'start', 'Local-Contacts': 'start',
@@ -557,6 +558,7 @@ const FOLDER_SHELF = { Guides: 'start', 'Southern-Oregon': 'start', 'Local-Conta
   'Travel-On-Foot': 'travel', 'Bicycles-Carts': 'travel', 'Navigation-Weather': 'travel', Maps: 'travel', OsmAnd: 'travel', 'Walking-Routes': 'travel',
   'Comms-Signals': 'comms', 'Home-Security': 'comms', 'Radio-Weather': 'comms', 'Community-Barter': 'comms', 'Radio-Communications': 'comms',
   Wildfire: 'disaster', 'Disaster-Scenarios': 'disaster', 'Earthquake-Tsunami': 'disaster', 'Nuclear-Radiation': 'disaster', 'EMP-Solar-Storms': 'disaster',
+  Stories: 'fun',
   Manuals: 'library', 'AI-Offline': 'library', 'Kiwix-Reader': 'library', 'Phone-Apps': 'library', Wikipedia: 'library' };
 const OUR_GUIDES = 'Our guides';
 let guideShelf = null;              // guide page file name -> shelf key
@@ -568,6 +570,7 @@ function shelfOf(folder, url) {     // -> [shelf key, sub-group label]
   if (!seg.length || (seg.length === 1 && /^(\(top folder\)|AI-Offline|Kiwix-Reader|Phone-Apps|Manuals)$/.test(seg[0]))) return ['library', 'How to use this drive'];
   if (seg[0] === 'Southern-Oregon' && seg.length === 1) return ['start', 'Local reference'];
   if (seg[0] === 'Southern-Oregon') seg.shift();
+  if (seg[0] === 'Stories' && seg[1]) return ['fun', STORY_GROUPS[seg[1]] || seg[1].replace(/-/g, ' ')];   // by age, youngest first
   if (seg[0] === 'Guides') return ['start', OUR_GUIDES];
   if ((seg[0] === 'Medical' || seg[0] === 'Manuals') && seg[1]) {
     const k = FOLDER_SHELF[seg[1]] || FOLDER_SHELF[seg[0]];
@@ -583,6 +586,8 @@ function rememberOpen(e) {
 function setAllOpen(box, open) { box.querySelectorAll('details[data-k]').forEach(d => { d.open = open; openState[d.dataset.k] = open; }); try { localStorage.setItem('so-open', JSON.stringify(openState)); } catch {} }
 const isOpen = (k, dflt) => (k in openState ? openState[k] : dflt);
 
+const STORY_GROUPS = { 'Picture-Books-and-Rhymes': '1. Picture books & rhymes (ages 2–6)', 'Read-Aloud-and-Early-Readers': '2. Read-aloud & early readers (ages 5–9)',
+  'Ages-9-to-13': '3. Chapter books (ages 9–13)', 'Teens-and-Adults': '4. Teens & adults', 'Games-and-Things-to-Make': '5. Games, songs & things to make' };
 const rank = g => (g === OUR_GUIDES ? 0 : g === 'How to use this drive' ? 1 : 2);
 function renderLibrary() {
   if (!LIB) return;
@@ -677,6 +682,7 @@ const GUIDE_CARDS = { // guide cards, by shelf (same groups and order as SHELVES
     ['wildfire', '🔥 Wildfire with no fire department', 'Reading fire danger, hardening the house, clearing with hand tools, water with no power, stay or go, the fire front, and the days after.'],
     ['nuke', '☢️ Nuclear fallout', 'Where to shelter, how long (the 7-10 rule), shielding, potassium iodide doses, decontamination, food, water and livestock.'],
     ['emp', '⚡ EMP, solar storms & Faraday cages', 'What tests really showed, unplugging, building and testing a Faraday container, solar-storm warnings, checking and repairing gear after.']],
+  fun: [['stories', '📖 Stories, games & fun', 'Classic books for every age to read aloud or alone, games with no power, string figures, songs and things to make — for long evenings and kids.']],
   library: [['device', '📱 Start on any device', 'Run the library on a computer, an old phone or tablet, or share it to iPhones over Wi-Fi.'],
     ['ammocan', '🧰 Ammo-can library computer', 'A Raspberry Pi kept in a sealed steel ammo can, safe from EMP. Open it, plug in power, and every phone nearby gets the library and the AI over its own Wi-Fi.'],
     ['get', '💾 Get the whole library', 'Put every book, all of Wikipedia, offline maps and an AI that needs no internet on a USB drive. Point-and-click installer for Windows, Mac and Linux.'],
@@ -697,6 +703,7 @@ const PAGES = { sos: 'EMERGENCY-FINDER', az: 'SUBJECT-INDEX', iv: 'ILLINOIS-VALL
   onfoot: 'ON-FOOT-GUIDE', bikes: 'BICYCLES-CARTS-GUIDE', nav: 'NAVIGATION-WEATHER-GUIDE',
   radio: 'RADIO-GUIDE', signals: 'SIGNALS-MORSE-GUIDE', community: 'COMMUNITY-BARTER-GUIDE', defense: 'HOME-DEFENSE-GUIDE',
   expect: 'WHAT-TO-EXPECT-GUIDE', wildfire: 'WILDFIRE-GUIDE', nuke: 'NUCLEAR-FALLOUT-GUIDE', emp: 'EMP-GUIDE',
+  stories: 'STORIES-GAMES-GUIDE',
   device: 'START-ON-ANY-DEVICE', ammocan: 'AMMO-CAN-COMPUTER-GUIDE', get: 'GET-THE-LIBRARY', all: 'README',
   calc: 'CALCULATOR', sci: 'CALCULATOR', conv: 'UNIT-CONVERTER', pill: 'PILL-IDENTIFIER', walk: 'WALKING-ROUTES' };
 const DRIVE_AT = { sos: 'EMERGENCY-FINDER.html', az: 'SUBJECT-INDEX.html', med: 'Medical/READ-ME-FIRST.html', radio: 'Manuals/Radio-Communications/RADIO-GUIDE.html',
