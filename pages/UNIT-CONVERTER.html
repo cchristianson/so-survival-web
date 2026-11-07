@@ -50,7 +50,7 @@ textarea{font:inherit;width:100%;min-height:120px;padding:9px 10px;border-radius
 <style>:root{color-scheme:dark}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){color-scheme:light}}:root[data-theme=light]{color-scheme:light}.themebtn{font:inherit;font-size:14px;line-height:1.3;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:3px 11px;cursor:pointer;white-space:nowrap;text-decoration:none}.themefloat{position:absolute;top:10px;right:12px;z-index:9}@media print{.themebtn{display:none}}</style><script>/* so-theme: light or dark screen */(function(){var K="so-theme",d=document.documentElement,L={auto:"\uD83C\uDF13 Auto",dark:"\uD83C\uDF19 Dark",light:"\u2600\uFE0F Light"},N={auto:"dark",dark:"light",light:"auto"},cur="auto";try{cur=localStorage.getItem(K)||"auto"}catch(e){}function a(){if(cur==="dark"||cur==="light")d.setAttribute("data-theme",cur);else d.removeAttribute("data-theme");var b=document.querySelectorAll(".themebtn");for(var i=0;i<b.length;i++){b[i].textContent=L[cur]||L.auto;b[i].title="Screen: "+cur+" - tap to change (Auto follows this device)"}}a();window.soTheme=function(){cur=N[cur]||"dark";try{localStorage.setItem(K,cur)}catch(e){}a()};function btn(){var b=document.createElement("button");b.type="button";b.className="themebtn";return b}document.addEventListener("DOMContentLoaded",function(){if(!document.querySelector(".themebtn")){var n=document.querySelector(".topnav"),b=btn();if(n){n.appendChild(document.createTextNode(" \u00B7 "));n.appendChild(b)}else{b.className+=" themefloat";document.body.appendChild(b)}}var all=document.querySelectorAll(".themebtn");for(var i=0;i<all.length;i++)all[i].onclick=window.soTheme;a()})})();</script></head>
 <body>
 <div class="wrap">
-<p class="topnav"><a href="../#tools">🏠 Library</a> · <a href="EMERGENCY-FINDER.html">🆘 Emergency</a> · <a href="SUBJECT-INDEX.html">📇 Index A–Z</a> · <a href="CALCULATOR.html">🧮 Calculator</a></p>
+<p class="topnav"><a href="../#kit" data-app="/#kit">🧮 Tools</a> · <a href="EMERGENCY-FINDER.html">🆘 Emergency</a> · <a href="SUBJECT-INDEX.html">📇 Index A–Z</a> · <a href="CALCULATOR.html">🧮 Calculator</a></p>
 <h1><span class="e">🔢</span> Unit Converter &amp; Calculators</h1>
 <p class="sub">Works with no internet. Type an amount, or pick a kind of measurement. The calculators below do the
 everyday math for building, water, power, food and travel. For how the formulas work, see the
@@ -563,5 +563,5 @@ CALCS.forEach(runCalc);
 setCat('length');
 try { const q = new URLSearchParams(location.search).get('q'); if (q) { $('quick').value = q; doQuick(); } } catch (e) {}
 </script>
-</body>
+<script>if(location.protocol.indexOf('http')===0&&location.pathname.indexOf('/lib/')===0)document.querySelectorAll('a[data-app]').forEach(function(a){a.href=a.getAttribute('data-app')})</script></body>
 </html>
