@@ -282,18 +282,22 @@
 <td>Check it's on the <strong>third pair</strong> of pins from the end farthest from the USB ports. The setup switches those pins on, so run it on this Pi and restart once afterward</td>
 </tr>
 <tr class="even">
+<td>No phone can connect at all, or there's no phone</td>
+<td>Use a <strong>TV or computer monitor</strong> instead: plug it into the Pi (on a Pi 4 or 5, the micro-HDMI port next to the power socket) with a USB keyboard and mouse, turn the Pi on and log in at the text screen. Run the setup with <code>--screen</code> (see <em>Running the setup again later</em> below), press Enter to accept each suggestion and say <strong>y</strong> to restart. The library then opens on the screen. Run it again with <code>--no-screen</code> to go back</td>
+</tr>
+<tr class="odd">
 <td>Forgot the Wi-Fi password</td>
 <td>Plug the drive into any computer and open <strong><code>PI-WIFI-CARD.html</code></strong></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>The touchscreen shows the desktop but not the library</td>
 <td>Wait 5 minutes: the first start is the slowest. Still nothing: tap the raspberry menu → <strong>Internet</strong> → <strong>Chromium</strong> and type <code>http://127.0.0.1:8095/?touch=1</code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>The touchscreen shows no keyboard</td>
 <td>Open the library with <code>?touch=1</code> at the end of the address, as above. It remembers after that</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Want home internet on the Pi again (for updates), or the desktop back</td>
 <td>Plug in a network cable for internet. For both, run the setup with <code>--undo</code> and restart. Run the setup again afterward; it keeps the same Wi-Fi name and password</td>
 </tr>
