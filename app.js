@@ -29,6 +29,7 @@ async function init() {
     $('wikilabel').textContent = 'Include Wikipedia & archives';
     document.querySelector('#tabs [data-tab=setup]').textContent = '⚙️ Settings';
     setInterval(refreshServer, 5000);
+    const pr = document.createElement('script'); pr.src = '/print.js'; pr.defer = true; document.head.appendChild(pr); // receipt printer (print.go)
   } else {
     try { manifest = await (await fetch('data/manifest.json', { cache: 'no-cache' })).json(); } catch {}
     startWorker();
@@ -664,6 +665,7 @@ const GUIDE_CARDS = { // guide cards, by shelf (same groups and order as SHELVES
     ['fuel', '⛽ Fuel: storing, reviving, finding', 'How long gas and diesel keep, testing and rescuing old fuel, diesel care, and pumping fuel from station tanks, drums and vehicles with no power.'],
     ['offgrid', '☀️ Off-grid power', 'Solar sizing for our sun, salvaged panels and batteries, wiring safely, creek hydro'],
     ['storage', '🔋 Storing energy without batteries', 'Why gravity batteries hold so little, and what works: water tanks, hot water, masonry heaters, ice and cold water, timing the work.'],
+    ['heatpower', '♨️ Heat into work & power', 'Stove-top generators for phones and lights, small steam engines and boiler safety, hot-air engines, fridges that run on a flame, and the honest numbers.'],
     ['light', '🕯️ Candles, lamps & lamp oil', 'Dipped and moulded candles, wicks, rushlights, which oils burn, homemade lamps, more light from a small flame, and fire safety.'],
     ['eng', '🔧 Engines, motors & generators', 'Why a small engine will not start, carburetors, chainsaw filing, generator care, testing and rewinding motors, turning motors into generators, and reusing a generator for water or wind when the fuel is gone.']],
   making: [['math', '📐 Practical math & measuring', 'Measuring with no tools, square corners, area and volume, slopes and roof pitch, heights and distances, levers, electricity and water math.'],
@@ -698,7 +700,7 @@ const PAGES = { sos: 'EMERGENCY-FINDER', az: 'SUBJECT-INDEX', iv: 'ILLINOIS-VALL
   rabbits: 'RABBITS-GUIDE', chickens: 'CHICKENS-GUIDE', goats: 'GOATS-GUIDE', bees: 'BEES-GUIDE', horse: 'HORSE-GUIDE', dairy: 'DAIRY-GUIDE',
   ducks: 'DUCKS-GUIDE', geese: 'GEESE-GUIDE', turkeys: 'TURKEYS-GUIDE', sheep: 'SHEEP-GUIDE', pigs: 'PIGS-GUIDE', cattle: 'CATTLE-GUIDE', dogs: 'DOGS-GUIDE',
   shelter: 'SHELTER-BUILDING-GUIDE', natural: 'NATURAL-BUILDING-GUIDE', masonry: 'MASONRY-ROADS-GUIDE',
-  firewood: 'FIREWOOD-GUIDE', fuel: 'FUEL-GUIDE', offgrid: 'OFF-GRID-POWER-GUIDE', storage: 'STORING-ENERGY-GUIDE', light: 'LIGHTING-GUIDE', eng: 'ENGINES-AND-MOTORS-GUIDE',
+  firewood: 'FIREWOOD-GUIDE', fuel: 'FUEL-GUIDE', offgrid: 'OFF-GRID-POWER-GUIDE', storage: 'STORING-ENERGY-GUIDE', heatpower: 'HEAT-INTO-POWER-GUIDE', light: 'LIGHTING-GUIDE', eng: 'ENGINES-AND-MOTORS-GUIDE',
   math: 'PRACTICAL-MATH-GUIDE', md: 'MAKE-DO-HOUSEHOLD-GUIDE', smith: 'BLACKSMITHING-GUIDE', clothing: 'CLOTHING-LEATHER-GUIDE', paper: 'PAPER-INK-GUIDE',
   onfoot: 'ON-FOOT-GUIDE', bikes: 'BICYCLES-CARTS-GUIDE', nav: 'NAVIGATION-WEATHER-GUIDE',
   radio: 'RADIO-GUIDE', signals: 'SIGNALS-MORSE-GUIDE', community: 'COMMUNITY-BARTER-GUIDE', defense: 'HOME-DEFENSE-GUIDE',
