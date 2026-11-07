@@ -138,36 +138,41 @@ async function ask() {
   if (box.getBoundingClientRect().top > innerHeight * 0.5) box.scrollIntoView({ behavior: 'smooth', block: 'start' });
   saveAnswers();
 
-  const nWiki = useWiki ? Math.max(1, Math.round(n / 3)) : 0, nDoc = n - nWiki;
+  // Ask for a few extra encyclopedia articles and keep only those whose title has one of the question's
+  // key words and whose text has two (a search for "small creek power" also turns up cartoon characters,
+  // and one for bleach in water a fake cure); the library fills any gap.
+  const nWiki = useWiki ? Math.max(1, Math.round(n / 3)) : 0, qt = qterms(q), need = Math.min(2, qt.size);
+  const shared = s => { let k = 0; for (const x of qt) if (qterms(s).has(x)) k++; return k; };
+  const onTopic = s => shared(s.title) >= 1 && shared(s.title + ' ' + (s.text || s.snippet || '')) >= need;
   let docs = [], wiki = [], note = '';
   if (mode === 'drive') {
     [docs, wiki] = await Promise.all([
-      fetch('api/search?q=' + encodeURIComponent(q) + '&n=' + nDoc).then(r => r.json()).catch(() => []),
-      nWiki ? fetch('api/kiwix?q=' + encodeURIComponent(q) + '&n=' + nWiki).then(r => r.json()).catch(() => []) : [],
+      fetch('api/search?q=' + encodeURIComponent(q) + '&n=' + n).then(r => r.json()).catch(() => []),
+      nWiki ? fetch('api/kiwix?q=' + encodeURIComponent(q) + '&n=' + (nWiki + 2)).then(r => r.json()).catch(() => []) : [],
     ]);
   } else {
-    let ws; [ws, wiki] = await Promise.all([workerSearch(q, nDoc), nWiki && navigator.onLine ? wikiSearch(q, nWiki) : []]);
+    let ws; [ws, wiki] = await Promise.all([workerSearch(q, n), nWiki && navigator.onLine ? wikiSearch(keywords(q) || q, nWiki + 2) : []]);
     docs = ws.results;
     if (ws.notReady) note = ' ⚠️ The library search is still downloading — try again in a minute (needs a connection the first time).';
     else if (ws.partial) note = ` ⏳ Library still loading (${ws.loaded} of ${ws.total} parts): guides and book titles were searched; ask again in a minute to search inside every page.`;
   }
-  const srcs = [], d = Array.isArray(docs) ? docs.slice() : [], z = Array.isArray(wiki) ? wiki.slice() : [];
-  while (d.length || z.length) { if (d.length) srcs.push(d.shift()); if (d.length) srcs.push(d.shift()); if (z.length) srcs.push(z.shift()); }
+  // the library first (its guides are written for exactly this), then the encyclopedia articles that fit
+  const z = (Array.isArray(wiki) ? wiki : []).filter(onTopic).slice(0, nWiki), d = Array.isArray(docs) ? docs : [];
+  const srcs = d.slice(0, Math.max(n - z.length, n - nWiki)).concat(z);
   renderSources(id, srcs);
   const meta = $('m' + id);
   if (!srcs.length) meta.textContent = note ? '' : 'Nothing in the library matched. Try other words (e.g. "bleeding" instead of "cut").';
   else meta.textContent = `${srcs.length} sources found.`;
   meta.textContent += note;
-  saveAnswers();
-  if (!useAI) return;
+  if (!useAI) { showBest(id, srcs, q); saveAnswers(); return; }
   if (mode === 'drive') {
-    if (server.llm === 'off') { meta.innerHTML += ' <span>' + esc(server.llmError || 'The AI is turned off on this device.') + ' You can change the AI in <a href="#" onclick="document.querySelector(\'[data-tab=setup]\').click();return false">⚙️ Settings</a>.</span>'; return; }
+    if (server.llm === 'off') { showBest(id, srcs, q); saveAnswers(); meta.innerHTML += ' <span>' + esc(server.llmError || 'The AI is turned off on this device.') + ' You can change the AI in <a href="#" onclick="document.querySelector(\'[data-tab=setup]\').click();return false">⚙️ Settings</a>.</span>'; return; }
     if (server.llm !== 'ready') { meta.innerHTML = '<span class="spin"></span>Waiting for the AI to finish loading…'; await waitFor(() => server.llm === 'ready' || server.llm === 'off'); }
     if (server.llm === 'ready') await answer(id, q, srcs, 'server');
   } else {
     if (ai.loading) { meta.innerHTML = '<span class="spin"></span>Waiting for the AI to finish loading…'; await waitFor(() => !ai.loading); }
     if (ai.kind === 'webllm') await answer(id, q, srcs, 'webllm');
-    else meta.innerHTML += ' <span>To get written answers, turn on the AI in <a href="#" onclick="document.querySelector(\'[data-tab=setup]\').click();return false">⚙️ Offline</a>.</span>';
+    else showBest(id, srcs, q), meta.innerHTML += ' <span>To get written answers, turn on the AI in <a href="#" onclick="document.querySelector(\'[data-tab=setup]\').click();return false">⚙️ Offline</a>.</span>';
   }
   saveAnswers();
 }
@@ -210,20 +215,92 @@ function renderSources(id, srcs) {
     <div class="snip">${esc(s.snippet)}</div></div></div>`).join('');
 }
 
+// Short, plain rules work best for the small AIs that run on phones and the Pi.
 const SYSTEM = 'You are an offline survival and reference assistant for a household in the Illinois Valley, southern Oregon, ' +
-  'possibly after normal services have broken down. Answer the question using the numbered sources. Cite sources in square ' +
-  'brackets like [1] or [2][4] right after the facts they support. Be practical and give clear steps. If the sources do not ' +
-  'answer the question, say so plainly, then give your best general knowledge and label it "(not from the library)". For ' +
-  'medical, electrical, chemical or structural topics, include the key safety warnings. Keep it under about 250 words.';
+  'possibly after normal services have broken down. Answer the question from the numbered sources.\n' +
+  '- Start with the direct answer in one or two sentences, then give practical steps if they help.\n' +
+  '- Copy numbers, amounts, times, temperatures, doses and formulas exactly as the sources give them, with their units. ' +
+  'Do not make up formulas or do your own calculations; if a source has a worked example, use it.\n' +
+  '- Cite the source right after each fact, like [1] or [2][4].\n' +
+  '- If the sources do not answer the question, say "The library does not cover this", then give your best general ' +
+  'knowledge and put "(not from the library)" after it.\n' +
+  '- For medical, electrical, chemical or structural topics, include the key safety warnings.\n' +
+  '- Keep it under about 200 words.';
+
+// ------------------------------------------------------------------ choosing what the AI reads
+// The AI reads only a few hundred words, so what it gets matters most: the part of each passage that
+// matches the question (not just its opening lines), more of the best sources, the book-page
+// references taken out, and nothing off-topic.
+const STOPW = new Set(`a about after again all also am an and any are as at be been before being both but by can could did do
+does doing down during each few for from get got had has have having how i if in into is it its just like make made many may me
+might more most much must my need no nor not now of off on once only or other our out over own please same shall she should so
+some such than that the their them then there these they thing things this those through to too under until up use used using very
+want was way ways we were what when where which while who why will with would you your tell know`.split(/\s+/));
+function stemw(w) {   // the same rough word endings the search uses
+  if (w.length > 4 && w.endsWith('ies')) return w.slice(0, -3) + 'y';
+  if (w.length > 5 && w.endsWith('ing')) return w.slice(0, -3);
+  if (w.length > 4 && w.endsWith('ed')) return w.slice(0, -2);
+  if (w.length > 3 && w.endsWith('s') && !w.endsWith('ss') && !w.endsWith('us')) return w.slice(0, -1);
+  return w;
+}
+const qwords = s => String(s || '').toLowerCase().split(/[^\p{L}\p{N}]+/u).filter(w => w.length >= 2 && !STOPW.has(w));
+const qterms = s => new Set(qwords(s).map(stemw));
+const keywords = q => qwords(q).join(' ');
+// questions that want a number: favor the part of a passage that has numbers in it
+const QUANTITY = /\b(how (much|many|long|far|often|big|deep|hot|cold|warm|high|low|fast|heavy|old|wide|thick)|what (size|temperature|temp|dose|dosage|amount|ratio|gauge|depth|distance|spacing))\b/i;
+// drop "(NCAT, p. 6)", "(🖼️ what head means)", "(see Start Here)": page references the AI can't use
+function tidy(t) {
+  let s = String(t || '');
+  for (let i = 0; i < 2; i++) s = s.replace(/\s*\([^()]*(?:\bpp?\.\s?\d|🖼️|📖|📷|\bsee\b)[^()]*\)/g, '');
+  return s.replace(/🖼️\s*/g, '').replace(/\s+([.,;:])/g, '$1').replace(/\s{2,}/g, ' ').trim();
+}
+// a passage with the ones just before and after it (same page or guide section): the best stretch can be anywhere
+const around = s => tidy([s.prev, s.text, s.more].filter(Boolean).join(' '));
+// The guides' "Old advice in the library to ignore" tables list treatments now known to be wrong
+// (suction for snakebite, tourniquet bands...). Say so, or a small AI may pass them on as advice.
+const OLD_ADVICE = '[WARNING: this part lists OLD advice from older books that is now known to be WRONG. Do not recommend it; say it is outdated if it comes up.] ';
+// a guide's list of picture links: useful to a person, nothing for the AI to read
+const linkList = s => /#pictures/.test(s.link || '');
+// the n-word stretch of text that covers the most of the question's words (and numbers, when it asks for one)
+function focus(text, qt, n, wantNum) {
+  const w = String(text).split(/\s+/).filter(Boolean); if (w.length <= n) return w.join(' ');
+  const term = w.map(x => { for (const t of qterms(x)) if (qt.has(t)) return t; return ''; });
+  const num = w.map(x => wantNum && /\d/.test(x) ? 1 : 0);
+  let best = 0, bestScore = -1;
+  for (let i = 0; ; i = Math.min(i + 3, w.length - n)) {
+    const seen = new Set(); let sc = 0, nums = 0;
+    for (let j = i; j < i + n; j++) { if (term[j]) { sc += 1; seen.add(term[j]); } nums += num[j]; }
+    sc += 3 * seen.size + 0.5 * Math.min(nums, 6);   // a few numbers help; a whole table of them shouldn't win
+    if (sc > bestScore) { bestScore = sc; best = i; }
+    if (i >= w.length - n) break;
+  }
+  for (let k = best; k > Math.max(0, best - 30); k--) if (/[.!?:]$/.test(w[k - 1])) { best = k; break; }   // start at a sentence
+  return (best > 0 ? '… ' : '') + w.slice(best, best + n).join(' ') + (best + n < w.length ? ' …' : '');
+}
+// With the AI off: show the best-matching stretch of the top source, question words highlighted.
+function showBest(id, srcs, q) {
+  const s = srcs.find(x => x.kind === 'doc' && !linkList(x)) || srcs[0]; if (!s) return;
+  const qt = qterms(q), i = srcs.indexOf(s) + 1;
+  const text = focus(around(s), qt, 110, QUANTITY.test(q));
+  const marked = text.split(/([\p{L}\p{N}][\p{L}\p{N}'’-]*)/u)
+    .map((p, k) => k % 2 && [...qterms(p)].some(t => qt.has(t)) ? `<mark>${esc(p)}</mark>` : esc(p)).join('');
+  $('a' + id).innerHTML = `<div class="best"><div class="bh">📖 Best match: <a href="${esc(s.link)}" target="_blank" rel="noopener">${esc(s.title)}</a> <a class="cite" href="#src${id}-${i}">[${i}]</a></div><p>${marked}</p></div>`;
+}
 
 async function answer(id, q, srcs, kind) {
   const meta = $('m' + id), out = $('a' + id);
-  // how much the AI reads: the in-browser models have a 4k-token window; on the drive the size of
-  // the AI chosen for this device decides (the Quick AI reads fewer, shorter passages)
-  const words = kind === 'webllm' ? 110 : (server.words || 220);
+  // How much the AI reads in all: the in-browser models have a 4k-token window (about 1,100 words of
+  // sources leaves room for the answer); on the drive the AI chosen for this device decides (the Quick AI
+  // reads less). The best sources get the biggest share; each gives the stretch that fits the question.
   if (kind === 'server' && server.sources) srcs = srcs.slice(0, server.sources);
-  const ctx = srcs.map((s, i) => `[${i + 1}] ${s.title} (${s.where})\n${String(s.text).split(/\s+/).slice(0, words).join(' ')}`).join('\n\n');
-  const messages = [{ role: 'system', content: SYSTEM }, { role: 'user', content: `Sources:\n\n${ctx || '(no matching sources)'}\n\nQuestion: ${q}` }];
+  const budget = kind === 'webllm' ? 1100 : (server.words || 220) * srcs.length;
+  const weight = srcs.map((s, i) => linkList(s) ? 0 : i === 0 ? 3 : i === 1 ? 2 : s.kind === 'zim' ? 1 : 1.4), wsum = weight.reduce((a, b) => a + b, 0) || 1;
+  const qt = qterms(q), wantNum = QUANTITY.test(q);
+  const ctx = srcs.map((s, i) => `[${i + 1}] ${s.title} (${s.where})\n` + (weight[i]
+    ? (/#old-advice/.test(s.link || '') ? OLD_ADVICE : '') + focus(around(s), qt, Math.max(60, Math.round(budget * weight[i] / wsum)), wantNum)
+    : '(a list of picture links)')).join('\n\n');
+  const messages = [{ role: 'system', content: SYSTEM },
+    { role: 'user', content: `Question: ${q}\n\nSources:\n\n${ctx || '(no matching sources)'}\n\nQuestion: ${q}` }];
   const t0 = Date.now(); let text = '', stopped = false, ctrl = new AbortController();
   const setMeta = (label) => { meta.innerHTML = `<span class="spin"></span>${label} <button class="sec" type="button">Stop</button> <span class="t"></span>`; meta.querySelector('button').onclick = () => { stopped = true; ctrl.abort(); try { ai.engine?.interruptGenerate?.(); } catch {} }; };
   setMeta('The AI is reading the sources…');
@@ -232,7 +309,7 @@ async function answer(id, q, srcs, kind) {
   try {
     if (kind === 'server') {
       const r = await fetch('llm/v1/chat/completions', { method: 'POST', signal: ctrl.signal, headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages, stream: true, temperature: 0.3, max_tokens: 700 }) });
+        body: JSON.stringify({ messages, stream: true, temperature: 0.2, max_tokens: 700 }) });
       if (!r.ok) throw new Error('AI error ' + r.status);
       const reader = r.body.getReader(), dec = new TextDecoder(); let buf = '';
       for (;;) {
@@ -245,7 +322,7 @@ async function answer(id, q, srcs, kind) {
         }
       }
     } else {
-      const stream = await ai.engine.chat.completions.create({ messages, stream: true, temperature: 0.3, max_tokens: 600 });
+      const stream = await ai.engine.chat.completions.create({ messages, stream: true, temperature: 0.2, max_tokens: 600 });
       for await (const ch of stream) { const piece = ch.choices?.[0]?.delta?.content; if (piece) add(piece); if (stopped) break; }
     }
     meta.textContent = stopped ? 'Stopped.' : `Answered in ${Math.round((Date.now() - t0) / 1000)} seconds from ${srcs.length} sources. Check the sources before relying on it.`;
