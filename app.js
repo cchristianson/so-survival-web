@@ -16,6 +16,7 @@ const ai = { kind: 'none', engine: null, label: '', loading: false, error: '' };
 
 // ------------------------------------------------------------------ start-up
 init();
+screenKeyboard();
 async function init() {
   bindUI();
   // the drive edition is served by the Library Assistant: on this device, or shared over Wi-Fi from another
@@ -769,3 +770,68 @@ function restoreScroll(tab) {
   if (!s || !s.y || s.h.slice(1).split(':')[0] !== tab || location.hash !== s.h) return;
   requestAnimationFrame(() => scrollTo(0, s.y));
 }
+
+// The Pi's own touchscreen: the Pi setup opens the library there with ?touch=1. A screen in a case has
+// no keyboard, and the system's own on-screen keyboard doesn't show up for every browser, so the page
+// brings its own (and tells the system's one to stay away, so the two never cover the screen together).
+function screenKeyboard() {
+  let on = false;
+  try {
+    const u = new URLSearchParams(location.search);
+    if (u.has('touch')) localStorage.setItem('so-touch', u.get('touch') === '0' ? '' : '1');
+    on = !!localStorage.getItem('so-touch');
+  } catch {}
+  if (!on) return;
+  const typable = el => !!el && (el.tagName === 'TEXTAREA' || (el.tagName === 'INPUT' && ['text', 'search', 'number', ''].includes(el.getAttribute('type') || '')));
+  const quiet = el => { if (typable(el)) el.setAttribute('inputmode', 'none'); };
+  document.querySelectorAll('input,textarea').forEach(quiet);
+  new MutationObserver(ms => ms.forEach(m => m.addedNodes.forEach(n => {
+    if (n.nodeType === 1) { quiet(n); n.querySelectorAll('input,textarea').forEach(quiet); }
+  }))).observe(document.body, { childList: true, subtree: true });
+
+  const key = (k, label, cls = '') => `<button type="button" data-k="${esc(k)}"${cls ? ` class="${cls}"` : ''}>${esc(label)}</button>`;
+  const kb = document.createElement('div');
+  kb.id = 'osk'; kb.hidden = true; kb.setAttribute('aria-label', 'On-screen keyboard');
+  kb.innerHTML = ['1234567890', 'qwertyuiop', "asdfghjkl'", 'zxcvbnm,.?'].map(r => `<div class="r">${[...r].map(c => key(c, c)).join('')}</div>`).join('') +
+    `<div class="r">${key('hide', '⌄ Hide', 'w')}${key('shift', '⇧ ABC', 'w')}${key(' ', 'space', 'sp')}${key('back', '⌫', 'w')}${key('enter', '⏎ Go', 'w go')}</div>`;
+  document.body.appendChild(kb);
+
+  let target = null, shift = false;
+  const setShift = v => { shift = v; kb.querySelector('[data-k=shift]').classList.toggle('on', v);
+    kb.querySelectorAll('[data-k]').forEach(b => { const k = b.dataset.k; if (/^[a-z]$/.test(k)) b.textContent = v ? k.toUpperCase() : k; }); };
+  const show = el => {
+    target = el; kb.hidden = false; document.body.classList.add('osk-open');
+    requestAnimationFrame(() => {   // lift the text box (and the button beside it) above the keyboard
+      const r = (el.closest('form') || el).getBoundingClientRect(), top = kb.getBoundingClientRect().top;
+      if (r.bottom > top - 6) scrollBy(0, r.bottom - top + 6);
+    });
+  };
+  const hide = () => { kb.hidden = true; document.body.classList.remove('osk-open'); setShift(false); };
+  const changed = el => el.dispatchEvent(new Event('input', { bubbles: true }));
+  const put = (el, s) => {
+    if (el.type === 'number') el.value += s;
+    else { const a = el.selectionStart ?? el.value.length, z = el.selectionEnd ?? a; el.setRangeText(s, a, z, 'end'); }
+    changed(el);
+  };
+  const back = el => {
+    if (el.type === 'number') el.value = el.value.slice(0, -1);
+    else { let a = el.selectionStart ?? el.value.length; const z = el.selectionEnd ?? a; if (a === z && a > 0) a--; el.setRangeText('', a, z, 'end'); }
+    changed(el);
+  };
+  document.addEventListener('focusin', e => { if (typable(e.target)) show(e.target); });
+  document.addEventListener('focusout', e => { if (e.target === target) setTimeout(() => { if (!typable(document.activeElement)) hide(); }, 0); });
+  kb.addEventListener('pointerdown', e => e.preventDefault());   // a key press mustn't take the focus out of the text box
+  kb.addEventListener('mousedown', e => e.preventDefault());
+  kb.addEventListener('click', e => {
+    const b = e.target.closest('button[data-k]'); if (!b || !target) return;
+    const k = b.dataset.k, el = target;
+    if (k === 'hide') { hide(); el.blur(); }
+    else if (k === 'shift') setShift(!shift);
+    else if (k === 'back') back(el);
+    else if (k === 'enter') {
+      if (el.form && el.form.id === 'f') { hide(); el.blur(); el.form.requestSubmit(); }   // ask the question
+      else { hide(); el.blur(); }
+    } else { put(el, shift ? k.toUpperCase() : k); if (shift) setShift(false); }
+  });
+}
+
