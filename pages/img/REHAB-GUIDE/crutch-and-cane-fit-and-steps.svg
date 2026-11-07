@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="668" viewBox="0 0 640 668" font-family="Arial, Helvetica, sans-serif">
+<title>How an underarm crutch should fit, and the order of steps with crutches for one hurt leg and with a cane</title>
+<rect width="640" height="668" fill="#ffffff"/>
+<defs><marker id="r" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#a33"/></marker><marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker></defs>
+<g transform="translate(8,8)">
+<rect x="0" y="0" width="272" height="588" rx="8" fill="#fafafa" stroke="#bdbdbd" stroke-width="1.5"/>
+<text x="12" y="26" font-size="16" font-weight="bold" fill="#222">1  Fit the crutch</text>
+<line x1="127" y1="177" x2="116" y2="433" stroke="#8b6a3e" stroke-width="4" stroke-linecap="round"/>
+<line x1="141" y1="177" x2="116" y2="433" stroke="#8b6a3e" stroke-width="4" stroke-linecap="round"/>
+<line x1="116" y1="433" x2="110" y2="512" stroke="#8b6a3e" stroke-width="6" stroke-linecap="round"/>
+<rect x="104" y="508" width="12" height="13" rx="3" fill="#222"/>
+<line x1="211" y1="177" x2="236" y2="433" stroke="#8b6a3e" stroke-width="4" stroke-linecap="round"/>
+<line x1="225" y1="177" x2="236" y2="433" stroke="#8b6a3e" stroke-width="4" stroke-linecap="round"/>
+<line x1="236" y1="433" x2="242" y2="512" stroke="#8b6a3e" stroke-width="6" stroke-linecap="round"/>
+<rect x="236" y="508" width="12" height="13" rx="3" fill="#222"/>
+<line x1="164" y1="262" x2="166" y2="512" stroke="#c9c9c9" stroke-width="22" stroke-linecap="round"/>
+<line x1="188" y1="262" x2="186" y2="512" stroke="#c9c9c9" stroke-width="22" stroke-linecap="round"/>
+<ellipse cx="162" cy="520" rx="13" ry="6" fill="#555"/><ellipse cx="190" cy="520" rx="13" ry="6" fill="#555"/>
+<path d="M143,126 Q176,116 209,126 L204,270 L148,270 Z" fill="#c9c9c9" stroke="#666" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="176" cy="96" r="21" fill="#c9c9c9" stroke="#666" stroke-width="2"/>
+<line x1="146" y1="134" x2="120" y2="216" stroke="#b5b5b5" stroke-width="15" stroke-linecap="round"/>
+<line x1="120" y1="216" x2="126" y2="288" stroke="#b5b5b5" stroke-width="13" stroke-linecap="round"/>
+<circle cx="126" cy="288" r="8" fill="#c9c9c9" stroke="#666" stroke-width="1.5"/>
+<line x1="117" y1="288" x2="135" y2="288" stroke="#6e5530" stroke-width="4" stroke-linecap="round"/>
+<line x1="206" y1="134" x2="232" y2="216" stroke="#b5b5b5" stroke-width="15" stroke-linecap="round"/>
+<line x1="232" y1="216" x2="226" y2="288" stroke="#b5b5b5" stroke-width="13" stroke-linecap="round"/>
+<circle cx="226" cy="288" r="8" fill="#c9c9c9" stroke="#666" stroke-width="1.5"/>
+<line x1="217" y1="288" x2="235" y2="288" stroke="#6e5530" stroke-width="4" stroke-linecap="round"/>
+<rect x="120" y="167" width="28" height="11" rx="5" fill="#d9c7a3" stroke="#6e5530" stroke-width="1.5"/>
+<rect x="204" y="167" width="28" height="11" rx="5" fill="#d9c7a3" stroke="#6e5530" stroke-width="1.5"/>
+<line x1="104" y1="150" x2="150" y2="150" stroke="#a33" stroke-width="1.4" stroke-dasharray="4 3"/>
+<line x1="134" y1="152" x2="134" y2="165" stroke="#a33" stroke-width="2" marker-start="url(#r)" marker-end="url(#r)"/>
+<text x="12" y="140" font-size="14" fill="#a33">armpit</text>
+<text x="12" y="166" font-size="14" fill="#222">Top: 2–3</text>
+<text x="12" y="183" font-size="14" fill="#222">fingers’ width</text>
+<text x="12" y="200" font-size="14" fill="#222">below the</text>
+<text x="12" y="217" font-size="14" fill="#222">armpit</text>
+<line x1="128" y1="168" x2="106" y2="186" stroke="#555" stroke-width="1.1"/>
+<text x="12" y="252" font-size="14" fill="#222">Elbow bent</text>
+<text x="12" y="269" font-size="14" fill="#222">a little</text>
+<line x1="116" y1="218" x2="106" y2="256" stroke="#555" stroke-width="1.1"/>
+<text x="12" y="300" font-size="14" fill="#222">Handgrip</text>
+<text x="12" y="317" font-size="14" fill="#222">about ⅓ of</text>
+<text x="12" y="334" font-size="14" fill="#222">the way down</text>
+<line x1="116" y1="288" x2="106" y2="312" stroke="#555" stroke-width="1.1"/>
+<text x="12" y="492" font-size="14" fill="#222">Rubber tip</text>
+<line x1="88" y1="490" x2="102" y2="510" stroke="#555" stroke-width="1.1"/>
+<text x="136" y="558" font-size="15" font-weight="bold" text-anchor="middle" fill="#a33">Weight on the hands,</text>
+<text x="136" y="577" font-size="15" font-weight="bold" text-anchor="middle" fill="#a33">never the armpits</text>
+</g>
+<g transform="translate(290,8)">
+<rect x="0" y="0" width="342" height="290" rx="8" fill="#fafafa" stroke="#bdbdbd" stroke-width="1.5"/>
+<text x="12" y="26" font-size="16" font-weight="bold" fill="#222">2  Crutches, one hurt leg</text>
+<text x="12" y="46" font-size="13" fill="#444">Seen from above, walking up the page.</text>
+<text x="58" y="72" font-size="14" font-weight="bold" text-anchor="middle" fill="#222">Start</text>
+<circle cx="22" cy="168" r="6.5" fill="#2f5f8a"/>
+<circle cx="94" cy="168" r="6.5" fill="#2f5f8a"/>
+<ellipse cx="47" cy="192" rx="8" ry="17" fill="#4a4a4a" stroke="#222" stroke-width="1"/>
+<ellipse cx="69" cy="192" rx="8" ry="17" fill="#e07b00" stroke="#222" stroke-width="1"/>
+<text x="171" y="72" font-size="14" font-weight="bold" text-anchor="middle" fill="#222">Step 1</text>
+<line x1="115" y1="62" x2="115" y2="214" stroke="#ddd" stroke-width="1"/>
+<circle cx="135" cy="168" r="6" fill="none" stroke="#999" stroke-width="1.5" stroke-dasharray="3 2"/>
+<circle cx="207" cy="168" r="6" fill="none" stroke="#999" stroke-width="1.5" stroke-dasharray="3 2"/>
+<ellipse cx="182" cy="192" rx="8" ry="17" fill="none" stroke="#999" stroke-width="1.5" stroke-dasharray="4 3"/>
+<circle cx="135" cy="120" r="6.5" fill="#2f5f8a"/>
+<circle cx="207" cy="120" r="6.5" fill="#2f5f8a"/>
+<ellipse cx="182" cy="138" rx="8" ry="17" fill="#e07b00" stroke="#222" stroke-width="1"/>
+<ellipse cx="160" cy="192" rx="8" ry="17" fill="#4a4a4a" stroke="#222" stroke-width="1"/>
+<line x1="135" y1="160" x2="135" y2="130" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<line x1="207" y1="160" x2="207" y2="130" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<line x1="182" y1="174" x2="182" y2="159" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<text x="284" y="72" font-size="14" font-weight="bold" text-anchor="middle" fill="#222">Step 2</text>
+<line x1="228" y1="62" x2="228" y2="214" stroke="#ddd" stroke-width="1"/>
+<ellipse cx="273" cy="192" rx="8" ry="17" fill="none" stroke="#999" stroke-width="1.5" stroke-dasharray="4 3"/>
+<circle cx="248" cy="120" r="6.5" fill="#2f5f8a"/>
+<circle cx="320" cy="120" r="6.5" fill="#2f5f8a"/>
+<ellipse cx="295" cy="138" rx="8" ry="17" fill="#e07b00" stroke="#222" stroke-width="1"/>
+<ellipse cx="273" cy="100" rx="8" ry="17" fill="#4a4a4a" stroke="#222" stroke-width="1"/>
+<line x1="273" y1="172" x2="273" y2="122" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<text x="12" y="238" font-size="14" fill="#222">1  Both crutches and the hurt leg forward</text>
+<text x="12" y="256" font-size="14" fill="#222">  together, with only the weight its stage allows.</text>
+<text x="12" y="274" font-size="14" fill="#222">2  Step through with the good leg.</text>
+</g>
+<g transform="translate(290,306)">
+<rect x="0" y="0" width="342" height="290" rx="8" fill="#fafafa" stroke="#bdbdbd" stroke-width="1.5"/>
+<text x="12" y="26" font-size="16" font-weight="bold" fill="#222">3  Cane</text>
+<text x="12" y="46" font-size="13" fill="#444">Hold it on the side opposite the weak leg.</text>
+<text x="58" y="72" font-size="14" font-weight="bold" text-anchor="middle" fill="#222">Start</text>
+<circle cx="24" cy="176" r="6.5" fill="#2f5f8a"/>
+<ellipse cx="47" cy="192" rx="8" ry="17" fill="#4a4a4a" stroke="#222" stroke-width="1"/>
+<ellipse cx="69" cy="192" rx="8" ry="17" fill="#e07b00" stroke="#222" stroke-width="1"/>
+<text x="171" y="72" font-size="14" font-weight="bold" text-anchor="middle" fill="#222">Step 1</text>
+<line x1="115" y1="62" x2="115" y2="214" stroke="#ddd" stroke-width="1"/>
+<circle cx="137" cy="176" r="6" fill="none" stroke="#999" stroke-width="1.5" stroke-dasharray="3 2"/>
+<ellipse cx="182" cy="192" rx="8" ry="17" fill="none" stroke="#999" stroke-width="1.5" stroke-dasharray="4 3"/>
+<circle cx="137" cy="132" r="6.5" fill="#2f5f8a"/>
+<ellipse cx="182" cy="138" rx="8" ry="17" fill="#e07b00" stroke="#222" stroke-width="1"/>
+<ellipse cx="160" cy="192" rx="8" ry="17" fill="#4a4a4a" stroke="#222" stroke-width="1"/>
+<line x1="137" y1="168" x2="137" y2="142" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<line x1="182" y1="174" x2="182" y2="159" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<text x="284" y="72" font-size="14" font-weight="bold" text-anchor="middle" fill="#222">Step 2</text>
+<line x1="228" y1="62" x2="228" y2="214" stroke="#ddd" stroke-width="1"/>
+<ellipse cx="273" cy="192" rx="8" ry="17" fill="none" stroke="#999" stroke-width="1.5" stroke-dasharray="4 3"/>
+<circle cx="250" cy="132" r="6.5" fill="#2f5f8a"/>
+<ellipse cx="295" cy="138" rx="8" ry="17" fill="#e07b00" stroke="#222" stroke-width="1"/>
+<ellipse cx="273" cy="110" rx="8" ry="17" fill="#4a4a4a" stroke="#222" stroke-width="1"/>
+<line x1="273" y1="172" x2="273" y2="132" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<text x="12" y="238" font-size="14" fill="#222">1  Cane and weak leg go down together.</text>
+<text x="12" y="256" font-size="14" fill="#222">2  Then the good leg.</text>
+</g>
+<g transform="translate(8,604)">
+<rect x="0" y="0" width="624" height="58" rx="8" fill="#fff6e8" stroke="#e0b46a" stroke-width="1.5"/>
+<ellipse cx="22" cy="20" rx="5" ry="11" fill="#4a4a4a"/>
+<text x="32" y="25" font-size="13" fill="#222">good leg</text>
+<ellipse cx="112" cy="20" rx="5" ry="11" fill="#e07b00"/>
+<text x="122" y="25" font-size="13" fill="#222">hurt or weak leg</text>
+<circle cx="244" cy="20" r="6" fill="#2f5f8a"/>
+<text x="256" y="25" font-size="13" fill="#222">crutch or cane tip</text>
+<text x="12" y="48" font-size="14" font-weight="bold" fill="#222">Stairs: up with the good leg first, down with the crutches and bad leg first.</text>
+</g>
+</svg>

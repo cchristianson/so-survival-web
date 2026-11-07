@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" font-family="Arial, Helvetica, sans-serif">
+  <title>Mending a broken steel frame tube by brazing it over an inner sleeve, cut open to show the inside</title>
+  <rect width="640" height="420" fill="#ffffff"/>
+  <defs>
+    <marker id="k" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#333"/></marker>
+  </defs>
+  <text x="20" y="28" font-size="15" fill="#333">The tube cut open lengthwise to show the inside</text>
+
+  <!-- inner sleeve (behind) -->
+  <rect x="200" y="168" width="240" height="8" fill="#9aa7b0" stroke="#333" stroke-width="1.5"/>
+  <rect x="200" y="224" width="240" height="8" fill="#9aa7b0" stroke="#333" stroke-width="1.5"/>
+
+  <!-- brass flowed into the break and between tube and sleeve -->
+  <rect x="300" y="152" width="40" height="22" fill="#d4a52a"/>
+  <rect x="300" y="226" width="40" height="22" fill="#d4a52a"/>
+
+  <!-- left piece of the broken tube -->
+  <rect x="40" y="156" width="270" height="12" fill="#6f7f8a" stroke="#222" stroke-width="2"/>
+  <rect x="40" y="232" width="270" height="12" fill="#6f7f8a" stroke="#222" stroke-width="2"/>
+  <!-- right piece -->
+  <rect x="330" y="156" width="270" height="12" fill="#6f7f8a" stroke="#222" stroke-width="2"/>
+  <rect x="330" y="232" width="270" height="12" fill="#6f7f8a" stroke="#222" stroke-width="2"/>
+
+  <!-- optional pin -->
+  <rect x="246" y="146" width="6" height="32" fill="#222"/>
+
+  <!-- labels -->
+  <g font-size="14" fill="#222">
+    <text x="40" y="70" font-weight="bold">BROKEN TUBE</text>
+    <text x="40" y="88">ends filed smooth and bright</text>
+    <line x1="120" y1="94" x2="120" y2="154" stroke="#333" stroke-width="1.3" marker-end="url(#k)"/>
+
+    <text x="330" y="70" font-weight="bold" fill="#8a6a10">BRASS SPELTER</text>
+    <text x="330" y="88">laid on at a low red heat,</text>
+    <text x="330" y="106">flows into the joint</text>
+    <line x1="332" y1="112" x2="322" y2="150" stroke="#333" stroke-width="1.3" marker-end="url(#k)"/>
+
+    <text x="150" y="128" font-weight="bold">PIN</text>
+    <text x="150" y="146">if needed</text>
+    <line x1="214" y1="140" x2="243" y2="152" stroke="#333" stroke-width="1.3" marker-end="url(#k)"/>
+
+    <text x="440" y="290" font-weight="bold" fill="#3d4a52">INNER SLEEVE</text>
+    <text x="440" y="308">light steel tube, fitted</text>
+    <text x="440" y="326">inside both ends</text>
+    <line x1="436" y1="282" x2="422" y2="230" stroke="#333" stroke-width="1.3" marker-end="url(#k)"/>
+
+    <text x="40" y="290">Paint the joint with borax mixed</text>
+    <text x="40" y="308">with water (the flux) before heating.</text>
+  </g>
+  <text x="20" y="372" font-size="15" font-weight="bold" fill="#b03a2e">Steel frames only: aluminium and carbon frames cannot be brazed.</text>
+  <text x="20" y="394" font-size="15" font-weight="bold" fill="#b03a2e">Work outdoors: brass gives off zinc fumes.</text>
+  <text x="20" y="414" font-size="12.5" fill="#555">Not to scale.</text>
+</svg>

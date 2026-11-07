@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="370" viewBox="0 0 660 370" font-family="Arial, Helvetica, sans-serif">
+  <title>How high a chimney must rise: 3 ft above a flat roof, 2 ft above any ridge within 10 ft</title>
+  <rect width="660" height="370" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+    <pattern id="brick" width="16" height="10" patternUnits="userSpaceOnUse">
+      <rect width="16" height="10" fill="#c8735a"/><path d="M0,10 H16 M8,0 V5 M0,5 H16 M16,5 V10" stroke="#8e4a35" stroke-width="1" fill="none"/>
+    </pattern>
+  </defs>
+  <text x="20" y="30" font-size="16" font-weight="bold" fill="#222">Flat roof</text>
+  <text x="340" y="30" font-size="16" font-weight="bold" fill="#222">Pitched roof</text>
+
+  <!-- LEFT: flat roof at y=210, 18 px per ft -->
+  <rect x="30" y="210" width="270" height="12" fill="#9a9184"/>
+  <line x1="40" y1="222" x2="40" y2="330" stroke="#555" stroke-width="3"/>
+  <line x1="290" y1="222" x2="290" y2="330" stroke="#555" stroke-width="3"/>
+  <line x1="20" y1="330" x2="310" y2="330" stroke="#6b5a45" stroke-width="2"/>
+  <!-- chimney top at 210 - 3 ft*18 = 156 -->
+  <rect x="140" y="156" width="34" height="174" fill="url(#brick)" stroke="#6e3a2a" stroke-width="1.5"/>
+  <line x1="196" y1="208" x2="196" y2="158" stroke="#333" stroke-width="1.6" marker-start="url(#a)" marker-end="url(#a)"/>
+  <line x1="174" y1="156" x2="204" y2="156" stroke="#333" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="206" y="182" font-size="15" font-weight="bold" fill="#222">at least</text>
+  <text x="206" y="200" font-size="15" font-weight="bold" fill="#222">3 ft</text>
+
+  <!-- RIGHT: pitched roof, ridge at (560,140), 18 px per ft -->
+  <polygon points="360,240 560,140 650,185 650,240" fill="none"/>
+  <path d="M352,244 L560,140 L652,186" fill="none" stroke="#9a9184" stroke-width="12" stroke-linejoin="round"/>
+  <line x1="372" y1="240" x2="372" y2="330" stroke="#555" stroke-width="3"/>
+  <line x1="340" y1="330" x2="655" y2="330" stroke="#6b5a45" stroke-width="2"/>
+  <!-- chimney: right side at x=470, so 90 px (5 ft) from the ridge; top 2 ft (36 px) above ridge level -->
+  <rect x="436" y="104" width="34" height="226" fill="url(#brick)" stroke="#6e3a2a" stroke-width="1.5"/>
+  <!-- ridge level line -->
+  <line x1="420" y1="140" x2="566" y2="140" stroke="#333" stroke-width="1" stroke-dasharray="4 3"/>
+  <line x1="420" y1="104" x2="436" y2="104" stroke="#333" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="424" y1="138" x2="424" y2="106" stroke="#333" stroke-width="1.6" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="414" y="118" text-anchor="end" font-size="15" font-weight="bold" fill="#222">at least</text>
+  <text x="414" y="136" text-anchor="end" font-size="15" font-weight="bold" fill="#222">2 ft</text>
+  <text x="414" y="154" text-anchor="end" font-size="13" fill="#444">above the ridge</text>
+  <!-- 10 ft horizontal -->
+  <line x1="470" y1="98" x2="470" y2="66" stroke="#333" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="560" y1="132" x2="560" y2="66" stroke="#333" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="472" y1="72" x2="558" y2="72" stroke="#333" stroke-width="1.6" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="515" y="60" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#222">ridge within 10 ft</text>
+  <text x="575" y="134" font-size="13" fill="#444">ridge</text>
+
+  <!-- notes -->
+  <text x="20" y="352" font-size="13" fill="#444">Keep 2 in of air between the chimney and any wood framing. Fire-clay flue lining inside.</text>
+</svg>

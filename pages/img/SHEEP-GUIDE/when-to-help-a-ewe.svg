@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="560" viewBox="0 0 660 560" font-family="Arial, Helvetica, sans-serif">
+  <title>When to wait, when to check and when to help a lambing ewe</title>
+  <rect width="660" height="560" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+  </defs>
+
+  <text x="330" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#222">Lambing: wait, check or help?</text>
+
+  <!-- Row 1: signs -->
+  <rect x="30" y="50" width="600" height="70" rx="8" fill="#eef3f8" stroke="#4a6a8a" stroke-width="2"/>
+  <text x="46" y="76" font-size="16" font-weight="bold" fill="#223">Hours before: she gets ready</text>
+  <text x="46" y="98" font-size="14" fill="#333">Leaves the flock, paws a nest, gets up and down; udder full,</text>
+  <text x="46" y="115" font-size="14" fill="#333">vulva swollen and slack. Put her in a clean, dry lambing pen.</text>
+
+  <line x1="330" y1="120" x2="330" y2="146" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- Row 2: water bag -->
+  <rect x="30" y="150" width="600" height="70" rx="8" fill="#eef3f8" stroke="#4a6a8a" stroke-width="2"/>
+  <text x="46" y="176" font-size="16" font-weight="bold" fill="#223">Water bag shows and breaks: WAIT</text>
+  <text x="46" y="198" font-size="14" fill="#333">Straining usually starts within the hour. Once feet show, a lamb</text>
+  <text x="46" y="215" font-size="14" fill="#333">comes in a few minutes (longer for a first-time ewe).</text>
+
+  <line x1="330" y1="220" x2="330" y2="246" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- Row 3: two columns check / help -->
+  <rect x="30" y="250" width="290" height="190" rx="8" fill="#fff6d9" stroke="#b08a1a" stroke-width="2"/>
+  <text x="175" y="278" text-anchor="middle" font-size="17" font-weight="bold" fill="#5a4300">CHECK her (clean,</text>
+  <text x="175" y="298" text-anchor="middle" font-size="17" font-weight="bold" fill="#5a4300">gloved hand) if:</text>
+  <text x="46" y="326" font-size="14" fill="#333">• up and down over 2 hours,</text>
+  <text x="60" y="344" font-size="14" fill="#333">no water bag, no labor</text>
+  <text x="46" y="368" font-size="14" fill="#333">• water broke 1–2 hours ago,</text>
+  <text x="60" y="386" font-size="14" fill="#333">no straining</text>
+  <text x="46" y="410" font-size="14" fill="#333">• straining 30 minutes,</text>
+  <text x="60" y="428" font-size="14" fill="#333">nothing showing</text>
+
+  <rect x="340" y="250" width="290" height="190" rx="8" fill="#fbe3df" stroke="#a83a2a" stroke-width="2"/>
+  <text x="485" y="278" text-anchor="middle" font-size="17" font-weight="bold" fill="#6e1d12">HELP her if:</text>
+  <text x="356" y="306" font-size="14" fill="#333">• feet or head are showing and</text>
+  <text x="370" y="324" font-size="14" fill="#333">no lamb in about 10 minutes</text>
+  <text x="356" y="348" font-size="14" fill="#333">• a tail only, a head only, or</text>
+  <text x="370" y="366" font-size="14" fill="#333">one leg shows</text>
+  <text x="356" y="390" font-size="14" fill="#333">• Pull only as she strains,</text>
+  <text x="370" y="408" font-size="14" fill="#333">gently. Backward lamb: once</text>
+  <text x="370" y="426" font-size="14" fill="#333">the hips are out, be quick.</text>
+
+  <line x1="330" y1="440" x2="330" y2="466" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- Row 4: after -->
+  <rect x="30" y="470" width="600" height="76" rx="8" fill="#e6f2e1" stroke="#4d7a2c" stroke-width="2"/>
+  <text x="46" y="496" font-size="16" font-weight="bold" fill="#234016">After each lamb</text>
+  <text x="46" y="518" font-size="14" fill="#333">A twin usually follows within 30 minutes. Lamb up and sucking</text>
+  <text x="46" y="536" font-size="14" fill="#333">within 30–60 minutes. Afterbirth in 5–8 hours: never pull it.</text>
+</svg>

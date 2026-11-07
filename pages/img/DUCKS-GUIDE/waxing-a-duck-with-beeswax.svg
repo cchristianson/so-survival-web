@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="580" viewBox="0 0 680 580" font-family="Arial, Helvetica, sans-serif">
+  <title>Plucking a duck with a beeswax dip: dry-pick, dip, set, peel, and melt the wax down again</title>
+  <rect width="680" height="580" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+    <marker id="r" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#9c3b1f"/></marker>
+  </defs>
+
+  <!-- panel frames -->
+  <g fill="none" stroke="#bbb" stroke-width="1.5">
+    <rect x="6" y="6" width="330" height="278" rx="6"/><rect x="344" y="6" width="330" height="278" rx="6"/>
+    <rect x="6" y="294" width="330" height="278" rx="6"/><rect x="344" y="294" width="330" height="278" rx="6"/>
+  </g>
+
+  <!-- PANEL 1: dry-pick -->
+  <text x="18" y="30" font-size="15" font-weight="bold" fill="#222">1. Dry-pick right after bleeding</text>
+  <ellipse cx="190" cy="120" rx="95" ry="42" fill="#f5efe4" stroke="#555" stroke-width="2"/>
+  <path d="M100,108 C80,98 72,84 66,74" stroke="#555" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <path d="M100,108 C80,98 72,84 66,74" stroke="#f5efe4" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <circle cx="62" cy="70" r="13" fill="#f5efe4" stroke="#555" stroke-width="2"/>
+  <path d="M50,66 L30,70 L50,76 Z" fill="#e2a23a" stroke="#8a5a14"/>
+  <!-- feather marks pointing toward the tail -->
+  <g stroke="#9a8f80" stroke-width="1.6" fill="none">
+    <path d="M130,104 l10,6 l-10,6"/><path d="M160,96 l10,6 l-10,6"/><path d="M190,92 l10,6 l-10,6"/><path d="M220,96 l10,6 l-10,6"/>
+    <path d="M145,128 l10,6 l-10,6"/><path d="M175,124 l10,6 l-10,6"/><path d="M205,122 l10,6 l-10,6"/><path d="M235,126 l10,6 l-10,6"/>
+  </g>
+  <path d="M190,180 L262,180" stroke="#9c3b1f" stroke-width="3" marker-end="url(#r)"/>
+  <text x="182" y="185" font-size="13" font-weight="bold" fill="#9c3b1f" text-anchor="end">pull this way</text>
+  <g font-size="13" fill="#222">
+    <text x="18" y="214">Pull feathers DOWN, the way they grow</text>
+    <text x="18" y="232">(toward the tail). Pulling up tears skin.</text>
+    <text x="18" y="252">Breast: pick close to the skin and roll</text>
+    <text x="18" y="270">them outward, row after row.</text>
+  </g>
+
+  <!-- PANEL 2: dip -->
+  <text x="356" y="30" font-size="15" font-weight="bold" fill="#222">2. Chill the bird, dip 5–10 seconds</text>
+  <!-- hand-held bird, head down, going into the pot -->
+  <line x1="470" y1="44" x2="470" y2="62" stroke="#8a5a14" stroke-width="3"/>
+  <line x1="482" y1="44" x2="478" y2="62" stroke="#8a5a14" stroke-width="3"/>
+  <ellipse cx="474" cy="104" rx="26" ry="44" fill="#f5efe4" stroke="#555" stroke-width="2"/>
+  <!-- pot -->
+  <path d="M400,120 L548,120 L541,232 L407,232 Z" fill="#9cc4e4" stroke="#333" stroke-width="2.5"/>
+  <rect x="401" y="120" width="146" height="14" fill="#f2c94c" stroke="#9c7a1f" stroke-width="1"/>
+  <ellipse cx="474" cy="160" rx="20" ry="26" fill="#f5efe4" stroke="#555" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.8"/>
+  <path d="M474,148 L474,176" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
+  <g font-size="13" fill="#222">
+    <text x="556" y="118">Beeswax,</text>
+    <text x="556" y="134">melted,</text>
+    <text x="556" y="150">floats on top</text>
+    <line x1="554" y1="130" x2="540" y2="128" stroke="#333" stroke-width="1.2"/>
+    <text x="556" y="184">Hot water:</text>
+    <text x="556" y="200">147–185 °F,</text>
+    <text x="556" y="216" font-weight="bold">never boil</text>
+    <line x1="554" y1="196" x2="538" y2="196" stroke="#333" stroke-width="1.2"/>
+    <text x="356" y="254">Enamel or stainless pot, rainwater.</text>
+    <text x="356" y="272">Heat the water; never put a flame to the wax.</text>
+  </g>
+
+  <!-- PANEL 3: set -->
+  <text x="18" y="318" font-size="15" font-weight="bold" fill="#222">3. Set the wax</text>
+  <path d="M60,390 L280,390 L270,500 L70,500 Z" fill="#cfe3f1" stroke="#333" stroke-width="2.5"/>
+  <ellipse cx="170" cy="448" rx="60" ry="30" fill="#f5efe4" stroke="#c9a227" stroke-width="5"/>
+  <g fill="#ffffff" stroke="#7aa6c8" stroke-width="1.5">
+    <rect x="96" y="402" width="14" height="12" rx="2"/><rect x="232" y="410" width="14" height="12" rx="2"/><rect x="200" y="480" width="14" height="12" rx="2"/>
+  </g>
+  <g font-size="13" fill="#222">
+    <text x="18" y="350">Plunge it in cold water until the wax</text>
+    <text x="18" y="368">is hard (or hang it 2 minutes).</text>
+    <text x="18" y="530">A second dip gives a thicker coat</text>
+    <text x="18" y="548">that peels off in bigger sheets.</text>
+  </g>
+
+  <!-- PANEL 4: peel and reuse -->
+  <text x="356" y="318" font-size="15" font-weight="bold" fill="#222">4. Peel it off, then use the wax again</text>
+  <ellipse cx="430" cy="392" rx="52" ry="28" fill="#f7e4dc" stroke="#555" stroke-width="2"/>
+  <path d="M484,380 C510,360 540,372 556,356 L566,372 C548,390 520,382 494,400 Z" fill="#f2c94c" stroke="#9c7a1f" stroke-width="1.5"/>
+  <g stroke="#7d6f5c" stroke-width="1.3"><path d="M520,374 l6,-6"/><path d="M536,370 l6,-6"/><path d="M508,384 l6,-6"/><path d="M548,364 l6,-6"/></g>
+  <text x="370" y="446" font-size="13" fill="#222">Down and pinfeathers come off with it.</text>
+  <!-- reuse cycle -->
+  <g font-size="13" fill="#222">
+    <rect x="364" y="462" width="92" height="44" rx="5" fill="#f2c94c" stroke="#9c7a1f"/>
+    <text x="410" y="480" text-anchor="middle">melt peelings</text><text x="410" y="497" text-anchor="middle">in water</text>
+    <rect x="470" y="462" width="92" height="44" rx="5" fill="#eeeeee" stroke="#777"/>
+    <text x="516" y="480" text-anchor="middle">strain through</text><text x="516" y="497" text-anchor="middle">cotton cloth</text>
+    <rect x="576" y="462" width="88" height="44" rx="5" fill="#f6e7b0" stroke="#9c7a1f"/>
+    <text x="620" y="480" text-anchor="middle">cool slowly;</text><text x="620" y="497" text-anchor="middle">scrape cake</text>
+    <text x="364" y="530">Scrape the dirt off the underside of the</text>
+    <text x="364" y="548">cake and keep the wax for plucking.</text>
+  </g>
+  <g stroke="#333" stroke-width="1.6"><line x1="456" y1="484" x2="468" y2="484" marker-end="url(#a)"/><line x1="562" y1="484" x2="574" y2="484" marker-end="url(#a)"/></g>
+</svg>

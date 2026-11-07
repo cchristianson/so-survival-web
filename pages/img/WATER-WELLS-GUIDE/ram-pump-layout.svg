@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="530" viewBox="0 0 640 530" font-family="Arial, Helvetica, sans-serif">
+  <title>A hydraulic ram installation seen from the side: water falls down a drive pipe to the ram, which pushes part of it up a delivery pipe to a tank</title>
+  <rect width="640" height="530" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+    <marker id="b" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#2f6fa8"/></marker>
+  </defs>
+
+  <!-- ground -->
+  <path d="M0,335 L130,335 L280,375 L360,375 L520,170 L640,170 L640,420 L0,420 Z" fill="#e8dcc6" stroke="#6b5a3a" stroke-width="2"/>
+  <!-- source pool with dam -->
+  <path d="M38,320 L38,336 L118,336 L118,320 Z" fill="#6fa8d6"/>
+  <rect x="118" y="306" width="8" height="30" fill="#8b6f47"/>
+  <line x1="38" y1="320" x2="118" y2="320" stroke="#1f4f7a" stroke-width="2"/>
+
+  <!-- drive pipe (straight, rigid) -->
+  <line x1="112" y1="332" x2="304" y2="362" stroke="#555" stroke-width="9" stroke-linecap="round"/>
+  <line x1="150" y1="331" x2="250" y2="347" stroke="#2f6fa8" stroke-width="2" marker-end="url(#b)"/>
+
+  <!-- ram -->
+  <rect x="298" y="348" width="44" height="26" rx="3" fill="#4a6b8a" stroke="#222" stroke-width="2"/>
+  <rect x="320" y="312" width="18" height="38" rx="9" fill="#4a6b8a" stroke="#222" stroke-width="2"/>
+  <!-- waste valve spill -->
+  <path d="M306,348 q-6,-16 -18,-20 M312,348 q0,-20 -8,-28" fill="none" stroke="#2f6fa8" stroke-width="2.5"/>
+  <circle cx="284" cy="326" r="2.5" fill="#2f6fa8"/><circle cx="300" cy="316" r="2.5" fill="#2f6fa8"/>
+
+  <!-- delivery pipe up the hill to the tank -->
+  <path d="M338,326 L372,362 L520,164 L534,164 L534,120 L552,120" fill="none" stroke="#2a2a2a" stroke-width="4" stroke-linejoin="round"/>
+  <line x1="420" y1="282" x2="470" y2="215" stroke="#2f6fa8" stroke-width="2" marker-end="url(#b)"/>
+  <!-- tank -->
+  <rect x="546" y="112" width="70" height="58" fill="#cfe3f3" stroke="#333" stroke-width="2.5"/>
+  <rect x="548" y="134" width="66" height="34" fill="#6fa8d6"/>
+  <text x="581" y="102" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#222">tank</text>
+
+  <!-- levels and dimensions -->
+  <g stroke="#333" stroke-width="1.2" stroke-dasharray="5 4">
+    <line x1="14" y1="320" x2="38" y2="320"/>
+    <line x1="14" y1="374" x2="298" y2="374"/>
+    <line x1="342" y1="374" x2="632" y2="374"/>
+    <line x1="552" y1="120" x2="632" y2="120"/>
+  </g>
+  <line x1="22" y1="322" x2="22" y2="372" stroke="#333" stroke-width="1.8" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="30" y="358" font-size="14.5" font-weight="bold" fill="#222">fall</text>
+  <line x1="626" y1="122" x2="626" y2="372" stroke="#333" stroke-width="1.8" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="618" y="262" text-anchor="end" font-size="14.5" font-weight="bold" fill="#222">lift</text>
+
+  <!-- labels -->
+  <text x="20" y="262" font-size="14" fill="#222">Spring or creek</text>
+  <text x="20" y="279" font-size="14" fill="#222">with a small dam</text>
+  <text x="44" y="395" font-size="14" fill="#222"><tspan font-weight="bold">Drive pipe:</tspan> straight, rigid (steel</text>
+  <text x="44" y="412" font-size="14" fill="#222">is best), about 3–7 × the fall long</text>
+  <text x="320" y="398" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#222">ram</text>
+  <line x1="290" y1="318" x2="232" y2="246" stroke="#333" stroke-width="1.2"/>
+  <text x="150" y="226" font-size="14" fill="#222">Waste valve: water that</text>
+  <text x="150" y="243" font-size="14" fill="#222">isn't pumped spills out</text>
+  <text x="420" y="320" font-size="14" fill="#222" transform="rotate(-53 420 320)">delivery pipe</text>
+
+  <!-- rule and example -->
+  <rect x="10" y="434" width="620" height="86" rx="8" fill="#f4f7fa" stroke="#9fb3c8" stroke-width="1.5"/>
+  <text x="320" y="460" text-anchor="middle" font-size="16" font-weight="bold" fill="#222">Water delivered ≈ water in × fall ÷ lift × 0.5</text>
+  <text x="320" y="484" text-anchor="middle" font-size="14.5" fill="#333">Example: 10 gal a minute falling 20 ft, tank 120 ft above the ram:</text>
+  <text x="320" y="505" text-anchor="middle" font-size="14.5" fill="#333">about 0.8 gal a minute, roughly 1,200 gallons a day. Not to scale.</text>
+</svg>

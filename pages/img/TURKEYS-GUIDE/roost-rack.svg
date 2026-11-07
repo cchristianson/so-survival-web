@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="380" viewBox="0 0 640 380" font-family="Arial, Helvetica, sans-serif">
+  <title>End view of a low turkey roost rack on skids, poles all at one height</title>
+  <rect width="640" height="380" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+  </defs>
+
+  <text x="320" y="26" text-anchor="middle" font-size="18" font-weight="bold" fill="#222">A low roost rack for turkeys (end view, roughly to scale)</text>
+
+  <!-- ground -->
+  <line x1="20" y1="290" x2="620" y2="290" stroke="#5b7f3a" stroke-width="3"/>
+
+  <!-- skid, short posts, end rail -->
+  <rect x="96" y="276" width="428" height="14" fill="#a9773f" stroke="#333" stroke-width="2"/>
+  <rect x="104" y="264" width="12" height="12" fill="#c49a64" stroke="#333" stroke-width="1.5"/>
+  <rect x="504" y="264" width="12" height="12" fill="#c49a64" stroke="#333" stroke-width="1.5"/>
+  <rect x="100" y="257" width="420" height="7" fill="#c49a64" stroke="#333" stroke-width="1.5"/>
+  <!-- poles about 2 1/2 in across, 21-22 in apart (about 5 px per inch) -->
+  <g fill="#8a6a45" stroke="#333" stroke-width="2">
+    <circle cx="145" cy="250" r="7"/>
+    <circle cx="255" cy="250" r="7"/>
+    <circle cx="365" cy="250" r="7"/>
+    <circle cx="475" cy="250" r="7"/>
+  </g>
+  <!-- wire laid over the poles -->
+  <path d="M138,243 Q200,247 255,243 Q310,247 365,243 Q420,247 482,243" fill="none" stroke="#444" stroke-width="2" stroke-dasharray="5 3"/>
+
+  <!-- spacing dimension -->
+  <line x1="145" y1="192" x2="145" y2="240" stroke="#999" stroke-width="1"/>
+  <line x1="255" y1="192" x2="255" y2="240" stroke="#999" stroke-width="1"/>
+  <line x1="482" y1="243" x2="600" y2="243" stroke="#999" stroke-width="1"/>
+  <g stroke="#333" stroke-width="1.6" fill="none" marker-start="url(#a)" marker-end="url(#a)">
+    <line x1="147" y1="200" x2="253" y2="200"/>
+    <line x1="592" y1="245" x2="592" y2="288"/>
+  </g>
+  <text x="200" y="188" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">19–24 in</text>
+  <text x="200" y="170" text-anchor="middle" font-size="13" fill="#333">center to center</text>
+  <text x="580" y="232" text-anchor="end" font-size="15" font-weight="bold" fill="#222">6–12 in</text>
+
+  <!-- labels with leader lines -->
+  <g font-size="14" fill="#222">
+    <text x="300" y="66">poles about 2½ in across (2–4 in is fine),</text>
+    <text x="300" y="84">all at one height; not narrow strips</text>
+    <text x="300" y="102">or wide flat boards</text>
+    <text x="30" y="66">wire over (or under) the</text>
+    <text x="30" y="84">poles: better footing, and</text>
+    <text x="30" y="102">birds stay out of droppings</text>
+    <text x="130" y="322">skids: drag the whole rack to clean ground</text>
+    <text x="130" y="342">heavy broad-breasted birds: roost tops only 4–6 in up</text>
+  </g>
+  <g stroke="#333" stroke-width="1.4" fill="none" marker-end="url(#a)">
+    <line x1="365" y1="108" x2="365" y2="238"/>
+    <line x1="100" y1="110" x2="196" y2="242"/>
+    <line x1="124" y1="312" x2="104" y2="291"/>
+  </g>
+  <text x="320" y="370" text-anchor="middle" font-size="14" fill="#222">Allow 12–15 in of pole per bird (small to large types).</text>
+</svg>

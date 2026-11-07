@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="460" viewBox="0 0 640 460" font-family="Arial, Helvetica, sans-serif">
+  <title>Measuring a creek's drop (head) with a hose and pressure gauge, and its flow with a drum and a watch</title>
+  <rect width="640" height="460" fill="#ffffff"/>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker></defs>
+
+  <!-- hillside -->
+  <path d="M0,110 L90,110 C170,120 240,190 320,250 C380,295 430,330 470,345 L470,460 L0,460 Z" fill="#e9e3d3" stroke="#6b6359" stroke-width="2"/>
+  <!-- creek pool at the top -->
+  <path d="M10,110 L95,110 L90,124 L15,124 Z" fill="#7fb3dc" stroke="#3b6f99" stroke-width="1.5"/>
+  <text x="15" y="100" font-size="14" font-weight="bold" fill="#1f4e79">Creek, at the intake</text>
+  <!-- hose -->
+  <path d="M70,118 C150,128 230,200 310,258 C370,300 420,330 455,336" fill="none" stroke="#2e7d32" stroke-width="6"/>
+  <text x="235" y="170" font-size="14" font-weight="bold" fill="#2e7d32" transform="rotate(38 235 170)">hose, full of water</text>
+  <!-- gauge -->
+  <circle cx="478" cy="316" r="24" fill="#fff" stroke="#333" stroke-width="3"/>
+  <line x1="478" y1="316" x2="492" y2="302" stroke="#c0392b" stroke-width="3"/>
+  <line x1="455" y1="336" x2="478" y2="336" stroke="#2e7d32" stroke-width="6"/>
+  <line x1="478" y1="340" x2="478" y2="336" stroke="#333" stroke-width="3"/>
+  <text x="250" y="350" font-size="14" font-weight="bold" fill="#222">Pressure gauge at the bottom,</text>
+  <text x="250" y="367" font-size="13" fill="#333">where the turbine would go</text>
+
+  <!-- head dimension -->
+  <line x1="95" y1="117" x2="600" y2="117" stroke="#3b6f99" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <line x1="505" y1="336" x2="600" y2="336" stroke="#3b6f99" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <line x1="590" y1="122" x2="590" y2="331" stroke="#333" stroke-width="2" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="582" y="215" text-anchor="end" font-size="15" font-weight="bold" fill="#222">HEAD</text>
+  <text x="582" y="232" text-anchor="end" font-size="13" fill="#333">(feet of drop)</text>
+
+  <!-- formula box -->
+  <rect x="180" y="380" width="445" height="70" rx="6" fill="#eef4fa" stroke="#3b6f99" stroke-width="1.5"/>
+  <text x="195" y="402" font-size="15" font-weight="bold" fill="#1f4e79">psi × 2.31 = feet of head</text>
+  <text x="195" y="421" font-size="13.5" fill="#222">15 psi on the gauge ≈ 35 ft of head</text>
+  <text x="195" y="440" font-size="13.5" fill="#222">Power ≈ gpm × feet of head ÷ 10 watts (often less)</text>
+
+  <!-- flow inset -->
+  <rect x="300" y="15" width="325" height="80" rx="6" fill="#fbf7ee" stroke="#8a7a55" stroke-width="1.5"/>
+  <rect x="315" y="30" width="38" height="52" rx="4" fill="#9cb3c9" stroke="#333" stroke-width="2"/>
+  <line x1="315" y1="44" x2="353" y2="44" stroke="#333" stroke-width="1.2"/><line x1="315" y1="68" x2="353" y2="68" stroke="#333" stroke-width="1.2"/>
+  <text x="365" y="37" font-size="14" font-weight="bold" fill="#222">FLOW: time how long the</text>
+  <text x="365" y="54" font-size="14" font-weight="bold" fill="#222">creek takes to fill a drum.</text>
+  <text x="365" y="72" font-size="13" fill="#333">55 gal in 40 seconds</text>
+  <text x="365" y="88" font-size="13" fill="#333">= 82.5 gallons a minute (gpm)</text>
+  <text x="15" y="452" font-size="13" fill="#555">Side view. Not to scale.</text>
+</svg>

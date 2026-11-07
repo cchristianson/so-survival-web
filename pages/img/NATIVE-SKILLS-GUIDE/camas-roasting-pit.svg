@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="470" viewBox="0 0 640 470" font-family="Arial, Helvetica, sans-serif">
+  <title>A camas roasting pit, cut through to show the layers</title>
+  <rect width="640" height="470" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+    <clipPath id="pit"><path d="M40,150 L360,150 C352,250 318,318 200,322 C82,318 48,250 40,150 Z"/></clipPath>
+  </defs>
+
+  <!-- ground around the pit -->
+  <rect x="0" y="150" width="420" height="230" fill="#d8c3a0"/>
+  <path d="M0,150 L420,150" stroke="#6b5537" stroke-width="2.5"/>
+
+  <!-- pit contents, bottom to top -->
+  <g clip-path="url(#pit)">
+    <rect x="0" y="150" width="420" height="200" fill="#d8c3a0"/>
+    <!-- stones -->
+    <g fill="#8e8e8e" stroke="#4d4d4d" stroke-width="1.5">
+      <ellipse cx="80" cy="262" rx="20" ry="14"/><ellipse cx="118" cy="290" rx="22" ry="15"/><ellipse cx="160" cy="306" rx="22" ry="15"/>
+      <ellipse cx="204" cy="310" rx="23" ry="15"/><ellipse cx="248" cy="306" rx="22" ry="15"/><ellipse cx="290" cy="292" rx="22" ry="15"/>
+      <ellipse cx="324" cy="264" rx="20" ry="14"/><ellipse cx="138" cy="272" rx="18" ry="12"/><ellipse cx="182" cy="284" rx="20" ry="13"/>
+      <ellipse cx="226" cy="286" rx="20" ry="13"/><ellipse cx="270" cy="272" rx="19" ry="12"/><ellipse cx="62" cy="230" rx="16" ry="12"/><ellipse cx="340" cy="232" rx="16" ry="12"/>
+    </g>
+    <!-- bark / needles under the bulbs -->
+    <path d="M40,246 C100,262 300,262 360,246 L360,262 C300,276 100,276 40,262 Z" fill="#b5651d"/>
+    <g stroke="#7a3f0c" stroke-width="1.2"><line x1="80" y1="258" x2="96" y2="262"/><line x1="130" y1="263" x2="148" y2="266"/><line x1="190" y1="265" x2="206" y2="267"/><line x1="250" y1="263" x2="268" y2="260"/><line x1="300" y1="258" x2="318" y2="254"/></g>
+    <!-- camas bulbs -->
+    <g fill="#f1e6c8" stroke="#7a6a45" stroke-width="1.5">
+      <ellipse cx="80" cy="234" rx="11" ry="9"/><ellipse cx="106" cy="240" rx="11" ry="9"/><ellipse cx="132" cy="244" rx="11" ry="9"/><ellipse cx="158" cy="246" rx="11" ry="9"/>
+      <ellipse cx="184" cy="247" rx="11" ry="9"/><ellipse cx="210" cy="247" rx="11" ry="9"/><ellipse cx="236" cy="246" rx="11" ry="9"/><ellipse cx="262" cy="244" rx="11" ry="9"/>
+      <ellipse cx="288" cy="240" rx="11" ry="9"/><ellipse cx="314" cy="234" rx="11" ry="9"/>
+      <ellipse cx="94" cy="222" rx="11" ry="9"/><ellipse cx="120" cy="226" rx="11" ry="9"/><ellipse cx="146" cy="229" rx="11" ry="9"/><ellipse cx="172" cy="230" rx="11" ry="9"/>
+      <ellipse cx="198" cy="231" rx="11" ry="9"/><ellipse cx="224" cy="230" rx="11" ry="9"/><ellipse cx="250" cy="229" rx="11" ry="9"/><ellipse cx="276" cy="226" rx="11" ry="9"/><ellipse cx="302" cy="222" rx="11" ry="9"/>
+    </g>
+    <!-- needles over the bulbs -->
+    <path d="M40,196 C100,206 300,206 360,196 L360,214 C300,222 100,222 40,214 Z" fill="#b5651d"/>
+    <g stroke="#7a3f0c" stroke-width="1.2"><line x1="70" y1="206" x2="88" y2="210"/><line x1="140" y1="210" x2="158" y2="212"/><line x1="210" y1="212" x2="228" y2="211"/><line x1="280" y1="208" x2="298" y2="206"/></g>
+  </g>
+  <!-- pit outline -->
+  <path d="M40,150 C48,250 82,318 200,322 C318,318 352,250 360,150" fill="none" stroke="#6b5537" stroke-width="2.5" stroke-dasharray="6 4"/>
+
+  <!-- earth heaped over the top -->
+  <path d="M30,196 C40,150 70,112 200,104 C330,112 360,150 370,196 Z" fill="#9c7a50" stroke="#5c4428" stroke-width="2.5"/>
+  <!-- small fire on top -->
+  <g stroke="#5c3a17" stroke-width="5" stroke-linecap="round"><line x1="168" y1="104" x2="232" y2="94"/><line x1="170" y1="94" x2="230" y2="104"/></g>
+  <path d="M184,92 C178,74 192,66 190,50 C202,62 206,72 200,82 C210,74 212,64 210,56 C222,70 222,86 214,94 Z" fill="#e8742a" stroke="#a8461a" stroke-width="1.5"/>
+
+  <!-- labels -->
+  <g font-size="14" fill="#222">
+    <line x1="218" y1="70" x2="420" y2="62" stroke="#333" stroke-width="1.2"/>
+    <text x="426" y="58" font-weight="bold">6 Small fire on top,</text>
+    <text x="426" y="75">kept going overnight</text>
+
+    <line x1="320" y1="140" x2="420" y2="128" stroke="#333" stroke-width="1.2"/>
+    <text x="426" y="132" font-weight="bold">5 Earth over all</text>
+
+    <line x1="340" y1="205" x2="420" y2="188" stroke="#333" stroke-width="1.2"/>
+    <text x="426" y="186" font-weight="bold">4 More needles</text>
+
+    <line x1="314" y1="234" x2="420" y2="230" stroke="#333" stroke-width="1.2"/>
+    <text x="426" y="235" font-weight="bold">3 Camas bulbs</text>
+
+    <line x1="350" y1="256" x2="420" y2="272" stroke="#333" stroke-width="1.2"/>
+    <text x="426" y="270" font-weight="bold">2 Alder bark or</text>
+    <text x="426" y="287" font-weight="bold">pine needles</text>
+
+    <line x1="300" y1="300" x2="420" y2="322" stroke="#333" stroke-width="1.2"/>
+    <text x="426" y="318" font-weight="bold">1 Stones, heated</text>
+    <text x="426" y="335">by burning alder</text>
+    <text x="426" y="352">brush on them first</text>
+  </g>
+
+  <text x="374" y="170" font-size="13" fill="#5c4428">ground</text>
+
+  <rect x="20" y="392" width="600" height="66" rx="6" fill="#f4efe4" stroke="#b9a98a"/>
+  <text x="320" y="418" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">Camas takes 24–36 hours, until soft and sweet all through.</text>
+  <text x="320" y="442" text-anchor="middle" font-size="14" fill="#222">Not done the next day? Build the fire on top again.</text>
+</svg>

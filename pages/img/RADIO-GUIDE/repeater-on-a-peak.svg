@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" font-family="Arial, Helvetica, sans-serif">
+  <title>Why VHF and UHF radios need a repeater on a peak in mountain valleys</title>
+  <rect width="640" height="420" fill="#ffffff"/>
+  <defs>
+    <marker id="b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2d5f8a"/></marker>
+  </defs>
+
+  <!-- ground profile: two valleys and the mountain between -->
+  <path d="M0,300 L60,280 L130,318 L200,325 L320,95 L440,325 L520,318 L580,285 L640,295 L640,360 L0,360 Z" fill="#cfc6b4" stroke="#6b6359" stroke-width="2"/>
+
+  <!-- repeater tower on the peak -->
+  <line x1="320" y1="95" x2="320" y2="52" stroke="#222" stroke-width="4"/>
+  <line x1="308" y1="95" x2="320" y2="60" stroke="#222" stroke-width="2"/>
+  <line x1="332" y1="95" x2="320" y2="60" stroke="#222" stroke-width="2"/>
+  <circle cx="320" cy="50" r="5" fill="#222"/>
+  <text x="362" y="40" font-size="15" font-weight="bold" fill="#222">REPEATER ON A PEAK</text>
+  <text x="362" y="58" font-size="13.5" fill="#333">hears you, re-sends with</text>
+  <text x="362" y="74" font-size="13.5" fill="#333">height and power</text>
+
+  <!-- the two radios -->
+  <g fill="#222">
+    <rect x="114" y="292" width="10" height="24" rx="2"/><line x1="120" y1="292" x2="120" y2="280" stroke="#222" stroke-width="2.5"/>
+    <rect x="514" y="292" width="10" height="24" rx="2"/><line x1="520" y1="292" x2="520" y2="280" stroke="#222" stroke-width="2.5"/>
+  </g>
+  <text x="120" y="384" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">YOU</text>
+  <text x="120" y="402" text-anchor="middle" font-size="13.5" fill="#333">handheld, one valley</text>
+  <text x="520" y="384" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">FAMILY</text>
+  <text x="520" y="402" text-anchor="middle" font-size="13.5" fill="#333">handheld, next valley</text>
+
+  <!-- paths via the repeater -->
+  <line x1="124" y1="282" x2="312" y2="56" stroke="#2d5f8a" stroke-width="3" marker-end="url(#b)"/>
+  <line x1="328" y1="56" x2="516" y2="282" stroke="#2d5f8a" stroke-width="3" marker-end="url(#b)"/>
+  <text x="150" y="168" font-size="14" fill="#2d5f8a" font-weight="bold">clear line</text>
+  <text x="438" y="168" font-size="14" fill="#2d5f8a" font-weight="bold">clear line</text>
+
+  <!-- blocked direct path -->
+  <line x1="126" y1="286" x2="250" y2="270" stroke="#b03a2e" stroke-width="3" stroke-dasharray="8 6"/>
+  <g stroke="#b03a2e" stroke-width="4"><line x1="244" y1="258" x2="264" y2="278"/><line x1="264" y1="258" x2="244" y2="278"/></g>
+  <text x="272" y="258" font-size="14" fill="#b03a2e" font-weight="bold">blocked by</text>
+  <text x="272" y="275" font-size="14" fill="#b03a2e" font-weight="bold">the ridge</text>
+
+  <text x="20" y="22" font-size="14" fill="#333">VHF/UHF (FRS, GMRS, MURS, ham 2 m and 70 cm)</text>
+  <text x="20" y="40" font-size="14" fill="#333">travels in nearly straight lines.</text>
+  <text x="630" y="345" text-anchor="end" font-size="12" fill="#555">Side view. Not to scale.</text>
+</svg>

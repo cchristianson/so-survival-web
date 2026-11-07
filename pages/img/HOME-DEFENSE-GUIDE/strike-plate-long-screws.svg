@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="660" height="604" viewBox="0 0 660 604" font-family="Arial, Helvetica, sans-serif">
+  <title>Why long screws in the strike plate stop a kicked door: looking down on the door edge, jamb and wall stud</title>
+  <rect width="660" height="604" fill="#ffffff"/>
+  <defs>
+    <marker id="k" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#c8431a"/></marker>
+    <g id="frame">
+      <!-- door (1¾ in thick) ending at x=150 -->
+      <rect x="40" y="150" width="110" height="35" fill="#d8b98c" stroke="#7a5a35" stroke-width="1.2"/>
+      <!-- deadbolt, 1 in throw -->
+      <rect x="128" y="162" width="42" height="11" fill="#9aa3ad" stroke="#444" stroke-width="0.8"/>
+      <!-- jamb (¾ in) -->
+      <rect x="152" y="120" width="15" height="100" fill="#efdcb8" stroke="#7a5a35" stroke-width="1.2"/>
+      <!-- door stop -->
+      <rect x="140" y="186" width="12" height="10" fill="#efdcb8" stroke="#7a5a35" stroke-width="0.8"/>
+      <!-- strike plate -->
+      <rect x="150" y="153" width="3" height="29" fill="#333"/>
+      <!-- shim gap then doubled stud (3 in) -->
+      <rect x="177" y="130" width="30" height="70" fill="#c9a571" stroke="#7a5a35" stroke-width="1.2"/>
+      <rect x="207" y="130" width="30" height="70" fill="#c9a571" stroke="#7a5a35" stroke-width="1.2"/>
+      <!-- wall surfaces -->
+      <rect x="237" y="124" width="40" height="6" fill="#d4d4d4"/><rect x="237" y="200" width="40" height="6" fill="#d4d4d4"/>
+      <rect x="167" y="124" width="10" height="6" fill="#d4d4d4"/><rect x="167" y="200" width="10" height="6" fill="#d4d4d4"/>
+      <!-- trim (casing) both faces -->
+      <rect x="150" y="112" width="44" height="8" fill="#efdcb8" stroke="#7a5a35" stroke-width="0.8"/>
+      <rect x="150" y="220" width="44" height="8" fill="#efdcb8" stroke="#7a5a35" stroke-width="0.8"/>
+    </g>
+  </defs>
+
+  <!-- PANEL A -->
+  <text x="20" y="28" font-size="16" font-weight="bold" fill="#8a2a0a">Short screws hold only the thin jamb</text>
+  <g transform="translate(-40,-110) scale(1.6)">
+    <use xlink:href="#frame" href="#frame"/>
+    <line x1="151" y1="179" x2="165" y2="179" stroke="#8a2a0a" stroke-width="2.4"/>
+    <path d="M160,188 l3,6 l-4,5 l4,7" fill="none" stroke="#c8431a" stroke-width="1.6"/>
+    <line x1="115" y1="104" x2="115" y2="142" stroke="#c8431a" stroke-width="3" marker-end="url(#k)"/>
+  </g>
+  <text x="132" y="84" text-anchor="end" font-size="14" font-weight="bold" fill="#c8431a">kick</text>
+  <g font-size="13" fill="#222">
+    <text x="420" y="112">The short screw bites</text>
+    <text x="420" y="128">only the ¾-in jamb.</text>
+    <text x="420" y="152">A kick splits the jamb and</text>
+    <text x="420" y="168">tears the strike plate out:</text>
+    <text x="420" y="184">"almost always" the weak</text>
+    <text x="420" y="200">point.</text>
+  </g>
+  <g font-size="13" fill="#333">
+    <text x="50" y="164">door</text>
+    <text x="150" y="274" text-anchor="end">deadbolt</text>
+    <line x1="152" y1="264" x2="196" y2="162" stroke="#888" stroke-width="1"/>
+    <text x="215" y="274" text-anchor="middle">jamb</text>
+    <line x1="215" y1="262" x2="215" y2="240" stroke="#888" stroke-width="1"/>
+    <text x="300" y="274" text-anchor="middle">wall stud</text>
+    <line x1="300" y1="262" x2="300" y2="212" stroke="#888" stroke-width="1"/>
+  </g>
+
+  <line x1="10" y1="292" x2="650" y2="292" stroke="#ccc" stroke-width="1"/>
+
+  <!-- PANEL B -->
+  <text x="20" y="320" font-size="16" font-weight="bold" fill="#2f5e16">3- to 4-inch screws reach the wall stud</text>
+  <g transform="translate(-40,176) scale(1.6)">
+    <use xlink:href="#frame" href="#frame"/>
+    <line x1="151" y1="179" x2="221" y2="179" stroke="#2f5e16" stroke-width="2.4"/>
+    <polygon points="221,177 227,179 221,181" fill="#2f5e16"/>
+    <line x1="115" y1="104" x2="115" y2="142" stroke="#c8431a" stroke-width="3" marker-end="url(#k)"/>
+  </g>
+  <text x="132" y="370" text-anchor="end" font-size="14" font-weight="bold" fill="#c8431a">kick</text>
+  <g font-size="13" fill="#222">
+    <text x="420" y="398">The long screw runs through</text>
+    <text x="420" y="414">the jamb and the gap into</text>
+    <text x="420" y="430">the stud. Now a kick has to</text>
+    <text x="420" y="446">break the wall framing.</text>
+  </g>
+
+  <text x="20" y="572" font-size="13.5" fill="#222"><tspan font-weight="bold">Do it on every outside door,</tspan> in the strike plate and the hinges.</text>
+  <text x="20" y="594" font-size="13" fill="#555">Looking down on a closed door at its lock edge; outside at the top. Not to scale.</text>
+</svg>

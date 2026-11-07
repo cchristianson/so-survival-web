@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="490" viewBox="0 0 640 490" font-family="Arial, Helvetica, sans-serif">
+  <title>A phone tree or runner chain: each house passes the message on, skips anyone who is out, and the last calls the captain back</title>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+  <marker id="g" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#999"/></marker></defs>
+  <rect width="640" height="490" fill="#ffffff"/>
+  <g fill="none" stroke="#333" stroke-width="2.5" marker-end="url(#a)">
+    <path d="M384,86 C430,95 460,115 470,140"/>
+    <path d="M475,189 L475,295"/>
+    <path d="M420,326 C360,350 280,350 222,326"/>
+    <path d="M165,296 L165,190"/>
+    <path d="M200,143 C220,105 240,90 256,86"/>
+  </g>
+  <path d="M470,344 C450,370 420,390 386,396" fill="none" stroke="#999" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#g)"/>
+  <rect x="258.0" y="60.0" width="124" height="44" rx="7" fill="#e8eef5" stroke="#333" stroke-width="2"/>
+  <text x="320" y="88" text-anchor="middle" font-size="16" font-weight="bold" fill="#222">Captain</text>
+  <rect x="413.0" y="143.0" width="124" height="44" rx="7" fill="#f4f1ea" stroke="#333" stroke-width="2"/>
+  <text x="475" y="171" text-anchor="middle" font-size="16" font-weight="bold" fill="#222">House 1</text>
+  <rect x="413.0" y="298.0" width="124" height="44" rx="7" fill="#f4f1ea" stroke="#333" stroke-width="2"/>
+  <text x="475" y="326" text-anchor="middle" font-size="16" font-weight="bold" fill="#222">House 2</text>
+  <rect x="258.0" y="378.0" width="124" height="44" rx="7" fill="#f2f2f2" stroke="#888" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="320" y="406" text-anchor="middle" font-size="16" font-weight="bold" fill="#888">House 3</text>
+  <rect x="103.0" y="298.0" width="124" height="44" rx="7" fill="#f4f1ea" stroke="#333" stroke-width="2"/>
+  <text x="165" y="326" text-anchor="middle" font-size="16" font-weight="bold" fill="#222">House 4</text>
+  <rect x="103.0" y="143.0" width="124" height="44" rx="7" fill="#f4f1ea" stroke="#333" stroke-width="2"/>
+  <text x="165" y="171" text-anchor="middle" font-size="16" font-weight="bold" fill="#222">House 5</text>
+  <g font-size="14" fill="#222">
+    <text x="490" y="250">calls the next</text>
+    <text x="425" y="392" fill="#777">no answer:</text>
+    <text x="425" y="408" fill="#777">house is out</text>
+    <text x="320" y="368" text-anchor="middle" font-weight="bold">skips down to House 4</text>
+    <text x="40" y="96" font-weight="bold">The last one calls</text>
+    <text x="40" y="114" font-weight="bold">the captain to confirm</text>
+  </g>
+  <g font-size="15" fill="#222" text-anchor="middle">
+    <text x="320" y="225">One message, passed house to house.</text>
+    <text x="320" y="246">Practice it before you need it.</text>
+  </g>
+  <text x="320" y="470" text-anchor="middle" font-size="15" fill="#222">Phones down? Walk the same chain as a <tspan font-weight="bold">runner chain</tspan>.</text>
+</svg>

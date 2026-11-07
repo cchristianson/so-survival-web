@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="470" viewBox="0 0 660 470" font-family="Arial, Helvetica, sans-serif">
+  <title>Where to aim on a pig's head: on the center line, slightly above a line between the eyes</title>
+  <rect width="660" height="470" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#1b4f8a"/></marker>
+  </defs>
+
+  <!-- ===== LEFT: front view ===== -->
+  <text x="180" y="28" text-anchor="middle" font-size="17" font-weight="bold" fill="#222">From the front</text>
+  <!-- ears -->
+  <path d="M88,120 L60,48 L142,92 Z" fill="#e7b8a6" stroke="#8a5a48" stroke-width="2.5"/>
+  <path d="M272,120 L300,48 L218,92 Z" fill="#e7b8a6" stroke="#8a5a48" stroke-width="2.5"/>
+  <!-- head -->
+  <path d="M100,92 C150,70 210,70 260,92 C292,150 292,250 252,312 C228,346 132,346 108,312 C68,250 68,150 100,92 Z" fill="#f0c7b6" stroke="#8a5a48" stroke-width="2.5"/>
+  <!-- snout disc -->
+  <ellipse cx="180" cy="300" rx="54" ry="34" fill="#e7a995" stroke="#8a5a48" stroke-width="2.5"/>
+  <ellipse cx="162" cy="300" rx="8" ry="12" fill="#6b3a2c"/>
+  <ellipse cx="198" cy="300" rx="8" ry="12" fill="#6b3a2c"/>
+  <!-- eyes -->
+  <circle cx="130" cy="186" r="9" fill="#333"/>
+  <circle cx="230" cy="186" r="9" fill="#333"/>
+  <!-- line between the eyes -->
+  <line x1="139" y1="186" x2="221" y2="186" stroke="#333" stroke-width="1.6" stroke-dasharray="6 4"/>
+  <!-- center line -->
+  <line x1="180" y1="80" x2="180" y2="262" stroke="#333" stroke-width="1.2" stroke-dasharray="3 4"/>
+  <!-- NOT here: between the eyes -->
+  <g stroke="#a3221b" stroke-width="4" stroke-linecap="round">
+    <line x1="173" y1="179" x2="187" y2="193"/><line x1="187" y1="179" x2="173" y2="193"/>
+  </g>
+  <!-- target: slightly above the line, on the center line -->
+  <circle cx="180" cy="158" r="10" fill="none" stroke="#1b4f8a" stroke-width="3"/>
+  <circle cx="180" cy="158" r="4" fill="#1b4f8a"/>
+  <!-- labels -->
+  <line x1="192" y1="152" x2="318" y2="118" stroke="#1b4f8a" stroke-width="1.6"/>
+  <text x="322" y="108" font-size="14" font-weight="bold" fill="#1b4f8a">AIM HERE</text>
+  <text x="322" y="126" font-size="13" fill="#222">on the center line,</text>
+  <text x="322" y="143" font-size="13" fill="#222">slightly above a line</text>
+  <text x="322" y="160" font-size="13" fill="#222">between the eyes</text>
+  <line x1="190" y1="190" x2="318" y2="236" stroke="#a3221b" stroke-width="1.6"/>
+  <text x="322" y="234" font-size="14" font-weight="bold" fill="#a3221b">NOT between</text>
+  <text x="322" y="251" font-size="14" font-weight="bold" fill="#a3221b">the eyes</text>
+
+  <!-- ===== RIGHT: direction ===== -->
+  <text x="650" y="278" text-anchor="end" font-size="15" font-weight="bold" fill="#222">From the side</text>
+  <path d="M440,400 L440,378 L460,372 C478,356 496,344 520,336 C548,326 592,326 632,342 L650,354 L650,462 L478,462 C460,452 448,420 440,400 Z" fill="#f0c7b6" stroke="#8a5a48" stroke-width="2.5"/>
+  <path d="M568,332 L594,294 L602,338 Z" fill="#e7b8a6" stroke="#8a5a48" stroke-width="2.5"/>
+  <circle cx="538" cy="358" r="5" fill="#333"/>
+  <rect x="434" y="378" width="9" height="26" rx="3" fill="#e7a995" stroke="#8a5a48" stroke-width="2"/>
+  <line x1="488" y1="282" x2="628" y2="412" stroke="#1b4f8a" stroke-width="3" marker-end="url(#a)"/>
+
+  <!-- bottom notes -->
+  <text x="24" y="372" font-size="13" font-weight="bold" fill="#1b4f8a">From the side: point the barrel</text>
+  <text x="24" y="389" font-size="13" font-weight="bold" fill="#1b4f8a">toward the tail, along the spine.</text>
+  <text x="24" y="413" font-size="13" fill="#222">Hold the muzzle a few inches off the</text>
+  <text x="24" y="430" font-size="13" fill="#222">head, never touching it. Bullets can</text>
+  <text x="24" y="447" font-size="13" fill="#222">glance off a skull: no people or stock behind.</text>
+</svg>

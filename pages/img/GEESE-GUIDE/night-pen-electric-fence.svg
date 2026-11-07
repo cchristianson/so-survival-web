@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="460" viewBox="0 0 660 460" font-family="Arial, Helvetica, sans-serif">
+  <title>A night pen for geese: a shut shed inside a tight fence, with electric wires outside it against bears and other diggers and climbers</title>
+  <rect width="660" height="460" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+    <pattern id="hc" width="8" height="8" patternUnits="userSpaceOnUse">
+      <path d="M0,0 L8,0 M0,0 L0,8" stroke="#666" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- ground and soil -->
+  <rect x="0" y="330" width="660" height="70" fill="#e9dcc6"/>
+  <rect x="0" y="322" width="660" height="10" fill="#e3efd9"/>
+  <line x1="0" y1="330" x2="660" y2="330" stroke="#5b7f3a" stroke-width="2"/>
+  <text x="610" y="392" text-anchor="end" font-size="13" fill="#5a3a22">soil</text>
+
+  <!-- shed (inside, left) -->
+  <polygon points="40,330 40,190 190,160 190,330" fill="#e8d6b8" stroke="#6b4a24" stroke-width="3"/>
+  <rect x="125" y="272" width="45" height="58" fill="#c8a678" stroke="#6b4a24" stroke-width="2"/>
+  <text x="115" y="214" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">Shed</text>
+  <text x="115" y="234" text-anchor="middle" font-size="13" fill="#222">door shut</text>
+  <text x="115" y="250" text-anchor="middle" font-size="13" fill="#222">every night</text>
+  <text x="30" y="356" font-size="13" fill="#222">INSIDE</text>
+
+  <!-- tight fence: hardware cloth, buried 12 in -->
+  <rect x="300" y="170" width="10" height="230" fill="#a9773f" stroke="#6b4a24" stroke-width="1.5"/>
+  <rect x="310" y="190" width="10" height="190" fill="url(#hc)" stroke="#333" stroke-width="1.5"/>
+  <line x1="332" y1="332" x2="332" y2="378" stroke="#333" stroke-width="1.6" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="340" y="354" font-size="13" fill="#222">buried at</text>
+  <text x="340" y="370" font-size="13" fill="#222">least 12 in</text>
+
+  <!-- electric fence outside: wires seen end-on on their own posts, 5 strands at 8,16,24,32,40 in (3.2 px per inch) -->
+  <rect x="420" y="180" width="8" height="150" fill="#a9773f" stroke="#6b4a24" stroke-width="1.5"/>
+  <g fill="#c0392b" stroke="#7a1f14" stroke-width="1">
+    <circle cx="434" cy="304" r="5"/><circle cx="434" cy="279" r="5"/><circle cx="434" cy="253" r="5"/>
+    <circle cx="434" cy="228" r="5"/><circle cx="434" cy="202" r="5"/>
+  </g>
+  <text x="326" y="142" font-size="13" fill="#222">hot wires run along</text>
+  <text x="326" y="158" font-size="13" fill="#222">the fence (seen end-on)</text>
+  <!-- dimension: lowest wire -->
+  <line x1="456" y1="308" x2="456" y2="328" stroke="#333" stroke-width="1.5" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="466" y="322" font-size="14" fill="#222">lowest wire <tspan font-weight="bold">7–9 in</tspan> up</text>
+  <!-- dimension: spacing -->
+  <line x1="456" y1="256" x2="456" y2="276" stroke="#333" stroke-width="1.5" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="466" y="271" font-size="14" fill="#222"><tspan font-weight="bold">8–10 in</tspan> apart</text>
+  <!-- dimension: top -->
+  <line x1="636" y1="204" x2="636" y2="328" stroke="#333" stroke-width="1.5" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="466" y="207" font-size="14" fill="#222">top wire <tspan font-weight="bold">36–42 in</tspan> up</text>
+
+  <!-- energizer -->
+  <rect x="520" y="70" width="110" height="60" fill="#f4f4f4" stroke="#333" stroke-width="2"/>
+  <text x="575" y="94" text-anchor="middle" font-size="14" font-weight="bold" fill="#222">Energizer</text>
+  <text x="575" y="112" text-anchor="middle" font-size="13" fill="#222">(solar)</text>
+  <line x1="520" y1="125" x2="437" y2="197" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="400" y="54" font-size="14" fill="#222">at least <tspan font-weight="bold">6,000 volts, 0.5 joules</tspan></text>
+  <text x="520" y="360" font-size="13" fill="#222">OUTSIDE</text>
+
+  <!-- notes -->
+  <g font-size="14" fill="#222">
+    <text x="30" y="40" font-weight="bold" font-size="16">Night pen, cut through the side</text>
+    <text x="30" y="62">Hardware cloth inside keeps birds off</text>
+    <text x="30" y="80">the hot wires and stops small diggers.</text>
+    <text x="30" y="108">At least 3 wires; 5 or 6 are better.</text>
+    <text x="30" y="126">Keep grass and weeds off the wires.</text>
+  </g>
+  <text x="30" y="420" font-size="14" fill="#222">Bears: a working electric fence is the surest stop. Store feed in a locked building.</text>
+  <text x="30" y="440" font-size="14" fill="#222">Cougars and coyotes: shed and pen every night.</text>
+  <text x="650" y="455" text-anchor="end" font-size="12" fill="#555">Not to scale.</text>
+</svg>

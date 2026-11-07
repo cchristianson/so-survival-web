@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="540" viewBox="0 0 640 540" font-family="Arial, Helvetica, sans-serif">
+  <title>Filing a saw chain: hold the round file with one-fifth above the cutter's top plate, and file depth gauges only down to the gauge tool</title>
+  <rect width="640" height="540" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+    <!-- one cutter link, side view, front to the left; the front edge follows the file's curve -->
+    <g id="cutter">
+      <path d="M0,60 L0,40 C4,28 10,24 22,24 L34,24 C40,24 42,32 44,42 C48,56 60,64 76,64 C90,64 98,52 100,36 L104,16 L220,26 C232,28 240,40 240,60 L240,90 L0,90 Z" fill="#b9c2cc" stroke="#333" stroke-width="2.5"/>
+      <circle cx="50" cy="76" r="7" fill="#fff" stroke="#333" stroke-width="2"/>
+      <circle cx="190" cy="76" r="7" fill="#fff" stroke="#333" stroke-width="2"/>
+    </g>
+    <g id="cutter2">
+      <path d="M0,60 L0,40 L0,0 C0,-6 6,-8 12,-8 L30,-8 C38,-8 42,0 44,20 C48,56 60,64 76,64 C90,64 98,52 100,36 L104,16 L220,26 C232,28 240,40 240,60 L240,90 L0,90 Z" fill="#b9c2cc" stroke="#333" stroke-width="2.5"/>
+      <circle cx="50" cy="76" r="7" fill="#fff" stroke="#333" stroke-width="2"/>
+      <circle cx="190" cy="76" r="7" fill="#fff" stroke="#333" stroke-width="2"/>
+    </g>
+  </defs>
+
+  <!-- ===== Panel 1: file height ===== -->
+  <text x="20" y="28" font-size="16" font-weight="bold" fill="#222">1. Hold the round file 1/5 above the top plate</text>
+  <use href="#cutter" x="120" y="96"/>
+  <text x="34" y="160" font-size="13" fill="#222">depth</text>
+  <text x="34" y="176" font-size="13" fill="#222">gauge</text>
+  <line x1="78" y1="168" x2="128" y2="132" stroke="#333" stroke-width="1.2"/>
+  <text x="300" y="152" font-size="13" fill="#222">top plate</text>
+  <!-- the file: circle sitting against the cutter's front edge -->
+  <circle cx="196" cy="131" r="32" fill="#6f6f6f" stroke="#222" stroke-width="2.5" fill-opacity="0.85"/>
+  <text x="196" y="140" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">file</text>
+  <!-- 1/5 dimension -->
+  <line x1="215" y1="99" x2="330" y2="99" stroke="#333" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <line x1="236" y1="112" x2="330" y2="112" stroke="#333" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <line x1="320" y1="72" x2="320" y2="98" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="320" y1="138" x2="320" y2="113" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
+  <text x="330" y="94" font-size="14" font-weight="bold" fill="#222">1/5 of the file's</text>
+  <text x="330" y="111" font-size="14" font-weight="bold" fill="#222">width sticks up</text>
+  <g font-size="13.5" fill="#222">
+    <text x="380" y="190">Use the file size for your</text>
+    <text x="380" y="207">chain, in a file guide; keep</text>
+    <text x="380" y="224">its mark parallel to the chain.</text>
+  </g>
+  <text x="20" y="232" font-size="13" fill="#555">Side view of one cutter.</text>
+
+  <line x1="15" y1="248" x2="625" y2="248" stroke="#bbb" stroke-width="1.5" stroke-dasharray="6 5"/>
+
+  <!-- ===== Panel 2: depth gauges ===== -->
+  <text x="20" y="276" font-size="16" font-weight="bold" fill="#222">2. Depth gauges: file down only to the gauge tool</text>
+  <use href="#cutter2" x="120" y="346"/>
+  <!-- gauge tool resting on the top plates; the depth gauge pokes up through its slot -->
+  <rect x="90" y="348" width="28" height="14" fill="#e3c25a" stroke="#333" stroke-width="2"/>
+  <rect x="166" y="348" width="200" height="14" fill="#e3c25a" stroke="#333" stroke-width="2"/>
+  <rect x="121" y="338" width="42" height="10" fill="#e8a19a" stroke="#a12a1c" stroke-width="1.5"/>
+  <line x1="80" y1="348" x2="380" y2="348" stroke="#a12a1c" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="374" y="353" font-size="13" font-weight="bold" fill="#6b5410">gauge tool,</text>
+  <text x="374" y="369" font-size="13" font-weight="bold" fill="#6b5410">laid on the chain</text>
+  <text x="182" y="318" font-size="13" font-weight="bold" fill="#a12a1c">file this off,</text>
+  <text x="182" y="334" font-size="13" font-weight="bold" fill="#a12a1c">level with the tool</text>
+  <!-- flat file -->
+  <rect x="60" y="322" width="110" height="16" rx="2" fill="#6f6f6f" stroke="#222" stroke-width="2"/>
+  <text x="60" y="314" font-size="13" fill="#222">flat file</text>
+  <g font-size="13.5" fill="#222">
+    <text x="20" y="490">If the depth gauge sticks up through the slot, file it level with the</text>
+    <text x="20" y="508">tool, then <tspan font-weight="bold">round off its front</tspan>. <tspan font-weight="bold" fill="#a12a1c">Never file it lower than the tool</tspan>:</text>
+    <text x="20" y="526">that makes kickback more likely.</text>
+  </g>
+  <g font-size="13.5" fill="#222">
+    <text x="390" y="410">File each cutter from the</text>
+    <text x="390" y="427">inside out; do one side,</text>
+    <text x="390" y="444">turn the saw, do the other.</text>
+    <text x="390" y="461" font-weight="bold">Keep all cutters equal.</text>
+  </g>
+</svg>

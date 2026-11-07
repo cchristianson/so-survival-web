@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="490" viewBox="0 0 640 490" font-family="Arial, Helvetica, sans-serif">
+  <title>Judging a tree's height with a stick held at arm's length</title>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker></defs>
+  <rect width="640" height="490" fill="#ffffff"/>
+  <!-- ground -->
+  <line x1="20" y1="440" x2="620" y2="440" stroke="#555" stroke-width="2.5"/>
+  <!-- tree -->
+  <line x1="500" y1="440" x2="500" y2="55" stroke="#6b4a24" stroke-width="6"/>
+  <polygon points="500,55 455,400 545,400" fill="#7fae52" stroke="#4d7a2c" stroke-width="2"/>
+  <line x1="500" y1="400" x2="500" y2="440" stroke="#6b4a24" stroke-width="8"/>
+  <!-- sight lines -->
+  <g stroke="#c0661b" stroke-width="2" stroke-dasharray="8 5">
+    <line x1="115" y1="375" x2="500" y2="55"/>
+    <line x1="115" y1="375" x2="500" y2="440"/>
+  </g>
+  <!-- person -->
+  <g stroke="#333" stroke-width="3" fill="none" stroke-linecap="round">
+    <circle cx="108" cy="374" r="11" fill="#fff"/>
+    <line x1="108" y1="386" x2="108" y2="415"/>
+    <line x1="108" y1="415" x2="98" y2="440"/>
+    <line x1="108" y1="415" x2="118" y2="440"/>
+    <line x1="108" y1="394" x2="165" y2="385"/>
+  </g>
+  <circle cx="115" cy="374" r="2.2" fill="#333"/>
+  <!-- stick -->
+  <line x1="165" y1="392" x2="165" y2="333.4" stroke="#6b4a24" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="165" cy="384" r="5" fill="#333"/>
+  <!-- equal-length brackets -->
+  <g stroke="#1f5f8b" stroke-width="1.8">
+    <line x1="115" y1="318" x2="165" y2="318"/>
+    <line x1="115" y1="312" x2="115" y2="324"/><line x1="165" y1="312" x2="165" y2="324"/>
+    <line x1="180" y1="333.4" x2="180" y2="384"/>
+    <line x1="174" y1="333.4" x2="186" y2="333.4"/><line x1="174" y1="384" x2="186" y2="384"/>
+  </g>
+  <g font-size="14" fill="#1f5f8b" font-weight="bold">
+    <text x="140" y="308" text-anchor="middle">A</text>
+    <text x="192" y="364">A</text>
+  </g>
+  <!-- distance and height -->
+  <g stroke="#333" stroke-width="1.6" marker-start="url(#a)" marker-end="url(#a)">
+    <line x1="117" y1="462" x2="498" y2="462"/>
+    <line x1="580" y1="57" x2="580" y2="438"/>
+  </g>
+  <g font-size="16" font-weight="bold" fill="#222">
+    <text x="308" y="484" text-anchor="middle">your distance from the trunk</text>
+    <text transform="translate(606,248) rotate(-90)" text-anchor="middle">tree height ≈ that distance</text>
+  </g>
+  <!-- instructions -->
+  <g font-size="15" fill="#222">
+    <text x="20" y="30" font-weight="bold">1. Hold a stick upright at arm's length, with</text>
+    <text x="20" y="50" font-weight="bold">   as much above your fist as eye to fist (A = A).</text>
+    <text x="20" y="76">2. Back up until the fist lines up with the base</text>
+    <text x="20" y="96">   and the stick top lines up with the treetop.</text>
+    <text x="20" y="122">3. Pace back to the trunk: that is the height.</text>
+  </g>
+  <g font-size="13" fill="#8a4410">
+    <text x="300" y="248" transform="rotate(-39.7 300 248)">to the treetop</text>
+    <text x="300" y="420" transform="rotate(9.6 300 420)">to the base</text>
+  </g>
+</svg>

@@ -1,0 +1,235 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="560" viewBox="0 0 640 560" font-family="Arial, Helvetica, sans-serif">
+  <title>Earth filter for fallout-contaminated water: a bucket of pebbles, cloth and clayey soil, cut away</title>
+  <rect width="640" height="560" fill="#ffffff"/>
+  <defs><marker id="k" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#333"/></marker>
+  <marker id="p" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2d5f8a"/></marker>
+  <marker id="d" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker></defs>
+  <g transform="translate(-40,0)">
+  <polygon points="151.6,120 408.4,120 403.7,212 156.3,212" fill="#cfe3f2" stroke="none"/>
+  <polygon points="156.3,212 403.7,212 403.4,217 156.6,217" fill="#f0e6c8" stroke="#8a7d68"/>
+  <polygon points="156.6,217 403.4,217 397.4,334 162.6,334" fill="#a88a63" stroke="none"/>
+  <circle cx="290.4" cy="247.7" r="1.6" fill="#7a603f"/>
+  <circle cx="304.3" cy="262.0" r="1.6" fill="#7a603f"/>
+  <circle cx="179.5" cy="289.6" r="1.6" fill="#7a603f"/>
+  <circle cx="360.4" cy="223.4" r="1.6" fill="#7a603f"/>
+  <circle cx="217.4" cy="250.0" r="1.6" fill="#7a603f"/>
+  <circle cx="273.2" cy="329.5" r="1.6" fill="#7a603f"/>
+  <circle cx="274.6" cy="312.3" r="1.6" fill="#7a603f"/>
+  <circle cx="199.2" cy="291.0" r="1.6" fill="#7a603f"/>
+  <circle cx="365.1" cy="290.6" r="1.6" fill="#7a603f"/>
+  <circle cx="336.1" cy="278.5" r="1.6" fill="#7a603f"/>
+  <circle cx="179.4" cy="294.5" r="1.6" fill="#7a603f"/>
+  <circle cx="300.9" cy="303.9" r="1.6" fill="#7a603f"/>
+  <circle cx="169.8" cy="254.5" r="1.6" fill="#7a603f"/>
+  <circle cx="273.8" cy="315.5" r="1.6" fill="#7a603f"/>
+  <circle cx="367.2" cy="299.6" r="1.6" fill="#7a603f"/>
+  <circle cx="377.0" cy="299.1" r="1.6" fill="#7a603f"/>
+  <circle cx="350.4" cy="264.7" r="1.6" fill="#7a603f"/>
+  <circle cx="381.7" cy="270.0" r="1.6" fill="#7a603f"/>
+  <circle cx="188.0" cy="316.9" r="1.6" fill="#7a603f"/>
+  <circle cx="213.0" cy="236.7" r="1.6" fill="#7a603f"/>
+  <circle cx="265.5" cy="326.3" r="1.6" fill="#7a603f"/>
+  <circle cx="234.0" cy="289.7" r="1.6" fill="#7a603f"/>
+  <circle cx="253.4" cy="276.8" r="1.6" fill="#7a603f"/>
+  <circle cx="299.9" cy="259.9" r="1.6" fill="#7a603f"/>
+  <circle cx="373.7" cy="285.1" r="1.6" fill="#7a603f"/>
+  <circle cx="379.0" cy="295.7" r="1.6" fill="#7a603f"/>
+  <circle cx="392.3" cy="314.5" r="1.6" fill="#7a603f"/>
+  <circle cx="202.2" cy="294.5" r="1.6" fill="#7a603f"/>
+  <circle cx="386.3" cy="314.9" r="1.6" fill="#7a603f"/>
+  <circle cx="295.8" cy="319.7" r="1.6" fill="#7a603f"/>
+  <circle cx="213.5" cy="299.1" r="1.6" fill="#7a603f"/>
+  <circle cx="296.8" cy="311.8" r="1.6" fill="#7a603f"/>
+  <circle cx="177.3" cy="252.8" r="1.6" fill="#7a603f"/>
+  <circle cx="392.1" cy="314.2" r="1.6" fill="#7a603f"/>
+  <circle cx="351.3" cy="231.6" r="1.6" fill="#7a603f"/>
+  <circle cx="198.4" cy="266.3" r="1.6" fill="#7a603f"/>
+  <circle cx="343.2" cy="253.7" r="1.6" fill="#7a603f"/>
+  <circle cx="175.8" cy="316.3" r="1.6" fill="#7a603f"/>
+  <circle cx="174.7" cy="288.4" r="1.6" fill="#7a603f"/>
+  <circle cx="241.1" cy="299.6" r="1.6" fill="#7a603f"/>
+  <circle cx="389.8" cy="317.1" r="1.6" fill="#7a603f"/>
+  <circle cx="396.0" cy="276.6" r="1.6" fill="#7a603f"/>
+  <circle cx="180.6" cy="255.4" r="1.6" fill="#7a603f"/>
+  <circle cx="171.4" cy="286.8" r="1.6" fill="#7a603f"/>
+  <circle cx="258.3" cy="243.3" r="1.6" fill="#7a603f"/>
+  <circle cx="200.4" cy="287.9" r="1.6" fill="#7a603f"/>
+  <circle cx="367.5" cy="226.6" r="1.6" fill="#7a603f"/>
+  <circle cx="387.7" cy="255.9" r="1.6" fill="#7a603f"/>
+  <circle cx="252.1" cy="318.8" r="1.6" fill="#7a603f"/>
+  <circle cx="284.7" cy="271.7" r="1.6" fill="#7a603f"/>
+  <circle cx="302.1" cy="291.5" r="1.6" fill="#7a603f"/>
+  <circle cx="307.9" cy="282.4" r="1.6" fill="#7a603f"/>
+  <circle cx="281.6" cy="323.6" r="1.6" fill="#7a603f"/>
+  <circle cx="331.4" cy="268.6" r="1.6" fill="#7a603f"/>
+  <circle cx="233.1" cy="247.7" r="1.6" fill="#7a603f"/>
+  <circle cx="284.8" cy="327.6" r="1.6" fill="#7a603f"/>
+  <circle cx="166.6" cy="281.2" r="1.6" fill="#7a603f"/>
+  <circle cx="298.7" cy="266.8" r="1.6" fill="#7a603f"/>
+  <circle cx="307.6" cy="224.2" r="1.6" fill="#7a603f"/>
+  <circle cx="178.3" cy="290.3" r="1.6" fill="#7a603f"/>
+  <circle cx="272.2" cy="289.8" r="1.6" fill="#7a603f"/>
+  <circle cx="246.0" cy="295.4" r="1.6" fill="#7a603f"/>
+  <circle cx="334.9" cy="298.4" r="1.6" fill="#7a603f"/>
+  <circle cx="175.4" cy="224.4" r="1.6" fill="#7a603f"/>
+  <circle cx="386.9" cy="295.0" r="1.6" fill="#7a603f"/>
+  <circle cx="269.7" cy="249.1" r="1.6" fill="#7a603f"/>
+  <circle cx="238.3" cy="286.0" r="1.6" fill="#7a603f"/>
+  <circle cx="236.1" cy="261.3" r="1.6" fill="#7a603f"/>
+  <circle cx="302.4" cy="261.9" r="1.6" fill="#7a603f"/>
+  <circle cx="251.1" cy="254.4" r="1.6" fill="#7a603f"/>
+  <circle cx="171.3" cy="305.4" r="1.6" fill="#7a603f"/>
+  <circle cx="334.6" cy="283.5" r="1.6" fill="#7a603f"/>
+  <circle cx="214.8" cy="255.5" r="1.6" fill="#7a603f"/>
+  <circle cx="220.1" cy="308.8" r="1.6" fill="#7a603f"/>
+  <circle cx="264.7" cy="242.2" r="1.6" fill="#7a603f"/>
+  <circle cx="188.2" cy="297.4" r="1.6" fill="#7a603f"/>
+  <circle cx="241.0" cy="256.8" r="1.6" fill="#7a603f"/>
+  <circle cx="265.9" cy="312.0" r="1.6" fill="#7a603f"/>
+  <circle cx="204.3" cy="314.4" r="1.6" fill="#7a603f"/>
+  <circle cx="315.2" cy="258.4" r="1.6" fill="#7a603f"/>
+  <circle cx="268.8" cy="317.6" r="1.6" fill="#7a603f"/>
+  <circle cx="190.6" cy="246.3" r="1.6" fill="#7a603f"/>
+  <circle cx="208.1" cy="279.2" r="1.6" fill="#7a603f"/>
+  <circle cx="357.6" cy="309.1" r="1.6" fill="#7a603f"/>
+  <circle cx="227.7" cy="241.8" r="1.6" fill="#7a603f"/>
+  <circle cx="312.5" cy="309.2" r="1.6" fill="#7a603f"/>
+  <circle cx="244.5" cy="309.1" r="1.6" fill="#7a603f"/>
+  <circle cx="230.7" cy="236.0" r="1.6" fill="#7a603f"/>
+  <circle cx="227.5" cy="307.7" r="1.6" fill="#7a603f"/>
+  <circle cx="260.5" cy="259.4" r="1.6" fill="#7a603f"/>
+  <circle cx="258.9" cy="267.3" r="1.6" fill="#7a603f"/>
+  <circle cx="201.5" cy="321.4" r="1.6" fill="#7a603f"/>
+  <circle cx="385.6" cy="222.5" r="1.6" fill="#7a603f"/>
+  <circle cx="391.3" cy="317.0" r="1.6" fill="#7a603f"/>
+  <circle cx="385.1" cy="268.9" r="1.6" fill="#7a603f"/>
+  <circle cx="216.6" cy="322.2" r="1.6" fill="#7a603f"/>
+  <circle cx="357.4" cy="302.5" r="1.6" fill="#7a603f"/>
+  <circle cx="284.4" cy="293.6" r="1.6" fill="#7a603f"/>
+  <circle cx="242.6" cy="253.2" r="1.6" fill="#7a603f"/>
+  <circle cx="178.1" cy="246.6" r="1.6" fill="#7a603f"/>
+  <circle cx="230.6" cy="285.6" r="1.6" fill="#7a603f"/>
+  <circle cx="175.7" cy="309.5" r="1.6" fill="#7a603f"/>
+  <circle cx="324.2" cy="319.6" r="1.6" fill="#7a603f"/>
+  <circle cx="370.4" cy="321.8" r="1.6" fill="#7a603f"/>
+  <circle cx="297.6" cy="319.2" r="1.6" fill="#7a603f"/>
+  <circle cx="338.4" cy="223.4" r="1.6" fill="#7a603f"/>
+  <circle cx="232.7" cy="240.6" r="1.6" fill="#7a603f"/>
+  <circle cx="285.8" cy="293.6" r="1.6" fill="#7a603f"/>
+  <circle cx="382.6" cy="266.7" r="1.6" fill="#7a603f"/>
+  <circle cx="243.3" cy="288.1" r="1.6" fill="#7a603f"/>
+  <circle cx="365.2" cy="249.3" r="1.6" fill="#7a603f"/>
+  <circle cx="345.8" cy="273.5" r="1.6" fill="#7a603f"/>
+  <circle cx="209.1" cy="260.0" r="1.6" fill="#7a603f"/>
+  <circle cx="353.6" cy="279.7" r="1.6" fill="#7a603f"/>
+  <circle cx="349.0" cy="240.5" r="1.6" fill="#7a603f"/>
+  <circle cx="349.8" cy="321.6" r="1.6" fill="#7a603f"/>
+  <circle cx="167.1" cy="310.9" r="1.6" fill="#7a603f"/>
+  <circle cx="363.9" cy="289.9" r="1.6" fill="#7a603f"/>
+  <circle cx="225.6" cy="227.4" r="1.6" fill="#7a603f"/>
+  <circle cx="286.4" cy="251.0" r="1.6" fill="#7a603f"/>
+  <circle cx="273.7" cy="267.7" r="1.6" fill="#7a603f"/>
+  <circle cx="165.6" cy="305.9" r="1.6" fill="#7a603f"/>
+  <circle cx="191.3" cy="227.9" r="1.6" fill="#7a603f"/>
+  <circle cx="177.7" cy="235.5" r="1.6" fill="#7a603f"/>
+  <circle cx="360.6" cy="327.3" r="1.6" fill="#7a603f"/>
+  <circle cx="280.5" cy="231.3" r="1.6" fill="#7a603f"/>
+  <circle cx="236.5" cy="256.1" r="1.6" fill="#7a603f"/>
+  <circle cx="314.4" cy="259.9" r="1.6" fill="#7a603f"/>
+  <circle cx="247.7" cy="285.4" r="1.6" fill="#7a603f"/>
+  <circle cx="239.6" cy="242.6" r="1.6" fill="#7a603f"/>
+  <circle cx="293.2" cy="235.4" r="1.6" fill="#7a603f"/>
+  <circle cx="252.4" cy="299.3" r="1.6" fill="#7a603f"/>
+  <circle cx="203.7" cy="230.6" r="1.6" fill="#7a603f"/>
+  <circle cx="304.5" cy="262.3" r="1.6" fill="#7a603f"/>
+  <circle cx="252.5" cy="306.5" r="1.6" fill="#7a603f"/>
+  <circle cx="308.2" cy="308.5" r="1.6" fill="#7a603f"/>
+  <circle cx="250.2" cy="268.6" r="1.6" fill="#7a603f"/>
+  <circle cx="327.2" cy="275.6" r="1.6" fill="#7a603f"/>
+  <circle cx="325.4" cy="267.4" r="1.6" fill="#7a603f"/>
+  <circle cx="220.6" cy="271.8" r="1.6" fill="#7a603f"/>
+  <polygon points="162.6,334 397.4,334 397.1,339 162.9,339" fill="#f0e6c8" stroke="#8a7d68"/>
+  <path d="M162.2,326 L162.7,336 M397.8,326 L397.3,336" stroke="#8a7d68" stroke-width="3"/>
+  <polygon points="162.9,339 397.1,339 395.7,366 164.3,366" fill="#e8e4dc" stroke="none"/>
+  <ellipse cx="322.3" cy="353.2" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="263.6" cy="344.4" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="362.4" cy="351.1" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="252.8" cy="360.8" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="342.9" cy="360.1" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="272.2" cy="348.0" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="348.2" cy="345.3" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="363.9" cy="355.6" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="316.2" cy="358.1" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="293.8" cy="356.9" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="299.1" cy="345.0" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="202.4" cy="343.1" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="181.4" cy="357.7" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="192.8" cy="344.7" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="210.7" cy="359.7" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="354.4" cy="343.4" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="354.8" cy="345.3" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="352.8" cy="355.8" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="297.1" cy="361.1" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="179.7" cy="358.2" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="282.4" cy="357.6" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="194.9" cy="356.6" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="374.0" cy="357.2" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="241.7" cy="344.2" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="351.1" cy="353.7" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="210.4" cy="347.6" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="305.2" cy="347.7" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="257.0" cy="357.3" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="257.6" cy="350.0" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="262.2" cy="349.7" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="280.1" cy="344.6" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="261.2" cy="361.5" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="206.6" cy="357.2" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="335.4" cy="356.1" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="283.7" cy="355.8" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="311.0" cy="352.2" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="204.2" cy="360.1" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="334.0" cy="344.8" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="283.7" cy="360.4" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="327.5" cy="351.4" rx="6" ry="4" fill="#b9b3a8" stroke="#6b6359" stroke-width="1"/>
+  <ellipse cx="200" cy="208" rx="14" ry="8" fill="#9a948a" stroke="#555" stroke-width="1.5"/>
+  <ellipse cx="280" cy="208" rx="14" ry="8" fill="#9a948a" stroke="#555" stroke-width="1.5"/>
+  <ellipse cx="350" cy="208" rx="14" ry="8" fill="#9a948a" stroke="#555" stroke-width="1.5"/>
+  <path d="M150,90 L164.3,366 L270,366 M282,366 L292,366 M304,366 L316,366 M328,366 L338,366 M350,366 L395.7,366 L410,90" fill="none" stroke="#222" stroke-width="4"/>
+  <line x1="142" y1="90" x2="418" y2="90" stroke="#222" stroke-width="4"/>
+  <rect x="150" y="368" width="260" height="10" rx="3" fill="#8a6a45"/>
+  <path d="M130,420 L150,470 L410,470 L430,420" fill="#d9d4cb" stroke="#222" stroke-width="3"/>
+  <rect x="152" y="448" width="256" height="20" fill="#cfe3f2"/>
+  <path d="M276,392 q-4,8 0,10 q4,-2 0,-10 z" fill="#5a8fc0"/>
+  <path d="M298,404 q-4,8 0,10 q4,-2 0,-10 z" fill="#5a8fc0"/>
+  <path d="M320,388 q-4,8 0,10 q4,-2 0,-10 z" fill="#5a8fc0"/>
+  <path d="M343,400 q-4,8 0,10 q4,-2 0,-10 z" fill="#5a8fc0"/>
+  <line x1="280" y1="40" x2="280" y2="114" stroke="#2d5f8a" stroke-width="4" marker-end="url(#p)"/>
+  <text x="294" y="52" font-size="15" font-weight="bold" fill="#2d5f8a">Pour in settled water</text>
+  <line x1="120" y1="217" x2="120" y2="334" stroke="#333" stroke-width="1.6" marker-start="url(#d)" marker-end="url(#d)"/>
+  <text x="112" y="280" text-anchor="end" font-size="15" font-weight="bold" fill="#222">6–7 in</text>
+  <line x1="120" y1="339" x2="120" y2="366" stroke="#333" stroke-width="1.6" marker-start="url(#d)" marker-end="url(#d)"/>
+  <text x="112" y="358" text-anchor="end" font-size="15" font-weight="bold" fill="#222">1½ in</text>
+  </g>
+  <text x="398" y="150" font-size="14" fill="#222">Towel held down by a few stones</text>
+  <line x1="394" y1="145" x2="358" y2="206" stroke="#333" stroke-width="1.2" marker-end="url(#k)"/>
+  <text x="398" y="240" font-size="14" fill="#222">Crumbled soil with some clay,</text>
+  <line x1="394" y1="235" x2="350" y2="250" stroke="#333" stroke-width="1.2" marker-end="url(#k)"/>
+  <text x="398" y="258" font-size="14" fill="#222">dug from 4+ in deep, pressed</text>
+  <text x="398" y="276" font-size="14" fill="#222">down in layers (not pure clay</text>
+  <text x="398" y="294" font-size="14" fill="#222">or sand)</text>
+  <text x="398" y="326" font-size="14" fill="#222">Towel or burlap, a bit bigger</text>
+  <line x1="394" y1="321" x2="352" y2="336" stroke="#333" stroke-width="1.2" marker-end="url(#k)"/>
+  <text x="398" y="344" font-size="14" fill="#222">than the can</text>
+  <text x="398" y="372" font-size="14" fill="#222">Washed pebbles</text>
+  <line x1="394" y1="367" x2="348" y2="354" stroke="#333" stroke-width="1.2" marker-end="url(#k)"/>
+  <text x="398" y="402" font-size="14" fill="#222">A dozen nail holes near</text>
+  <line x1="394" y1="397" x2="305" y2="368" stroke="#333" stroke-width="1.2" marker-end="url(#k)"/>
+  <text x="398" y="420" font-size="14" fill="#222">the center of the bottom</text>
+  <text x="398" y="450" font-size="14" fill="#222">On sticks over a pan</text>
+  <line x1="394" y1="445" x2="352" y2="374" stroke="#333" stroke-width="1.2" marker-end="url(#k)"/>
+  <g font-size="14.5" fill="#222">
+    <text x="20" y="500">About 6 quarts an hour at first, 2 later. Faster than a quart in 10 minutes:</text>
+    <text x="20" y="520">repack the soil. Replace the soil after about 50 quarts.</text>
+    <text x="20" y="544" font-weight="bold" fill="#b03a2e">Then disinfect the water: the filter takes out fallout, not germs.</text>
+  </g>
+</svg>

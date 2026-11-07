@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="560" viewBox="0 0 640 560" font-family="Arial, Helvetica, sans-serif">
+  <title>Why a generator must never be plugged into a wall outlet, and how a transfer switch prevents backfeed</title>
+  <rect width="640" height="560" fill="#ffffff"/>
+  <defs>
+    <marker id="r" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#c0392b"/></marker>
+    <g id="gen">
+      <rect x="0" y="0" width="80" height="50" rx="5" fill="#f5c542" stroke="#333" stroke-width="2"/>
+      <circle cx="16" cy="54" r="8" fill="#333"/><circle cx="64" cy="54" r="8" fill="#333"/>
+      <text x="40" y="30" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">GEN</text>
+    </g>
+    <g id="pole">
+      <line x1="0" y1="0" x2="0" y2="150" stroke="#7a5a3a" stroke-width="7"/>
+      <line x1="-30" y1="12" x2="30" y2="12" stroke="#7a5a3a" stroke-width="5"/>
+      <rect x="8" y="30" width="24" height="34" rx="4" fill="#9aa5b1" stroke="#333" stroke-width="1.5"/>
+    </g>
+  </defs>
+
+  <!-- ================= WRONG ================= -->
+  <rect x="8" y="8" width="624" height="262" rx="8" fill="#fdf0ee" stroke="#c0392b" stroke-width="2"/>
+  <text x="22" y="34" font-size="17" font-weight="bold" fill="#a12a1c">WRONG: generator plugged into a wall outlet</text>
+
+  <!-- house -->
+  <path d="M250,110 L340,60 L430,110 L430,225 L250,225 Z" fill="#fff" stroke="#333" stroke-width="2.5"/>
+  <rect x="268" y="150" width="36" height="46" fill="#e9e9e9" stroke="#333" stroke-width="1.5"/>
+  <text x="286" y="212" text-anchor="middle" font-size="13" fill="#222">panel</text>
+  <rect x="402" y="182" width="16" height="22" rx="2" fill="#fff" stroke="#333" stroke-width="1.5"/>
+  <text x="380" y="176" text-anchor="middle" font-size="13" fill="#222">outlet</text>
+  <!-- generator outside -->
+  <use href="#gen" x="500" y="170"/>
+  <path d="M500,190 C470,190 450,196 418,193" fill="none" stroke="#222" stroke-width="3"/>
+  <!-- power path back out -->
+  <path d="M400,196 C360,196 330,190 306,180" fill="none" stroke="#c0392b" stroke-width="3" stroke-dasharray="6 4" marker-end="url(#r)"/>
+  <path d="M268,160 C230,150 200,120 168,92" fill="none" stroke="#c0392b" stroke-width="3" stroke-dasharray="6 4" marker-end="url(#r)"/>
+  <!-- line and pole -->
+  <line x1="102" y1="72" x2="250" y2="120" stroke="#333" stroke-width="2"/>
+  <use href="#pole" x="90" y="60"/>
+  <text x="60" y="230" text-anchor="middle" font-size="13" fill="#222">utility pole</text>
+  <!-- worker -->
+  <circle cx="66" cy="96" r="8" fill="#fff" stroke="#333" stroke-width="2"/>
+  <line x1="66" y1="104" x2="66" y2="130" stroke="#333" stroke-width="2.5"/>
+  <line x1="66" y1="112" x2="86" y2="104" stroke="#333" stroke-width="2.5"/>
+  <line x1="66" y1="130" x2="80" y2="146" stroke="#333" stroke-width="2.5"/>
+  <text x="12" y="168" font-size="13" font-weight="bold" fill="#a12a1c">line worker</text>
+  <g font-size="13.5" fill="#222">
+    <text x="455" y="80">Power flows back</text>
+    <text x="455" y="97">through the house and</text>
+    <text x="455" y="114">out onto the lines. It can</text>
+    <text x="455" y="131">electrocute line workers</text>
+    <text x="455" y="148">and neighbors.</text>
+  </g>
+
+  <!-- ================= RIGHT ================= -->
+  <rect x="8" y="285" width="624" height="267" rx="8" fill="#eef6ea" stroke="#2e7d32" stroke-width="2"/>
+  <text x="22" y="311" font-size="17" font-weight="bold" fill="#1b5e20">RIGHT: a transfer switch (or plug things into the generator)</text>
+
+  <use href="#pole" x="70" y="345"/>
+  <line x1="82" y1="357" x2="190" y2="400" stroke="#333" stroke-width="2.5"/>
+  <text x="70" y="515" text-anchor="middle" font-size="13" fill="#222">grid</text>
+
+  <!-- transfer switch -->
+  <rect x="190" y="370" width="150" height="110" rx="6" fill="#fff" stroke="#333" stroke-width="2.5"/>
+  <text x="265" y="392" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">TRANSFER SWITCH</text>
+  <circle cx="215" cy="420" r="5" fill="#333"/><text x="215" y="446" text-anchor="middle" font-size="13" fill="#222">GRID</text>
+  <circle cx="315" cy="420" r="5" fill="#333"/><text x="315" y="446" text-anchor="middle" font-size="13" fill="#222">GEN</text>
+  <circle cx="265" cy="465" r="5" fill="#333"/>
+  <line x1="265" y1="465" x2="309" y2="424" stroke="#1b5e20" stroke-width="4" stroke-linecap="round"/>
+  <line x1="190" y1="400" x2="215" y2="420" stroke="#333" stroke-width="2.5"/>
+  <!-- generator to GEN side -->
+  <use href="#gen" x="530" y="400"/>
+  <text x="570" y="480" text-anchor="middle" font-size="13" fill="#222">outdoors only</text>
+  <path d="M530,420 L400,420 L340,420 L315,420" fill="none" stroke="#222" stroke-width="3"/>
+  <!-- house panel from switch -->
+  <line x1="265" y1="470" x2="265" y2="510" stroke="#222" stroke-width="3"/>
+  <rect x="225" y="510" width="80" height="34" rx="3" fill="#e9e9e9" stroke="#333" stroke-width="1.5"/>
+  <text x="265" y="532" text-anchor="middle" font-size="13" fill="#222">house panel</text>
+  <g font-size="13.5" fill="#222">
+    <text x="360" y="345">The house is connected to the</text>
+    <text x="360" y="362"><tspan font-weight="bold">grid OR the generator,</tspan></text>
+    <text x="360" y="379"><tspan font-weight="bold">never both</tspan>. Nothing can</text>
+    <text x="360" y="396">flow back out to the lines.</text>
+  </g>
+</svg>

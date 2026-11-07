@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="520" viewBox="0 0 640 520" font-family="Arial, Helvetica, sans-serif">
+  <title>Making a rushlight in four steps: cut, peel leaving one rib, dip in fat, burn slanting in a holder</title>
+  <rect width="640" height="520" fill="#ffffff"/>
+  <g stroke="#bbb" stroke-width="1.5" stroke-dasharray="6 5"><line x1="320" y1="15" x2="320" y2="505"/><line x1="15" y1="260" x2="625" y2="260"/></g>
+
+  <!-- ===== 1. cut ===== -->
+  <text x="20" y="32" font-size="16" font-weight="bold" fill="#222">1. Cut the longest rushes</text>
+  <text x="20" y="50" font-size="13" fill="#333">and put them in water at once</text>
+  <rect x="30" y="80" width="200" height="12" rx="6" fill="#6d9f43" stroke="#456f26" stroke-width="1.5"/>
+  <rect x="30" y="110" width="200" height="12" rx="6" fill="#6d9f43" stroke="#456f26" stroke-width="1.5"/>
+  <rect x="30" y="140" width="200" height="12" rx="6" fill="#6d9f43" stroke="#456f26" stroke-width="1.5"/>
+  <text x="130" y="178" text-anchor="middle" font-size="13" fill="#333">soft rush, green all over</text>
+  <!-- cross-section -->
+  <circle cx="270" cy="120" r="30" fill="#6d9f43" stroke="#456f26" stroke-width="2"/>
+  <circle cx="270" cy="120" r="23" fill="#fbfbf3" stroke="#b9b9a0" stroke-width="1"/>
+  <text x="270" y="172" text-anchor="middle" font-size="13" fill="#333">cut end:</text>
+  <text x="270" y="188" text-anchor="middle" font-size="13" fill="#333">skin and</text>
+  <text x="270" y="204" text-anchor="middle" font-size="13" fill="#333">white pith</text>
+
+  <!-- ===== 2. peel ===== -->
+  <text x="340" y="32" font-size="16" font-weight="bold" fill="#222">2. Peel off the green skin,</text>
+  <text x="340" y="50" font-size="13" fill="#333">leaving ONE narrow, even rib</text>
+  <text x="340" y="66" font-size="13" fill="#333">from top to bottom</text>
+  <rect x="350" y="105" width="210" height="16" rx="8" fill="#fbfbf3" stroke="#b9b9a0" stroke-width="1.5"/>
+  <rect x="352" y="117" width="206" height="4" fill="#4d7a2c"/>
+  <path d="M560,113 C575,100 590,98 605,104" fill="none" stroke="#6d9f43" stroke-width="5" stroke-linecap="round"/>
+  <path d="M560,113 C580,118 595,128 608,140" fill="none" stroke="#6d9f43" stroke-width="5" stroke-linecap="round"/>
+  <text x="455" y="147" text-anchor="middle" font-size="13" fill="#333">white pith, held up by one green rib</text>
+  <circle cx="455" cy="200" r="23" fill="#fbfbf3" stroke="#b9b9a0" stroke-width="1.5"/>
+  <path d="M440,218 A23,23 0 0 0 470,218" fill="none" stroke="#4d7a2c" stroke-width="6"/>
+  <text x="490" y="196" font-size="13" fill="#333">cut end</text>
+  <text x="490" y="212" font-size="13" fill="#333">after peeling</text>
+
+  <!-- ===== 3. bleach, dry, dip ===== -->
+  <text x="20" y="288" font-size="16" font-weight="bold" fill="#222">3. Dew-bleach, sun-dry,</text>
+  <text x="20" y="306" font-size="16" font-weight="bold" fill="#222">then dip in scalding fat</text>
+  <!-- pan of fat -->
+  <path d="M50,430 L60,470 L230,470 L240,430 Z" fill="#8a8a8a" stroke="#333" stroke-width="2"/>
+  <rect x="55" y="430" width="180" height="14" fill="#e6c46e"/>
+  <line x1="240" y1="438" x2="290" y2="430" stroke="#333" stroke-width="5"/>
+  <line x1="90" y1="340" x2="150" y2="440" stroke="#d9c58f" stroke-width="7" stroke-linecap="round"/>
+  <line x1="91" y1="342" x2="151" y2="442" stroke="#4d7a2c" stroke-width="2"/>
+  <text x="160" y="370" font-size="13" fill="#333">dip each rush</text>
+  <text x="160" y="386" font-size="13" fill="#333">in the hot fat</text>
+  <text x="145" y="495" text-anchor="middle" font-size="13" fill="#333">6 lb of grease dips 1 lb of rushes</text>
+
+  <!-- ===== 4. burn ===== -->
+  <text x="340" y="288" font-size="16" font-weight="bold" fill="#222">4. Burn it slanting in a</text>
+  <text x="340" y="306" font-size="16" font-weight="bold" fill="#222">holder, over a dish of sand</text>
+  <!-- heavy base and upright -->
+  <rect x="355" y="455" width="90" height="20" rx="3" fill="#7a5a3a" stroke="#4a3520" stroke-width="2"/>
+  <line x1="400" y1="455" x2="400" y2="420" stroke="#7a5a3a" stroke-width="8"/>
+  <!-- rush, slanting, held in a split stick -->
+  <line x1="360" y1="452" x2="515" y2="364" stroke="#d9c58f" stroke-width="7" stroke-linecap="round"/>
+  <path d="M393,428 L405,418 L411,426 L399,436 Z" fill="#555"/>
+  <path d="M519,330 C532,345 531,356 521,366 C511,356 509,345 519,330 Z" fill="#ffd34d" stroke="#e08a00" stroke-width="1.5"/>
+  <!-- dish of sand under the burning end -->
+  <ellipse cx="530" cy="462" rx="60" ry="12" fill="#d8c9a3" stroke="#8a7a55" stroke-width="2"/>
+  <text x="530" y="492" text-anchor="middle" font-size="13" fill="#333">dish of sand catches drips</text>
+  <text x="345" y="350" font-size="13" fill="#333">move it up</text>
+  <text x="345" y="366" font-size="13" fill="#333">as it burns</text>
+  <text x="340" y="510" font-size="13" fill="#555">A 2 ft 4½ in rush burned nearly an hour.</text>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="420" viewBox="0 0 660 420" font-family="Arial, Helvetica, sans-serif">
+  <title>Three steps to tie a muzzle from a strip of gauze or cloth on a hurt dog</title>
+  <rect width="660" height="420" fill="#ffffff"/>
+  <defs>
+    <g id="head">
+      <path d="M40 215 L62 128 L122 128 L146 215 Z" fill="#c9a36a" stroke="#5a4020" stroke-width="2"/>
+      <ellipse cx="85" cy="100" rx="46" ry="38" fill="#c9a36a" stroke="#5a4020" stroke-width="2"/>
+      <path d="M110 84 L184 92 Q200 96 198 108 L196 120 Q190 131 175 131 L112 130 Z" fill="#c9a36a" stroke="#5a4020" stroke-width="2"/>
+      <ellipse cx="196" cy="100" rx="8" ry="7" fill="#222"/>
+      <path d="M150 123 L192 121" stroke="#5a4020" stroke-width="2" fill="none"/>
+      <circle cx="108" cy="88" r="5" fill="#222"/>
+      <path d="M64 68 Q46 72 44 116 Q58 118 80 82 Z" fill="#9c7643" stroke="#5a4020" stroke-width="2"/>
+    </g>
+  </defs>
+
+  <text x="330" y="26" text-anchor="middle" font-size="17" font-weight="bold" fill="#222">A muzzle from a strip of gauze or cloth</text>
+
+  <!-- panel 1 -->
+  <g transform="translate(5,40)">
+    <use href="#head"/>
+    <ellipse cx="160" cy="108" rx="8" ry="28" fill="none" stroke="#2f6db3" stroke-width="6"/>
+    <circle cx="160" cy="138" r="6" fill="#2f6db3"/>
+    <path d="M160 140 L148 178 M160 140 L174 178" stroke="#2f6db3" stroke-width="5" fill="none"/>
+  </g>
+  <!-- panel 2 -->
+  <g transform="translate(225,40)">
+    <use href="#head"/>
+    <ellipse cx="160" cy="108" rx="8" ry="28" fill="none" stroke="#2f6db3" stroke-width="6"/>
+    <circle cx="160" cy="138" r="6" fill="#2f6db3"/>
+    <path d="M160 140 C 130 150, 90 145, 58 128" stroke="#2f6db3" stroke-width="5" fill="none"/>
+    <path d="M58 128 L 30 120" stroke="#2f6db3" stroke-width="5" fill="none" stroke-dasharray="6 4"/>
+  </g>
+  <!-- panel 3 -->
+  <g transform="translate(445,40)">
+    <use href="#head"/>
+    <ellipse cx="160" cy="108" rx="8" ry="28" fill="none" stroke="#2f6db3" stroke-width="6"/>
+    <circle cx="160" cy="138" r="6" fill="#2f6db3"/>
+    <path d="M160 140 C 130 150, 90 145, 58 128 L 38 118" stroke="#2f6db3" stroke-width="5" fill="none"/>
+    <!-- bow behind the head -->
+    <path d="M38 118 C 20 100, 10 112, 22 122 C 12 132, 22 142, 38 118" fill="#2f6db3" stroke="#1d4a7c" stroke-width="2"/>
+    <path d="M38 118 L 30 150 M38 118 L 44 152" stroke="#2f6db3" stroke-width="4" fill="none"/>
+  </g>
+
+  <!-- step text -->
+  <g font-size="14" fill="#222">
+    <text x="15" y="282" font-weight="bold">1. Loop it round the mouth</text>
+    <text x="15" y="300">and pull it snug with a knot</text>
+    <text x="15" y="318">under the lower jaw.</text>
+
+    <text x="235" y="282" font-weight="bold">2. Take the two ends back,</text>
+    <text x="235" y="300">one on each side, below</text>
+    <text x="235" y="318">the ears.</text>
+
+    <text x="455" y="282" font-weight="bold">3. Tie them behind the head,</text>
+    <text x="455" y="300">just below the ears, with a</text>
+    <text x="455" y="318">bow you can pull loose fast.</text>
+  </g>
+
+  <rect x="15" y="340" width="630" height="64" rx="6" fill="#fbeaea" stroke="#a33" stroke-width="2"/>
+  <text x="330" y="364" text-anchor="middle" font-size="14" font-weight="bold" fill="#7a1d1d">Don't muzzle a dog that is unconscious, has trouble breathing,</text>
+  <text x="330" y="386" text-anchor="middle" font-size="14" font-weight="bold" fill="#7a1d1d">has a head injury, is overheated, or may vomit.</text>
+</svg>

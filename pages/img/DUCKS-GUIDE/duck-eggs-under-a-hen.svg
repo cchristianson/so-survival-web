@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="430" viewBox="0 0 680 430" font-family="Arial, Helvetica, sans-serif">
+  <title>Duck eggs under a hen: a 28-day timeline compared with 21 days for chicken eggs and 33 to 35 for Muscovy eggs</title>
+  <rect width="680" height="430" fill="#ffffff"/>
+  <text x="340" y="26" text-anchor="middle" font-size="18" font-weight="bold" fill="#222">Duck eggs under a hen: a week longer than her own</text>
+
+  <!-- scale: day 0 at x=40, 17 px per day (day 35 at x=635) -->
+  <rect x="40" y="48" width="357" height="26" fill="#e3e3e3" stroke="#777" stroke-width="1.5"/>
+  <text x="48" y="66" font-size="13" fill="#222">Her own chicken eggs: 21 days</text>
+
+  <rect x="40" y="82" width="476" height="30" fill="#f3d58c" stroke="#9c7a1f" stroke-width="2"/>
+  <text x="48" y="102" font-size="14" font-weight="bold" fill="#222">Common duck eggs: 28 days</text>
+
+  <rect x="40" y="120" width="561" height="26" fill="#e8dccb" stroke="#8a6a45" stroke-width="1.5"/>
+  <rect x="601" y="120" width="34" height="26" fill="#f6f1ea" stroke="#8a6a45" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="48" y="138" font-size="13" fill="#222">Muscovy eggs (a Muscovy duck sits on 12–15): 33–35 days</text>
+
+  <!-- axis -->
+  <line x1="40" y1="164" x2="640" y2="164" stroke="#333" stroke-width="2"/>
+  <g stroke="#333" stroke-width="2">
+    <line x1="40" y1="158" x2="40" y2="170"/><line x1="159" y1="158" x2="159" y2="170"/><line x1="278" y1="158" x2="278" y2="170"/>
+    <line x1="397" y1="158" x2="397" y2="170"/><line x1="516" y1="158" x2="516" y2="170"/><line x1="635" y1="158" x2="635" y2="170"/>
+  </g>
+  <g font-size="13" fill="#333" text-anchor="middle">
+    <text x="40" y="186">day 0</text><text x="159" y="186">7</text><text x="278" y="186">14</text>
+    <text x="397" y="186">21</text><text x="516" y="186">28</text><text x="635" y="186">35</text>
+  </g>
+
+  <!-- numbered event markers under the axis, staggered -->
+  <g stroke="#9c3b1f" stroke-width="1.5">
+    <line x1="40" y1="190" x2="40" y2="198"/>
+    <line x1="142" y1="168" x2="142" y2="198"/>
+    <line x1="448" y1="168" x2="448" y2="198"/>
+    <line x1="465" y1="168" x2="465" y2="220"/>
+    <line x1="482" y1="168" x2="482" y2="198"/>
+    <line x1="516" y1="190" x2="516" y2="220"/>
+  </g>
+  <rect x="125" y="160" width="34" height="8" fill="#9c3b1f" opacity="0.45"/>
+  <g fill="#9c3b1f">
+    <circle cx="40" cy="208" r="10"/><circle cx="142" cy="208" r="10"/><circle cx="448" cy="208" r="10"/>
+    <circle cx="465" cy="230" r="10"/><circle cx="482" cy="208" r="10"/><circle cx="516" cy="230" r="10"/>
+  </g>
+  <g font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    <text x="40" y="213">1</text><text x="142" y="213">2</text><text x="448" y="213">3</text>
+    <text x="465" y="235">4</text><text x="482" y="213">5</text><text x="516" y="235">6</text>
+  </g>
+
+  <!-- legend -->
+  <g font-size="13" fill="#222">
+    <circle cx="22" cy="268" r="9" fill="#9c3b1f"/><text x="22" y="272" text-anchor="middle" fill="#fff" font-weight="bold">1</text>
+    <text x="38" y="272"><tspan font-weight="bold">Day 0:</tspan> set 7–10 duck eggs under a big broody hen, at dusk. Feed and water by the nest.</text>
+    <circle cx="22" cy="294" r="9" fill="#9c3b1f"/><text x="22" y="298" text-anchor="middle" fill="#fff" font-weight="bold">2</text>
+    <text x="38" y="298"><tspan font-weight="bold">Days 5–7:</tspan> candle. Take out clear eggs (hard-boil them for the ducklings).</text>
+    <circle cx="22" cy="320" r="9" fill="#9c3b1f"/><text x="22" y="324" text-anchor="middle" fill="#fff" font-weight="bold">3</text>
+    <text x="38" y="324"><tspan font-weight="bold">About day 24:</tspan> candle again. Dead eggs rot fast and smell: take them out.</text>
+    <circle cx="22" cy="346" r="9" fill="#9c3b1f"/><text x="22" y="350" text-anchor="middle" fill="#fff" font-weight="bold">4</text>
+    <text x="38" y="350"><tspan font-weight="bold">Just before pipping:</tspan> sprinkle the eggs with warm water.</text>
+    <circle cx="22" cy="372" r="9" fill="#9c3b1f"/><text x="22" y="376" text-anchor="middle" fill="#fff" font-weight="bold">5</text>
+    <text x="38" y="376"><tspan font-weight="bold">First pip:</tspan> let her off once to eat and drink, then keep her on the nest.</text>
+    <circle cx="22" cy="398" r="9" fill="#9c3b1f"/><text x="22" y="402" text-anchor="middle" fill="#fff" font-weight="bold">6</text>
+    <text x="38" y="402"><tspan font-weight="bold">Day 28:</tspan> hatched, 24–48 hours after pipping. First feed 24–36 hours after hatching.</text>
+  </g>
+</svg>

@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="500" viewBox="0 0 660 500" font-family="Arial, Helvetica, sans-serif">
+  <title>Where a herding dog goes for each command, seen from above</title>
+  <rect width="660" height="500" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#2c5d8a"/></marker>
+    <marker id="g" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#7a3b2e"/></marker>
+  </defs>
+
+  <text x="330" y="26" text-anchor="middle" font-size="17" font-weight="bold" fill="#222">Herding commands: where the dog goes (seen from above)</text>
+
+  <!-- direction the flock is heading -->
+  <text x="200" y="58" text-anchor="middle" font-size="13" fill="#555">flock moving this way ↑</text>
+
+  <!-- flock -->
+  <g fill="#ffffff" stroke="#555" stroke-width="2">
+    <ellipse cx="170" cy="220" rx="15" ry="10"/><ellipse cx="205" cy="212" rx="15" ry="10"/><ellipse cx="240" cy="225" rx="15" ry="10"/>
+    <ellipse cx="155" cy="250" rx="15" ry="10"/><ellipse cx="190" cy="245" rx="15" ry="10"/><ellipse cx="225" cy="252" rx="15" ry="10"/>
+    <ellipse cx="260" cy="255" rx="15" ry="10"/><ellipse cx="175" cy="278" rx="15" ry="10"/><ellipse cx="212" cy="282" rx="15" ry="10"/>
+    <ellipse cx="248" cy="286" rx="15" ry="10"/><ellipse cx="195" cy="310" rx="15" ry="10"/><ellipse cx="232" cy="314" rx="15" ry="10"/>
+  </g>
+  <text x="210" y="345" text-anchor="middle" font-size="14" fill="#333">flock</text>
+
+  <!-- a stray sheep far out -->
+  <ellipse cx="55" cy="105" rx="15" ry="10" fill="#ffffff" stroke="#555" stroke-width="2"/>
+  <text x="62" y="133" text-anchor="middle" font-size="13" fill="#333">stray</text>
+
+  <!-- shepherd behind the flock -->
+  <circle cx="210" cy="420" r="11" fill="#e8d3b5" stroke="#333" stroke-width="2"/>
+  <path d="M196 435 L224 435 L230 470 L190 470 Z" fill="#8aa1b8" stroke="#333" stroke-width="2"/>
+  <text x="210" y="490" text-anchor="middle" font-size="14" fill="#222">you, behind the flock</text>
+
+  <!-- dog at the head of the flock -->
+  <ellipse cx="205" cy="170" rx="14" ry="8" fill="#a0703c" stroke="#3d2a16" stroke-width="2"/>
+  <circle cx="190" cy="165" r="6" fill="#a0703c" stroke="#3d2a16" stroke-width="2"/>
+  <text x="235" y="168" font-size="13" fill="#3d2a16">dog</text>
+
+  <!-- 1: up the side -->
+  <path d="M232 412 C 330 380, 335 260, 290 195" fill="none" stroke="#2c5d8a" stroke-width="3" marker-end="url(#a)"/>
+  <!-- 2: around the head -->
+  <path d="M285 182 C 260 140, 150 140, 125 190" fill="none" stroke="#2c5d8a" stroke-width="3" marker-end="url(#a)"/>
+  <!-- 3: back, away back - wide out for the stray -->
+  <path d="M120 200 C 60 215, 5 160, 14 104 C 20 72, 40 62, 56 78" fill="none" stroke="#2c5d8a" stroke-width="3" stroke-dasharray="8 5" marker-end="url(#a)"/>
+  <!-- 5: come in -->
+  <path d="M120 300 C 95 360, 130 410, 188 418" fill="none" stroke="#7a3b2e" stroke-width="3" marker-end="url(#g)"/>
+
+  <!-- number tags -->
+  <g font-size="15" font-weight="bold" fill="#ffffff">
+    <circle cx="330" cy="310" r="13" fill="#2c5d8a"/><text x="330" y="315" text-anchor="middle">1</text>
+    <circle cx="210" cy="132" r="13" fill="#2c5d8a"/><text x="210" y="137" text-anchor="middle">2</text>
+    <circle cx="44" cy="190" r="13" fill="#2c5d8a"/><text x="44" y="195" text-anchor="middle">3</text>
+    <circle cx="160" cy="168" r="13" fill="#555"/><text x="160" y="173" text-anchor="middle">4</text>
+    <circle cx="100" cy="355" r="13" fill="#7a3b2e"/><text x="100" y="360" text-anchor="middle">5</text>
+  </g>
+
+  <!-- legend -->
+  <line x1="365" y1="45" x2="365" y2="485" stroke="#cccccc" stroke-width="1"/>
+  <g font-size="14" fill="#222">
+    <text x="380" y="70" font-weight="bold">1  “Up! Away up!”</text>
+    <text x="398" y="88">+ wave the right hand: run up</text>
+    <text x="398" y="105">the side to the head of the flock</text>
+
+    <text x="380" y="135" font-weight="bold">2  “Around them!”</text>
+    <text x="398" y="153">circle the head and gather them</text>
+
+    <text x="380" y="183" font-weight="bold">3  “Back! Away back!”</text>
+    <text x="398" y="201">go farther out for sheep</text>
+    <text x="398" y="218">it missed</text>
+
+    <text x="380" y="248" font-weight="bold">4  “Hold front!”</text>
+    <text x="398" y="266">stop the flock there</text>
+    <text x="398" y="283">(“Hold right!”, “Hold left!”)</text>
+
+    <text x="380" y="313" font-weight="bold">5  “Come in!” or a whistle</text>
+    <text x="398" y="331">come back to you</text>
+
+    <text x="380" y="368" font-weight="bold">Anywhere:</text>
+    <text x="380" y="388">“Lie down!” — drop and stay put</text>
+    <text x="380" y="407">“Steady!” — slow down</text>
+    <text x="380" y="426">“Speak!” / “Quiet!” — bark / stop</text>
+    <text x="380" y="445">Hand held up — “That will do”</text>
+    <text x="380" y="472" font-size="13" fill="#444">Always the same word for the</text>
+    <text x="380" y="489" font-size="13" fill="#444">same order.</text>
+  </g>
+</svg>

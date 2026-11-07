@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="440" viewBox="0 0 640 440" font-family="Arial, Helvetica, sans-serif">
+  <title>Aiming off: walk a bearing about 10 degrees to one side of a spot on a road, so you know which way to turn</title>
+  <rect width="640" height="440" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2d5f8a"/></marker>
+    <marker id="t" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2d5f8a"/></marker>
+    <marker id="g" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#777"/></marker>
+  </defs>
+
+  <!-- the handrail -->
+  <rect x="0" y="70" width="640" height="20" fill="#d9d4cb"/>
+  <line x1="0" y1="80" x2="640" y2="80" stroke="#6b6359" stroke-width="2" stroke-dasharray="14 10"/>
+  <text x="20" y="54" font-size="16" font-weight="bold" fill="#222">ROAD, CREEK OR RIDGE (your handrail)</text>
+
+  <!-- goal -->
+  <rect x="408" y="98" width="24" height="18" fill="#ffffff" stroke="#222" stroke-width="2"/>
+  <polygon points="404,99 420,86 436,99" fill="#222"/>
+  <text x="446" y="114" font-size="15" font-weight="bold" fill="#222">GOAL</text>
+
+  <!-- straight-at-it path -->
+  <line x1="420" y1="380" x2="420" y2="122" stroke="#777" stroke-width="2.5" stroke-dasharray="6 6" marker-end="url(#g)"/>
+  <text x="434" y="230" font-size="14" fill="#555">Straight at it: miss by a</text>
+  <text x="434" y="248" font-size="14" fill="#555">little and you won't know</text>
+  <text x="434" y="266" font-size="14" fill="#555">which way to turn.</text>
+
+  <!-- aimed-off path: 10 degrees left, 300 px tall: dx = 300 tan10 = 52.9 -->
+  <line x1="420" y1="380" x2="368" y2="96" stroke="#2d5f8a" stroke-width="4" marker-end="url(#a)"/>
+  <!-- turn along the road -->
+  <path d="M366,80 L402,80" stroke="#2d5f8a" stroke-width="5" fill="none" marker-end="url(#t)"/>
+  <text x="300" y="126" font-size="15" font-weight="bold" fill="#2d5f8a" text-anchor="end">Hit the road, then</text>
+  <text x="300" y="145" font-size="15" font-weight="bold" fill="#2d5f8a" text-anchor="end">turn toward the goal.</text>
+  <text x="352" y="250" font-size="15" fill="#2d5f8a" text-anchor="end">Aim about 10° to one side</text>
+  <text x="352" y="269" font-size="15" fill="#2d5f8a" text-anchor="end">on purpose.</text>
+
+  <!-- angle mark -->
+  <path d="M420,320 A60,60 0 0,0 409.6,321" fill="none" stroke="#2d5f8a" stroke-width="2"/>
+  <circle cx="420" cy="380" r="6" fill="#222"/>
+  <text x="420" y="404" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">YOU</text>
+
+  <text x="20" y="430" font-size="14" fill="#333">Each degree ≈ 18 m sideways per 1,000 m walked, so 10° ≈ 180 m. Seen from above.</text>
+</svg>

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="500" viewBox="0 0 640 500" font-family="Arial, Helvetica, sans-serif">
+  <title>The rag-doll germination test, step by step, and how to read the count</title>
+  <rect width="640" height="500" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#555"/></marker>
+    <g id="seed"><ellipse rx="6" ry="4" fill="#a8743a" stroke="#5e3d17" stroke-width="1"/></g>
+  </defs>
+
+  <!-- 1: seeds on a damp towel -->
+  <text x="16" y="28" font-size="15" font-weight="bold" fill="#222">1 Lay 10 seeds on a damp</text>
+  <text x="16" y="46" font-size="15" font-weight="bold" fill="#222">paper towel, spaced apart</text>
+  <rect x="24" y="66" width="170" height="110" fill="#e8f1f6" stroke="#7aa0b8" stroke-width="2"/>
+  <g>
+    <use href="#seed" x="50" y="90"/><use href="#seed" x="88" y="90"/><use href="#seed" x="126" y="90"/><use href="#seed" x="164" y="90"/>
+    <use href="#seed" x="68" y="122"/><use href="#seed" x="108" y="122"/><use href="#seed" x="148" y="122"/>
+    <use href="#seed" x="50" y="154"/><use href="#seed" x="100" y="154"/><use href="#seed" x="150" y="154"/>
+  </g>
+  <text x="109" y="196" text-anchor="middle" font-size="13" fill="#444">damp, not dripping</text>
+
+  <line x1="204" y1="120" x2="234" y2="120" stroke="#555" stroke-width="2.5" marker-end="url(#a)"/>
+
+  <!-- 2: rolled up in a bag -->
+  <text x="244" y="28" font-size="15" font-weight="bold" fill="#222">2 Roll it up, put it in a</text>
+  <text x="244" y="46" font-size="15" font-weight="bold" fill="#222">plastic bag, label it</text>
+  <rect x="250" y="70" width="150" height="104" rx="10" fill="#f4f8fb" stroke="#8aa3b5" stroke-width="2" stroke-dasharray="6 4"/>
+  <rect x="262" y="104" width="126" height="36" rx="18" fill="#e8f1f6" stroke="#7aa0b8" stroke-width="2"/>
+  <path d="M280,104 C276,112 276,132 280,140" fill="none" stroke="#7aa0b8" stroke-width="1.5"/>
+  <rect x="300" y="78" width="70" height="20" fill="#fff6d6" stroke="#8a7a3a" stroke-width="1"/>
+  <text x="335" y="93" text-anchor="middle" font-size="12" fill="#222">Tomato 2026</text>
+  <text x="325" y="196" text-anchor="middle" font-size="13" fill="#444">leave a little air in the bag</text>
+
+  <line x1="410" y1="120" x2="440" y2="120" stroke="#555" stroke-width="2.5" marker-end="url(#a)"/>
+
+  <!-- 3: keep warm -->
+  <text x="450" y="28" font-size="15" font-weight="bold" fill="#222">3 Keep it warm</text>
+  <text x="450" y="50" font-size="14" fill="#222"><tspan font-weight="bold">About 70 °F</tspan> for most</text>
+  <text x="450" y="68" font-size="14" fill="#222"><tspan font-weight="bold">75–80 °F</tspan> for peppers,</text>
+  <text x="450" y="86" font-size="14" fill="#222">eggplant and melons</text>
+  <!-- thermometer -->
+  <rect x="520" y="100" width="16" height="70" rx="8" fill="#ffffff" stroke="#555" stroke-width="2"/>
+  <circle cx="528" cy="176" r="12" fill="#c0392b" stroke="#555" stroke-width="2"/>
+  <rect x="524" y="124" width="8" height="46" fill="#c0392b"/>
+  <text x="450" y="210" font-size="13" fill="#444">Lettuce and celery like</text>
+  <text x="450" y="226" font-size="13" fill="#444">some light.</text>
+
+  <!-- 4: count -->
+  <text x="16" y="262" font-size="15" font-weight="bold" fill="#222">4 From day 3, unroll and count the sprouts</text>
+  <text x="16" y="280" font-size="13.5" fill="#444">Take out sprouted and moldy seeds as you go. Peppers and slow seeds can take up to 3 weeks.</text>
+  <rect x="24" y="294" width="250" height="90" fill="#e8f1f6" stroke="#7aa0b8" stroke-width="2"/>
+  <g stroke="#6aa33a" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M56,320 C60,310 66,306 72,304"/><path d="M96,320 C100,310 106,306 112,304"/><path d="M136,320 C140,310 146,306 152,304"/>
+    <path d="M176,320 C180,310 186,306 192,304"/><path d="M216,320 C220,310 226,306 232,304"/><path d="M56,360 C60,350 66,346 72,344"/>
+    <path d="M96,360 C100,350 106,346 112,344"/><path d="M136,360 C140,350 146,346 152,344"/>
+  </g>
+  <g>
+    <use href="#seed" x="50" y="322"/><use href="#seed" x="90" y="322"/><use href="#seed" x="130" y="322"/><use href="#seed" x="170" y="322"/><use href="#seed" x="210" y="322"/>
+    <use href="#seed" x="50" y="362"/><use href="#seed" x="90" y="362"/><use href="#seed" x="130" y="362"/><use href="#seed" x="170" y="362"/><use href="#seed" x="210" y="362"/>
+  </g>
+  <text x="149" y="402" text-anchor="middle" font-size="13" fill="#444">8 of 10 sprouted</text>
+
+  <!-- reading the result -->
+  <g font-size="14" fill="#222">
+    <rect x="300" y="300" width="324" height="34" rx="5" fill="#e3f0d6" stroke="#6aa33a"/>
+    <text x="312" y="322"><tspan font-weight="bold">10 of 10:</tspan> plant normally</text>
+    <rect x="300" y="340" width="324" height="34" rx="5" fill="#fff4d6" stroke="#c9a227"/>
+    <text x="312" y="362"><tspan font-weight="bold">7–9:</tspan> sow thicker</text>
+    <rect x="300" y="380" width="324" height="52" rx="5" fill="#fbeceb" stroke="#b03a2e"/>
+    <text x="312" y="402"><tspan font-weight="bold">6 or fewer:</tspan> the packet is failing.</text>
+    <text x="312" y="421">Plant it now and save fresh seed this year.</text>
+  </g>
+
+  <text x="320" y="470" text-anchor="middle" font-size="14" fill="#222">Do it every winter, and before planting any packet more than a year old.</text>
+  <text x="320" y="490" text-anchor="middle" font-size="13" fill="#444">Fresh spinach, lettuce and pepper seed can sleep for a few months: test again before giving up.</text>
+</svg>

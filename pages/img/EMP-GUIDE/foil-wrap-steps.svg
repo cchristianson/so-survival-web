@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400" font-family="Arial, Helvetica, sans-serif">
+  <title>Foil-wrapping electronics against EMP: plastic bag first, then two or more layers of heavy foil with every seam folded over</title>
+  <rect width="640" height="400" fill="#ffffff"/>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#555"/></marker></defs>
+  <g stroke="#bbb" stroke-width="1.5" stroke-dasharray="6 5"><line x1="213" y1="20" x2="213" y2="300"/><line x1="426" y1="20" x2="426" y2="300"/></g>
+
+  <!-- 1 bag -->
+  <text x="20" y="30" font-size="16" font-weight="bold" fill="#222">1. Plastic bag</text>
+  <rect x="45" y="70" width="130" height="150" rx="14" fill="#eef6fb" stroke="#7aa6c2" stroke-width="2.5"/>
+  <rect x="75" y="100" width="70" height="95" rx="6" fill="#30343a"/>
+  <rect x="83" y="108" width="54" height="60" rx="3" fill="#7d8fa3"/>
+  <path d="M150,180 C175,200 165,215 140,212" fill="none" stroke="#222" stroke-width="3"/>
+  <text x="110" y="248" text-anchor="middle" font-size="13" fill="#222">charger cable</text>
+  <text x="110" y="264" text-anchor="middle" font-size="13" fill="#222">goes inside too</text>
+
+  <!-- 2 foil layers -->
+  <text x="232" y="30" font-size="16" font-weight="bold" fill="#222">2. Two or more layers</text>
+  <text x="232" y="48" font-size="16" font-weight="bold" fill="#222">of heavy-duty foil</text>
+  <rect x="250" y="70" width="150" height="160" rx="10" fill="#dfe3e8" stroke="#8a939d" stroke-width="3"/>
+  <rect x="262" y="82" width="126" height="136" rx="8" fill="#eceff2" stroke="#8a939d" stroke-width="2.5"/>
+  <g stroke="#b7bec6" stroke-width="1.2"><line x1="270" y1="100" x2="380" y2="120"/><line x1="268" y1="150" x2="384" y2="135"/><line x1="272" y1="190" x2="380" y2="205"/></g>
+  <text x="325" y="160" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">2+ layers</text>
+  <text x="325" y="252" text-anchor="middle" font-size="13" fill="#222">overlapped, no gaps</text>
+
+  <!-- 3 folded seam -->
+  <text x="445" y="30" font-size="16" font-weight="bold" fill="#222">3. Fold every seam</text>
+  <text x="445" y="48" font-size="13" fill="#222">edges together, folded over</text>
+  <text x="445" y="64" font-size="13" fill="#222">and overlapped</text>
+  <!-- seam cross-section: two sheets meeting and rolled -->
+  <path d="M450,190 L560,190 L560,150 L548,150 L548,178 L462,178" fill="none" stroke="#6f7984" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M630,190 L566,190 L566,140 L540,140 L540,170 L554,170" fill="none" stroke="#9aa3ad" stroke-width="5" stroke-linejoin="round"/>
+  <text x="537" y="225" text-anchor="middle" font-size="13" fill="#222">folded seam, end view</text>
+
+  <!-- nesting note -->
+  <rect x="20" y="300" width="600" height="86" rx="8" fill="#f2f6ec" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="36" y="326" font-size="14.5" font-weight="bold" fill="#1b5e20">Best: put the foil-wrapped item inside a sealed metal can.</text>
+  <text x="36" y="347" font-size="13.5" fill="#222">Nested shields protect better than either alone. Mylar food bags,</text>
+  <text x="36" y="366" font-size="13.5" fill="#222">refrigerators and many cheap "Faraday bags" give little protection.</text>
+</svg>

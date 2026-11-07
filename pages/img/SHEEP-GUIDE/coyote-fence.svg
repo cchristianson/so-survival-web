@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="470" viewBox="0 0 660 470" font-family="Arial, Helvetica, sans-serif">
+  <title>A woven-wire fence with electric top and trip wires that stops coyotes and dogs, seen from the side</title>
+  <rect width="660" height="470" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+    <pattern id="mesh" width="16" height="22" patternUnits="userSpaceOnUse">
+      <rect width="16" height="22" fill="none" stroke="#555" stroke-width="1.6"/>
+    </pattern>
+  </defs>
+
+  <text x="330" y="28" text-anchor="middle" font-size="19" font-weight="bold" fill="#222">A fence that stops coyotes and dogs (side view)</text>
+
+  <!-- ground -->
+  <rect x="0" y="380" width="660" height="90" fill="#efe7da"/>
+  <line x1="0" y1="380" x2="660" y2="380" stroke="#7a6a52" stroke-width="3"/>
+  <text x="80" y="404" text-anchor="middle" font-size="14" fill="#555">OUTSIDE</text>
+  <text x="580" y="404" text-anchor="middle" font-size="14" fill="#555">SHEEP SIDE</text>
+
+  <!-- post -->
+  <rect x="322" y="100" width="16" height="300" fill="#a9773f" stroke="#6b4a24" stroke-width="2"/>
+
+  <!-- woven wire -->
+  <rect x="338" y="200" width="160" height="180" fill="url(#mesh)"/>
+  <line x1="338" y1="200" x2="498" y2="200" stroke="#555" stroke-width="2"/>
+  <text x="508" y="262" font-size="14" fill="#333">woven wire, holes</text>
+  <text x="508" y="279" font-size="14" fill="#333">smaller than</text>
+  <text x="508" y="296" font-size="14" fill="#333">4 × 6 inches</text>
+
+  <!-- hot wires above -->
+  <g stroke="#c0392b" stroke-width="3">
+    <line x1="338" y1="172" x2="498" y2="172"/>
+    <line x1="338" y1="140" x2="498" y2="140"/>
+    <line x1="338" y1="116" x2="498" y2="116"/>
+  </g>
+  <g fill="#fff" stroke="#333" stroke-width="1.5">
+    <circle cx="341" cy="172" r="4"/><circle cx="341" cy="140" r="4"/><circle cx="341" cy="116" r="4"/>
+  </g>
+  <text x="508" y="132" font-size="14" font-weight="bold" fill="#c0392b">hot wires on top:</text>
+  <text x="508" y="149" font-size="14" fill="#333">stop climbing</text>
+  <text x="508" y="166" font-size="14" fill="#333">and jumping</text>
+
+  <!-- height arrow -->
+  <line x1="300" y1="116" x2="300" y2="378" stroke="#333" stroke-width="1.8" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="290" y="232" text-anchor="end" font-size="15" font-weight="bold" fill="#222">at least</text>
+  <text x="290" y="250" text-anchor="end" font-size="15" font-weight="bold" fill="#222">66 in</text>
+  <text x="290" y="268" text-anchor="end" font-size="13" fill="#333">(5½ ft):</text>
+  <text x="290" y="285" text-anchor="end" font-size="13" fill="#333">coyotes go over</text>
+  <text x="290" y="301" text-anchor="end" font-size="13" fill="#333">anything lower</text>
+
+  <!-- trip wire outside, offset -->
+  <line x1="322" y1="352" x2="236" y2="352" stroke="#6b4a24" stroke-width="4"/>
+  <line x1="240" y1="352" x2="240" y2="366" stroke="#6b4a24" stroke-width="3"/>
+  <circle cx="240" cy="368" r="4.5" fill="#c0392b" stroke="#7a1f14" stroke-width="1.5"/>
+  <line x1="60" y1="368" x2="240" y2="368" stroke="#c0392b" stroke-width="3"/>
+  <text x="30" y="300" font-size="14" font-weight="bold" fill="#c0392b">hot trip wire</text>
+  <text x="30" y="317" font-size="13" fill="#333">just above the ground,</text>
+  <text x="30" y="334" font-size="13" fill="#333">set out from the fence</text>
+
+  <!-- notes -->
+  <rect x="20" y="420" width="620" height="44" rx="6" fill="#f4f8fb" stroke="#4a6a8a" stroke-width="1.5"/>
+  <text x="330" y="438" text-anchor="middle" font-size="13" fill="#222">Keep grass and branches off the hot wires and test them often. Against cougars,</text>
+  <text x="330" y="455" text-anchor="middle" font-size="13" fill="#222">shut the flock in a roofed shed or night pen near the house every night.</text>
+</svg>

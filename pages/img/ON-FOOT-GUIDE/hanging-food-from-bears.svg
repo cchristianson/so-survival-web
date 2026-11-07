@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="440" viewBox="0 0 640 440" font-family="Arial, Helvetica, sans-serif">
+  <title>Hanging food out of a bear's reach on a line between two trees</title>
+  <rect width="640" height="440" fill="#ffffff"/>
+  <defs>
+    <marker id="d" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+  </defs>
+
+  <!-- ground -->
+  <rect x="0" y="360" width="640" height="80" fill="#e3dccd"/>
+  <line x1="0" y1="360" x2="640" y2="360" stroke="#6b6359" stroke-width="2"/>
+
+  <!-- two trees -->
+  <g>
+    <rect x="120" y="40" width="20" height="320" fill="#8a6a45"/>
+    <rect x="500" y="40" width="20" height="320" fill="#8a6a45"/>
+    <polygon points="130,10 90,110 170,110" fill="#5b7f3a"/>
+    <polygon points="510,10 470,110 550,110" fill="#5b7f3a"/>
+  </g>
+
+  <!-- the line, tied high on both trunks, sagging to the bag -->
+  <path d="M140,70 L320,120 L500,70" fill="none" stroke="#222" stroke-width="2.5"/>
+  <line x1="320" y1="120" x2="320" y2="146" stroke="#222" stroke-width="2.5"/>
+  <!-- the bag -->
+  <path d="M300,146 L340,146 L346,200 Q320,210 294,200 Z" fill="#c9a24a" stroke="#7a5c1c" stroke-width="2"/>
+  <text x="356" y="168" font-size="14" font-weight="bold" fill="#222">FOOD BAG</text>
+  <text x="356" y="186" font-size="13.5" fill="#333">food, pots, garbage,</text>
+  <text x="356" y="203" font-size="13.5" fill="#333">anything scented</text>
+
+  <!-- height dimension -->
+  <line x1="320" y1="206" x2="320" y2="358" stroke="#333" stroke-width="1.6" marker-start="url(#d)" marker-end="url(#d)" stroke-dasharray="5 4"/>
+  <rect x="246" y="268" width="148" height="26" fill="#ffffff"/>
+  <text x="320" y="287" text-anchor="middle" font-size="17" font-weight="bold" fill="#222">10–12 ft up</text>
+
+  <!-- distance from trunk -->
+  <line x1="142" y1="230" x2="316" y2="230" stroke="#333" stroke-width="1.6" marker-start="url(#d)" marker-end="url(#d)"/>
+  <text x="229" y="222" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">6 ft or more</text>
+  <text x="229" y="248" text-anchor="middle" font-size="13" fill="#333">from the trunk</text>
+
+  <text x="20" y="390" font-size="14" fill="#222">Carry at least 50 ft of cord. Sleep at least 100 yards from where you cook and eat;</text>
+  <text x="20" y="409" font-size="14" fill="#222">nothing scented in the tent. Don't bury garbage: bears dig it up.</text>
+  <text x="20" y="430" font-size="12.5" fill="#555">Side view. Not to scale.</text>
+</svg>

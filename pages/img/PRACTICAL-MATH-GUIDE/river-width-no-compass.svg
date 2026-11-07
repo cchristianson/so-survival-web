@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="450" viewBox="0 0 640 450" font-family="Arial, Helvetica, sans-serif">
+  <title>Measuring the width of a river by pacing, with no compass, seen from above</title>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker></defs>
+  <rect width="640" height="450" fill="#ffffff"/>
+  <!-- banks and river -->
+  <rect x="0" y="0" width="640" height="70" fill="#e3efd9"/>
+  <rect x="0" y="70" width="640" height="120" fill="#cfe3f2"/>
+  <line x1="0" y1="70" x2="640" y2="70" stroke="#4a7ea8" stroke-width="2"/>
+  <line x1="0" y1="190" x2="640" y2="190" stroke="#4a7ea8" stroke-width="2"/>
+  <text x="620" y="135" text-anchor="end" font-size="16" font-style="italic" fill="#2d5e86">river</text>
+  <!-- sight line E-C-B -->
+  <line x1="470" y1="336" x2="130" y2="64" stroke="#c0661b" stroke-width="2.2" stroke-dasharray="8 5"/>
+  <!-- walk lines -->
+  <line x1="130" y1="200" x2="470" y2="200" stroke="#333" stroke-width="2"/>
+  <line x1="470" y1="200" x2="470" y2="334" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
+  <!-- tree B -->
+  <circle cx="130" cy="44" r="16" fill="#7fae52" stroke="#4d7a2c" stroke-width="2"/>
+  <circle cx="130" cy="64" r="4" fill="#6b4a24"/>
+  <!-- stakes and points -->
+  <g fill="#8a5a2b" stroke="#4d3115" stroke-width="1.5">
+    <circle cx="130" cy="200" r="7"/><circle cx="300" cy="200" r="7"/><circle cx="470" cy="200" r="7"/>
+  </g>
+  <circle cx="470" cy="336" r="8" fill="#333"/>
+  <!-- point labels -->
+  <g font-size="18" font-weight="bold" fill="#222">
+    <text x="155" y="40">B</text>
+    <text x="118" y="230" text-anchor="end">A</text>
+    <text x="300" y="232" text-anchor="middle">C</text>
+    <text x="490" y="218">D</text>
+    <text x="490" y="342">E</text>
+  </g>
+  <g font-size="14" fill="#222">
+    <text x="175" y="40">tree on the far bank</text>
+    <text x="215" y="185" text-anchor="middle">50 paces</text>
+    <text x="385" y="185" text-anchor="middle">50 paces</text>
+    <text x="300" y="250" text-anchor="middle">stick</text>
+    <text x="490" y="262">walk straight</text>
+    <text x="490" y="279">away from the river</text>
+    <text x="490" y="364">stop where stick C</text>
+    <text x="490" y="381">lines up with tree B</text>
+  </g>
+  <!-- width dimension -->
+  <g stroke="#1f5f8b" stroke-width="1.8" marker-start="url(#a)" marker-end="url(#a)">
+    <line x1="60" y1="66" x2="60" y2="198"/>
+  </g>
+  <text transform="translate(46,132) rotate(-90)" text-anchor="middle" font-size="15" font-weight="bold" fill="#1f5f8b">width</text>
+  <!-- steps -->
+  <g font-size="15" fill="#222">
+    <text x="20" y="290" font-weight="bold">1. Stand at A, opposite tree B.</text>
+    <text x="20" y="314">2. Pace 50 steps along the bank, plant</text>
+    <text x="20" y="334">   a stick (C), pace 50 more to D.</text>
+    <text x="20" y="358">3. Walk away from the river until</text>
+    <text x="20" y="378">   C lines up with B (E).</text>
+    <text x="20" y="404" font-weight="bold" fill="#1f5f8b">Paces from D to E = the river's width.</text>
+  </g>
+  <text x="620" y="440" text-anchor="end" font-size="13" fill="#555">Seen from above.</text>
+</svg>

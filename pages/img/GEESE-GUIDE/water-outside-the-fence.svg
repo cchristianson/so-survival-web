@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="400" viewBox="0 0 660 400" font-family="Arial, Helvetica, sans-serif">
+  <title>Two ways to water geese without a mud hole: a tub outside the fence for grown geese, and a guarded waterer for goslings</title>
+  <rect width="660" height="400" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+  </defs>
+
+  <!-- panel titles -->
+  <text x="20" y="30" font-size="17" font-weight="bold" fill="#222">1. Grown geese: tub outside the fence</text>
+  <text x="400" y="30" font-size="17" font-weight="bold" fill="#222">2. Goslings: heads only</text>
+  <line x1="380" y1="15" x2="380" y2="385" stroke="#bbb" stroke-width="1.5"/>
+
+  <!-- PANEL 1 -->
+  <!-- ground -->
+  <rect x="10" y="300" width="360" height="14" fill="#e3efd9"/>
+  <line x1="10" y1="300" x2="370" y2="300" stroke="#5b7f3a" stroke-width="2"/>
+  <!-- fence: post and woven wire -->
+  <rect x="214" y="110" width="10" height="196" fill="#a9773f" stroke="#6b4a24" stroke-width="1.5"/>
+  <g stroke="#555" stroke-width="1.5">
+    <line x1="219" y1="130" x2="219" y2="300"/>
+  </g>
+  <g stroke="#777" stroke-width="1.2" stroke-dasharray="3 5">
+    <line x1="210" y1="140" x2="228" y2="140"/><line x1="210" y1="175" x2="228" y2="175"/>
+    <line x1="210" y1="210" x2="228" y2="210"/><line x1="210" y1="245" x2="228" y2="245"/>
+    <line x1="210" y1="280" x2="228" y2="280"/>
+  </g>
+  <!-- goose inside (left), neck through fence to tub -->
+  <ellipse cx="110" cy="250" rx="62" ry="32" fill="#f4f4f4" stroke="#333" stroke-width="2.5"/>
+  <path d="M160,236 C200,205 250,215 268,250" fill="none" stroke="#333" stroke-width="15" stroke-linecap="round"/>
+  <path d="M160,236 C200,205 250,215 268,250" fill="none" stroke="#f4f4f4" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="272" cy="256" r="11" fill="#f4f4f4" stroke="#333" stroke-width="2.5"/>
+  <polygon points="276,264 284,278 270,268" fill="#e8892c" stroke="#8a4d10" stroke-width="1.5"/>
+  <line x1="95" y1="280" x2="92" y2="300" stroke="#e8892c" stroke-width="4"/>
+  <line x1="125" y1="280" x2="128" y2="300" stroke="#e8892c" stroke-width="4"/>
+  <!-- tub outside (right) -->
+  <path d="M244,262 L330,262 L322,300 L252,300 Z" fill="#bcd7ea" stroke="#2f5d7c" stroke-width="2.5"/>
+  <line x1="246" y1="272" x2="328" y2="272" stroke="#2f5d7c" stroke-width="1.5"/>
+
+  <g font-size="14" fill="#222">
+    <text x="30" y="70">Geese reach through the wire</text>
+    <text x="30" y="88">to drink, but can't get their</text>
+    <text x="30" y="106">feet in the water.</text>
+    <text x="262" y="330">tub or bucket</text>
+    <text x="262" y="347">outside the yard</text>
+    <text x="196" y="102" font-weight="bold">fence</text>
+    <text x="30" y="335" font-weight="bold">Clean water out</text>
+    <text x="30" y="352" font-weight="bold">at all times.</text>
+  </g>
+
+  <!-- PANEL 2 -->
+  <rect x="390" y="300" width="260" height="14" fill="#e3efd9"/>
+  <line x1="390" y1="300" x2="650" y2="300" stroke="#5b7f3a" stroke-width="2"/>
+  <!-- trough with guard bars -->
+  <rect x="480" y="250" width="140" height="50" fill="#ffffff" stroke="#2f5d7c" stroke-width="2.5"/>
+  <rect x="482" y="262" width="136" height="36" fill="#bcd7ea"/>
+  <g stroke="#333" stroke-width="3">
+    <line x1="480" y1="226" x2="620" y2="226"/>
+    <line x1="484" y1="226" x2="484" y2="250"/><line x1="514" y1="226" x2="514" y2="250"/>
+    <line x1="544" y1="226" x2="544" y2="250"/><line x1="574" y1="226" x2="574" y2="250"/>
+    <line x1="604" y1="226" x2="604" y2="250"/>
+  </g>
+  <!-- gosling on the ground, head down between the bars -->
+  <ellipse cx="430" cy="276" rx="28" ry="17" fill="#e9c94a" stroke="#8a6d10" stroke-width="2"/>
+  <line x1="420" y1="292" x2="418" y2="300" stroke="#c77a1e" stroke-width="3"/>
+  <line x1="440" y1="292" x2="442" y2="300" stroke="#c77a1e" stroke-width="3"/>
+  <path d="M452,266 C468,196 495,198 499,252" fill="none" stroke="#8a6d10" stroke-width="10" stroke-linecap="round"/>
+  <path d="M452,266 C468,196 495,198 499,252" fill="none" stroke="#e9c94a" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="499" cy="258" r="8" fill="#e9c94a" stroke="#8a6d10" stroke-width="1.5"/>
+  <polygon points="495,264 500,276 504,264" fill="#e8892c" stroke="#8a4d10" stroke-width="1"/>
+
+  <!-- depth arrow -->
+  <line x1="636" y1="262" x2="636" y2="298" stroke="#333" stroke-width="1.6" marker-start="url(#a)" marker-end="url(#a)"/>
+  <g font-size="14" fill="#222">
+    <text x="400" y="70">Deep enough to dip and</text>
+    <text x="400" y="88">clean the whole bill,</text>
+    <text x="400" y="106">but bars let only the head in.</text>
+    <text x="400" y="335">No swimming until the</text>
+    <text x="400" y="352">goslings are partly feathered;</text>
+    <text x="400" y="369">a soaked gosling chills.</text>
+  </g>
+</svg>

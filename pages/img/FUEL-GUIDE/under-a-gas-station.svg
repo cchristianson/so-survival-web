@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="520" viewBox="0 0 640 520" font-family="Arial, Helvetica, sans-serif">
+  <title>Cross-section of a gas station's underground tank: spill bucket and fill pipe with drop tube, turbine-pump sump, gauge port and dispenser</title>
+  <rect width="640" height="520" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+    <clipPath id="tank"><rect x="100" y="170" width="420" height="180" rx="90"/></clipPath>
+  </defs>
+
+  <!-- soil and pavement -->
+  <rect x="0" y="114" width="640" height="250" fill="#ece5d3"/>
+  <rect x="0" y="100" width="640" height="14" fill="#a9a9a9" stroke="#666" stroke-width="1"/>
+
+  <!-- tank -->
+  <rect x="100" y="170" width="420" height="180" rx="90" fill="#e9eef3"/>
+  <g clip-path="url(#tank)">
+    <rect x="100" y="255" width="420" height="100" fill="#f3d58a"/>
+    <rect x="100" y="334" width="420" height="20" fill="#9cc3e4"/>
+  </g>
+  <rect x="100" y="170" width="420" height="180" rx="90" fill="none" stroke="#333" stroke-width="3"/>
+  <line x1="160" y1="255" x2="460" y2="255" stroke="#a37a14" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="250" y="295" text-anchor="middle" font-size="15" font-weight="bold" fill="#6b4f0a">FUEL</text>
+  <text x="400" y="330" text-anchor="middle" font-size="13" fill="#1f4e79">water and sludge</text>
+
+  <!-- spill bucket + fill pipe + drop tube -->
+  <path d="M168,98 L172,138 L208,138 L212,98" fill="#d6d6d6" stroke="#333" stroke-width="2"/>
+  <rect x="164" y="92" width="52" height="7" fill="#fff" stroke="#333" stroke-width="2"/>
+  <rect x="184" y="138" width="12" height="34" fill="#888" stroke="#333" stroke-width="1.5"/>
+  <rect x="186" y="172" width="8" height="164" fill="#bbb" stroke="#333" stroke-width="1.5"/>
+  <rect x="181" y="190" width="18" height="8" fill="#c0392b" stroke="#333" stroke-width="1" transform="rotate(-25 190 194)"/>
+  <!-- turbine pump sump -->
+  <rect x="290" y="92" width="80" height="8" fill="#fff" stroke="#333" stroke-width="2"/>
+  <rect x="300" y="114" width="60" height="58" fill="#f6f6f6" stroke="#333" stroke-width="2"/>
+  <rect x="326" y="150" width="8" height="150" fill="#888" stroke="#333" stroke-width="1.5"/>
+  <rect x="320" y="300" width="20" height="34" rx="4" fill="#555" stroke="#222" stroke-width="1.5"/>
+  <polyline points="334,135 380,135 380,124 590,124 590,100" fill="none" stroke="#555" stroke-width="5"/>
+  <!-- gauge port with a stick down it -->
+  <rect x="452" y="96" width="16" height="76" fill="#888" stroke="#333" stroke-width="1.5"/>
+  <rect x="456" y="80" width="8" height="268" fill="#d9b37a" stroke="#7a5a3a" stroke-width="1"/>
+  <rect x="456" y="255" width="8" height="93" fill="#8a5a1a"/>
+  <!-- dispenser -->
+  <rect x="565" y="36" width="50" height="64" rx="4" fill="#f5c542" stroke="#333" stroke-width="2"/>
+  <text x="590" y="30" text-anchor="middle" font-size="13" fill="#222">dispenser</text>
+
+  <!-- labels above ground -->
+  <g font-size="13" fill="#222">
+    <text x="12" y="24" font-weight="bold">Spill bucket</text>
+    <text x="12" y="40">over the fill pipe:</text>
+    <text x="12" y="56">bail out rainwater</text>
+    <text x="12" y="72">before opening the cap</text>
+    <text x="232" y="24" font-weight="bold">Turbine-pump sump</text>
+    <text x="232" y="40">under a big 3–4 ft lid.</text>
+    <text x="232" y="56" font-weight="bold" fill="#a12a1c">Never climb in: fuel</text>
+    <text x="232" y="72" font-weight="bold" fill="#a12a1c">vapor can kill.</text>
+    <text x="400" y="24" font-weight="bold">Gauge port,</text>
+    <text x="400" y="40">wooden stick</text>
+    <text x="400" y="56">wet to the fuel</text>
+  </g>
+
+  <!-- dimensions -->
+  <line x1="545" y1="174" x2="545" y2="346" stroke="#333" stroke-width="2" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="552" y="255" font-size="13" font-weight="bold" fill="#222">8–10 ft</text>
+  <text x="552" y="271" font-size="13" fill="#222">across</text>
+  <line x1="612" y1="118" x2="612" y2="346" stroke="#333" stroke-width="2" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="606" y="150" text-anchor="end" font-size="13" font-weight="bold" fill="#222">10–14 ft</text>
+  <text x="606" y="166" text-anchor="end" font-size="13" fill="#222">deep</text>
+  <line x1="520" y1="350" x2="625" y2="350" stroke="#333" stroke-width="1" stroke-dasharray="4 3"/>
+
+  <!-- labels below -->
+  <g font-size="13.5" fill="#222">
+    <text x="12" y="385"><tspan font-weight="bold">Drop tube</tspan> inside the fill pipe ends within 6 in–1 ft of the bottom;</text>
+    <text x="12" y="403">a <tspan font-weight="bold" fill="#a12a1c">flapper</tspan> in it shuts when the tank is about 95% full.</text>
+    <text x="12" y="428"><tspan font-weight="bold">Tank bottom:</tspan> about 10–14 ft below the pavement. Tanks hold 8,000–20,000 gal.</text>
+    <text x="12" y="453">The pump in the sump usually runs on 240 volts. With no power, a hand pump</text>
+    <text x="12" y="471">at the top can't lift fuel that far (next picture).</text>
+  </g>
+  <text x="12" y="505" font-size="13" fill="#555">Cross-section. Not to scale. Layouts vary.</text>
+</svg>

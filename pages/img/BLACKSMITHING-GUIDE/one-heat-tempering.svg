@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="560" viewBox="0 0 640 560" font-family="Arial, Helvetica, sans-serif">
+  <title>Hardening and tempering a cold chisel in one heat, in three steps</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+    <clipPath id="c1"><path d="M60,62 L470,62 L580,82 L580,86 L470,106 L60,106 Z"/></clipPath>
+    <clipPath id="c3"><path d="M60,432 L470,432 L580,452 L580,456 L470,476 L60,476 Z"/></clipPath>
+    <linearGradient id="g1" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#8f8f8f"/><stop offset="0.45" stop-color="#8f8f8f"/><stop offset="0.62" stop-color="#b8402c"/><stop offset="1" stop-color="#d23a22"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="560" fill="#ffffff"/>
+
+  <!-- 1: heat the working end -->
+  <text x="20" y="32" font-size="16" font-weight="bold" fill="#222">1. Heat the working end to cherry red.</text>
+  <g clip-path="url(#c1)"><rect x="60" y="60" width="520" height="50" fill="url(#g1)"/></g>
+  <path d="M60,62 L470,62 L580,82 L580,86 L470,106 L60,106 Z" fill="none" stroke="#333" stroke-width="2"/>
+  <text x="140" y="130" text-anchor="middle" font-size="14" fill="#444">striking end (stays soft)</text>
+  <text x="500" y="130" text-anchor="middle" font-size="14" font-weight="bold" fill="#a3291a">cherry red</text>
+
+  <line x1="20" y1="152" x2="620" y2="152" stroke="#ccc" stroke-width="1.2"/>
+
+  <!-- 2: quench only the tip -->
+  <text x="20" y="182" font-size="16" font-weight="bold" fill="#222">2. Quench only the tip inch or so,</text>
+  <text x="20" y="202" font-size="16" font-weight="bold" fill="#222">   bobbing it up and down.</text>
+  <rect x="330" y="290" width="200" height="90" fill="#cfe3f2" stroke="#333" stroke-width="2"/>
+  <line x1="330" y1="304" x2="530" y2="304" stroke="#4a7ea8" stroke-width="2"/>
+  <text x="430" y="365" text-anchor="middle" font-size="14" fill="#2d5e86">water or brine</text>
+  <!-- vertical chisel, tip down -->
+  <path d="M410,170 L450,170 L450,284 L432,326 L428,326 L410,284 Z" fill="#8f8f8f" stroke="#333" stroke-width="2"/>
+  <path d="M410,236 L450,236 L450,284 L432,326 L428,326 L410,284 Z" fill="#c4442e" stroke="#333" stroke-width="2"/>
+  <path d="M414,304 L446,304 L432,326 L428,326 Z" fill="#7d7d7d" stroke="#333" stroke-width="1.5"/>
+  <line x1="480" y1="232" x2="480" y2="292" stroke="#333" stroke-width="2" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="492" y="266" font-size="14" fill="#222">bob</text>
+  <text x="300" y="320" text-anchor="end" font-size="14" fill="#222">only the tip</text>
+  <text x="300" y="337" text-anchor="end" font-size="14" fill="#222">goes under</text>
+  <line x1="304" y1="322" x2="418" y2="316" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+
+  <line x1="20" y1="396" x2="620" y2="396" stroke="#ccc" stroke-width="1.2"/>
+
+  <!-- 3: watch the colors run -->
+  <text x="20" y="420" font-size="16" font-weight="bold" fill="#222">3. Polish the tip, then watch the colors creep to the edge.</text>
+  <g clip-path="url(#c3)">
+    <rect x="60" y="430" width="250" height="50" fill="#8a5a4a"/>
+    <rect x="310" y="430" width="60" height="50" fill="#2f5fa8"/>
+    <rect x="370" y="430" width="55" height="50" fill="#7d4a9e"/>
+    <rect x="425" y="430" width="50" height="50" fill="#a5682a"/>
+    <rect x="475" y="430" width="45" height="50" fill="#d9b45a"/>
+    <rect x="520" y="430" width="60" height="50" fill="#e4e4e4"/>
+  </g>
+  <path d="M60,432 L470,432 L580,452 L580,456 L470,476 L60,476 Z" fill="none" stroke="#333" stroke-width="2"/>
+  <line x1="320" y1="500" x2="560" y2="500" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
+  <g font-size="13" fill="#222" text-anchor="middle">
+    <text x="185" y="496">heat from the shank</text>
+    <text x="340" y="520">blue</text>
+    <text x="397" y="520">purple</text>
+    <text x="450" y="520">brown</text>
+    <text x="497" y="520">straw</text>
+    <text x="552" y="520">bright</text>
+  </g>
+  <text x="20" y="550" font-size="15" font-weight="bold" fill="#222">When purple reaches a cold chisel's edge, quench the whole tool.</text>
+</svg>

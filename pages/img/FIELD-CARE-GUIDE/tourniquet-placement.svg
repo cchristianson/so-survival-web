@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="600" viewBox="0 0 660 600" font-family="Arial, Helvetica, sans-serif">
+  <title>Where a tourniquet goes on a bleeding leg, and how to make one from a band and a stick</title>
+  <rect width="660" height="600" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+    <marker id="r" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#b03a2e"/></marker>
+  </defs>
+
+  <!-- ===== Panel A: placement ===== -->
+  <text x="20" y="28" font-size="18" font-weight="bold" fill="#222">Where it goes: a leg bleeding from the thigh</text>
+
+  <!-- toward the body arrow -->
+  <line x1="150" y1="52" x2="40" y2="52" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
+  <text x="158" y="57" font-size="14" fill="#333">toward the body</text>
+
+  <!-- leg, lying flat, toes up (side view) -->
+  <path d="M30,96 L300,121 Q330,112 362,128 L548,148 L568,104 L588,92 L604,98 L622,178 L612,190 L548,186 L362,186 Q330,196 300,188 L30,206 Z"
+        fill="#f3dcc8" stroke="#6b4f3a" stroke-width="2.5" stroke-linejoin="round"/>
+  <text x="34" y="226" font-size="14" fill="#555">hip</text>
+  <text x="316" y="208" font-size="14" fill="#555">knee</text>
+  <text x="586" y="210" font-size="14" fill="#555">foot</text>
+
+  <!-- wound -->
+  <path d="M262,140 l6,8 l9,-3 l-3,9 l8,6 l-9,3 l1,9 l-8,-5 l-7,7 l-1,-9 l-9,-1 l7,-7 l-4,-8 l9,2 z" fill="#c0392b" stroke="#7b1e15" stroke-width="1.5"/>
+  <circle cx="272" cy="182" r="3" fill="#c0392b"/><circle cx="266" cy="193" r="2.5" fill="#c0392b"/>
+
+  <!-- second tourniquet (dashed, only if needed) -->
+  <path d="M146,107 L168,109 L168,195 L146,197 Z" fill="none" stroke="#2c4a6e" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <!-- first tourniquet: band on bare skin with windlass rod -->
+  <path d="M196,111 L220,113 L220,193 L196,195 Z" fill="#3d5a80" stroke="#1f2f45" stroke-width="2"/>
+  <line x1="182" y1="126" x2="236" y2="98" stroke="#222" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- callouts -->
+  <line x1="214" y1="94" x2="262" y2="76" stroke="#333" stroke-width="1.5"/>
+  <text x="266" y="72" font-size="15" font-weight="bold" fill="#1f2f45">Tourniquet, on bare skin,</text>
+  <text x="266" y="90" font-size="15" font-weight="bold" fill="#1f2f45">2–3 in above the wound</text>
+  <line x1="300" y1="168" x2="390" y2="168" stroke="#333" stroke-width="1.5"/>
+  <text x="396" y="173" font-size="15" fill="#7b1e15" font-weight="bold">wound</text>
+
+  <!-- 2-3 in dimension -->
+  <line x1="208" y1="246" x2="268" y2="246" stroke="#333" stroke-width="1.6" marker-start="url(#a)" marker-end="url(#a)"/>
+  <line x1="208" y1="200" x2="208" y2="254" stroke="#333" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="268" y1="200" x2="268" y2="254" stroke="#333" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="238" y="272" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">2–3 in</text>
+
+  <line x1="157" y1="200" x2="120" y2="262" stroke="#333" stroke-width="1.5"/>
+  <text x="20" y="282" font-size="14" fill="#2c4a6e">Still bleeding? A 2nd</text>
+  <text x="20" y="299" font-size="14" fill="#2c4a6e">one just above the first.</text>
+
+  <text x="330" y="246" font-size="14" fill="#222">Tighten until the bleeding stops and</text>
+  <text x="330" y="264" font-size="14" fill="#222">there is no pulse below it. It hurts.</text>
+  <text x="330" y="284" font-size="14" font-weight="bold" fill="#222">Write down the time it went on.</text>
+
+  <line x1="10" y1="316" x2="650" y2="316" stroke="#bbb" stroke-width="1.5"/>
+
+  <!-- ===== Panel B: improvised ===== -->
+  <text x="20" y="344" font-size="18" font-weight="bold" fill="#222">No tourniquet? A band at least 2 in wide and a stick</text>
+
+  <!-- step boxes -->
+  <g stroke="#bbb" stroke-width="1.2" fill="#fafafa">
+    <rect x="12" y="358" width="206" height="196" rx="8"/>
+    <rect x="227" y="358" width="206" height="196" rx="8"/>
+    <rect x="442" y="358" width="206" height="196" rx="8"/>
+  </g>
+
+  <!-- step 1: band wrapped, half knot -->
+  <g transform="translate(12,0)">
+    <rect x="18" y="420" width="170" height="54" rx="27" fill="#f3dcc8" stroke="#6b4f3a" stroke-width="2"/>
+    <rect x="92" y="414" width="24" height="66" fill="#8a9bb0" stroke="#1f2f45" stroke-width="2"/>
+    <path d="M97,414 C 97,402 112,398 124,388 M111,414 C 111,402 96,398 84,388" fill="none" stroke="#1f2f45" stroke-width="5" stroke-linecap="round"/>
+    <text x="103" y="502" text-anchor="middle" font-size="14" font-weight="bold" fill="#222">1. Wrap it around the leg;</text>
+    <text x="103" y="520" text-anchor="middle" font-size="14" fill="#222">tie a half knot</text>
+    <text x="103" y="538" text-anchor="middle" font-size="14" fill="#222">(first part of a shoelace bow)</text>
+  </g>
+
+  <!-- step 2: stick on the half knot, full knot over it -->
+  <g transform="translate(227,0)">
+    <rect x="18" y="420" width="170" height="54" rx="27" fill="#f3dcc8" stroke="#6b4f3a" stroke-width="2"/>
+    <rect x="92" y="414" width="24" height="66" fill="#8a9bb0" stroke="#1f2f45" stroke-width="2"/>
+    <line x1="44" y1="404" x2="164" y2="404" stroke="#7a5230" stroke-width="8" stroke-linecap="round"/>
+    <ellipse cx="104" cy="402" rx="11" ry="10" fill="#1f2f45"/><path d="M98,394 C 92,384 86,380 80,376 M110,394 C 116,384 122,380 128,376" fill="none" stroke="#1f2f45" stroke-width="4" stroke-linecap="round"/>
+    <text x="103" y="502" text-anchor="middle" font-size="14" font-weight="bold" fill="#222">2. Lay a stick on it;</text>
+    <text x="103" y="520" text-anchor="middle" font-size="14" fill="#222">tie a full knot</text>
+    <text x="103" y="538" text-anchor="middle" font-size="14" fill="#222">over the stick</text>
+  </g>
+
+  <!-- step 3: twisted, stick ends tied down -->
+  <g transform="translate(442,0)">
+    <rect x="18" y="420" width="170" height="54" rx="27" fill="#f3dcc8" stroke="#6b4f3a" stroke-width="2"/>
+    <path d="M96,416 L112,416 L108,447 L112,478 L96,478 L100,447 Z" fill="#8a9bb0" stroke="#1f2f45" stroke-width="2"/>
+    <path d="M97,430 L111,436 M97,446 L111,452 M97,462 L111,468" stroke="#1f2f45" stroke-width="1.6"/>
+    <line x1="58" y1="414" x2="150" y2="396" stroke="#7a5230" stroke-width="8" stroke-linecap="round"/>
+    <path d="M60,414 C 54,426 50,432 44,436 M148,397 C 158,408 162,414 166,420" fill="none" stroke="#1f2f45" stroke-width="3"/>
+    <path d="M136,382 C 160,376 176,388 172,404" fill="none" stroke="#b03a2e" stroke-width="2.5" marker-end="url(#r)"/>
+    <text x="103" y="502" text-anchor="middle" font-size="14" font-weight="bold" fill="#222">3. Twist the stick until</text>
+    <text x="103" y="520" text-anchor="middle" font-size="14" fill="#222">the bleeding stops; tie its</text>
+    <text x="103" y="538" text-anchor="middle" font-size="14" fill="#222">ends so it can't unwind</text>
+  </g>
+
+  <text x="330" y="584" text-anchor="middle" font-size="16" font-weight="bold" fill="#b03a2e">Never use wire or a shoelace.</text>
+</svg>

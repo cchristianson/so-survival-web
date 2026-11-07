@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="400" viewBox="0 0 660 400" font-family="Arial, Helvetica, sans-serif">
+  <title>Telling a lamb's front feet from its back feet when only the feet are showing</title>
+  <rect width="660" height="400" fill="#ffffff"/>
+
+  <text x="330" y="28" text-anchor="middle" font-size="19" font-weight="bold" fill="#222">Only feet showing? Front or back?</text>
+
+  <!-- ===== Panel 1: front feet ===== -->
+  <rect x="14" y="44" width="308" height="300" rx="8" fill="#f4f8fb" stroke="#4a6a8a" stroke-width="2"/>
+  <text x="168" y="70" text-anchor="middle" font-size="16" font-weight="bold" fill="#223">FRONT feet (normal)</text>
+  <!-- ewe's rear outline -->
+  <path d="M40,100 C70,96 92,120 96,160 C100,205 90,250 60,280" fill="none" stroke="#888" stroke-width="3"/>
+  <text x="34" y="300" font-size="12" fill="#666">ewe</text>
+  <!-- head (dashed, inside) resting on the legs -->
+  <path d="M30,170 C50,150 85,150 100,160 C108,165 110,173 104,178 C92,184 60,186 38,184" fill="#ffffff" stroke="#555" stroke-width="2" stroke-dasharray="6 4"/>
+  <circle cx="92" cy="166" r="3" fill="#555"/>
+  <!-- two legs coming out -->
+  <g stroke="#6b4a24" stroke-width="10" stroke-linecap="round">
+    <line x1="40" y1="194" x2="190" y2="198"/>
+    <line x1="40" y1="214" x2="182" y2="220"/>
+  </g>
+  <!-- hooves: soles DOWN (thick red line on the bottom) -->
+  <g>
+    <path d="M190,190 L222,193 L226,206 L192,206 Z" fill="#3a3a3a"/>
+    <line x1="192" y1="207" x2="226" y2="207" stroke="#c0392b" stroke-width="5"/>
+    <path d="M182,212 L214,215 L218,228 L184,228 Z" fill="#3a3a3a"/>
+    <line x1="184" y1="229" x2="218" y2="229" stroke="#c0392b" stroke-width="5"/>
+    <g stroke="#ffffff" stroke-width="1.5"><line x1="200" y1="199" x2="224" y2="200"/><line x1="192" y1="221" x2="216" y2="222"/></g>
+  </g>
+  <text x="120" y="140" font-size="13" fill="#333">nose lies on the legs</text>
+  <line x1="150" y1="145" x2="104" y2="165" stroke="#333" stroke-width="1.5"/>
+  <text x="196" y="256" font-size="14" font-weight="bold" fill="#c0392b">soles point</text>
+  <text x="196" y="274" font-size="14" font-weight="bold" fill="#c0392b">DOWN</text>
+  <text x="30" y="316" font-size="13.5" fill="#333">Feel for the nose and head just</text>
+  <text x="30" y="334" font-size="13.5" fill="#333">above the feet before you pull.</text>
+
+  <!-- ===== Panel 2: back feet ===== -->
+  <rect x="338" y="44" width="308" height="300" rx="8" fill="#fbf3f1" stroke="#a83a2a" stroke-width="2"/>
+  <text x="492" y="70" text-anchor="middle" font-size="16" font-weight="bold" fill="#6e1d12">BACK feet (backward lamb)</text>
+  <path d="M364,100 C394,96 416,120 420,160 C424,205 414,250 384,280" fill="none" stroke="#888" stroke-width="3"/>
+  <text x="358" y="300" font-size="12" fill="#666">ewe</text>
+  <!-- hidden part of leg with hock bending the other way (dashed) -->
+  <path d="M352,150 L392,186" fill="none" stroke="#6b4a24" stroke-width="8" stroke-dasharray="6 5" stroke-linecap="round"/>
+  <circle cx="392" cy="188" r="7" fill="#ffffff" stroke="#6b4a24" stroke-width="3"/>
+  <text x="432" y="112" font-size="13" fill="#333">hock: a sharp point,</text>
+  <text x="432" y="128" font-size="13" fill="#333">bends the other way</text>
+  <line x1="446" y1="133" x2="399" y2="182" stroke="#333" stroke-width="1.5"/>
+  <!-- two legs coming out -->
+  <g stroke="#6b4a24" stroke-width="10" stroke-linecap="round">
+    <line x1="392" y1="194" x2="514" y2="198"/>
+    <line x1="388" y1="214" x2="506" y2="220"/>
+  </g>
+  <!-- hooves: soles UP (thick red line on top) -->
+  <g>
+    <path d="M514,203 L546,200 L550,187 L516,187 Z" fill="#3a3a3a"/>
+    <line x1="516" y1="186" x2="550" y2="186" stroke="#c0392b" stroke-width="5"/>
+    <path d="M506,225 L538,222 L542,209 L508,209 Z" fill="#3a3a3a"/>
+    <line x1="508" y1="208" x2="542" y2="208" stroke="#c0392b" stroke-width="5"/>
+    <g stroke="#ffffff" stroke-width="1.5"><line x1="524" y1="194" x2="548" y2="193"/><line x1="516" y1="216" x2="540" y2="215"/></g>
+  </g>
+  <text x="520" y="256" font-size="14" font-weight="bold" fill="#c0392b">soles point</text>
+  <text x="520" y="274" font-size="14" font-weight="bold" fill="#c0392b">UP</text>
+  <text x="354" y="316" font-size="13.5" fill="#333">Pull gently as she strains; once the</text>
+  <text x="354" y="334" font-size="13.5" fill="#333">hips are out, deliver it fast.</text>
+
+  <text x="330" y="372" text-anchor="middle" font-size="14" fill="#333">Twins? Follow each leg back to its body before you pull:</text>
+  <text x="330" y="391" text-anchor="middle" font-size="14" fill="#333">both legs must belong to the same lamb.</text>
+</svg>

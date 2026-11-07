@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="460" viewBox="0 0 640 460" font-family="Arial, Helvetica, sans-serif">
+  <title>A half-wave wire dipole antenna hung between two trees</title>
+  <rect width="640" height="460" fill="#ffffff"/>
+  <defs>
+    <marker id="d" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+  </defs>
+
+  <!-- trees -->
+  <g>
+    <rect x="22" y="70" width="14" height="250" fill="#8a6a45"/>
+    <circle cx="29" cy="70" r="26" fill="#7fae52" stroke="#4d7a2c" stroke-width="2"/>
+    <rect x="604" y="70" width="14" height="250" fill="#8a6a45"/>
+    <circle cx="611" cy="70" r="26" fill="#7fae52" stroke="#4d7a2c" stroke-width="2"/>
+  </g>
+  <line x1="0" y1="320" x2="640" y2="320" stroke="#6b6359" stroke-width="2"/>
+
+  <!-- rope at left, spring or inner-tube strip at right -->
+  <line x1="36" y1="110" x2="74" y2="110" stroke="#8a7d68" stroke-width="2.5" stroke-dasharray="5 3"/>
+  <path d="M566,110 L572,102 L578,118 L584,102 L590,118 L596,102 L604,110" fill="none" stroke="#222" stroke-width="2"/>
+
+  <!-- the two halves of wire -->
+  <line x1="88" y1="110" x2="312" y2="110" stroke="#b5651d" stroke-width="3.5"/>
+  <line x1="328" y1="110" x2="552" y2="110" stroke="#b5651d" stroke-width="3.5"/>
+
+  <!-- insulators -->
+  <g fill="#ffffff" stroke="#222" stroke-width="2.5">
+    <rect x="74" y="102" width="14" height="16" rx="3"/>
+    <rect x="312" y="100" width="16" height="20" rx="3"/>
+    <rect x="552" y="102" width="14" height="16" rx="3"/>
+  </g>
+
+  <!-- coax down to the radio -->
+  <path d="M320,120 C320,190 320,230 330,270" fill="none" stroke="#222" stroke-width="5"/>
+  <rect x="300" y="270" width="80" height="40" rx="4" fill="#d9d4cb" stroke="#222" stroke-width="2"/>
+  <text x="340" y="295" text-anchor="middle" font-size="14" font-weight="bold" fill="#222">RADIO</text>
+  <text x="332" y="210" font-size="14" fill="#222">coax from the center</text>
+
+  <!-- dimensions -->
+  <line x1="81" y1="62" x2="559" y2="62" stroke="#333" stroke-width="1.6" marker-start="url(#d)" marker-end="url(#d)"/>
+  <rect x="190" y="50" width="260" height="24" fill="#ffffff"/>
+  <text x="320" y="68" text-anchor="middle" font-size="16" font-weight="bold" fill="#222">Total length (ft) = 468 ÷ MHz</text>
+  <line x1="81" y1="150" x2="318" y2="150" stroke="#333" stroke-width="1.6" marker-start="url(#d)" marker-end="url(#d)"/>
+  <line x1="322" y1="150" x2="559" y2="150" stroke="#333" stroke-width="1.6" marker-start="url(#d)" marker-end="url(#d)"/>
+  <text x="200" y="172" text-anchor="middle" font-size="14" fill="#222">half</text>
+  <text x="440" y="172" text-anchor="middle" font-size="14" fill="#222">half</text>
+
+  <!-- labels -->
+  <text x="94" y="96" font-size="13.5" fill="#222">insulator</text>
+  <text x="330" y="96" font-size="13.5" fill="#222">center insulator</text>
+  <text x="582" y="82" text-anchor="end" font-size="12.5" fill="#222">spring or</text>
+  <text x="582" y="96" text-anchor="end" font-size="12.5" fill="#222">inner tube</text>
+
+  <!-- worked lengths -->
+  <g font-size="14.5" fill="#222">
+    <text x="20" y="350" font-weight="bold">Examples</text>
+    <text x="20" y="372">3.980 MHz (Oregon Emergency Net): 117.6 ft total, 58.8 ft each half</text>
+    <text x="20" y="392">7.2 MHz: 65 ft total, 32.5 ft each half</text>
+    <text x="20" y="412">14.3 MHz: 32.7 ft total, about 16.4 ft each half</text>
+    <text x="20" y="440" font-weight="bold" fill="#b03a2e">Transmitter off before touching the antenna. The wire touches nothing else.</text>
+  </g>
+</svg>

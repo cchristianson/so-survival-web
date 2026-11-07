@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="500" viewBox="0 0 640 500" font-family="Arial, Helvetica, sans-serif">
+  <title>Bonding and grounding when pumping fuel: a bond wire from drum to can, a ground wire to a rod in damp soil, and rod depths by soil</title>
+  <rect width="640" height="500" fill="#ffffff"/>
+  <defs>
+    <g id="clip"><path d="M-7,-4 L7,-4 L9,0 L7,4 L-7,4 Z" fill="#c9a227" stroke="#333" stroke-width="1.2"/></g>
+  </defs>
+
+  <!-- ground and soil -->
+  <rect x="0" y="300" width="640" height="200" fill="#ece5d3"/>
+  <line x1="0" y1="300" x2="640" y2="300" stroke="#6b6359" stroke-width="2"/>
+  <rect x="0" y="380" width="250" height="120" fill="#c9bfa5"/>
+  <text x="125" y="492" text-anchor="middle" font-size="13" fill="#3d3524">permanently damp soil</text>
+
+  <!-- drum with hand pump -->
+  <rect x="90" y="170" width="100" height="130" rx="6" fill="#4f6d8a" stroke="#222" stroke-width="2.5"/>
+  <line x1="90" y1="210" x2="190" y2="210" stroke="#222" stroke-width="2"/><line x1="90" y1="260" x2="190" y2="260" stroke="#222" stroke-width="2"/>
+  <text x="140" y="242" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">DRUM</text>
+  <rect x="150" y="128" width="22" height="42" fill="#f5c542" stroke="#333" stroke-width="2"/>
+  <line x1="172" y1="140" x2="200" y2="126" stroke="#333" stroke-width="4"/>
+  <!-- hose to the can -->
+  <path d="M161,128 C161,95 260,95 320,160 L330,232" fill="none" stroke="#222" stroke-width="5"/>
+  <!-- can on the ground, nozzle touching -->
+  <rect x="300" y="236" width="70" height="64" rx="4" fill="#c0392b" stroke="#222" stroke-width="2"/>
+  <rect x="322" y="228" width="16" height="10" fill="#888" stroke="#222" stroke-width="1.5"/>
+  <text x="335" y="276" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">CAN</text>
+
+  <!-- bond wire drum <-> can -->
+  <path d="M190,190 C240,200 260,250 300,262" fill="none" stroke="#2e7d32" stroke-width="4"/>
+  <use href="#clip" x="194" y="190"/><use href="#clip" x="296" y="262"/>
+  <text x="222" y="186" font-size="14" font-weight="bold" fill="#1b5e20">BOND wire</text>
+
+  <!-- ground wire drum -> rod -->
+  <path d="M90,285 C60,285 50,290 46,305" fill="none" stroke="#2e7d32" stroke-width="4"/>
+  <use href="#clip" x="94" y="285"/>
+  <rect x="40" y="296" width="10" height="160" fill="#8a8a8a" stroke="#333" stroke-width="1.5"/>
+  <path d="M40,456 L45,470 L50,456 Z" fill="#8a8a8a" stroke="#333" stroke-width="1"/>
+  <text x="60" y="340" font-size="14" font-weight="bold" fill="#1b5e20">GROUND</text>
+  <text x="60" y="357" font-size="14" font-weight="bold" fill="#1b5e20">rod</text>
+
+  <!-- notes top -->
+  <g font-size="13.5" fill="#222">
+    <text x="20" y="28"><tspan font-weight="bold">Bond</tspan> before you open any cap; keep it on until the cap is back on.</text>
+    <text x="20" y="48">Clamp to clean, bare, unpainted metal.</text>
+    <text x="20" y="68">Fill cans on the ground, nozzle touching the can.</text>
+  </g>
+
+  <!-- rod depth table -->
+  <rect x="400" y="110" width="225" height="124" rx="6" fill="#f2f6ec" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="412" y="132" font-size="14" font-weight="bold" fill="#1b5e20">Drive the rod:</text>
+  <g font-size="13.5" fill="#222">
+    <text x="412" y="155">clean sand or gravel</text><text x="615" y="155" text-anchor="end" font-weight="bold">6 ft</text>
+    <text x="412" y="177">clay</text><text x="615" y="177" text-anchor="end" font-weight="bold">4 ft</text>
+    <text x="412" y="199">silt, silty sand,</text>
+    <text x="412" y="218">peat or muck</text><text x="615" y="218" text-anchor="end" font-weight="bold">3 ft</text>
+  </g>
+
+  <!-- dry ground -->
+  <rect x="290" y="330" width="335" height="110" rx="6" fill="#fff" stroke="#8a7a55" stroke-width="1.5"/>
+  <text x="302" y="352" font-size="14" font-weight="bold" fill="#222">Dry or rocky ground:</text>
+  <g font-size="13.5" fill="#222">
+    <text x="302" y="374">dig a hole 1 ft deep, 3 ft across,</text>
+    <text x="302" y="394">pour in 5 lb of salt in 5 gal of water,</text>
+    <text x="302" y="414">drive the rod there and keep it damp.</text>
+  </g>
+</svg>

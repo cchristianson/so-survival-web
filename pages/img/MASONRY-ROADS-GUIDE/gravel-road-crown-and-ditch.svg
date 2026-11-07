@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="500" viewBox="0 0 660 500" font-family="Arial, Helvetica, sans-serif">
+  <title>A gravel road cut across: a straight crown, level shoulders and a flat-bottomed ditch, and the wrong shape that holds water</title>
+  <rect width="660" height="500" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+    <marker id="w" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#2f6fae"/></marker>
+  </defs>
+  <text x="20" y="28" font-size="16" font-weight="bold" fill="#2f5e16">RIGHT: sheds water to the ditches</text>
+
+  <!-- earth body -->
+  <path d="M10,190 L64,214 L96,214 L176,186 L210,182 L330,166 L450,182 L484,186 L564,214 L596,214 L650,190 L650,236 L10,236 Z" fill="#cdb894"/>
+  <!-- surface gravel layer (at least 3 in) -->
+  <path d="M210,182 L330,166 L450,182 L450,192 L330,176 L210,192 Z" fill="#9c9488" stroke="#5e584f" stroke-width="1"/>
+  <!-- surface line -->
+  <path d="M10,190 L64,214 L96,214 L176,186 L210,182 L330,166 L450,182 L484,186 L564,214 L596,214 L650,190" fill="none" stroke="#4a3b28" stroke-width="2.5" stroke-linejoin="round"/>
+  <!-- water running off -->
+  <g stroke="#2f6fae" stroke-width="2" fill="none" marker-end="url(#w)">
+    <path d="M300,160 L240,168"/><path d="M360,160 L420,168"/>
+    <path d="M196,178 L150,190"/><path d="M464,178 L510,190"/>
+  </g>
+  <!-- crown labels -->
+  <text x="330" y="60" text-anchor="middle" font-size="14" font-weight="bold" fill="#222">crown: ½ in of fall per foot (4%), never over 6%</text>
+  <text x="330" y="78" text-anchor="middle" font-size="13" fill="#222">straight from the middle, like a roof, not rounded</text>
+  <!-- width and centre height -->
+  <line x1="210" y1="124" x2="450" y2="124" stroke="#333" stroke-width="1.5" marker-start="url(#a)" marker-end="url(#a)"/>
+  <line x1="210" y1="118" x2="210" y2="180" stroke="#999" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="450" y1="118" x2="450" y2="180" stroke="#999" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="330" y="116" text-anchor="middle" font-size="13" fill="#222">12-ft driveway: centre 3 in above the edges</text>
+  <!-- layer label -->
+  <text x="330" y="256" text-anchor="middle" font-size="13" fill="#222">surface gravel at least 3 in thick, packed</text>
+  <line x1="330" y1="244" x2="330" y2="180" stroke="#333" stroke-width="1"/>
+  <!-- shoulder and ditch labels -->
+  <text x="645" y="256" text-anchor="end" font-size="13" fill="#222">ditch side 1 down : 3 across</text>
+  <text x="645" y="272" text-anchor="end" font-size="13" fill="#222">(never steeper than 1 : 2),</text>
+  <text x="645" y="288" text-anchor="end" font-size="13" fill="#222">flat bottom</text>
+  <line x1="530" y1="244" x2="530" y2="204" stroke="#333" stroke-width="1"/>
+  <text x="20" y="256" font-size="13" fill="#222">shoulder level with the</text>
+  <text x="20" y="272" font-size="13" fill="#222">road edge, sloping away</text>
+  <line x1="150" y1="246" x2="190" y2="188" stroke="#333" stroke-width="1"/>
+
+  <!-- WRONG -->
+  <line x1="10" y1="310" x2="650" y2="310" stroke="#ccc" stroke-width="1"/>
+  <text x="20" y="340" font-size="16" font-weight="bold" fill="#8a2a0a">WRONG: holds water on the road</text>
+  <path d="M10,414 L60,436 L90,436 L150,414 L190,406 L200,398 L210,412 C260,392 300,390 330,390 C360,390 400,392 450,412 L460,398 L470,406 L510,414 L570,436 L600,436 L650,414 L650,450 L10,450 Z" fill="#cdb894"/>
+  <path d="M10,414 L60,436 L90,436 L150,414 L190,406 L200,398 L210,412 C260,392 300,390 330,390 C360,390 400,392 450,412 L460,398 L470,406 L510,414 L570,436 L600,436 L650,414" fill="none" stroke="#4a3b28" stroke-width="2.5" stroke-linejoin="round"/>
+  <!-- puddles -->
+  <ellipse cx="330" cy="390" rx="30" ry="3.5" fill="#2f6fae"/>
+  <ellipse cx="216" cy="409" rx="8" ry="3" fill="#2f6fae"/>
+  <ellipse cx="444" cy="409" rx="8" ry="3" fill="#2f6fae"/>
+  <text x="330" y="372" text-anchor="middle" font-size="13" fill="#222">rounded crown: the flat middle holds puddles and potholes</text>
+  <text x="150" y="470" text-anchor="middle" font-size="13" fill="#222">ridge of gravel or sod at the edge</text>
+  <text x="150" y="486" text-anchor="middle" font-size="13" fill="#222">traps water on the road</text>
+  <line x1="190" y1="458" x2="202" y2="402" stroke="#333" stroke-width="1"/>
+  <text x="645" y="486" text-anchor="end" font-size="13" fill="#555">Cut across the road. Slopes exaggerated.</text>
+</svg>

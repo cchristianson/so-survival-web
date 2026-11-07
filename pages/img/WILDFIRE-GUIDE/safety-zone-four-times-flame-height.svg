@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="330" viewBox="0 0 660 330" font-family="Arial, Helvetica, sans-serif">
+  <title>A safety zone keeps people at least four times the flame height away from the flames</title>
+  <rect width="660" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+  </defs>
+  <text x="20" y="30" font-size="17" font-weight="bold" fill="#222">Stay at least 4 × the flame height away</text>
+
+  <!-- ground -->
+  <rect x="10" y="210" width="640" height="14" fill="#e8e1d4"/>
+  <line x1="10" y1="210" x2="650" y2="210" stroke="#6b5a45" stroke-width="2"/>
+  <!-- unburned fuel under flames -->
+  <rect x="10" y="200" width="150" height="10" fill="#9bbf6a"/>
+  <!-- flames, height H = 80 px (top at y=130) -->
+  <g transform="translate(20,0)">
+  <path d="M28,210 C22,180 40,160 36,130 C52,150 50,170 60,175 C58,150 70,140 72,130 C86,150 82,175 92,180 C96,160 104,150 104,140 C118,165 128,185 126,210 Z" fill="#f08a2a" stroke="#c8431a" stroke-width="2"/>
+  </g>
+  <!-- flame height dimension, left of the flames -->
+  <line x1="36" y1="206" x2="36" y2="134" stroke="#333" stroke-width="1.6" marker-start="url(#a)" marker-end="url(#a)"/>
+  <line x1="28" y1="130" x2="56" y2="130" stroke="#333" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="28" y="175" text-anchor="end" font-size="15" font-weight="bold" fill="#222">H</text>
+  <text x="96" y="250" text-anchor="middle" font-size="13.5" fill="#222">flames</text>
+
+  <!-- four lengths of H along the ground: 80 px each from x=146 -->
+  <g stroke="#333" stroke-width="1.6">
+    <line x1="146" y1="186" x2="466" y2="186" marker-start="url(#a)" marker-end="url(#a)"/>
+    <line x1="226" y1="180" x2="226" y2="192"/><line x1="306" y1="180" x2="306" y2="192"/><line x1="386" y1="180" x2="386" y2="192"/>
+  </g>
+  <g font-size="14" fill="#444" text-anchor="middle">
+    <text x="186" y="176">H</text><text x="266" y="176">H</text><text x="346" y="176">H</text><text x="426" y="176">H</text>
+  </g>
+  <text x="306" y="250" text-anchor="middle" font-size="14" font-weight="bold" fill="#222">at least 4 × H to the flames</text>
+
+  <!-- safety zone -->
+  <rect x="440" y="203" width="200" height="7" fill="#c9bfae"/>
+  <g fill="#2b4c7e">
+    <circle cx="478" cy="168" r="8"/>
+    <rect x="472" y="178" width="12" height="25" rx="3"/>
+  </g>
+  <text x="560" y="168" text-anchor="middle" font-size="13.5" fill="#222">safety zone:</text>
+  <text x="560" y="185" text-anchor="middle" font-size="13.5" fill="#222">bare, burned</text>
+  <text x="560" y="202" text-anchor="middle" font-size="13.5" fill="#222">or plowed ground</text>
+
+  <!-- examples -->
+  <text x="20" y="298" font-size="13.5" fill="#222"><tspan font-weight="bold">Examples:</tspan> 10-ft flames → 40 ft · 20-ft flames → 80 ft · 50-ft flames → 200 ft</text>
+  <text x="20" y="318" font-size="13" fill="#444">Flat ground, no wind. Wind over 10 mph or slope over 20%: it may need more than double.</text>
+</svg>

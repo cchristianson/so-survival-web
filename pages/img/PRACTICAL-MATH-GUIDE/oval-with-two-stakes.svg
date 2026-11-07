@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="470" viewBox="0 0 640 470" font-family="Arial, Helvetica, sans-serif">
+  <title>Marking out a 20 by 12 ft oval with two stakes and a loop of string</title>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker></defs>
+  <rect width="640" height="470" fill="#ffffff"/>
+  <!-- the oval being marked -->
+  <ellipse cx="320" cy="235" rx="250" ry="150" fill="#eef4e6" stroke="#5b7f3a" stroke-width="3"/>
+  <!-- center line -->
+  <line x1="70" y1="235" x2="570" y2="235" stroke="#999" stroke-width="1.2" stroke-dasharray="5 5"/>
+  <!-- loop of string: stake - stick - stake - back -->
+  <path d="M120,235 L463.4,112.1 L520,235 Z" fill="none" stroke="#c0661b" stroke-width="3" stroke-linejoin="round"/>
+  <!-- stakes and stick -->
+  <g fill="#8a5a2b" stroke="#4d3115" stroke-width="2">
+    <circle cx="120" cy="235" r="8"/><circle cx="520" cy="235" r="8"/>
+  </g>
+  <circle cx="463.4" cy="112.1" r="7" fill="#333"/>
+  <circle cx="320" cy="235" r="3.5" fill="#555"/>
+  <!-- labels on the drawing -->
+  <g font-size="15" fill="#222">
+    <text x="120" y="262" text-anchor="middle">stake</text>
+    <text x="520" y="262" text-anchor="middle">stake</text>
+    <text x="320" y="262" text-anchor="middle" font-weight="bold">16 ft between stakes</text>
+    <text x="320" y="282" text-anchor="middle" font-size="13" fill="#444">(8 ft each side of center)</text>
+    <text x="250" y="160" font-weight="bold" fill="#8a4410" transform="rotate(-19.7 250 160)">string</text>
+  </g>
+  <!-- callouts -->
+  <g font-size="15" fill="#222">
+    <text x="20" y="34" font-weight="bold">Loop of string 36 ft around</text>
+    <text x="20" y="54">(20 + 16), over both stakes</text>
+    <text x="625" y="34" text-anchor="end" font-weight="bold">Marking stick:</text>
+    <text x="625" y="54" text-anchor="end">keep the string tight</text>
+    <text x="625" y="74" text-anchor="end">and walk all the way round</text>
+    <line x1="520" y1="80" x2="472" y2="104" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+  </g>
+  <!-- dimensions -->
+  <g stroke="#333" stroke-width="1.6" marker-start="url(#a)" marker-end="url(#a)">
+    <line x1="72" y1="410" x2="568" y2="410"/>
+    <line x1="602" y1="87" x2="602" y2="383"/>
+  </g>
+  <line x1="70" y1="240" x2="70" y2="418" stroke="#999" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="570" y1="240" x2="570" y2="418" stroke="#999" stroke-width="1" stroke-dasharray="3 3"/>
+  <g font-size="16" font-weight="bold" fill="#222">
+    <text x="320" y="434" text-anchor="middle">20 ft long</text>
+    <text transform="translate(626,235) rotate(-90)" text-anchor="middle">12 ft wide</text>
+  </g>
+  <text x="320" y="460" text-anchor="middle" font-size="13" fill="#555">Seen from above.</text>
+</svg>

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="470" viewBox="0 0 640 470" font-family="Arial, Helvetica, sans-serif">
+  <title>Declination in the Illinois Valley: magnetic north is 14 degrees east of true north</title>
+  <rect width="640" height="470" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#222"/></marker>
+    <marker id="r" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b03a2e"/></marker>
+  </defs>
+
+  <!-- true north line -->
+  <line x1="200" y1="330" x2="200" y2="70" stroke="#222" stroke-width="4" marker-end="url(#a)"/>
+  <polygon points="200,34 205,48 220,48 208,57 213,71 200,62 187,71 192,57 180,48 195,48" fill="#222"/>
+  <text x="182" y="100" text-anchor="end" font-size="17" font-weight="bold" fill="#222">TRUE NORTH</text>
+  <text x="182" y="120" text-anchor="end" font-size="14" fill="#333">map north,</text>
+  <text x="182" y="137" text-anchor="end" font-size="14" fill="#333">North Star</text>
+
+  <!-- magnetic north line, 14 degrees east: dx = 260 sin14 = 62.9, dy = 260 cos14 = 252.3 -->
+  <line x1="200" y1="330" x2="262.9" y2="77.7" stroke="#b03a2e" stroke-width="4" marker-end="url(#r)"/>
+  <text x="276" y="88" font-size="17" font-weight="bold" fill="#b03a2e">MAGNETIC NORTH</text>
+  <text x="276" y="108" font-size="14" fill="#333">where the compass</text>
+  <text x="276" y="125" font-size="14" fill="#333">needle points</text>
+
+  <!-- angle arc r=130: end point (200+130 sin14, 330-130 cos14) = (231.4, 203.9) -->
+  <path d="M200,200 A130,130 0 0,1 231.4,203.9" fill="none" stroke="#b03a2e" stroke-width="2.5"/>
+  <text x="240" y="222" font-size="20" font-weight="bold" fill="#b03a2e">14°</text>
+  <text x="200" y="356" text-anchor="middle" font-size="14" fill="#333">You</text>
+  <circle cx="200" cy="330" r="5" fill="#222"/>
+
+  <!-- rules -->
+  <g font-size="15" fill="#222">
+    <rect x="340" y="160" width="280" height="76" rx="6" fill="#f3efe6" stroke="#8a7d68"/>
+    <text x="354" y="186" font-weight="bold">Map → compass: subtract 14°</text>
+    <text x="354" y="208">A map bearing of 90° is 76°</text>
+    <text x="354" y="226">on an unadjusted compass.</text>
+
+    <rect x="340" y="250" width="280" height="56" rx="6" fill="#f3efe6" stroke="#8a7d68"/>
+    <text x="354" y="276" font-weight="bold">Compass → map: add 14°</text>
+    <text x="354" y="295">"Declination east, compass least."</text>
+
+    <rect x="340" y="320" width="280" height="56" rx="6" fill="#e6efe0" stroke="#5b7f3a"/>
+    <text x="354" y="345" font-weight="bold">Easiest: set the compass's</text>
+    <text x="354" y="364" font-weight="bold">declination screw to 14° E once.</text>
+  </g>
+  <text x="20" y="410" font-size="14" fill="#333">Ignore the 14° and you end up about 1,300 ft off for every mile you walk.</text>
+  <text x="20" y="432" font-size="14" fill="#333">Older maps print bigger numbers: use the newest value.</text>
+  <text x="20" y="458" font-size="12.5" fill="#555">Angle drawn to scale. Value for 2024–2026; it shrinks about 0.1° a year.</text>
+</svg>

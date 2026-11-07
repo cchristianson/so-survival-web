@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="440" viewBox="0 0 640 440" font-family="Arial, Helvetica, sans-serif">
+  <title>Starting a wild sourdough starter: the first weeks, and how to tell it is ready</title>
+  <rect width="640" height="440" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+  </defs>
+
+  <!-- timeline -->
+  <line x1="30" y1="70" x2="612" y2="70" stroke="#333" stroke-width="3" marker-end="url(#a)"/>
+  <g fill="#333">
+    <circle cx="60" cy="70" r="7"/><circle cx="200" cy="70" r="7"/><circle cx="340" cy="70" r="7"/><circle cx="460" cy="70" r="7"/><circle cx="580" cy="70" r="7"/>
+  </g>
+  <g font-size="15" font-weight="bold" fill="#222" text-anchor="middle">
+    <text x="60" y="50">Day 1</text><text x="200" y="50">Days 2–3</text><text x="340" y="50">Day 4 on</text><text x="460" y="50">About day 7</text><text x="580" y="50">2–4 weeks</text>
+  </g>
+  <g font-size="13.5" fill="#222" text-anchor="middle">
+    <text x="60" y="100">Mix equal</text><text x="60" y="117">weights of flour</text><text x="60" y="134">and water</text><text x="60" y="151">in a jar</text>
+    <text x="200" y="100">Once a day: throw</text><text x="200" y="117">out all but a little,</text><text x="200" y="134">feed equal weights</text><text x="200" y="151">of flour and water</text>
+    <text x="340" y="100">Feed it</text><text x="340" y="117" font-weight="bold">twice a day</text>
+    <text x="460" y="100">Usable</text>
+    <text x="580" y="100">Strong</text>
+  </g>
+
+  <!-- ready test -->
+  <rect x="20" y="180" width="600" height="202" rx="8" fill="#f6f3ec" stroke="#b9a98a"/>
+  <text x="320" y="206" text-anchor="middle" font-size="16" font-weight="bold" fill="#222">Is it ready? Mark the level when you feed it.</text>
+  <!-- jar at feeding -->
+  <g>
+    <path d="M110,236 L110,340 C110,348 116,352 124,352 L176,352 C184,352 190,348 190,340 L190,236" fill="#ffffff" stroke="#555" stroke-width="2.5"/>
+    <rect x="113" y="300" width="74" height="49" fill="#e9dcc0"/>
+    <line x1="100" y1="300" x2="200" y2="300" stroke="#b03a2e" stroke-width="2" stroke-dasharray="5 4"/>
+    <text x="150" y="372" text-anchor="middle" font-size="13.5" fill="#222">Just fed</text>
+  </g>
+  <line x1="214" y1="300" x2="290" y2="300" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
+  <text x="252" y="290" text-anchor="middle" font-size="13.5" fill="#222">4–6 hours</text>
+  <!-- jar doubled -->
+  <g>
+    <path d="M310,236 L310,340 C310,348 316,352 324,352 L376,352 C384,352 390,348 390,340 L390,236" fill="#ffffff" stroke="#555" stroke-width="2.5"/>
+    <path d="M313,250 C330,244 350,248 370,244 C378,243 384,246 387,248 L387,349 L313,349 Z" fill="#efe2c4"/>
+    <g fill="#ffffff" stroke="#c9b38a" stroke-width="1"><circle cx="330" cy="280" r="4"/><circle cx="356" cy="300" r="5"/><circle cx="372" cy="270" r="3"/><circle cx="340" cy="322" r="4"/><circle cx="366" cy="334" r="3"/></g>
+    <line x1="300" y1="300" x2="400" y2="300" stroke="#b03a2e" stroke-width="2" stroke-dasharray="5 4"/>
+    <text x="350" y="372" text-anchor="middle" font-size="13.5" fill="#222">Doubled: ready</text>
+  </g>
+  <g font-size="14" fill="#222">
+    <text x="414" y="250">It is ready when it</text>
+    <text x="414" y="268" font-weight="bold">doubles within 4–6</text>
+    <text x="414" y="286" font-weight="bold">hours of feeding</text>
+    <text x="414" y="304">and smells yeasty</text>
+    <text x="414" y="322">and pleasant.</text>
+  </g>
+
+  <text x="320" y="406" text-anchor="middle" font-size="14" fill="#222">Keep it at 70–82 °F. Whole-grain or rye flour starts fastest.</text>
+  <text x="320" y="428" text-anchor="middle" font-size="14" font-weight="bold" fill="#b03a2e">Any mold: throw it out.</text>
+</svg>

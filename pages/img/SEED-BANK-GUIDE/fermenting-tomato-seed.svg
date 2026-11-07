@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="440" viewBox="0 0 640 440" font-family="Arial, Helvetica, sans-serif">
+  <title>Saving tomato seed: ferment, wash, keep the seed that sinks, dry</title>
+  <rect width="640" height="440" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#555"/></marker>
+    <g id="jar">
+      <path d="M-50,0 L-50,140 C-50,150 -42,156 -32,156 L32,156 C42,156 50,150 50,140 L50,0" fill="#ffffff" stroke="#555" stroke-width="2.5"/>
+      <rect x="-54" y="-10" width="108" height="12" rx="3" fill="#ffffff" stroke="#555" stroke-width="2.5"/>
+    </g>
+  </defs>
+
+  <!-- 1: squeeze seeds and juice into a jar -->
+  <text x="16" y="28" font-size="15" font-weight="bold" fill="#222">1 Squeeze seeds and</text>
+  <text x="16" y="46" font-size="15" font-weight="bold" fill="#222">juice into a jar</text>
+  <text x="16" y="64" font-size="13.5" fill="#444">Fully ripe fruit, several plants.</text>
+  <use href="#jar" x="100" y="110"/>
+  <rect x="53" y="170" width="94" height="94" fill="#e9a07a"/>
+  <g fill="#f3e6b0" stroke="#a88f3a" stroke-width="1"><ellipse cx="80" cy="200" rx="4" ry="3"/><ellipse cx="110" cy="220" rx="4" ry="3"/><ellipse cx="94" cy="240" rx="4" ry="3"/><ellipse cx="124" cy="190" rx="4" ry="3"/><ellipse cx="70" cy="250" rx="4" ry="3"/><ellipse cx="130" cy="246" rx="4" ry="3"/></g>
+  <text x="100" y="296" text-anchor="middle" font-size="13" fill="#444">Label the jar.</text>
+
+  <line x1="164" y1="200" x2="200" y2="200" stroke="#555" stroke-width="2.5" marker-end="url(#a)"/>
+
+  <!-- 2: ferment 2-3 days, stir -->
+  <text x="214" y="28" font-size="15" font-weight="bold" fill="#222">2 Leave it 2–3 days</text>
+  <text x="214" y="46" font-size="15" font-weight="bold" fill="#222">at 70–80 °F</text>
+  <text x="214" y="64" font-size="13.5" fill="#444">Stir 2–3 times a day.</text>
+  <use href="#jar" x="300" y="110"/>
+  <rect x="253" y="170" width="94" height="94" fill="#e9a07a"/>
+  <rect x="253" y="164" width="94" height="10" fill="#f6f6f0" stroke="#cfcfc4" stroke-width="1"/>
+  <g fill="#f3e6b0" stroke="#a88f3a" stroke-width="1"><ellipse cx="280" cy="200" rx="4" ry="3"/><ellipse cx="310" cy="220" rx="4" ry="3"/><ellipse cx="294" cy="240" rx="4" ry="3"/><ellipse cx="324" cy="190" rx="4" ry="3"/><ellipse cx="270" cy="250" rx="4" ry="3"/><ellipse cx="330" cy="246" rx="4" ry="3"/></g>
+  <line x1="350" y1="156" x2="372" y2="140" stroke="#333" stroke-width="1.2"/>
+  <text x="300" y="296" text-anchor="middle" font-size="13" fill="#444">Thin white mold on top</text>
+  <text x="300" y="312" text-anchor="middle" font-size="13" fill="#444">is normal.</text>
+  <text x="376" y="138" font-size="13" fill="#444">mold</text>
+
+  <line x1="364" y1="200" x2="400" y2="200" stroke="#555" stroke-width="2.5" marker-end="url(#a)"/>
+
+  <!-- 3: add water, good seed sinks -->
+  <text x="414" y="28" font-size="15" font-weight="bold" fill="#222">3 Add water and stir</text>
+  <text x="414" y="46" font-size="15" font-weight="bold" fill="#222">Good seed sinks.</text>
+  <text x="414" y="64" font-size="13.5" fill="#444">Pour off mold, pulp, floaters.</text>
+  <use href="#jar" x="500" y="110"/>
+  <rect x="453" y="120" width="94" height="144" fill="#f6e2d6"/>
+  <g fill="#c96f45"><rect x="470" y="130" width="14" height="5" rx="2"/><rect x="510" y="128" width="18" height="5" rx="2"/><rect x="490" y="140" width="10" height="4" rx="2"/></g>
+  <g fill="#f3e6b0" stroke="#a88f3a" stroke-width="1"><ellipse cx="480" cy="133" rx="4" ry="3"/><ellipse cx="530" cy="138" rx="4" ry="3"/></g>
+  <g fill="#f3e6b0" stroke="#a88f3a" stroke-width="1">
+    <ellipse cx="468" cy="258" rx="4" ry="3"/><ellipse cx="480" cy="256" rx="4" ry="3"/><ellipse cx="492" cy="258" rx="4" ry="3"/><ellipse cx="504" cy="256" rx="4" ry="3"/>
+    <ellipse cx="516" cy="258" rx="4" ry="3"/><ellipse cx="528" cy="256" rx="4" ry="3"/><ellipse cx="474" cy="250" rx="4" ry="3"/><ellipse cx="498" cy="250" rx="4" ry="3"/><ellipse cx="522" cy="250" rx="4" ry="3"/>
+  </g>
+  <line x1="552" y1="134" x2="572" y2="124" stroke="#333" stroke-width="1.2"/>
+  <text x="576" y="122" font-size="13" fill="#444">pour</text>
+  <text x="576" y="137" font-size="13" fill="#444">off</text>
+  <line x1="552" y1="254" x2="572" y2="262" stroke="#333" stroke-width="1.2"/>
+  <text x="576" y="260" font-size="13" fill="#444">keep</text>
+  <text x="500" y="296" text-anchor="middle" font-size="13" fill="#444">Rinse in a strainer.</text>
+
+  <!-- 4: dry -->
+  <text x="16" y="350" font-size="15" font-weight="bold" fill="#222">4 Dry thin on a plate or screen</text>
+  <text x="16" y="368" font-size="13.5" fill="#444">Not on paper towels: seed sticks. Out of direct sun, below 95 °F, stirred daily.</text>
+  <ellipse cx="120" cy="404" rx="96" ry="18" fill="#f0f0f0" stroke="#777" stroke-width="2"/>
+  <g fill="#f3e6b0" stroke="#a88f3a" stroke-width="1"><ellipse cx="80" cy="402" rx="4" ry="3"/><ellipse cx="96" cy="408" rx="4" ry="3"/><ellipse cx="112" cy="400" rx="4" ry="3"/><ellipse cx="128" cy="406" rx="4" ry="3"/><ellipse cx="144" cy="401" rx="4" ry="3"/><ellipse cx="160" cy="407" rx="4" ry="3"/><ellipse cx="104" cy="412" rx="4" ry="3"/><ellipse cx="136" cy="413" rx="4" ry="3"/></g>
+
+  <rect x="232" y="384" width="396" height="48" rx="6" fill="#fbeceb" stroke="#b03a2e"/>
+  <text x="430" y="404" text-anchor="middle" font-size="13.5" fill="#b03a2e" font-weight="bold">In step 2, stop before any seed sprouts, and keep</text>
+  <text x="430" y="422" text-anchor="middle" font-size="13.5" fill="#b03a2e" font-weight="bold">it out of high heat: the high 80s °F can kill half.</text>
+</svg>

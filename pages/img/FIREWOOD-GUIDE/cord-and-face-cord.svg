@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="330" viewBox="0 0 660 330" font-family="Arial, Helvetica, sans-serif">
+  <title>A full cord of firewood beside a face cord of 16-inch wood</title>
+  <rect width="660" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+    <pattern id="ends" width="16" height="16" patternUnits="userSpaceOnUse">
+      <rect width="16" height="16" fill="#b98d55"/><circle cx="8" cy="8" r="6.5" fill="#e3c89c" stroke="#7a5a35" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <!-- 22 px per ft; depth drawn on a slant at half scale -->
+  <text x="20" y="28" font-size="16" font-weight="bold" fill="#222">1 full cord</text>
+  <text x="360" y="28" font-size="16" font-weight="bold" fill="#222">1 face cord</text>
+
+  <!-- FULL CORD: front 8 ft x 4 ft = 176 x 88; depth 4 ft = 44 px on the slant (31,-31) -->
+  <polygon points="40,130 216,130 247,99 71,99" fill="#a8794a" stroke="#6b4a24" stroke-width="1.5"/>
+  <polygon points="216,130 247,99 247,187 216,218" fill="#946638" stroke="#6b4a24" stroke-width="1.5"/>
+  <rect x="40" y="130" width="176" height="88" fill="url(#ends)" stroke="#6b4a24" stroke-width="1.5"/>
+  <line x1="40" y1="236" x2="216" y2="236" stroke="#333" stroke-width="1.5" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="128" y="254" text-anchor="middle" font-size="14" font-weight="bold" fill="#222">8 ft long</text>
+  <line x1="24" y1="132" x2="24" y2="216" stroke="#333" stroke-width="1.5" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="18" y="178" text-anchor="end" font-size="14" font-weight="bold" fill="#222">4</text>
+  <text x="18" y="194" text-anchor="end" font-size="14" font-weight="bold" fill="#222">ft</text>
+  <line x1="222" y1="226" x2="253" y2="195" stroke="#333" stroke-width="1.5" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="256" y="222" font-size="14" font-weight="bold" fill="#222">4 ft deep</text>
+  <text x="20" y="284" font-size="13.5" fill="#222">4-ft pieces, 4 × 4 × 8 ft = 128 cu ft</text>
+
+  <!-- FACE CORD: same face, 16 in deep = 1.33 ft = 15 px on the slant (10,-10) -->
+  <polygon points="380,130 556,130 566,120 390,120" fill="#a8794a" stroke="#6b4a24" stroke-width="1.5"/>
+  <polygon points="556,130 566,120 566,208 556,218" fill="#946638" stroke="#6b4a24" stroke-width="1.5"/>
+  <rect x="380" y="130" width="176" height="88" fill="url(#ends)" stroke="#6b4a24" stroke-width="1.5"/>
+  <line x1="380" y1="236" x2="556" y2="236" stroke="#333" stroke-width="1.5" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="468" y="254" text-anchor="middle" font-size="14" font-weight="bold" fill="#222">8 ft long</text>
+  <line x1="364" y1="132" x2="364" y2="216" stroke="#333" stroke-width="1.5" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="358" y="178" text-anchor="end" font-size="14" font-weight="bold" fill="#222">4</text>
+  <text x="358" y="194" text-anchor="end" font-size="14" font-weight="bold" fill="#222">ft</text>
+  <text x="574" y="200" font-size="14" font-weight="bold" fill="#222">16 in</text>
+  <text x="574" y="216" font-size="14" font-weight="bold" fill="#222">deep</text>
+  <text x="360" y="284" font-size="13.5" fill="#222">Same face, but only stove-length pieces.</text>
+  <text x="360" y="306" font-size="14" font-weight="bold" fill="#8a2a0a">3 face cords of 16-in wood = 1 full cord</text>
+  <text x="20" y="306" font-size="13" fill="#444">Green, a full cord weighs roughly 5,000 lb.</text>
+</svg>

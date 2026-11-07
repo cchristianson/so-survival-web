@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="440" viewBox="0 0 640 440" font-family="Arial, Helvetica, sans-serif">
+  <title>Where the Raspberry Pi 4 power button goes: the third pair of pins, pins 5 and 6, counted from the end of the pin row farthest from the USB ports</title>
+  <rect width="640" height="440" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+  </defs>
+
+  <!-- board -->
+  <rect x="60" y="150" width="480" height="270" rx="16" fill="#3c8d4a" stroke="#1f5a2a" stroke-width="3"/>
+  <!-- USB and Ethernet at the right short edge -->
+  <rect x="470" y="168" width="86" height="62" rx="3" fill="#c8cdd2" stroke="#555" stroke-width="2"/>
+  <rect x="470" y="246" width="86" height="62" rx="3" fill="#c8cdd2" stroke="#555" stroke-width="2"/>
+  <rect x="470" y="324" width="86" height="76" rx="3" fill="#d9d9d9" stroke="#555" stroke-width="2"/>
+  <text x="513" y="204" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">USB</text>
+  <text x="513" y="282" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">USB</text>
+  <text x="513" y="366" text-anchor="middle" font-size="13" fill="#222">network</text>
+  <text x="600" y="200" font-size="13" fill="#222" text-anchor="middle">USB</text>
+  <text x="600" y="216" font-size="13" fill="#222" text-anchor="middle">ports</text>
+  <text x="600" y="232" font-size="13" fill="#222" text-anchor="middle">this end</text>
+
+  <!-- 40-pin header: 20 pairs along the top long edge -->
+  <rect x="88" y="160" width="300" height="42" rx="3" fill="#222"/>
+  <g fill="#d4af37">
+    <circle cx="102" cy="171" r="4.5"/><circle cx="116.5" cy="171" r="4.5"/><circle cx="131" cy="171" r="4.5"/><circle cx="145.5" cy="171" r="4.5"/><circle cx="160" cy="171" r="4.5"/><circle cx="174.5" cy="171" r="4.5"/><circle cx="189" cy="171" r="4.5"/><circle cx="203.5" cy="171" r="4.5"/><circle cx="218" cy="171" r="4.5"/><circle cx="232.5" cy="171" r="4.5"/><circle cx="247" cy="171" r="4.5"/><circle cx="261.5" cy="171" r="4.5"/><circle cx="276" cy="171" r="4.5"/><circle cx="290.5" cy="171" r="4.5"/><circle cx="305" cy="171" r="4.5"/><circle cx="319.5" cy="171" r="4.5"/><circle cx="334" cy="171" r="4.5"/><circle cx="348.5" cy="171" r="4.5"/><circle cx="363" cy="171" r="4.5"/><circle cx="377.5" cy="171" r="4.5"/>
+    <circle cx="102" cy="191" r="4.5"/><circle cx="116.5" cy="191" r="4.5"/><circle cx="131" cy="191" r="4.5"/><circle cx="145.5" cy="191" r="4.5"/><circle cx="160" cy="191" r="4.5"/><circle cx="174.5" cy="191" r="4.5"/><circle cx="189" cy="191" r="4.5"/><circle cx="203.5" cy="191" r="4.5"/><circle cx="218" cy="191" r="4.5"/><circle cx="232.5" cy="191" r="4.5"/><circle cx="247" cy="191" r="4.5"/><circle cx="261.5" cy="191" r="4.5"/><circle cx="276" cy="191" r="4.5"/><circle cx="290.5" cy="191" r="4.5"/><circle cx="305" cy="191" r="4.5"/><circle cx="319.5" cy="191" r="4.5"/><circle cx="334" cy="191" r="4.5"/><circle cx="348.5" cy="191" r="4.5"/><circle cx="363" cy="191" r="4.5"/><circle cx="377.5" cy="191" r="4.5"/>
+  </g>
+  <!-- the third pair highlighted -->
+  <rect x="122" y="161" width="18" height="40" rx="4" fill="none" stroke="#ff5a36" stroke-width="3"/>
+  <!-- pair counting -->
+  <g font-size="13" font-weight="bold" fill="#fff" text-anchor="middle">
+    <text x="102" y="220">1</text><text x="116.5" y="220">2</text><text x="131" y="220">3</text>
+  </g>
+  <text x="80" y="290" font-size="14" font-weight="bold" fill="#fff">Count pairs from THIS end,</text>
+  <text x="80" y="308" font-size="14" font-weight="bold" fill="#fff">the one farthest from the USB ports:</text>
+  <text x="80" y="326" font-size="14" fill="#fff">1st pair, 2nd pair, 3rd pair = pins 5 and 6.</text>
+  <text x="300" y="232" font-size="13" fill="#fff" text-anchor="middle">40 pins in a double row</text>
+
+  <!-- button and wires -->
+  <rect x="200" y="40" width="70" height="44" rx="6" fill="#444" stroke="#222" stroke-width="2"/>
+  <circle cx="235" cy="62" r="13" fill="#c0392b" stroke="#7a1d12" stroke-width="2"/>
+  <text x="285" y="58" font-size="14" font-weight="bold" fill="#222">push button</text>
+  <text x="285" y="76" font-size="13" fill="#222">(spring-back kind)</text>
+  <path d="M215,84 C200,110 150,110 131,160" fill="none" stroke="#333" stroke-width="3.5"/>
+  <path d="M250,84 C250,120 160,130 133,182" fill="none" stroke="#1f5f99" stroke-width="3.5"/>
+  <rect x="124" y="150" width="14" height="14" fill="#111" stroke="#666" stroke-width="1"/>
+  <rect x="126" y="176" width="14" height="14" fill="#111" stroke="#666" stroke-width="1"/>
+  <text x="20" y="104" font-size="13" fill="#222">jumper plugs on</text>
+  <text x="20" y="120" font-size="13" fill="#222">pins 5 and 6,</text>
+  <text x="20" y="136" font-size="13" fill="#222">either way round</text>
+  <text x="20" y="30" font-size="15" font-weight="bold" fill="#222">Pi unplugged while you fit it.</text>
+  <text x="330" y="132" font-size="13" fill="#555">Seen from above. Not to scale.</text>
+</svg>

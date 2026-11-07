@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="440" viewBox="0 0 640 440" font-family="Arial, Helvetica, sans-serif">
+  <title>Truing a wheel: a spoke pulls the rim toward its own side of the hub</title>
+  <rect width="640" height="440" fill="#ffffff"/>
+  <defs>
+    <marker id="b" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2d5f8a"/></marker>
+    <marker id="k" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#333"/></marker>
+  </defs>
+  <text x="20" y="28" font-size="15" fill="#333">Seen from the front, looking along the bike at the top of the wheel</text>
+
+  <!-- axle and hub -->
+  <line x1="170" y1="330" x2="470" y2="330" stroke="#555" stroke-width="8"/>
+  <rect x="250" y="320" width="140" height="20" fill="#bbb" stroke="#333" stroke-width="2"/>
+  <rect x="246" y="296" width="12" height="68" rx="3" fill="#888" stroke="#333" stroke-width="2"/>
+  <rect x="382" y="296" width="12" height="68" rx="3" fill="#888" stroke="#333" stroke-width="2"/>
+  <text x="320" y="385" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">HUB</text>
+  <text x="236" y="402" text-anchor="middle" font-size="13.5" fill="#333">left flange</text>
+  <text x="404" y="402" text-anchor="middle" font-size="13.5" fill="#333">right flange</text>
+
+  <!-- where the rim should be (dashed) -->
+  <rect x="306" y="84" width="28" height="20" fill="none" stroke="#999" stroke-width="2" stroke-dasharray="4 3"/>
+  <text x="342" y="98" font-size="13" fill="#777">where it should be</text>
+
+  <!-- the rim, out of true to the left -->
+  <rect x="286" y="84" width="28" height="20" fill="#d9d4cb" stroke="#222" stroke-width="2.5"/>
+  <text x="300" y="76" text-anchor="middle" font-size="14" font-weight="bold" fill="#222">RIM</text>
+
+  <!-- spokes -->
+  <line x1="252" y1="298" x2="294" y2="104" stroke="#555" stroke-width="3"/>
+  <line x1="388" y1="298" x2="306" y2="104" stroke="#b03a2e" stroke-width="5"/>
+
+  <!-- chalk on the left -->
+  <rect x="229" y="87" width="56" height="14" rx="3" fill="#f4f1e8" stroke="#333" stroke-width="2"/>
+  <text x="40" y="88" font-size="14" font-weight="bold" fill="#222">CHALK held</text>
+  <text x="40" y="106" font-size="14" fill="#222">by the fork:</text>
+  <text x="40" y="124" font-size="14" fill="#222">the rim rubs it</text>
+  <text x="40" y="142" font-size="14" fill="#222">on this side</text>
+
+  <!-- move -->
+  <line x1="300" y1="152" x2="352" y2="152" stroke="#2d5f8a" stroke-width="5" marker-end="url(#b)"/>
+  <text x="362" y="158" font-size="14" font-weight="bold" fill="#2d5f8a">rim moves right</text>
+
+  <!-- tighten label -->
+  <text x="418" y="214" font-size="15" font-weight="bold" fill="#b03a2e">TIGHTEN this spoke:</text>
+  <text x="418" y="233" font-size="14.5" fill="#b03a2e">it runs to the other</text>
+  <text x="418" y="251" font-size="14.5" fill="#b03a2e">(right) side of the hub</text>
+  <line x1="414" y1="224" x2="356" y2="222" stroke="#b03a2e" stroke-width="1.5" marker-end="url(#k)"/>
+
+  <text x="20" y="250" font-size="14.5" fill="#222">A spoke pulls the rim</text>
+  <text x="20" y="269" font-size="14.5" fill="#222">toward its own side</text>
+  <text x="20" y="288" font-size="14.5" fill="#222">of the hub.</text>
+  <text x="20" y="430" font-size="14" fill="#222">A little at a time, with a spoke key. Then spin it past the chalk again.</text>
+</svg>
