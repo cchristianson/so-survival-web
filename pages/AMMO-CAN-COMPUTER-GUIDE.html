@@ -12,7 +12,7 @@
 </ul>
 </blockquote>
 <hr />
-<nav class="toc" id="contents" aria-label="Contents"><details open><summary>📑 Contents</summary><ol><li><a href="#how-it-works">🧭 How it works</a></li><li><a href="#what-to-buy">🛒 What to buy</a></li><li><a href="#build-it-step-by-step">🔧 Build it, step by step</a></li><li><a href="#option-a-touchscreen-on-the-pi">🖐️ Option: a touchscreen on the Pi</a></li><li><a href="#packing-the-can">📦 Packing the can</a></li><li><a href="#using-it-in-an-emergency">🆘 Using it in an emergency</a></li><li><a href="#power-how-long-it-runs">🔋 Power: how long it runs</a></li><li><a href="#if-something-goes-wrong">🛠️ If something goes wrong</a></li><li><a href="#every-few-months">🔄 Every few months</a></li><li><a href="#pictures-diagrams">🖼️ Pictures &amp; diagrams</a></li><li><a href="#related-guides">🔗 Related guides</a></li></ol></details></nav>
+<nav class="toc" id="contents" aria-label="Contents"><details open><summary>📑 Contents</summary><ol><li><a href="#how-it-works">🧭 How it works</a></li><li><a href="#what-to-buy">🛒 What to buy</a></li><li><a href="#build-it-step-by-step">🔧 Build it, step by step</a></li><li><a href="#option-a-touchscreen-on-the-pi">🖐️ Option: a touchscreen on the Pi</a></li><li><a href="#option-printing-on-paper">🖨️ Option: printing on paper</a></li><li><a href="#packing-the-can">📦 Packing the can</a></li><li><a href="#using-it-in-an-emergency">🆘 Using it in an emergency</a></li><li><a href="#power-how-long-it-runs">🔋 Power: how long it runs</a></li><li><a href="#if-something-goes-wrong">🛠️ If something goes wrong</a></li><li><a href="#every-few-months">🔄 Every few months</a></li><li><a href="#pictures-diagrams">🖼️ Pictures &amp; diagrams</a></li><li><a href="#related-guides">🔗 Related guides</a></li></ol></details></nav>
 <h2 id="how-it-works">🧭 How it works</h2>
 <table>
 <thead>
@@ -192,6 +192,67 @@
 <li><strong>Power:</strong> the screen adds a few watts <em>(rule of thumb)</em>. Turn the Pi off when nobody needs it.</li>
 </ul>
 <hr />
+<h2 id="option-printing-on-paper">🖨️ Option: printing on paper</h2>
+<p>A small <strong>receipt printer</strong> lets anyone on the Pi's Wi-Fi print a guide section, an AI answer or a book page, to take to the garden, the barn or a neighbor. It's a thermal printer: it uses heat-sensitive paper, so there's <strong>no ink or ribbon</strong> to run out of.</p>
+<p><strong>What to get:</strong></p>
+<ul>
+<li>The printer. The library was built for the <strong>DFRobot Embedded Thermal Printer (DFR0503)</strong>, with its USB cable. Other 58 mm receipt printers with USB that understand standard "ESC/POS" commands should work too <em>(rule of thumb)</em>.</li>
+<li><strong>Thermal paper rolls 57 × 30 mm</strong> (2¼ inches wide, no more than 30 mm across the roll), plain, not sticker paper. A roll is about <strong>8.5 m (28 ft)</strong>. Only one side prints: if the paper comes out blank, turn the roll over.</li>
+<li><strong>Power for the printer:</strong> it needs <strong>9–24 volts</strong>, up to <strong>2.5 amps</strong> while printing (maker's specifications). The 12-volt battery works, through a fuse; a USB power bank won't.</li>
+</ul>
+<p><strong>Connecting it:</strong></p>
+<ol type="1">
+<li>Plug the printer's <strong>USB cable into the Pi</strong>, and its power lead into the 12-volt supply. Switch it on.</li>
+<li>The setup (step 4) already lets the library use a printer. If you set up the Pi before this option existed, run the setup again once (see <em>Running the setup again later</em>).</li>
+<li>On a phone, open any guide and tap <strong>🖨️ Print</strong> at the top. If it says <em>No printer found</em>, check the cable and the printer's power, then open it again.</li>
+</ol>
+<p>A printer wired to the Pi's serial pins or through a USB-serial adapter needs telling where it is: start the library with <code>-printer /dev/serial0</code> (or <code>/dev/ttyUSB0</code>). That's for people who like wiring; the USB cable is simpler.</p>
+<p><strong>Printing:</strong></p>
+<ul>
+<li><strong>🖨️ Print</strong> is at the top of every guide and every other page of the library, in an e-book's top bar, and at the bottom right of encyclopedia articles. Under each AI answer there's <strong>🖨️ Print this answer</strong>, and next to each book in its sources, <strong>🖨️ page</strong> prints that book page.</li>
+<li>Choose <strong>this section</strong> (the one you're reading), the <strong>whole page</strong>, or text you selected first. A book page prints as <strong>its words</strong>, or <strong>as a picture</strong> for drawings (bigger in 2 or 3 strips, which takes more paper).</li>
+<li>The <strong>preview</strong> shows exactly what will come out, and how much paper it takes. <strong>Save the picture</strong> keeps it on the phone instead.</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Size</th>
+<th>Characters a line</th>
+<th>A typical guide section</th>
+<th>Good for</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Tiny</strong></td>
+<td>76</td>
+<td>about <strong>2–3 inches</strong></td>
+<td>the most on the least paper; read it close up</td>
+</tr>
+<tr class="even">
+<td><strong>Small</strong></td>
+<td>64</td>
+<td>about 3 inches</td>
+<td>everyday use</td>
+</tr>
+<tr class="odd">
+<td><strong>Medium</strong></td>
+<td>48</td>
+<td>about 4–5 inches</td>
+<td>easier reading</td>
+</tr>
+<tr class="even">
+<td><strong>Large</strong></td>
+<td>38</td>
+<td>about 7 inches</td>
+<td>weak eyes, signs and notes</td>
+</tr>
+</tbody>
+</table>
+<p><em>(Lengths measured with the library's own preview.)</em> In <strong>Tiny</strong> the letters are about 1 mm tall. The preview warns when a print has <strong>doses or measurements</strong> in it: in Tiny, check every number on the paper, or print those in Small or Medium.</p>
+<p><strong>To save paper and power:</strong> print one section at a time, use Tiny, and leave <strong>Pictures</strong> and <strong>Book page references</strong> off (both are off unless you tick them). Dark pictures take the most power <em>(rule of thumb)</em>.</p>
+<p><strong>Looking after prints:</strong> thermal prints fade with heat, sunlight and time. Keep them out of the sun and away from the stove, and copy anything you'll need for years in pencil <em>(rule of thumb)</em>. Keep spare rolls sealed in a bag, cool and dark.</p>
+<hr />
 <h2 id="packing-the-can">📦 Packing the can</h2>
 <ol type="1">
 <li><strong>Cut a foam tray</strong> with pockets for the Pi, drive, power bank, phone and cables. <strong>Nothing should touch bare metal.</strong> The EMP guidance is to keep items off the can's walls, and loose metal can short out the Pi when it's running (<a class="lib" target="_blank" rel="noopener" href="https://www.cisa.gov/sites/default/files/publications/19_0307_CISA_EMP-Protection-Resilience-Guidelines.pdf#page=45" title="EMP Protection and Resilience Guidelines for Critical Infrastructure and Equipment (CISA 2019).pdf — page 45">CISA, p. 45</a>).</li>
@@ -284,6 +345,22 @@
 <tr class="even">
 <td>No phone can connect at all, or there's no phone</td>
 <td>Use a <strong>TV or computer monitor</strong> instead: plug it into the Pi (on a Pi 4 or 5, the micro-HDMI port next to the power socket) with a USB keyboard and mouse, turn the Pi on and log in at the text screen. Run the setup with <code>--screen</code> (see <em>Running the setup again later</em> below), press Enter to accept each suggestion and say <strong>y</strong> to restart. The library then opens on the screen. Run it again with <code>--no-screen</code> to go back</td>
+</tr>
+<tr class="odd">
+<td>The printer: <em>No printer found</em></td>
+<td>Is its USB cable in the Pi, and is the printer switched on with its own power (9–24 V)? Close the print window and open it again</td>
+</tr>
+<tr class="even">
+<td>The printer: <em>not allowed to use the printer</em></td>
+<td>Run the setup again once (it lets the library use printers), then restart</td>
+</tr>
+<tr class="odd">
+<td>The printer feeds blank paper</td>
+<td>The roll is in upside down: only one side of thermal paper prints. Turn it over</td>
+</tr>
+<tr class="even">
+<td>The print is faint or stops partway</td>
+<td>The printer's power is too weak: use the 12-volt battery, not a small adapter</td>
 </tr>
 <tr class="odd">
 <td>Forgot the Wi-Fi password</td>
