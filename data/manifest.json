@@ -1,5 +1,5 @@
 {
-"built": "2026-11-07 08:29 UTC",
+"built": "2026-11-07 15:05 UTC",
 "docs": "docs-85aaf16519.json",
 "shards": [
 "chunks00-ff00760e05.json",
@@ -189,7 +189,7 @@
 "vendor/README.md",
 "vendor/web-llm-0.2.85.js"
 ],
-"bytes": 182711611
+"bytes": 182712796
 },
 "routes": {
 "files": [
@@ -913,7 +913,7 @@
 "tools/walking-routes/gpx/Yreka-CA.gpx",
 "tools/walking-routes/gpx/Yuba-City-CA.gpx"
 ],
-"bytes": 75762124
+"bytes": 75970503
 }
 }
 }
