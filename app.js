@@ -31,6 +31,8 @@ async function init() {
   } else {
     try { manifest = await (await fetch('data/manifest.json', { cache: 'no-cache' })).json(); } catch {}
     startWorker();
+    addEventListener('pagehide', stopWorker);
+    addEventListener('pageshow', e => { if (e.persisted && !worker) { startWorker(); renderStatus(); } });
     if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
     if (store.get('aiModel')) setTimeout(() => initWebLLM(store.get('aiModel'), true), 1500);
     addEventListener('online', renderStatus); addEventListener('offline', renderStatus);
@@ -47,11 +49,17 @@ async function refreshServer() {
   renderStatus();
 }
 
+// The search loads in two steps to spare phones' memory (a page that runs short of it crashes):
+// guides and book titles when the page opens, the text of every book page once someone starts a
+// question (wantFull). Leaving the page stops it, which frees the memory for the next page.
+let fullAsked = false;
 function startWorker() {
+  fullAsked = false; workerReady = workerSearchable = false; workerInfo = {};
   worker = new Worker('search-worker.js');
   worker.onmessage = e => {
     const m = e.data;
-    if (m.type === 'progress') { workerSearchable = true; workerInfo.progress = `${m.loaded}/${m.total}`; renderStatus(); }
+    if (m.type === 'light') { workerSearchable = true; workerInfo.light = m.docs; workerInfo.progress = `${m.loaded}/${m.total}`; renderStatus(); }
+    else if (m.type === 'progress') { workerSearchable = true; workerInfo.progress = `${m.loaded}/${m.total}`; if (fullAsked) renderStatus(); }
     else if (m.type === 'ready') { workerReady = workerSearchable = true; workerInfo = m; renderStatus(); }
     else if (m.type === 'error') { workerInfo.error = m.message; renderStatus(); }
     else if (m.type === 'results' && pending.has(m.id)) { pending.get(m.id)(m); pending.delete(m.id); }
@@ -59,9 +67,16 @@ function startWorker() {
   };
   worker.postMessage({ type: 'load', base: BASE });
 }
+function wantFull() { if (mode === 'public' && worker && !fullAsked) { fullAsked = true; worker.postMessage({ type: 'more' }); renderStatus(); } }
+function stopWorker() {
+  if (!worker) return;
+  worker.terminate(); worker = null; workerReady = workerSearchable = false; fullAsked = false;
+  for (const [, res] of pending) res({ results: [], notReady: true }); pending.clear();
+}
 const pending = new Map(); let reqId = 0, docsWaiter = null;
 // Resolves { results, partial, loaded, total } or { results: [], notReady: true }.
 function workerSearch(q, n) {
+  if (!worker) { startWorker(); wantFull(); }   // stopped when the page was left (see stopWorker)
   return new Promise(res => {
     if (!workerSearchable) {   // first part of the library still downloading: wait for it (never fail silently)
       const t0 = Date.now();
@@ -86,7 +101,8 @@ function renderStatus() {
     h += pill(server.docs ? 'ready' : 'off', 'Documents', server.docs ? `${server.docs} files` : 'index missing');
   } else {
     h += pill(navigator.onLine ? 'ready' : 'starting', navigator.onLine ? 'Online' : 'Offline', navigator.onLine ? '' : '— using saved copy');
-    h += pill(workerReady ? 'ready' : 'starting', 'Search', workerReady ? `${workerInfo.docs} documents` : workerInfo.error ? 'failed to load' : workerSearchable ? `ready, still loading ${workerInfo.progress}` : 'loading…');
+    h += pill(workerReady || (workerSearchable && !fullAsked) ? 'ready' : 'starting', 'Search', workerReady ? `${workerInfo.docs} documents`
+      : workerInfo.error ? 'failed to load' : workerSearchable && !fullAsked ? 'guides ready' : workerSearchable ? `ready, still loading ${workerInfo.progress}` : 'loading…');
     h += pill(ai.kind === 'webllm' ? 'ready' : ai.loading ? 'starting' : 'off', 'AI', ai.kind === 'webllm' ? esc(ai.label) : ai.loading ? 'loading…' : 'off — turn on in ⚙️');
   }
   $('status').innerHTML = h;
@@ -111,7 +127,8 @@ function bindUI() {
   $('f').addEventListener('submit', e => { e.preventDefault(); ask(); });
   $('q').addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); ask(); } });
   // the example questions are only for an empty page: they go as soon as you type (and stay gone once there are answers)
-  $('q').addEventListener('input', () => { $('examples').hidden = !!$('q').value.trim() || !!$('out').children.length; });
+  $('q').addEventListener('input', () => { $('examples').hidden = !!$('q').value.trim() || !!$('out').children.length; wantFull(); });
+  $('q').addEventListener('focus', wantFull);
   $('out').addEventListener('click', e => {   // [1] in an answer: scroll to that source without changing the address
     const a = e.target.closest('a.cite'); if (!a) return;
     const t = document.getElementById(a.getAttribute('href').slice(1)); if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
@@ -131,7 +148,7 @@ function bindUI() {
 
 // ------------------------------------------------------------------ asking
 let counter = 0;
-async function ask() { writing++; try { await askOnce(); } finally { writing--; } }
+async function ask() { wantFull(); writing++; try { await askOnce(); } finally { writing--; } }
 async function askOnce() {
   const q = $('q').value.trim(); if (!q) return;
   const id = ++counter, n = +$('nsrc').value, useAI = $('useai').checked, useWiki = $('usewiki').checked;
