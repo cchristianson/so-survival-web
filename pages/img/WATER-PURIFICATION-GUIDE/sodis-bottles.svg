@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="640" height="360" viewBox="0 0 640 360" font-family="Arial, Helvetica, sans-serif">
+  <title>Sunlight disinfection (SODIS): clear plastic bottles of clear water lying flat in full sun, and three common mistakes</title>
+  <rect width="640" height="360" fill="#ffffff"/>
+  <defs>
+    <g id="bottle">
+      <rect x="0" y="0" width="120" height="44" rx="12" fill="#eef6fc" stroke="#333" stroke-width="2"/>
+      <path d="M120,12 L138,16 L138,28 L120,32" fill="#eef6fc" stroke="#333" stroke-width="2"/>
+      <rect x="138" y="14" width="9" height="16" rx="2" fill="#2f6fa8" stroke="#333" stroke-width="1.5"/>
+    </g>
+  </defs>
+
+  <!-- YES panel -->
+  <rect x="10" y="10" width="370" height="290" rx="10" fill="#f1f8ef" stroke="#3d7a3d" stroke-width="2"/>
+  <text x="26" y="40" font-size="20" font-weight="bold" fill="#3d7a3d">✓ Do it this way</text>
+  <circle cx="330" cy="58" r="24" fill="#f4c430" stroke="#c99a10" stroke-width="2"/>
+  <g stroke="#e0a800" stroke-width="2.5"><line x1="300" y1="84" x2="270" y2="118"/><line x1="320" y1="92" x2="306" y2="128"/><line x1="342" y1="92" x2="348" y2="128"/></g>
+  <!-- bottles lying flat on a metal sheet -->
+  <use xlink:href="#bottle" x="40" y="132"/>
+  <rect x="42" y="148" width="116" height="26" rx="8" fill="#9cc6e6"/>
+  <use xlink:href="#bottle" x="200" y="132"/>
+  <rect x="202" y="148" width="116" height="26" rx="8" fill="#9cc6e6"/>
+  <polyline points="26,186 46,178 66,186 86,178 106,186 126,178 146,186 166,178 186,186 206,178 226,186 246,178 266,186 286,178 306,186 326,178 346,186 364,178" fill="none" stroke="#666" stroke-width="3"/>
+  <text x="26" y="240" font-size="15" fill="#222">Clear plastic (PET) bottles of <tspan font-weight="bold">clear</tspan> water,</text>
+  <text x="26" y="260" font-size="15" fill="#222"><tspan font-weight="bold">lying flat in full sun for 6 hours</tspan></text>
+  <text x="26" y="280" font-size="15" fill="#222">(2 days if the sky is more than half cloudy)</text>
+
+  <!-- NO panel -->
+  <rect x="392" y="10" width="238" height="290" rx="10" fill="#fbefee" stroke="#b03a2e" stroke-width="2"/>
+  <text x="408" y="40" font-size="20" font-weight="bold" fill="#b03a2e">✗ Not like this</text>
+  <!-- standing up -->
+  <rect x="416" y="76" width="34" height="66" rx="9" fill="#eef6fc" stroke="#333" stroke-width="2"/>
+  <rect x="418" y="92" width="30" height="48" rx="7" fill="#9cc6e6"/>
+  <rect x="426" y="62" width="14" height="14" fill="#eef6fc" stroke="#333" stroke-width="1.5"/>
+  <rect x="425" y="55" width="16" height="8" rx="2" fill="#2f6fa8" stroke="#333" stroke-width="1.2"/>
+  <text x="468" y="104" font-size="14.5" fill="#222">standing up</text>
+  <!-- colored bottle -->
+  <use xlink:href="#bottle" x="410" y="160"/>
+  <rect x="411" y="161" width="118" height="42" rx="11" fill="#7a4b1e" opacity="0.85"/>
+  <text x="560" y="180" font-size="14.5" fill="#222">colored</text>
+  <text x="560" y="197" font-size="14.5" fill="#222">bottle</text>
+  <!-- cloudy water -->
+  <use xlink:href="#bottle" x="410" y="228"/>
+  <rect x="412" y="240" width="116" height="30" rx="8" fill="#b59a6a"/>
+  <text x="560" y="248" font-size="14.5" fill="#222">cloudy</text>
+  <text x="560" y="265" font-size="14.5" fill="#222">water</text>
+
+  <text x="320" y="326" text-anchor="middle" font-size="15" fill="#222">Works well here March–September; poorly in the winter rains.</text>
+  <text x="320" y="348" text-anchor="middle" font-size="14" fill="#444">Settle or filter muddy water first.</text>
+</svg>

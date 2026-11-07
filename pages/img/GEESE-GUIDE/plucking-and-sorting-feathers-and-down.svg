@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="470" viewBox="0 0 660 470" font-family="Arial, Helvetica, sans-serif">
+  <title>Plucking a goose the way the feathers grow, and sorting quills, body feathers and down into separate sacks</title>
+  <rect width="660" height="470" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+    <marker id="r" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#a33a2a"/></marker>
+  </defs>
+
+  <!-- PANEL 1: direction of pull -->
+  <text x="20" y="28" font-size="17" font-weight="bold" fill="#222">1. Pull the way the feathers grow</text>
+  <!-- skin -->
+  <rect x="30" y="150" width="270" height="26" fill="#f2d9c4" stroke="#9a6b4a" stroke-width="2"/>
+  <text x="165" y="168" text-anchor="middle" font-size="13" fill="#5a3a22">skin</text>
+  <!-- feathers lying back toward the tail (to the right) -->
+  <g fill="#ececec" stroke="#555" stroke-width="1.5">
+    <path d="M50,150 Q80,118 120,128 Q90,138 56,152 Z"/>
+    <path d="M100,150 Q130,118 170,128 Q140,138 106,152 Z"/>
+    <path d="M150,150 Q180,118 220,128 Q190,138 156,152 Z"/>
+    <path d="M200,150 Q230,118 270,128 Q240,138 206,152 Z"/>
+  </g>
+  <!-- good pull -->
+  <line x1="160" y1="108" x2="250" y2="82" stroke="#2f7d3a" stroke-width="3" marker-end="url(#a)"/>
+  <text x="182" y="72" font-size="14" font-weight="bold" fill="#2f7d3a">YES: with the grain</text>
+  <!-- bad pull -->
+  <line x1="120" y1="112" x2="60" y2="62" stroke="#a33a2a" stroke-width="3" marker-end="url(#r)"/>
+  <text x="30" y="52" font-size="14" font-weight="bold" fill="#a33a2a">NO: against it</text>
+  <g font-size="14" fill="#222">
+    <text x="30" y="204">Pulling against the grain tears the skin.</text>
+    <text x="30" y="222">On the breast, pick close to the skin</text>
+    <text x="30" y="240">and roll the feathers outward, row by row.</text>
+  </g>
+
+  <!-- PANEL 2: three sacks -->
+  <line x1="320" y1="15" x2="320" y2="250" stroke="#bbb" stroke-width="1.5"/>
+  <text x="335" y="28" font-size="17" font-weight="bold" fill="#222">2. Three sacks, kept apart</text>
+
+  <!-- quill -->
+  <g>
+    <line x1="350" y1="200" x2="372" y2="58" stroke="#555" stroke-width="2.5"/>
+    <path d="M369,78 Q392,110 368,190 Q356,120 369,78 Z" fill="#d9d9d9" stroke="#555" stroke-width="1.5"/>
+    <path d="M367,80 Q350,120 352,186 Q362,120 367,80 Z" fill="#ececec" stroke="#555" stroke-width="1.2"/>
+  </g>
+  <!-- body feather -->
+  <g>
+    <line x1="455" y1="196" x2="468" y2="128" stroke="#555" stroke-width="2"/>
+    <path d="M466,134 Q494,150 470,190 Q446,170 466,134 Z" fill="#ececec" stroke="#555" stroke-width="1.5"/>
+    <path d="M458,180 l-8,12 M461,186 l-4,12 M455,176 l-10,8" stroke="#999" stroke-width="1.2"/>
+  </g>
+  <!-- down cluster: no stiff shaft -->
+  <g stroke="#777" stroke-width="1.4" fill="none">
+    <circle cx="575" cy="152" r="4" fill="#bbb"/>
+    <path d="M575,152 q-24,-6 -38,-26"/><path d="M575,152 q-10,-22 -6,-42"/>
+    <path d="M575,152 q12,-22 30,-34"/><path d="M575,152 q26,-4 40,8"/>
+    <path d="M575,152 q22,12 26,34"/><path d="M575,152 q2,26 -10,40"/>
+    <path d="M575,152 q-20,16 -34,22"/><path d="M575,152 q-28,4 -42,-4"/>
+  </g>
+  <g stroke="#aaa" stroke-width="1" fill="none">
+    <path d="M552,140 l-6,-10 M558,146 l-10,-2 M566,128 l-8,-6 M568,120 l6,-8 M590,136 l4,-10 M598,128 l10,-2 M600,154 l8,-6 M606,158 l6,6 M592,172 l10,4 M598,182 l-2,10 M570,178 l-8,6 M568,186 l6,8 M552,168 l-8,8 M548,172 l-4,10 M545,152 l-6,-8 M548,150 l-4,8"/>
+  </g>
+
+  <g font-size="14" fill="#222" text-anchor="middle">
+    <text x="370" y="222" font-weight="bold">Wing and tail</text>
+    <text x="370" y="240">quills</text>
+    <text x="470" y="222" font-weight="bold">Body</text>
+    <text x="470" y="240">feathers</text>
+    <text x="575" y="222" font-weight="bold">Down</text>
+    <text x="575" y="240">no stiff shaft</text>
+  </g>
+
+  <!-- uses and drying -->
+  <line x1="20" y1="268" x2="640" y2="268" stroke="#bbb" stroke-width="1.5"/>
+  <g font-size="14" fill="#222">
+    <text x="20" y="295" font-weight="bold">Down</text>
+    <text x="80" y="295">grows under the outer feathers. One of the warmest natural fills there is,</text>
+    <text x="80" y="313">but only while clean and dry: wet, it goes lumpy and loses its warmth.</text>
+    <text x="20" y="341" font-weight="bold">Body</text>
+    <text x="80" y="341">feathers fill pillows and feather beds.</text>
+    <text x="20" y="369" font-weight="bold">Keep</text>
+    <text x="80" y="369">goose feathers apart from chicken and duck feathers.</text>
+    <text x="20" y="397" font-weight="bold">Dry</text>
+    <text x="80" y="397">in burlap sacks hung in a loft, or spread thin in a dry, airy room and</text>
+    <text x="80" y="415">stirred now and then. Wash before use (see the guide).</text>
+    <text x="20" y="443" font-weight="bold">Never</text>
+    <text x="80" y="443">pluck live geese: goose farmers gave it up as harmful to the birds.</text>
+  </g>
+</svg>

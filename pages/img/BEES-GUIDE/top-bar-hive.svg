@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="800" viewBox="0 0 660 800" font-family="Arial, Helvetica, sans-serif">
+  <title>A top-bar hive: cut across (end view) and cut along (side view), with the sizes from the guide</title>
+  <rect width="660" height="800" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+  </defs>
+
+  <!-- ===== Panel A: end view, cut across ===== -->
+  <text x="20" y="28" font-size="16" font-weight="bold" fill="#222">Cut across the hive (end view)</text>
+
+  <!-- width dimension (extension lines run behind the roof) -->
+  <g stroke="#555" stroke-width="1.2" stroke-dasharray="4 3">
+    <line x1="80" y1="150" x2="80" y2="64"/>
+    <line x1="320" y1="150" x2="320" y2="64"/>
+  </g>
+  <line x1="84" y1="70" x2="316" y2="70" stroke="#333" stroke-width="1.6" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="200" y="60" text-anchor="middle" font-size="14" fill="#222">about 15 in wide at the top</text>
+
+  <!-- body: sloping walls -->
+  <path d="M80,150 L152,326 L248,326 L320,150" fill="#fbf6ec" stroke="#8b5a2b" stroke-width="9" stroke-linejoin="round"/>
+  <!-- comb hanging from the bar, clear of the walls -->
+  <path d="M98,151 L302,151 L252,285 Q200,306 148,285 Z" fill="#f2d27a" stroke="#b8892c" stroke-width="2"/>
+  <!-- top bar -->
+  <rect x="70" y="136" width="260" height="14" fill="#c8a165" stroke="#6b4a24" stroke-width="2"/>
+  <!-- roof with rock -->
+  <rect x="58" y="100" width="284" height="22" fill="#8a9099" stroke="#4a4f57" stroke-width="2"/>
+  <ellipse cx="200" cy="91" rx="24" ry="9" fill="#b0b0b0" stroke="#666" stroke-width="2"/>
+  <!-- legs and ground -->
+  <g stroke="#8b5a2b" stroke-width="8" stroke-linecap="round">
+    <line x1="168" y1="330" x2="142" y2="458"/>
+    <line x1="232" y1="330" x2="258" y2="458"/>
+  </g>
+  <line x1="20" y1="462" x2="340" y2="462" stroke="#999" stroke-width="2"/>
+
+  <!-- depth dimension -->
+  <g stroke="#555" stroke-width="1.2" stroke-dasharray="4 3">
+    <line x1="74" y1="150" x2="30" y2="150"/>
+    <line x1="146" y1="326" x2="30" y2="326"/>
+  </g>
+  <line x1="40" y1="154" x2="40" y2="322" stroke="#333" stroke-width="1.6" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="48" y="286" font-size="14" fill="#222">10–12 in</text>
+  <text x="48" y="303" font-size="14" fill="#222">deep</text>
+
+  <!-- labels, right -->
+  <g stroke="#333" stroke-width="1.3" fill="none">
+    <line x1="366" y1="108" x2="344" y2="111"/>
+    <line x1="366" y1="146" x2="334" y2="143"/>
+    <line x1="366" y1="201" x2="284" y2="200"/>
+    <line x1="366" y1="252" x2="285" y2="246"/>
+    <line x1="366" y1="414" x2="252" y2="414"/>
+  </g>
+  <g font-size="14" fill="#222">
+    <text x="372" y="105">Roof overhangs, rocks on top;</text>
+    <text x="372" y="122">straw under it in winter</text>
+    <text x="372" y="150">Top bars rest on the side walls</text>
+    <text x="372" y="205">Each comb hangs from one bar</text>
+    <text x="372" y="250">Sides slope in toward the</text>
+    <text x="372" y="267">bottom: keeps comb off the walls</text>
+    <text x="372" y="411">Legs to waist height;</text>
+    <text x="372" y="428">at least 1 ft up stops skunks</text>
+  </g>
+
+  <!-- ===== Panel B: side view, cut along ===== -->
+  <line x1="20" y1="492" x2="640" y2="492" stroke="#ccc" stroke-width="1.5"/>
+  <text x="20" y="520" font-size="16" font-weight="bold" fill="#222">Cut along the hive (side view)</text>
+
+  <!-- length dimension -->
+  <g stroke="#555" stroke-width="1.2" stroke-dasharray="4 3">
+    <line x1="54" y1="568" x2="54" y2="540"/>
+    <line x1="586" y1="568" x2="586" y2="540"/>
+  </g>
+  <line x1="58" y1="548" x2="582" y2="548" stroke="#333" stroke-width="1.6" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="320" y="541" text-anchor="middle" font-size="14" fill="#222">inside 36–42 in long: 26–30 bars</text>
+
+  <!-- hive floor and end walls (entrance holes as gaps in the left wall) -->
+  <rect x="44" y="688" width="552" height="9" fill="#8b5a2b"/>
+  <rect x="44" y="556" width="10" height="44" fill="#8b5a2b"/>
+  <rect x="44" y="614" width="10" height="18" fill="#8b5a2b"/>
+  <rect x="44" y="646" width="10" height="51" fill="#8b5a2b"/>
+  <rect x="586" y="556" width="10" height="141" fill="#8b5a2b"/>
+  <g fill="none" stroke="#8b5a2b" stroke-width="2">
+    <rect x="44" y="600" width="10" height="14"/>
+    <rect x="44" y="632" width="10" height="14"/>
+  </g>
+
+  <!-- combs (seen edge-on) under the first 14 bars -->
+  <g fill="#f2d27a" stroke="#b8892c" stroke-width="1.5">
+    <rect x="59" y="570" width="9" height="104" rx="4"/>
+    <rect x="78" y="570" width="9" height="108" rx="4"/>
+    <rect x="97" y="570" width="9" height="110" rx="4"/>
+    <rect x="116" y="570" width="9" height="110" rx="4"/>
+    <rect x="135" y="570" width="9" height="110" rx="4"/>
+    <rect x="154" y="570" width="9" height="110" rx="4"/>
+    <rect x="173" y="570" width="9" height="110" rx="4"/>
+    <rect x="192" y="570" width="9" height="110" rx="4"/>
+    <rect x="211" y="570" width="9" height="108" rx="4"/>
+    <rect x="230" y="570" width="9" height="104" rx="4"/>
+    <rect x="249" y="570" width="9" height="98" rx="4"/>
+    <rect x="268" y="570" width="9" height="88" rx="4"/>
+    <rect x="287" y="570" width="9" height="70" rx="4"/>
+    <rect x="306" y="570" width="9" height="46" rx="4"/>
+  </g>
+  <!-- follower board under bar 15 -->
+  <rect x="325" y="570" width="10" height="118" fill="#6b4a24"/>
+
+  <!-- wax strips under the empty bars -->
+  <g fill="#e0b84a" stroke="#a07d2a" stroke-width="1">
+    <path d="M354.5,570 l-4,0 l4,7 l4,-7 z"/><path d="M373.5,570 l-4,0 l4,7 l4,-7 z"/>
+    <path d="M392.5,570 l-4,0 l4,7 l4,-7 z"/><path d="M411.5,570 l-4,0 l4,7 l4,-7 z"/>
+    <path d="M430.5,570 l-4,0 l4,7 l4,-7 z"/><path d="M449.5,570 l-4,0 l4,7 l4,-7 z"/>
+    <path d="M468.5,570 l-4,0 l4,7 l4,-7 z"/><path d="M487.5,570 l-4,0 l4,7 l4,-7 z"/>
+    <path d="M506.5,570 l-4,0 l4,7 l4,-7 z"/><path d="M525.5,570 l-4,0 l4,7 l4,-7 z"/>
+    <path d="M544.5,570 l-4,0 l4,7 l4,-7 z"/><path d="M563.5,570 l-4,0 l4,7 l4,-7 z"/>
+    <path d="M582.5,570 l-4,0 l4,7 l4,-7 z"/>
+  </g>
+
+  <!-- 28 top bars, 1 3/8 in each -->
+  <g fill="#c8a165" stroke="#6b4a24" stroke-width="1.5">
+    <rect x="54" y="556" width="19" height="14"/><rect x="73" y="556" width="19" height="14"/>
+    <rect x="92" y="556" width="19" height="14"/><rect x="111" y="556" width="19" height="14"/>
+    <rect x="130" y="556" width="19" height="14"/><rect x="149" y="556" width="19" height="14"/>
+    <rect x="168" y="556" width="19" height="14"/><rect x="187" y="556" width="19" height="14"/>
+    <rect x="206" y="556" width="19" height="14"/><rect x="225" y="556" width="19" height="14"/>
+    <rect x="244" y="556" width="19" height="14"/><rect x="263" y="556" width="19" height="14"/>
+    <rect x="282" y="556" width="19" height="14"/><rect x="301" y="556" width="19" height="14"/>
+    <rect x="320" y="556" width="19" height="14"/><rect x="339" y="556" width="19" height="14"/>
+    <rect x="358" y="556" width="19" height="14"/><rect x="377" y="556" width="19" height="14"/>
+    <rect x="396" y="556" width="19" height="14"/><rect x="415" y="556" width="19" height="14"/>
+    <rect x="434" y="556" width="19" height="14"/><rect x="453" y="556" width="19" height="14"/>
+    <rect x="472" y="556" width="19" height="14"/><rect x="491" y="556" width="19" height="14"/>
+    <rect x="510" y="556" width="19" height="14"/><rect x="529" y="556" width="19" height="14"/>
+    <rect x="548" y="556" width="19" height="14"/><rect x="567" y="556" width="19" height="14"/>
+  </g>
+
+  <!-- labels inside the empty part of the hive -->
+  <g stroke="#333" stroke-width="1.3" fill="none">
+    <line x1="470" y1="598" x2="469" y2="580"/>
+    <line x1="352" y1="664" x2="338" y2="664"/>
+  </g>
+  <g font-size="14" fill="#222">
+    <text x="358" y="612">Every bar exactly 1⅜ in (35 mm)</text>
+    <text x="358" y="629">wide; a wax strip under each</text>
+    <text x="358" y="646">one guides the comb</text>
+    <text x="358" y="669">Follower board: shrinks the</text>
+    <text x="358" y="684">space for a small colony</text>
+  </g>
+
+  <!-- labels below -->
+  <g stroke="#333" stroke-width="1.3" fill="none">
+    <line x1="34" y1="712" x2="46" y2="626"/>
+    <line x1="200" y1="712" x2="200" y2="684"/>
+  </g>
+  <g font-size="14" fill="#222">
+    <text x="20" y="728">Two or three 1-in entrance</text>
+    <text x="20" y="745">holes at one end, with corks</text>
+    <text x="214" y="728">Combs, seen edge-on, each</text>
+    <text x="214" y="745">hanging from its own bar</text>
+  </g>
+  <text x="330" y="785" text-anchor="middle" font-size="13" fill="#555">Not to scale. Box sizes are a rule of thumb; the bar width is not.</text>
+</svg>

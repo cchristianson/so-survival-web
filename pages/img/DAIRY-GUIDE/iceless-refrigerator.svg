@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="540" viewBox="0 0 640 540" font-family="Arial, Helvetica, sans-serif">
+<title>An iceless refrigerator: a screened wooden cabinet with shelves, covered in wet cloth, with cloth wicks hanging from a pan of water on top and the cover hanging into a pan below</title>
+<rect width="640" height="540" fill="#ffffff"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker><pattern id="scr" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#f4f6f7"/><path d="M0,0 H6 M0,0 V6" stroke="#b8c0c6" stroke-width="0.8"/></pattern><pattern id="cl" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#e6d8b8"/><path d="M0,8 L8,0" stroke="#d3c39d" stroke-width="1"/></pattern></defs>
+<rect x="136" y="440" width="168" height="22" fill="#cfe3f1" stroke="#444" stroke-width="2"/>
+<rect x="220" y="92" width="70" height="360" fill="url(#scr)" stroke="#6b4a24" stroke-width="3"/>
+<line x1="220" y1="182" x2="290" y2="182" stroke="#6b4a24" stroke-width="5"/>
+<line x1="220" y1="272" x2="290" y2="272" stroke="#6b4a24" stroke-width="5"/>
+<line x1="220" y1="362" x2="290" y2="362" stroke="#6b4a24" stroke-width="5"/>
+<rect x="236" y="146" width="34" height="36" rx="5" fill="#e9e1cf" stroke="#555" stroke-width="1.5"/>
+<rect x="232" y="248" width="44" height="24" rx="3" fill="#f2d67a" stroke="#8a6d1f" stroke-width="1.5"/>
+<rect x="240" y="326" width="28" height="36" rx="4" fill="#ffffff" stroke="#555" stroke-width="1.5"/>
+<path d="M150,92 H220 V458 H150 Z" fill="url(#cl)" stroke="#8a7346" stroke-width="2"/>
+<path d="M220,92 V458" stroke="#8a7346" stroke-width="2" stroke-dasharray="6 4"/>
+<path d="M138,70 H302 L298,92 H142 Z" fill="#cfe3f1" stroke="#444" stroke-width="2"/>
+<line x1="140" y1="78" x2="300" y2="78" stroke="#5b8fb9" stroke-width="2"/>
+<path d="M172,80 C172,58 166,58 166,88" fill="none" stroke="#7a6438" stroke-width="13" stroke-linecap="round"/>
+<path d="M172,80 C172,58 166,58 166,88" fill="none" stroke="#cdb98c" stroke-width="10" stroke-linecap="round"/>
+<path d="M156,88 L180,88 L176,162 L160,162 Z" fill="#cdb98c" stroke="#7a6438" stroke-width="1.5"/>
+<path d="M204,80 C204,58 198,58 198,88" fill="none" stroke="#7a6438" stroke-width="13" stroke-linecap="round"/>
+<path d="M204,80 C204,58 198,58 198,88" fill="none" stroke="#cdb98c" stroke-width="10" stroke-linecap="round"/>
+<path d="M188,88 L212,88 L208,162 L192,162 Z" fill="#cdb98c" stroke="#7a6438" stroke-width="1.5"/>
+<line x1="171" y1="100" x2="171" y2="150" stroke="#2f6f9f" stroke-width="2" marker-end="url(#a)"/>
+<line x1="203" y1="100" x2="203" y2="150" stroke="#2f6f9f" stroke-width="2" marker-end="url(#a)"/>
+<path d="M30,220 q15,-8 30,0 t30,0 t30,0 t20,0" fill="none" stroke="#7a8a96" stroke-width="2" marker-end="url(#a)"/>
+<path d="M30,300 q15,-8 30,0 t30,0 t30,0 t20,0" fill="none" stroke="#7a8a96" stroke-width="2" marker-end="url(#a)"/>
+<path d="M30,380 q15,-8 30,0 t30,0 t30,0 t20,0" fill="none" stroke="#7a8a96" stroke-width="2" marker-end="url(#a)"/>
+<text x="80" y="200" font-size="14" font-weight="bold" text-anchor="middle" fill="#56636d">breeze</text>
+<text x="80" y="434" font-size="14" font-weight="bold" text-anchor="middle" fill="#56636d">in shade</text>
+<text x="12" y="30" font-size="16" font-weight="bold" fill="#222">An iceless refrigerator: wet cloth cools what is inside</text>
+<text x="330" y="70" font-size="14" font-weight="bold" fill="#222">Pan of water on top;</text>
+<text x="330" y="87" font-size="14" fill="#222">keep it full</text>
+<line x1="326" y1="74" x2="298" y2="76" stroke="#555" stroke-width="1.2"/>
+<text x="330" y="128" font-size="14" font-weight="bold" fill="#222">Cloth wicks carry the</text>
+<text x="330" y="145" font-size="14" fill="#222">water down the cover</text>
+<line x1="326" y1="132" x2="212" y2="132" stroke="#555" stroke-width="1.2"/>
+<text x="330" y="196" font-size="14" font-weight="bold" fill="#222">Cover of canton flannel</text>
+<text x="330" y="213" font-size="14" fill="#222">or burlap, kept wet</text>
+<line x1="326" y1="200" x2="200" y2="230" stroke="#555" stroke-width="1.2"/>
+<text x="330" y="264" font-size="14" font-weight="bold" fill="#222">Screened wooden frame</text>
+<text x="330" y="281" font-size="14" fill="#222">with shelves, door in front,</text>
+<text x="330" y="298" font-size="14" fill="#222">42 × 16 × 14 in</text>
+<line x1="326" y1="268" x2="284" y2="230" stroke="#555" stroke-width="1.2"/>
+<text x="330" y="352" font-size="14" fill="#555">(cover cut away here</text>
+<text x="330" y="369" font-size="14" fill="#555">to show the inside)</text>
+<line x1="326" y1="356" x2="270" y2="410" stroke="#555" stroke-width="1.2"/>
+<text x="330" y="430" font-size="14" font-weight="bold" fill="#222">The cover hangs into</text>
+<text x="330" y="447" font-size="14" fill="#222">a lower pan</text>
+<line x1="326" y1="434" x2="302" y2="452" stroke="#555" stroke-width="1.2"/>
+<rect x="12" y="476" width="616" height="54" rx="8" fill="#eef5fb" stroke="#9cbcd6" stroke-width="1.5"/>
+<text x="24" y="498" font-size="14" font-weight="bold" fill="#222">Warm, dry air: inside gets down to about 50 °F.</text>
+<text x="24" y="518" font-size="14" fill="#222">Damp, still air: it barely works. Not to scale.</text>
+</svg>

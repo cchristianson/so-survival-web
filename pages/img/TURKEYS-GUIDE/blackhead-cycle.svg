@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="470" viewBox="0 0 640 470" font-family="Arial, Helvetica, sans-serif">
+  <title>How blackhead gets from chickens to turkeys, and three ways to break the chain</title>
+  <rect width="640" height="470" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+  </defs>
+
+  <text x="320" y="28" text-anchor="middle" font-size="19" font-weight="bold" fill="#222">How blackhead gets from chickens to turkeys</text>
+
+  <!-- the chain -->
+  <g stroke="#6b6359" stroke-width="2">
+    <rect x="15" y="48" width="180" height="108" rx="8" fill="#f3efe6"/>
+    <rect x="230" y="48" width="180" height="108" rx="8" fill="#ece6d8"/>
+    <rect x="445" y="48" width="180" height="108" rx="8" fill="#f6e3dd" stroke="#9a3b2a"/>
+  </g>
+  <g text-anchor="middle" fill="#222">
+    <text x="105" y="76" font-size="16" font-weight="bold">CHICKENS</text>
+    <text x="105" y="100" font-size="14">carry blackhead</text>
+    <text x="105" y="119" font-size="14">but seldom look</text>
+    <text x="105" y="138" font-size="14">sick</text>
+
+    <text x="320" y="76" font-size="16" font-weight="bold">GROUND, MANURE</text>
+    <text x="320" y="100" font-size="14">the germ rides inside</text>
+    <text x="320" y="119" font-size="14">cecal-worm eggs and</text>
+    <text x="320" y="138" font-size="14">lasts from year to year</text>
+
+    <text x="535" y="76" font-size="16" font-weight="bold" fill="#7a2a1c">TURKEY POULTS</text>
+    <text x="535" y="100" font-size="14">pick it up from soil,</text>
+    <text x="535" y="119" font-size="14">feed or water; worst</text>
+    <text x="535" y="138" font-size="14">at 6–18 weeks old</text>
+  </g>
+  <g stroke="#333" stroke-width="2.2" fill="none" marker-end="url(#a)">
+    <line x1="197" y1="102" x2="226" y2="102"/>
+    <line x1="412" y1="102" x2="441" y2="102"/>
+    <path d="M105,158 C105,215 535,215 535,162"/>
+  </g>
+  <text x="320" y="214" text-anchor="middle" font-size="14" fill="#333">also carried by flies, blowing dust and mud on boots</text>
+
+  <!-- break the chain -->
+  <text x="320" y="252" text-anchor="middle" font-size="17" font-weight="bold" fill="#2f5d1e">Break the chain</text>
+  <g stroke="#4d7a2c" stroke-width="2" fill="#eef5e6">
+    <rect x="15" y="264" width="180" height="190" rx="8"/>
+    <rect x="230" y="264" width="180" height="190" rx="8"/>
+    <rect x="445" y="264" width="180" height="190" rx="8"/>
+  </g>
+  <g text-anchor="middle" fill="#222" font-size="14">
+    <text x="105" y="290" font-size="15" font-weight="bold">1. Keep apart</text>
+    <text x="105" y="314">No turkeys where</text>
+    <text x="105" y="333">chickens run, or on</text>
+    <text x="105" y="352">ground spread with</text>
+    <text x="105" y="371">chicken manure.</text>
+    <text x="105" y="398">Rest infected</text>
+    <text x="105" y="417">ground at least</text>
+    <text x="105" y="436">3 years.</text>
+
+    <text x="320" y="290" font-size="15" font-weight="bold">2. Clean ground</text>
+    <text x="320" y="314">Move the flock and</text>
+    <text x="320" y="333">its gear to fresh</text>
+    <text x="320" y="352">ground every week;</text>
+    <text x="320" y="371">use a patch 1 year</text>
+    <text x="320" y="390">in 3. Feed and water</text>
+    <text x="320" y="409">on wire or slats,</text>
+    <text x="320" y="428">no wet spots.</text>
+
+    <text x="535" y="290" font-size="15" font-weight="bold">3. Guard the poults</text>
+    <text x="535" y="314">Raise them away</text>
+    <text x="535" y="333">from older turkeys.</text>
+    <text x="535" y="352">Pull out sick birds</text>
+    <text x="535" y="371">at once; burn or</text>
+    <text x="535" y="390">bury the dead.</text>
+    <text x="535" y="417" font-style="italic">There is no cure:</text>
+    <text x="535" y="436" font-style="italic">only prevention.</text>
+  </g>
+</svg>

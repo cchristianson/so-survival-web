@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="476" viewBox="0 0 660 476" font-family="Arial, Helvetica, sans-serif">
+  <title>Water bars on a sloping road: seen from above, and cut through along the road</title>
+  <rect width="660" height="476" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+    <marker id="w" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#2f6fae"/></marker>
+  </defs>
+  <text x="20" y="28" font-size="16" font-weight="bold" fill="#222">Seen from above</text>
+  <text x="400" y="28" font-size="16" font-weight="bold" fill="#222">Cut along the road</text>
+
+  <!-- TOP VIEW: road band x 110-270, uphill at top -->
+  <rect x="110" y="44" width="160" height="380" fill="#e3dccd" stroke="#8f7a5c" stroke-width="1.5"/>
+  <text x="62" y="70" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">uphill</text>
+  <line x1="62" y1="140" x2="62" y2="82" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+  <!-- bar 1: from (110,110) down to (270,202): about 30 degrees off square -->
+  <line x1="110" y1="110" x2="270" y2="202" stroke="#8a6a3c" stroke-width="14" stroke-linecap="butt"/>
+  <line x1="110" y1="99" x2="270" y2="191" stroke="#4a6f9a" stroke-width="3"/>
+  <!-- bar 2 -->
+  <line x1="110" y1="274" x2="270" y2="366" stroke="#8a6a3c" stroke-width="14" stroke-linecap="butt"/>
+  <line x1="110" y1="263" x2="270" y2="355" stroke="#4a6f9a" stroke-width="3"/>
+  <!-- outlets on rock -->
+  <g fill="#9a948a" stroke="#5e584f" stroke-width="1.2">
+    <ellipse cx="292" cy="206" rx="14" ry="9"/><ellipse cx="314" cy="216" rx="11" ry="8"/><ellipse cx="300" cy="226" rx="12" ry="7"/>
+    <ellipse cx="292" cy="370" rx="14" ry="9"/><ellipse cx="314" cy="380" rx="11" ry="8"/><ellipse cx="300" cy="390" rx="12" ry="7"/>
+  </g>
+  <!-- water -->
+  <g stroke="#2f6fae" stroke-width="2" fill="none" marker-end="url(#w)">
+    <line x1="150" y1="54" x2="150" y2="104"/><line x1="200" y1="54" x2="200" y2="130"/><line x1="245" y1="54" x2="245" y2="156"/>
+    <line x1="140" y1="122" x2="262" y2="192"/>
+    <line x1="268" y1="196" x2="296" y2="212"/>
+    <line x1="150" y1="220" x2="150" y2="270"/><line x1="200" y1="220" x2="200" y2="296"/><line x1="245" y1="220" x2="245" y2="322"/>
+    <line x1="140" y1="286" x2="262" y2="356"/>
+    <line x1="268" y1="360" x2="296" y2="376"/>
+  </g>
+  <!-- spacing -->
+  <line x1="90" y1="168" x2="90" y2="332" stroke="#333" stroke-width="1.5" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="84" y="236" text-anchor="end" font-size="13" font-weight="bold" fill="#222">50 ft</text>
+  <text x="84" y="252" text-anchor="end" font-size="13" font-weight="bold" fill="#222">or less</text>
+  <text x="84" y="268" text-anchor="end" font-size="13" fill="#444">on a</text>
+  <text x="84" y="282" text-anchor="end" font-size="13" fill="#444">steep</text>
+  <text x="84" y="296" text-anchor="end" font-size="13" fill="#444">pitch</text>
+  <text x="190" y="446" text-anchor="middle" font-size="13" fill="#222">about 30° across the road</text>
+  <text x="332" y="364" font-size="13" fill="#222">empties onto rock, brush</text>
+  <text x="332" y="380" font-size="13" fill="#222">or firm ground, never</text>
+  <text x="332" y="396" font-size="13" fill="#222">onto loose fill</text>
+
+  <!-- SECTION: road descending to the right -->
+  <path d="M400,90 L470,114 L478,126 L494,128 L502,118 L512,110 L522,114 L540,126 L650,162 L650,200 L400,200 Z" fill="#cdb894"/>
+  <path d="M400,90 L470,114 L478,126 L494,128 L502,118 L512,110 L522,114 L540,126 L650,162" fill="none" stroke="#4a3b28" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M430,92 L472,108" stroke="#2f6fae" stroke-width="2" fill="none" marker-end="url(#w)"/>
+  <ellipse cx="486" cy="125" rx="8" ry="2.5" fill="#2f6fae"/>
+  <text x="400" y="70" font-size="13" fill="#222">uphill</text>
+  <text x="645" y="190" text-anchor="end" font-size="13" fill="#222">downhill</text>
+  <text x="400" y="226" font-size="13" fill="#222">shallow trench</text>
+  <line x1="486" y1="214" x2="486" y2="132" stroke="#333" stroke-width="1"/>
+  <text x="530" y="226" font-size="13" fill="#222">soil piled on the</text>
+  <text x="530" y="242" font-size="13" fill="#222">downhill side: a firm,</text>
+  <text x="530" y="258" font-size="13" fill="#222">rounded hump that</text>
+  <text x="530" y="274" font-size="13" fill="#222">vehicles can cross</text>
+  <line x1="526" y1="222" x2="512" y2="114" stroke="#333" stroke-width="1"/>
+  <text x="330" y="430" font-size="13" fill="#444">Steeper road: put them closer. Walk the road</text>
+  <text x="330" y="446" font-size="13" fill="#444">in the first big storm and add one where</text>
+  <text x="330" y="462" font-size="13" fill="#444">water starts to cut.</text>
+</svg>

@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="410" viewBox="0 0 680 410" font-family="Arial, Helvetica, sans-serif">
+  <title>Inside a shed-roof chicken house, seen from the end: open south front with a curtain, high vents, roosts over a droppings board at the back, nests on the dark end wall, water pan raised, deep litter, floor off the ground</title>
+  <rect width="680" height="410" fill="#ffffff"/>
+  <g transform="translate(0,-122)">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+    <marker id="b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#2f6fa8"/></marker>
+    <pattern id="mesh" width="6" height="6" patternUnits="userSpaceOnUse"><path d="M0,0 L6,6 M6,0 L0,6" stroke="#777" stroke-width="0.8"/></pattern>
+  </defs>
+
+  <!-- end wall (background) -->
+  <polygon points="118,170 534,239 534,419 118,419" fill="#f4f1ea"/>
+
+  <!-- ground and soil -->
+  <rect x="0" y="455" width="680" height="22" fill="#d9cbb3"/>
+  <line x1="0" y1="455" x2="680" y2="455" stroke="#6b5a40" stroke-width="2"/>
+
+  <!-- floor on posts -->
+  <rect x="110" y="419" width="432" height="8" fill="#a98a5f" stroke="#5e4a2e" stroke-width="1.5"/>
+  <g fill="#a98a5f" stroke="#5e4a2e" stroke-width="1.5">
+    <rect x="116" y="427" width="10" height="28"/><rect x="321" y="427" width="10" height="28"/><rect x="526" y="427" width="10" height="28"/>
+  </g>
+  <text x="224" y="446" text-anchor="middle" font-size="13" fill="#333">floor 1 ft or more off the ground</text>
+
+  <!-- deep litter -->
+  <rect x="118" y="410" width="416" height="9" fill="#e6cf86" stroke="#a68b3c" stroke-width="1"/>
+  <text x="290" y="387" text-anchor="middle" font-size="13" fill="#333">deep litter</text><text x="290" y="403" text-anchor="middle" font-size="13" fill="#333">2–4 in</text>
+
+  <!-- front (south) wall: solid low part, open wired part, solid top -->
+  <rect x="110" y="329" width="8" height="90" fill="#8a6d45"/>
+  <rect x="110" y="167" width="8" height="36" fill="#8a6d45"/>
+  <rect x="111" y="203" width="6" height="126" fill="url(#mesh)" stroke="#777" stroke-width="0.8"/>
+  <!-- curtain rolled up at top of opening -->
+  <rect x="97" y="200" width="34" height="13" rx="6" fill="#c9b9e0" stroke="#5f4f80" stroke-width="1.5"/>
+
+  <!-- back (north) wall with high vent -->
+  <rect x="534" y="262" width="8" height="157" fill="#8a6d45"/>
+  <rect x="535" y="240" width="6" height="22" fill="url(#mesh)" stroke="#777" stroke-width="0.8"/>
+
+  <!-- roof -->
+  <polygon points="92,156 560,234 560,242 92,164" fill="#6d6d6d" stroke="#333" stroke-width="1.5"/>
+
+  <!-- air flow -->
+  <path d="M40,256 C120,256 170,238 240,226 C330,208 450,218 568,251" fill="none" stroke="#2f6fa8" stroke-width="2.4" stroke-dasharray="7 5" marker-end="url(#b)"/>
+  <text x="8" y="244" font-size="13" fill="#2f6fa8">fresh air in</text>
+
+  <!-- water pan on a stand, 18 in up -->
+  <g stroke="#444" stroke-width="2" fill="none">
+    <line x1="196" y1="370" x2="190" y2="410"/><line x1="234" y1="370" x2="240" y2="410"/>
+  </g>
+  <path d="M186,358 L244,358 L238,370 L192,370 Z" fill="#9fc3df" stroke="#2f5f86" stroke-width="2"/>
+  <line x1="176" y1="363" x2="176" y2="419" stroke="#333" stroke-width="1.4" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="170" y="390" text-anchor="end" font-size="13" fill="#333">18 in</text>
+  <text x="215" y="349" text-anchor="middle" font-size="13" fill="#333">water pan</text>
+
+  <!-- nests on the end wall, bottom level with the roosts -->
+  <g stroke="#5e4a2e" stroke-width="2">
+    <polygon points="334,311 372,311 366,299 340,299" fill="#c8b48e"/>
+    <polygon points="374,311 412,311 406,299 380,299" fill="#c8b48e"/>
+    <rect x="334" y="311" width="38" height="36" fill="#b89a68"/>
+    <rect x="374" y="311" width="38" height="36" fill="#b89a68"/>
+  </g>
+  <rect x="341" y="318" width="24" height="20" rx="3" fill="#3d3326"/>
+  <rect x="381" y="318" width="24" height="20" rx="3" fill="#3d3326"/>
+  <line x1="326" y1="356" x2="420" y2="356" stroke="#5e4a2e" stroke-width="4" stroke-linecap="round"/>
+  <g stroke="#5e4a2e" stroke-width="3"><line x1="340" y1="347" x2="340" y2="410"/><line x1="406" y1="347" x2="406" y2="410"/></g>
+  <text x="373" y="244" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">NESTS on the dark end wall</text>
+  <text x="373" y="260" text-anchor="middle" font-size="13" fill="#333">1 per 4 hens, 12 in each way,</text>
+  <text x="373" y="276" text-anchor="middle" font-size="13" fill="#333">sloped roof, landing pole,</text>
+  <text x="373" y="292" text-anchor="middle" font-size="13" fill="#333">never lower than the roosts</text>
+
+  <!-- droppings board -->
+  <rect x="440" y="377" width="94" height="5" fill="#8a6d45"/>
+  <line x1="444" y1="382" x2="444" y2="410" stroke="#5e4a2e" stroke-width="3"/>
+  <g fill="#6b5a40"><circle cx="458" cy="374" r="2.2"/><circle cx="475" cy="374" r="2.2"/><circle cx="492" cy="374" r="2.2"/><circle cx="507" cy="374" r="2.2"/><circle cx="522" cy="374" r="2.2"/></g>
+
+  <!-- roosts seen end-on, 2 ft up, 10 in apart -->
+  <line x1="446" y1="353" x2="534" y2="353" stroke="#5e4a2e" stroke-width="2"/>
+  <g fill="#a98a5f" stroke="#5e4a2e" stroke-width="1.6">
+    <rect x="455" y="342" width="11" height="11" rx="3"/><rect x="485" y="342" width="11" height="11" rx="3"/><rect x="515" y="342" width="11" height="11" rx="3"/>
+  </g>
+  <line x1="460" y1="330" x2="490" y2="330" stroke="#333" stroke-width="1.4" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="475" y="324" text-anchor="middle" font-size="13" fill="#333">10 in</text>
+  <text x="490" y="290" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">ROOSTS</text>
+  <text x="490" y="306" text-anchor="middle" font-size="13" fill="#333">at the back</text>
+  <line x1="452" y1="353" x2="452" y2="419" stroke="#333" stroke-width="1.4" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="458" y="402" font-size="13" fill="#333">2 ft</text>
+
+  <!-- labels outside right -->
+  <line x1="566" y1="379" x2="530" y2="379" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+  <text x="570" y="376" font-size="13" fill="#333">droppings</text>
+  <text x="570" y="392" font-size="13" fill="#333">board: clean</text>
+  <text x="570" y="408" font-size="13" fill="#333">twice a week</text>
+  <text x="570" y="262" font-size="13" fill="#2f6fa8">vent: damp and</text>
+  <text x="570" y="278" font-size="13" fill="#2f6fa8">ammonia out</text>
+  <text x="570" y="320" font-size="13" font-weight="bold" fill="#555">NORTH</text>
+  <text x="570" y="336" font-size="13" fill="#555">(back) 5 ft</text>
+
+  <!-- labels outside left -->
+  <text x="8" y="150" font-size="13" font-weight="bold" fill="#555">SOUTH</text>
+  <text x="8" y="166" font-size="13" fill="#555">(front) 7 ft</text>
+  <text x="8" y="296" font-size="13" fill="#333">open front,</text>
+  <text x="8" y="312" font-size="13" fill="#333">wired; let</text>
+  <text x="8" y="328" font-size="13" fill="#333">the curtain</text>
+  <text x="8" y="344" font-size="13" fill="#333">down on</text>
+  <text x="8" y="360" font-size="13" fill="#333">cold nights</text>
+
+  <!-- depth -->
+  <line x1="110" y1="492" x2="542" y2="492" stroke="#333" stroke-width="1.4" marker-start="url(#a)" marker-end="url(#a)"/>
+  <rect x="290" y="484" width="72" height="16" fill="#ffffff"/>
+  <text x="326" y="497" text-anchor="middle" font-size="13" fill="#333">12 ft deep</text>
+  <text x="340" y="522" text-anchor="middle" font-size="12.5" fill="#555">Cut-away view from the end. A 10 × 12 ft house like this holds about 30 hens.</text>
+  </g>
+</svg>

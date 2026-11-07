@@ -292,7 +292,9 @@ const keywords = q => qwords(q).join(' ');
 const QUANTITY = /\b(how (much|many|long|far|often|big|deep|hot|cold|warm|high|low|fast|heavy|old|wide|thick)|what (size|temperature|temp|dose|dosage|amount|ratio|gauge|depth|distance|spacing))\b/i;
 // drop "(NCAT, p. 6)", "(🖼️ what head means)", "(see Start Here)": page references the AI can't use
 function tidy(t) {
-  let s = String(t || '');
+  // a picture's description is for search and screen readers; the AI can't see the picture, and the words
+  // crowd out the steps around it
+  let s = String(t || '').replace(/\s*\(picture: (?:[^()]|\([^()]*\))*\)/g, '');
   for (let i = 0; i < 2; i++) s = s.replace(/\s*\([^()]*(?:\bpp?\.\s?\d|🖼️|📖|📷|\bsee\b)[^()]*\)/g, '');
   return s.replace(/🖼️\s*/g, '').replace(/\s+([.,;:])/g, '$1').replace(/\s{2,}/g, ' ').trim();
 }
@@ -308,11 +310,13 @@ function focus(text, qt, n, wantNum) {
   const w = String(text).split(/\s+/).filter(Boolean); if (w.length <= n) return w.join(' ');
   const term = w.map(x => { for (const t of qterms(x)) if (qt.has(t)) return t; return ''; });
   const num = w.map(x => wantNum && /\d/.test(x) ? 1 : 0);
+  // two of the question's words side by side ("milk fever") mark the spot better than either alone
+  const pair = w.map((x, j) => j + 1 < w.length && term[j] && term[j + 1] && term[j] !== term[j + 1] ? 1 : 0);
   let best = 0, bestScore = -1;
   for (let i = 0; ; i = Math.min(i + 3, w.length - n)) {
-    const seen = new Set(); let sc = 0, nums = 0;
-    for (let j = i; j < i + n; j++) { if (term[j]) { sc += 1; seen.add(term[j]); } nums += num[j]; }
-    sc += 3 * seen.size + 0.5 * Math.min(nums, 6);   // a few numbers help; a whole table of them shouldn't win
+    const seen = new Set(); let sc = 0, nums = 0, pairs = 0;
+    for (let j = i; j < i + n; j++) { if (term[j]) { sc += 1; seen.add(term[j]); } nums += num[j]; if (j + 1 < i + n) pairs += pair[j]; }
+    sc += 3 * seen.size + 0.5 * Math.min(nums, 6) + 3 * Math.min(pairs, 2);   // a few numbers help; a whole table of them shouldn't win
     if (sc > bestScore) { bestScore = sc; best = i; }
     if (i >= w.length - n) break;
   }
@@ -527,11 +531,11 @@ async function loadLibrary() {
 // pages use for their "Guides › group" bar and Previous / Next links; tools/guide_nav.py --check keeps them in step.
 const SHELVES = [
   ['start', '🧭', 'Start here', 'Emergency finder, A–Z index, Illinois Valley quick reference'],
-  ['health', '🩹', 'Health & medicine', 'Injuries, medicines, childbirth and children, sanitation, garbage and disease'],
+  ['health', '🩹', 'Health & medicine', 'Injuries, recovering from injuries, medicines, childbirth and children, sanitation, garbage and disease'],
   ['water', '💧', 'Water', 'Purifying water, wells, pumps, springs and cisterns'],
-  ['food', '🍞', 'Food', 'Food when it is scarce, cooking from scratch, preserving, root cellars, seeds'],
+  ['food', '🍞', 'Food', 'Food when it is scarce, cooking from scratch, preserving, milk, butter and cheese, root cellars, seeds'],
   ['wild', '🌲', 'Living off the land', 'Hunting, trapping and fishing, wild plants and mushrooms, skills of the valley’s first peoples'],
-  ['animals', '🐐', 'Animals', 'Rabbits, chickens, goats, dairy, bees, horses and draft animals'],
+  ['animals', '🐐', 'Animals', 'Chickens, rabbits, goats, bees, horses and draft animals'],
   ['shelter', '🏠', 'Shelter & building', 'Repairs and building, natural building, mortar, concrete and roads'],
   ['power', '💡', 'Heat, light & power', 'Firewood, fuel, off-grid power, storing energy, candles and lamps, engines and generators'],
   ['making', '🛠️', 'Making & repair', 'Practical math, household make-do, blacksmithing, clothing and leather, paper and ink, electronics'],
@@ -620,6 +624,7 @@ const GUIDE_CARDS = { // guide cards, by shelf (same groups and order as SHELVES
     ['az', '📇 Subject index A–Z', 'Look anything up like the index at the back of a book — no search or AI needed.'],
     ['iv', '🏔️ Illinois Valley quick reference', 'Alerts, weather radio, ham repeaters, local contacts, evacuation levels, frost dates, hunting units, key distances.']],
   health: [['fieldcare', '🩹 Injuries, no help coming', 'Bleeding, wounds, burns, fractures, snakebite, nursing someone for weeks'],
+    ['rehab', '🦵 Recovering from injuries', 'Rehab without a clinic: when to move, exercises for every joint, sprains, backs and shoulders, getting up after bed rest, crutches and walkers you can make.'],
     ['med', '💊 Medical & found medicines', 'What medical books there are and how to use found or expired medicines safely.'],
     ['birth', '👶 Childbirth & small kids', 'Birth with no hospital, newborn care, child illness, teaching kids at home'],
     ['sanit', '🧼 Sanitation, waste & disease', 'Toilets with no sewer, handwashing, laundry, garbage and compost, stopping outbreaks, safe burial']],
@@ -629,13 +634,23 @@ const GUIDE_CARDS = { // guide cards, by shelf (same groups and order as SHELVES
     ['food', '🌾 Food from scratch', 'Acorn and grain flour, masa, sourdough, salt, maple syrup, lard — then bread, tortillas, pasta, hardtack and beans.'],
     ['preserve', '🫙 Preserving food', 'Safe canning at our elevation, drying, smoking, curing, fermenting, eggs'],
     ['cellar', '🥔 Root cellars & food storage', 'Cellars, pits and buried barrels for our warm ground, what each crop needs, cooling without power, sun drying, curing meat, kraut and eggs.'],
+    ['dairy', '🧀 Milk, butter & cheese', 'Clean milk, cooling with no fridge, butter and ghee, yogurt and kefir, soft and hard cheeses, homemade rennet.'],
     ['seeds', '🌱 Your seed bank', 'Planting calendar for all 39 kit varieties, storing and testing seed, which varieties cross, saving seed from fruits, grafting fruit trees.']],
   wild: [['huntfish', '🦌 Hunting, trapping & fishing', 'Local game, field dressing in hot weather, snares, nets, game diseases'],
     ['mush', '🍄 Mushrooms', 'Local deadly mushrooms and their look-alikes, spore prints, what to do after a bad meal, good edibles, drying, and growing shiitake and oysters.'],
     ['native', '🌰 Skills of the valley’s first peoples', 'How the Takelma and their neighbors lived here year-round: acorns, camas, salmon, cordage and baskets, houses, and tending the land with fire.']],
-  animals: [['smallstock', '🐇 Rabbits & chickens', 'Meat and eggs on little bought feed: housing, breeding, hatching, butchering'],
-    ['dairy', '🐐 Goats, dairy & bees', 'Milk goats, butter, cheese and homemade rennet, beekeeping and swarms'],
-    ['horse', '🐴 Horses, mules & draft animals', 'Choosing, feeding and watering, teeth and worms, hoof care and shoeing, saddling and riding, packing, and harness work.']],
+  animals: [['chickens', '🐔 Chickens', 'Eggs and meat year after year: breeds, coops, feeding with no feed store, broody hens and chicks, health with no vet, butchering.'],
+    ['ducks', '🦆 Ducks', 'Eggs, meat and slug control: hardy breeds, simple houses, water without mud, foraging, hatching ducklings, health, butchering.'],
+    ['geese', '🪿 Geese', 'Grazing, guarding, meat and down: geese on grass, nests and goslings, the noisy watch at night, fattening and plucking.'],
+    ['turkeys', '🦃 Turkeys', 'Meat for a household: heritage breeds that breed on their own, roosts, range, poults, blackhead and predators, harvest.'],
+    ['rabbits', '🐇 Rabbits', 'Meat and fur on little feed: hutches and colonies, forage, breeding and kits, health with no vet, butchering and pelts.'],
+    ['goats', '🐐 Goats', 'Milk, meat and brush control: fencing, browse and poisonous plants, kidding, milking, hooves and worms, health with no vet.'],
+    ['sheep', '🐑 Sheep', 'Meat, wool and milk: hardy breeds, fences against coyotes, grazing, lambing, shearing and handling wool, worms and feet, butchering.'],
+    ['pigs', '🐖 Pigs', 'Meat, lard and leftovers: pens and pasture, feeding on scraps and acorns, farrowing, health, butchering, scalding and rendering lard.'],
+    ['cattle', '🐄 Cattle', 'A family milk cow, beef and oxen: choosing, pasture and hay, calving, milking, training a team of oxen, health, butchering.'],
+    ['horse', '🐴 Horses, mules & draft animals', 'Choosing, feeding and watering, teeth and worms, hoof care and shoeing, saddling and riding, packing, and harness work.'],
+    ['bees', '🐝 Bees', 'Honey, wax and pollination: hives you can build, swarms, the bee year here, varroa, harvesting honey and wax, bears and stings.'],
+    ['dogs', '🐕 Dogs', 'Guarding stock, herding and hunting: choosing and raising pups, guardian dogs, training, feeding with no store, health, parvo and rabies.']],
   shelter: [['shelter', '🏠 Shelter & building', 'Roof leaks, one warm room, rot, log and earth building, quake and fire hardening'],
     ['natural', '🧱 Natural building', 'Cob, straw bale, light clay, hempcrete, earth and lime plasters, making lime, thatch'],
     ['masonry', '🏗️ Mortar, concrete & roads', 'Making lime, mortar and concrete by hand, curing, concrete without store cement, why asphalt cannot be made at home, and keeping gravel roads and driveways good.']],
@@ -669,11 +684,12 @@ const GUIDE_CARDS = { // guide cards, by shelf (same groups and order as SHELVES
 // Every page the cards link to: key -> the guide's file name. On the website it is pages/NAME.html; on the
 // drive Southern-Oregon/NAME.html, unless DRIVE_AT / WEB_AT say otherwise (null = not in that edition).
 const PAGES = { sos: 'EMERGENCY-FINDER', az: 'SUBJECT-INDEX', iv: 'ILLINOIS-VALLEY-START-HERE',
-  fieldcare: 'FIELD-CARE-GUIDE', med: 'Medical-READ-ME-FIRST', birth: 'CHILDBIRTH-CHILDREN-GUIDE', sanit: 'SANITATION-GUIDE',
+  fieldcare: 'FIELD-CARE-GUIDE', rehab: 'REHAB-GUIDE', med: 'Medical-READ-ME-FIRST', birth: 'CHILDBIRTH-CHILDREN-GUIDE', sanit: 'SANITATION-GUIDE',
   purify: 'WATER-PURIFICATION-GUIDE', wells: 'WATER-WELLS-GUIDE',
   scarce: 'FOOD-SECURITY-GUIDE', food: 'FOOD-FROM-SCRATCH-GUIDE', preserve: 'PRESERVING-FOOD-GUIDE', cellar: 'ROOT-CELLAR-GUIDE', seeds: 'SEED-BANK-GUIDE',
   huntfish: 'HUNTING-TRAPPING-FISHING-GUIDE', mush: 'MUSHROOM-GUIDE', native: 'NATIVE-SKILLS-GUIDE',
-  smallstock: 'RABBITS-CHICKENS-GUIDE', dairy: 'GOATS-DAIRY-BEES-GUIDE', horse: 'HORSE-GUIDE',
+  rabbits: 'RABBITS-GUIDE', chickens: 'CHICKENS-GUIDE', goats: 'GOATS-GUIDE', bees: 'BEES-GUIDE', horse: 'HORSE-GUIDE', dairy: 'DAIRY-GUIDE',
+  ducks: 'DUCKS-GUIDE', geese: 'GEESE-GUIDE', turkeys: 'TURKEYS-GUIDE', sheep: 'SHEEP-GUIDE', pigs: 'PIGS-GUIDE', cattle: 'CATTLE-GUIDE', dogs: 'DOGS-GUIDE',
   shelter: 'SHELTER-BUILDING-GUIDE', natural: 'NATURAL-BUILDING-GUIDE', masonry: 'MASONRY-ROADS-GUIDE',
   firewood: 'FIREWOOD-GUIDE', fuel: 'FUEL-GUIDE', offgrid: 'OFF-GRID-POWER-GUIDE', storage: 'STORING-ENERGY-GUIDE', light: 'LIGHTING-GUIDE', eng: 'ENGINES-AND-MOTORS-GUIDE',
   math: 'PRACTICAL-MATH-GUIDE', md: 'MAKE-DO-HOUSEHOLD-GUIDE', smith: 'BLACKSMITHING-GUIDE', clothing: 'CLOTHING-LEATHER-GUIDE', paper: 'PAPER-INK-GUIDE',

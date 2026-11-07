@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400" font-family="Arial, Helvetica, sans-serif">
+  <title>The jar test for stored fuel: clear and bright, hazy, a separate bottom layer, or dark with grit</title>
+  <rect width="640" height="400" fill="#ffffff"/>
+  <defs>
+    <g id="jar">
+      <rect x="0" y="0" width="110" height="170" rx="12" fill="#f8fbfd" stroke="#555" stroke-width="2.5"/>
+      <rect x="10" y="-14" width="90" height="16" rx="3" fill="#d6d6d6" stroke="#555" stroke-width="2"/>
+    </g>
+    <pattern id="haze" width="12" height="12" patternUnits="userSpaceOnUse"><rect width="12" height="12" fill="#ead9a6"/><circle cx="3" cy="4" r="1.6" fill="#c9cfd6"/><circle cx="9" cy="9" r="1.3" fill="#c9cfd6"/></pattern>
+  </defs>
+  <text x="320" y="26" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">Draw fuel from the BOTTOM into a clean, clear jar. Let it stand 15 minutes.</text>
+
+  <!-- 1 good -->
+  <use href="#jar" x="25" y="70"/>
+  <rect x="27" y="100" width="106" height="138" rx="10" fill="#f6e7b4"/>
+  <text x="80" y="275" text-anchor="middle" font-size="15" font-weight="bold" fill="#1b5e20">Clear, bright</text>
+  <text x="80" y="294" text-anchor="middle" font-size="13" fill="#222">Good fuel.</text>
+  <text x="80" y="311" text-anchor="middle" font-size="13" fill="#222">Use it.</text>
+
+  <!-- 2 haze -->
+  <use href="#jar" x="180" y="70"/>
+  <rect x="182" y="100" width="106" height="138" rx="10" fill="url(#haze)"/>
+  <text x="235" y="275" text-anchor="middle" font-size="15" font-weight="bold" fill="#a35a00">Hazy, droplets</text>
+  <text x="235" y="294" text-anchor="middle" font-size="13" fill="#222">Water mixed in.</text>
+  <text x="235" y="311" text-anchor="middle" font-size="13" fill="#222">Settle a day, take</text>
+  <text x="235" y="328" text-anchor="middle" font-size="13" fill="#222">fuel off the top,</text>
+  <text x="235" y="345" text-anchor="middle" font-size="13" fill="#222">filter.</text>
+
+  <!-- 3 layer -->
+  <use href="#jar" x="335" y="70"/>
+  <rect x="337" y="100" width="106" height="98" rx="0" fill="#f6e7b4"/>
+  <rect x="337" y="198" width="106" height="40" rx="10" fill="#bcd6ea"/>
+  <line x1="337" y1="198" x2="443" y2="198" stroke="#3b6f99" stroke-width="2"/>
+  <text x="451" y="204" font-size="13" fill="#1f4e79" font-weight="bold">layer</text>
+  <text x="390" y="275" text-anchor="middle" font-size="15" font-weight="bold" fill="#a12a1c">Bottom layer</text>
+  <text x="390" y="294" text-anchor="middle" font-size="13" fill="#222">Free water; in E10,</text>
+  <text x="390" y="311" text-anchor="middle" font-size="13" fill="#222">ethanol + water.</text>
+  <text x="390" y="328" text-anchor="middle" font-size="13" fill="#222">Drain the bottom off.</text>
+  <text x="390" y="345" text-anchor="middle" font-size="13" fill="#222">It won't remix.</text>
+
+  <!-- 4 dark + specks -->
+  <use href="#jar" x="490" y="70"/>
+  <rect x="492" y="100" width="106" height="138" rx="10" fill="#b8893f"/>
+  <g fill="#3a2a1a"><circle cx="512" cy="230" r="2.5"/><circle cx="530" cy="226" r="2"/><circle cx="555" cy="231" r="3"/><circle cx="575" cy="227" r="2"/><circle cx="545" cy="222" r="1.8"/><circle cx="588" cy="231" r="2.2"/><circle cx="520" cy="214" r="1.6"/></g>
+  <text x="545" y="275" text-anchor="middle" font-size="15" font-weight="bold" fill="#a12a1c">Dark, specks</text>
+  <text x="545" y="294" text-anchor="middle" font-size="13" fill="#222">Grit or rust: settle</text>
+  <text x="545" y="311" text-anchor="middle" font-size="13" fill="#222">and filter. Dark, sour</text>
+  <text x="545" y="328" text-anchor="middle" font-size="13" fill="#222">and sticky: old, gummy</text>
+  <text x="545" y="345" text-anchor="middle" font-size="13" fill="#222">fuel; blend or don't use.</text>
+
+  <text x="320" y="385" text-anchor="middle" font-size="13.5" fill="#333">Water fully settles out in about a day. Gum leaves a sticky film when a drop dries on glass.</text>
+</svg>

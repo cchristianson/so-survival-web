@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="470" viewBox="0 0 640 470" font-family="Arial, Helvetica, sans-serif">
+  <title>A three-way trade: potatoes, oranges and beans go round a ring of three households</title>
+  <defs>
+    <marker id="mb" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#7a4e1d"/></marker>
+    <marker id="mg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#2e7d32"/></marker>
+    <marker id="mo" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#d9730d"/></marker>
+  </defs>
+  <rect width="640" height="470" fill="#ffffff"/>
+  <!-- households -->
+  <g stroke="#333" stroke-width="2" fill="#f4f1ea">
+    <rect x="215" y="30" width="210" height="80" rx="8"/>
+    <rect x="20" y="290" width="210" height="80" rx="8"/>
+    <rect x="410" y="290" width="210" height="80" rx="8"/>
+  </g>
+  <g font-size="15" fill="#222" text-anchor="middle">
+    <text x="320" y="56" font-weight="bold" font-size="17">A</text>
+    <text x="320" y="78">has <tspan font-weight="bold" fill="#7a4e1d">potatoes</tspan></text>
+    <text x="320" y="99">wants <tspan font-weight="bold" fill="#d9730d">oranges</tspan></text>
+    <text x="515" y="316" font-weight="bold" font-size="17">B</text>
+    <text x="515" y="338">has <tspan font-weight="bold" fill="#d9730d">oranges</tspan></text>
+    <text x="515" y="359">wants <tspan font-weight="bold" fill="#2e7d32">beans</tspan></text>
+    <text x="125" y="316" font-weight="bold" font-size="17">C</text>
+    <text x="125" y="338">has <tspan font-weight="bold" fill="#2e7d32">beans</tspan></text>
+    <text x="125" y="359">wants <tspan font-weight="bold" fill="#7a4e1d">potatoes</tspan></text>
+  </g>
+  <!-- goods moving round the ring -->
+  <path d="M235,95 C170,140 135,200 128,280" fill="none" stroke="#7a4e1d" stroke-width="4" marker-end="url(#mb)"/>
+  <path d="M240,330 C300,350 340,350 400,330" fill="none" stroke="#2e7d32" stroke-width="4" marker-end="url(#mg)"/>
+  <path d="M512,280 C505,200 470,140 405,95" fill="none" stroke="#d9730d" stroke-width="4" marker-end="url(#mo)"/>
+  <g font-size="15" font-weight="bold">
+    <text x="128" y="175" text-anchor="end" fill="#7a4e1d">potatoes</text>
+    <text x="320" y="370" text-anchor="middle" fill="#2e7d32">beans</text>
+    <text x="512" y="175" fill="#d9730d">oranges</text>
+  </g>
+  <text x="320" y="200" text-anchor="middle" font-size="15" fill="#222">The trader arranges it:</text>
+  <text x="320" y="220" text-anchor="middle" font-size="15" fill="#222">each gets what they want.</text>
+  <text x="320" y="420" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">No two of them can swap directly — but all three can, in a ring.</text>
+  <text x="320" y="446" text-anchor="middle" font-size="14" fill="#444">Enter every trade in the points ledger the same day.</text>
+</svg>

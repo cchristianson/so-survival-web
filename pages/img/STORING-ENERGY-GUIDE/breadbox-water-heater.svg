@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="460" viewBox="0 0 640 460" font-family="Arial, Helvetica, sans-serif">
+  <title>Cross-section of a breadbox solar water heater: a stripped water-heater tank in an insulated, glazed box, tilted so hot water collects at the top</title>
+  <rect width="640" height="460" fill="#ffffff"/>
+  <defs>
+    <marker id="s" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#d68a00"/></marker>
+    <marker id="w" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+    <pattern id="ins" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#f6e7a8"/><line x1="0" y1="0" x2="0" y2="8" stroke="#c9a93a" stroke-width="3"/></pattern>
+  </defs>
+
+  <!-- sun from the south (left) -->
+  <circle cx="60" cy="60" r="26" fill="#ffd34d" stroke="#d68a00" stroke-width="2"/>
+  <text x="60" y="22" text-anchor="middle" font-size="13" fill="#333">sun (south)</text>
+  <g stroke="#d68a00" stroke-width="2.5" marker-end="url(#s)"><line x1="92" y1="72" x2="226" y2="250"/><line x1="82" y1="94" x2="196" y2="264"/></g>
+
+  <!-- the box, tilted: drawn flat then rotated -->
+  <g transform="translate(150,300) rotate(-28)">
+    <!-- insulation shell: bottom and both ends -->
+    <rect x="0" y="0" width="380" height="120" fill="url(#ins)" stroke="#5e4a1e" stroke-width="2"/>
+    <!-- air space -->
+    <rect x="22" y="12" width="336" height="86" fill="#fbfbfb"/>
+    <!-- glazing on the sunny face -->
+    <line x1="0" y1="0" x2="380" y2="0" stroke="#5aa9d6" stroke-width="7"/>
+    <!-- tank, painted dark -->
+    <rect x="40" y="26" width="300" height="62" rx="28" fill="#3a3a3a" stroke="#111" stroke-width="2"/>
+    <text x="190" y="53" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">old glass-lined water-heater tank</text>
+    <text x="190" y="71" text-anchor="middle" font-size="13" fill="#ddd">outer jacket stripped off</text>
+    <text x="170" y="-10" font-size="13" fill="#1f5f99" font-weight="bold">one layer of glazing</text>
+  </g>
+
+  <!-- stand -->
+  <g stroke="#7a5a3a" stroke-width="7"><line x1="215" y1="404" x2="215" y2="430"/><line x1="500" y1="250" x2="500" y2="430"/></g>
+  <rect x="198" y="430" width="34" height="14" fill="#b9b3a7" stroke="#555"/>
+  <rect x="483" y="430" width="34" height="14" fill="#b9b3a7" stroke="#555"/>
+  <line x1="0" y1="444" x2="640" y2="444" stroke="#6b6359" stroke-width="2"/>
+  <text x="525" y="412" font-size="13" fill="#222">stand on</text>
+  <text x="525" y="428" font-size="13" fill="#222">footings</text>
+
+  <!-- cold in through the low end wall, drain below it -->
+  <path d="M30,350 L177,350 L210,332" fill="none" stroke="#1f5f99" stroke-width="5" marker-end="url(#w)"/>
+  <text x="20" y="338" font-size="13.5" font-weight="bold" fill="#1f5f99">cold in, low end</text>
+  <line x1="150" y1="350" x2="150" y2="392" stroke="#555" stroke-width="4"/>
+  <rect x="140" y="392" width="20" height="14" fill="#888" stroke="#333"/>
+  <text x="20" y="384" font-size="13" fill="#222">drain valve:</text>
+  <text x="20" y="400" font-size="13" fill="#222">empty it before</text>
+  <text x="20" y="416" font-size="13" fill="#222">freezing weather</text>
+
+  <!-- hot out through the high end wall, with the relief valve -->
+  <path d="M477,191 L512,172 L620,172" fill="none" stroke="#c0392b" stroke-width="5" marker-end="url(#w)"/>
+  <text x="625" y="160" text-anchor="end" font-size="13.5" font-weight="bold" fill="#c0392b">hot out, high end</text>
+  <rect x="547" y="172" width="16" height="22" fill="#f5c542" stroke="#333" stroke-width="1.5"/>
+  <line x1="555" y1="194" x2="555" y2="236" stroke="#555" stroke-width="4"/>
+  <g font-size="13" fill="#222" font-weight="bold">
+    <text x="566" y="210">relief</text>
+    <text x="566" y="226">valve</text>
+  </g>
+  <text x="520" y="262" font-size="13" fill="#333">(pressure-and-</text>
+  <text x="520" y="277" font-size="13" fill="#333">temperature)</text>
+
+  <!-- insulation label -->
+  <text x="250" y="408" font-size="13" fill="#5e4a1e" font-weight="bold">insulation, R-10 or more,</text>
+  <text x="250" y="424" font-size="13" fill="#5e4a1e" font-weight="bold">on sides and bottom</text>
+  <text x="400" y="30" font-size="13" fill="#333">About 300 lb per full tank:</text>
+  <text x="400" y="46" font-size="13" fill="#333">check a roof before using it.</text>
+</svg>

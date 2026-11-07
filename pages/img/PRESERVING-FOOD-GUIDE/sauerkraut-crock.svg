@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="440" viewBox="0 0 640 440" font-family="Arial, Helvetica, sans-serif">
+  <title>Sauerkraut in a crock, cut away: cabbage held under brine by a bag of brine</title>
+  <rect width="640" height="440" fill="#ffffff"/>
+
+  <!-- crock, cut away -->
+  <path d="M40,60 L48,350 C50,370 64,380 84,380 L276,380 C296,380 310,370 312,350 L320,60" fill="#efe6d6" stroke="#6b5537" stroke-width="5"/>
+  <rect x="32" y="52" width="296" height="14" rx="5" fill="#c9b18a" stroke="#6b5537" stroke-width="2"/>
+  <!-- cabbage packed in brine -->
+  <path d="M50,190 L57,348 C59,362 70,370 86,370 L274,370 C290,370 301,362 303,348 L310,190 Z" fill="#cfe0a6"/>
+  <g stroke="#8aa64e" stroke-width="2" fill="none">
+    <path d="M70,215 C110,205 140,225 180,212"/><path d="M190,220 C230,208 260,228 296,214"/>
+    <path d="M66,250 C100,240 150,262 190,248"/><path d="M200,256 C240,244 270,262 300,250"/>
+    <path d="M68,290 C108,280 150,300 190,286"/><path d="M196,294 C236,282 266,300 298,288"/>
+    <path d="M72,330 C112,320 156,340 196,326"/><path d="M200,334 C236,324 262,340 292,330"/>
+  </g>
+  <!-- brine over the cabbage -->
+  <path d="M49,160 L50,190 L310,190 L311,160 Z" fill="#cfe3ef"/>
+  <line x1="49" y1="160" x2="311" y2="160" stroke="#3d6f8e" stroke-width="2" stroke-dasharray="6 4"/>
+  <!-- bag of brine pressing down -->
+  <path d="M52,166 C52,120 90,96 180,96 C270,96 308,120 308,166 C260,176 100,176 52,166 Z" fill="#b8d4e3" fill-opacity="0.9" stroke="#3d6f8e" stroke-width="3"/>
+  <path d="M168,96 C166,82 172,74 180,70 C188,74 194,82 192,96" fill="#b8d4e3" stroke="#3d6f8e" stroke-width="3"/>
+  <rect x="170" y="66" width="20" height="8" fill="#3d6f8e"/>
+
+  <!-- labels -->
+  <g font-size="14" fill="#222">
+    <line x1="230" y1="120" x2="348" y2="96" stroke="#333" stroke-width="1.2"/>
+    <text x="354" y="90" font-weight="bold">Weight: a sealed bag of brine</text>
+    <text x="354" y="108">3 quarts water + 4½ Tbsp salt.</text>
+    <text x="354" y="126">If it leaks, the brine stays salty.</text>
+
+    <line x1="300" y1="178" x2="348" y2="176" stroke="#333" stroke-width="1.2"/>
+    <text x="354" y="172" font-weight="bold">Brine covers the cabbage</text>
+    <text x="354" y="190">Low? Top up with 1½ Tbsp salt</text>
+    <text x="354" y="208">per quart of water.</text>
+
+    <line x1="290" y1="270" x2="348" y2="262" stroke="#333" stroke-width="1.2"/>
+    <text x="354" y="258" font-weight="bold">Shredded cabbage, packed</text>
+    <text x="354" y="276">3 Tbsp canning salt per 5 lb</text>
+    <text x="354" y="294">(¾ cup per 25 lb).</text>
+    <text x="354" y="312">A 1-gallon crock holds 5 lb.</text>
+  </g>
+
+  <rect x="20" y="394" width="600" height="40" rx="6" fill="#f4efe4" stroke="#b9a98a"/>
+  <text x="320" y="419" text-anchor="middle" font-size="14" fill="#222"><tspan font-weight="bold">3–4 weeks at 70–75 °F</tspan>, or <tspan font-weight="bold">5–6 weeks at 60–65 °F</tspan>. Skim off any scum.</text>
+</svg>

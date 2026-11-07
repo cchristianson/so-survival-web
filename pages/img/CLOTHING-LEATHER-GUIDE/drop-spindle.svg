@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="480" viewBox="0 0 640 480" font-family="Arial, Helvetica, sans-serif">
+  <title>A homemade drop spindle: dowel, hook notch and whorl, with sizes</title>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker></defs>
+  <rect width="640" height="480" fill="#ffffff"/>
+  <!-- dowel with point -->
+  <path d="M192,60 L208,60 L208,390 L200,420 L192,390 Z" fill="#e7cfa8" stroke="#6b4a24" stroke-width="2"/>
+  <!-- notch near the top -->
+  <path d="M208.5,85 L202,90 L208.5,95 Z" fill="#ffffff" stroke="#6b4a24" stroke-width="1.5"/>
+  <!-- yarn leader: wound on above the whorl, up the shaft, half-hitch at the hook -->
+  <line x1="191" y1="366" x2="209" y2="360" stroke="#7a5aa8" stroke-width="2.5"/>
+  <line x1="191" y1="360" x2="209" y2="354" stroke="#7a5aa8" stroke-width="2.5"/>
+  <line x1="191" y1="354" x2="209" y2="348" stroke="#7a5aa8" stroke-width="2.5"/>
+  <line x1="191" y1="348" x2="209" y2="342" stroke="#7a5aa8" stroke-width="2.5"/>
+  <line x1="191" y1="342" x2="209" y2="336" stroke="#7a5aa8" stroke-width="2.5"/>
+  <line x1="191" y1="336" x2="209" y2="330" stroke="#7a5aa8" stroke-width="2.5"/>
+  <path d="M209,331 L212,96 C218,92 214,84 206,86 C198,88 200,96 208,94 C212,80 214,60 208,20" fill="none" stroke="#7a5aa8" stroke-width="2.5"/>
+  <!-- whorl -->
+  <rect x="162" y="369" width="76" height="12" rx="3" fill="#b07d45" stroke="#6b4a24" stroke-width="2"/>
+  <!-- spin arrow -->
+  <path d="M150,400 A52,12 0 0 0 250,400" fill="none" stroke="#333" stroke-width="1.8" marker-end="url(#a)"/>
+  <!-- overall length -->
+  <line x1="120" y1="62" x2="120" y2="418" stroke="#333" stroke-width="1.6" marker-start="url(#a)" marker-end="url(#a)"/>
+  <line x1="112" y1="60" x2="190" y2="60" stroke="#999" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="112" y1="420" x2="196" y2="420" stroke="#999" stroke-width="1" stroke-dasharray="3 3"/>
+  <text transform="translate(104,240) rotate(-90)" text-anchor="middle" font-size="16" font-weight="bold" fill="#222">12 in long, ½ in thick</text>
+  <!-- notch distance -->
+  <line x1="236" y1="62" x2="236" y2="88" stroke="#333" stroke-width="1.4" marker-start="url(#a)" marker-end="url(#a)"/>
+  <!-- whorl to point distance -->
+  <line x1="252" y1="377" x2="252" y2="418" stroke="#333" stroke-width="1.4" marker-start="url(#a)" marker-end="url(#a)"/>
+  <!-- labels -->
+  <g font-size="15" fill="#222">
+    <text x="262" y="72" font-weight="bold">Hook: a ⅛-in notch,</text>
+    <text x="262" y="91">1 in from the blunt end</text>
+    <text x="262" y="150" font-weight="bold" fill="#5b3f86">Yarn leader (18 in):</text>
+    <text x="262" y="169">tie it on next to the whorl,</text>
+    <text x="262" y="188">wind it onto the shaft, then</text>
+    <text x="262" y="207">half-hitch it at the hook</text>
+    <text x="262" y="320" font-weight="bold">Whorl: a wooden disk</text>
+    <text x="262" y="339">2–3 in across, glued on</text>
+    <text x="262" y="402" font-weight="bold">1½ in from the point</text>
+    <text x="262" y="440">Spin it like a top. If it wobbles,</text>
+    <text x="262" y="459">re-center the whorl.</text>
+  </g>
+  <line x1="258" y1="328" x2="240" y2="368" stroke="#333" stroke-width="1.3" marker-end="url(#a)"/>
+</svg>

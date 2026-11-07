@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="560" viewBox="0 0 640 560" font-family="Arial, Helvetica, sans-serif">
+  <title>The order for making creek or well water safe: clear it, kill the germs, charcoal only last, then store it covered</title>
+  <rect width="640" height="560" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#555"/></marker>
+  </defs>
+  <text x="320" y="30" text-anchor="middle" font-size="19" font-weight="bold" fill="#222">Making water safe: the order matters</text>
+
+  <!-- box 1 -->
+  <rect x="20" y="48" width="600" height="98" rx="8" fill="#f6efe2" stroke="#8a6d3b" stroke-width="2"/>
+  <circle cx="52" cy="82" r="18" fill="#8a6d3b"/><text x="52" y="89" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">1</text>
+  <text x="82" y="88" font-size="18" font-weight="bold" fill="#222">CLEAR IT</text>
+  <text x="82" y="114" font-size="14.5" fill="#333">Let it settle, strain it through folded cloth,</text>
+  <text x="82" y="133" font-size="14.5" fill="#333">or run it through a sand or biosand filter.</text>
+  <rect x="452" y="64" width="152" height="30" rx="15" fill="#e8a33a"/>
+  <text x="528" y="84" text-anchor="middle" font-size="14" font-weight="bold" fill="#222">NOT safe yet</text>
+
+  <line x1="320" y1="148" x2="320" y2="168" stroke="#555" stroke-width="3" marker-end="url(#a)"/>
+
+  <!-- box 2 -->
+  <rect x="20" y="172" width="600" height="98" rx="8" fill="#e6f2e6" stroke="#3d7a3d" stroke-width="2.5"/>
+  <circle cx="52" cy="206" r="18" fill="#3d7a3d"/><text x="52" y="213" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">2</text>
+  <text x="82" y="212" font-size="18" font-weight="bold" fill="#222">KILL THE GERMS</text>
+  <text x="82" y="238" font-size="14.5" fill="#333">Rolling boil for 1 minute, or 8 drops of 6% bleach</text>
+  <text x="82" y="257" font-size="14.5" fill="#333">per gallon (6 drops of 8.25%) and wait 30 minutes.</text>
+  <rect x="452" y="188" width="152" height="30" rx="15" fill="#3d7a3d"/>
+  <text x="528" y="208" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">Safe from germs</text>
+
+  <line x1="320" y1="272" x2="320" y2="292" stroke="#555" stroke-width="3" marker-end="url(#a)"/>
+
+  <!-- box 3 -->
+  <rect x="20" y="296" width="600" height="98" rx="8" fill="#eeeeee" stroke="#555" stroke-width="2" stroke-dasharray="7 4"/>
+  <circle cx="52" cy="330" r="18" fill="#444"/><text x="52" y="337" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">3</text>
+  <text x="82" y="336" font-size="18" font-weight="bold" fill="#222">CHARCOAL, if you want</text>
+  <text x="82" y="362" font-size="14.5" fill="#333">Better taste and smell, some chemicals out.</text>
+  <text x="82" y="381" font-size="14.5" fill="#333" font-weight="bold">Never instead of step 2: it does not stop germs.</text>
+  <rect x="452" y="312" width="152" height="30" rx="15" fill="#888"/>
+  <text x="528" y="332" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">Optional, always last</text>
+
+  <line x1="320" y1="396" x2="320" y2="416" stroke="#555" stroke-width="3" marker-end="url(#a)"/>
+
+  <!-- box 4 -->
+  <rect x="20" y="420" width="600" height="98" rx="8" fill="#e4eef7" stroke="#2f5d87" stroke-width="2"/>
+  <circle cx="52" cy="454" r="18" fill="#2f5d87"/><text x="52" y="461" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">4</text>
+  <text x="82" y="460" font-size="18" font-weight="bold" fill="#222">STORE IT COVERED</text>
+  <text x="82" y="486" font-size="14.5" fill="#333">A covered container with a tap or narrow spout.</text>
+  <text x="82" y="505" font-size="14.5" fill="#333">Pour it out; never dip a cup into it.</text>
+  <rect x="452" y="436" width="152" height="30" rx="15" fill="#2f5d87"/>
+  <text x="528" y="456" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">Keeps it safe</text>
+
+  <text x="320" y="546" text-anchor="middle" font-size="13.5" fill="#444">Cloudy or very cold water: double the bleach. Neither step 1 nor 2 removes chemicals.</text>
+</svg>

@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="560" viewBox="0 0 640 560" font-family="Arial, Helvetica, sans-serif">
+  <title>Forming a sheet of paper: dip, shake level, couch onto a felt, stack and press</title>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker></defs>
+  <rect width="640" height="560" fill="#ffffff"/>
+  <line x1="320" y1="20" x2="320" y2="540" stroke="#ccc" stroke-width="1.2"/>
+  <line x1="20" y1="280" x2="620" y2="280" stroke="#ccc" stroke-width="1.2"/>
+
+  <!-- 1. dip -->
+  <text x="20" y="34" font-size="16" font-weight="bold" fill="#222">1. Stir, dip, lift out pulp</text>
+  <path d="M40,130 L40,250 L290,250 L290,130" fill="none" stroke="#333" stroke-width="3"/>
+  <rect x="42" y="150" width="246" height="98" fill="#dfe8ee"/>
+  <g fill="#b9c4cc"><circle cx="80" cy="190" r="3"/><circle cx="120" cy="220" r="3"/><circle cx="160" cy="180" r="3"/><circle cx="210" cy="230" r="3"/><circle cx="250" cy="195" r="3"/><circle cx="100" cy="235" r="3"/><circle cx="235" cy="165" r="3"/></g>
+  <text x="165" y="270" text-anchor="middle" font-size="13" fill="#444">vat: water and pulp</text>
+  <!-- mould + deckle going in at a slant -->
+  <g transform="rotate(-22 165 165)">
+    <rect x="95" y="160" width="140" height="10" fill="#d8b47c" stroke="#6b4a24" stroke-width="1.5"/>
+    <rect x="95" y="152" width="140" height="8" fill="#e6c995" stroke="#6b4a24" stroke-width="1.5"/>
+  </g>
+  <path d="M60,95 C70,250 250,260 275,110" fill="none" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
+  <text x="20" y="58" font-size="13" fill="#444">mould with the deckle on top:</text>
+  <text x="20" y="75" font-size="13" fill="#444">in at a slant, scoop, lift out level</text>
+
+  <!-- 2. level and shake (seen from above) -->
+  <text x="340" y="34" font-size="16" font-weight="bold" fill="#222">2. Hold it level and shake</text>
+  <text x="340" y="54" font-size="13" fill="#444">(seen from above)</text>
+  <rect x="405" y="90" width="150" height="110" fill="#d8b47c" stroke="#6b4a24" stroke-width="2"/>
+  <rect x="420" y="105" width="120" height="80" fill="#efe9da" stroke="#6b4a24" stroke-width="1.5"/>
+  <line x1="480" y1="62" x2="480" y2="80" stroke="#333" stroke-width="2.2" marker-start="url(#a)" marker-end="url(#a)"/>
+  <line x1="480" y1="210" x2="480" y2="228" stroke="#333" stroke-width="2.2" marker-start="url(#a)" marker-end="url(#a)"/>
+  <line x1="375" y1="145" x2="395" y2="145" stroke="#333" stroke-width="2.2" marker-start="url(#a)" marker-end="url(#a)"/>
+  <line x1="565" y1="145" x2="585" y2="145" stroke="#333" stroke-width="2.2" marker-start="url(#a)" marker-end="url(#a)"/>
+    <text x="480" y="246" text-anchor="middle" font-size="13" fill="#444">gently, front to back, then side to side</text>
+  <text x="340" y="266" font-size="14" fill="#222">Keep it level, then lift off the deckle.</text>
+
+  <!-- 3. couch -->
+  <text x="20" y="306" font-size="16" font-weight="bold" fill="#222">3. Couch: turn it face down</text>
+  <text x="20" y="326" font-size="14" fill="#222">onto a damp felt, press, lift away</text>
+  <rect x="50" y="470" width="230" height="16" fill="#8b8f99" stroke="#333" stroke-width="1.5"/>
+  <text x="110" y="508" text-anchor="middle" font-size="13" fill="#444">damp felt</text>
+  <rect x="80" y="464" width="170" height="6" fill="#efe9da" stroke="#9c927a" stroke-width="1"/>
+  <g transform="rotate(-8 165 440)">
+    <rect x="65" y="430" width="200" height="12" fill="#d8b47c" stroke="#6b4a24" stroke-width="1.5"/>
+    <line x1="65" y1="443" x2="265" y2="443" stroke="#4d5a66" stroke-width="2"/>
+  </g>
+  <path d="M270,400 C290,430 290,450 268,455" fill="none" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
+  <text x="20" y="396" font-size="13" fill="#444">mould, screen side down</text>
+  <text x="20" y="536" font-size="13" fill="#444">The wet sheet stays on the felt.</text>
+  <line x1="200" y1="530" x2="200" y2="474" stroke="#333" stroke-width="1.2" marker-end="url(#a)"/>
+
+  <!-- 4. stack and press -->
+  <text x="340" y="306" font-size="16" font-weight="bold" fill="#222">4. Stack felt, sheet, felt…</text>
+  <text x="340" y="326" font-size="14" fill="#222">then press hard</text>
+  <rect x="380" y="372" width="200" height="14" fill="#a9773f" stroke="#6b4a24" stroke-width="1.5"/>
+  <g stroke="#333" stroke-width="1.2">
+    <rect x="390" y="386" width="180" height="12" fill="#8b8f99"/>
+    <rect x="400" y="398" width="160" height="5" fill="#efe9da"/>
+    <rect x="390" y="403" width="180" height="12" fill="#8b8f99"/>
+    <rect x="400" y="415" width="160" height="5" fill="#efe9da"/>
+    <rect x="390" y="420" width="180" height="12" fill="#8b8f99"/>
+    <rect x="400" y="432" width="160" height="5" fill="#efe9da"/>
+    <rect x="390" y="437" width="180" height="12" fill="#8b8f99"/>
+  </g>
+  <rect x="380" y="449" width="200" height="14" fill="#a9773f" stroke="#6b4a24" stroke-width="1.5"/>
+  <line x1="480" y1="340" x2="480" y2="368" stroke="#333" stroke-width="3" marker-end="url(#a)"/>
+  <text x="590" y="380" font-size="13" fill="#444">board</text>
+  <text x="590" y="458" font-size="13" fill="#444">board</text>
+  <text x="590" y="414" font-size="13" fill="#444">felts</text>
+  <text x="480" y="490" text-anchor="middle" font-size="13" fill="#444">weight, stones, a jack under a beam</text>
+  <text x="480" y="507" text-anchor="middle" font-size="13" fill="#444">or a cider press</text>
+  <text x="340" y="536" font-size="13" fill="#444">Then hang the sheets to dry slowly.</text>
+</svg>

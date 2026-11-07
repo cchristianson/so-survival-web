@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="420" viewBox="0 0 680 420" font-family="Arial, Helvetica, sans-serif">
+  <title>What a candled egg looks like: clear (not fertile), living embryo with spreading veins, dead embryo with a blood ring, and a living egg on day 14, dark and well filled</title>
+  <rect width="680" height="420" fill="#ffffff"/>
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="55%" r="60%">
+      <stop offset="0" stop-color="#fff6dd"/><stop offset="0.7" stop-color="#f7cf86"/><stop offset="1" stop-color="#e9a548"/>
+    </radialGradient>
+    <clipPath id="egg" clipPathUnits="userSpaceOnUse">
+      <path d="M0,-74 C36,-74 56,-40 56,-6 C56,32 30,74 0,74 C-30,74 -56,32 -56,-6 C-56,-40 -36,-74 0,-74 Z"/>
+    </clipPath>
+  </defs>
+
+  <text x="340" y="24" text-anchor="middle" font-size="15" fill="#222">Hold each egg <tspan font-weight="bold">large end up</tspan> to a bright light in a <tspan font-weight="bold">dark</tspan> room.</text>
+
+  <!-- dark panels -->
+  <rect x="18" y="58" width="480" height="196" rx="8" fill="#262626"/>
+  <rect x="510" y="58" width="152" height="196" rx="8" fill="#262626"/>
+  <text x="258" y="50" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">DAY 7</text>
+  <text x="586" y="50" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">DAY 14</text>
+
+  <!-- 1 clear -->
+  <g transform="translate(98,156)">
+    <path d="M0,-74 C36,-74 56,-40 56,-6 C56,32 30,74 0,74 C-30,74 -56,32 -56,-6 C-56,-40 -36,-74 0,-74 Z" fill="url(#glow)"/>
+    <g clip-path="url(#egg)">
+      <path d="M-60,-62 Q0,-54 60,-62 L60,-80 L-60,-80 Z" fill="#fffbef" stroke="#b07a2c" stroke-width="1.2"/>
+      <circle cx="0" cy="6" r="30" fill="#efb35a" opacity="0.45"/>
+    </g>
+  </g>
+
+  <!-- 2 living -->
+  <g transform="translate(258,156)">
+    <path d="M0,-74 C36,-74 56,-40 56,-6 C56,32 30,74 0,74 C-30,74 -56,32 -56,-6 C-56,-40 -36,-74 0,-74 Z" fill="url(#glow)"/>
+    <g clip-path="url(#egg)">
+      <path d="M-60,-62 Q0,-54 60,-62 L60,-80 L-60,-80 Z" fill="#fffbef" stroke="#b07a2c" stroke-width="1.2"/>
+      <circle cx="0" cy="6" r="32" fill="#efb35a" opacity="0.45"/>
+      <g stroke="#b3261e" stroke-width="1.7" fill="none" stroke-linecap="round">
+        <path d="M0,0 C10,-8 20,-6 30,-16"/><path d="M0,0 C-12,-6 -20,-2 -32,-12"/>
+        <path d="M0,0 C8,10 18,12 26,26"/><path d="M0,0 C-8,12 -18,14 -24,28"/>
+        <path d="M0,0 C2,-14 -4,-22 2,-34"/><path d="M0,0 C14,2 24,8 36,6"/>
+        <path d="M0,0 C-14,2 -26,8 -36,4"/><path d="M0,0 C2,14 -2,24 4,36"/>
+        <path d="M20,-11 L26,-4"/><path d="M-20,-6 L-24,2"/><path d="M14,12 L22,8"/>
+      </g>
+      <circle cx="0" cy="0" r="7" fill="#4a160e"/>
+    </g>
+  </g>
+
+  <!-- 3 dead: blood ring -->
+  <g transform="translate(418,156)">
+    <path d="M0,-74 C36,-74 56,-40 56,-6 C56,32 30,74 0,74 C-30,74 -56,32 -56,-6 C-56,-40 -36,-74 0,-74 Z" fill="url(#glow)"/>
+    <g clip-path="url(#egg)">
+      <path d="M-60,-62 Q0,-54 60,-62 L60,-80 L-60,-80 Z" fill="#fffbef" stroke="#b07a2c" stroke-width="1.2"/>
+      <circle cx="0" cy="6" r="32" fill="#efb35a" opacity="0.45"/>
+      <path d="M-28,4 C-30,-18 -8,-30 10,-26 C28,-22 34,-2 30,14 C26,30 6,38 -10,32 C-24,28 -27,18 -28,4 Z" fill="none" stroke="#a51f17" stroke-width="3.2"/>
+      <circle cx="6" cy="2" r="4" fill="#6b2a1a"/>
+    </g>
+  </g>
+
+  <!-- 4 day 14 living: dark, well filled, sharp line at the air cell -->
+  <g transform="translate(586,156)">
+    <path d="M0,-74 C36,-74 56,-40 56,-6 C56,32 30,74 0,74 C-30,74 -56,32 -56,-6 C-56,-40 -36,-74 0,-74 Z" fill="url(#glow)"/>
+    <g clip-path="url(#egg)">
+      <path d="M-60,-48 Q0,-38 60,-48 L60,80 L-60,80 Z" fill="#4e2716"/>
+      <path d="M-60,-48 Q0,-38 60,-48 L60,-80 L-60,-80 Z" fill="#fffbef"/>
+      <path d="M-60,-48 Q0,-38 60,-48" fill="none" stroke="#1c0c05" stroke-width="2.5"/>
+    </g>
+  </g>
+
+  <!-- labels -->
+  <g font-size="13" fill="#333" text-anchor="middle">
+    <text x="98" y="276" font-size="14" font-weight="bold" fill="#222">CLEAR</text>
+    <text x="98" y="294">looks like a fresh</text>
+    <text x="98" y="310">egg: not fertile.</text>
+    <text x="98" y="326" font-weight="bold">Take out;</text>
+    <text x="98" y="342">good to eat.</text>
+
+    <text x="258" y="276" font-size="14" font-weight="bold" fill="#222">LIVING</text>
+    <text x="258" y="294">dark spot with</text>
+    <text x="258" y="310">veins spreading</text>
+    <text x="258" y="326">all ways.</text>
+    <text x="258" y="342" font-weight="bold">Keep.</text>
+
+    <text x="418" y="276" font-size="14" font-weight="bold" fill="#222">DEAD</text>
+    <text x="418" y="294">a ring or streak</text>
+    <text x="418" y="310">of blood, no veins.</text>
+    <text x="418" y="326" font-weight="bold">Take out and</text>
+    <text x="418" y="342" font-weight="bold">throw away.</text>
+
+    <text x="586" y="276" font-size="14" font-weight="bold" fill="#222">LIVING</text>
+    <text x="586" y="294">dark, well filled,</text>
+    <text x="586" y="310">a sharp line under</text>
+    <text x="586" y="326">the air cell.</text>
+    <text x="586" y="342" font-weight="bold">Keep.</text>
+  </g>
+  <text x="586" y="376" text-anchor="middle" font-size="12.5" fill="#555">The air cell at the top</text>
+  <text x="586" y="392" text-anchor="middle" font-size="12.5" fill="#555">grows as days pass.</text>
+  <text x="258" y="384" text-anchor="middle" font-size="12.5" fill="#555">Brown eggs show 2–3 days later than white ones.</text>
+</svg>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="430" viewBox="0 0 640 430" font-family="Arial, Helvetica, sans-serif">
+  <title>Finding rafter length for a 20 ft wide cabin with a 6 in 12 roof</title>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker></defs>
+  <rect width="640" height="430" fill="#ffffff"/>
+  <!-- walls -->
+  <rect x="62" y="300" width="16" height="70" fill="#d9d4cb" stroke="#555" stroke-width="2"/>
+  <rect x="562" y="300" width="16" height="70" fill="#d9d4cb" stroke="#555" stroke-width="2"/>
+  <line x1="40" y1="370" x2="600" y2="370" stroke="#777" stroke-width="1.5"/>
+  <!-- overhangs (dashed) -->
+  <g stroke="#a9773f" stroke-width="7" stroke-dasharray="6 5" stroke-linecap="butt">
+    <line x1="70" y1="300" x2="30" y2="320"/>
+    <line x1="570" y1="300" x2="610" y2="320"/>
+  </g>
+  <!-- rafters -->
+  <g stroke="#a9773f" stroke-width="8" stroke-linecap="round">
+    <line x1="70" y1="300" x2="320" y2="175"/>
+    <line x1="570" y1="300" x2="320" y2="175"/>
+  </g>
+  <!-- run and rise -->
+  <line x1="70" y1="300" x2="570" y2="300" stroke="#555" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <line x1="320" y1="175" x2="320" y2="300" stroke="#555" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <g stroke="#333" stroke-width="1.6" marker-start="url(#a)" marker-end="url(#a)">
+    <line x1="72" y1="322" x2="318" y2="322"/>
+    <line x1="72" y1="398" x2="568" y2="398"/>
+  </g>
+  <!-- pitch triangle under the right rafter -->
+  <path d="M500,265 L440,265 L440,235" fill="none" stroke="#1f5f8b" stroke-width="2.2"/>
+  <g font-size="14" font-weight="bold" fill="#1f5f8b">
+    <text x="470" y="282" text-anchor="middle">12 in</text>
+    <text x="434" y="255" text-anchor="end">6 in</text>
+  </g>
+  <!-- labels -->
+  <g font-size="16" fill="#222">
+    <text x="195" y="342" text-anchor="middle" font-weight="bold">run 10 ft</text>
+    <text x="195" y="360" text-anchor="middle" font-size="13" fill="#444">(half the width)</text>
+    <text x="330" y="250" font-weight="bold">rise 5 ft</text>
+    <text transform="translate(186,226) rotate(-26.57)" text-anchor="middle" font-weight="bold" fill="#6b4a24">rafter 11 ft 2⅛ in</text>
+    <text x="320" y="420" text-anchor="middle" font-weight="bold">cabin 20 ft wide</text>
+  </g>
+  <g font-size="15" fill="#222">
+    <text x="20" y="34" font-weight="bold">Rafter = √(run² + rise²)</text>
+    <text x="20" y="56">= √(10² + 5²) = √125 = 11.18 ft</text>
+    <text x="20" y="78">then add the overhang (dashed ends)</text>
+    <text x="620" y="34" text-anchor="end" font-weight="bold" fill="#1f5f8b">Pitch "6 in 12":</text>
+    <text x="620" y="56" text-anchor="end">6 in of rise for every</text>
+    <text x="620" y="76" text-anchor="end">12 in (1 ft) of run</text>
+  </g>
+  <text x="20" y="420" font-size="13" fill="#555">End view.</text>
+</svg>

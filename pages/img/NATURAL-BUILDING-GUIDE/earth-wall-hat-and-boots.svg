@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="520" viewBox="0 0 660 520" font-family="Arial, Helvetica, sans-serif">
+  <title>A good hat and good boots: a cut-through view of an earth wall kept dry by a wide roof overhang and a stone plinth</title>
+  <rect width="660" height="520" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+    <marker id="r" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#3a78b5"/></marker>
+    <pattern id="stone" width="28" height="18" patternUnits="userSpaceOnUse">
+      <rect width="28" height="18" fill="#c4bfb5"/><path d="M0,9 H28 M0,18 H28 M10,0 V9 M22,9 V18" stroke="#7d766b" stroke-width="1.2" fill="none"/>
+    </pattern>
+  </defs>
+
+  <!-- rain -->
+  <g stroke="#3a78b5" stroke-width="1.6" marker-end="url(#r)">
+    <line x1="30" y1="40" x2="14" y2="96"/><line x1="70" y1="30" x2="54" y2="86"/><line x1="110" y1="20" x2="94" y2="76"/>
+  </g>
+  <!-- drip from gutter outlet down to the trench (shown dashed) -->
+  <line x1="64" y1="168" x2="64" y2="398" stroke="#3a78b5" stroke-width="1.4" stroke-dasharray="5 5"/>
+
+  <!-- ground outside slopes away; inside level -->
+  <path d="M10,420 L196,400 L196,404 L10,424 Z" fill="#8f7a5c"/>
+  <rect x="324" y="400" width="336" height="4" fill="#8f7a5c"/>
+  <!-- gravel trench -->
+  <rect x="34" y="410" width="60" height="38" fill="#ddd6c8" stroke="#7d766b" stroke-width="1.2"/>
+  <g fill="#7d766b"><circle cx="44" cy="420" r="3"/><circle cx="58" cy="430" r="3"/><circle cx="72" cy="418" r="3"/><circle cx="84" cy="434" r="3"/><circle cx="48" cy="440" r="3"/><circle cx="68" cy="442" r="3"/></g>
+
+  <!-- footing -->
+  <rect x="180" y="400" width="160" height="56" fill="url(#stone)" stroke="#5e584f" stroke-width="1.5"/>
+  <!-- plinth -->
+  <rect x="196" y="296" width="128" height="104" fill="url(#stone)" stroke="#5e584f" stroke-width="1.5"/>
+  <!-- earth wall -->
+  <rect x="196" y="120" width="128" height="176" fill="#e2c9a0" stroke="#8c6a3c" stroke-width="1.5"/>
+  <!-- outside plaster -->
+  <rect x="190" y="120" width="6" height="176" fill="#f6efe0" stroke="#8c6a3c" stroke-width="1"/>
+  <!-- wooden key rods across the plinth top -->
+  <g stroke="#7a4d22" stroke-width="4" stroke-linecap="round">
+    <line x1="226" y1="326" x2="226" y2="270"/><line x1="260" y1="326" x2="260" y2="270"/><line x1="294" y1="326" x2="294" y2="270"/>
+  </g>
+  <!-- rafter seat on the ring beam -->
+  <polygon points="196,106 324,106 324,59 196,105" fill="#c9a571" stroke="#5e3f1e" stroke-width="1"/>
+  <!-- ring beam -->
+  <rect x="196" y="106" width="128" height="14" fill="#a77b48" stroke="#5e3f1e" stroke-width="1.5"/>
+  <!-- roof -->
+  <polygon points="72,148 430,19 430,7 72,136" fill="#7c6f62" stroke="#4d443b" stroke-width="1.2"/>
+  <!-- gutter -->
+  <path d="M60,140 L60,158 Q60,164 66,164 L80,164 Q86,164 86,158 L86,148" fill="none" stroke="#333" stroke-width="2.4"/>
+
+  <!-- overhang dimension -->
+  <line x1="74" y1="186" x2="188" y2="186" stroke="#333" stroke-width="1.5" marker-start="url(#a)" marker-end="url(#a)"/>
+  <line x1="190" y1="122" x2="190" y2="196" stroke="#333" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="131" y="206" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">overhang 16 in</text>
+  <text x="131" y="222" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">or more, + gutter</text>
+
+  <!-- left labels -->
+  <text x="82" y="262" font-size="13" fill="#222">earth or lime</text>
+  <text x="82" y="278" font-size="13" fill="#222">plaster: never</text>
+  <text x="82" y="294" font-size="13" fill="#222">cement or plastic</text>
+  <line x1="150" y1="250" x2="188" y2="238" stroke="#333" stroke-width="1"/>
+  <text x="10" y="472" font-size="13" fill="#222">ground slopes away; gravel</text>
+  <text x="10" y="488" font-size="13" fill="#222">drain trench; no shrubs</text>
+  <line x1="64" y1="460" x2="64" y2="450" stroke="#333" stroke-width="1"/>
+
+  <!-- right labels -->
+  <text x="440" y="40" font-size="15" font-weight="bold" fill="#2b4c7e">THE HAT</text>
+  <text x="440" y="57" font-size="13" fill="#222">a wide roof keeps rain</text>
+  <text x="440" y="73" font-size="13" fill="#222">off the wall</text>
+  <text x="340" y="117" font-size="13" fill="#222">timber ring beam</text>
+  <text x="340" y="190" font-size="13" fill="#222">earth wall</text>
+  <text x="340" y="206" font-size="13" fill="#444">(cob: 18 in thick or more)</text>
+  <text x="340" y="268" font-size="13" fill="#222">wooden rods every 12–20 in</text>
+  <text x="340" y="284" font-size="13" fill="#222">key the wall to a rough plinth</text>
+  <text x="340" y="300" font-size="13" fill="#222">top (no smooth damp layer)</text>
+  <line x1="338" y1="280" x2="298" y2="290" stroke="#333" stroke-width="1"/>
+  <text x="440" y="340" font-size="15" font-weight="bold" fill="#2b4c7e">THE BOOTS</text>
+  <text x="440" y="357" font-size="13" fill="#222">stone plinth above ground:</text>
+  <text x="440" y="373" font-size="13" fill="#222">about 2 ft for cob, at least</text>
+  <text x="440" y="389" font-size="13" fill="#222">12 in for any earth wall</text>
+  <line x1="436" y1="360" x2="326" y2="350" stroke="#333" stroke-width="1"/>
+  <text x="352" y="430" font-size="13" fill="#222">footing 8 in wider than the wall,</text>
+  <text x="352" y="446" font-size="13" fill="#222">16 in deep</text>
+  <text x="440" y="506" font-size="13" fill="#555">Cut-through view, not to scale.</text>
+</svg>

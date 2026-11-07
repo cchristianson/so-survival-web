@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="410" viewBox="0 0 640 410" font-family="Arial, Helvetica, sans-serif">
+  <title>Tilting a solar panel steeply for winter: about 57 degrees in winter, 42 degrees year-round, never below 10 degrees</title>
+  <rect width="640" height="410" fill="#ffffff"/>
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#d68a00"/></marker></defs>
+
+  <!-- ground -->
+  <rect x="0" y="310" width="640" height="100" fill="#efe9dc"/>
+  <line x1="0" y1="310" x2="640" y2="310" stroke="#6b6359" stroke-width="2"/>
+  <text x="20" y="335" font-size="15" font-weight="bold" fill="#333">NORTH</text>
+  <text x="620" y="335" text-anchor="end" font-size="15" font-weight="bold" fill="#333">SOUTH</text>
+
+  <!-- low winter sun from the south -->
+  <circle cx="590" cy="95" r="26" fill="#ffd34d" stroke="#d68a00" stroke-width="2"/>
+  <text x="590" y="48" text-anchor="middle" font-size="13" fill="#333">Low December</text>
+  <text x="590" y="63" text-anchor="middle" font-size="13" fill="#333">sun, in the south</text>
+  <g stroke="#d68a00" stroke-width="2.5" marker-end="url(#ar)">
+    <line x1="560" y1="112" x2="360" y2="203"/>
+    <line x1="566" y1="128" x2="389" y2="246"/>
+  </g>
+
+  <!-- year-round 42 deg (dashed) -->
+  <line x1="420" y1="310" x2="249" y2="156" stroke="#7a8aa3" stroke-width="7" stroke-dasharray="14 8" stroke-linecap="round"/>
+  <!-- minimum 10 deg (dotted) -->
+  <line x1="420" y1="310" x2="194" y2="270" stroke="#9aa59a" stroke-width="7" stroke-dasharray="3 9" stroke-linecap="round"/>
+  <!-- winter 57 deg (solid) -->
+  <line x1="420" y1="310" x2="295" y2="117" stroke="#1f3b66" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="420" cy="310" r="6" fill="#333"/>
+
+
+  <!-- labels -->
+  <g font-size="14" fill="#1f3b66">
+    <text x="135" y="72" font-weight="bold">WINTER: about 57°</text>
+    <text x="135" y="90">(latitude + 15°): 2.0 sun</text>
+    <text x="135" y="107">hours a day in December</text>
+  </g>
+  <g font-size="14" fill="#55657e">
+    <text x="20" y="160" font-weight="bold">YEAR-ROUND: 42°</text>
+    <text x="20" y="178">(our latitude)</text>
+  </g>
+  <g font-size="14" fill="#5d6b5d">
+    <text x="20" y="245" font-weight="bold">SUMMER: flatter,</text>
+    <text x="20" y="263">but never below 10°</text>
+    <text x="20" y="281">(rain must wash it)</text>
+  </g>
+
+  <g font-size="13.5" fill="#333">
+    <text x="20" y="365">Laid flat, a panel gets only 1.2 sun hours a day in December.</text>
+    <text x="20" y="384">Steep panels also shed snow. Check for winter shade from a ridge or tree to the south.</text>
+  </g>
+  <text x="20" y="402" font-size="13" fill="#555">Side view, Medford numbers. Not to scale.</text>
+</svg>

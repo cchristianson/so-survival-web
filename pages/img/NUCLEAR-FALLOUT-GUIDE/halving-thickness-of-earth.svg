@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="500" viewBox="0 0 640 500" font-family="Arial, Helvetica, sans-serif">
+  <title>Each 3.6 inches of packed earth halves the fallout radiation that gets through; 3 feet cuts it about 1,000 times</title>
+  <rect width="640" height="500" fill="#ffffff"/>
+  <defs><marker id="d" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker></defs>
+  <text x="20" y="30" font-size="16" font-weight="bold" fill="#222">Radiation from fallout on top of 3 ft of packed earth</text>
+  <rect x="110" y="70" width="200" height="34" fill="#b08d62" stroke="#6b5233" stroke-width="1"/>
+  <rect x="110" y="104" width="200" height="34" fill="#a07e55" stroke="#6b5233" stroke-width="1"/>
+  <rect x="110" y="138" width="200" height="34" fill="#b08d62" stroke="#6b5233" stroke-width="1"/>
+  <rect x="110" y="172" width="200" height="34" fill="#a07e55" stroke="#6b5233" stroke-width="1"/>
+  <rect x="110" y="206" width="200" height="34" fill="#b08d62" stroke="#6b5233" stroke-width="1"/>
+  <rect x="110" y="240" width="200" height="34" fill="#a07e55" stroke="#6b5233" stroke-width="1"/>
+  <rect x="110" y="274" width="200" height="34" fill="#b08d62" stroke="#6b5233" stroke-width="1"/>
+  <rect x="110" y="308" width="200" height="34" fill="#a07e55" stroke="#6b5233" stroke-width="1"/>
+  <rect x="110" y="342" width="200" height="34" fill="#b08d62" stroke="#6b5233" stroke-width="1"/>
+  <rect x="110" y="376" width="200" height="34" fill="#a07e55" stroke="#6b5233" stroke-width="1"/>
+  <circle cx="234.1" cy="62.3" r="2" fill="#555"/>
+  <circle cx="267.9" cy="61.3" r="2" fill="#555"/>
+  <circle cx="257.0" cy="61.4" r="2" fill="#555"/>
+  <circle cx="117.7" cy="63.7" r="2" fill="#555"/>
+  <circle cx="296.9" cy="62.8" r="2" fill="#555"/>
+  <circle cx="288.6" cy="65.4" r="2" fill="#555"/>
+  <circle cx="203.9" cy="64.8" r="2" fill="#555"/>
+  <circle cx="218.6" cy="63.1" r="2" fill="#555"/>
+  <circle cx="114.6" cy="64.9" r="2" fill="#555"/>
+  <circle cx="166.8" cy="61.4" r="2" fill="#555"/>
+  <circle cx="262.1" cy="65.2" r="2" fill="#555"/>
+  <circle cx="268.2" cy="65.3" r="2" fill="#555"/>
+  <circle cx="233.0" cy="65.4" r="2" fill="#555"/>
+  <circle cx="112.3" cy="61.6" r="2" fill="#555"/>
+  <circle cx="153.1" cy="64.9" r="2" fill="#555"/>
+  <circle cx="304.6" cy="61.6" r="2" fill="#555"/>
+  <circle cx="168.7" cy="61.2" r="2" fill="#555"/>
+  <circle cx="217.7" cy="62.6" r="2" fill="#555"/>
+  <circle cx="152.1" cy="61.3" r="2" fill="#555"/>
+  <circle cx="247.4" cy="61.2" r="2" fill="#555"/>
+  <circle cx="287.2" cy="64.5" r="2" fill="#555"/>
+  <circle cx="182.8" cy="65.2" r="2" fill="#555"/>
+  <circle cx="140.6" cy="65.7" r="2" fill="#555"/>
+  <circle cx="171.1" cy="63.0" r="2" fill="#555"/>
+  <circle cx="112.7" cy="62.6" r="2" fill="#555"/>
+  <circle cx="178.2" cy="64.5" r="2" fill="#555"/>
+  <circle cx="272.4" cy="63.6" r="2" fill="#555"/>
+  <circle cx="173.9" cy="63.6" r="2" fill="#555"/>
+  <circle cx="250.1" cy="65.7" r="2" fill="#555"/>
+  <circle cx="303.1" cy="65.9" r="2" fill="#555"/>
+  <circle cx="259.0" cy="61.8" r="2" fill="#555"/>
+  <circle cx="115.5" cy="62.1" r="2" fill="#555"/>
+  <circle cx="183.8" cy="63.1" r="2" fill="#555"/>
+  <circle cx="113.8" cy="65.8" r="2" fill="#555"/>
+  <circle cx="147.5" cy="61.2" r="2" fill="#555"/>
+  <circle cx="150.5" cy="62.2" r="2" fill="#555"/>
+  <circle cx="294.2" cy="61.3" r="2" fill="#555"/>
+  <circle cx="179.5" cy="64.2" r="2" fill="#555"/>
+  <circle cx="214.8" cy="62.1" r="2" fill="#555"/>
+  <circle cx="133.2" cy="62.3" r="2" fill="#555"/>
+  <text x="210" y="54" text-anchor="middle" font-size="13.5" fill="#333">fallout dust on top</text>
+  <line x1="310" y1="70" x2="330" y2="70" stroke="#999" stroke-width="1"/>
+  <rect x="336" y="64" width="200.0" height="12" fill="#c0392b"/>
+  <text x="544.0" y="75" font-size="14" font-weight="bold" fill="#222">1,000</text>
+  <line x1="310" y1="104" x2="330" y2="104" stroke="#999" stroke-width="1"/>
+  <rect x="336" y="98" width="100.0" height="12" fill="#c0392b"/>
+  <text x="444.0" y="109" font-size="14" font-weight="bold" fill="#222">500</text>
+  <line x1="310" y1="138" x2="330" y2="138" stroke="#999" stroke-width="1"/>
+  <rect x="336" y="132" width="50.0" height="12" fill="#c0392b"/>
+  <text x="394.0" y="143" font-size="14" font-weight="bold" fill="#222">250</text>
+  <line x1="310" y1="172" x2="330" y2="172" stroke="#999" stroke-width="1"/>
+  <rect x="336" y="166" width="25.0" height="12" fill="#c0392b"/>
+  <text x="369.0" y="177" font-size="14" font-weight="bold" fill="#222">125</text>
+  <line x1="310" y1="206" x2="330" y2="206" stroke="#999" stroke-width="1"/>
+  <rect x="336" y="200" width="12.6" height="12" fill="#c0392b"/>
+  <text x="356.6" y="211" font-size="14" font-weight="bold" fill="#222">63</text>
+  <line x1="310" y1="240" x2="330" y2="240" stroke="#999" stroke-width="1"/>
+  <rect x="336" y="234" width="6.2" height="12" fill="#c0392b"/>
+  <text x="350.2" y="245" font-size="14" font-weight="bold" fill="#222">31</text>
+  <line x1="310" y1="274" x2="330" y2="274" stroke="#999" stroke-width="1"/>
+  <rect x="336" y="268" width="3.2" height="12" fill="#c0392b"/>
+  <text x="347.2" y="279" font-size="14" font-weight="bold" fill="#222">16</text>
+  <line x1="310" y1="308" x2="330" y2="308" stroke="#999" stroke-width="1"/>
+  <rect x="336" y="302" width="1.6" height="12" fill="#c0392b"/>
+  <text x="345.6" y="313" font-size="14" font-weight="bold" fill="#222">8</text>
+  <line x1="310" y1="342" x2="330" y2="342" stroke="#999" stroke-width="1"/>
+  <rect x="336" y="336" width="1" height="12" fill="#c0392b"/>
+  <text x="345.0" y="347" font-size="14" font-weight="bold" fill="#222">4</text>
+  <line x1="310" y1="376" x2="330" y2="376" stroke="#999" stroke-width="1"/>
+  <rect x="336" y="370" width="1" height="12" fill="#c0392b"/>
+  <text x="345.0" y="381" font-size="14" font-weight="bold" fill="#222">2</text>
+  <line x1="310" y1="410" x2="330" y2="410" stroke="#999" stroke-width="1"/>
+  <rect x="336" y="404" width="1" height="12" fill="#c0392b"/>
+  <text x="345.0" y="415" font-size="14" font-weight="bold" fill="#222">1</text>
+  <text x="210" y="92" text-anchor="middle" font-size="14" font-weight="bold" fill="#ffffff">one layer = 3.6 in</text>
+  <line x1="50" y1="70" x2="50" y2="410" stroke="#333" stroke-width="1.6" marker-start="url(#d)" marker-end="url(#d)"/>
+  <text x="40" y="268" text-anchor="end" font-size="14" font-weight="bold" fill="#222" transform="rotate(-90 40 268)">about 3 ft</text>
+  <text x="210" y="434" text-anchor="middle" font-size="14" fill="#333">you, underneath</text>
+  <g font-size="14.5" fill="#222">
+    <text x="20" y="468">Each 3.6 in of packed earth stops about half of what reaches it.</text>
+    <text x="20" y="490">Ten layers: of every 1,000 that start down, about 1 gets through.</text>
+  </g>
+  <text x="350" y="54" font-size="13.5" fill="#c0392b" font-weight="bold">getting through</text>
+</svg>

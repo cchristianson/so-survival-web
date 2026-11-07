@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" font-family="Arial, Helvetica, sans-serif">
+  <title>Candle wicks: the right size, too thick, and too thin</title>
+  <rect width="640" height="420" fill="#ffffff"/>
+
+  <!-- ===== RIGHT ===== -->
+  <g>
+    <rect x="60" y="150" width="100" height="170" fill="#f7efd6" stroke="#8a7a55" stroke-width="2"/>
+    <ellipse cx="110" cy="150" rx="50" ry="10" fill="#f7efd6" stroke="#8a7a55" stroke-width="2"/>
+    <ellipse cx="110" cy="152" rx="42" ry="7" fill="#e6c46e" stroke="#b08a2e" stroke-width="1"/>
+    <path d="M110,60 C125,90 128,115 112,140 C96,115 96,90 110,60 Z" fill="#ffd34d" stroke="#e08a00" stroke-width="2"/>
+    <path d="M110,95 C116,108 116,122 110,134 C104,122 104,108 110,95 Z" fill="#fff6c4"/>
+    <path d="M110,152 L110,130 Q111,121 118,117" fill="none" stroke="#222" stroke-width="3"/>
+    <circle cx="119" cy="116.5" r="3.2" fill="#e2572b"/>
+    <text x="110" y="350" text-anchor="middle" font-size="17" font-weight="bold" fill="#1b5e20">RIGHT</text>
+    <text x="110" y="370" text-anchor="middle" font-size="13" fill="#222">steady flame; tip curls</text>
+    <text x="110" y="386" text-anchor="middle" font-size="13" fill="#222">over and glows; pool</text>
+    <text x="110" y="402" text-anchor="middle" font-size="13" fill="#222">nearly to the rim</text>
+  </g>
+
+  <!-- ===== TOO THICK ===== -->
+  <g>
+    <rect x="270" y="150" width="100" height="170" fill="#f7efd6" stroke="#8a7a55" stroke-width="2"/>
+    <ellipse cx="320" cy="150" rx="50" ry="10" fill="#e6c46e" stroke="#8a7a55" stroke-width="2"/>
+    <!-- drips over the edge -->
+    <path d="M272,150 C268,170 276,190 270,215 C266,232 278,236 280,220 C282,200 278,175 282,152 Z" fill="#efdca8" stroke="#b08a2e" stroke-width="1.5"/>
+    <path d="M362,152 C368,180 360,205 366,240 C370,262 356,264 356,244 C356,215 360,185 356,152 Z" fill="#efdca8" stroke="#b08a2e" stroke-width="1.5"/>
+    <rect x="315" y="112" width="10" height="40" fill="#222"/>
+    <path d="M320,20 C350,60 352,100 320,130 C288,100 290,60 320,20 Z" fill="#ffc23a" stroke="#d26a00" stroke-width="2"/>
+    <path d="M320,70 C330,90 330,110 320,124 C310,110 310,90 320,70 Z" fill="#fff0b0"/>
+    <text x="320" y="350" text-anchor="middle" font-size="17" font-weight="bold" fill="#a12a1c">TOO THICK</text>
+    <text x="320" y="370" text-anchor="middle" font-size="13" fill="#222">big flame melts wax</text>
+    <text x="320" y="386" text-anchor="middle" font-size="13" fill="#222">too fast: it drips.</text>
+    <text x="320" y="402" text-anchor="middle" font-size="13" fill="#222" font-weight="bold">Use fewer strands.</text>
+  </g>
+
+  <!-- ===== TOO THIN ===== -->
+  <g>
+    <rect x="480" y="150" width="100" height="170" fill="#f7efd6" stroke="#8a7a55" stroke-width="2"/>
+    <ellipse cx="530" cy="150" rx="50" ry="10" fill="#f7efd6" stroke="#8a7a55" stroke-width="2"/>
+    <!-- deep narrow pool around a short wick -->
+    <path d="M512,150 L514,178 Q530,186 546,178 L548,150 Z" fill="#e6c46e" stroke="#b08a2e" stroke-width="1"/>
+    <ellipse cx="530" cy="152" rx="18" ry="4" fill="#e6c46e" stroke="#b08a2e" stroke-width="1"/>
+    <line x1="530" y1="152" x2="530" y2="140" stroke="#222" stroke-width="1.5"/>
+    <path d="M530,118 C536,128 536,136 530,144 C524,136 524,128 530,118 Z" fill="#ffd34d" stroke="#e08a00" stroke-width="1.5"/>
+    <text x="530" y="350" text-anchor="middle" font-size="17" font-weight="bold" fill="#a12a1c">TOO THIN</text>
+    <text x="530" y="370" text-anchor="middle" font-size="13" fill="#222">small flame sinks</text>
+    <text x="530" y="386" text-anchor="middle" font-size="13" fill="#222">and drowns in its pool.</text>
+    <text x="530" y="402" text-anchor="middle" font-size="13" fill="#222" font-weight="bold">Use more strands.</text>
+  </g>
+</svg>

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="460" viewBox="0 0 660 460" font-family="Arial, Helvetica, sans-serif">
+  <title>A hog fence seen from the end: woven wire, with low electric wires on the pig side</title>
+  <rect width="660" height="460" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+    <pattern id="mesh" width="16" height="16" patternUnits="userSpaceOnUse">
+      <rect width="16" height="16" fill="#ffffff"/>
+      <path d="M0,0 L0,16 M0,0 L16,0" stroke="#666" stroke-width="1.5"/>
+    </pattern>
+  </defs>
+
+  <text x="330" y="28" text-anchor="middle" font-size="17" font-weight="bold" fill="#222">A hog fence, seen from the end</text>
+  <text x="120" y="60" text-anchor="middle" font-size="15" font-weight="bold" fill="#5a2f22">PIG SIDE</text>
+  <text x="520" y="60" text-anchor="middle" font-size="15" font-weight="bold" fill="#444">OUTSIDE</text>
+
+  <!-- ground: 1 in = 7 px; ground at y=360 -->
+  <rect x="20" y="360" width="620" height="40" fill="#e9dcae"/>
+  <line x1="20" y1="360" x2="640" y2="360" stroke="#333" stroke-width="3"/>
+
+  <!-- post -->
+  <rect x="396" y="92" width="22" height="300" fill="#a9773f" stroke="#5c3d17" stroke-width="2"/>
+  <!-- woven wire 34 in = 238 px tall, on the post face -->
+  <rect x="386" y="122" width="10" height="238" fill="url(#mesh)" stroke="#444" stroke-width="2"/>
+  <!-- barbed strand at the ground (alternative) -->
+  <g stroke="#444" stroke-width="2">
+    <line x1="383" y1="356" x2="399" y2="356"/>
+    <line x1="386" y1="351" x2="392" y2="361"/><line x1="392" y1="351" x2="386" y2="361"/>
+  </g>
+
+  <!-- offset brackets and hot wires on the pig side: about 7 in and 14 in up -->
+  <g stroke="#5c3d17" stroke-width="3">
+    <line x1="396" y1="311" x2="356" y2="311"/>
+    <line x1="396" y1="262" x2="356" y2="262"/>
+  </g>
+  <circle cx="352" cy="311" r="7" fill="#f2c94c" stroke="#a3221b" stroke-width="3"/>
+  <circle cx="352" cy="262" r="7" fill="#f2c94c" stroke="#a3221b" stroke-width="3"/>
+
+  <!-- pig nosing the fence -->
+  <g fill="#e7b8a6" stroke="#8a5a48" stroke-width="2">
+    <rect x="84" y="320" width="15" height="40"/><rect x="114" y="320" width="15" height="40"/>
+    <rect x="240" y="320" width="15" height="40"/><rect x="266" y="320" width="15" height="40"/>
+  </g>
+  <path d="M66,330 L66,282 C76,238 160,226 230,240 C270,248 296,262 310,284 L332,296 L334,318 L306,322 C298,330 288,332 276,332 L80,334 Z" fill="#e7b8a6" stroke="#8a5a48" stroke-width="2"/>
+  <path d="M232,242 L246,214 L258,248 Z" fill="#e7b8a6" stroke="#8a5a48" stroke-width="2"/>
+  <circle cx="282" cy="270" r="3.5" fill="#333"/>
+  <rect x="330" y="296" width="8" height="22" rx="3" fill="#d79b88" stroke="#8a5a48" stroke-width="2"/>
+
+  <!-- dimensions on the outside -->
+  <line x1="452" y1="360" x2="452" y2="122" stroke="#1b4f8a" stroke-width="1.6" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="462" y="196" font-size="14" font-weight="bold" fill="#1b4f8a">woven wire</text>
+  <text x="462" y="214" font-size="14" font-weight="bold" fill="#1b4f8a">32–36 in high</text>
+  <text x="462" y="232" font-size="13" fill="#1b4f8a">for a small pen</text>
+  <text x="462" y="250" font-size="13" fill="#1b4f8a">(26 in will do</text>
+  <text x="462" y="268" font-size="13" fill="#1b4f8a">in a big field)</text>
+
+  <text x="462" y="330" font-size="13" fill="#222">or one barbed strand</text>
+  <text x="462" y="347" font-size="13" fill="#222">right at the ground</text>
+  <line x1="458" y1="343" x2="404" y2="356" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+
+  <!-- hot wire labels on the pig side -->
+  <text x="190" y="118" text-anchor="middle" font-size="14" font-weight="bold" fill="#a3221b">Hot wires on the pig side, low:</text>
+  <text x="190" y="137" text-anchor="middle" font-size="13" fill="#222">about 6–8 in and 12–16 in up,</text>
+  <text x="190" y="155" text-anchor="middle" font-size="13" fill="#222">where a snout meets them first</text>
+  <line x1="300" y1="160" x2="346" y2="254" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+
+  <!-- summer note -->
+  <rect x="24" y="404" width="612" height="48" fill="#f6efe0" stroke="#c9b08a" stroke-width="1.5"/>
+  <text x="330" y="424" text-anchor="middle" font-size="13" fill="#222">Dry summer soil can't carry the shock back to the ground rod: make the low wire a</text>
+  <text x="330" y="442" text-anchor="middle" font-size="13" fill="#222">ground wire (tied to the rod) and keep the upper wire hot. A pig touching both gets the shock.</text>
+</svg>

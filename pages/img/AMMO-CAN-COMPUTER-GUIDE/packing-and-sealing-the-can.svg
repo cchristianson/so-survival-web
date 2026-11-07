@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="460" viewBox="0 0 640 460" font-family="Arial, Helvetica, sans-serif">
+  <title>Packing the ammo can in a foam tray so nothing touches bare metal, and sealing the lid seam with conductive foil tape over a scraped strip of bare metal</title>
+  <rect width="640" height="460" fill="#ffffff"/>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker></defs>
+  <line x1="350" y1="15" x2="350" y2="445" stroke="#bbb" stroke-width="1.5" stroke-dasharray="6 5"/>
+
+  <!-- ===== top view of the packed can ===== -->
+  <text x="20" y="30" font-size="16" font-weight="bold" fill="#222">1. Foam tray, seen from above</text>
+  <rect x="25" y="55" width="300" height="160" rx="8" fill="#6b7a4c" stroke="#3f4a2a" stroke-width="4"/>
+  <rect x="37" y="67" width="276" height="136" rx="4" fill="#3b4045"/>
+  <!-- pockets -->
+  <rect x="47" y="77" width="96" height="66" rx="4" fill="#2e7d32" stroke="#9cd39f" stroke-width="2"/>
+  <text x="95" y="106" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">Pi with</text>
+  <text x="95" y="122" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">cooler</text>
+  <rect x="153" y="81" width="64" height="34" rx="4" fill="#cfd6dd" stroke="#888" stroke-width="1.5"/>
+  <text x="185" y="102" text-anchor="middle" font-size="13" fill="#222">drive</text>
+  <line x1="143" y1="98" x2="153" y2="98" stroke="#111" stroke-width="3"/>
+  <rect x="227" y="77" width="76" height="116" rx="8" fill="#222" stroke="#888" stroke-width="1.5"/>
+  <text x="265" y="138" text-anchor="middle" font-size="13" fill="#fff">phone</text>
+  <rect x="47" y="153" width="170" height="40" rx="6" fill="#e8e8e8" stroke="#888" stroke-width="1.5"/>
+  <text x="132" y="178" text-anchor="middle" font-size="13" fill="#222">power bank</text>
+  <text x="175" y="240" text-anchor="middle" font-size="13" fill="#222">inside about 11 × 5.5 in, 7 in deep</text>
+  <g font-size="13.5" fill="#222">
+    <text x="20" y="272" font-weight="bold">Nothing touches bare metal.</text>
+    <text x="20" y="291">Leave the drive plugged into the Pi.</text>
+    <text x="20" y="310">Cables and a roll of conductive</text>
+    <text x="20" y="329">foil tape go in the tray too.</text>
+    <text x="20" y="355">Charge the power bank and phone</text>
+    <text x="20" y="374">to about half to three-quarters.</text>
+    <text x="20" y="400">Wi-Fi card taped inside the lid.</text>
+  </g>
+
+  <!-- ===== lid seam detail ===== -->
+  <text x="365" y="30" font-size="16" font-weight="bold" fill="#222">2. Seal the lid seam</text>
+  <text x="365" y="48" font-size="13" fill="#222">every time you close it</text>
+  <!-- cut-through view of one side of the closed can: inside to the left, outside to the right -->
+  <text x="390" y="78" font-size="13" fill="#555">inside</text>
+  <text x="600" y="78" font-size="13" fill="#555" text-anchor="middle">outside</text>
+  <!-- lid: top plate and the skirt that comes down outside the can wall -->
+  <path d="M380,100 L566,100 L566,196 L550,196 L550,114 L380,114 Z" fill="#6b7a4c" stroke="#3f4a2a" stroke-width="2"/>
+  <text x="440" y="96" font-size="13" font-weight="bold" fill="#3f4a2a">LID</text>
+  <!-- can wall -->
+  <rect x="526" y="124" width="16" height="250" fill="#6b7a4c" stroke="#3f4a2a" stroke-width="2"/>
+  <text x="520" y="330" font-size="13" font-weight="bold" fill="#3f4a2a" text-anchor="end">CAN WALL</text>
+  <!-- gasket between lid and rim -->
+  <rect x="520" y="114" width="28" height="12" rx="4" fill="#111"/>
+  <!-- bare metal strips (paint scraped off) -->
+  <rect x="542" y="200" width="5" height="48" fill="#d5d9de" stroke="#777" stroke-width="1"/>
+  <rect x="566" y="160" width="5" height="36" fill="#d5d9de" stroke="#777" stroke-width="1"/>
+  <!-- conductive tape bridging lid skirt to can wall -->
+  <path d="M574,158 L574,203 L550,203 L550,250" fill="none" stroke="#d98c3a" stroke-width="7" stroke-linejoin="round"/>
+  <g font-size="13.5" fill="#222">
+    <line x1="470" y1="150" x2="518" y2="122" stroke="#333" stroke-width="1.2" marker-end="url(#a)"/>
+    <text x="365" y="152" font-weight="bold">rubber gasket:</text>
+    <text x="365" y="169">no metal-to-metal</text>
+    <text x="365" y="186">contact at the rim</text>
+    <line x1="470" y1="262" x2="541" y2="236" stroke="#333" stroke-width="1.2" marker-end="url(#a)"/>
+    <text x="365" y="262" font-weight="bold">scrape paint off</text>
+    <text x="365" y="279" font-weight="bold">to bare metal</text>
+    <text x="365" y="296">where the tape</text>
+    <text x="365" y="313">will stick</text>
+    <line x1="590" y1="378" x2="556" y2="256" stroke="#333" stroke-width="1.2" marker-end="url(#a)"/>
+    <text x="625" y="396" font-weight="bold" fill="#8a4f12" text-anchor="end">conductive foil tape over</text>
+    <text x="625" y="414" font-weight="bold" fill="#8a4f12" text-anchor="end">the seam, all the way round</text>
+  </g>
+  <text x="365" y="440" font-size="13" fill="#555">Steel cans only: plastic blocks nothing.</text>
+</svg>

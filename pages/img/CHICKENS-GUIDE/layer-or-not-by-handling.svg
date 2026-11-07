@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="440" viewBox="0 0 640 440" font-family="Arial, Helvetica, sans-serif">
+  <title>Laying or not, by feel: a laying hen's pubic bones are 3 fingers apart with a deep, soft belly; a hen not laying has them 1 finger apart, only 2 fingers from the keel</title>
+  <rect width="640" height="440" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+  </defs>
+  <text x="320" y="24" text-anchor="middle" font-size="15" fill="#222">The hen's underside, head at the top. Lay your fingers flat to measure.</text>
+
+  <!-- ===== LAYING ===== -->
+  <text x="160" y="56" text-anchor="middle" font-size="20" font-weight="bold" fill="#2f6b2f">LAYING</text>
+  <!-- body -->
+  <path d="M160,72 C210,74 252,120 258,190 C264,262 236,322 200,344 L120,344 C84,322 56,262 62,190 C68,120 110,74 160,72 Z" fill="#f6f1e7" stroke="#8a7d66" stroke-width="2"/>
+  <!-- keel (breastbone) -->
+  <rect x="155" y="92" width="10" height="100" rx="5" fill="#e3d8c2" stroke="#7b6c52" stroke-width="2"/>
+  <text x="172" y="128" font-size="13" fill="#333">keel</text>
+  <text x="172" y="144" font-size="13" fill="#333">(breastbone)</text>
+  <!-- deep belly -->
+  <line x1="116" y1="196" x2="116" y2="250" stroke="#333" stroke-width="1.4" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="110" y="218" text-anchor="end" font-size="13" fill="#333">deep,</text>
+  <text x="110" y="234" text-anchor="end" font-size="13" fill="#333">soft</text>
+  <!-- pubic bones, wide apart -->
+  <path d="M126,250 C122,270 124,290 128,306" fill="none" stroke="#7b6c52" stroke-width="7" stroke-linecap="round"/>
+  <path d="M194,250 C198,270 196,290 192,306" fill="none" stroke="#7b6c52" stroke-width="7" stroke-linecap="round"/>
+  <!-- three fingers between them -->
+  <g fill="#e6c4a2" stroke="#8a6a4c" stroke-width="1.5">
+    <rect x="133" y="258" width="16" height="50" rx="8"/><rect x="152" y="258" width="16" height="50" rx="8"/><rect x="171" y="258" width="16" height="50" rx="8"/>
+  </g>
+  <!-- vent: large, oval -->
+  <ellipse cx="160" cy="326" rx="16" ry="10" fill="#e9a3a3" stroke="#a35454" stroke-width="2"/>
+  <line x1="214" y1="290" x2="200" y2="290" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+  <text x="218" y="286" font-size="13" fill="#333">pubic</text>
+  <text x="218" y="302" font-size="13" fill="#333">bones</text>
+  <line x1="214" y1="334" x2="180" y2="328" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+  <text x="218" y="340" font-size="13" fill="#333">vent</text>
+  <g font-size="13" fill="#333" text-anchor="middle">
+    <text x="160" y="370" font-weight="bold" fill="#222">3 fingers between the bones</text>
+    <text x="160" y="388">belly deep and soft</text>
+    <text x="160" y="406">vent large, oval, moist</text>
+  </g>
+
+  <!-- ===== NOT LAYING ===== -->
+  <text x="480" y="56" text-anchor="middle" font-size="20" font-weight="bold" fill="#8a2b2b">NOT LAYING</text>
+  <path d="M480,72 C526,74 562,120 566,190 C570,256 548,316 516,344 L444,344 C412,316 390,256 394,190 C398,120 434,74 480,72 Z" fill="#f6f1e7" stroke="#8a7d66" stroke-width="2"/>
+  <rect x="475" y="92" width="10" height="130" rx="5" fill="#e3d8c2" stroke="#7b6c52" stroke-width="2"/>
+  <text x="492" y="128" font-size="13" fill="#333">keel</text>
+  <!-- two fingers between keel and pubic bones -->
+  <g fill="#e6c4a2" stroke="#8a6a4c" stroke-width="1.5">
+    <rect x="452" y="226" width="56" height="16" rx="8"/><rect x="452" y="244" width="56" height="16" rx="8"/>
+  </g>
+  <line x1="392" y1="243" x2="448" y2="243" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+  <text x="386" y="238" text-anchor="end" font-size="13" fill="#333">2 fingers</text>
+  <text x="386" y="254" text-anchor="end" font-size="13" fill="#333">to the keel</text>
+  <!-- pubic bones close together -->
+  <path d="M465,264 C462,282 464,296 468,308" fill="none" stroke="#7b6c52" stroke-width="7" stroke-linecap="round"/>
+  <path d="M495,264 C498,282 496,296 492,308" fill="none" stroke="#7b6c52" stroke-width="7" stroke-linecap="round"/>
+  <g fill="#e6c4a2" stroke="#8a6a4c" stroke-width="1.5"><rect x="472" y="266" width="16" height="44" rx="8"/></g>
+  <!-- vent: small, puckered -->
+  <ellipse cx="480" cy="324" rx="7" ry="5" fill="#e7c76b" stroke="#8f7426" stroke-width="2"/>
+  <line x1="530" y1="290" x2="506" y2="290" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+  <text x="534" y="286" font-size="13" fill="#333">pubic</text>
+  <text x="534" y="302" font-size="13" fill="#333">bones</text>
+  <line x1="530" y1="334" x2="492" y2="326" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+  <text x="534" y="340" font-size="13" fill="#333">vent</text>
+  <g font-size="13" fill="#333" text-anchor="middle">
+    <text x="480" y="370" font-weight="bold" fill="#222">1 finger between the bones</text>
+    <text x="480" y="388">only 2 fingers to the keel</text>
+    <text x="480" y="406">vent small, puckered, dry</text>
+  </g>
+
+  <text x="320" y="432" text-anchor="middle" font-size="12.5" fill="#555">Not to scale. Good layers may rest 2–3 weeks: check twice before you cull.</text>
+</svg>

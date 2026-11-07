@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="480" viewBox="0 0 640 480" font-family="Arial, Helvetica, sans-serif">
+  <title>A metal can used as a Faraday container: items wrapped so they don't touch the metal, the lid seam taped all round with conductive foil tape, and no holes or wires through it</title>
+  <rect width="640" height="480" fill="#ffffff"/>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker></defs>
+
+  <!-- can body (cross-section) -->
+  <path d="M110,120 L110,420 Q110,440 130,440 L330,440 Q350,440 350,420 L350,120" fill="#eef1f4" stroke="#5a6470" stroke-width="7"/>
+  <!-- lid -->
+  <rect x="96" y="96" width="268" height="22" rx="4" fill="#c7cdd4" stroke="#5a6470" stroke-width="4"/>
+  <rect x="200" y="78" width="60" height="18" rx="6" fill="none" stroke="#5a6470" stroke-width="4"/>
+  <!-- conductive tape over the lid seam -->
+  <rect x="92" y="108" width="20" height="26" fill="#d98c3a" stroke="#8a4f12" stroke-width="1.5"/>
+  <rect x="348" y="108" width="20" height="26" fill="#d98c3a" stroke="#8a4f12" stroke-width="1.5"/>
+
+  <!-- wrapped items, not touching the metal -->
+  <rect x="140" y="170" width="90" height="120" rx="10" fill="#f6efe0" stroke="#a08a5a" stroke-width="2" stroke-dasharray="6 3"/>
+  <rect x="155" y="190" width="60" height="85" rx="6" fill="#30343a"/>
+  <rect x="162" y="198" width="46" height="55" rx="3" fill="#7d8fa3"/>
+  <text x="185" y="306" text-anchor="middle" font-size="13" fill="#222">radio</text>
+  <rect x="245" y="160" width="80" height="80" rx="10" fill="#f6efe0" stroke="#a08a5a" stroke-width="2" stroke-dasharray="6 3"/>
+  <rect x="258" y="175" width="54" height="50" rx="4" fill="#2d6a4f"/>
+  <text x="285" y="256" text-anchor="middle" font-size="13" fill="#222">controller</text>
+  <rect x="150" y="330" width="170" height="80" rx="10" fill="#f6efe0" stroke="#a08a5a" stroke-width="2" stroke-dasharray="6 3"/>
+  <rect x="168" y="345" width="134" height="50" rx="4" fill="#555"/>
+  <text x="235" y="375" text-anchor="middle" font-size="13" fill="#fff">USB drive, laptop</text>
+
+  <!-- callouts right -->
+  <g font-size="14" fill="#222">
+    <line x1="372" y1="121" x2="410" y2="121" stroke="#333" stroke-width="1.5"/>
+    <text x="415" y="110" font-weight="bold">Lid seam taped all</text>
+    <text x="415" y="127" font-weight="bold">the way round with</text>
+    <text x="415" y="144" font-weight="bold">conductive foil tape</text>
+    <text x="415" y="161" font-size="13">(copper or aluminum,</text>
+    <text x="415" y="177" font-size="13">conductive glue)</text>
+
+    <line x1="330" y1="200" x2="410" y2="222" stroke="#333" stroke-width="1.5"/>
+    <text x="415" y="215" font-weight="bold">Each item wrapped</text>
+    <text x="415" y="232">in a plastic or paper bag</text>
+    <text x="415" y="249">or cardboard, so nothing</text>
+    <text x="415" y="266">touches the metal</text>
+
+    <line x1="350" y1="320" x2="410" y2="320" stroke="#333" stroke-width="1.5"/>
+    <text x="415" y="314" font-weight="bold">Tight metal lid,</text>
+    <text x="415" y="331" font-weight="bold">bare metal at the seams</text>
+    <text x="415" y="348">No holes. No wires</text>
+    <text x="415" y="365">passing through.</text>
+  </g>
+  <!-- callouts left -->
+  <g font-size="13" fill="#222">
+    <text x="15" y="30" font-weight="bold" font-size="14">Seal the leaks:</text>
+    <text x="15" y="48">trash cans leak at the lid,</text>
+    <text x="15" y="64">handles and base unless sealed.</text>
+  </g>
+  <text x="15" y="470" font-size="13" fill="#555">Cross-section. No ground wire needed for a closed storage can.</text>
+</svg>

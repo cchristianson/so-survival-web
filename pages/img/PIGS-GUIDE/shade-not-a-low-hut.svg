@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="420" viewBox="0 0 660 420" font-family="Arial, Helvetica, sans-serif">
+  <title>Summer shade for pigs: an open, straw-roofed shade, not a low closed hut</title>
+  <rect width="660" height="420" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+  </defs>
+
+  <!-- ===== LEFT: good shade ===== -->
+  <text x="185" y="28" text-anchor="middle" font-size="17" font-weight="bold" fill="#2f5d1e">Good: open shade</text>
+  <!-- sun -->
+  <circle cx="40" cy="62" r="18" fill="#f6d36b" stroke="#c99a1c" stroke-width="2"/>
+  <!-- ground -->
+  <line x1="20" y1="320" x2="350" y2="320" stroke="#333" stroke-width="3"/>
+  <!-- posts: 4 ft = 120 px -->
+  <g fill="#a9773f" stroke="#5c3d17" stroke-width="2">
+    <rect x="70" y="200" width="10" height="120"/>
+    <rect x="290" y="200" width="10" height="120"/>
+    <rect x="180" y="200" width="10" height="120"/>
+  </g>
+  <!-- pole frame -->
+  <line x1="62" y1="200" x2="308" y2="200" stroke="#5c3d17" stroke-width="5"/>
+  <!-- straw roof: 2 ft = 60 px -->
+  <path d="M55,200 L315,200 L305,140 C260,128 110,128 65,140 Z" fill="#e8cf7a" stroke="#a88a2a" stroke-width="2"/>
+  <g stroke="#a88a2a" stroke-width="1.2">
+    <line x1="80" y1="190" x2="92" y2="146"/><line x1="120" y1="192" x2="128" y2="142"/>
+    <line x1="160" y1="192" x2="166" y2="140"/><line x1="200" y1="192" x2="204" y2="140"/>
+    <line x1="240" y1="192" x2="242" y2="141"/><line x1="280" y1="190" x2="282" y2="145"/>
+  </g>
+  <!-- drips -->
+  <g fill="#3d7cc9">
+    <path d="M110,212 q4,8 0,12 q-4,-4 0,-12z"/><path d="M150,226 q4,8 0,12 q-4,-4 0,-12z"/>
+    <path d="M230,214 q4,8 0,12 q-4,-4 0,-12z"/><path d="M262,232 q4,8 0,12 q-4,-4 0,-12z"/>
+  </g>
+  <!-- pigs lying in shade -->
+  <g fill="#e7b8a6" stroke="#8a5a48" stroke-width="2">
+    <ellipse cx="128" cy="304" rx="40" ry="15"/><ellipse cx="236" cy="306" rx="40" ry="14"/>
+  </g>
+  <!-- dimensions -->
+  <line x1="330" y1="320" x2="330" y2="200" stroke="#1b4f8a" stroke-width="1.6" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="338" y="266" font-size="14" font-weight="bold" fill="#1b4f8a">about</text>
+  <text x="338" y="283" font-size="14" font-weight="bold" fill="#1b4f8a">4 ft</text>
+  <line x1="330" y1="198" x2="330" y2="136" stroke="#1b4f8a" stroke-width="1.6" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="338" y="166" font-size="14" font-weight="bold" fill="#1b4f8a">2 ft</text>
+  <text x="338" y="182" font-size="14" font-weight="bold" fill="#1b4f8a">or more</text>
+  <!-- labels -->
+  <text x="185" y="100" text-anchor="middle" font-size="13" fill="#222">roof of straw, hay or weeds</text>
+  <text x="185" y="117" text-anchor="middle" font-size="13" fill="#222">at least 2 ft deep</text>
+  <text x="185" y="346" text-anchor="middle" font-size="13" fill="#222">Open on every side, so air moves through.</text>
+  <text x="185" y="364" text-anchor="middle" font-size="13" fill="#222">Wet the straw on hot days: the drips</text>
+  <text x="185" y="382" text-anchor="middle" font-size="13" fill="#222">cool the air and lay the dust.</text>
+
+  <!-- divider -->
+  <line x1="398" y1="40" x2="398" y2="390" stroke="#bbb" stroke-width="2" stroke-dasharray="6 5"/>
+
+  <!-- ===== RIGHT: danger ===== -->
+  <text x="530" y="28" text-anchor="middle" font-size="17" font-weight="bold" fill="#a3221b">Danger in summer</text>
+  <line x1="420" y1="320" x2="645" y2="320" stroke="#333" stroke-width="3"/>
+  <!-- low A-frame hut -->
+  <path d="M440,320 L530,215 L620,320 Z" fill="#cfc6b8" stroke="#555" stroke-width="3"/>
+  <path d="M505,320 L505,280 Q530,262 555,280 L555,320 Z" fill="#555"/>
+  <!-- heat squiggles -->
+  <g stroke="#d1492e" stroke-width="2.5" fill="none">
+    <path d="M500,206 q6,-8 0,-16 q-6,-8 0,-16"/><path d="M530,196 q6,-8 0,-16 q-6,-8 0,-16"/><path d="M560,206 q6,-8 0,-16 q-6,-8 0,-16"/>
+  </g>
+  <!-- big X -->
+  <g stroke="#a3221b" stroke-width="7" stroke-linecap="round">
+    <line x1="470" y1="230" x2="590" y2="310"/><line x1="590" y1="230" x2="470" y2="310"/>
+  </g>
+  <text x="530" y="346" text-anchor="middle" font-size="13" fill="#222">Low huts trap the heat. Pigs crowd</text>
+  <text x="530" y="364" text-anchor="middle" font-size="13" fill="#222">in to find shade and suffocate.</text>
+  <text x="530" y="382" text-anchor="middle" font-size="13" font-weight="bold" fill="#a3221b">Shut them in hot weather.</text>
+</svg>

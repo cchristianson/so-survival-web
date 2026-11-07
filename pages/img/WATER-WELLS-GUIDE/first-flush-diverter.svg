@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="520" viewBox="0 0 640 520" font-family="Arial, Helvetica, sans-serif">
+  <title>A standpipe first-flush diverter: the first dirty roof water fills a capped pipe, then cleaner water flows on to the tank</title>
+  <rect width="640" height="520" fill="#ffffff"/>
+  <defs>
+    <marker id="b" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#2f6fa8"/></marker>
+  </defs>
+
+  <!-- roof and gutter -->
+  <polygon points="10,30 150,70 150,80 10,40" fill="#9a8a78" stroke="#555" stroke-width="2"/>
+  <path d="M146,72 L146,92 L196,92 L196,72" fill="#ccc" stroke="#333" stroke-width="2.5"/>
+  <text x="14" y="70" font-size="14.5" fill="#222">roof</text>
+  <text x="206" y="88" font-size="14.5" fill="#222">gutter</text>
+
+  <!-- downspout -->
+  <rect x="164" y="92" width="22" height="58" fill="#e6e6e6" stroke="#333" stroke-width="2"/>
+  <!-- tee -->
+  <rect x="158" y="150" width="34" height="32" fill="#e6e6e6" stroke="#333" stroke-width="2"/>
+  <!-- outlet pipe to tank -->
+  <rect x="192" y="154" width="236" height="22" fill="#e6e6e6" stroke="#333" stroke-width="2"/>
+  <rect x="406" y="154" width="22" height="30" fill="#e6e6e6" stroke="#333" stroke-width="2"/>
+  <!-- standpipe (first-flush chamber) -->
+  <rect x="160" y="182" width="30" height="230" fill="#e6e6e6" stroke="#333" stroke-width="2"/>
+  <rect x="163" y="196" width="24" height="214" fill="#a9845a" opacity="0.75"/>
+  <!-- cleanout cap and slow drain -->
+  <rect x="154" y="412" width="42" height="14" rx="3" fill="#555" stroke="#222" stroke-width="1.5"/>
+  <path d="M190,396 L206,396 L206,404" fill="none" stroke="#333" stroke-width="3"/>
+  <circle cx="206" cy="414" r="2.5" fill="#2f6fa8"/><circle cx="206" cy="426" r="2.5" fill="#2f6fa8"/>
+
+  <!-- flow arrows -->
+  <line x1="175" y1="100" x2="175" y2="140" stroke="#2f6fa8" stroke-width="2.5" marker-end="url(#b)"/>
+  <line x1="175" y1="214" x2="175" y2="300" stroke="#7a5230" stroke-width="2.5" marker-end="url(#b)"/>
+  <line x1="240" y1="165" x2="380" y2="165" stroke="#2f6fa8" stroke-width="2.5" marker-end="url(#b)"/>
+
+  <!-- tank -->
+  <rect x="380" y="184" width="200" height="236" fill="#eef4f9" stroke="#333" stroke-width="2.5"/>
+  <rect x="383" y="250" width="194" height="168" fill="#6fa8d6"/>
+  <rect x="372" y="178" width="216" height="8" fill="#555"/>
+  <text x="480" y="300" text-anchor="middle" font-size="15" font-weight="bold" fill="#fff">tank</text>
+  <text x="480" y="320" text-anchor="middle" font-size="13.5" fill="#fff">covered, screened,</text>
+  <text x="480" y="337" text-anchor="middle" font-size="13.5" fill="#fff">opaque</text>
+
+  <!-- labels -->
+  <text x="236" y="122" font-size="14.5" fill="#222">When the pipe is full, cleaner</text>
+  <text x="236" y="140" font-size="14.5" fill="#222">water flows on to the tank</text>
+
+  <text x="20" y="232" font-size="14.5" font-weight="bold" fill="#222">First, dirty</text>
+  <text x="20" y="250" font-size="14.5" font-weight="bold" fill="#222">roof water</text>
+  <text x="20" y="268" font-size="14.5" font-weight="bold" fill="#222">fills this</text>
+  <text x="20" y="286" font-size="14.5" font-weight="bold" fill="#222">capped pipe</text>
+  <line x1="110" y1="262" x2="156" y2="262" stroke="#333" stroke-width="1.3"/>
+
+  <text x="218" y="398" font-size="13.5" fill="#222">a pinhole or slightly open</text>
+  <text x="218" y="414" font-size="13.5" fill="#222">tap drains it slowly</text>
+  <text x="20" y="444" font-size="13.5" fill="#222">cleanout cap:</text>
+  <text x="20" y="460" font-size="13.5" fill="#222">empty it after each rain</text>
+  <line x1="112" y1="439" x2="154" y2="424" stroke="#333" stroke-width="1.3"/>
+
+  <!-- sizing -->
+  <text x="320" y="488" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">Divert about 13–49 gallons per 1,000 sq ft of roof.</text>
+  <text x="320" y="510" text-anchor="middle" font-size="14.5" fill="#333">A 4-in pipe holds about 1 gallon for every 18 in of length.</text>
+</svg>

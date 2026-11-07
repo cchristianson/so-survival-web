@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="470" viewBox="0 0 660 470" font-family="Arial, Helvetica, sans-serif">
+  <title>Ladder fuels let a ground fire climb into the trees; limbed-up, spaced trees keep it on the ground</title>
+  <rect width="660" height="470" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+    <marker id="f" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#c8431a"/></marker>
+  </defs>
+
+  <!-- panel frames -->
+  <rect x="8" y="8" width="314" height="400" fill="none" stroke="#bbb" stroke-width="1.5"/>
+  <rect x="338" y="8" width="314" height="400" fill="none" stroke="#bbb" stroke-width="1.5"/>
+  <text x="165" y="32" text-anchor="middle" font-size="16" font-weight="bold" fill="#8a2a0a">LADDER FUELS</text>
+  <text x="165" y="51" text-anchor="middle" font-size="13.5" fill="#222">fire climbs into the crowns</text>
+  <text x="495" y="32" text-anchor="middle" font-size="16" font-weight="bold" fill="#2f5e16">LIMBED AND SPACED</text>
+  <text x="495" y="51" text-anchor="middle" font-size="13.5" fill="#222">fire stays on the ground</text>
+
+  <!-- ===== LEFT PANEL ===== -->
+  <line x1="8" y1="372" x2="322" y2="372" stroke="#6b5a45" stroke-width="2"/>
+  <!-- trunks -->
+  <rect x="84" y="300" width="12" height="72" fill="#8a5a2b"/>
+  <rect x="234" y="300" width="12" height="72" fill="#8a5a2b"/>
+  <!-- crowns down to the ground, touching -->
+  <polygon points="90,66 22,338 158,338" fill="#7fae52" stroke="#4d7a2c" stroke-width="2"/>
+  <polygon points="240,76 168,338 312,338" fill="#7fae52" stroke="#4d7a2c" stroke-width="2"/>
+  <!-- brush under the trees -->
+  <ellipse cx="163" cy="350" rx="30" ry="22" fill="#5f8f3a" stroke="#3e6522" stroke-width="2"/>
+  <ellipse cx="52" cy="355" rx="24" ry="17" fill="#5f8f3a" stroke="#3e6522" stroke-width="2"/>
+  <!-- tall grass -->
+  <g stroke="#8aa64a" stroke-width="2">
+    <path d="M115,372 l-3,-20 M121,372 l2,-22 M127,372 l-2,-19 M200,372 l-3,-21 M207,372 l2,-20 M280,372 l-2,-21 M287,372 l3,-19 M20,372 l2,-20"/>
+  </g>
+  <!-- fire path climbing -->
+  <path d="M122,368 C140,358 150,345 162,332 C175,300 200,250 215,200 C225,160 235,120 240,92" fill="none" stroke="#c8431a" stroke-width="4" stroke-dasharray="9 5" marker-end="url(#f)"/>
+  <g font-size="13" fill="#8a2a0a" font-weight="bold">
+    <text x="16" y="398">tall grass → brush → low limbs → crown</text>
+  </g>
+
+  <!-- ===== RIGHT PANEL ===== -->
+  <line x1="338" y1="372" x2="652" y2="372" stroke="#6b5a45" stroke-width="2"/>
+  <!-- trunks bare to 250 -->
+  <rect x="404" y="248" width="12" height="124" fill="#8a5a2b"/>
+  <rect x="574" y="248" width="12" height="124" fill="#8a5a2b"/>
+  <!-- crowns lifted -->
+  <polygon points="410,72 357,250 463,250" fill="#7fae52" stroke="#4d7a2c" stroke-width="2"/>
+  <polygon points="580,80 527,250 633,250" fill="#7fae52" stroke="#4d7a2c" stroke-width="2"/>
+  <!-- short grass -->
+  <g stroke="#8aa64a" stroke-width="2">
+    <path d="M350,372 l-1,-6 M356,372 l1,-6 M440,372 l-1,-6 M446,372 l1,-6 M500,372 l-1,-6 M506,372 l1,-6 M610,372 l-1,-6 M616,372 l1,-6 M640,372 l1,-6"/>
+  </g>
+  <!-- crown gap dimension -->
+  <g stroke="#333" stroke-width="1.6" fill="none">
+    <line x1="465" y1="240" x2="525" y2="240" marker-start="url(#a)" marker-end="url(#a)"/>
+    <line x1="495" y1="160" x2="495" y2="232" stroke-dasharray="3 3"/>
+  </g>
+  <text x="495" y="128" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#222">10 ft or more</text>
+  <text x="495" y="145" text-anchor="middle" font-size="13" fill="#222">between crowns</text>
+  <!-- limb-up dimension -->
+  <line x1="430" y1="368" x2="430" y2="254" stroke="#333" stroke-width="1.6" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="440" y="296" font-size="13.5" font-weight="bold" fill="#222">lowest limbs</text>
+  <text x="440" y="313" font-size="13.5" font-weight="bold" fill="#222">6–10 ft up</text>
+  <text x="440" y="331" font-size="13" fill="#444">no brush under</text>
+  <text x="440" y="346" font-size="13" fill="#444">the trees</text>
+  <text x="346" y="398" font-size="13" font-weight="bold" fill="#2f5e16">grass under 4 in</text>
+
+  <!-- notes -->
+  <text x="14" y="432" font-size="13.5" fill="#222">Within 30 ft of the house: crowns 15–20 ft apart, branches 15 ft from the house.</text>
+  <text x="14" y="452" font-size="13.5" fill="#222">Shrubs 2–3 times their height apart. Side view, not to scale.</text>
+</svg>

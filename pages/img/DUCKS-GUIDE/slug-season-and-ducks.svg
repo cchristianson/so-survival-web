@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="400" viewBox="0 0 680 400" font-family="Arial, Helvetica, sans-serif">
+  <title>When ducks help the garden and when they eat it: slugs, the garden and the ducks through the year</title>
+  <rect width="680" height="400" fill="#ffffff"/>
+  <text x="340" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#222">Slugs, the garden and the ducks through the year</text>
+
+  <!-- month header: label column 0-120, months 46 px each from x=120 -->
+  <g font-size="14" font-weight="bold" fill="#333" text-anchor="middle">
+    <text x="143" y="58">J</text><text x="189" y="58">F</text><text x="235" y="58">M</text><text x="281" y="58">A</text>
+    <text x="327" y="58">M</text><text x="373" y="58">J</text><text x="419" y="58">J</text><text x="465" y="58">A</text>
+    <text x="511" y="58">S</text><text x="557" y="58">O</text><text x="603" y="58">N</text><text x="649" y="58">D</text>
+  </g>
+  <g stroke="#bbb" stroke-width="1">
+    <line x1="120" y1="66" x2="120" y2="292"/><line x1="672" y1="66" x2="672" y2="292"/>
+  </g>
+
+  <!-- row labels -->
+  <g font-size="15" font-weight="bold" fill="#222">
+    <text x="10" y="100">Slugs</text>
+    <text x="10" y="170">Garden</text>
+    <text x="10" y="232">Ducks in</text>
+    <text x="10" y="250">the garden?</text>
+  </g>
+
+  <!-- SLUGS row y=74..120 -->
+  <g stroke="#6b5434" stroke-width="1.5">
+    <rect x="121" y="74" width="91" height="46" fill="#e2d5c3"/>
+    <rect x="213" y="74" width="183" height="46" fill="#bfa585"/>
+    <rect x="397" y="74" width="91" height="46" fill="#f6f1ea"/>
+    <rect x="489" y="74" width="91" height="46" fill="#bfa585" stroke="#3a2a14" stroke-width="3"/>
+    <rect x="581" y="74" width="91" height="46" fill="#e2d5c3"/>
+  </g>
+  <g font-size="13" fill="#222" text-anchor="middle">
+    <text x="166" y="94">feed on</text><text x="166" y="110">mild nights</text>
+    <text x="304" y="94">wet spring:</text><text x="304" y="110">most active</text>
+    <text x="442" y="94">hot and dry:</text><text x="442" y="110">go quiet</text>
+    <text x="534" y="94" font-weight="bold">LAY EGGS</text><text x="534" y="110">after rains</text>
+    <text x="626" y="94">feed on</text><text x="626" y="110">mild nights</text>
+  </g>
+
+  <!-- GARDEN row y=144..190 -->
+  <g stroke="#5b7f3a" stroke-width="1.5">
+    <rect x="121" y="144" width="91" height="46" fill="#f3f3ee"/>
+    <rect x="213" y="144" width="137" height="46" fill="#dcebcf"/>
+    <rect x="351" y="144" width="137" height="46" fill="#c4dcb0"/>
+    <rect x="489" y="144" width="91" height="46" fill="#f2e6c4"/>
+    <rect x="581" y="144" width="91" height="46" fill="#f3f3ee"/>
+  </g>
+  <g font-size="13" fill="#222" text-anchor="middle">
+    <text x="166" y="164">bare beds,</text><text x="166" y="180">winter crops</text>
+    <text x="281" y="164">seedlings,</text><text x="281" y="180">young plants</text>
+    <text x="419" y="164">growing,</text><text x="419" y="180">ripening</text>
+    <text x="534" y="164">harvest</text><text x="534" y="180">bed by bed</text>
+    <text x="626" y="164">bare beds,</text><text x="626" y="180">winter crops</text>
+  </g>
+
+  <!-- DUCKS row y=214..264 -->
+  <g stroke-width="2">
+    <rect x="121" y="214" width="91" height="50" fill="#bfe0ad" stroke="#3f7a26"/>
+    <rect x="213" y="214" width="137" height="50" fill="#f1bdb4" stroke="#a33b2b"/>
+    <rect x="351" y="214" width="137" height="50" fill="#f6e2b3" stroke="#a07a1f"/>
+    <rect x="489" y="214" width="183" height="50" fill="#9fd08a" stroke="#2f6a1a"/>
+  </g>
+  <g font-size="13" fill="#222" text-anchor="middle">
+    <text x="166" y="235" font-weight="bold">IN</text><text x="166" y="252">bare beds</text>
+    <text x="281" y="235" font-weight="bold">OUT</text><text x="281" y="252">they eat seedlings</text>
+    <text x="419" y="235" font-weight="bold">MOSTLY OUT</text><text x="419" y="252">short visits, big plants</text>
+    <text x="580" y="235" font-weight="bold">IN: the main slug season</text><text x="580" y="252">each bed as it is harvested</text>
+  </g>
+
+  <!-- "best time" marker -->
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#3a2a14"/></marker></defs>
+  <line x1="534" y1="286" x2="534" y2="268" stroke="#3a2a14" stroke-width="2" marker-end="url(#ar)"/>
+  <text x="534" y="302" text-anchor="middle" font-size="13" font-weight="bold" fill="#3a2a14">Best: before the slugs lay</text>
+
+  <!-- notes -->
+  <g font-size="13" fill="#333">
+    <text x="10" y="334">• Slugs feed when it is warmer than 50 °F and lay their eggs in late September–early October.</text>
+    <text x="10" y="356">• Give each bed a last going-over 2–3 weeks before you plant it, then shut the ducks out.</text>
+    <text x="10" y="378">• Trap boards between rows: flip them in the morning with the ducks behind you. No slug bait.</text>
+  </g>
+</svg>

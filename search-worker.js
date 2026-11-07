@@ -116,6 +116,20 @@ function search(q, n) {
     all.push([c, s * (1 + 0.25 * hits) * (1 + 0.3 * head) * (docs[d].w || 1)]);
   }
   all.sort((a, b) => b[1] - a[1]);
+  // in our guides, the question's words side by side ("milk fever", "sourdough starter") count for more than
+  // the same words scattered through a section; checked for the best few hundred only. (Not for scanned
+  // books: there "treat burns" turns up every first-aid page, relevant or not.)
+  const seq = tokenize(q), pairs = new Set();
+  for (let i = 0; i + 1 < seq.length; i++) if (seq[i] !== seq[i + 1]) pairs.add(seq[i] + ' ' + seq[i + 1]);
+  if (pairs.size) {
+    for (const x of all.slice(0, 300)) {
+      if (!chunks[x[0]][3]) continue;
+      const tk = tokenize(chunks[x[0]][2]), found = new Set();
+      for (let i = 0; i + 1 < tk.length; i++) { const pr = tk[i] + ' ' + tk[i + 1]; if (pairs.has(pr)) found.add(pr); }
+      if (found.size) x[1] *= 1 + 0.5 * Math.min(found.size, 2);
+    }
+    all.sort((a, b) => b[1] - a[1]);
+  }
   // the passage that follows (same document, page and guide section), minus the words the two share,
   // so the AI can read on when the answer runs past the end of this one
   const same = (x, y) => y && y[0] === x[0] && y[1] === x[1] && (y[3] || '') === (x[3] || '');

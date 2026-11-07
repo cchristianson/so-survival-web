@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="470" viewBox="0 0 640 470" font-family="Arial, Helvetica, sans-serif">
+  <title>Reading a resistor's color bands: yellow, violet, orange, gold is 47,000 ohms plus or minus 5 percent</title>
+  <rect width="640" height="470" fill="#ffffff"/>
+  <text x="320" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#222">Example: yellow – violet – orange – gold</text>
+  <!-- leads and body -->
+  <line x1="40" y1="92" x2="600" y2="92" stroke="#888" stroke-width="5"/>
+  <rect x="165" y="58" width="310" height="68" rx="26" fill="#e9d7b0" stroke="#7a6640" stroke-width="2.5"/>
+  <!-- bands -->
+  <rect x="198" y="58" width="22" height="68" fill="#f5d10f" stroke="#333" stroke-width="1.2"/>
+  <rect x="238" y="58" width="22" height="68" fill="#8a3fbf" stroke="#333" stroke-width="1.2"/>
+  <rect x="278" y="58" width="22" height="68" fill="#f28c1c" stroke="#333" stroke-width="1.2"/>
+  <rect x="420" y="58" width="22" height="68" fill="#c9a227" stroke="#333" stroke-width="1.2"/>
+  <!-- leaders -->
+  <g stroke="#333" stroke-width="1.5" fill="none">
+    <polyline points="209,128 209,140 110,156"/>
+    <polyline points="249,128 249,156"/>
+    <polyline points="289,128 289,140 370,156"/>
+    <polyline points="431,128 431,140 530,156"/>
+  </g>
+  <g text-anchor="middle" fill="#222">
+    <text x="110" y="176" font-size="14">1st digit</text>
+    <text x="249" y="176" font-size="14">2nd digit</text>
+    <text x="370" y="176" font-size="14">number of zeros</text>
+    <text x="530" y="176" font-size="14">tolerance</text>
+    <text x="110" y="206" font-size="24" font-weight="bold">4</text>
+    <text x="249" y="206" font-size="24" font-weight="bold">7</text>
+    <text x="370" y="206" font-size="24" font-weight="bold">000</text>
+    <text x="530" y="206" font-size="24" font-weight="bold">±5%</text>
+    <text x="320" y="250" font-size="20" font-weight="bold">= 47,000 Ω (ohms), ±5%</text>
+  </g>
+  <line x1="20" y1="275" x2="620" y2="275" stroke="#ccc" stroke-width="1.2"/>
+  <text x="20" y="303" font-size="15" font-weight="bold" fill="#222">Each color is a number:</text>
+    <rect x="22" y="318" width="54" height="36" rx="3" fill="#111111" stroke="#333" stroke-width="1.5"/>
+  <text x="49" y="343" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">0</text>
+  <text x="49" y="374" text-anchor="middle" font-size="13" fill="#222">black</text>
+  <rect x="82" y="318" width="54" height="36" rx="3" fill="#7b4a1e" stroke="#333" stroke-width="1.5"/>
+  <text x="109" y="343" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">1</text>
+  <text x="109" y="374" text-anchor="middle" font-size="13" fill="#222">brown</text>
+  <rect x="142" y="318" width="54" height="36" rx="3" fill="#d42a2a" stroke="#333" stroke-width="1.5"/>
+  <text x="169" y="343" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">2</text>
+  <text x="169" y="374" text-anchor="middle" font-size="13" fill="#222">red</text>
+  <rect x="202" y="318" width="54" height="36" rx="3" fill="#f28c1c" stroke="#333" stroke-width="1.5"/>
+  <text x="229" y="343" text-anchor="middle" font-size="20" font-weight="bold" fill="#111">3</text>
+  <text x="229" y="374" text-anchor="middle" font-size="13" fill="#222">orange</text>
+  <rect x="262" y="318" width="54" height="36" rx="3" fill="#f5d10f" stroke="#333" stroke-width="1.5"/>
+  <text x="289" y="343" text-anchor="middle" font-size="20" font-weight="bold" fill="#111">4</text>
+  <text x="289" y="374" text-anchor="middle" font-size="13" fill="#222">yellow</text>
+  <rect x="322" y="318" width="54" height="36" rx="3" fill="#2e9e3e" stroke="#333" stroke-width="1.5"/>
+  <text x="349" y="343" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">5</text>
+  <text x="349" y="374" text-anchor="middle" font-size="13" fill="#222">green</text>
+  <rect x="382" y="318" width="54" height="36" rx="3" fill="#2160c4" stroke="#333" stroke-width="1.5"/>
+  <text x="409" y="343" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">6</text>
+  <text x="409" y="374" text-anchor="middle" font-size="13" fill="#222">blue</text>
+  <rect x="442" y="318" width="54" height="36" rx="3" fill="#8a3fbf" stroke="#333" stroke-width="1.5"/>
+  <text x="469" y="343" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">7</text>
+  <text x="469" y="374" text-anchor="middle" font-size="13" fill="#222">violet</text>
+  <rect x="502" y="318" width="54" height="36" rx="3" fill="#8c8c8c" stroke="#333" stroke-width="1.5"/>
+  <text x="529" y="343" text-anchor="middle" font-size="20" font-weight="bold" fill="#111">8</text>
+  <text x="529" y="374" text-anchor="middle" font-size="13" fill="#222">gray</text>
+  <rect x="562" y="318" width="54" height="36" rx="3" fill="#ffffff" stroke="#333" stroke-width="1.5"/>
+  <text x="589" y="343" text-anchor="middle" font-size="20" font-weight="bold" fill="#111">9</text>
+  <text x="589" y="374" text-anchor="middle" font-size="13" fill="#222">white</text>
+  <!-- tolerance colors -->
+  <rect x="22" y="398" width="54" height="30" rx="3" fill="#c9a227" stroke="#333" stroke-width="1.5"/>
+  <text x="86" y="419" font-size="15" fill="#222"><tspan font-weight="bold">gold</tspan> = 5%</text>
+  <rect x="200" y="398" width="54" height="30" rx="3" fill="#c0c0c0" stroke="#333" stroke-width="1.5"/>
+  <text x="264" y="419" font-size="15" fill="#222"><tspan font-weight="bold">silver</tspan> = 10%</text>
+  <text x="20" y="456" font-size="14" fill="#222">Hold it with the gold or silver band on the right and read from the left.</text>
+</svg>

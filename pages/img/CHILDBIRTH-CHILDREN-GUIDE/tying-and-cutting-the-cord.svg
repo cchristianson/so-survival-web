@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="380" viewBox="0 0 640 380" font-family="Arial, Helvetica, sans-serif">
+  <title>Tying and cutting the umbilical cord: first tie 2 finger-widths from the baby's belly, a second tie farther out, cut between them</title>
+  <rect width="640" height="380" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+  </defs>
+
+  <text x="20" y="30" font-size="16" fill="#222"><tspan font-weight="bold">Wait 1–3 minutes</tspan>, until the cord is white and stops pulsing.</text>
+
+  <!-- baby's belly -->
+  <path d="M20,70 C 120,90 160,130 160,190 C 160,250 120,290 20,310 Z" fill="#f3dcc8" stroke="#6b4f3a" stroke-width="2.5"/>
+  <text x="34" y="196" font-size="15" font-weight="bold" fill="#6b4f3a">baby's</text>
+  <text x="34" y="214" font-size="15" font-weight="bold" fill="#6b4f3a">belly</text>
+
+  <!-- cord -->
+  <path d="M158,178 C 250,172 330,186 420,178 C 500,171 560,184 630,176 L630,200 C 560,208 500,195 420,202 C 330,210 250,196 158,202 Z" fill="#dfe7ef" stroke="#6b7f95" stroke-width="2"/>
+  <path d="M170,190 C 230,184 260,198 320,190 C 380,182 420,198 480,190 C 540,182 580,196 628,188" fill="none" stroke="#b9c7d6" stroke-width="2"/>
+  <text x="620" y="232" text-anchor="end" font-size="14" fill="#555">to the placenta</text>
+
+  <!-- tie 1 -->
+  <rect x="208" y="168" width="8" height="42" rx="2" fill="#222"/>
+  <path d="M212,168 C 204,154 196,152 190,146 M212,168 C 220,154 228,150 234,146" fill="none" stroke="#222" stroke-width="2.5"/>
+  <!-- tie 2 -->
+  <rect x="336" y="170" width="8" height="42" rx="2" fill="#222"/>
+  <path d="M340,170 C 332,156 324,154 318,148 M340,170 C 348,156 356,152 362,148" fill="none" stroke="#222" stroke-width="2.5"/>
+  <!-- cut line -->
+  <line x1="276" y1="150" x2="276" y2="228" stroke="#b03a2e" stroke-width="3" stroke-dasharray="7 5"/>
+
+  <!-- 2 finger-widths dimension -->
+  <line x1="160" y1="252" x2="210" y2="252" stroke="#333" stroke-width="1.6" marker-start="url(#a)" marker-end="url(#a)"/>
+  <line x1="212" y1="214" x2="212" y2="260" stroke="#333" stroke-width="1" stroke-dasharray="3 3"/>
+
+  <!-- labels -->
+  <text x="150" y="280" font-size="14.5" font-weight="bold" fill="#222">1st tie: tight,</text>
+  <text x="150" y="298" font-size="14.5" fill="#222">2 finger-widths</text>
+  <text x="150" y="316" font-size="14.5" fill="#222">from the belly</text>
+
+  <line x1="340" y1="216" x2="372" y2="262" stroke="#333" stroke-width="1.3"/>
+  <text x="352" y="280" font-size="14.5" font-weight="bold" fill="#222">2nd tie:</text>
+  <text x="352" y="298" font-size="14.5" fill="#222">farther out</text>
+
+  <line x1="276" y1="146" x2="300" y2="104" stroke="#b03a2e" stroke-width="1.3"/>
+  <text x="304" y="84" font-size="14.5" font-weight="bold" fill="#b03a2e">Cut between the ties</text>
+  <text x="304" y="102" font-size="14.5" fill="#b03a2e">with a new or sterilized blade</text>
+
+  <text x="20" y="352" font-size="14.5" fill="#222">Use clean strings 8 in (20 cm) long. A baby who needs breathing help: cut at once.</text>
+  <text x="20" y="372" font-size="14.5" font-weight="bold" fill="#222">Afterward: nothing on the stump. Keep it clean and dry.</text>
+</svg>

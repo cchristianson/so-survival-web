@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="520" viewBox="0 0 640 520" font-family="Arial, Helvetica, sans-serif">
+  <title>The zones around a house in wildfire country, seen from above</title>
+  <rect width="640" height="520" fill="#ffffff"/>
+  <!-- 30-100 ft: thinned woods -->
+  <circle cx="250" cy="270" r="235" fill="#e3efd9" stroke="#5b7f3a" stroke-width="2" stroke-dasharray="7 5"/>
+  <!-- 5-30 ft: lean, clean, green -->
+  <circle cx="250" cy="270" r="150" fill="#f3f8ec" stroke="#5b7f3a" stroke-width="2"/>
+  <!-- 0-5 ft: nothing that burns -->
+  <rect x="165" y="195" width="170" height="150" rx="6" fill="#d9d4cb" stroke="#6b6359" stroke-width="2"/>
+  <!-- house -->
+  <rect x="190" y="220" width="120" height="100" fill="#ffffff" stroke="#333" stroke-width="3"/>
+  <text x="250" y="266" text-anchor="middle" font-size="20" font-weight="bold" fill="#222">HOUSE</text>
+  <text x="250" y="290" text-anchor="middle" font-size="13" fill="#444">roof, vents, gutters</text>
+
+  <!-- trees in the 5-30 ft zone: well apart -->
+  <g fill="#7fae52" stroke="#4d7a2c" stroke-width="2">
+    <circle cx="140" cy="150" r="20"/><circle cx="370" cy="400" r="20"/>
+  </g>
+  <!-- trees in the 30-100 ft zone: crowns apart -->
+  <g fill="#6d9f43" stroke="#456f26" stroke-width="2">
+    <circle cx="70" cy="300" r="24"/><circle cx="120" cy="420" r="24"/><circle cx="250" cy="470" r="22"/>
+    <circle cx="430" cy="170" r="24"/><circle cx="455" cy="300" r="22"/><circle cx="240" cy="66" r="24"/>
+    <circle cx="350" cy="85" r="22"/>
+  </g>
+  <!-- woodpile kept far out -->
+  <rect x="404" y="420" width="44" height="22" fill="#a9773f" stroke="#6b4a24" stroke-width="2"/>
+  <text x="426" y="460" text-anchor="middle" font-size="12" fill="#333">woodpile</text>
+  <text x="426" y="474" text-anchor="middle" font-size="12" fill="#333">30 ft or more</text>
+
+  <!-- distance arrows -->
+  <g stroke="#333" stroke-width="1.6" fill="none" marker-end="url(#a)" marker-start="url(#a)">
+    <line x1="337" y1="270" x2="398" y2="270"/>
+    <line x1="402" y1="270" x2="482" y2="270"/>
+  </g>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker></defs>
+  <text x="368" y="262" text-anchor="middle" font-size="12" fill="#333">to 30 ft</text>
+  <text x="442" y="262" text-anchor="middle" font-size="12" fill="#333">to 100 ft</text>
+
+  <!-- legend -->
+  <g font-size="14" fill="#222">
+    <rect x="500" y="40" width="20" height="16" fill="#d9d4cb" stroke="#6b6359"/>
+    <text x="528" y="53" font-weight="bold">0–5 ft</text>
+    <text x="500" y="72" font-size="12.5">Nothing that burns:</text>
+    <text x="500" y="88" font-size="12.5">gravel, rock, bare soil.</text>
+    <text x="500" y="104" font-size="12.5">Nothing against walls.</text>
+
+    <rect x="500" y="130" width="20" height="16" fill="#f3f8ec" stroke="#5b7f3a"/>
+    <text x="528" y="143" font-weight="bold">5–30 ft</text>
+    <text x="500" y="162" font-size="12.5">Lean, clean, green.</text>
+    <text x="500" y="178" font-size="12.5">Tree tops 15–20 ft</text>
+    <text x="500" y="194" font-size="12.5">apart, limbs pruned</text>
+    <text x="500" y="210" font-size="12.5">6–10 ft up.</text>
+
+    <rect x="500" y="236" width="20" height="16" fill="#e3efd9" stroke="#5b7f3a" stroke-dasharray="4 3"/>
+    <text x="528" y="249" font-weight="bold">30–100 ft</text>
+    <text x="500" y="268" font-size="12.5">Fire stays on the</text>
+    <text x="500" y="284" font-size="12.5">ground: grass under</text>
+    <text x="500" y="300" font-size="12.5">4 in, 10 ft between</text>
+    <text x="500" y="316" font-size="12.5">crowns, no ladder fuels.</text>
+    <text x="500" y="340" font-size="12.5" font-style="italic">200 ft on steep slopes.</text>
+  </g>
+  <text x="250" y="512" text-anchor="middle" font-size="12" fill="#555">Seen from above. Not to scale.</text>
+</svg>

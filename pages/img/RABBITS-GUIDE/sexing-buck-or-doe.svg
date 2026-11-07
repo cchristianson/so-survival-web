@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="470" viewBox="0 0 640 470" font-family="Arial, Helvetica, sans-serif">
+  <title>Telling a young buck from a doe: pressed gently, the buck's opening shows a round tip, the doe's a slit</title>
+  <rect width="640" height="470" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+  </defs>
+
+  <text x="320" y="26" text-anchor="middle" font-size="15" fill="#222">Rabbit on its back, tail pressed back and down.</text>
+  <text x="320" y="46" text-anchor="middle" font-size="15" fill="#222">Press gently on each side of the opening until the pink shows.</text>
+
+  <!-- head / tail direction, shared -->
+  <g stroke="#555" stroke-width="2" fill="none">
+    <line x1="320" y1="150" x2="320" y2="96" marker-end="url(#a)"/>
+    <line x1="320" y1="360" x2="320" y2="414" marker-end="url(#a)"/>
+  </g>
+  <text x="320" y="86" text-anchor="middle" font-size="13" fill="#555">head</text>
+  <text x="320" y="432" text-anchor="middle" font-size="13" fill="#555">tail</text>
+
+  <!-- ===== BUCK panel ===== -->
+  <rect x="16" y="62" width="284" height="384" rx="10" fill="#f6f2ea" stroke="#9a8f80" stroke-width="2"/>
+  <text x="158" y="92" text-anchor="middle" font-size="22" font-weight="bold" fill="#1d3f6e">BUCK</text>
+  <!-- bare skin around the openings -->
+  <ellipse cx="158" cy="245" rx="62" ry="98" fill="#f1dcd3" stroke="#c9ab9e" stroke-width="1.5"/>
+  <!-- fingertips pressing -->
+  <ellipse cx="66" cy="200" rx="22" ry="30" fill="#e6c4a2" stroke="#8a6a4c" stroke-width="2"/>
+  <ellipse cx="250" cy="200" rx="22" ry="30" fill="#e6c4a2" stroke="#8a6a4c" stroke-width="2"/>
+  <g stroke="#333" stroke-width="2" fill="none">
+    <line x1="92" y1="200" x2="112" y2="200" marker-end="url(#a)"/>
+    <line x1="224" y1="200" x2="204" y2="200" marker-end="url(#a)"/>
+  </g>
+  <!-- round tip -->
+  <circle cx="158" cy="200" r="22" fill="#e796a3" stroke="#9c4555" stroke-width="2.5"/>
+  <circle cx="158" cy="200" r="11" fill="#d97384" stroke="#9c4555" stroke-width="1.5"/>
+  <circle cx="158" cy="200" r="3" fill="#7a2f3d"/>
+  <!-- anus -->
+  <ellipse cx="158" cy="300" rx="11" ry="8" fill="#6b4a3c"/>
+  <!-- tail -->
+  <ellipse cx="158" cy="392" rx="34" ry="22" fill="#ffffff" stroke="#9a8f80" stroke-width="2"/>
+  <text x="116" y="304" text-anchor="end" font-size="13" fill="#333">anus</text>
+  <text x="158" y="146" text-anchor="middle" font-size="14" font-weight="bold" fill="#222">ROUND TIP</text>
+  <text x="158" y="163" text-anchor="middle" font-size="13" fill="#333">(looks like a circle)</text>
+  <text x="158" y="250" text-anchor="middle" font-size="13" fill="#333">sticks out,</text>
+  <text x="158" y="266" text-anchor="middle" font-size="13" fill="#333">rounded</text>
+  <text x="66" y="248" text-anchor="middle" font-size="12.5" fill="#555">fingertip</text>
+
+  <!-- ===== DOE panel ===== -->
+  <rect x="340" y="62" width="284" height="384" rx="10" fill="#f6f2ea" stroke="#9a8f80" stroke-width="2"/>
+  <text x="482" y="92" text-anchor="middle" font-size="22" font-weight="bold" fill="#7a2140">DOE</text>
+  <ellipse cx="482" cy="245" rx="62" ry="98" fill="#f1dcd3" stroke="#c9ab9e" stroke-width="1.5"/>
+  <ellipse cx="390" cy="200" rx="22" ry="30" fill="#e6c4a2" stroke="#8a6a4c" stroke-width="2"/>
+  <ellipse cx="574" cy="200" rx="22" ry="30" fill="#e6c4a2" stroke="#8a6a4c" stroke-width="2"/>
+  <g stroke="#333" stroke-width="2" fill="none">
+    <line x1="416" y1="200" x2="436" y2="200" marker-end="url(#a)"/>
+    <line x1="548" y1="200" x2="528" y2="200" marker-end="url(#a)"/>
+  </g>
+  <!-- slit: long, narrow, with a small dip at the end next to the anus -->
+  <path d="M482,170 C495,182 496,210 490,224 L482,236 L474,224 C468,210 469,182 482,170 Z" fill="#e796a3" stroke="#9c4555" stroke-width="2.5"/>
+  <line x1="482" y1="178" x2="482" y2="222" stroke="#7a2f3d" stroke-width="2.5"/>
+  <path d="M474,222 L482,236 L490,222 Q482,228 474,222 Z" fill="#7a2f3d"/>
+  <ellipse cx="482" cy="300" rx="11" ry="8" fill="#6b4a3c"/>
+  <ellipse cx="482" cy="392" rx="34" ry="22" fill="#ffffff" stroke="#9a8f80" stroke-width="2"/>
+  <text x="440" y="304" text-anchor="end" font-size="13" fill="#333">anus</text>
+  <text x="482" y="146" text-anchor="middle" font-size="14" font-weight="bold" fill="#222">A SLIT</text>
+  <text x="482" y="163" text-anchor="middle" font-size="13" fill="#333">(long and narrow)</text>
+  <line x1="500" y1="250" x2="489" y2="236" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+  <text x="502" y="260" font-size="13" fill="#333">dip at the end</text>
+  <text x="502" y="276" font-size="13" fill="#333">next to the anus</text>
+  <text x="390" y="248" text-anchor="middle" font-size="12.5" fill="#555">fingertip</text>
+
+  <text x="320" y="462" text-anchor="middle" font-size="12.5" fill="#555">Close-up, not to scale. Easiest at weaning, about 8 weeks old.</text>
+</svg>

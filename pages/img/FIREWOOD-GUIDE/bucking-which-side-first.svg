@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="450" viewBox="0 0 660 450" font-family="Arial, Helvetica, sans-serif">
+  <title>Bucking a log without pinching the saw: cut the squeezed side first, then finish from the stretched side</title>
+  <rect width="660" height="450" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+  </defs>
+
+  <!-- PANEL A -->
+  <text x="20" y="28" font-size="15" font-weight="bold" fill="#222">Log held up at both ends: it sags in the middle</text>
+  <path d="M40,90 Q330,122 620,90 L620,132 Q330,164 40,132 Z" fill="#d8b98c" stroke="#7a5a35" stroke-width="2"/>
+  <ellipse cx="40" cy="111" rx="8" ry="21" fill="#e9d3ae" stroke="#7a5a35" stroke-width="1.5"/>
+  <rect x="58" y="134" width="40" height="40" fill="#9a948a" stroke="#5e584f" stroke-width="1.5"/>
+  <rect x="562" y="134" width="40" height="40" fill="#9a948a" stroke="#5e584f" stroke-width="1.5"/>
+  <line x1="20" y1="174" x2="640" y2="174" stroke="#6b5a45" stroke-width="2"/>
+  <!-- squeeze arrows on top, stretch arrows below -->
+  <g stroke="#333" stroke-width="1.6" marker-end="url(#a)">
+    <line x1="280" y1="96" x2="308" y2="100"/><line x1="380" y1="96" x2="352" y2="100"/>
+    <line x1="308" y1="158" x2="280" y2="154"/><line x1="352" y1="158" x2="380" y2="154"/>
+  </g>
+  <!-- cuts -->
+  <line x1="330" y1="106" x2="330" y2="121" stroke="#c8431a" stroke-width="4"/>
+  <line x1="330" y1="148" x2="330" y2="123" stroke="#2b4c7e" stroke-width="4" stroke-dasharray="6 3"/>
+  <circle cx="330" cy="70" r="11" fill="#c8431a"/><text x="330" y="75" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">1</text>
+  <circle cx="330" cy="166" r="11" fill="#2b4c7e"/><text x="330" y="171" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">2</text>
+  <text x="352" y="60" font-size="13" fill="#222"><tspan font-weight="bold" fill="#c8431a">1. Top first</tspan> (squeezed side):</text>
+  <text x="352" y="76" font-size="13" fill="#222">a shallow cut down</text>
+  <text x="352" y="196" font-size="13" fill="#222"><tspan font-weight="bold" fill="#2b4c7e">2. Then from below</tspan> (stretched side),</text>
+  <text x="352" y="212" font-size="13" fill="#222">up to meet the first cut</text>
+
+  <line x1="10" y1="232" x2="650" y2="232" stroke="#ccc" stroke-width="1"/>
+
+  <!-- PANEL B -->
+  <text x="20" y="260" font-size="15" font-weight="bold" fill="#222">Log held up at one end: the free end droops</text>
+  <path d="M40,300 L260,300 Q450,306 620,330 L620,372 Q450,348 260,342 L40,342 Z" fill="#d8b98c" stroke="#7a5a35" stroke-width="2"/>
+  <ellipse cx="40" cy="321" rx="8" ry="21" fill="#e9d3ae" stroke="#7a5a35" stroke-width="1.5"/>
+  <path d="M20,342 L244,342 L274,418 L20,418 Z" fill="#b9a585" stroke="#5e584f" stroke-width="1.5"/>
+  <line x1="20" y1="418" x2="640" y2="418" stroke="#6b5a45" stroke-width="2"/>
+  <!-- stretch on top, squeeze below -->
+  <g stroke="#333" stroke-width="1.6" marker-end="url(#a)">
+    <line x1="312" y1="299" x2="284" y2="298"/><line x1="356" y1="300" x2="384" y2="303"/>
+    <line x1="284" y1="352" x2="312" y2="351"/><line x1="384" y1="356" x2="356" y2="353"/>
+  </g>
+  <line x1="334" y1="347" x2="334" y2="332" stroke="#c8431a" stroke-width="4"/>
+  <line x1="334" y1="302" x2="334" y2="330" stroke="#2b4c7e" stroke-width="4" stroke-dasharray="6 3"/>
+  <circle cx="334" cy="372" r="11" fill="#c8431a"/><text x="334" y="377" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">1</text>
+  <circle cx="334" cy="282" r="11" fill="#2b4c7e"/><text x="334" y="287" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">2</text>
+  <text x="430" y="384" font-size="13" fill="#222"><tspan font-weight="bold" fill="#c8431a">1. Below first</tspan> (squeezed</text>
+  <text x="430" y="400" font-size="13" fill="#222">side): a shallow cut up</text>
+  <text x="356" y="278" font-size="13" fill="#222"><tspan font-weight="bold" fill="#2b4c7e">2. Then from the top</tspan> to meet it</text>
+  <text x="20" y="442" font-size="13" fill="#555">Stand on the uphill side of the log.</text>
+</svg>

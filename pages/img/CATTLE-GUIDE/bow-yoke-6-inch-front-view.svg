@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="480" viewBox="0 0 660 480" font-family="Arial, Helvetica, sans-serif">
+  <title>A 6-inch ox bow yoke seen from the front, with its main measurements and how it should fit</title>
+  <rect width="660" height="480" fill="#ffffff"/>
+  <defs>
+    <marker id="d" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+  </defs>
+  <text x="330" y="26" text-anchor="middle" font-size="18" font-weight="bold" fill="#222">A 6-inch bow yoke for a pair of steers, seen from the front</text>
+
+  <!-- dimension lines above the yoke -->
+  <g stroke="#333" stroke-width="1.4" fill="none">
+    <line x1="210" y1="62" x2="450" y2="62" marker-start="url(#d)" marker-end="url(#d)"/>
+    <line x1="138" y1="88" x2="210" y2="88" marker-start="url(#d)" marker-end="url(#d)"/>
+    <line x1="450" y1="88" x2="522" y2="88" marker-start="url(#d)" marker-end="url(#d)"/>
+    <line x1="48" y1="88" x2="120" y2="88" marker-start="url(#d)" marker-end="url(#d)"/>
+  </g>
+  <g stroke="#999" stroke-width="1" stroke-dasharray="3 3">
+    <line x1="210" y1="56" x2="210" y2="120"/><line x1="450" y1="56" x2="450" y2="120"/>
+    <line x1="138" y1="82" x2="138" y2="120"/><line x1="522" y1="82" x2="522" y2="120"/>
+    <line x1="120" y1="82" x2="120" y2="120"/><line x1="48" y1="82" x2="48" y2="120"/>
+  </g>
+  <text x="330" y="56" text-anchor="middle" font-size="13" fill="#222">20 in between the inside bow holes (10 in each side of center)</text>
+  <text x="174" y="82" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">6 in</text>
+  <text x="486" y="82" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">6 in</text>
+  <text x="84" y="82" text-anchor="middle" font-size="13" fill="#222">end 4–5 in</text>
+
+  <!-- yoke beam with two neck seats and a belly -->
+  <path d="M48,118 Q60,104 120,106 L540,106 Q600,104 612,118 L612,150 Q600,158 545,156
+           L522,156 Q486,128 450,156 L370,160 Q350,186 330,188 Q310,186 290,160 L210,156 Q174,128 138,156
+           L115,156 Q60,158 48,150 Z" fill="#c9a26b" stroke="#6b4a24" stroke-width="2.5"/>
+  <text x="330" y="132" text-anchor="middle" font-size="13" fill="#3a2a14">hardwood: maple, birch or oak</text>
+
+  <!-- bows -->
+  <g fill="none" stroke="#6b4a24" stroke-width="12" stroke-linecap="round">
+    <path d="M129,150 L129,262 Q174,352 219,262 L219,150"/>
+    <path d="M441,150 L441,262 Q486,352 531,262 L531,150"/>
+  </g>
+  <g fill="#6b4a24">
+    <rect x="122" y="96" width="14" height="12" rx="3"/><rect x="212" y="96" width="14" height="12" rx="3"/>
+    <rect x="434" y="96" width="14" height="12" rx="3"/><rect x="524" y="96" width="14" height="12" rx="3"/>
+  </g>
+
+  <!-- necks (cross-section) -->
+  <ellipse cx="174" cy="222" rx="34" ry="62" fill="#efe6d8" stroke="#8a7a66" stroke-width="2" stroke-dasharray="5 4"/>
+  <ellipse cx="486" cy="222" rx="34" ry="62" fill="#efe6d8" stroke="#8a7a66" stroke-width="2" stroke-dasharray="5 4"/>
+  <text x="174" y="226" text-anchor="middle" font-size="13" fill="#555">neck</text>
+  <text x="486" y="226" text-anchor="middle" font-size="13" fill="#555">neck</text>
+
+  <!-- hand gap -->
+  <line x1="208" y1="250" x2="222" y2="250" stroke="#b03a2e" stroke-width="2" marker-start="url(#d)" marker-end="url(#d)"/>
+  <line x1="220" y1="254" x2="282" y2="318" stroke="#b03a2e" stroke-width="1.2"/>
+  <text x="330" y="333" text-anchor="middle" font-size="13" font-weight="bold" fill="#b03a2e">room to slip a flat hand</text>
+  <text x="330" y="349" text-anchor="middle" font-size="13" font-weight="bold" fill="#b03a2e">between bow and neck</text>
+
+  <!-- staple and ring -->
+  <rect x="322" y="180" width="16" height="14" fill="#555"/>
+  <circle cx="330" cy="208" r="15" fill="none" stroke="#444" stroke-width="5"/>
+  <text x="330" y="244" text-anchor="middle" font-size="13" fill="#222">staple and ring,</text>
+  <text x="330" y="260" text-anchor="middle" font-size="13" fill="#222">ring toward the belly:</text>
+  <text x="330" y="276" text-anchor="middle" font-size="13" fill="#222">the chain or cart</text>
+  <text x="330" y="292" text-anchor="middle" font-size="13" fill="#222">pole hooks here</text>
+
+  <!-- labels left -->
+  <text x="14" y="190" font-size="13" fill="#222">bows 1½ in</text>
+  <text x="14" y="206" font-size="13" fill="#222">thick: hickory,</text>
+  <text x="14" y="222" font-size="13" fill="#222">white oak</text>
+  <text x="14" y="238" font-size="13" fill="#222">or ash,</text>
+  <text x="14" y="254" font-size="13" fill="#222">steamed</text>
+  <text x="14" y="270" font-size="13" fill="#222">and bent</text>
+  <line x1="78" y1="234" x2="122" y2="240" stroke="#333" stroke-width="1.2"/>
+
+  <!-- notes box -->
+  <rect x="20" y="360" width="620" height="108" rx="8" fill="#f7f7f4" stroke="#999"/>
+  <text x="34" y="382" font-size="13" fill="#222">• <tspan font-weight="bold">Neck seats</tspan> are the smoothest part: rounded like the curve of your thumb, no cracks or high spots.</text>
+  <text x="34" y="401" font-size="13" fill="#222">• Drill the bow holes straight, about ⅛ in bigger than the bows (they swell in damp weather).</text>
+  <text x="34" y="420" font-size="13" fill="#222">• Pulling, the yoke pushes against the neck just above the shoulders, heads bent a little down.</text>
+  <text x="34" y="439" font-size="13" fill="#222">• Head tossing, pulling away or balking usually means a bad fit. Calves start in a 4-in yoke.</text>
+  <text x="34" y="458" font-size="13" fill="#222">• In wet weather, grease the neck seats and the necks: a wet yoke rubs the necks sore.</text>
+</svg>

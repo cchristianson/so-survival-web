@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="470" viewBox="0 0 680 470" font-family="Arial, Helvetica, sans-serif">
+  <title>Predator-proof run, cut-away side view: hardware cloth wall buried at least 12 inches, wire or netting over the top, and an electric bear fence outside with its lowest wire 7 to 9 inches up, wires 8 to 10 inches apart and the top wire 36 to 42 inches up</title>
+  <rect width="680" height="470" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+    <pattern id="hc" width="5" height="5" patternUnits="userSpaceOnUse"><rect width="5" height="5" fill="#ffffff"/><path d="M0,0 H5 M0,0 V5" stroke="#555" stroke-width="1"/></pattern>
+  </defs>
+
+  <text x="340" y="26" text-anchor="middle" font-size="16" font-weight="bold" fill="#222">Keeping predators out of the run</text>
+
+  <!-- soil -->
+  <rect x="0" y="330" width="680" height="80" fill="#e2d4bb"/>
+  <line x1="0" y1="330" x2="680" y2="330" stroke="#6b5a40" stroke-width="2"/>
+
+  <!-- run: top cover and wall of hardware cloth -->
+  <rect x="30" y="106" width="273" height="6" fill="url(#hc)" stroke="#444" stroke-width="1"/>
+  <rect x="297" y="106" width="6" height="272" fill="url(#hc)" stroke="#444" stroke-width="1"/>
+  <text x="166" y="96" text-anchor="middle" font-size="13" fill="#333">wire or netting over the top (hawks, owls)</text>
+  <text x="150" y="160" text-anchor="middle" font-size="18" font-weight="bold" fill="#7b6a50">RUN</text>
+  <text x="288" y="198" text-anchor="end" font-size="13" font-weight="bold" fill="#222">HARDWARE CLOTH,</text>
+  <text x="288" y="214" text-anchor="end" font-size="13" fill="#333">not chicken wire.</text>
+  <text x="288" y="230" text-anchor="end" font-size="13" fill="#333">Gaps of ¼ in or less stop</text>
+  <text x="288" y="246" text-anchor="end" font-size="13" fill="#333">snakes. Close every gap:</text>
+  <text x="288" y="262" text-anchor="end" font-size="13" fill="#333">a weasel fits through ¼ in.</text>
+  <text x="288" y="286" text-anchor="end" font-size="13" fill="#333">It also keeps the hens</text>
+  <text x="288" y="302" text-anchor="end" font-size="13" fill="#333">off the hot wires.</text>
+
+  <!-- buried depth -->
+  <line x1="314" y1="331" x2="314" y2="378" stroke="#333" stroke-width="1.4" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="322" y="352" font-size="13" fill="#333">buried at</text>
+  <text x="322" y="368" font-size="13" fill="#333">least 12 in</text>
+  <text x="288" y="364" text-anchor="end" font-size="13" fill="#333">stops diggers</text>
+
+  <!-- fence post with wires seen end-on (5 shown: 8, 16, 24, 32, 40 in) -->
+  <rect x="426" y="150" width="9" height="215" fill="#9b7b4f" stroke="#5e4a2e" stroke-width="1.5"/>
+  <g fill="#333"><rect x="435" y="295" width="6" height="6"/><rect x="435" y="263" width="6" height="6"/><rect x="435" y="231" width="6" height="6"/><rect x="435" y="199" width="6" height="6"/><rect x="435" y="167" width="6" height="6"/></g>
+  <g fill="#f2b705" stroke="#6e5200" stroke-width="1.5"><circle cx="445" cy="298" r="4.5"/><circle cx="445" cy="266" r="4.5"/><circle cx="445" cy="234" r="4.5"/><circle cx="445" cy="202" r="4.5"/><circle cx="445" cy="170" r="4.5"/></g>
+
+  <!-- top wire height, left of post -->
+  <line x1="410" y1="329" x2="410" y2="172" stroke="#333" stroke-width="1.4" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="404" y="150" text-anchor="end" font-size="13" fill="#333">top wire</text>
+  <text x="404" y="166" text-anchor="end" font-size="13" fill="#333">36–42 in up</text>
+
+  <!-- lowest wire and spacing, right of post -->
+  <line x1="460" y1="329" x2="460" y2="301" stroke="#333" stroke-width="1.4" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="468" y="320" font-size="13" fill="#333">lowest wire 7–9 in up</text>
+  <line x1="460" y1="295" x2="460" y2="269" stroke="#333" stroke-width="1.4" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="468" y="287" font-size="13" fill="#333">wires 8–10 in apart</text>
+  <text x="468" y="232" font-size="13" fill="#333">at least 3 wires,</text>
+  <text x="468" y="248" font-size="13" fill="#333">5 or 6 are better</text>
+
+  <!-- energizer and lead -->
+  <path d="M572,170 L452,170" stroke="#6e5200" stroke-width="2"/>
+  <rect x="572" y="112" width="102" height="140" rx="5" fill="#eef3e6" stroke="#4b6b2a" stroke-width="2"/>
+  <text x="623" y="131" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">ENERGIZER</text>
+  <text x="623" y="149" text-anchor="middle" font-size="12.5" fill="#333">6,000 volts and</text>
+  <text x="623" y="165" text-anchor="middle" font-size="12.5" fill="#333">0.5 joules or</text>
+  <text x="623" y="181" text-anchor="middle" font-size="12.5" fill="#333">more, on day</text>
+  <text x="623" y="197" text-anchor="middle" font-size="12.5" fill="#333">and night; a</text>
+  <text x="623" y="213" text-anchor="middle" font-size="12.5" fill="#333">solar charger</text>
+  <text x="623" y="229" text-anchor="middle" font-size="12.5" fill="#333">after the grid</text>
+  <line x1="650" y1="252" x2="650" y2="398" stroke="#555" stroke-width="3"/>
+  <text x="642" y="394" text-anchor="end" font-size="12.5" fill="#333">ground rod</text>
+
+  <!-- weeds kept cut -->
+  <text x="468" y="352" font-size="13" fill="#333">keep weeds cut</text>
+  <text x="468" y="368" font-size="13" fill="#333">off the wires</text>
+
+  <text x="340" y="436" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">Only an electric fence stops a black bear.</text>
+  <text x="340" y="458" text-anchor="middle" font-size="12.5" fill="#555">Cut-away side view, not to scale. The wires run along the fence; here they are seen end-on.</text>
+</svg>

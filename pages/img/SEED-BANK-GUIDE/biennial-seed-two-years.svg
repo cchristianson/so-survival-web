@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="470" viewBox="0 0 640 470" font-family="Arial, Helvetica, sans-serif">
+  <title>Seed from a biennial takes two growing seasons with a winter between</title>
+  <rect width="640" height="470" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#555"/></marker>
+  </defs>
+
+  <!-- column headings -->
+  <rect x="10" y="10" width="190" height="44" rx="6" fill="#e3f0d6"/>
+  <rect x="225" y="10" width="190" height="44" rx="6" fill="#dde9f3"/>
+  <rect x="440" y="10" width="190" height="44" rx="6" fill="#fbf0d4"/>
+  <g font-size="15" font-weight="bold" fill="#222" text-anchor="middle">
+    <text x="105" y="38">Year 1: grow it</text>
+    <text x="320" y="30">Winter</text>
+    <text x="535" y="38">Year 2: seed</text>
+  </g>
+  <text x="320" y="47" text-anchor="middle" font-size="13" fill="#222">8–12 weeks below 50 °F</text>
+  <line x1="202" y1="32" x2="222" y2="32" stroke="#555" stroke-width="2.5" marker-end="url(#a)"/>
+  <line x1="417" y1="32" x2="437" y2="32" stroke="#555" stroke-width="2.5" marker-end="url(#a)"/>
+
+  <!-- year 1: carrot growing -->
+  <rect x="20" y="160" width="170" height="70" fill="#cdb48c"/>
+  <line x1="20" y1="160" x2="190" y2="160" stroke="#6b5537" stroke-width="2"/>
+  <path d="M96,162 C96,190 100,210 105,226 C110,210 114,190 114,162 Z" fill="#e2803a" stroke="#9a4d14" stroke-width="1.5"/>
+  <g stroke="#5f9a35" stroke-width="3" fill="none" stroke-linecap="round"><path d="M105,160 C100,130 90,110 80,96"/><path d="M105,160 C105,128 106,108 108,90"/><path d="M105,160 C112,130 122,112 132,100"/></g>
+  <g font-size="13.5" fill="#222">
+    <text x="20" y="254">Roots or heads, no flowers.</text>
+    <text x="20" y="272">Carrots for seed: sow in</text>
+    <text x="20" y="290">June, so roots go into</text>
+    <text x="20" y="308">winter small.</text>
+  </g>
+
+  <!-- winter: two ways -->
+  <g font-size="13.5" fill="#222">
+    <rect x="225" y="70" width="190" height="170" rx="6" fill="#f4f8fb" stroke="#8aa3b5"/>
+    <text x="235" y="92" font-weight="bold">A Leave it in the ground</text>
+    <text x="235" y="112">in a well-drained raised</text>
+    <text x="235" y="130">bed. Fine where winters</text>
+    <text x="235" y="148">rarely drop below 14 °F.</text>
+    <text x="235" y="172">Cold snap of 5–10 °F</text>
+    <text x="235" y="190">coming? Hill soil over it</text>
+    <text x="235" y="208">or cover it with row cover.</text>
+    <text x="235" y="228" fill="#555">Watch for voles.</text>
+
+    <text x="320" y="262" text-anchor="middle" font-weight="bold" fill="#555">or</text>
+
+    <rect x="225" y="276" width="190" height="150" rx="6" fill="#f4f8fb" stroke="#8aa3b5"/>
+    <text x="235" y="298" font-weight="bold">B Dig the best roots</text>
+    <text x="235" y="316">("stecklings") and store</text>
+    <text x="235" y="334">them in moist sand in a</text>
+    <text x="235" y="352">root cellar, <tspan font-weight="bold">35–38 °F</tspan>,</text>
+    <text x="235" y="370">high humidity. Replant</text>
+    <text x="235" y="388">in early spring.</text>
+    <text x="235" y="412" fill="#555">You get to pick the best.</text>
+  </g>
+
+  <!-- year 2: flower stalk going to seed -->
+  <rect x="455" y="300" width="160" height="40" fill="#cdb48c"/>
+  <line x1="455" y1="300" x2="615" y2="300" stroke="#6b5537" stroke-width="2"/>
+  <path d="M528,302 C528,318 531,330 535,338 C539,330 542,318 542,302 Z" fill="#e2803a" stroke="#9a4d14" stroke-width="1.5"/>
+  <line x1="535" y1="300" x2="535" y2="130" stroke="#5f9a35" stroke-width="4"/>
+  <line x1="535" y1="230" x2="500" y2="170" stroke="#5f9a35" stroke-width="3"/>
+  <line x1="535" y1="220" x2="572" y2="166" stroke="#5f9a35" stroke-width="3"/>
+  <g fill="#f4f1e2" stroke="#9a9268" stroke-width="1.5">
+    <ellipse cx="535" cy="124" rx="30" ry="12"/><ellipse cx="500" cy="164" rx="20" ry="9"/><ellipse cx="572" cy="160" rx="20" ry="9"/>
+  </g>
+  <g stroke="#5f9a35" stroke-width="3" fill="none" stroke-linecap="round"><path d="M535,298 C520,280 508,272 496,268"/><path d="M535,298 C552,282 564,274 576,270"/></g>
+  <g font-size="13.5" fill="#222">
+    <text x="455" y="364">It sends up a tall flower</text>
+    <text x="455" y="382">stalk, then sets seed.</text>
+    <text x="455" y="400">Harvest it as each crop's</text>
+    <text x="455" y="418">notes say.</text>
+  </g>
+
+  <text x="320" y="456" text-anchor="middle" font-size="13.5" fill="#222">Carrots, beets, onions, leeks, celery, cabbage, kale, collards, turnips, rutabagas and kin.</text>
+</svg>

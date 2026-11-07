@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="340" viewBox="0 0 660 340" font-family="Arial, Helvetica, sans-serif">
+  <title>The layers of a rammed earthen floor, cut through</title>
+  <rect width="660" height="340" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+    <pattern id="grav" width="22" height="16" patternUnits="userSpaceOnUse">
+      <rect width="22" height="16" fill="#e4ddcf"/><circle cx="5" cy="5" r="2.6" fill="#8d8579"/><circle cx="15" cy="10" r="3.2" fill="#8d8579"/><circle cx="8" cy="13" r="1.8" fill="#8d8579"/>
+    </pattern>
+  </defs>
+  <text x="20" y="30" font-size="16" font-weight="bold" fill="#222">An earthen floor, cut through</text>
+  <!-- 20 px per inch; finished floor at y=80 -->
+  <!-- sealer -->
+  <rect x="20" y="76" width="440" height="4" fill="#8a5a2b"/>
+  <!-- top layer 1.5 in -->
+  <rect x="20" y="80" width="440" height="30" fill="#c99a68" stroke="#6b4a24" stroke-width="1.2"/>
+  <!-- lower layer 1.5 in -->
+  <rect x="20" y="110" width="440" height="30" fill="#d9b88f" stroke="#6b4a24" stroke-width="1.2"/>
+  <!-- gravel 4 in -->
+  <rect x="20" y="140" width="440" height="80" fill="url(#grav)" stroke="#6b6359" stroke-width="1.2"/>
+  <!-- tamped subsoil -->
+  <rect x="20" y="220" width="440" height="70" fill="#b58b62" stroke="#6b4a24" stroke-width="1.2"/>
+  <g stroke="#7d5a3a" stroke-width="1" opacity="0.6"><path d="M40,240 l20,0 M120,256 l26,0 M220,238 l18,0 M300,262 l24,0 M380,244 l22,0 M90,276 l20,0 M260,280 l24,0"/></g>
+
+  <!-- dimension: total depth -->
+  <line x1="476" y1="82" x2="476" y2="218" stroke="#333" stroke-width="1.5" marker-start="url(#a)" marker-end="url(#a)"/>
+  <!-- labels right -->
+  <g font-size="13" fill="#222">
+    <text x="488" y="72" font-weight="bold">seal: oil, hot beeswax</text>
+    <text x="488" y="88" font-weight="bold">or tallow</text>
+    <text x="488" y="146" font-weight="bold">dig out 6–7 in</text>
+    <text x="488" y="162">below the finished</text>
+    <text x="488" y="178">floor</text>
+  </g>
+  <!-- labels inside layers -->
+  <rect x="26" y="152" width="200" height="60" rx="3" fill="#ffffff" opacity="0.88"/>
+  <g font-size="13" fill="#222">
+    <text x="32" y="100"><tspan font-weight="bold">1½ in</tspan> top layer: enough lime that a nail barely scratches it</text>
+    <text x="32" y="130"><tspan font-weight="bold">1½ in</tspan> lower layer: less stabiliser</text>
+    <text x="32" y="168"><tspan font-weight="bold">4 in</tspan> sandy gravel, tamped:</text>
+    <text x="32" y="186">stops moisture rising</text>
+    <text x="32" y="204">(6 in over swelling soil)</text>
+    <text x="32" y="248" fill="#fff"><tspan font-weight="bold">subsoil, tamped</tspan> (topsoil removed)</text>
+    <text x="32" y="266" fill="#fff">don't ram swelling clay</text>
+  </g>
+  <text x="20" y="320" font-size="13.5" fill="#222">Ram the two earth layers. Cure the floor damp for several days, then seal it.</text>
+</svg>

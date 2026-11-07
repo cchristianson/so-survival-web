@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="540" viewBox="0 0 640 540" font-family="Arial, Helvetica, sans-serif">
+  <title>Why a pump on top of a well only reaches water about 20 feet down, and how a deep-well pump puts its cylinder down in the water</title>
+  <rect width="640" height="540" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#1f4f7a"/></marker>
+    <pattern id="soil" width="10" height="10" patternUnits="userSpaceOnUse"><rect width="10" height="10" fill="#e8dcc6"/><circle cx="3" cy="3" r="1" fill="#b8a27a"/><circle cx="8" cy="7" r="1" fill="#b8a27a"/></pattern>
+  </defs>
+
+  <!-- ground and soil -->
+  <rect x="70" y="130" width="560" height="350" fill="url(#soil)"/>
+  <line x1="70" y1="130" x2="630" y2="130" stroke="#5b4a30" stroke-width="3"/>
+  <!-- water-bearing ground -->
+  <rect x="70" y="235" width="250" height="245" fill="#cfe3f3" opacity="0.7"/>
+  <rect x="330" y="375" width="300" height="105" fill="#cfe3f3" opacity="0.7"/>
+
+  <rect x="321" y="131" width="8" height="349" fill="#ffffff"/>
+  <!-- depth scale: 7 px per ft, 0 ft at y=130 -->
+  <g font-size="13.5" fill="#333" text-anchor="end">
+    <line x1="60" y1="130" x2="60" y2="480" stroke="#333" stroke-width="1.5"/>
+    <line x1="54" y1="130" x2="60" y2="130" stroke="#333"/><text x="50" y="135">0 ft</text>
+    <line x1="54" y1="200" x2="60" y2="200" stroke="#333"/><text x="50" y="205">10</text>
+    <line x1="54" y1="270" x2="60" y2="270" stroke="#333"/><text x="50" y="275">20</text>
+    <line x1="54" y1="340" x2="60" y2="340" stroke="#333"/><text x="50" y="345">30</text>
+    <line x1="54" y1="410" x2="60" y2="410" stroke="#333"/><text x="50" y="415">40</text>
+    <line x1="54" y1="480" x2="60" y2="480" stroke="#333"/><text x="50" y="485">50</text>
+  </g>
+
+  <!-- suction limit band, 20-22 ft -->
+  <rect x="70" y="270" width="560" height="14" fill="#b03a2e" opacity="0.18"/>
+  <line x1="70" y1="270" x2="630" y2="270" stroke="#b03a2e" stroke-width="2" stroke-dasharray="8 5"/>
+  <line x1="70" y1="284" x2="630" y2="284" stroke="#b03a2e" stroke-width="2" stroke-dasharray="8 5"/>
+  <text x="350" y="302" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#b03a2e">suction limit, about 20–22 ft</text>
+
+  <!-- LEFT WELL: shallow water, pitcher pump on top -->
+  <rect x="176" y="130" width="8" height="350" fill="#777"/><rect x="236" y="130" width="8" height="350" fill="#777"/>
+  <rect x="184" y="235" width="52" height="245" fill="#6fa8d6"/>
+  <line x1="184" y1="235" x2="236" y2="235" stroke="#1f4f7a" stroke-width="2"/>
+  <!-- suction pipe -->
+  <rect x="205" y="112" width="10" height="210" fill="#ddd" stroke="#333" stroke-width="1.5"/>
+  <line x1="210" y1="300" x2="210" y2="150" stroke="#1f4f7a" stroke-width="3" marker-end="url(#a)"/>
+  <!-- pitcher pump -->
+  <rect x="192" y="74" width="36" height="40" rx="4" fill="#4a6b8a" stroke="#222" stroke-width="2"/>
+  <path d="M228,82 L250,82 L250,90 L236,90" fill="#4a6b8a" stroke="#222" stroke-width="2"/>
+  <line x1="210" y1="74" x2="160" y2="52" stroke="#222" stroke-width="5" stroke-linecap="round"/>
+  <text x="210" y="30" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">Pump on top</text>
+  <text x="76" y="212" font-size="13.5" fill="#1f4f7a">water</text>
+  <text x="76" y="228" font-size="13.5" fill="#1f4f7a">at 15 ft</text>
+
+  <!-- RIGHT WELL: deep water, cylinder down in the water -->
+  <rect x="456" y="130" width="8" height="350" fill="#777"/><rect x="516" y="130" width="8" height="350" fill="#777"/>
+  <rect x="464" y="375" width="52" height="105" fill="#6fa8d6"/>
+  <line x1="464" y1="375" x2="516" y2="375" stroke="#1f4f7a" stroke-width="2"/>
+  <!-- drop pipe, rod and cylinder -->
+  <rect x="483" y="112" width="14" height="290" fill="#ddd" stroke="#333" stroke-width="1.5"/>
+  <line x1="490" y1="80" x2="490" y2="410" stroke="#222" stroke-width="2.5"/>
+  <rect x="478" y="400" width="24" height="44" rx="3" fill="#4a6b8a" stroke="#222" stroke-width="2"/>
+  <line x1="490" y1="396" x2="490" y2="150" stroke="#1f4f7a" stroke-width="3" marker-end="url(#a)" opacity="0.8"/>
+  <!-- deep-well pump head -->
+  <rect x="472" y="78" width="36" height="36" rx="4" fill="#4a6b8a" stroke="#222" stroke-width="2"/>
+  <path d="M508,86 L530,86 L530,94 L516,94" fill="#4a6b8a" stroke="#222" stroke-width="2"/>
+  <line x1="490" y1="78" x2="440" y2="56" stroke="#222" stroke-width="5" stroke-linecap="round"/>
+  <text x="490" y="30" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">Deep-well pump</text>
+  <text x="560" y="350" font-size="13.5" fill="#1f4f7a">water</text>
+  <text x="560" y="366" font-size="13.5" fill="#1f4f7a">at 35 ft</text>
+  <line x1="408" y1="420" x2="476" y2="420" stroke="#333" stroke-width="1.4"/>
+  <text x="404" y="410" text-anchor="end" font-size="13.5" fill="#222">cylinder</text>
+  <text x="404" y="426" text-anchor="end" font-size="13.5" fill="#222">below the</text>
+  <text x="404" y="442" text-anchor="end" font-size="13.5" fill="#222">water, on rods</text>
+
+  <!-- captions -->
+  <text x="20" y="506" font-size="14.5" fill="#222"><tspan font-weight="bold">Left:</tspan> air pressure pushes the water up the pipe, but only about 20–22 ft.</text>
+  <text x="20" y="528" font-size="14.5" fill="#222"><tspan font-weight="bold">Right:</tspan> deeper water? Put the pumping part down in the water and push it up.</text>
+</svg>

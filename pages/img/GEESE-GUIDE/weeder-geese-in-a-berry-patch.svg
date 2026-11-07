@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="500" viewBox="0 0 660 500" font-family="Arial, Helvetica, sans-serif">
+  <title>Weeder geese in a strawberry patch: move the feed, water and shade every few days, and take the geese out before the berries ripen</title>
+  <rect width="660" height="500" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+  </defs>
+
+  <text x="20" y="28" font-size="17" font-weight="bold" fill="#222">Seen from above: a fenced berry patch</text>
+
+  <!-- field with fence -->
+  <rect x="20" y="42" width="430" height="250" fill="#f3f8ec" stroke="#6b4a24" stroke-width="4" stroke-dasharray="12 5"/>
+  <!-- crop rows -->
+  <g stroke="#5b7f3a" stroke-width="7" stroke-linecap="round" stroke-dasharray="1 16">
+    <line x1="45" y1="70" x2="425" y2="70"/><line x1="45" y1="110" x2="425" y2="110"/>
+    <line x1="45" y1="150" x2="425" y2="150"/><line x1="45" y1="190" x2="425" y2="190"/>
+    <line x1="45" y1="230" x2="425" y2="230"/><line x1="45" y1="270" x2="425" y2="270"/>
+  </g>
+
+  <!-- three feeding stations -->
+  <g font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    <circle cx="90" cy="130" r="20" fill="#2f5d7c"/><text x="90" y="135">1</text>
+    <circle cx="235" cy="210" r="20" fill="#2f5d7c"/><text x="235" y="215">2</text>
+    <circle cx="380" cy="130" r="20" fill="#2f5d7c"/><text x="380" y="135">3</text>
+  </g>
+  <g stroke="#333" stroke-width="2" fill="none" marker-end="url(#a)">
+    <path d="M110,140 Q170,195 212,206"/>
+    <path d="M258,204 Q320,185 360,142"/>
+  </g>
+
+  <!-- legend on right -->
+  <g font-size="14" fill="#222">
+    <circle cx="478" cy="60" r="11" fill="#2f5d7c"/>
+    <text x="496" y="65">= grain, water</text>
+    <text x="496" y="83">and a low shade</text>
+    <text x="470" y="115" font-weight="bold">Move them every</text>
+    <text x="470" y="133" font-weight="bold">few days.</text>
+    <text x="470" y="155">Geese left in one spot</text>
+    <text x="470" y="173">start on the plants.</text>
+    <text x="470" y="205"><tspan font-weight="bold">5–7 geese</tspan> an acre</text>
+    <text x="470" y="223">About <tspan font-weight="bold">1 lb grain a</tspan></text>
+    <text x="470" y="241"><tspan font-weight="bold">day per 5 geese</tspan></text>
+    <text x="470" y="270">Fence 3–4 ft, or clip</text>
+    <text x="470" y="288">the flight feathers</text>
+    <text x="470" y="306">of one wing</text>
+  </g>
+
+  <!-- season strip -->
+  <text x="20" y="342" font-size="17" font-weight="bold" fill="#222">Through the season</text>
+  <g font-size="14">
+    <rect x="20" y="356" width="190" height="56" fill="#d8ead0" stroke="#5b7f3a" stroke-width="2"/>
+    <text x="115" y="378" text-anchor="middle" font-weight="bold" fill="#222">IN: spring</text>
+    <text x="115" y="398" text-anchor="middle" fill="#222">while weeds are small</text>
+
+    <rect x="214" y="356" width="200" height="56" fill="#f6d9d2" stroke="#a33a2a" stroke-width="2"/>
+    <text x="314" y="378" text-anchor="middle" font-weight="bold" fill="#222">OUT: berries ripening</text>
+    <text x="314" y="398" text-anchor="middle" fill="#222">and picking time</text>
+
+    <rect x="418" y="356" width="222" height="56" fill="#d8ead0" stroke="#5b7f3a" stroke-width="2"/>
+    <text x="529" y="378" text-anchor="middle" font-weight="bold" fill="#222">IN again: after picking</text>
+    <text x="529" y="398" text-anchor="middle" fill="#222">to late summer or fall</text>
+  </g>
+  <g font-size="14" fill="#222">
+    <text x="20" y="440">Out by the time berries are nearly ripe (FB 767), or as early as</text>
+    <text x="20" y="458">blossom time (Peace Corps). Corn only once it is tall and tough.</text>
+    <text x="20" y="476">Never in young, tender crops: geese eat any tender green.</text>
+  </g>
+  <text x="650" y="494" text-anchor="end" font-size="12" fill="#555">Not to scale.</text>
+</svg>

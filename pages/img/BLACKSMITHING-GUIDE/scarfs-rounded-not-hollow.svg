@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="440" viewBox="0 0 640 440" font-family="Arial, Helvetica, sans-serif">
+  <title>Forge-weld scarfs: slightly rounded faces squeeze scale out, hollow faces trap it</title>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker></defs>
+  <rect width="640" height="440" fill="#ffffff"/>
+  <text x="20" y="34" font-size="17" font-weight="bold" fill="#2e7d32">RIGHT: scarfs slightly rounded</text>
+  <path d="M40,80 L220,80 Q305.4,87.8 380,130 L40,130 Z" fill="#c4c4c4" stroke="#333" stroke-width="2.2"/>
+  <path d="M220,61 L600,61 L600,111 L380,111 Q294.6,103.2 220,61 Z" fill="#a9a9a9" stroke="#333" stroke-width="2.2"/>
+  <g stroke="#333" stroke-width="1.8" marker-end="url(#a)">
+    <line x1="232" y1="70" x2="206" y2="52"/>
+    <line x1="372" y1="118" x2="404" y2="140"/>
+  </g>
+  <g font-size="14" fill="#222">
+    <text x="196" y="50" text-anchor="end">scale</text>
+    <text x="412" y="152">squeezes out</text>
+    <text x="320" y="184" text-anchor="middle" font-size="15" font-weight="bold">They touch in the middle first; the blows push scale out the sides.</text>
+  </g>
+  <line x1="20" y1="204" x2="620" y2="204" stroke="#ccc" stroke-width="1.2"/>
+  <text x="20" y="240" font-size="17" font-weight="bold" fill="#b3261e">WRONG: scarfs hollow</text>
+  <path d="M220,286 Q294.6,328.2 380,336 Q305.4,293.8 220,286 Z" fill="#3b2f2f"/>
+  <path d="M40,286 L220,286 Q294.6,328.2 380,336 L40,336 Z" fill="#c4c4c4" stroke="#333" stroke-width="2.2"/>
+  <path d="M220,286 L600,286 L600,336 L380,336 Q305.4,293.8 220,286 Z" fill="#a9a9a9" stroke="#333" stroke-width="2.2"/>
+  <text x="250" y="262" font-size="14" fill="#222">scale trapped in the pocket</text>
+  <line x1="300" y1="267" x2="300" y2="304" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+  <text x="320" y="372" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">They touch only at the edges; the weld can let go later.</text>
+  <text x="320" y="420" text-anchor="middle" font-size="13" fill="#555">Side view of two bar ends laid together for a lap weld. Curves exaggerated.</text>
+</svg>

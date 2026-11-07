@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="560" viewBox="0 0 640 560" font-family="Arial, Helvetica, sans-serif">
+  <title>A root cellar cut through: how cold night air comes in low and warm air leaves high</title>
+  <rect width="640" height="560" fill="#ffffff"/>
+  <defs>
+    <marker id="b" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#2f6fa3"/></marker>
+    <marker id="r" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#c0392b"/></marker>
+    <marker id="k" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+  </defs>
+
+  <!-- ground -->
+  <rect x="0" y="340" width="640" height="16" fill="#cdb48c"/>
+  <line x1="0" y1="340" x2="640" y2="340" stroke="#6b5537" stroke-width="2"/>
+  <!-- earth heaped over the cellar -->
+  <path d="M40,340 C70,200 130,128 330,124 C530,128 590,200 620,340 Z" fill="#a9895c" stroke="#5c4428" stroke-width="2.5"/>
+  <!-- straw layers in the cover -->
+  <path d="M120,236 C170,176 250,160 330,158 C410,160 490,176 540,236" fill="none" stroke="#e3c96b" stroke-width="7"/>
+  <path d="M150,226 C190,190 260,180 330,180 C400,180 470,190 510,226" fill="none" stroke="#e3c96b" stroke-width="7"/>
+
+  <!-- cellar room -->
+  <rect x="160" y="210" width="340" height="130" fill="#f7f4ee" stroke="#4d4d4d" stroke-width="4"/>
+  <!-- entry passage with two doors -->
+  <rect x="96" y="262" width="64" height="78" fill="#f7f4ee" stroke="#4d4d4d" stroke-width="3"/>
+  <rect x="94" y="268" width="7" height="72" fill="#7a5a30"/>
+  <rect x="157" y="268" width="7" height="72" fill="#7a5a30"/>
+  <line x1="98" y1="366" x2="160" y2="366" stroke="#333" stroke-width="1.5" marker-start="url(#k)" marker-end="url(#k)"/>
+
+  <!-- floor: earth or gravel -->
+  <g fill="#8c7a5e"><circle cx="190" cy="336" r="2"/><circle cx="230" cy="335" r="2"/><circle cx="270" cy="336" r="2"/><circle cx="310" cy="335" r="2"/><circle cx="350" cy="336" r="2"/><circle cx="390" cy="335" r="2"/><circle cx="430" cy="336" r="2"/></g>
+
+  <!-- slat shelves, held off the floor and wall -->
+  <g stroke="#7a5a30" stroke-width="4">
+    <line x1="296" y1="326" x2="296" y2="236"/><line x1="404" y1="326" x2="404" y2="236"/>
+  </g>
+  <g stroke="#7a5a30" stroke-width="5" stroke-dasharray="12 5">
+    <line x1="292" y1="326" x2="408" y2="326"/><line x1="292" y1="296" x2="408" y2="296"/><line x1="292" y1="266" x2="408" y2="266"/><line x1="292" y1="238" x2="408" y2="238"/>
+  </g>
+  <g fill="#c98b3c" stroke="#7a4d18" stroke-width="1"><circle cx="312" cy="318" r="6"/><circle cx="328" cy="318" r="6"/><circle cx="344" cy="318" r="6"/><circle cx="360" cy="318" r="6"/><circle cx="320" cy="288" r="6"/><circle cx="336" cy="288" r="6"/><circle cx="352" cy="288" r="6"/><circle cx="368" cy="288" r="6"/><circle cx="384" cy="288" r="6"/></g>
+
+  <!-- outlet: from the ceiling up above the roof -->
+  <rect x="198" y="86" width="26" height="126" fill="#e6e6e6" stroke="#4d4d4d" stroke-width="2.5"/>
+  <path d="M188,86 L234,86 L211,70 Z" fill="#4d4d4d"/>
+  <!-- intake: from outside down to near the floor -->
+  <rect x="444" y="86" width="26" height="222" fill="#e6e6e6" stroke="#4d4d4d" stroke-width="2.5"/>
+  <path d="M434,86 L480,86 L457,70 Z" fill="#4d4d4d"/>
+
+  <!-- air flow -->
+  <path d="M457,100 L457,296" stroke="#2f6fa3" stroke-width="3.5" fill="none" marker-end="url(#b)"/>
+  <path d="M440,322 C380,334 260,334 230,300" stroke="#2f6fa3" stroke-width="3.5" fill="none" marker-end="url(#b)"/>
+  <path d="M211,250 L211,94" stroke="#c0392b" stroke-width="3.5" fill="none" marker-end="url(#r)"/>
+
+  <!-- 1½ ft dimension -->
+  <line x1="484" y1="308" x2="484" y2="338" stroke="#333" stroke-width="1.5" marker-start="url(#k)" marker-end="url(#k)"/>
+  <text x="490" y="330" font-size="13" font-weight="bold" fill="#222">1½ ft</text>
+
+  <!-- 3½ ft cover dimension -->
+  <line x1="262" y1="208" x2="262" y2="128" stroke="#222" stroke-width="2" marker-start="url(#k)" marker-end="url(#k)"/>
+  <line x1="150" y1="110" x2="256" y2="150" stroke="#333" stroke-width="1.2"/>
+
+  <!-- labels -->
+  <g font-size="14" fill="#222">
+    <text x="14" y="24" font-weight="bold">Warm air out, high</text>
+    <text x="14" y="42">Outlet starts at the ceiling</text>
+    <text x="14" y="60">and rises above the roof</text>
+    <text x="626" y="24" text-anchor="end" font-weight="bold">Cold night air in, low</text>
+    <text x="626" y="42" text-anchor="end">Intake brings it down to about</text>
+    <text x="626" y="60" text-anchor="end">1½ ft above the floor</text>
+    <text x="14" y="100" font-weight="bold">3½ ft or more of</text>
+    <text x="14" y="118" font-weight="bold">soil and straw</text>
+    <text x="40" y="388" font-size="13.5">two doors, about 4 ft apart:</text>
+    <text x="40" y="405" font-size="13.5">an air lock</text>
+    <line x1="350" y1="330" x2="350" y2="374" stroke="#333" stroke-width="1.2"/>
+    <text x="290" y="388" font-size="13.5">slat shelves 4 in off the floor and walls</text>
+    <text x="290" y="407" font-size="13.5">floor of earth or gravel</text>
+  </g>
+
+  <rect x="14" y="440" width="612" height="108" rx="6" fill="#f4efe4" stroke="#b9a98a"/>
+  <g font-size="14" fill="#222">
+    <text x="28" y="464"><tspan font-weight="bold" fill="#2f6fa3">Cold nights (Nov–Feb): open both vents.</tspan> Cold outside air sinks in</text>
+    <text x="28" y="483">and pushes the warm air out the top.</text>
+    <text x="28" y="506"><tspan font-weight="bold" fill="#c0392b">Warm days: close them</tspan> to keep the cold in.</text>
+    <text x="28" y="532">Both vents adjustable and screened. About 12 in square for a 10×14 ft cellar.</text>
+  </g>
+</svg>

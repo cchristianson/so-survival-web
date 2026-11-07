@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="520" viewBox="0 0 640 520" font-family="Arial, Helvetica, sans-serif">
+  <title>The cross (lease) in a warp: alternate threads cross between two rods</title>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker></defs>
+  <rect width="640" height="520" fill="#ffffff"/>
+
+  <text x="20" y="30" font-size="16" font-weight="bold" fill="#222">1. Side view: the threads cross between two rods</text>
+  <path d="M30,122 L240,133 L400,107 L610,118" fill="none" stroke="#c0661b" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M30,118 L240,107 L400,133 L610,122" fill="none" stroke="#1f5f8b" stroke-width="5" stroke-linejoin="round"/>
+  <circle cx="240" cy="120" r="8" fill="#8a5a2b" stroke="#4d3115" stroke-width="1.5"/>
+  <circle cx="400" cy="120" r="8" fill="#8a5a2b" stroke="#4d3115" stroke-width="1.5"/>
+  <g font-size="14" fill="#222">
+    <text x="240" y="154" text-anchor="middle">rod</text>
+    <text x="400" y="154" text-anchor="middle">rod</text>
+    <text x="30" y="94" fill="#1f5f8b" font-weight="bold">every other thread: over, then under</text>
+    <text x="30" y="176" fill="#c0661b" font-weight="bold">the threads between: under, then over</text>
+    <text x="400" y="176" text-anchor="middle" font-weight="bold">the cross</text>
+    <line x1="380" y1="164" x2="326" y2="128" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+  </g>
+
+  <line x1="20" y1="200" x2="620" y2="200" stroke="#ccc" stroke-width="1.2"/>
+  <text x="20" y="230" font-size="16" font-weight="bold" fill="#222">2. From above: the rods hold alternate threads apart</text>
+    <line x1="30" y1="256" x2="610" y2="256" stroke="#1f5f8b" stroke-width="5"/>
+  <line x1="30" y1="270" x2="610" y2="270" stroke="#c0661b" stroke-width="5"/>
+  <line x1="30" y1="284" x2="610" y2="284" stroke="#1f5f8b" stroke-width="5"/>
+  <line x1="30" y1="298" x2="610" y2="298" stroke="#c0661b" stroke-width="5"/>
+  <line x1="30" y1="312" x2="610" y2="312" stroke="#1f5f8b" stroke-width="5"/>
+  <line x1="30" y1="326" x2="610" y2="326" stroke="#c0661b" stroke-width="5"/>
+  <rect x="233" y="242" width="14" height="98" fill="#8a5a2b" stroke="#4d3115" stroke-width="1.5"/>
+  <line x1="228" y1="256" x2="252" y2="256" stroke="#1f5f8b" stroke-width="5"/>
+  <line x1="228" y1="284" x2="252" y2="284" stroke="#1f5f8b" stroke-width="5"/>
+  <line x1="228" y1="312" x2="252" y2="312" stroke="#1f5f8b" stroke-width="5"/>
+  <rect x="393" y="242" width="14" height="98" fill="#8a5a2b" stroke="#4d3115" stroke-width="1.5"/>
+  <line x1="388" y1="270" x2="412" y2="270" stroke="#c0661b" stroke-width="5"/>
+  <line x1="388" y1="298" x2="412" y2="298" stroke="#c0661b" stroke-width="5"/>
+  <line x1="388" y1="326" x2="412" y2="326" stroke="#c0661b" stroke-width="5"/>
+
+  <line x1="20" y1="362" x2="620" y2="362" stroke="#ccc" stroke-width="1.2"/>
+  <text x="20" y="390" font-size="16" font-weight="bold" fill="#222">3. Before the warp comes off, tie a cord through</text>
+  <text x="20" y="410" font-size="16" font-weight="bold" fill="#222">   each opening of the cross</text>
+  <path d="M30,467 L240,478 L400,452 L610,463" fill="none" stroke="#c0661b" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M30,463 L240,452 L400,478 L610,467" fill="none" stroke="#1f5f8b" stroke-width="5" stroke-linejoin="round"/>
+  <ellipse cx="240" cy="456" rx="10" ry="17" fill="none" stroke="#b3261e" stroke-width="2.5"/>
+  <path d="M240,439 q-6,-12 -14,-14 M240,439 q6,-12 14,-14" fill="none" stroke="#b3261e" stroke-width="2.5"/>
+  <ellipse cx="400" cy="456" rx="10" ry="17" fill="none" stroke="#b3261e" stroke-width="2.5"/>
+  <path d="M400,439 q-6,-12 -14,-14 M400,439 q6,-12 14,-14" fill="none" stroke="#b3261e" stroke-width="2.5"/>
+  <text x="460" y="432" font-size="14" fill="#b3261e" font-weight="bold">cords, tied</text>
+  <line x1="456" y1="428" x2="414" y2="440" stroke="#b3261e" stroke-width="1.4" marker-end="url(#a)"/>
+  <text x="320" y="508" text-anchor="middle" font-size="13" fill="#555">Not to scale: a real warp has dozens or hundreds of threads.</text>
+</svg>

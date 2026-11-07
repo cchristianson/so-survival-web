@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="470" viewBox="0 0 640 470" font-family="Arial, Helvetica, sans-serif">
+  <title>Bloat: the emergency puncture site on the cow's left flank</title>
+  <rect width="640" height="470" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+  </defs>
+  <text x="320" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#222">Bloat: where to let the gas out (her LEFT side)</text>
+  <text x="320" y="48" text-anchor="middle" font-size="13" fill="#555">The cow faces left, so you are looking at her left side, where the rumen is</text>
+
+  <!-- legs -->
+  <g fill="#e9e1d3" stroke="#5a4b3a" stroke-width="2.5">
+    <rect x="190" y="268" width="30" height="110" rx="6"/>
+    <rect x="232" y="268" width="28" height="104" rx="6"/>
+    <rect x="455" y="262" width="32" height="116" rx="6"/>
+    <rect x="497" y="262" width="28" height="110" rx="6"/>
+  </g>
+  <!-- body -->
+  <path d="M175,128 Q190,104 250,108 L430,112 Q470,104 520,122 Q548,135 545,190 Q542,250 520,272 L480,280 Q420,300 330,298 Q240,300 200,282 Q165,262 162,200 Q160,150 175,128 Z" fill="#f1ebe0" stroke="#5a4b3a" stroke-width="3"/>
+  <!-- swollen flank bulge -->
+  <path d="M352,118 Q392,70 452,112" fill="none" stroke="#b03a2e" stroke-width="3" stroke-dasharray="6 4"/>
+  <text x="400" y="78" text-anchor="middle" font-size="13" fill="#b03a2e">bloated: swells high</text>
+  <text x="400" y="93" text-anchor="middle" font-size="13" fill="#b03a2e">on this side first</text>
+  <!-- neck and head -->
+  <path d="M178,132 Q140,120 112,128 L70,150 Q52,165 58,186 Q66,204 92,200 L120,190 Q150,186 170,200" fill="#f1ebe0" stroke="#5a4b3a" stroke-width="3"/>
+  <circle cx="98" cy="160" r="3.5" fill="#333"/>
+  <path d="M112,128 L104,110 L122,124" fill="#e9e1d3" stroke="#5a4b3a" stroke-width="2"/>
+  <!-- tail -->
+  <path d="M542,140 Q556,190 552,250" fill="none" stroke="#5a4b3a" stroke-width="3"/>
+
+  <!-- backbone (loin) -->
+  <line x1="250" y1="122" x2="470" y2="126" stroke="#7a6a55" stroke-width="2" stroke-dasharray="3 4"/>
+  <text x="290" y="140" text-anchor="middle" font-size="13" fill="#333">backbone</text>
+  <!-- last rib -->
+  <path d="M350,124 Q340,200 326,288" fill="none" stroke="#5a4b3a" stroke-width="3"/>
+  <text x="300" y="250" text-anchor="end" font-size="13" fill="#333">last rib</text>
+  <line x1="302" y1="246" x2="330" y2="240" stroke="#333" stroke-width="1.2"/>
+  <!-- point of hip -->
+  <circle cx="446" cy="130" r="9" fill="#d9cdb8" stroke="#5a4b3a" stroke-width="2.5"/>
+  <line x1="455" y1="138" x2="560" y2="98" stroke="#333" stroke-width="1.2"/>
+  <text x="566" y="88" font-size="13" fill="#333">point of hip</text>
+  <text x="566" y="103" font-size="13" fill="#333">(hip bone)</text>
+
+  <!-- triangle -->
+  <polygon points="352,130 438,134 342,214" fill="#fce8c8" fill-opacity="0.8" stroke="#c07a1a" stroke-width="2"/>
+  <!-- measurement: halfway along, same distance down -->
+  <line x1="352" y1="168" x2="440" y2="168" stroke="#333" stroke-width="1" stroke-dasharray="2 3"/>
+  <!-- puncture X -->
+  <g stroke="#b03a2e" stroke-width="5" stroke-linecap="round">
+    <line x1="381" y1="153" x2="401" y2="173"/>
+    <line x1="401" y1="153" x2="381" y2="173"/>
+  </g>
+  <line x1="380" y1="176" x2="168" y2="236" stroke="#b03a2e" stroke-width="1.6"/>
+  <rect x="22" y="226" width="150" height="76" fill="#ffffff" fill-opacity="0.9"/>
+  <text x="28" y="243" font-size="13" font-weight="bold" fill="#b03a2e">HERE: halfway from</text>
+  <text x="28" y="259" font-size="13" font-weight="bold" fill="#b03a2e">last rib to hip, the</text>
+  <text x="28" y="275" font-size="13" font-weight="bold" fill="#b03a2e">same distance down</text>
+  <text x="28" y="291" font-size="13" font-weight="bold" fill="#b03a2e">from the backbone</text>
+
+  <!-- what to do first -->
+  <rect x="20" y="392" width="600" height="68" rx="8" fill="#f7f7f4" stroke="#999"/>
+  <text x="34" y="414" font-size="13" fill="#222"><tspan font-weight="bold">First:</tspan> keep her standing, head uphill; pass a stomach tube or hose to let the gas out.</text>
+  <text x="34" y="433" font-size="13" fill="#222"><tspan font-weight="bold">Only if she is going down:</tspan> stab here with a trocar (or a knife), and leave the</text>
+  <text x="34" y="452" font-size="13" fill="#222">tube (or a hollow stick) in the hole until the gas is gone. Don't sew it shut.</text>
+</svg>
