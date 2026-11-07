@@ -34,7 +34,7 @@ async function init() {
     addEventListener('pagehide', stopWorker);
     addEventListener('pageshow', e => { if (e.persisted && !worker) { startWorker(); renderStatus(); } });
     if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
-    if (store.get('aiModel')) setTimeout(() => initWebLLM(store.get('aiModel'), true), 1500);
+    addEventListener('pagehide', stopAI);   // leaving the page frees the AI's memory; it starts again at the next question
     addEventListener('online', renderStatus); addEventListener('offline', renderStatus);
   }
   renderStatus(); renderTools(); renderKit(); renderSetup(); loadLibrary(); restoreAnswers();
@@ -67,7 +67,17 @@ function startWorker() {
   };
   worker.postMessage({ type: 'load', base: BASE });
 }
-function wantFull() { if (mode === 'public' && worker && !fullAsked) { fullAsked = true; worker.postMessage({ type: 'more' }); renderStatus(); } }
+// Low-memory mode: after an answer was cut off by a crash, or on an iPhone/iPad while the AI is on (the AI
+// alone takes about 1 GB there), the search stays on the guides and book titles; one tap loads the rest.
+const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
+const lowMem = () => { let f = null; try { f = sessionStorage.getItem('so-lowmem'); } catch {} return f === '1' || (f !== '0' && isIOS && (ai.kind === 'webllm' || ai.loading || !!store.get('aiModel'))); };
+function setLowMem(on) { try { sessionStorage.setItem('so-lowmem', on ? '1' : '0'); } catch {} }
+// The in-browser AI takes about 1 GB, so it starts only when someone starts a question (wantAI) and stops
+// when the page is left: reading guides never loads it.
+let aiStart = null;
+function wantAI() { if (mode === 'public' && store.get('aiModel') && ai.kind === 'none' && !ai.loading && !aiStart) aiStart = initWebLLM(store.get('aiModel'), true).finally(() => { aiStart = null; }); return aiStart; }
+function stopAI() { if (!ai.engine) return; try { ai.engine.unload?.(); } catch {} ai.engine = null; ai.kind = 'none'; }
+function wantFull(force) { if (mode === 'public' && worker && !fullAsked && (force === true || !lowMem())) { fullAsked = true; worker.postMessage({ type: 'more' }); renderStatus(); } }
 function stopWorker() {
   if (!worker) return;
   worker.terminate(); worker = null; workerReady = workerSearchable = false; fullAsked = false;
@@ -103,7 +113,9 @@ function renderStatus() {
     h += pill(navigator.onLine ? 'ready' : 'starting', navigator.onLine ? 'Online' : 'Offline', navigator.onLine ? '' : '— using saved copy');
     h += pill(workerReady || (workerSearchable && !fullAsked) ? 'ready' : 'starting', 'Search', workerReady ? `${workerInfo.docs} documents`
       : workerInfo.error ? 'failed to load' : workerSearchable && !fullAsked ? 'guides ready' : workerSearchable ? `ready, still loading ${workerInfo.progress}` : 'loading…');
-    h += pill(ai.kind === 'webllm' ? 'ready' : ai.loading ? 'starting' : 'off', 'AI', ai.kind === 'webllm' ? esc(ai.label) : ai.loading ? 'loading…' : 'off — turn on in ⚙️');
+    const chosen = store.get('aiModel') && MODELS[store.get('aiModel')];
+    h += pill(ai.kind === 'webllm' || chosen ? 'ready' : ai.loading ? 'starting' : 'off', 'AI', ai.kind === 'webllm' ? esc(ai.label) : ai.loading ? 'loading…'
+      : chosen ? esc(chosen[2]) + ' — starts when you ask' : 'off — turn on in ⚙️');
   }
   $('status').innerHTML = h;
 }
@@ -127,8 +139,13 @@ function bindUI() {
   $('f').addEventListener('submit', e => { e.preventDefault(); ask(); });
   $('q').addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); ask(); } });
   // the example questions are only for an empty page: they go as soon as you type (and stay gone once there are answers)
-  $('q').addEventListener('input', () => { $('examples').hidden = !!$('q').value.trim() || !!$('out').children.length; wantFull(); });
-  $('q').addEventListener('focus', wantFull);
+  $('q').addEventListener('input', () => { $('examples').hidden = !!$('q').value.trim() || !!$('out').children.length; wantFull(); wantAI(); });
+  $('q').addEventListener('focus', () => { wantFull(); wantAI(); });
+  $('out').addEventListener('click', e => {   // Try again (a cut-off answer), and "search every book page too"
+    const r = e.target.closest('button.retry'), f = e.target.closest('button[data-full]');
+    if (r) { const box = r.closest('.qa'), q = box?.querySelector('.q')?.textContent || ''; box?.remove(); saveAnswers(); if (q) { $('q').value = q; ask(); } }
+    if (f) { setLowMem(false); wantFull(true); f.replaceWith(document.createTextNode('Loading every book page now; ask again in a minute.')); saveAnswers(); }
+  });
   $('out').addEventListener('click', e => {   // [1] in an answer: scroll to that source without changing the address
     const a = e.target.closest('a.cite'); if (!a) return;
     const t = document.getElementById(a.getAttribute('href').slice(1)); if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
@@ -148,7 +165,7 @@ function bindUI() {
 
 // ------------------------------------------------------------------ asking
 let counter = 0;
-async function ask() { wantFull(); writing++; try { await askOnce(); } finally { writing--; } }
+async function ask() { wantFull(); wantAI(); writing++; try { await askOnce(); } finally { writing--; } }
 async function askOnce() {
   const q = $('q').value.trim(); if (!q) return;
   const id = ++counter, n = +$('nsrc').value, useAI = $('useai').checked, useWiki = $('usewiki').checked;
@@ -175,6 +192,7 @@ async function askOnce() {
     let ws; [ws, wiki] = await Promise.all([workerSearch(q, n), nWiki && navigator.onLine ? wikiSearch(keywords(q) || q, nWiki + 2) : []]);
     docs = ws.results;
     if (ws.notReady) note = ' ⚠️ The library search is still downloading — try again in a minute (needs a connection the first time).';
+    else if (ws.partial && lowMem()) note = ' 📱 To save this phone\'s memory, only the guides and book titles were searched. <button class="link" data-full="1">Search every book page too</button>';
     else if (ws.partial) note = ` ⏳ Library still loading (${ws.loaded} of ${ws.total} parts): guides and book titles were searched; ask again in a minute to search inside every page.`;
   }
   // the library first (its guides are written for exactly this), then the encyclopedia articles that fit
@@ -184,14 +202,14 @@ async function askOnce() {
   const meta = $('m' + id);
   if (!srcs.length) meta.textContent = note ? '' : 'Nothing in the library matched. Try other words (e.g. "bleeding" instead of "cut").';
   else meta.textContent = `${srcs.length} sources found.`;
-  meta.textContent += note;
+  meta.innerHTML = esc(meta.textContent) + note;
   if (!useAI) { showBest(id, srcs, q); saveAnswers(); return; }
   if (mode === 'drive') {
     if (server.llm === 'off') { showBest(id, srcs, q); saveAnswers(); meta.innerHTML += ' <span>' + esc(server.llmError || 'The AI is turned off on this device.') + ' You can change the AI in <a href="#" onclick="document.querySelector(\'[data-tab=setup]\').click();return false">⚙️ Settings</a>.</span>'; return; }
     if (server.llm !== 'ready') { meta.innerHTML = '<span class="spin"></span>Waiting for the AI to finish loading…'; await waitFor(() => server.llm === 'ready' || server.llm === 'off'); }
     if (server.llm === 'ready') await answer(id, q, srcs, 'server');
   } else {
-    if (ai.loading) { meta.innerHTML = '<span class="spin"></span>Waiting for the AI to finish loading…'; await waitFor(() => !ai.loading); }
+    if (ai.loading || aiStart) { meta.innerHTML = '<span class="spin"></span>Starting the AI (the first answer after opening takes a little longer)…'; await (aiStart || waitFor(() => !ai.loading)); }
     if (ai.kind === 'webllm') await answer(id, q, srcs, 'webllm');
     else showBest(id, srcs, q), meta.innerHTML += ' <span>To get written answers, turn on the AI in <a href="#" onclick="document.querySelector(\'[data-tab=setup]\').click();return false">⚙️ Offline</a>.</span>';
   }
@@ -211,7 +229,10 @@ function restoreAnswers() {
   if (!s || !s.html || $('out').children.length) return;
   $('out').innerHTML = s.html; counter = Math.max(counter, s.n || 0); $('examples').hidden = true;
   $('out').querySelectorAll('.meta').forEach(m => {   // still had a spinner = the page restarted mid-answer
-    if (m.querySelector('.spin')) m.textContent = '⚠️ This answer was cut off: the page restarted before it finished (phones do this when they run short of memory). Ask again, or close other tabs first.';
+    if (!m.querySelector('.spin')) return;
+    setLowMem(true);
+    m.innerHTML = '⚠️ This answer was cut off: the phone ran short of memory and restarted the page.<br>' +
+      '<button class="retry" type="button">🔄 Try again</button><br><small>The next tries search the guides and book titles only, which uses much less memory.</small>';
   });
 }
 function waitFor(cond) { return new Promise(res => { const t = setInterval(() => { if (cond()) { clearInterval(t); res(); } }, 500); }); }
@@ -348,7 +369,8 @@ async function answer(id, q, srcs, kind) {
     }
     meta.textContent = stopped ? 'Stopped.' : `Answered in ${Math.round((Date.now() - t0) / 1000)} seconds from ${srcs.length} sources. Check the sources before relying on it.`;
   } catch (e) {
-    meta.textContent = stopped || e.name === 'AbortError' ? 'Stopped.' : 'The AI could not answer (' + e.message + '). The sources below are still the search results.';
+    meta.innerHTML = (stopped || e.name === 'AbortError' ? 'Stopped.' : esc('The AI could not answer (' + e.message + '). The sources below are still the search results.')) +
+      ' <button class="retry" type="button">🔄 Try again</button>';
   } finally { clearInterval(tick); }
 }
 
@@ -399,10 +421,13 @@ async function renderSetup() {
   if (mode === 'drive') {
     $('webai').hidden = true; $('driveai').hidden = false; $('getkit').hidden = true; loadTiers();
   } else {
+    const chosen = store.get('aiModel') && MODELS[store.get('aiModel')];
     $('aiinfo').textContent = ai.error || (ai.kind === 'webllm' ? `On: ${ai.label}. Saved on this device.` : ai.loading ? 'Loading…' :
+      chosen ? `On: ${chosen[2]}. Saved on this device; it starts when you ask a question, which saves memory while you read.` :
       'The AI runs entirely inside your browser and is saved on this device after one download. It needs a recent browser with WebGPU.');
   }
-  $('aion').hidden = ai.kind === 'webllm' || mode === 'drive'; $('aion').disabled = ai.loading; $('aioff').hidden = ai.kind !== 'webllm';
+  const aiOn = ai.kind === 'webllm' || (mode !== 'drive' && !!store.get('aiModel'));
+  $('aion').hidden = aiOn || mode === 'drive'; $('aion').disabled = ai.loading; $('aioff').hidden = !aiOn;
   $('aichoices').hidden = mode === 'drive';
   if (manifest) {
     $('savelibsize').textContent = `≈ ${mb(manifest.offline.library.bytes)}`;
