@@ -1,0 +1,18 @@
+The plant and mushroom identifier
+=================================
+
+Picture model: BioCLIP (imageomics/bioclip, https://huggingface.co/imageomics/bioclip), by the
+Imageomics Institute, released under the MIT License (see the model card). Only its image half is
+used, repacked with smaller numbers (int8) by tools/maintenance/plantid_build.py in this library.
+  Stevens et al., "BioCLIP: A Vision Foundation Model for the Tree of Life", CVPR 2024.
+
+MIT License - Permission is hereby granted, free of charge, to any person obtaining a copy of this
+software and associated documentation files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions: The above copyright notice
+and this permission notice shall be included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED.
+
+Species list: plants and fungi with research-grade sightings on iNaturalist (https://www.inaturalist.org)
+in this area, with their common names and family trees (tools/maintenance/plantid_species.py).
