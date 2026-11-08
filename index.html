@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>SO Survival Library</title>
-<meta name="description" content="A free survival and self-reliance library for southern Oregon that keeps working offline, with an AI that answers from the library.">
+<title>ARK Illinois Valley</title>
+<meta name="description" content="ARK, the Apocalypse Reference Kit: a free survival and self-reliance library for southern Oregon that keeps working offline, with an AI that answers from the library.">
 <meta name="theme-color" content="#0f1420">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="SO Survival">
+<meta name="apple-mobile-web-app-title" content="ARK">
 <style>
 :root{--bg:#0f1420;--card:#171f2e;--ink:#e7ecf3;--muted:#9fb0c3;--accent:#4fd1c5;--accent2:#f6ad55;--line:#273246;--code:#0b0f17;--ok:#48bb78;--warn:#f6ad55;--off:#718096;--danger:#fc8181}
 @media(prefers-color-scheme:light){:root:not([data-theme=dark]){--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--code:#f1f5f9;--ok:#2f855a;--warn:#b45309;--off:#718096;--danger:#c53030}}:root[data-theme=light]{--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--code:#f1f5f9;--ok:#2f855a;--warn:#b45309;--off:#718096;--danger:#c53030}
@@ -19,6 +19,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,
 .wrap{max-width:920px;margin:0 auto;padding:16px 16px 100px}
 header h1{font-size:24px;margin:4px 0 2px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
 .hrow{display:flex;align-items:center;justify-content:space-between;gap:10px}.hrow h1{min-width:0}
+header h1 .logo{width:1.25em;height:1.25em;vertical-align:-.27em;margin-right:.35em;border-radius:22%}
 .sub{color:var(--muted);font-size:14px;margin:0 0 10px}
 .status{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 10px}
 .pill{font-size:12.5px;padding:3px 10px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--muted)}
@@ -98,8 +99,8 @@ body.osk-open{padding-bottom:236px}
 <body>
 <div class="wrap">
 <header>
-  <div class="hrow"><h1>🏔️ SO Survival Library</h1><button class="themebtn" type="button"></button></div>
-  <p class="sub" id="tagline">Survival know-how for southern Oregon: plain-English guides, the books behind them, and an AI that answers from both. Save it and it works with no internet.</p>
+  <div class="hrow"><h1><img class="logo" src="icon.svg" alt="" width="30" height="30">ARK Illinois Valley</h1><button class="themebtn" type="button"></button></div>
+  <p class="sub" id="tagline">The Apocalypse Reference Kit for southern Oregon: plain-English survival guides, the books behind them, and an AI that answers from both. Save it and it works with no internet.</p>
   <div class="status" id="status"></div>
 </header>
 <nav id="tabs">
@@ -171,7 +172,7 @@ body.osk-open{padding-bottom:236px}
     <h3 style="margin-top:0">💾 Get the whole library on a USB drive</h3>
     <p class="meta">The full library adds every book, all of Wikipedia, maps that work with no signal, and an AI that needs no internet. No commands to type:</p>
     <ol class="meta" style="margin:0 0 10px;padding-left:22px"><li>Download the kit and unzip it.</li><li>Double-click <b>INSTALL-Windows</b> (or <b>INSTALL-Mac</b>).</li><li>In the page that opens, pick your drive and press <b>Start</b>.</li></ol>
-    <p><a class="btn" href="download/so-survival-kit.zip" download>⬇️ Download the installer kit</a> <span class="meta">one zip, about 80 MB · Windows, Mac, Linux</span></p>
+    <p><a class="btn" href="download/ark-illinois-valley-kit.zip" download>⬇️ Download the installer kit</a> <span class="meta">one zip, about 80 MB · Windows, Mac, Linux</span></p>
     <p class="meta"><a href="pages/GET-THE-LIBRARY.html" target="_blank" rel="noopener">Step-by-step help, drive sizes and fixes</a></p>
   </div>
   <div class="card">

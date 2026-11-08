@@ -1,7 +1,7 @@
 {
-  "name": "SO Survival Library",
-  "short_name": "SO Survival",
-  "description": "Survival and self-reliance library for southern Oregon that works offline, with an AI that answers from the library.",
+  "name": "ARK Illinois Valley",
+  "short_name": "ARK",
+  "description": "ARK, the Apocalypse Reference Kit: a survival and self-reliance library for southern Oregon that works offline, with an AI that answers from the library.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
