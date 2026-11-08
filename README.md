@@ -1,4 +1,6 @@
-# SO Survival Library
+# ARK Illinois Valley
+
+*ARK, the Apocalypse Reference Kit.*
 
 **Live site:** https://cchristianson.github.io/so-survival-web/
 

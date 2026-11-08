@@ -1,4 +1,4 @@
-// SO Survival Library — one app for two places:
+// ARK, the Apocalypse Reference Kit — one app for two places:
 //  * "drive" mode: served by the Library Assistant program on the laptop (searches every PDF and
 //    the Kiwix archives on the drive; the AI is the laptop's llama-server)
 //  * "public" mode: a static website; search runs in the browser, the AI runs in the browser
