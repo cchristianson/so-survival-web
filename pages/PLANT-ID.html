@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Identify a plant or mushroom (offline)</title>
+<style>
+:root{--bg:#0f1420;--card:#171f2e;--ink:#e7ecf3;--muted:#9fb0c3;--accent:#4fd1c5;--accent2:#f6ad55;--line:#273246;--bad:#fc8181;--badbg:#3a1f22;--warnbg:#3a311a}
+@media(prefers-color-scheme:light){:root{--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--bad:#b42318;--badbg:#fdecea;--warnbg:#fff4d6}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:640px;margin:0 auto;padding:12px 16px 60px}a{color:var(--accent)}
+.topnav{position:sticky;top:0;z-index:4;background:var(--bg);border-bottom:1px solid var(--line);margin:0 -16px 8px;padding:10px 16px 8px;font-size:14.5px;color:var(--muted)}.topnav a{text-decoration:none;white-space:nowrap}
+h1{font-size:25px;margin:6px 0 4px}.sub{color:var(--muted);margin:0 0 12px;font-size:15px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:10px 0}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.btn{font:inherit;font-weight:700;cursor:pointer;border-radius:12px;padding:12px 18px;border:1px solid var(--accent);background:var(--accent);color:#04201d;display:inline-flex;gap:6px;align-items:center}
+.btn.alt{background:transparent;color:var(--accent)}.btn[disabled]{opacity:.5}
+#photo{display:block;width:100%;max-height:60vh;object-fit:contain;border-radius:12px;background:#000}
+.spin{display:inline-block;width:16px;height:16px;border:3px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:s 1s linear infinite;vertical-align:-3px;margin-right:6px}@keyframes s{to{transform:rotate(360deg)}}
+.res{border-top:1px solid var(--line);padding:10px 0}.res:first-child{border-top:0}
+.res .n{font-size:18px;font-weight:700}.res .sci{color:var(--muted);font-style:italic}.res .fam{color:var(--muted);font-size:14px}
+.barw{height:8px;background:var(--line);border-radius:6px;overflow:hidden;margin:6px 0 2px;max-width:320px}.barw i{display:block;height:100%;background:var(--accent)}
+.danger{display:inline-block;background:var(--badbg);color:var(--bad);font-weight:700;border-radius:8px;padding:2px 8px;font-size:14px;margin:4px 0}
+.links{font-size:14.5px;margin-top:4px}.links a{margin-right:12px;white-space:nowrap}
+.warn{background:var(--warnbg);border-radius:10px;padding:10px 12px;margin:10px 0}
+.bad{background:var(--badbg);color:var(--ink);border-radius:10px;padding:10px 12px;margin:10px 0;border:1px solid var(--bad)}
+ul.tips{margin:6px 0 0;padding-left:20px}ul.tips li{margin:3px 0}
+.small{font-size:14px;color:var(--muted)}[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+<p class="topnav"><a href="../#kit" data-app="/#kit">🧮 Tools</a> · <a href="EMERGENCY-FINDER.html">🆘<span class="lbl"> Emergency</span></a> · <a href="MUSHROOM-GUIDE.html">🍄 Mushroom guide</a> · <a href="FOOD-SECURITY-GUIDE.html">🌿 Foraging</a></p>
+<h1>📷 Identify a plant or mushroom</h1>
+<p class="sub">Take a photo and the library's offline AI names it from the <span id="count">plants and mushrooms</span> found in Oregon. It runs on this device (or the one sharing the library), with no internet.</p>
+
+<div class="bad"><b>☠️ Never eat a plant or mushroom, or use it as medicine, because this page named it.</b>
+A computer guessing from one photo is often wrong, and the deadly ones look like the good ones. Use it to learn
+what to look up, then check every feature in the guides and books: leaves, flowers, smell, where it grows,
+and its look-alikes.</div>
+
+<div id="notready" class="warn" hidden></div>
+
+<div id="tool">
+  <div class="btns">
+    <label class="btn">📷 Take a photo<input type="file" id="cam" accept="image/*" capture="environment" hidden></label>
+    <label class="btn alt">🖼️ Choose a photo<input type="file" id="pick" accept="image/*" hidden></label>
+  </div>
+  <div class="card" id="tips">
+    <b>For the best answer</b>
+    <ul class="tips">
+      <li>One plant, in the <b>middle</b> of the photo, filling most of it. Only the middle square is used.</li>
+      <li>Close up on what tells it apart: the <b>flower</b>, a <b>leaf</b> (top and underside), fruit or seeds.</li>
+      <li><b>Mushrooms:</b> one photo of the top, one of the <b>gills underneath</b>, and one of the <b>whole stem down to its base</b> (dig it up: the base matters).</li>
+      <li>Daylight, in focus. Try two or three photos of different parts: if they agree, that's a better sign.</li>
+    </ul>
+  </div>
+  <img id="photo" alt="Your photo" hidden>
+  <p id="status"></p>
+  <div id="out"></div>
+</div>
+<p class="small">The AI is BioCLIP (Ohio State University's Imageomics Institute, free under the MIT licence), trained on
+10 million photos of living things. The species list comes from iNaturalist sightings. Plants that are rare here, or
+garden plants from elsewhere, may be missing, so a confident answer can still be a near neighbour.</p>
+</div>
+<script>
+(function () {
+  var API = '/api/plantid', drive = location.protocol.indexOf('http') === 0 && location.pathname.indexOf('/lib/') === 0;
+  function $(s) { return document.querySelector(s); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  if (drive) document.querySelectorAll('a[data-app]').forEach(function (a) { a.href = a.getAttribute('data-app'); });
+  var DANGER = { deadly: '☠️ Deadly poisonous group', poisonous: '⚠️ Poisonous group', 'rash on contact': '⚠️ Causes a rash on contact',
+    'burns on contact': '⚠️ Sap burns skin in sunlight', stings: '⚠️ Stings', 'seeds and leaves poisonous': '⚠️ Seeds and leaves poisonous' };
+  function notReady(msg) { $('#notready').hidden = false; $('#notready').innerHTML = msg; $('#tool').hidden = true; }
+  fetch(API).then(function (r) { return r.json(); }).then(function (s) {
+    if (!s.ready) { notReady('<b>The identifier isn\'t ready on this device.</b> ' + esc(s.error || '')); return; }
+    $('#count').textContent = s.plants.toLocaleString() + ' plants and ' + s.fungi.toLocaleString() + ' mushrooms and other fungi';
+  }).catch(function () {
+    notReady('<b>This needs the Library Assistant.</b> The identifier runs inside the library\'s program, not in a plain web page. ' +
+      'Start the library with the START file for your computer, or join the ammo-can computer\'s Wi-Fi, then open <b>🧮 Tools → 📷 Identify a plant</b>. ' +
+      'On a phone with the internet, the free <b>Seek by iNaturalist</b> app also identifies plants offline.');
+  });
+
+  function shrink(file) { // the photo, made smaller (the AI uses 224 x 224) and turned the right way up, as a JPEG
+    return new Promise(function (ok, bad) {
+      var img = new Image(), url = URL.createObjectURL(file);
+      img.onload = function () {
+        var s = Math.min(1, 640 / Math.min(img.naturalWidth, img.naturalHeight)), c = document.createElement('canvas');
+        c.width = Math.round(img.naturalWidth * s); c.height = Math.round(img.naturalHeight * s);
+        c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+        URL.revokeObjectURL(url);
+        c.toBlob(function (b) { b ? ok({ blob: b, w: c.width, h: c.height, url: c.toDataURL('image/jpeg', 0.85) }) : bad(new Error('could not read the photo')); }, 'image/jpeg', 0.9);
+      };
+      img.onerror = function () { bad(new Error('could not read the photo (use a JPEG or PNG)')); };
+      img.src = url;
+    });
+  }
+  function pct(p) { return p >= 0.995 ? '99%' : p < 0.01 ? 'under 1%' : Math.round(p * 100) + '%'; }
+  function wiki(s) { return '/wiki/' + encodeURIComponent(s.replace(/ /g, '_')); }
+
+  async function go(file) {
+    if (!file) return;
+    $('#out').innerHTML = ''; $('#status').innerHTML = '<span class="spin"></span>Looking at the photo… (a few seconds; up to half a minute on a small computer)';
+    try {
+      var p = await shrink(file);
+      $('#photo').src = p.url; $('#photo').hidden = false;
+      var t0 = Date.now(), r = await fetch(API, { method: 'POST', headers: { 'Content-Type': 'image/jpeg' }, body: p.blob });
+      if (!r.ok) throw new Error(await r.text());
+      var a = await r.json();
+      show(a, Date.now() - t0);
+    } catch (e) { $('#status').innerHTML = '<span style="color:var(--bad)">' + esc(e.message || e) + '</span>'; }
+  }
+  function show(a, ms) {
+    var top = a.top || [], best = top[0] || { p: 0 }, fungi = top.some(function (t) { return t.kingdom === 'Fungi'; });
+    var head = best.p >= 0.5 ? 'Most likely:' : best.p >= 0.2 ? 'Possibly — check carefully:' : 'Not sure. Its best guesses:';
+    $('#status').innerHTML = '<b>' + head + '</b> <span class="small">(' + (ms / 1000).toFixed(1) + ' s)</span>';
+    var h = '';
+    if (fungi) h += '<div class="bad"><b>🍄 Mushrooms:</b> never eat a wild mushroom because a photo matched it. Deadly ones (death cap, destroying angel, deadly Galerina) ' +
+      'look like edible ones, and some can only be told apart by a spore print or a microscope. Read the <a href="' + guide('MUSHROOM-GUIDE') + '">Mushroom guide</a> first.</div>';
+    if (best.p < 0.4 && a.genus && a.genus[0] && a.genus[0].p >= 0.4)
+      h += '<div class="card">It most likely belongs to the group <b><i>' + esc(a.genus[0].genus) + '</i></b> (' + pct(a.genus[0].p) + ' of the likelihood), even if the exact species is unclear.' +
+        (a.genus[0].danger ? ' <span class="danger">' + esc(DANGER[a.genus[0].danger] || a.genus[0].danger) + '</span>' : '') + '</div>';
+    h += '<div class="card">' + top.map(function (t) {
+      var name = t.common ? t.common.charAt(0).toUpperCase() + t.common.slice(1) : t.sci;
+      var guides = (t.guides || []).map(function (g) { return '<a href="' + esc(g.link) + '">📘 ' + esc(g.title) + '</a>'; }).join(' ');
+      return '<div class="res"><div class="n">' + (t.kingdom === 'Fungi' ? '🍄 ' : '🌿 ') + esc(name) + '</div>' +
+        '<div><span class="sci">' + esc(t.sci) + '</span> <span class="fam">· ' + esc(t.family) + '</span></div>' +
+        (t.danger ? '<div class="danger">' + esc(DANGER[t.danger] || t.danger) + '</div>' : '') +
+        '<div class="barw"><i style="width:' + Math.max(2, Math.round(t.p * 100)) + '%"></i></div><div class="small">' + pct(t.p) + ' likely</div>' +
+        '<div class="links"><a href="' + wiki(t.sci) + '" target="_blank" rel="noopener">📷 Compare photos (Wikipedia)</a>' +
+        '<a href="/?q=' + encodeURIComponent((t.common ? t.common + ' ' : '') + t.sci) + '" target="_blank" rel="noopener">💬 Ask the library</a>' + (guides ? '<br>In the guides: ' + guides : '') + '</div></div>';
+    }).join('') + '</div>';
+    h += '<p class="small">Compare the photos, the leaves and flowers, where it grows and the time of year. If the top answers disagree, or none is above about half, take another photo of a different part.</p>';
+    $('#out').innerHTML = h;
+  }
+  function guide(name) { return drive ? '/lib/Southern-Oregon/' + name + '.html' : 'Southern-Oregon/' + name + '.html'; }
+  $('#cam').onchange = function () { go(this.files[0]); this.value = ''; };
+  $('#pick').onchange = function () { go(this.files[0]); this.value = ''; };
+})();
+</script>
+</body>
+</html>
