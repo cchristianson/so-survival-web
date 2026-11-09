@@ -2,20 +2,66 @@
 <h1 id="-ark-vault-the-ammo-can-library-computer"><span class="h1e">🧰</span> ARK Vault: the Ammo-Can Library Computer</h1>
 <img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/ark-vault-logo.svg" alt="The ARK Vault logo: ARK in stencil letters inside a crate-label frame, with VAULT cut out of a solid bar below, its V drawn as an open book" width="260">
 
-<p>How to build the <strong>ARK Vault</strong>: a steel ammo can that holds this whole library, the offline AI, a battery, a small printer and a crank radio. <strong>Open the lid and pull the Raspberry Pi up</strong>: it switches on and makes its own Wi-Fi, and any phone nearby uses the library and the AI in its web browser, with <strong>no screen, keyboard or internet</strong>. <strong>Push it back down</strong>: it shuts itself down and everything switches off. Close and tape the lid, and the steel can shields it all from an EMP or a solar storm.</p>
+<p>The <strong>ARK Vault</strong> is this whole library, ready for the day the power and the internet are gone, packed in one steel ammo can you can carry. Inside is everything it needs: a small computer (a Raspberry Pi) with the library and the offline AI, a battery, the chargers to fill that battery from the sun or the wall, a small printer, a crank radio, and an <strong>old phone to read it on</strong>.</p>
+<p>Most of the time it sits <strong>sealed</strong>: lid shut and taped, nothing switched on, the steel shielding everything inside from an EMP or a solar storm. When you need it, <strong>open the lid and pull the Pi up</strong>: it switches on and makes its own Wi-Fi, and the phone from the can (or any phone nearby) opens the library and the AI in its web browser, with <strong>no screen, keyboard or internet</strong>. <strong>Push the Pi back down</strong> and it shuts itself down and switches everything off. Close the lid, tape it, and it's protected again.</p>
 <blockquote>
 <h3 id="the-short-version">The short version</h3>
 <ul>
 <li><strong>Pull up = on, push down = off.</strong> The Pi rides on a slide. Two small switches and a relay turn the power on, shut the Pi down safely and then cut the power, so nothing drains the battery.</li>
 <li><strong>Shut = protected, open = in use.</strong> The can only shields while the lid is closed and taped. Never run it with the lid shut: it overheats, and phones can't reach it.</li>
-<li><strong>The phone is the screen.</strong> An old phone with no SIM card or phone plan is fine.</li>
+<li><strong>The phone is the screen, and it lives in the can.</strong> An old phone with no SIM card or phone plan is fine. Any other phone nearby can join too.</li>
+<li><strong>Charge it from the sun or the wall, lid open.</strong> The solar charge controller stays sealed inside with everything else; the solar panel stays outside, <strong>not connected to anything</strong> until you charge.</li>
 <li><strong>No TV or keyboard needed to set it up.</strong> Write Raspberry Pi OS onto the memory card, let the library installer <strong>finish the card</strong>, plug everything in and pull the Pi up. It sets itself up.</li>
 <li><strong>Steel can only.</strong> Plastic ammo cans block nothing. The lid seam gets taped over bare metal (see the <a class="guide" href="EMP-GUIDE.html">EMP guide</a>).</li>
 <li><strong>Practice now.</strong> Build it, test it on the battery with the internet off, and check it every few months.</li>
 </ul>
 </blockquote>
 <hr />
-<nav class="toc" id="contents" aria-label="Contents"><details open><summary>📑 Contents</summary><ol><li><a href="#see-it-in-3d">🧊 See it in 3D</a></li><li><a href="#how-it-works">🧭 How it works</a></li><li><a href="#what-to-buy">🛒 What to buy</a></li><li><a href="#the-parts-to-print-cut-and-etch">📐 The parts to print, cut and etch</a></li><li><a href="#build-it-step-by-step">🔧 Build it, step by step</a></li><li><a href="#set-up-the-pi-no-tv-or-keyboard">💾 Set up the Pi (no TV or keyboard)</a></li><li><a href="#using-it">🆘 Using it</a></li><li><a href="#printing-on-paper">🖨️ Printing on paper</a></li><li><a href="#power-and-charging">🔋 Power and charging</a></li><li><a href="#packing-and-sealing">📦 Packing and sealing</a></li><li><a href="#if-something-goes-wrong">🛠️ If something goes wrong</a></li><li><a href="#other-ways-to-build-it">🖐️ Other ways to build it</a></li><li><a href="#every-few-months">🔄 Every few months</a></li><li><a href="#pictures-diagrams">🖼️ Pictures &amp; diagrams</a></li><li><a href="#related-guides">🔗 Related guides</a></li></ol></details></nav>
+<nav class="toc" id="contents" aria-label="Contents"><details open><summary>📑 Contents</summary><ol><li><a href="#the-idea">🧰 The idea</a></li><li><a href="#see-it-in-3d">🧊 See it in 3D</a></li><li><a href="#how-it-works">🧭 How it works</a></li><li><a href="#what-to-buy">🛒 What to buy</a></li><li><a href="#the-parts-to-print-cut-and-etch">📐 The parts to print, cut and etch</a></li><li><a href="#build-it-step-by-step">🔧 Build it, step by step</a></li><li><a href="#set-up-the-pi-no-tv-or-keyboard">💾 Set up the Pi (no TV or keyboard)</a></li><li><a href="#using-it">🆘 Using it</a></li><li><a href="#printing-on-paper">🖨️ Printing on paper</a></li><li><a href="#power-and-charging">🔋 Power and charging</a></li><li><a href="#packing-and-sealing">📦 Packing and sealing</a></li><li><a href="#if-something-goes-wrong">🛠️ If something goes wrong</a></li><li><a href="#other-ways-to-build-it">🖐️ Other ways to build it</a></li><li><a href="#every-few-months">🔄 Every few months</a></li><li><a href="#pictures-diagrams">🖼️ Pictures &amp; diagrams</a></li><li><a href="#related-guides">🔗 Related guides</a></li></ol></details></nav>
+<h2 id="the-idea">🧰 The idea</h2>
+<p><strong>What lives inside the can, sealed:</strong></p>
+<ul>
+<li>the <strong>Raspberry Pi</strong> and its <strong>library drive</strong>, on a slide that turns everything on and off</li>
+<li>the <strong>battery</strong> (LiFePO4, the safe lithium kind)</li>
+<li>the <strong>solar charge controller</strong> and the <strong>wall charger</strong></li>
+<li>a small <strong>receipt printer</strong>, a <strong>crank radio</strong></li>
+<li>an <strong>old phone</strong> (the screen), about half charged</li>
+<li>the <strong>Wi-Fi card</strong> taped in the lid, and a spare roll of <strong>foil tape</strong> for the seal</li>
+</ul>
+<p><strong>What stays outside:</strong> the <strong>solar panel</strong>, with <strong>nothing plugged into it</strong>. A panel is too big for the can, and it doesn't need shielding: tests in the library found panels hit with a strong pulse came through with only very minor change (<a class="lib" target="_blank" rel="noopener" href="https://www.osti.gov/servlets/purl/1614961#page=39" title="HEMP Testing of Photovoltaic Modules (Sandia 2020).pdf — page 39">Sandia, p. 39</a>). The danger is the <strong>wires</strong>: a pulse gathers on long wires and travels down them into whatever they're plugged into, which is the charge controller (<a class="guide" href="EMP-GUIDE.html">EMP guide</a>). So the panel sits unplugged in the shed or under the bed, and gets plugged into the Vault only while it's charging.</p>
+<p><strong>Why the charge controller stays in the can:</strong> it's the electronic part a surge would damage, so it belongs inside the shield with the computer. It's also what makes solar charging safe: it feeds the battery exactly what a lithium battery needs and stops when it's full. <strong>Never connect a panel straight to the battery.</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>What you do</th>
+<th>What's happening</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Stored</strong> (most of the time)</td>
+<td>Lid shut and taped, panel unplugged and outside</td>
+<td>Nothing is on or connected. The steel can shields everything inside</td>
+</tr>
+<tr class="even">
+<td><strong>In use</strong></td>
+<td>Open the lid, pull the Pi up, take out the phone</td>
+<td>The Pi makes its own Wi-Fi; phones open the library in the browser</td>
+</tr>
+<tr class="odd">
+<td><strong>Charging</strong></td>
+<td>Lid open: plug the panel into the controller, or the wall charger into the wall</td>
+<td>The battery fills while the Vault sits open (it can be in use at the same time)</td>
+</tr>
+<tr class="even">
+<td><strong>Back to storage</strong></td>
+<td>Push the Pi down, unplug the panel, put the phone back, close and tape the lid</td>
+<td>Shielded again. Do this right away if a solar-storm warning comes</td>
+</tr>
+</tbody>
+</table>
+<hr />
 <h2 id="see-it-in-3d">🧊 See it in 3D</h2>
 <p>Turn it, take the lid off, raise the Pi or lift the whole rack out. <strong>Tap a part's name</strong> under the model to hide or show it; to see one part on its own, tap <strong>Hide all</strong>, then that part. It works offline.</p>
 <iframe src="AMMO-CAN-MODEL.html?embed" title="The ARK Vault in 3D" loading="lazy" style="width:100%;height:760px;max-height:92vh;border:0;border-radius:12px;background:#e6ebf2"></iframe>
@@ -145,8 +191,8 @@
 </tr>
 <tr class="even">
 <td><strong>Screen</strong></td>
-<td>An <strong>old phone or tablet</strong> with a web browser</td>
-<td>Any phone works, iPhones too</td>
+<td>An <strong>old phone</strong> (or small tablet) with a web browser, and its charging cable</td>
+<td>It lives in the can. Any phone works, iPhones too; no SIM card or plan needed</td>
 </tr>
 <tr class="odd">
 <td><strong>For setup</strong></td>
@@ -204,6 +250,7 @@
 <h3 id="6-the-rest">6. The rest</h3>
 <ul>
 <li>The <strong>radio</strong> lies on the floor in front of the battery; the <strong>wall charger</strong> lies on its side on top of the radio.</li>
+<li>The <strong>phone</strong> and its cable go in the space left beside the battery, in a padded bag or a sleeve of the cardboard, so nothing metal touches it.</li>
 <li><strong>Solar:</strong> the controller's battery terminals go to the battery through the <strong>20 A fuse</strong>. Its panel terminals stay empty until you charge (see <a href="#power-and-charging">Power and charging</a>).</li>
 <li><strong>Nothing should touch bare metal.</strong> Loose metal can short things out, and the EMP guidance is to keep items off the walls (<a class="lib" target="_blank" rel="noopener" href="https://www.cisa.gov/sites/default/files/publications/19_0307_CISA_EMP-Protection-Resilience-Guidelines.pdf#page=45" title="EMP Protection and Resilience Guidelines for Critical Infrastructure and Equipment (CISA 2019).pdf — page 45">CISA, p. 45</a>).</li>
 </ul>
@@ -240,8 +287,8 @@
 <h2 id="using-it">🆘 Using it</h2>
 <ol type="1">
 <li><strong>Open the lid</strong> and <strong>pull the Pi up</strong> until it clicks. Keep the can in the shade.</li>
-<li><strong>Wait 2–3 minutes.</strong></li>
-<li><strong>On each phone:</strong> join the Pi's Wi-Fi, open the browser, type the address from the card in the lid.</li>
+<li><strong>Take out the phone</strong> and switch it on. <strong>Wait 2–3 minutes</strong> for the Pi.</li>
+<li><strong>On the phone</strong> (and any others): join the Pi's Wi-Fi, open the browser, type the address from the card in the lid. Save it as a bookmark on the can's phone so it's one tap next time.</li>
 <li><strong>To turn it off:</strong> <strong>push the Pi down</strong> until it clicks. Wait for the relay's click (about 30 seconds). Close the lid and <strong>tape the seam</strong> again.</li>
 </ol>
 <p><strong>Is it safe to have it out?</strong> A nuclear EMP is over in seconds to minutes. A solar storm comes with 18–72 hours' warning. If a warning comes, push the Pi down and seal the can (see <a class="guide" href="EMP-GUIDE.html">when a solar-storm warning comes</a>). Use it the rest of the time.</p>
@@ -299,13 +346,14 @@
 <hr />
 <h2 id="power-and-charging">🔋 Power and charging</h2>
 <p>The Pi 4 uses roughly <strong>3–4 watts</strong> while it sits waiting and around <strong>7 watts</strong> while the AI writes an answer; a Pi 5 a bit more <em>(rule of thumb)</em>. The 20 Ah battery holds about 250 watt-hours, so it runs the Pi for <strong>about 30–40 hours</strong> of normal use: a long day of use for a week, with the Pi pushed down in between <em>(rule of thumb)</em>.</p>
-<p><strong>Solar</strong> (Victron SmartSolar MPPT 75/15): open the lid, lay the panel in the sun and connect it to the controller's panel terminals, with the cable coming in over the top. Set it up once in the <strong>VictronConnect</strong> phone app (it talks over Bluetooth): battery type <strong>LiFePO4</strong>, maximum charge current about <strong>10 A</strong> (check your battery's manual). A 100 W panel fills the battery in about a sunny day; much less in winter. More about panels and batteries: <a class="guide" href="OFF-GRID-POWER-GUIDE.html">Off-Grid Power</a>.</p>
+<p><strong>Solar</strong> (Victron SmartSolar MPPT 75/15, which stays inside the can): open the lid, lay the panel in the sun and plug it into the controller's panel terminals, with the cable coming in over the top. When you're done, <strong>unplug the panel</strong> and store it outside the can with nothing connected to it (see <a href="#the-idea">The idea</a>). A plug-and-socket pair on the panel lead (an SAE or Anderson connector) makes this a five-second job. Set it up once in the <strong>VictronConnect</strong> phone app (it talks over Bluetooth): battery type <strong>LiFePO4</strong>, maximum charge current about <strong>10 A</strong> (check your battery's manual). A 100 W panel fills the battery in about a sunny day; much less in winter. More about panels and batteries: <a class="guide" href="OFF-GRID-POWER-GUIDE.html">Off-Grid Power</a>.</p>
 <p><strong>From the wall:</strong> plug the charger in with the lid open, set it to <strong>lithium</strong> (LiFePO4). At 2 A it takes <strong>about 10 hours</strong> from empty. Unplug it when its <strong>Full</strong> light comes on. Its leads can stay on the battery (with their own 7.5 A fuse) so you only plug it in.</p>
-<p><strong>Never charge with the lid shut</strong>, and never run a cable through a hole in the can.</p>
+<p><strong>The phone:</strong> charge it from any phone charger, or from one of the Pi's USB ports while the Vault is running (slowly; if the Pi ever restarts, unplug the phone). Keep it about half charged in storage.</p>
+<p><strong>Never charge with the lid shut</strong>, and never run a cable through a hole in the can. <strong>Never connect the panel straight to the battery:</strong> always through the controller.</p>
 <hr />
 <h2 id="packing-and-sealing">📦 Packing and sealing</h2>
 <ol type="1">
-<li><strong>Push the Pi down</strong> and wait for the relay's click.</li>
+<li><strong>Push the Pi down</strong> and wait for the relay's click. <strong>Unplug the solar panel</strong> if it's connected, and put the phone back in its place.</li>
 <li><strong>Charge the battery to about half or a bit more</strong> for long storage <em>(rule of thumb)</em>, then top it up every few months.</li>
 <li><strong>Close the lid</strong> and run the <strong>foil tape</strong> all the way around the seam, over the bare-metal strips, so it touches bare metal on the lid and on the body (<a class="lib pic" target="_blank" rel="noopener" href="https://www.wbdg.org/FFC/NAVFAC/DMMHNAV/hdbk419a_vol1.pdf#page=275" title="MIL-HDBK-419A Grounding Bonding and Shielding Vol 1 Basic Theory (DoD 1987).pdf — page 275">why seams matter</a>). Keep a spare roll of tape in the can.</li>
 <li><strong>Test the seal</strong> with the phone-and-radio test in the <a class="guide" href="EMP-GUIDE.html">EMP guide</a>: tape the can shut with a phone inside and call it, then a battery AM radio tuned to a station. Silence means no big leaks.</li>
@@ -406,7 +454,7 @@
 <hr />
 <h2 id="every-few-months">🔄 Every few months</h2>
 <ul>
-<li><strong>Top up</strong> the battery (and the phone) to about half or a bit more.</li>
+<li><strong>Top up</strong> the battery and the phone to about half or a bit more.</li>
 <li><strong>Pull the Pi up</strong> and run through the test above. Then push it down, wait for the click, close the lid and re-tape the seam.</li>
 <li><strong>Updating the library:</strong> plug the drive into your regular computer and run the installer again (it adds what's new). Nothing needs to change on the Pi.</li>
 <li>Swap the foil tape if it's torn or stops sticking.</li>

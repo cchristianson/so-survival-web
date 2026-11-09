@@ -424,6 +424,8 @@ async function initWebLLM(key, auto) {
 // ------------------------------------------------------------------ setup tab
 function mb(bytes) { return bytes >= 1e9 ? (bytes / 1e9).toFixed(1) + ' GB' : Math.round(bytes / 1e6) + ' MB'; }
 async function renderSetup() {
+  { const P = guidePaths(); if (P.ammocan) $('vaultguide').href = P.ammocan;   // the ARK Vault card: the guide and 3D model, here or on the drive
+    $('vaultmodel').href = mode === 'drive' ? '/lib/AMMO-CAN-MODEL.html' : 'pages/AMMO-CAN-MODEL.html'; }
   if (mode === 'drive') {
     $('webai').hidden = true; $('driveai').hidden = false; $('getkit').hidden = true; loadTiers();
   } else {
