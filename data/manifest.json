@@ -1,8 +1,8 @@
 {
-"built": "2026-11-09 00:26 UTC",
-"docs": "docs-ad067e3704.json",
+"built": "2026-11-09 03:10 UTC",
+"docs": "docs-fb763e46d1.json",
 "shards": [
-"chunks00-4ccb81fe52.json",
+"chunks00-8ad5b86a96.json",
 "chunks01-bcf0be7857.json",
 "chunks02-4f54b30acf.json",
 "chunks03-04bb29d40f.json",
@@ -76,8 +76,8 @@
 "icon.svg",
 "icon-192.png",
 "icon-512.png",
-"data/docs-ad067e3704.json",
-"data/chunks00-4ccb81fe52.json",
+"data/docs-fb763e46d1.json",
+"data/chunks00-8ad5b86a96.json",
 "data/chunks01-bcf0be7857.json",
 "data/chunks02-4f54b30acf.json",
 "data/chunks03-04bb29d40f.json",
@@ -210,6 +210,7 @@
 "pages/WATER-WELLS-GUIDE.html",
 "pages/WHAT-TO-EXPECT-GUIDE.html",
 "pages/WILDFIRE-GUIDE.html",
+"pages/img/AMMO-CAN-COMPUTER-GUIDE/ark-vault-logo.svg",
 "pages/img/AMMO-CAN-COMPUTER-GUIDE/can-plan.png",
 "pages/img/AMMO-CAN-COMPUTER-GUIDE/pi-pins-slide.svg",
 "pages/img/AMMO-CAN-COMPUTER-GUIDE/pi4-power-button-pins.svg",
@@ -519,7 +520,7 @@
 "vendor/README.md",
 "vendor/web-llm-0.2.85.js"
 ],
-"bytes": 206522653
+"bytes": 206482256
 },
 "routes": {
 "files": [
