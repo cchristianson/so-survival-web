@@ -545,7 +545,7 @@ const SHELVES = [
   ['comms', '📡', 'Radio, community & protection', 'Radio, signals and Morse, organizing neighbors and barter, protecting your home'],
   ['disaster', '🚨', 'Disasters', 'What to expect, wildfire, earthquakes, nuclear fallout, EMP and solar storms'],
   ['fun', '📖', 'Stories & fun', 'Classic books for every age, picture books and rhymes, games, songs and things to make'],
-  ['library', '💾', 'Using this library', 'Starting it on any device, the ammo-can computer, getting the whole library, Wikipedia, apps and the offline AI'],
+  ['library', '💾', 'Using this library', 'Starting it on any device, the ARK Vault (ammo-can computer), getting the whole library, Wikipedia, apps and the offline AI'],
   ['other', '📁', 'Programs & other files', 'Everything else on the drive']];
 const FOLDER_SHELF = { Guides: 'start', 'Southern-Oregon': 'start', 'Local-Contacts': 'start',
   Medical: 'health', 'Sanitation-Hygiene': 'health', 'Children-Learning': 'health',
@@ -687,7 +687,7 @@ const GUIDE_CARDS = { // guide cards, by shelf (same groups and order as SHELVES
     ['emp', '⚡ EMP, solar storms & Faraday cages', 'What tests really showed, unplugging, building and testing a Faraday container, solar-storm warnings, checking and repairing gear after.']],
   fun: [['stories', '📖 Stories, games & fun', 'Classic books for every age to read aloud or alone, games with no power, string figures, songs and things to make — for long evenings and kids.']],
   library: [['device', '📱 Start on any device', 'Run the library on a computer, an old phone or tablet, or share it to iPhones over Wi-Fi.'],
-    ['ammocan', '🧰 Ammo-can library computer', 'A Raspberry Pi kept in a sealed steel ammo can, safe from EMP. Open it, plug in power, and every phone nearby gets the library and the AI over its own Wi-Fi.'],
+    ['ammocan', '🧰 ARK Vault (ammo-can computer)', 'The library, the AI, a battery, a printer and a radio in a sealed steel ammo can, safe from EMP. Open it and pull the Pi up, and every phone nearby gets the library and the AI over its own Wi-Fi.'],
     ['get', '💾 Get the whole library', 'Put every book, all of Wikipedia, offline maps and an AI that needs no internet on a USB drive. Point-and-click installer for Windows, Mac and Linux.'],
     ['all', '📚 Everything on the drive', 'The full index of every file, archive and program.']],
 };
