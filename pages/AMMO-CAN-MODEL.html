@@ -23,11 +23,18 @@ h1{font-size:25px;margin:6px 0 4px}.sub{color:var(--muted);margin:0 0 12px;font-
 .ghost{border:1px solid var(--line);background:transparent;text-decoration:none}
 .chk{display:inline-flex;align-items:center;gap:6px;font-size:15px;cursor:pointer}.chk input{width:18px;height:18px;accent-color:var(--accent)}
 button:focus-visible,.chk input:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.legend{display:flex;flex-wrap:wrap;gap:4px 14px;margin:10px 0 0;padding:0;list-style:none;font-size:14px;color:var(--muted)}
-.legend li{display:inline-flex;align-items:center;gap:6px}.sw{width:13px;height:13px;border-radius:3px;display:inline-block}
+.legend{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 0;padding:0;list-style:none}
+.legend li{display:inline-flex}.sw{width:13px;height:13px;border-radius:3px;display:inline-block;flex:none}
+.legend button{font:inherit;font-size:14px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 12px 5px 9px;display:inline-flex;align-items:center;gap:7px;cursor:pointer;touch-action:manipulation}
+.legend button[aria-pressed="false"]{color:var(--muted);background:transparent;opacity:.65;text-decoration:line-through}
+.legend button[aria-pressed="false"] .sw{background:transparent!important;outline:1.5px dashed var(--muted)!important}
+.legend .act button{font-weight:600;padding:5px 12px;border-style:dashed}
+.lghint{margin:6px 0 0;font-size:13px;color:var(--muted)}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin:16px 0}
 .card h2{font-size:18px;margin:4px 0 8px}.card ul{margin:0;padding-left:20px}.card li{margin:4px 0}
-body.embed .full{display:none!important}body.embed .wrap{padding:0;max-width:none}body.embed .stage{border-radius:12px;max-height:none}
+body.embed .full{display:none!important}body.embed .wrap{padding:0 0 4px;max-width:none;display:flex;flex-direction:column;height:100vh}
+body.embed .stage{border-radius:12px;max-height:none;aspect-ratio:auto;flex:1 1 auto;min-height:220px}
+@media(max-width:560px){body.embed .legend{gap:5px;margin-top:8px}body.embed .legend button{font-size:13px;padding:4px 10px 4px 8px}body.embed .controls{gap:6px 8px;margin-top:8px}body.embed .seg button,body.embed .ghost{padding:6px 11px}}
 body:not(.embed) .only-embed{display:none!important}
 [hidden]{display:none!important}
 </style>
@@ -53,21 +60,26 @@ rack at the latch end with the receipt printer and a Raspberry Pi that slides up
   <button type="button" class="ghost" id="raise" aria-pressed="false">Raise the Pi</button>
   <button type="button" class="ghost" id="close" aria-pressed="false">Close-up of the slide</button>
   <button type="button" class="ghost" id="lift" aria-pressed="false">Lift out the rack</button>
-  <label class="chk"><input type="checkbox" id="card" checked> Cardboard</label>
   <label class="chk"><input type="checkbox" id="etch" checked> Etching</label>
   <button type="button" class="ghost" id="reset">Reset view</button>
   <a class="ghost only-embed" href="AMMO-CAN-MODEL.html" target="_top">Open full page ↗</a>
 </div>
-<ul class="legend">
-  <li><span class="sw" style="background:#c9b27a"></span>Printed parts</li>
-  <li><span class="sw" style="background:#a9875a"></span>Cardboard</li>
-  <li><span class="sw" style="background:linear-gradient(#e8742a 0 35%,#1a1a1a 35%)"></span>Battery</li>
-  <li><span class="sw" style="background:#3f6b3a"></span>Radio</li>
-  <li><span class="sw" style="background:#2e7d4f"></span>Raspberry Pi</li>
-  <li><span class="sw" style="background:#2a2a2c;outline:1px solid #555"></span>Printer</li>
-  <li><span class="sw" style="background:#1f6fc2"></span>Solar controller</li>
-  <li><span class="sw" style="background:#303236;outline:1px solid #555"></span>Wall charger</li>
+<ul class="legend" id="legend" aria-label="Parts: tap one to hide or show it">
+  <li><button type="button" data-part="can" aria-pressed="true"><span class="sw" style="background:#222326;outline:1px solid #666"></span>Ammo can</button></li>
+  <li><button type="button" data-part="card" aria-pressed="true"><span class="sw" style="background:#a9875a"></span>Cardboard</button></li>
+  <li><button type="button" data-part="printed" aria-pressed="true"><span class="sw" style="background:#c9b27a"></span>Printed parts</button></li>
+  <li><button type="button" data-part="battery" aria-pressed="true"><span class="sw" style="background:linear-gradient(#e8742a 0 35%,#1a1a1a 35%)"></span>Battery</button></li>
+  <li><button type="button" data-part="pi" aria-pressed="true"><span class="sw" style="background:#2e7d4f"></span>Raspberry Pi</button></li>
+  <li><button type="button" data-part="printer" aria-pressed="true"><span class="sw" style="background:#2a2a2c;outline:1px solid #555"></span>Printer</button></li>
+  <li><button type="button" data-part="power" aria-pressed="true"><span class="sw" style="background:linear-gradient(90deg,#3d8bf0 0 50%,#c8221c 50%)"></span>Switches, relay &amp; fuse</button></li>
+  <li><button type="button" data-part="wires" aria-pressed="true"><span class="sw" style="background:linear-gradient(90deg,#c8221c 0 50%,#1a1a1a 50%)"></span>Wires</button></li>
+  <li><button type="button" data-part="radio" aria-pressed="true"><span class="sw" style="background:#3f6b3a"></span>Radio</button></li>
+  <li><button type="button" data-part="solar" aria-pressed="true"><span class="sw" style="background:#1f6fc2"></span>Solar controller</button></li>
+  <li><button type="button" data-part="charger" aria-pressed="true"><span class="sw" style="background:#303236;outline:1px solid #555"></span>Wall charger</button></li>
+  <li class="act"><button type="button" id="showall">Show all</button></li>
+  <li class="act"><button type="button" id="hideall">Hide all</button></li>
 </ul>
+<p class="lghint">Tap a part to hide or show it. To see one part on its own: <b>Hide all</b>, then tap it.</p>
 
 <div class="card full">
   <h2>What you're looking at</h2>
@@ -3825,6 +3837,12 @@ glb:"Z2xURgIAAADoPAIAbEcAAEpTT057InNjZW5lIjowLCJzY2VuZXMiOlt7Im5vZGVzIjpbMCwxLDI
   var groups = { body: new T.Group(), lid: new T.Group(), latch: new T.Group() };
   var lifting = new T.Group(), carrier = new T.Group(), fixed = new T.Group(), card = new T.Group(), etch = new T.Group(), battery = new T.Group();
   [groups.body, groups.lid, groups.latch, lifting, fixed, card, etch, battery].forEach(function (g) { can.add(g); }); lifting.add(carrier);
+  var PART = { can_body: 'can', can_lid: 'can', can_latch: 'can', rack: 'printed', carrier: 'printed', printer_plate: 'printed',
+    spacer_hinge: 'printed', spacer_latch: 'printed', stop_screw: 'printed', switch_body: 'power', switch_lever: 'power', adapter: 'power',
+    relay_board: 'power', relay: 'power', fuse: 'power', mppt: 'solar', mppt_terms: 'solar', charger: 'charger' };
+  function partOf(n) { return PART[n] || { pi: 'pi', printer: 'printer', radio: 'radio', card: 'card' }[n.split('_')[0]] || 'can'; }
+  var shown = {}, parts = [];
+  document.querySelectorAll('#legend [data-part]').forEach(function (b) { shown[b.getAttribute('data-part')] = true; });
   var RIDES = { carrier: 1, pi_board: 1, pi_ports: 1, pi_cooler: 1, pi_gpio: 1, pi_usbc: 1 };
   var LIFTS = { rack: 1, printer_plate: 1, printer_body: 1, printer_face: 1, printer_slot: 1, printer_door: 1, printer_led: 1, printer_clips: 1,
     printer_plugs: 1, switch_body: 1, switch_lever: 1, adapter: 1, relay_board: 1, relay: 1, stop_screw: 1, fuse: 1, mppt: 1, mppt_terms: 1 };
@@ -3835,13 +3853,13 @@ glb:"Z2xURgIAAADoPAIAbEcAAEpTT057InNjZW5lIjowLCJzY2VuZXMiOlt7Im5vZGVzIjpbMCwxLDI
       var meshes = []; gltf.scene.traverse(function (o) { if (o.isMesh) meshes.push(o); });
       meshes.forEach(function (o) {
         if (!LOOK[o.name]) { o.parent.remove(o); return; }
-        o.material = LOOK[o.name];
+        o.material = LOOK[o.name]; o.userData.part = partOf(o.name); parts.push(o);
         var w = new T.Vector3(), q = new T.Quaternion(), sc = new T.Vector3(); o.updateWorldMatrix(true, false);
         o.matrixWorld.decompose(w, q, sc); o.position.copy(w); o.quaternion.copy(q); o.scale.copy(sc);
         if (o.name === 'can_body') groups.body.add(o);
         else if (o.name === 'can_lid') groups.lid.add(o);
         else if (o.name === 'can_latch') groups.latch.add(o);
-        else if (o.name === 'card_lid') { groups.lid.add(o); o.userData.card = true; }
+        else if (o.name === 'card_lid') groups.lid.add(o);
         else if (o.name.indexOf('card_') === 0) card.add(o);
         else if (RIDES[o.name]) carrier.add(o);
         else (LIFTS[o.name] ? lifting : fixed).add(o);
@@ -3928,19 +3946,27 @@ glb:"Z2xURgIAAADoPAIAbEcAAEpTT057InNjZW5lIjowLCJzY2VuZXMiOlt7Im5vZGVzIjpbMCwxLDI
     }
     anim = requestAnimationFrame(step);
   }
+  function applyVis() {
+    parts.forEach(function (o) { o.visible = shown[o.userData.part] && !(close && /^(printer_|mppt)/.test(o.name)); });
+    [groups.body, groups.latch, card, fixed].forEach(function (g) { g.visible = !close; });
+    groups.lid.visible = mode !== 'open' && !close;
+    battery.visible = shown.battery && !close;
+    etch.visible = shown.can && !close && document.getElementById('etch').checked;
+    cables.visible = shown.wires;
+    fixedCables.visible = shown.wires && !close && !lifted;
+    piCables.visible = shown.wires && !raised;
+    document.querySelectorAll('#legend [data-part]').forEach(function (b) { b.setAttribute('aria-pressed', String(shown[b.getAttribute('data-part')])); });
+    render();
+  }
   function press(id, on, onText, offText) { var b = document.getElementById(id); b.setAttribute('aria-pressed', String(on)); b.textContent = on ? onText : offText; }
-  function setRaise(on) { raised = on; press('raise', on, 'Push the Pi down', 'Raise the Pi'); if (on && !close) setMode('open'); piCables.visible = !on; animate(carrier, on ? INFO.lift : 0, 0.3); }
-  function setLift(on) { lifted = on; press('lift', on, 'Put the rack back', 'Lift out the rack'); if (on) setMode('open'); fixedCables.visible = !on; animate(lifting, on ? 130 : 0, 0.5); }
+  function setRaise(on) { raised = on; press('raise', on, 'Push the Pi down', 'Raise the Pi'); if (on && !close) setMode('open'); applyVis(); animate(carrier, on ? INFO.lift : 0, 0.3); }
+  function setLift(on) { lifted = on; press('lift', on, 'Put the rack back', 'Lift out the rack'); if (on) setMode('open'); applyVis(); animate(lifting, on ? 130 : 0, 0.5); }
   function setClose(on) {
     close = on; press('close', on, 'Back to the whole can', 'Close-up of the slide');
-    lifting.traverse(function (o) { if (o.isMesh && /^(printer_|mppt|charger)/.test(o.name)) o.visible = !on; });
-    [groups.body, groups.lid, groups.latch, card, etch, battery, fixed, fixedCables].forEach(function (g) { g.visible = !on; });
+    applyVis();
     PRINTED.transparent = on; PRINTED.opacity = on ? 0.3 : 1; PRINTED.depthWrite = !on; PRINTED.needsUpdate = true;
     if (on) { var up = lifting.position.z * 0.5 + carrier.position.z * 0.3; camera.position.copy(toWorld(360, 300, 60 + up)); controls.target.copy(toWorld(70, -15, -75 + up)); controls.update(); render(); }
-    else {
-      fixedCables.visible = !lifted; groups.lid.visible = mode !== 'open';
-      card.visible = document.getElementById('card').checked; etch.visible = document.getElementById('etch').checked; home();
-    }
+    else home();
   }
   var mode = 'open';
   function setMode(m) {
@@ -3948,7 +3974,7 @@ glb:"Z2xURgIAAADoPAIAbEcAAEpTT057InNjZW5lIjowLCJzY2VuZXMiOlt7Im5vZGVzIjpbMCwxLDI
     paint.transparent = see; paint.opacity = see ? 0.3 : 1; paint.depthWrite = !see; paint.needsUpdate = true;
     [steel, logoMat].forEach(function (x) { x.transparent = see; x.opacity = see ? 0.3 : 1; x.needsUpdate = true; });
     CARD.transparent = see; CARD.opacity = see ? 0.2 : 1; CARD.depthWrite = !see; CARD.needsUpdate = true;
-    groups.lid.visible = m !== 'open' && !close;
+    applyVis();
     if (m !== 'open' && lifted) setLift(false);
     if (m !== 'open' && raised && !close) setRaise(false);
     document.querySelectorAll('.seg button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-mode') === m)); });
@@ -3958,10 +3984,13 @@ glb:"Z2xURgIAAADoPAIAbEcAAEpTT057InNjZW5lIjowLCJzY2VuZXMiOlt7Im5vZGVzIjpbMCwxLDI
   document.getElementById('raise').addEventListener('click', function () { setRaise(!raised); });
   document.getElementById('lift').addEventListener('click', function () { setLift(!lifted); });
   document.getElementById('close').addEventListener('click', function () { setClose(!close); });
-  document.getElementById('etch').addEventListener('change', function (e) { etch.visible = e.target.checked; render(); });
-  document.getElementById('card').addEventListener('change', function (e) {
-    card.visible = e.target.checked; groups.lid.traverse(function (o) { if (o.userData.card) o.visible = e.target.checked; }); render();
+  document.getElementById('etch').addEventListener('change', applyVis);
+  document.querySelectorAll('#legend [data-part]').forEach(function (b) {
+    b.addEventListener('click', function () { var k = b.getAttribute('data-part'); shown[k] = !shown[k]; applyVis(); });
   });
+  function showAll(on) { for (var k in shown) shown[k] = on; applyVis(); }
+  document.getElementById('showall').addEventListener('click', function () { showAll(true); });
+  document.getElementById('hideall').addEventListener('click', function () { showAll(false); });
   var target = toWorld(-10, -13, -85);
   function home() { var up = lifting.position.z * 0.5 + carrier.position.z * 0.3; camera.position.copy(toWorld(300, 380, 520 + up)); controls.target.copy(target).add(new T.Vector3(0, up, 0)); controls.update(); render(); }
   document.getElementById('reset').addEventListener('click', home);
