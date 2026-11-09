@@ -38,6 +38,7 @@ textarea{min-height:50px;max-height:200px;resize:vertical}
 button.main{font:inherit;font-weight:600;padding:0 18px;border-radius:12px;border:none;background:var(--accent);color:#04201d;cursor:pointer;min-height:44px}
 button.sec{font:inherit;font-size:14px;padding:6px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
 button.sec:disabled{opacity:.5;cursor:default}
+a.sec{display:inline-block;font-weight:600;font-size:15px;padding:8px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);text-decoration:none}
 a.btn{display:inline-block;font-weight:600;padding:9px 16px;border-radius:12px;background:var(--accent);color:#04201d;text-decoration:none}
 .opts{display:flex;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:14px;margin:4px 0 14px}
 .opts label{display:flex;align-items:center;gap:6px}
@@ -107,7 +108,7 @@ body.osk-open{padding-bottom:236px}
   <button data-tab="ask" class="on">💬 Ask</button>
   <button data-tab="tools">📘 Guides</button>
   <button data-tab="library">📚 Books</button>
-  <button data-tab="kit">🧮 Tools</button>
+  <button data-tab="kit">🔧 Tools</button>
   <button data-tab="setup">⚙️ Offline</button>
 </nav>
 
@@ -176,6 +177,12 @@ body.osk-open{padding-bottom:236px}
     <p><a class="btn" href="download/ark-illinois-valley-kit.zip" download>⬇️ Download the installer kit</a> <span class="meta">one zip, about 40 MB · Windows, Mac, Linux</span></p>
     <p class="meta">&#129520; <b>Building the ARK Vault</b> (the ammo-can computer)? This is the same kit. It fills the Vault's library drive, then finishes its Raspberry Pi's memory card. <a href="pages/AMMO-CAN-COMPUTER-GUIDE.html" target="_blank" rel="noopener">The ARK Vault guide</a></p>
     <p class="meta"><a href="pages/GET-THE-LIBRARY.html" target="_blank" rel="noopener">Step-by-step help, drive sizes and fixes</a></p>
+  </div>
+  <div class="card" id="arkvault">
+    <h3 style="margin-top:0">&#129520; ARK Vault: the whole library in an ammo can</h3>
+    <p class="meta">A steel ammo can that holds this library on a small computer (a Raspberry Pi), a battery, the chargers to fill it from the sun or the wall, a little printer, a crank radio and an old phone to read it on. Sealed, it's shielded from an EMP. Open the lid and pull the Pi up, and the phone (or any phone nearby) uses the library and the AI over the Vault's own Wi-Fi, with no internet and no power grid.</p>
+    <p><a class="btn" id="vaultguide" href="pages/AMMO-CAN-COMPUTER-GUIDE.html">Read the ARK Vault guide</a> <a class="sec" id="vaultmodel" href="pages/AMMO-CAN-MODEL.html">&#129482; See it in 3D</a></p>
+    <p class="meta">The guide has the parts list, the files to 3D-print and laser-cut, the wiring, and how the installer kit prepares the Pi so it sets itself up.</p>
   </div>
   <div class="card">
     <h3 style="margin-top:0">📥 Save for offline use</h3>

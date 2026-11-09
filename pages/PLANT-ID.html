@@ -30,7 +30,7 @@ ul.tips{margin:6px 0 0;padding-left:20px}ul.tips li{margin:3px 0}
 </head>
 <body>
 <div class="wrap">
-<p class="topnav"><a href="../#kit" data-app="/#kit">🧮 Tools</a> · <a href="EMERGENCY-FINDER.html">🆘<span class="lbl"> Emergency</span></a> · <a href="MUSHROOM-GUIDE.html">🍄 Mushroom guide</a> · <a href="FOOD-SECURITY-GUIDE.html">🌿 Foraging</a></p>
+<p class="topnav"><a href="../#kit" data-app="/#kit">🔧 Tools</a> · <a href="EMERGENCY-FINDER.html">🆘<span class="lbl"> Emergency</span></a> · <a href="MUSHROOM-GUIDE.html">🍄 Mushroom guide</a> · <a href="FOOD-SECURITY-GUIDE.html">🌿 Foraging</a></p>
 <h1>📷 Identify a plant or mushroom</h1>
 <p class="sub">Take a photo and the library's offline AI names it from the <span id="count">plants and mushrooms</span> found in Oregon. It runs on this device (or the one sharing the library), with no internet.</p>
 
@@ -77,7 +77,7 @@ garden plants from elsewhere, may be missing, so a confident answer can still be
     $('#count').textContent = s.plants.toLocaleString() + ' plants and ' + s.fungi.toLocaleString() + ' mushrooms and other fungi';
   }).catch(function () {
     notReady('<b>This needs the Library Assistant.</b> The identifier runs inside the library\'s program, not in a plain web page. ' +
-      'Start the library with the START file for your computer, or join the ARK Vault\'s Wi-Fi, then open <b>🧮 Tools → 📷 Identify a plant</b>. ' +
+      'Start the library with the START file for your computer, or join the ARK Vault\'s Wi-Fi, then open <b>🔧 Tools → 📷 Identify a plant</b>. ' +
       'On a phone with the internet, the free <b>Seek by iNaturalist</b> app also identifies plants offline.');
   });
 
