@@ -135,14 +135,14 @@
 <td>The AI works the chip hard. A tall case won't fit on the carrier</td>
 </tr>
 <tr class="odd">
-<td><strong>Memory card</strong></td>
-<td>microSD card, <strong>32 GB or more</strong></td>
-<td>Holds the Pi's own system</td>
+<td><strong>Memory card</strong> (the Pi's own)</td>
+<td>A <strong>small</strong> microSD card, <strong>32 GB or more</strong></td>
+<td>Holds only the Pi's own system. It goes in the Pi's card slot. <strong>Not</strong> the library: see <a href="#two-separate-pieces-the-pis-card-and-the-library-drive">Two separate pieces</a></td>
 </tr>
 <tr class="even">
 <td><strong>Library drive</strong></td>
-<td>A <strong>small USB SSD</strong>, 256 GB or more, formatted <strong>exFAT</strong>; the thumb-drive kind that plugs straight into the Pi</td>
-<td>The full library is about 170 GB; see <a class="guide" href="GET-THE-LIBRARY.html">How big a drive?</a>. It rides up and down with the Pi</td>
+<td>A <strong>USB drive</strong>, 256 GB or more, formatted <strong>exFAT</strong>: a small USB SSD (fastest), a USB flash drive, or a big microSD card in a <strong>USB card reader</strong></td>
+<td>The full library is about 170 GB; see <a class="guide" href="GET-THE-LIBRARY.html">How big a drive?</a>. It plugs into a blue USB port and rides up and down with the Pi</td>
 </tr>
 <tr class="odd">
 <td><strong>Power for the Pi</strong></td>
@@ -257,18 +257,58 @@
 <hr />
 <h2 id="set-up-the-pi-no-tv-or-keyboard">💾 Set up the Pi (no TV or keyboard)</h2>
 <p>The library installer prepares the Pi's memory card so the Pi <strong>sets itself up the first time it starts</strong>. The steps are the same for a Pi 4 and a Pi 5.</p>
+<h3 id="two-separate-pieces-the-pis-card-and-the-library-drive">Two separate pieces: the Pi's card and the library drive</h3>
+<p>The Vault needs <strong>two</strong> storage pieces, and they must not be the same one:</p>
+<p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/two-pieces.svg" alt="The Raspberry Pi seen from the side: a small memory card in the card slot underneath holds the Pi&#39;s own system; the library drive, a USB stick, a small SSD or a big microSD card in a USB card reader, plugs into a blue USB port" /> <em>The Pi's own card in its slot; the library on a USB drive (a diagram drawn for this guide).</em></p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>The Pi's memory card</strong></th>
+<th><strong>The library drive</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>What it holds</td>
+<td>Only the Pi's own system (Raspberry Pi OS)</td>
+<td>The whole library, the AI, and the programs</td>
+</tr>
+<tr class="even">
+<td>What it is</td>
+<td>A <strong>small microSD card</strong>, 32 GB or more</td>
+<td>A <strong>USB</strong> drive, 256 GB or more: a small SSD, a USB flash drive, or a big microSD card <strong>in a USB card reader</strong></td>
+</tr>
+<tr class="odd">
+<td>Where it goes</td>
+<td>The card slot <strong>under</strong> the Pi</td>
+<td>A <strong>blue</strong> USB port</td>
+</tr>
+<tr class="even">
+<td>Filled by</td>
+<td><strong>Raspberry Pi Imager</strong>, then the library installer's <strong>Finish a Raspberry Pi memory card</strong></td>
+<td>The library <strong>installer</strong> (the same kit)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Never point Raspberry Pi Imager at the library drive.</strong> Imager <strong>erases</strong> the whole card or drive it writes to. When you pick the storage in Imager, check its size: about 32 GB is the Pi's card; 256 GB is your library.</li>
+<li><strong>The library can't go on the Pi's card.</strong> The Pi has one card slot, and its own system has to be there, so the library always comes in through USB. If your library is on a microSD card, a USB card reader (a few dollars; get a USB 3 one) turns it into a USB drive. Everything still works, a little slower than an SSD, mostly while the AI first loads.</li>
+<li>Keeping them separate also means the library drive stays readable by any computer or phone: pull it out of the Vault and it works anywhere, like any copy of the library.</li>
+</ul>
+<h3 id="the-steps">The steps</h3>
 <ol type="1">
 <li><strong>Fill the library drive</strong> with the installer: <strong><a href="../download/ark-illinois-valley-kit.zip">⬇️ Download the installer kit (ark-illinois-valley-kit.zip)</a></strong>. It's the same kit for every computer and for the ARK Vault; see <a class="guide" href="GET-THE-LIBRARY.html">Get the whole library</a>. Keep the drive <strong>exFAT</strong>, and keep <strong>Offline AI</strong> and <strong>Works on every kind of device</strong> ticked (that one puts the Raspberry Pi version on the drive).</li>
-<li><strong>Write Raspberry Pi OS onto the memory card</strong> with <strong>Raspberry Pi Imager</strong> (free, from raspberrypi.com) on your regular computer:
+<li><strong>Write Raspberry Pi OS onto the Pi's own small memory card</strong> (not the library) with <strong>Raspberry Pi Imager</strong> (free, from raspberrypi.com) on your regular computer. Unplug the library drive first, so you can't pick it by mistake.
 <ul>
 <li>Device: your Pi (<strong>Raspberry Pi 4</strong> or <strong>5</strong>).</li>
 <li>Operating system: <strong>Raspberry Pi OS (other)</strong> → <strong>Raspberry Pi OS Lite (64-bit)</strong>.</li>
-<li>Storage: the memory card. When it asks about <strong>customisation</strong>, choose <strong>No</strong>. Write it.</li>
+<li>Storage: the <strong>small</strong> card (check the size). When it asks about <strong>customisation</strong>, choose <strong>No</strong>. Write it.</li>
 <li>When it's finished, take the card out and plug it back in.</li>
 </ul></li>
 <li><strong>Finish the card with the library installer.</strong> Start <strong>INSTALL</strong> again (the same kit you filled the drive with) and press <strong>Finish a Raspberry Pi memory card</strong> on its first page. Pick the card (it's called <strong>bootfs</strong>), keep or change the Wi-Fi name and password, leave <strong>It's in the ARK ammo can, on the slide</strong> ticked, and press <strong>Finish the memory card</strong>. <strong>Write down the Wi-Fi name and password</strong> it shows.</li>
-<li><strong>Eject the card</strong> and put it in the Pi. Make sure the <strong>library drive</strong> is in a blue USB port.</li>
-<li><strong>Pull the Pi up.</strong> Its green light <strong>beats like a heart</strong> while it sets itself up (about 5 minutes, sometimes longer). Then it restarts by itself. 2–3 minutes after that, its Wi-Fi appears (a bit longer the first time, while the AI times itself and picks its size).</li>
+<li><strong>Eject the card</strong> and put it in the Pi's card slot (underneath). Plug the <strong>library drive</strong> into a <strong>blue</strong> USB port (in its card reader, if it's a microSD card).</li>
+<li><strong>Pull the Pi up</strong> (on the bench: plug in a USB-C power supply, 5 V 3 A or more). Its green light <strong>beats like a heart</strong> while it sets itself up (about 5–10 minutes, longer from a card reader). Then it restarts by itself. 2–3 minutes after that, its Wi-Fi appears (a bit longer the first time, while the AI times itself and picks its size).</li>
 </ol>
 <p>What the setup does: the Pi makes its <strong>own Wi-Fi</strong> every time it starts, <strong>starts the library by itself</strong> and shares it, mounts the library drive in the same place every time, lets the library use the printer, turns <strong>pins 5 and 6 into the shut-down switch</strong>, and tells the Pi to <strong>switch everything off once it has shut down</strong> (so the relay lets go). It also saves <strong><code>PI-WIFI-CARD.html</code></strong> at the top of the library drive with the Wi-Fi name, password and address: print it later on any computer and tape it inside the lid.</p>
 <p><strong>If the green light keeps blinking fast instead</strong>, it got stuck. Push the Pi down (or unplug the battery lead), put the memory card in your computer and open <strong>ark</strong> → <strong>setup-log.txt</strong>: the last lines say why (usually the library drive wasn't plugged in). Fix it, put the card back and pull the Pi up again. It tries again at every start until it has worked.</p>
