@@ -206,6 +206,8 @@ async function askOnce() {
   if (!srcs.length) meta.textContent = note ? '' : 'Nothing in the library matched. Try other words (e.g. "bleeding" instead of "cut").';
   else meta.textContent = `${srcs.length} sources found.`;
   meta.innerHTML = esc(meta.textContent) + note;
+  const mc = morseAsk(q);
+  if (mc) { showMorse(id, mc); meta.textContent = 'Answered from the standard Morse code table (no AI needed).'; saveAnswers(); return; }
   if (!useAI) { showBest(id, srcs, q); saveAnswers(); return; }
   if (mode === 'drive') {
     if (server.llm === 'off') { showBest(id, srcs, q); saveAnswers(); meta.innerHTML += ' <span>' + esc(server.llmError || 'The AI is turned off on this device.') + ' You can change the AI in <a href="#" onclick="document.querySelector(\'[data-tab=setup]\').click();return false">⚙️ Settings</a>.</span>'; return; }
@@ -327,6 +329,36 @@ function focus(text, qt, n, wantNum) {
   return (best > 0 ? '… ' : '') + w.slice(best, best + n).join(' ') + (best + n < w.length ? ' …' : '');
 }
 // With the AI off: show the best-matching stretch of the top source, question words highlighted.
+// "How do I say court in Morse code?": an exact answer from the International Morse table (the Signals &
+// Morse guide's), not the AI, which is poor at spelling things out letter by letter
+const MORSE = { a: '.-', b: '-...', c: '-.-.', d: '-..', e: '.', f: '..-.', g: '--.', h: '....', i: '..', j: '.---', k: '-.-', l: '.-..',
+  m: '--', n: '-.', o: '---', p: '.--.', q: '--.-', r: '.-.', s: '...', t: '-', u: '..-', v: '...-', w: '.--', x: '-..-', y: '-.--', z: '--..',
+  0: '-----', 1: '.----', 2: '..---', 3: '...--', 4: '....-', 5: '.....', 6: '-....', 7: '--...', 8: '---..', 9: '----.',
+  '.': '.-.-.-', ',': '--..--', '?': '..--..', '/': '-..-.', '-': '-....-', "'": '.----.', '!': '-.-.--', '(': '-.--.', ')': '-.--.-',
+  ':': '---...', '=': '-...-', '+': '.-.-.', '@': '.--.-.' };
+function morseAsk(q) {
+  if (!/\bmorse\b/i.test(q)) return null;
+  const tidy = t => t.replace(/^\s*(?:the\s+(?:word|words|name|letters?)\s+|my\s+name,?\s+)/i, '').trim();
+  let t = (q.match(/["“”'‘’]([^"“”‘’]{1,30})["“”'‘’]/) || [])[1]
+    || (q.match(/\b(?:say|spell|write|send|signal|tap|sign|translate|type|key|flash|is)\s+(.+?)\s+(?:in|into|using|with)\s+morse\b/i) || [])[1]
+    || (q.match(/\bmorse(?:\s+code)?\s+(?:for|of)\s+(.+?)\s*[?.!]*\s*$/i) || [])[1]
+    || (q.match(/^\s*(?:what(?:'s|\s+is)\s+)?(.+?)\s+in\s+morse(?:\s+code)?\s*[?.!]*\s*$/i) || [])[1];
+  if (!t) return null;
+  t = tidy(t);
+  if (!t || t.length > 30 || t.split(/\s+/).length > 4 || /^(how|what|why|when|where|which|who|is|are|can|do|does|should)\b/i.test(t)) return null;
+  const words = t.toLowerCase().split(/\s+/).filter(Boolean);
+  if (!words.every(w => [...w].every(ch => MORSE[ch]))) return null;
+  return { text: t, words };
+}
+function showMorse(id, mc) {
+  const P = guidePaths(), code = mc.words.map(w => [...w].map(ch => MORSE[ch]).join(' ')).join('  /  ');
+  const letters = mc.words.map(w => [...w].map(ch => `<b>${esc(ch.toUpperCase())}</b> <code>${MORSE[ch]}</code>`).join(' · ')).join(' &nbsp;/&nbsp; ');
+  const more = P.signals ? ` <a href="${P.signals}#morse-quick-reference-print-this">The whole table, and how to send it by light or sound</a>.` : '';
+  $('a' + id).innerHTML = `<div class="best"><div class="bh">📡 “${esc(mc.text)}” in Morse code</div>` +
+    `<p style="font:bold 1.35em/1.4 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.06em;overflow-wrap:anywhere">${esc(code)}</p>` +
+    `<p>${letters}</p><p class="meta">A dot is short and a dash is three dots long. Leave a short pause between letters, a longer one between words (shown as /).${more}</p></div>`;
+}
+
 function showBest(id, srcs, q) {
   const s = srcs.find(x => x.kind === 'doc' && !linkList(x)) || srcs[0]; if (!s) return;
   const qt = qterms(q), i = srcs.indexOf(s) + 1;
@@ -354,11 +386,21 @@ async function answer(id, q, srcs, kind) {
   const setMeta = (label) => { meta.innerHTML = `<span class="spin"></span>${label} <button class="sec" type="button">Stop</button> <span class="t"></span>`; meta.querySelector('button').onclick = () => { stopped = true; ctrl.abort(); try { ai.engine?.interruptGenerate?.(); } catch {} }; };
   setMeta('The AI is reading the sources…');
   const tick = setInterval(() => { const t = meta.querySelector('.t'); if (t) t.textContent = Math.round((Date.now() - t0) / 1000) + 's'; }, 1000);
-  const add = piece => { if (!text) setMeta('Writing…'); text += piece; out.innerHTML = render(text, id, srcs.length); saveAnswers(true); };
+  let looped = false;
+  const add = piece => {
+    if (looped) return;
+    if (!text) setMeta('Writing…');
+    text += piece;
+    const cut = loopAt(text);   // a small AI can get stuck saying the same thing over and over: stop it there
+    if (cut >= 0) { looped = stopped = true; text = text.slice(0, cut).trimEnd(); ctrl.abort(); try { ai.engine?.interruptGenerate?.(); } catch {} }
+    out.innerHTML = render(text, id, srcs.length); saveAnswers(true);
+  };
+  const loopMsg = 'Stopped: the AI started repeating itself. Check the sources below.';
   try {
     if (kind === 'server') {
       const r = await fetch('llm/v1/chat/completions', { method: 'POST', signal: ctrl.signal, headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages, stream: true, temperature: 0.2, max_tokens: 700 }) });
+        body: JSON.stringify({ messages, stream: true, temperature: 0.2, max_tokens: server.tier === 'quick' ? 400 : 700,
+          repeat_penalty: 1.1, dry_multiplier: 0.8, dry_base: 1.75, dry_allowed_length: 2 }) });
       if (!r.ok) throw new Error('AI error ' + r.status);
       const reader = r.body.getReader(), dec = new TextDecoder(); let buf = '';
       for (;;) {
@@ -374,11 +416,22 @@ async function answer(id, q, srcs, kind) {
       const stream = await ai.engine.chat.completions.create({ messages, stream: true, temperature: 0.2, max_tokens: 600 });
       for await (const ch of stream) { const piece = ch.choices?.[0]?.delta?.content; if (piece) add(piece); if (stopped) break; }
     }
-    meta.textContent = stopped ? 'Stopped.' : `Answered in ${Math.round((Date.now() - t0) / 1000)} seconds from ${srcs.length} sources. Check the sources before relying on it.`;
+    meta.textContent = looped ? loopMsg : stopped ? 'Stopped.' : `Answered in ${Math.round((Date.now() - t0) / 1000)} seconds from ${srcs.length} sources. Check the sources before relying on it.`;
   } catch (e) {
-    meta.innerHTML = (stopped || e.name === 'AbortError' ? 'Stopped.' : esc('The AI could not answer (' + e.message + '). The sources below are still the search results.')) +
+    meta.innerHTML = (looped ? esc(loopMsg) : stopped || e.name === 'AbortError' ? 'Stopped.' : esc('The AI could not answer (' + e.message + '). The sources below are still the search results.')) +
       ' <button class="retry" type="button">🔄 Try again</button>';
   } finally { clearInterval(tick); }
+}
+
+// where an answer starts going round in circles: the last 60 characters already said twice before (the
+// third time round), or -1. The answer is cut where the second time round starts, so one full pass is kept.
+function loopAt(t) {
+  const n = 60; if (t.length < 3 * n) return -1;
+  const tail = t.slice(-n), seen = [];
+  for (let i = t.indexOf(tail); i >= 0 && i < t.length - n; i = t.indexOf(tail, i + 1)) seen.push(i);
+  if (seen.length < 2) return -1;
+  const end = Math.max(t.lastIndexOf('. ', seen[1]), t.lastIndexOf('.\n', seen[1]));   // at the end of a sentence if there is one
+  return end > seen[0] ? end + 1 : seen[1];
 }
 
 // minimal Markdown: paragraphs, lists, **bold**, [n] citations -> links
