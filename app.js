@@ -163,6 +163,7 @@ function bindUI() {
   $('saveroutes').addEventListener('click', () => saveOffline('routes'));
   $('shareon').addEventListener('click', () => setShare(true));
   $('shareoff').addEventListener('click', () => setShare(false));
+  bindPhotos();
 }
 
 // ------------------------------------------------------------------ asking
@@ -627,7 +628,8 @@ const TOOL_CARDS = [['calc', '🧮 Calculator', 'Everyday sums on a big screen: 
   ['walk', '🥾 Routes: walk, bike, drive', 'From Cave Junction to 359 Oregon and N. California cities: walking days, bicycle riding hours and normal driving times, with turn-by-turn directions and GPS tracks.']];
 function renderKit() {
   const P = guidePaths();
-  $('kitgrid').innerHTML = TOOL_CARDS.filter(([k]) => P[k]).map(([k, t, d]) => `<a class="tool" href="${P[k]}"><b>${t}</b><span>${d}</span></a>`).join('');
+  $('kitgrid').innerHTML = (mode === 'drive' ? PHOTO_CARD : '') +   // family photos: only where the library program runs
+    TOOL_CARDS.filter(([k]) => P[k]).map(([k, t, d]) => `<a class="tool" href="${P[k]}"><b>${t}</b><span>${d}</span></a>`).join('');
 }
 const GUIDE_CARDS = { // guide cards, by shelf (same groups and order as SHELVES and docs/START-HERE.md)
   start: [['sos', '🆘 Emergency finder', 'Something happening right now? Bleeding, not breathing, snakebite, a baby coming, fire, fallout — straight to the right page.'],
@@ -738,6 +740,337 @@ function renderTools() {
     }).join('');
 }
 
+// ------------------------------------------------------------------ family photos & videos (drive only)
+// Pictures and home videos from a USB drive plugged into the device that runs the library (photos.go).
+// A card under Tools opens it. #photos is the list of drives (straight into the drive when there is
+// only one) and #photos:<drive>:<folder> a folder, so the phone's Back button goes back up the folders.
+// The grid shows a few hundred at a time; small previews load as they come into view and are let go
+// far out of view, so a folder of thousands doesn't fill a phone's memory. A tap opens the viewer:
+// swipe or arrow keys, pinch to zoom, swipe down or tap beside the picture to close, and a slideshow.
+const PHOTO_CARD = '<a class="tool" href="#photos"><b>🖼️ Family photos &amp; videos</b><span>Look through the pictures and home videos on a USB drive plugged into the library: folder by folder, full screen, or as a slideshow.</span></a>';
+const PH = { info: null, drives: null, drive: null, path: '', key: '', data: null, shown: 0, seq: 0, lists: new Map(), scroll: new Map() };
+const PH_CHUNK = 240;
+const phJoin = (a, b) => a ? a + '/' + b : b;
+const phHash = (id, p) => '#photos:' + id + ':' + (p || '').split('/').map(encodeURIComponent).join('/');
+const phURL = (what, f) => `api/photos/${what}?d=${encodeURIComponent(PH.drive.id)}&p=${encodeURIComponent(phJoin(PH.path, f.name))}&v=${f.mod}-${f.size}`;
+const phHeic = n => /\.hei[cf]$/i.test(n);
+const phCount = (n, w) => `${n.toLocaleString()} ${w}${n === 1 ? '' : 's'}`;
+const phLabel = f => `<span class="phlab"><span class="phic">${f.kind === 'video' ? '▶' : '🖼️'}</span><span class="phnm">${esc(f.name)}</span></span>`;
+
+async function showPhotos(raw) {
+  const was = !$('photos').hidden;
+  if (was && PH.key) PH.scroll.set(PH.key, scrollY);   // to come back to the same place in this folder
+  document.querySelectorAll('#tabs button').forEach(x => x.classList.toggle('on', x.dataset.tab === 'kit'));
+  document.querySelectorAll('section').forEach(s => s.hidden = s.id !== 'photos');
+  const top = document.querySelector('header').getBoundingClientRect().bottom + scrollY; if (scrollY > top) scrollTo(0, top);
+  const seq = ++PH.seq;
+  if (mode !== 'drive') {
+    PH.drive = null; phCrumbs('');
+    $('phbody').innerHTML = '<p class="note">Family photos work in the drive edition of the library: on the ARK Vault, or a computer that runs the library from its drive.</p>';
+    return;
+  }
+  const m = /^photos:([^:]+):?(.*)$/.exec(raw);
+  if (!m) return phDrivesView(seq);
+  const path = m[2].split('/').filter(Boolean).map(s => { try { return decodeURIComponent(s); } catch { return s; } }).join('/');
+  return phFolder(m[1], path, seq);
+}
+
+async function phLoadDrives() {
+  const r = await fetch('api/photos/drives', { cache: 'no-store' });
+  if (!r.ok) throw new Error('status ' + r.status);
+  PH.info = await r.json(); PH.drives = PH.info.drives || [];
+  return PH.drives;
+}
+
+async function phDrivesView(seq) {
+  PH.drive = null; PH.key = ''; phCrumbs('');
+  $('phbody').innerHTML = '<p class="meta"><span class="spin"></span>Looking for drives…</p>';
+  try { await phLoadDrives(); } catch { if (seq === PH.seq) phTrouble(); return; }
+  if (seq !== PH.seq) return;
+  const ds = PH.drives;
+  if (ds.length === 1) {   // one drive: straight in, in place of this step (so Back goes back to Tools)
+    try { history.replaceState(history.state, '', phHash(ds[0].id, '')); } catch {}
+    return phFolder(ds[0].id, '', seq);
+  }
+  if (!ds.length) return phNoDrive();
+  phCrumbs('');
+  $('phbody').innerHTML = '<p class="meta">Which drive are the photos on?</p><div class="phlist">' + ds.map(d =>
+    `<a class="phfold" href="${phHash(d.id, '')}"><span class="phfi">💽</span><span class="phdn">${esc(d.name)}${d.size ? `<small>${esc(d.size)}</small>` : ''}</span></a>`).join('') +
+    '</div><p><button class="sec" type="button" data-ph="again">🔄 Look again</button> <span class="meta">after plugging in another drive</span></p>';
+}
+
+function phNoDrive() {
+  const s = PH.info || {}, pi = s.pi, here = s.local;
+  const where = pi ? 'one of the Pi’s USB ports' : here ? 'this computer' : 'the computer the library runs on';
+  const reader = pi ? 'the Pi' : here ? 'this computer' : 'that computer';
+  $('phbody').innerHTML = `<div class="card"><h3 style="margin-top:0">🔌 No photo drive found</h3>
+    <p>Plug the drive with the photos into ${where}, wait a few seconds, then tap <b>Look again</b>.</p>
+    <p><button class="main" type="button" data-ph="again">🔄 Look again</button></p>
+    ${s.os === 'darwin' ? '' : `<p class="meta">Still not there? A drive set up on a Mac in the Mac’s own format (APFS) can’t be read by ${reader}. Copy the photos onto a drive formatted as exFAT: Windows, Macs and the Pi can all read that.</p>`}
+    <p class="meta">The library’s own drive isn’t listed here, so keep the photos on a drive of their own.</p></div>`;
+}
+
+function phTrouble() {
+  $('phbody').innerHTML = '<div class="note">Couldn’t reach the library program. Is it still running? <button class="sec" type="button" data-ph="again">🔄 Look again</button></div>';
+}
+
+async function phLookAgain() {
+  PH.lists.clear();
+  const m = /^#photos:([^:]+)/.exec(location.hash);
+  if (m) {
+    try { await phLoadDrives(); } catch {}
+    if (!(PH.drives || []).some(d => d.id === m[1])) { location.hash = '#photos'; return; }   // that drive was unplugged
+  }
+  showPhotos(location.hash.slice(1) || 'photos');
+}
+
+async function phFolder(id, path, seq) {
+  if (!PH.drives) try { await phLoadDrives(); } catch {}
+  if (seq !== PH.seq) return;
+  PH.drive = (PH.drives || []).find(d => d.id === id) || { id, name: 'Drive' };
+  phCrumbs(path);
+  const key = id + ':' + path;
+  let data = PH.lists.get(key);
+  if (!data || Date.now() - data.at > 60000) {
+    $('phbody').innerHTML = '<p class="meta"><span class="spin"></span>Opening the folder…</p>';
+    let r, j;
+    try { r = await fetch(`api/photos/list?d=${encodeURIComponent(id)}&p=${encodeURIComponent(path)}`, { cache: 'no-store' }); j = await r.json().catch(() => ({})); }
+    catch { if (seq === PH.seq) phTrouble(); return; }
+    if (seq !== PH.seq) return;
+    if (!r.ok) {
+      PH.key = '';
+      $('phbody').innerHTML = `<div class="note">${esc(j.error || 'That folder couldn’t be opened.')} <button class="sec" type="button" data-ph="again">🔄 Look again</button>${path ? ` <a href="${phHash(id, '')}">Top of the drive</a>` : ''}</div>`;
+      return;
+    }
+    data = j; data.at = Date.now(); PH.lists.set(key, data);
+    if (PH.lists.size > 8) PH.lists.delete(PH.lists.keys().next().value);
+  }
+  PH.path = path; PH.key = key; PH.data = data; if (data.drive) PH.drive = data.drive;
+  phCrumbs(path); phRender();
+  const y = PH.scroll.get(key);   // back up to a folder: where you were in it
+  if (y) { while (document.documentElement.scrollHeight < y + innerHeight && PH.shown < data.files.length) phMore(); scrollTo(0, y); }
+}
+
+// where you are: 🖼️ Photos › drive › folder › folder, and ‹ Back up one folder
+function phCrumbs(path) {
+  const many = (PH.drives || []).length > 1, d = PH.drive, segs = path ? path.split('/') : [];
+  const step = (href, label, here) => here ? `<span>${label}</span>` : `<a href="${href}">${label}</a>`;
+  const parts = [];
+  if (!d || many) parts.push(step('#photos', '🖼️ Photos', !d));
+  if (d) parts.push(step(phHash(d.id, ''), (many ? '' : '🖼️ ') + esc(d.name), !segs.length));
+  segs.forEach((s, i) => parts.push(step(phHash(d.id, segs.slice(0, i + 1).join('/')), esc(s), i === segs.length - 1)));
+  $('phcrumbs').innerHTML = parts.join('<span class="sep">›</span>');
+  const up = $('phup');
+  up.hidden = !(d && (segs.length || many));
+  if (d) up.href = segs.length ? phHash(d.id, segs.slice(0, -1).join('/')) : '#photos';
+}
+
+function phRender() {
+  const d = PH.data, files = d.files || [], folders = d.folders || [];
+  const nImg = files.filter(f => f.kind === 'image').length, nVid = files.length - nImg;
+  const said = [folders.length && phCount(folders.length, 'folder'), nImg && phCount(nImg, 'photo'), nVid && phCount(nVid, 'video')].filter(Boolean).join(' · ');
+  let h = '';
+  if (said) h += `<div class="phinfo"><p class="meta">${said}</p>${nImg > 1 ? '<button class="sec" type="button" data-ph="slides">▶ Slideshow</button>' : ''}</div>`;
+  if (folders.length) h += '<div class="phlist">' + folders.map(f => `<a class="phfold" href="${phHash(PH.drive.id, phJoin(PH.path, f.name))}"><span class="phfi">📁</span><span class="phfn">${esc(f.name)}</span></a>`).join('') + '</div>';
+  if (!files.length && !folders.length) h += `<div class="note">There are no photos or videos in this folder${d.other ? ` (only ${phCount(d.other, 'other file')})` : ''}.</div>`;
+  if (d.more) h += '<p class="meta">This folder has a great many files: the first 50,000 photos and videos are shown.</p>';
+  h += '<div class="phgrid" id="phgrid"></div><button class="sec phmore" type="button" id="phmore" hidden></button>';
+  $('phbody').innerHTML = h;
+  PH.shown = 0; phWatch(); phMore();
+}
+
+// a tile: the server's small preview; a small WebP or BMP as it is; otherwise an icon and the name
+function phTile(f, i) {
+  const vid = f.kind === 'video';
+  const src = f.thumb ? phURL('thumb', f) : !vid && !phHeic(f.name) && f.size < 1.5e6 ? phURL('file', f) : '';
+  return `<button type="button" class="phtile${vid ? ' vid' : ''}" data-i="${i}" title="${esc(f.name)}" aria-label="${vid ? 'Video' : 'Photo'} ${esc(f.name)}">` +
+    (src ? `<img alt="" data-src="${esc(src)}">` : phLabel(f)) + '</button>';
+}
+
+let phNear = null, phFar = null;
+function phWatch() {
+  phNear?.disconnect(); phFar?.disconnect(); phNear = phFar = null;
+  if (!('IntersectionObserver' in window)) return;
+  phNear = new IntersectionObserver(es => es.forEach(e => {   // coming into view: load (and the next few hundred)
+    if (!e.isIntersecting) return;
+    const t = e.target;
+    if (t.id === 'phmore') phMore(); else if (!t.getAttribute('src')) t.src = t.dataset.src;
+  }), { rootMargin: '600px 0px' });
+  phFar = new IntersectionObserver(es => es.forEach(e => {     // far out of view: let the picture go
+    if (!e.isIntersecting && e.target.getAttribute('src')) e.target.removeAttribute('src');
+  }), { rootMargin: '2500px 0px' });
+  phNear.observe($('phmore'));
+}
+
+function phMore() {
+  const g = $('phgrid'), files = PH.data?.files || []; if (!g) return;
+  const from = PH.shown, to = Math.min(files.length, from + PH_CHUNK);
+  if (to > from) {
+    g.insertAdjacentHTML('beforeend', files.slice(from, to).map((f, k) => phTile(f, from + k)).join(''));
+    for (let k = from; k < to; k++) {
+      const img = g.children[k]?.querySelector('img'); if (!img) continue;
+      if (phNear) { phNear.observe(img); phFar.observe(img); } else { img.loading = 'lazy'; img.src = img.dataset.src; }
+    }
+    PH.shown = to;
+  }
+  const b = $('phmore'), left = files.length - to;
+  b.hidden = left <= 0; b.textContent = `Show more (${left.toLocaleString()} left)`;
+  if (!b.hidden && phNear && b.offsetParent && b.getBoundingClientRect().top < innerHeight + 600) requestAnimationFrame(phMore);   // still in view
+}
+
+// ---- the full-screen viewer
+const PV = { i: -1, kbd: false, slide: false, timer: 0, wake: null, pre: null, x: 0, y: 0, t: 0, multi: false, swiped: false, onVideoBar: false };
+const PV_HEIC = '<b>This photo is in the iPhone’s HEIC format</b>, which this web browser can’t show. It opens in Safari on an iPhone, iPad or Mac.';
+const PV_PIC = 'This picture couldn’t be shown. The file may be damaged, or the drive was unplugged.';
+const PV_MOV = '<b>This video can’t play in this web browser.</b> Videos from iPhones (.mov) play in Safari on an iPhone, iPad or Mac.';
+const PV_VID = '<b>This video can’t play in this web browser.</b> Try another browser, or the file may be damaged.';
+
+function pvOpen(i, slide, kbd) {
+  if (!PH.data?.files?.[i]) return;
+  PV.kbd = !!kbd;   // opened from the keyboard: the focus comes back to the photo afterwards
+  $('phview').hidden = false; document.documentElement.classList.add('pv-open');
+  const page = document.querySelector('.wrap'); if (page) page.inert = true;
+  try { if (!history.state?.pv) history.pushState({ ...(history.state || {}), pv: 1 }, ''); } catch {}   // Back closes the viewer
+  pvShow(i); pvSlide(!!slide);
+  if (PV.kbd) $('pvclose').focus({ preventScroll: true });
+}
+
+function pvClose(fromHistory) {
+  if ($('phview').hidden) return;
+  pvSlide(false); pvStop(); $('pvstage').innerHTML = ''; PV.pre = null;
+  $('phview').hidden = true; document.documentElement.classList.remove('pv-open');
+  const page = document.querySelector('.wrap'); if (page) page.inert = false;
+  if (!fromHistory && history.state?.pv) try { history.back(); } catch {}
+  const files = PH.data?.files || [];   // back in the grid at the last one seen
+  while ($('phgrid') && PV.i >= PH.shown && PH.shown < files.length) phMore();
+  const t = document.querySelector(`#phgrid .phtile[data-i="${PV.i}"]`);
+  if (t) { t.scrollIntoView({ block: 'nearest' }); if (PV.kbd) t.focus({ preventScroll: true }); }
+}
+
+function pvShow(i) {
+  const files = PH.data?.files || [], f = files[i]; if (!f) return;
+  pvStop(); PV.i = i;
+  $('pvcount').textContent = `${(i + 1).toLocaleString()} / ${files.length.toLocaleString()}`;
+  $('pvname').textContent = f.name;
+  $('pvprev').hidden = i <= 0; $('pvnext').hidden = i >= files.length - 1;
+  const st = $('pvstage');
+  if (f.kind === 'video') {
+    $('pvload').hidden = true;
+    st.innerHTML = '<video controls playsinline preload="metadata"></video>';
+    const v = st.firstChild;
+    v.onerror = () => pvMsg(/\.mov$/i.test(f.name) ? PV_MOV : PV_VID);
+    v.src = phURL('file', f);
+    return;
+  }
+  st.innerHTML = '<img alt="">';
+  const img = st.firstChild;
+  if (f.thumb) img.style.backgroundImage = `url("${phURL('thumb', f)}")`;   // the small preview at once, the photo over it when it comes
+  $('pvload').hidden = false;
+  img.onload = () => { $('pvload').hidden = true; img.style.backgroundImage = 'none'; if (PV.slide) pvLater(); pvPreload(i); };
+  img.onerror = () => { $('pvload').hidden = true; pvMsg(phHeic(f.name) ? PV_HEIC : PV_PIC); if (PV.slide) pvLater(1500); };
+  img.src = phURL('file', f);
+}
+
+function pvMsg(html) { $('pvstage').innerHTML = `<div class="pvmsg">${html}</div>`; }
+
+function pvStop() {   // stop the video (and any download) of the one being left
+  clearTimeout(PV.timer);
+  const st = $('pvstage'), v = st.querySelector('video'), img = st.querySelector('img');
+  if (v) { v.pause(); v.removeAttribute('src'); try { v.load(); } catch {} }
+  if (img) { img.onload = img.onerror = null; img.removeAttribute('src'); }
+}
+
+// one step; the slideshow (auto) goes round and round the photos, leaving out the videos
+function pvStep(dir, auto) {
+  const files = PH.data?.files || [], n = files.length; let i = PV.i;
+  for (let k = 0; k < n; k++) {
+    i += dir;
+    if (auto) i = (i + n) % n; else if (i < 0 || i >= n) return;
+    if (!auto || files[i].kind === 'image') return pvShow(i);
+  }
+}
+function pvLater(ms = 5000) { clearTimeout(PV.timer); PV.timer = setTimeout(() => pvStep(1, true), ms); }
+function pvPreload(i) {   // the next photo, so the next swipe (or slide) is quick
+  const files = PH.data?.files || [];
+  for (let k = i + 1; k < files.length && k < i + 4; k++) if (files[k].kind === 'image') { PV.pre = new Image(); PV.pre.src = phURL('file', files[k]); return; }
+}
+
+function pvSlide(on) {
+  PV.slide = on; clearTimeout(PV.timer);
+  $('pvplay').textContent = on ? '⏸ Pause' : '▶ Slideshow';
+  pvWake(on);
+  if (!on) return;
+  const f = PH.data?.files?.[PV.i], img = $('pvstage').querySelector('img');
+  if (!f || f.kind !== 'image' || !img) pvStep(1, true);
+  else if (img.complete && img.naturalWidth) pvLater();
+}
+async function pvWake(on) {   // a slideshow keeps the screen on
+  try {
+    if (on && !PV.wake && navigator.wakeLock) PV.wake = await navigator.wakeLock.request('screen');
+    else if (!on && PV.wake) { const w = PV.wake; PV.wake = null; await w.release(); }
+  } catch { PV.wake = null; }
+}
+
+function bindPhotos() {
+  $('phbody').addEventListener('click', e => {
+    const t = e.target.closest('.phtile'); if (t) { pvOpen(+t.dataset.i, false, e.detail === 0); return; }
+    if (e.target.id === 'phmore') { phMore(); return; }
+    const a = e.target.closest('[data-ph]')?.dataset.ph;
+    if (a === 'slides') { const i = (PH.data?.files || []).findIndex(f => f.kind === 'image'); if (i >= 0) pvOpen(i, true); }
+    else if (a === 'again') phLookAgain();
+  });
+  $('phbody').addEventListener('error', e => {   // a preview that couldn't be made: the icon and name instead
+    const img = e.target; if (img.tagName !== 'IMG' || !img.getAttribute('src')) return;
+    const t = img.closest('.phtile'), f = t && PH.data?.files?.[+t.dataset.i]; if (!f) return;
+    phNear?.unobserve(img); phFar?.unobserve(img); img.outerHTML = phLabel(f);
+  }, true);
+  addEventListener('hashchange', () => {
+    if (!$('phview').hidden) pvClose(true);
+    const toPhotos = /^#photos(:|$)/.test(location.hash);
+    if (!toPhotos && $('photos').hidden) return;   // the other tabs work as before
+    if (!toPhotos && !location.hash.slice(1)) document.querySelector('#tabs [data-tab=ask]').click();
+    else openFromHash();
+  });
+
+  $('pvclose').onclick = () => pvClose();
+  $('pvprev').onclick = () => pvStep(-1);
+  $('pvnext').onclick = () => pvStep(1);
+  $('pvplay').onclick = () => pvSlide(!PV.slide);
+  const st = $('pvstage'), zoomed = () => !!window.visualViewport && visualViewport.scale > 1.05;
+  st.addEventListener('touchstart', e => {
+    const t = e.touches[0];
+    PV.multi = e.touches.length > 1; PV.swiped = false; PV.x = t.clientX; PV.y = t.clientY; PV.t = Date.now();
+    const v = e.target.closest('video');   // a video's own controls (along its bottom) take their own swipes
+    PV.onVideoBar = !!v && t.clientY > v.getBoundingClientRect().bottom - 90;
+  }, { passive: true });
+  st.addEventListener('touchmove', e => { if (e.touches.length > 1) PV.multi = true; }, { passive: true });
+  st.addEventListener('touchend', e => {
+    const multi = PV.multi; if (!e.touches.length) PV.multi = false;
+    if (multi || e.touches.length || zoomed() || PV.onVideoBar || Date.now() - PV.t > 900) return;   // pinching, or looking round a zoomed photo
+    const t = e.changedTouches[0], dx = t.clientX - PV.x, dy = t.clientY - PV.y;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > 1.5 * Math.abs(dy)) { PV.swiped = true; pvStep(dx < 0 ? 1 : -1); }
+    else if (dy > 100 && dy > 2 * Math.abs(dx)) { PV.swiped = true; pvClose(); }   // swipe down: back to the folder
+  });
+  st.addEventListener('click', e => {   // a tap beside the picture closes the viewer; on it, nothing
+    if (PV.swiped) { PV.swiped = false; return; }
+    if (e.target.closest('video, .pvmsg')) return;
+    const img = e.target.closest('img');
+    if (img && img.naturalWidth) {
+      const r = img.getBoundingClientRect(), k = Math.min(r.width / img.naturalWidth, r.height / img.naturalHeight);
+      const w = img.naturalWidth * k, h = img.naturalHeight * k, x = e.clientX - r.left - (r.width - w) / 2, y = e.clientY - r.top - (r.height - h) / 2;
+      if (x >= 0 && y >= 0 && x <= w && y <= h) return;
+    }
+    pvClose();
+  });
+  document.addEventListener('keydown', e => {
+    if ($('phview').hidden) return;
+    if (e.key === 'Escape') { e.preventDefault(); pvClose(); }
+    else if ((e.key === 'ArrowRight' || e.key === 'ArrowLeft') && !e.target.closest?.('video')) { e.preventDefault(); pvStep(e.key === 'ArrowRight' ? 1 : -1); }
+  });
+  addEventListener('popstate', () => { if (!$('phview').hidden && !history.state?.pv) pvClose(true); });
+  document.addEventListener('visibilitychange', () => { if (PV.slide && document.visibilityState === 'visible') { PV.wake = null; pvWake(true); } });
+}
+
 // ------------------------------------------------------------------ getting around
 // Our own pages (guides, tools, the A-Z index) open right here: the browser's Back button, or the
 // "Guides" link at the top of every guide, brings you back to where you were. Other websites open in a
@@ -762,8 +1095,9 @@ function onLinkClick(e) {
   const shelf = a.dataset.shelf;
   if (shelf && !a.target) try { history.replaceState(history.state, '', '#tools:' + shelf); } catch {}
 }
-// "#tools:food" opens the Guides tab at the Food group; "#library" the Books tab, and so on
+// "#tools:food" opens the Guides tab at the Food group; "#library" the Books tab, "#photos:…" a photo folder, and so on
 function openFromHash() {
+  if (/^#photos(:|$)/.test(location.hash)) { showPhotos(location.hash.slice(1)); return; }
   const [tab, grp] = decodeURIComponent(location.hash.slice(1)).split(':');
   if (!tab) return;
   document.querySelector(`#tabs [data-tab="${CSS.escape(tab)}"]`)?.click();

@@ -85,6 +85,42 @@ button.link{background:none;border:none;color:var(--accent);padding:2px 0;font:i
 .radio small{color:var(--muted)}
 .radio.off{opacity:.55;cursor:default}.radio .rec{color:var(--accent);font-weight:600}.radio input{margin-right:6px}
 footer{color:var(--muted);font-size:13px;margin-top:26px}
+/* Photos: family pictures and home videos from a USB drive (photos.go); opened from a card under Tools */
+.phtop{display:flex;align-items:center;gap:8px 12px;flex-wrap:wrap;margin:0 0 12px}
+.crumbs{flex:1;min-width:0;font-weight:700;font-size:17px;line-height:1.35;overflow-wrap:anywhere}
+.crumbs a{text-decoration:none}.crumbs .sep{color:var(--muted);font-weight:400;margin:0 6px}
+.phinfo{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:0 0 10px;min-height:36px}
+.phinfo .meta{margin:0}
+.phlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px;margin:0 0 14px}
+.phfold{display:flex;align-items:center;gap:10px;min-width:0;min-height:52px;padding:8px 12px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);text-decoration:none;font-weight:600;line-height:1.3}
+.phfn{min-width:0;overflow:hidden;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}.phdn{min-width:0;overflow-wrap:anywhere}
+.phfold small{display:block;font-weight:400;color:var(--muted);font-size:13px}
+.phfi{font-size:24px;line-height:1;flex:none}
+.phgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:4px}
+@media(min-width:640px){.phgrid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:6px}}
+.phtile{position:relative;display:block;width:100%;margin:0;padding:0;border:0;border-radius:6px;overflow:hidden;background:rgba(127,127,127,.16);color:var(--ink);font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.phtile::before{content:'';display:block;padding-top:100%}
+.phtile>img,.phlab{position:absolute;top:0;left:0;width:100%;height:100%}
+.phtile>img{display:block;object-fit:cover}
+.phlab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:6px;text-align:center}
+.phic{font-size:30px;line-height:1}
+.vid .phic{width:46px;height:46px;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;font-size:20px;display:flex;align-items:center;justify-content:center;padding-left:4px}
+.phnm{max-width:100%;font-size:11.5px;line-height:1.25;color:var(--muted);overflow:hidden;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.phtile:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+.phmore{display:block;margin:14px auto 0}
+html.pv-open,html.pv-open body{overflow:hidden;overscroll-behavior:none} /* no scrolling behind the viewer, and a sideways swipe isn't the browser's "go back" */
+#phview{position:fixed;top:0;left:0;right:0;bottom:0;z-index:100;background:#000;color:#fff;overscroll-behavior:contain;-webkit-user-select:none;user-select:none}
+#pvstage{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center}
+#pvstage img,#pvstage video{display:block;width:100%;height:100%;object-fit:contain;background:center/contain no-repeat}
+.pvtop{position:absolute;left:0;right:0;top:0;z-index:2;display:flex;align-items:center;gap:8px;padding:8px max(10px,env(safe-area-inset-right)) 20px max(10px,env(safe-area-inset-left));padding-top:max(8px,env(safe-area-inset-top));background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,0))}
+.pvcount{font-weight:700;font-size:15px;white-space:nowrap}.pvcount .spin{border-color:#fff;border-top-color:transparent}
+.pvname{flex:1;min-width:0;font-size:13px;opacity:.75;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pvbtn{flex:none;font:inherit;font-size:15px;font-weight:600;color:#fff;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:0 14px;min-height:44px;cursor:pointer;white-space:nowrap;touch-action:manipulation}
+.pvx{width:44px;padding:0;font-size:22px;line-height:1}
+.pvnav{position:absolute;top:50%;z-index:2;width:48px;height:72px;margin-top:-36px;padding:0;border:0;border-radius:14px;background:rgba(0,0,0,.4);color:#fff;font-size:40px;line-height:1;cursor:pointer;touch-action:manipulation}
+.pvprev{left:max(6px,env(safe-area-inset-left))}.pvnext{right:max(6px,env(safe-area-inset-right))}
+@media(hover:hover){.pvnav{opacity:.75}.pvnav:hover{opacity:1}}
+.pvmsg{max-width:440px;margin:0 62px;padding:16px 18px;border-radius:14px;background:#1b2230;color:#e7ecf3;font-size:15px;line-height:1.5;text-align:center;-webkit-user-select:text;user-select:text}
 /* the on-screen keyboard: only on the Pi's own touchscreen (opened with ?touch=1) */
 #osk{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--card);border-top:1px solid var(--line);padding:4px 6px 6px;box-shadow:0 -4px 16px rgba(0,0,0,.25)}
 #osk[hidden]{display:none}
@@ -139,6 +175,11 @@ body.osk-open{padding-bottom:236px}
 <section id="kit" hidden>
   <p class="meta">Tools that work with no internet, on this device.</p>
   <div class="grid" id="kitgrid"></div>
+</section>
+
+<section id="photos" hidden>
+  <div class="phtop"><a class="sec" id="phup" href="#photos" hidden>‹ Back</a><div class="crumbs" id="phcrumbs"></div></div>
+  <div id="phbody"></div>
 </section>
 
 <section id="setup" hidden>
@@ -201,6 +242,17 @@ body.osk-open{padding-bottom:236px}
 </section>
 
 <footer>Answers come from a small AI and can be wrong — check the numbered sources, especially for medical, electrical, chemical or structural questions. This is reference material, not professional advice.</footer>
+</div>
+<div id="phview" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <div id="pvstage"></div>
+  <div class="pvtop">
+    <span class="pvcount"><span class="spin" id="pvload" hidden></span><span id="pvcount"></span></span>
+    <span class="pvname" id="pvname"></span>
+    <button type="button" class="pvbtn" id="pvplay">▶ Slideshow</button>
+    <button type="button" class="pvbtn pvx" id="pvclose" aria-label="Close" title="Close">✕</button>
+  </div>
+  <button type="button" class="pvnav pvprev" id="pvprev" aria-label="Previous" title="Previous">‹</button>
+  <button type="button" class="pvnav pvnext" id="pvnext" aria-label="Next" title="Next">›</button>
 </div>
 <script type="module" src="app.js"></script>
 </body>
