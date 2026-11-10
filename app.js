@@ -126,6 +126,15 @@ function renderStatus() {
   $('status').innerHTML = h;
 }
 
+// An app saved to the home screen has no browser around it: a book (a PDF) would fill the screen with no way
+// back and no way to print. There it opens in a window of its own instead (on an iPhone: Done to come back,
+// and Share > Print to print).
+if (window.matchMedia && matchMedia('(display-mode: standalone)').matches || navigator.standalone)
+  document.addEventListener('click', e => {
+    const a = e.target.closest && e.target.closest('a[href]');
+    if (a && !a.target && /\.pdf(?![a-z0-9])/i.test(a.getAttribute('href'))) { a.target = '_blank'; a.rel = 'noopener'; }
+  }, true);
+
 // ------------------------------------------------------------------ tabs & bindings
 function bindUI() {
   $('tabs').addEventListener('click', e => {

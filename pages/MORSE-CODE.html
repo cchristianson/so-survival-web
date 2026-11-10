@@ -43,12 +43,17 @@ select{font-size:16px;width:auto;max-width:100%}
 .grid b{font-size:18px}.grid span,.mono{font:15px ui-monospace,Menlo,Consolas,monospace;color:var(--accent);letter-spacing:.05em}
 .pro{width:100%;border-collapse:collapse;font-size:14.5px}.pro td{padding:6px 4px;border-top:1px solid var(--line);vertical-align:top}.pro tr{cursor:pointer}
 .tips{font-size:14px;color:var(--muted)}.tips b{color:var(--ink)}.tips ul{margin:0;padding-left:20px}.tips li{margin:4px 0}
+.chips.small .chip{font-size:13.5px;padding:5px 11px}
+.viewer{position:relative;margin-top:10px}.viewer[hidden]{display:none}.viewer video{width:100%;border-radius:10px;background:#000;display:block}
+.aim{position:absolute;left:25%;top:25%;width:50%;height:50%;border:2px dashed #4fd1c5;border-radius:8px;pointer-events:none}
+#scope{width:100%;height:64px;margin-top:10px;background:var(--bg);border:1px solid var(--line);border-radius:8px;display:block}
+label.btn{display:inline-block;margin:0;color:var(--ink);font-size:15px}
 #flash{position:fixed;inset:0;z-index:50;background:#000;display:flex;align-items:flex-end;justify-content:center;cursor:pointer}
 #flash.on{background:#fff}#flash[hidden]{display:none}#flash p{color:#777;font-size:14px;margin:0 0 24px}
 @media print{.chips,.row,.pad,.key,.speed,textarea,#flash{display:none}}
 </style>
 <style>:root{color-scheme:dark}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){color-scheme:light}}:root[data-theme=light]{color-scheme:light}.themebtn{font:inherit;font-size:14px;line-height:1.3;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:3px 11px;cursor:pointer;white-space:nowrap;text-decoration:none}.themefloat{position:absolute;top:10px;right:12px;z-index:9}@media print{.themebtn{display:none}}</style><script>/* so-theme: light or dark screen */(function(){var K="so-theme",d=document.documentElement,L={auto:"\uD83C\uDF13 Auto",dark:"\uD83C\uDF19 Dark",light:"\u2600\uFE0F Light"},N={auto:"dark",dark:"light",light:"auto"},cur="auto";try{cur=localStorage.getItem(K)||"auto"}catch(e){}function a(){if(cur==="dark"||cur==="light")d.setAttribute("data-theme",cur);else d.removeAttribute("data-theme");var b=document.querySelectorAll(".themebtn");for(var i=0;i<b.length;i++){b[i].textContent=L[cur]||L.auto;b[i].title="Screen: "+cur+" - tap to change (Auto follows this device)"}}a();window.soTheme=function(){cur=N[cur]||"dark";try{localStorage.setItem(K,cur)}catch(e){}a()};function btn(){var b=document.createElement("button");b.type="button";b.className="themebtn";return b}document.addEventListener("DOMContentLoaded",function(){if(!document.querySelector(".themebtn")){var n=document.querySelector(".topnav"),b=btn();if(n){n.appendChild(document.createTextNode(" \u00B7 "));n.appendChild(b)}else{b.className+=" themefloat";document.body.appendChild(b)}}var all=document.querySelectorAll(".themebtn");for(var i=0;i<all.length;i++)all[i].onclick=window.soTheme;a()})})();</script>
-<style>.topnav{position:sticky;top:0;z-index:4;background:var(--bg);border-bottom:1px solid var(--line);margin:-18px -16px 8px;padding:10px 16px 8px;font-size:14.5px;color:var(--muted)}.topnav a{text-decoration:none;white-space:nowrap}[id]{scroll-margin-top:72px}@media print{.topnav{position:static}}</style><style>.backbtn{font-weight:700;text-decoration:none;white-space:nowrap}@media print{.backbtn{display:none}}@media(max-width:600px){.topnav{white-space:nowrap;overflow-x:auto;scrollbar-width:none;font-size:14px}.topnav::-webkit-scrollbar{display:none}.topnav .lbl{display:none}.topnav .themebtn{font-size:13px;padding:2px 9px}}</style><script>/* so-back: a Back button on every page after the first */(function(){function add(){var n=document.querySelector(".topnav");if(!n||n.querySelector(".backbtn"))return;var f=n.querySelector("a"),a=document.createElement("a");a.className="backbtn";a.href=f?f.href:"#";a.textContent="\u2190 Back";a.title="Back to the page you came from";a.onclick=function(e){if(history.length>1&&document.referrer){e.preventDefault();history.back()}};n.insertBefore(document.createTextNode(" \u00B7 "),n.firstChild);n.insertBefore(a,n.firstChild)}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",add);else add();document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a[href^=\"#\"]"):null;if(!a||e.defaultPrevented)return;var id=decodeURIComponent(a.getAttribute("href").slice(1)),t=id?document.getElementById(id):null;if(!t)return;e.preventDefault();t.scrollIntoView();try{history.replaceState(history.state,"","#"+id)}catch(x){}})})();</script></head>
+<style>.topnav{position:sticky;top:0;z-index:4;background:var(--bg);border-bottom:1px solid var(--line);margin:-18px -16px 8px;padding:10px 16px 8px;font-size:14.5px;color:var(--muted)}.topnav a{text-decoration:none;white-space:nowrap}[id]{scroll-margin-top:72px}@media print{.topnav{position:static}}</style><style>.backbtn{font-weight:700;text-decoration:none;white-space:nowrap}@media print{.backbtn{display:none}}@media(max-width:600px){.topnav{font-size:14px;line-height:1.8}.topnav a{white-space:nowrap}.topnav .lbl{display:none}.topnav .themebtn{font-size:13px;padding:2px 9px}}</style><script>/* so-back: a Back button on every page after the first */(function(){function add(){var n=document.querySelector(".topnav");if(!n||n.querySelector(".backbtn"))return;var f=n.querySelector("a"),a=document.createElement("a");a.className="backbtn";a.href=f?f.href:"#";a.textContent="\u2190 Back";a.title="Back to the page you came from";a.onclick=function(e){if(history.length>1&&document.referrer){e.preventDefault();history.back()}};n.insertBefore(document.createTextNode(" \u00B7 "),n.firstChild);n.insertBefore(a,n.firstChild)}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",add);else add();document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a[href^=\"#\"]"):null;if(!a||e.defaultPrevented)return;var id=decodeURIComponent(a.getAttribute("href").slice(1)),t=id?document.getElementById(id):null;if(!t)return;e.preventDefault();t.scrollIntoView();try{history.replaceState(history.state,"","#"+id)}catch(x){}});if(window.matchMedia&&matchMedia("(display-mode: standalone)").matches||navigator.standalone)document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a[href]"):null;if(a&&!a.target&&/\.pdf(?![a-z0-9])/i.test(a.getAttribute("href")))a.target="_blank"},true)})();</script></head>
 <body>
 <div class="wrap">
 <p class="topnav"><a href="../#kit" data-app="/#kit">🔧 Tools</a> · <a href="EMERGENCY-FINDER.html">🆘<span class="lbl"> Emergency</span></a> · <a href="SUBJECT-INDEX.html">📇<span class="lbl"> Index A–Z</span></a> · <a href="SIGNALS-MORSE-GUIDE.html">📡 Signals guide</a></p>
@@ -59,6 +64,7 @@ select{font-size:16px;width:auto;max-width:100%}
   <button class="chip on" type="button" data-tab="to">Words → Morse</button>
   <button class="chip" type="button" data-tab="from">Morse → words</button>
   <button class="chip" type="button" data-tab="key">Practise sending</button>
+  <button class="chip" type="button" data-tab="read">Read a signal</button>
 </div>
 
 <section class="card" id="tab-to">
@@ -97,6 +103,28 @@ select{font-size:16px;width:auto;max-width:100%}
   <div class="row"><button class="btn" type="button" id="clearKey">Clear</button><label class="check"><input type="checkbox" id="keyTone" checked> Beep while I press</label></div>
 </section>
 
+<section class="card" id="tab-read" hidden>
+  <div class="chips small">
+    <button class="chip on" type="button" data-src="sound">🎤 Sound</button>
+    <button class="chip" type="button" data-src="light">💡 Light</button>
+  </div>
+  <p class="tips" id="readHow"></p>
+  <div class="row" id="liveRow"><button class="btn main" type="button" id="live">▶ Start listening</button></div>
+  <div class="row">
+    <label class="btn" for="rec">🎥 Record a video</label><input type="file" id="rec" accept="video/*" capture="environment" hidden>
+    <label class="btn" for="pick">📂 Use a recording</label><input type="file" id="pick" accept="video/*,audio/*" hidden>
+    <button class="btn main" type="button" id="readGo" hidden>▶ Read this recording</button>
+    <button class="btn" type="button" id="readStop" hidden>⏹ Stop</button>
+  </div>
+  <p class="tips" id="liveNote" hidden>Listening and watching live only work on a secure (https) page, so on the Vault's own Wi-Fi <b>record a video</b> instead: the phone's camera records the sound too. On the website, live works.</p>
+  <div class="viewer" id="viewer" hidden><video id="cam" playsinline muted></video><div class="aim"></div></div>
+  <canvas id="scope" width="600" height="80" aria-hidden="true"></canvas>
+  <p class="tips" id="readState">&nbsp;</p>
+  <div class="code small" id="readCode">&nbsp;</div>
+  <div class="out" id="readText" aria-live="polite">&nbsp;</div>
+  <div class="row"><button class="btn" type="button" id="readCopy">Copy the words</button><button class="btn" type="button" id="readClear">Clear</button></div>
+</section>
+
 <div class="card speed">
   <label for="wpm">Speed</label>
   <select id="wpm">
@@ -119,6 +147,7 @@ select{font-size:16px;width:auto;max-width:100%}
   <ul>
     <li><b>The timing is the code:</b> a dash lasts three dots. Leave one dot of silence inside a letter, three between letters and seven between words.</li>
     <li><b>SOS</b> is sent as one unbroken run, <code>...---...</code>, over and over. Any signal sent three times (three flashes, three blasts) also means help.</li>
+    <li><b>Reading a signal</b> works best with a steady beep (a radio's Morse tone, a whistle, a horn) in a quiet place, or a clear light in the dark, at up to about 15 words a minute. A few words sent at an even pace read best; set the speed above to roughly match a very short message.</li>
     <li><b>At night,</b> 💡 Flash the screen turns the whole phone into a signal lamp: turn the brightness all the way up and point it.</li>
     <li>More, with pictures: the <a href="SIGNALS-MORSE-GUIDE.html#morse-quick-reference-print-this">Signals &amp; Morse guide</a> (how to learn it by ear, and sending it by light, sound and flags).</li>
   </ul>
@@ -252,7 +281,8 @@ $('clearKey').onclick = () => { clearTimeout(gap1); clearTimeout(gap2); cur = se
 // ---- tabs, speed, chart
 function tab(t) {
   for (const b of document.querySelectorAll('[data-tab]')) b.classList.toggle('on', b.dataset.tab === t);
-  for (const k of ['to', 'from', 'key']) $('tab-' + k).hidden = k !== t;
+  for (const k of ['to', 'from', 'key', 'read']) $('tab-' + k).hidden = k !== t;
+  if (t !== 'read') stopRead();
   store.set('so-morse-tab', t);
   try { history.replaceState(null, '', '#' + t); } catch {}
 }
@@ -267,13 +297,241 @@ function showUnit() { $('unitMs').textContent = `a dot lasts ${Math.round(unit()
 $('wpm').onchange = showUnit;
 const ORDER = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890', ...Object.keys(MORSE).filter(k => !/^[A-Z0-9]$/.test(k))];
 $('chart').innerHTML = ORDER.map(k => [k, MORSE[k]]).map(([k, v]) => `<button type="button" data-code="${v}"><b>${esc(k)}</b><span>${pretty(v)}</span></button>`).join('');
+// ---- reading a signal: the phone's microphone or camera, live, or a recording
+// The loudness of the tone (or the brightness in the aiming box) is followed over time; a level halfway
+// between the quiet background and the signal splits it into on and off; the lengths of the ons give the
+// dot (dashes are about three dots), and the offs the gaps between letters (3 dots) and words (7).
+function estUnit(ons, prior) {
+  if (!ons.length) return prior;
+  const a = [...ons].sort((x, y) => x - y); let best = 0, at = -1;
+  for (let i = 1; i < a.length; i++) { const r = a[i] / a[i - 1]; if (r > best) { best = r; at = i; } }
+  if (best >= 1.8) {   // dots and dashes both there
+    const dots = a.slice(0, at), dashes = a.slice(at), sum = v => v.reduce((p, c) => p + c, 0);
+    return (sum(dots) + sum(dashes) / 3) / (dots.length + dashes.length);
+  }
+  const med = a[a.length >> 1];   // all one kind: the speed set above says which
+  return med < 2 * prior ? med : med / 3;
+}
+function decodeSegs(segs, prior) {
+  const s = [];
+  for (const x of segs) { if (s.length && s[s.length - 1].on === x.on) s[s.length - 1].d += x.d; else s.push({ on: x.on, d: x.d }); }
+  if (!s.some(x => x.on)) return { code: '', text: '', letter: '' };
+  let unit = estUnit(s.filter(x => x.on).map(x => x.d), prior);
+  const g = Math.max(25, unit * 0.4);   // a blip or flicker shorter than about half a dot isn't part of the signal
+  for (let i = 0; i < s.length; i++) {
+    if (s[i].d >= g || s.length < 2) continue;
+    if (i > 0 && i < s.length - 1) { s[i - 1].d += s[i].d + s[i + 1].d; s.splice(i, 2); }
+    else if (i === 0) s.splice(0, 1); else { s[i - 1].d += s[i].d; s.splice(i, 1); }
+    i = -1;
+  }
+  while (s.length && !s[0].on) s.shift();
+  unit = estUnit(s.filter(x => x.on).map(x => x.d), prior);
+  let code = '', text = '', letter = '';
+  const flush = () => { if (!letter) return; code += (code && !code.endsWith(' / ') ? ' ' : '') + letter; text += DECODE[letter] || '¿'; letter = ''; };
+  for (const x of s) {
+    if (x.on) letter += x.d < 2 * unit ? '.' : '-';
+    else if (x.d >= 5 * unit) { flush(); if (text && !text.endsWith(' ')) { text += ' '; code += ' / '; } }
+    else if (x.d >= 2 * unit) flush();
+  }
+  return { code, text, letter, unit };
+}
+function makeDetector(kind) {
+  const minSpan = kind === 'sound' ? 14 : 22;   // how far the signal must stand out (dB of sound, or brightness of 255)
+  let floor = null, peak = null, last = 0, on = false, since = null;
+  const segs = [], hist = [];
+  return { segs, hist, get on() { return on; }, get present() { return peak !== null && peak - floor >= minSpan; },
+    push(t, v) {
+      if (kind === 'sound' && v < -130) return;   // dead digital silence (a microphone starting up) says nothing about the background
+      if (since === null) { since = last = t; if (floor === null) floor = peak = v; }
+      const dt = Math.max(0, t - last); last = t;
+      // the background follows the quiet (down within a fraction of a second, so a moment of dead silence as
+      // a microphone starts doesn't drag it down; up slowly); the signal level follows the loud
+      floor += (v - floor) * (1 - Math.exp(-dt / (v < floor ? 250 : 3000)));
+      peak = v > peak ? v : peak - (peak - floor) * (1 - Math.exp(-dt / 6000));
+      const span = peak - floor, thr = floor + span * 0.5, hy = span * 0.08;
+      const now = span >= minSpan && (on ? v > thr - hy : v > thr + hy);
+      if (now !== on) { if (on || segs.length) segs.push({ on, d: t - since }); on = now; since = t; }
+      hist.push([t, v, floor, peak, now]); if (hist.length > 2000) hist.splice(0, hist.length - 2000);
+    },
+    prime(lo, hi) { floor = lo; peak = hi; },   // a recording: the quiet and the signal levels are known before reading it
+    snapshot(t) { return since === null || (!on && !segs.length) ? segs.slice() : segs.concat([{ on, d: t - since }]); } };
+}
+let srcKind = 'sound', reading = null, elSrc = null;
+function setSrc(k) {
+  stopRead(); srcKind = k;
+  document.querySelectorAll('[data-src]').forEach(b => b.classList.toggle('on', b.dataset.src === k));
+  $('live').textContent = k === 'sound' ? '▶ Start listening' : '▶ Start watching';
+  $('readHow').innerHTML = k === 'sound'
+    ? 'Hold the phone near the beeps. A steady tone (a radio\'s Morse, a whistle, a horn) reads best; a quiet place helps.'
+    : 'Point the dashed box at the light and hold the phone still (lean it on something). Best in the dark or shade.';
+  store.set('so-morse-src', k);
+}
+document.querySelectorAll('[data-src]').forEach(b => b.onclick = () => setSrc(b.dataset.src));
+const canLive = !!(window.isSecureContext && navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
+$('liveRow').hidden = !canLive; $('liveNote').hidden = canLive;
+
+function startReading(how) {   // how: 'live' or 'file'
+  const r = { how, det: makeDetector(srcKind), timers: [], stream: null, url: null, t0: performance.now(), done: false };
+  reading = r; $('readStop').hidden = false; $('readGo').hidden = true; $('live').hidden = true;
+  $('readCode').innerHTML = '&nbsp;'; $('readText').innerHTML = '&nbsp;';
+  r.timers.push(setInterval(() => show(r), 150));
+  return r;
+}
+function show(r, final) {
+  const t = performance.now(), segs = r.det.snapshot(r.lastT ?? t);
+  const res = decodeSegs(final ? segs.concat([{ on: false, d: 1e9 }]) : segs, unit());
+  $('readCode').textContent = pretty((res.code + (res.letter ? (res.code ? ' ' : '') + res.letter : '')).replace(/[\s\/]+$/, '')) || '\u00a0';
+  $('readText').textContent = (res.text.trim() + (res.letter ? '…' : '')) || '\u00a0';
+  $('readState').textContent = final ? (res.text ? `Done. Read at about ${Math.round(1200 / (res.unit || unit()))} words a minute.` : 'Done, but no Morse was found. Try again closer, steadier, or somewhere quieter or darker.')
+    : r.det.present ? (r.det.on ? '● Signal ON' : '○ Signal off') + (r.tone ? ` · tone about ${r.tone} Hz` : '') : (srcKind === 'sound' ? 'Listening for a beep…' : 'Watching for a light…');
+  drawScope(r.det.hist);
+}
+function drawScope(hist) {
+  const c = $('scope'), g = c.getContext('2d'), W = c.width, H = c.height; g.clearRect(0, 0, W, H);
+  if (hist.length < 2) return;
+  const tEnd = hist[hist.length - 1][0], span = 6000, x = t => W - (tEnd - t) / span * W;
+  let lo = Infinity, hi = -Infinity; for (const h of hist) if (h[0] > tEnd - span) { lo = Math.min(lo, h[1], h[2]); hi = Math.max(hi, h[1], h[3]); }
+  const y = v => H - 4 - (v - lo) / Math.max(1e-6, hi - lo) * (H - 8);
+  g.fillStyle = 'rgba(79,209,197,.25)';
+  for (const h of hist) if (h[0] > tEnd - span && h[4]) g.fillRect(x(h[0]) - 2, 0, 4, H);
+  g.strokeStyle = '#f6ad55'; g.lineWidth = 2; g.beginPath(); let first = true;
+  for (const h of hist) if (h[0] > tEnd - span) { if (first) g.moveTo(x(h[0]), y(h[1])); else g.lineTo(x(h[0]), y(h[1])); first = false; }
+  g.stroke();
+}
+function soundLoop(r, node) {   // the raw sound as it arrives: find the tone, then its loudness every 10 ms
+  const ac = audio(), sp = ac.createScriptProcessor(2048, 1, 1), mute = ac.createGain(); mute.gain.value = 0;
+  node.connect(sp); sp.connect(mute); mute.connect(ac.destination); r.nodes = [node, sp, mute];
+  const sr = ac.sampleRate, W = Math.round(sr * 0.02), hop = Math.round(sr * 0.01), buf = new Float32Array(Math.round(sr * 12));
+  let len = 0, base = 0, pos = 0, scanned = 0, k = 0;   // samples kept, the index of the first one kept, the next window to measure
+  sp.onaudioprocess = e => {
+    if (reading !== r) return;
+    const x = e.inputBuffer.getChannelData(0);
+    if (len + x.length > buf.length) { const keep = Math.round(sr * 8); buf.copyWithin(0, len - keep, len); base += len - keep; len = keep; }
+    buf.set(x, len); len += x.length;
+    if (base + len - scanned >= sr * 2) {   // every 2 seconds: where is the tone?
+      scanned = base + len; const f = findTone(buf, len, sr, W, Math.round(sr * 8));
+      if (f) { r.tone = f; k = 2 * Math.cos(2 * Math.PI * f / sr); }
+    }
+    if (!k) return;
+    if (pos < base) pos = base;
+    for (; pos + W <= base + len; pos += hop) {
+      const t = pos / sr * 1000; r.lastT = t;
+      r.det.push(t, 10 * Math.log10(goertzel(buf, pos - base, W, k) / (W * W) + 1e-16));
+    }
+  };
+}
+function findTone(x, len, sr, W, span, minRatio = 2.5) {   // the loudest steady pitch between 300 and 2000 Hz, if a signal stands out
+  const from = Math.max(0, len - span), hop = Math.round(sr * 0.01), st = [];
+  for (let i = from; i + W <= len; i += hop) { let e = 0; for (let j = i; j < i + W; j += 4) e += x[j] * x[j]; st.push([e, i]); }
+  if (st.length < 10) return 0;
+  const byE = st.map(a => a[0]).sort((a, b) => a - b), med = byE[byE.length >> 1];
+  st.sort((a, b) => b[0] - a[0]);
+  if (st[0][0] < med * minRatio + 1e-9) return 0;   // nothing louder than the background yet
+  const loud = st.slice(0, Math.max(5, Math.min(60, st.length / 6 | 0))).map(a => a[1]);
+  let bestF = 0, bestP = -1;
+  for (let f = 300; f <= 2000; f += 10) {
+    const k = 2 * Math.cos(2 * Math.PI * f / sr); let p = 0; for (const i of loud) p += goertzel(x, i, W, k);
+    if (p > bestP) { bestP = p; bestF = f; }
+  }
+  return bestF;
+}
+// a recording's sound, measured exactly rather than played: find the tone, then how loud it is every 10 ms
+function goertzel(x, from, n, k) {   // power at one frequency (k = 2 cos(2 pi f / sample rate))
+  let s1 = 0, s2 = 0; for (let i = from; i < from + n; i++) { const s0 = x[i] + k * s1 - s2; s2 = s1; s1 = s0; }
+  return s1 * s1 + s2 * s2 - k * s1 * s2;
+}
+function soundFromBuffer(r, buf) {
+  const x = buf.getChannelData(0), sr = buf.sampleRate, W = Math.round(sr * 0.02), hop = Math.round(sr * 0.01);
+  const starts = []; for (let i = 0; i + W <= x.length; i += hop) starts.push(i);
+  if (!starts.length) return;
+  const bestF = findTone(x, x.length, sr, W, x.length, 0) || 700;
+  r.tone = bestF; const k = 2 * Math.cos(2 * Math.PI * bestF / sr);
+  const lvl = starts.map(i => 10 * Math.log10(goertzel(x, i, W, k) / (W * W) + 1e-16)), srt = [...lvl].sort((a, b) => a - b);
+  r.det.prime(srt[Math.floor(srt.length * 0.1)], srt[Math.min(srt.length - 1, Math.floor(srt.length * 0.995))]);
+  lvl.forEach((v, n) => { const t = n * 10; r.lastT = t; r.det.push(t, v); });
+}
+function lightLoop(r, v, fileTime) {   // every video frame: how bright is the brightest spot in the box?
+  const cv = document.createElement('canvas'); cv.width = 48; cv.height = 36;
+  const cx = cv.getContext('2d', { willReadFrequently: true });
+  const frame = (now, meta) => {
+    if (reading !== r) return;
+    if (v.readyState >= 2) {
+      cx.drawImage(v, 0, 0, 48, 36);
+      const d = cx.getImageData(12, 9, 24, 18).data; let best = 0;
+      for (let y = 0; y <= 14; y += 2) for (let x = 0; x <= 20; x += 2) {
+        let s = 0; for (let yy = 0; yy < 4; yy++) for (let xx = 0; xx < 4; xx++) { const k = ((y + yy) * 24 + x + xx) * 4; s += d[k] * 0.3 + d[k + 1] * 0.59 + d[k + 2] * 0.11; }
+        if (s > best) best = s;
+      }
+      const t = fileTime ? (meta && meta.mediaTime != null ? meta.mediaTime : v.currentTime) * 1000 : performance.now();
+      if (t !== r.lastT) { r.lastT = t; r.det.push(t, best / 16); }
+    }
+    next();
+  };
+  const next = () => v.requestVideoFrameCallback ? v.requestVideoFrameCallback(frame) : requestAnimationFrame(t => frame(t, null));
+  next();
+}
+async function startLive() {
+  stopRead(); const r = startReading('live');
+  try {
+    if (srcKind === 'sound') {
+      r.stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false } });
+      soundLoop(r, audio().createMediaStreamSource(r.stream));
+    } else {
+      r.stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment', width: { ideal: 640 }, height: { ideal: 480 }, frameRate: { ideal: 30 } } });
+      const v = $('cam'); v.removeAttribute('src'); v.srcObject = r.stream; v.muted = true; $('viewer').hidden = false;
+      await v.play(); lightLoop(r, v, false);
+    }
+  } catch (e) { stopRead(); $('readState').textContent = 'The phone didn\'t allow the ' + (srcKind === 'sound' ? 'microphone' : 'camera') + ' (' + e.name + '). Record a video instead.'; }
+}
+let chosen = null;
+function chooseFile(f) { if (!f) return; stopRead(); chosen = f; $('readGo').hidden = false; $('readState').textContent = 'Recording ready: tap ▶ Read this recording.'; }
+$('rec').onchange = e => chooseFile(e.target.files[0]);
+$('pick').onchange = e => chooseFile(e.target.files[0]);
+$('readGo').onclick = async () => {
+  if (!chosen) return; const f = chosen; stopRead(); const r = startReading('file');
+  const v = $('cam'); v.srcObject = null; r.url = URL.createObjectURL(f); v.src = r.url;
+  $('viewer').hidden = srcKind !== 'light';
+  if (srcKind === 'sound') {
+    try {
+      const buf = await audio().decodeAudioData(await f.arrayBuffer());
+      $('readState').textContent = 'Reading the recording…'; await new Promise(res => setTimeout(res, 30));
+      soundFromBuffer(r, buf); finishRead(r); return;
+    } catch {}   // this phone can't unpack it: play it and listen instead
+  }
+  try {
+    if (srcKind === 'sound') {   // the recording's sound goes to the listener only, not the speaker
+      const ac = audio(); if (!elSrc) elSrc = ac.createMediaElementSource(v);
+      v.muted = false; soundLoop(r, elSrc);
+    } else { v.muted = true; lightLoop(r, v, true); }
+    v.onended = () => { if (reading === r) finishRead(r); };
+    await v.play();
+  } catch (e) { stopRead(); $('readState').textContent = 'That recording couldn\'t be played here (' + e.name + ').'; }
+};
+function finishRead(r) { r.done = true; show(r, true); stopRead(true); }
+function stopRead(keep) {
+  const r = reading; if (!r) return; reading = null;
+  r.timers.forEach(clearInterval);
+  try { r.nodes && r.nodes.forEach(n => n.disconnect()); } catch {}
+  if (r.stream) r.stream.getTracks().forEach(t => t.stop());
+  const v = $('cam'); try { v.pause(); } catch {} v.srcObject = null; if (r.url) { v.removeAttribute('src'); v.load(); URL.revokeObjectURL(r.url); }
+  if (!keep && !r.done) show(r, true);
+  $('viewer').hidden = true; $('readStop').hidden = true; $('live').hidden = false; $('readGo').hidden = !chosen;
+}
+$('live').onclick = startLive;
+$('readStop').onclick = () => stopRead();
+$('readClear').onclick = () => { stopRead(true); chosen = null; $('readGo').hidden = true; $('readCode').innerHTML = '&nbsp;'; $('readText').innerHTML = '&nbsp;'; $('readState').innerHTML = '&nbsp;'; drawScope([]); };
+$('readCopy').onclick = async () => { const t = $('readText').textContent.replace(/…$/, '').trim(); if (!t) return;
+  try { await navigator.clipboard.writeText(t); $('readCopy').textContent = 'Copied ✓'; } catch { $('readCopy').textContent = 'Copy failed'; }
+  setTimeout(() => $('readCopy').textContent = 'Copy the words', 1500); };
+setSrc(store.get('so-morse-src') === 'light' ? 'light' : 'sound');
+
 $('pros').innerHTML = PROS.map(([k, v, d]) => `<tr data-code="${v}"><td><b>${k}</b></td><td class="mono">${pretty(v)}</td><td>${d}</td></tr>`).join('');
 document.addEventListener('click', e => { const c = e.target.closest('[data-code]'); if (c) { stop(); play(c.dataset.code.split('').join(''), 'sound'); } });
 
 const w = store.get('so-morse-wpm'); if (w && [...$('wpm').options].some(o => o.value === w)) $('wpm').value = w;
 $('txt').value = store.get('so-morse-text') || '';
 showUnit(); showTo(); showFrom();
-tab(['to', 'from', 'key'].includes(location.hash.slice(1)) ? location.hash.slice(1) : store.get('so-morse-tab') || 'to');
+tab(['to', 'from', 'key', 'read'].includes(location.hash.slice(1)) ? location.hash.slice(1) : store.get('so-morse-tab') || 'to');
 </script>
 <script>if(location.protocol.indexOf('http')===0&&location.pathname.indexOf('/lib/')===0)document.querySelectorAll('a[data-app]').forEach(function(a){a.href=a.getAttribute('data-app')})</script><script>(function(){function f(){var n=document.querySelector('.topnav');document.documentElement.style.setProperty('--navh',(n?n.offsetHeight:0)+'px')}addEventListener('load',f);addEventListener('resize',f);f()})()</script></body>
 </body>
