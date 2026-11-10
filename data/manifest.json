@@ -1,5 +1,5 @@
 {
-"built": "2026-11-10 21:37 UTC",
+"built": "2026-11-10 21:48 UTC",
 "docs": "docs-fb763e46d1.json",
 "shards": [
 "chunks00-6d6e3f38c1.json",
@@ -521,7 +521,7 @@
 "vendor/README.md",
 "vendor/web-llm-0.2.85.js"
 ],
-"bytes": 207319193
+"bytes": 207323171
 },
 "routes": {
 "files": [
