@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="690" viewBox="0 0 760 690" font-family="Arial, Helvetica, sans-serif">
+  <title>The Raspberry Pi pins the ARK Vault uses, at the end of the 40-pin row farthest from the USB ports, all on the row along the board's edge: pin 2 (5 volts) takes the converter's plus wire, pins 4, 6 and 8 take the cooler fan's red, black and blue wires (5 volts, ground, GPIO 14), and pin 14 (ground) takes the converter's minus wire.</title>
+  <rect width="760" height="690" fill="#ffffff"/>
+  <text x="20" y="26" font-size="16" font-weight="bold" fill="#222">The Pi's pins in the ARK Vault (fit the wires with the power off)</text>
+  <rect x="150" y="290" width="486" height="140" rx="8" fill="#222"/>
+  <text x="140" y="335" font-size="12" fill="#555" text-anchor="end">board edge</text>
+  <text x="140" y="395" font-size="12" fill="#555" text-anchor="end">inner row</text>
+  <text x="648" y="452" font-size="12" fill="#555">… 24 more pins →</text>
+  <circle cx="190" cy="390" r="16" fill="#9a8a50"/>
+  <text x="190" y="395" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">1</text>
+  <path d="M190 314 V44" stroke="#d03b2f" stroke-width="2.5"/>
+  <text x="197" y="56" font-size="14" font-weight="bold" fill="#d03b2f">pin 2 · 5 V</text>
+  <text x="197" y="73" font-size="13" fill="#d03b2f">← converter OUT + (red)</text>
+  <circle cx="190" cy="330" r="16" fill="#d03b2f" stroke="#fff" stroke-width="2"/>
+  <text x="190" y="335" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">2</text>
+  <circle cx="248" cy="390" r="16" fill="#9a8a50"/>
+  <text x="248" y="395" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">3</text>
+  <path d="M248 314 V88" stroke="#d03b2f" stroke-width="2.5"/>
+  <text x="255" y="100" font-size="14" font-weight="bold" fill="#d03b2f">pin 4 · 5 V</text>
+  <text x="255" y="117" font-size="13" fill="#d03b2f">← fan, red wire</text>
+  <circle cx="248" cy="330" r="16" fill="#d03b2f" stroke="#fff" stroke-width="2"/>
+  <text x="248" y="335" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">4</text>
+  <circle cx="306" cy="390" r="16" fill="#9a8a50"/>
+  <text x="306" y="395" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">5</text>
+  <path d="M306 314 V132" stroke="#222222" stroke-width="2.5"/>
+  <text x="313" y="144" font-size="14" font-weight="bold" fill="#222222">pin 6 · ground</text>
+  <text x="313" y="161" font-size="13" fill="#222222">← fan, black wire</text>
+  <circle cx="306" cy="330" r="16" fill="#222222" stroke="#fff" stroke-width="2"/>
+  <text x="306" y="335" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">6</text>
+  <circle cx="364" cy="390" r="16" fill="#9a8a50"/>
+  <text x="364" y="395" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">7</text>
+  <path d="M364 314 V176" stroke="#2b6cb0" stroke-width="2.5"/>
+  <text x="371" y="188" font-size="14" font-weight="bold" fill="#2b6cb0">pin 8 · GPIO 14</text>
+  <text x="371" y="205" font-size="13" fill="#2b6cb0">← fan, blue wire</text>
+  <circle cx="364" cy="330" r="16" fill="#2b6cb0" stroke="#fff" stroke-width="2"/>
+  <text x="364" y="335" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">8</text>
+  <circle cx="422" cy="390" r="16" fill="#9a8a50"/>
+  <text x="422" y="395" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">9</text>
+  <circle cx="422" cy="330" r="16" fill="#9a8a50"/>
+  <text x="422" y="335" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">10</text>
+  <circle cx="480" cy="390" r="16" fill="#9a8a50"/>
+  <text x="480" y="395" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">11</text>
+  <circle cx="480" cy="330" r="16" fill="#9a8a50"/>
+  <text x="480" y="335" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">12</text>
+  <circle cx="538" cy="390" r="16" fill="#9a8a50"/>
+  <text x="538" y="395" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">13</text>
+  <path d="M538 314 V220" stroke="#222222" stroke-width="2.5"/>
+  <text x="545" y="232" font-size="14" font-weight="bold" fill="#222222">pin 14 · ground</text>
+  <text x="545" y="249" font-size="13" fill="#222222">← converter OUT − (black)</text>
+  <circle cx="538" cy="330" r="16" fill="#222222" stroke="#fff" stroke-width="2"/>
+  <text x="538" y="335" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">14</text>
+  <circle cx="596" cy="390" r="16" fill="#9a8a50"/>
+  <text x="596" y="395" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">15</text>
+  <circle cx="596" cy="330" r="16" fill="#9a8a50"/>
+  <text x="596" y="335" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">16</text>
+  <rect x="150" y="478" width="400" height="160" rx="12" fill="#3c8d4a" stroke="#1f5a2a" stroke-width="2.5"/>
+  <rect x="168" y="486" width="254" height="24" rx="2" fill="#222"/>
+  <circle cx="174.0" cy="492" r="2.7" fill="#d4af37"/>
+  <circle cx="174.0" cy="504" r="2.7" fill="#d4af37"/>
+  <circle cx="186.5" cy="492" r="2.7" fill="#d4af37"/>
+  <circle cx="186.5" cy="504" r="2.7" fill="#d4af37"/>
+  <circle cx="199.0" cy="492" r="2.7" fill="#d4af37"/>
+  <circle cx="199.0" cy="504" r="2.7" fill="#d4af37"/>
+  <circle cx="211.5" cy="492" r="2.7" fill="#d4af37"/>
+  <circle cx="211.5" cy="504" r="2.7" fill="#d4af37"/>
+  <circle cx="224.0" cy="492" r="2.7" fill="#d4af37"/>
+  <circle cx="224.0" cy="504" r="2.7" fill="#d4af37"/>
+  <circle cx="236.5" cy="492" r="2.7" fill="#d4af37"/>
+  <circle cx="236.5" cy="504" r="2.7" fill="#d4af37"/>
+  <circle cx="249.0" cy="492" r="2.7" fill="#d4af37"/>
+  <circle cx="249.0" cy="504" r="2.7" fill="#d4af37"/>
+  <circle cx="261.5" cy="492" r="2.7" fill="#d4af37"/>
+  <circle cx="261.5" cy="504" r="2.7" fill="#d4af37"/>
+  <circle cx="274.0" cy="492" r="2.7" fill="#d4af37"/>
+  <circle cx="274.0" cy="504" r="2.7" fill="#d4af37"/>
+  <circle cx="286.5" cy="492" r="2.7" fill="#d4af37"/>
+  <circle cx="286.5" cy="504" r="2.7" fill="#d4af37"/>
+  <circle cx="299.0" cy="492" r="2.7" fill="#d4af37"/>
+  <circle cx="299.0" cy="504" r="2.7" fill="#d4af37"/>
+  <circle cx="311.5" cy="492" r="2.7" fill="#d4af37"/>
+  <circle cx="311.5" cy="504" r="2.7" fill="#d4af37"/>
+  <circle cx="324.0" cy="492" r="2.7" fill="#d4af37"/>
+  <circle cx="324.0" cy="504" r="2.7" fill="#d4af37"/>
+  <circle cx="336.5" cy="492" r="2.7" fill="#d4af37"/>
+  <circle cx="336.5" cy="504" r="2.7" fill="#d4af37"/>
+  <circle cx="349.0" cy="492" r="2.7" fill="#d4af37"/>
+  <circle cx="349.0" cy="504" r="2.7" fill="#d4af37"/>
+  <circle cx="361.5" cy="492" r="2.7" fill="#d4af37"/>
+  <circle cx="361.5" cy="504" r="2.7" fill="#d4af37"/>
+  <circle cx="374.0" cy="492" r="2.7" fill="#d4af37"/>
+  <circle cx="374.0" cy="504" r="2.7" fill="#d4af37"/>
+  <circle cx="386.5" cy="492" r="2.7" fill="#d4af37"/>
+  <circle cx="386.5" cy="504" r="2.7" fill="#d4af37"/>
+  <circle cx="399.0" cy="492" r="2.7" fill="#d4af37"/>
+  <circle cx="399.0" cy="504" r="2.7" fill="#d4af37"/>
+  <circle cx="411.5" cy="492" r="2.7" fill="#d4af37"/>
+  <circle cx="411.5" cy="504" r="2.7" fill="#d4af37"/>
+  <rect x="166" y="483" width="106" height="30" rx="3" fill="none" stroke="#e8542f" stroke-width="3"/>
+  <text x="276" y="532" font-size="12" fill="#fff">↖ the pins above</text>
+  <rect x="530" y="496" width="70" height="36" rx="3" fill="#cfd2d6" stroke="#555"/>
+  <text x="565" y="519" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">USB</text>
+  <rect x="530" y="542" width="70" height="36" rx="3" fill="#cfd2d6" stroke="#555"/>
+  <text x="565" y="565" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">USB</text>
+  <rect x="530" y="588" width="70" height="36" rx="3" fill="#cfd2d6" stroke="#555"/>
+  <text x="612" y="524" font-size="13" fill="#333">USB ports</text>
+  <text x="612" y="540" font-size="13" fill="#333">this end</text>
+  <text x="170" y="570" font-size="14" fill="#fff">Pin 2 is the corner pin on the board's edge,</text>
+  <text x="170" y="588" font-size="14" fill="#fff">at the end farthest from the USB ports.</text>
+  <text x="170" y="618" font-size="12" fill="#e8f5e9">Seen from above. Not to scale.</text>
+  <text x="20" y="676" font-size="13" fill="#444">Bend the wires toward the board's edge: with the lid shut, the printer sits just below them.</text>
+</svg>

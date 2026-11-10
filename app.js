@@ -691,7 +691,7 @@ const GUIDE_CARDS = { // guide cards, by shelf (same groups and order as SHELVES
     ['emp', '⚡ EMP, solar storms & Faraday cages', 'What tests really showed, unplugging, building and testing a Faraday container, solar-storm warnings, checking and repairing gear after.']],
   fun: [['stories', '📖 Stories, games & fun', 'Classic books for every age to read aloud or alone, games with no power, string figures, songs and things to make — for long evenings and kids.']],
   library: [['device', '📱 Start on any device', 'Run the library on a computer, an old phone or tablet, or share it to iPhones over Wi-Fi.'],
-    ['ammocan', '🧰 ARK Vault (ammo-can computer)', 'The library, the AI, a battery, a printer and a radio in a sealed steel ammo can, safe from EMP. Open it and pull the Pi up, and every phone nearby gets the library and the AI over its own Wi-Fi.'],
+    ['ammocan', '🧰 ARK Vault (ammo-can computer)', 'The library, the AI, a battery, a printer and a radio in a sealed steel ammo can, safe from EMP. Open the lid and flip its power switch on, and every phone nearby gets the library and the AI over its own Wi-Fi.'],
     ['get', '💾 Get the whole library', 'Put every book, all of Wikipedia, offline maps and an AI that needs no internet on a USB drive. Point-and-click installer for Windows, Mac and Linux.'],
     ['all', '📚 Everything on the drive', 'The full index of every file, archive and program.']],
 };
