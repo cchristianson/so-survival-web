@@ -387,7 +387,7 @@ async function answer(id, q, srcs, kind) {
     : '(a list of picture links)')).join('\n\n');
   const messages = [{ role: 'system', content: SYSTEM },
     { role: 'user', content: `Question: ${q}\n\nSources:\n\n${ctx || '(no matching sources)'}\n\nQuestion: ${q}` }];
-  const t0 = Date.now(); let text = '', stopped = false, ctrl = new AbortController();
+  const t0 = Date.now(); let text = '', stopped = false, ctrl = new AbortController(), speed = null;
   const setMeta = (label) => { meta.innerHTML = `<span class="spin"></span>${label} <button class="sec" type="button">Stop</button> <span class="t"></span>`; meta.querySelector('button').onclick = () => { stopped = true; ctrl.abort(); try { ai.engine?.interruptGenerate?.(); } catch {} }; };
   setMeta('The AI is reading the sources…');
   if (srcs.length) showBest(id, srcs, q);   // something to read straight away; the AI's answer takes its place
@@ -415,14 +415,17 @@ async function answer(id, q, srcs, kind) {
         while ((i = buf.indexOf('\n')) >= 0) {
           const line = buf.slice(0, i).trim(); buf = buf.slice(i + 1);
           if (!line.startsWith('data:')) continue; const data = line.slice(5).trim(); if (data === '[DONE]') continue;
-          try { const piece = JSON.parse(data).choices?.[0]?.delta?.content; if (piece) add(piece); } catch {}
+          try { const j = JSON.parse(data); if (j.timings) speed = j.timings; const piece = j.choices?.[0]?.delta?.content; if (piece) add(piece); } catch {}
         }
       }
     } else {
       const stream = await ai.engine.chat.completions.create({ messages, stream: true, temperature: 0.2, max_tokens: 600 });
       for await (const ch of stream) { const piece = ch.choices?.[0]?.delta?.content; if (piece) add(piece); if (stopped) break; }
     }
-    meta.textContent = looped ? loopMsg : stopped ? 'Stopped.' : `Answered in ${Math.round((Date.now() - t0) / 1000)} seconds from ${srcs.length} sources. Check the sources before relying on it.`;
+    // how fast the AI read and wrote (about 3 words to 4 tokens): a slow device, or one slowing itself down, shows here
+    const pace = speed && speed.prompt_per_second && speed.predicted_per_second
+      ? ` It read about ${Math.round(speed.prompt_per_second * 0.75)} words a second and wrote about ${Math.round(speed.predicted_per_second * 7.5) / 10}.` : '';
+    meta.textContent = looped ? loopMsg : stopped ? 'Stopped.' : `Answered in ${Math.round((Date.now() - t0) / 1000)} seconds from ${srcs.length} sources.${pace} Check the sources before relying on it.`;
   } catch (e) {
     meta.innerHTML = (looped ? esc(loopMsg) : stopped || e.name === 'AbortError' ? 'Stopped.' : esc('The AI could not answer (' + e.message + '). The sources below are still the search results.')) +
       ' <button class="retry" type="button">🔄 Try again</button>';
