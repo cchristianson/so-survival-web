@@ -111,6 +111,10 @@ function renderStatus() {
     h += pill(server.llm, 'AI', w(server.llm) + (server.model ? ' — ' + esc(server.model) : ''));
     h += pill(server.kiwix, 'Encyclopedias', server.kiwix === 'off' ? 'not available' : w(server.kiwix) + (server.zims ? ` (${server.zims})` : ''));
     h += pill(server.docs ? 'ready' : 'off', 'Documents', server.docs ? `${server.docs} files` : 'index missing');
+    // a Raspberry Pi that has slowed itself down (weak power or heat): everything, the AI most, runs slower
+    const th = server.throttled > 0 ? server.throttled : 0;
+    if (th & 0x10001) h += pill('off', '⚠️ Power too weak', '— the Pi is slowing down. Use a stronger power supply or a shorter, thicker cable');
+    else if (th & 0x8000e) h += pill('off', '⚠️ Too hot', '— the Pi is slowing down. Keep the lid open and the can in the shade');
   } else {
     h += pill(navigator.onLine ? 'ready' : 'starting', navigator.onLine ? 'Online' : 'Offline', navigator.onLine ? '' : '— using saved copy');
     h += pill(workerReady || (workerSearchable && !fullAsked) ? 'ready' : 'starting', 'Search', workerReady ? `${workerInfo.docs} documents`
@@ -353,7 +357,8 @@ function morseAsk(q) {
 function showMorse(id, mc) {
   const P = guidePaths(), code = mc.words.map(w => [...w].map(ch => MORSE[ch]).join(' ')).join('  /  ');
   const letters = mc.words.map(w => [...w].map(ch => `<b>${esc(ch.toUpperCase())}</b> <code>${MORSE[ch]}</code>`).join(' · ')).join(' &nbsp;/&nbsp; ');
-  const more = P.signals ? ` <a href="${P.signals}#morse-quick-reference-print-this">The whole table, and how to send it by light or sound</a>.` : '';
+  const more = (P.morse ? ` <a href="${P.morse}">📡 Play it as beeps or flashes, or practise sending it</a>.` : '') +
+    (P.signals ? ` <a href="${P.signals}#morse-quick-reference-print-this">The whole table, and how to send it by light or sound</a>.` : '');
   $('a' + id).innerHTML = `<div class="best"><div class="bh">📡 “${esc(mc.text)}” in Morse code</div>` +
     `<p style="font:bold 1.35em/1.4 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.06em;overflow-wrap:anywhere">${esc(code)}</p>` +
     `<p>${letters}</p><p class="meta">A dot is short and a dash is three dots long. Leave a short pause between letters, a longer one between words (shown as /).${more}</p></div>`;
@@ -385,6 +390,7 @@ async function answer(id, q, srcs, kind) {
   const t0 = Date.now(); let text = '', stopped = false, ctrl = new AbortController();
   const setMeta = (label) => { meta.innerHTML = `<span class="spin"></span>${label} <button class="sec" type="button">Stop</button> <span class="t"></span>`; meta.querySelector('button').onclick = () => { stopped = true; ctrl.abort(); try { ai.engine?.interruptGenerate?.(); } catch {} }; };
   setMeta('The AI is reading the sources…');
+  if (srcs.length) showBest(id, srcs, q);   // something to read straight away; the AI's answer takes its place
   const tick = setInterval(() => { const t = meta.querySelector('.t'); if (t) t.textContent = Math.round((Date.now() - t0) / 1000) + 's'; }, 1000);
   let looped = false;
   const add = piece => {
@@ -676,6 +682,7 @@ function renderLibrary() {
 const TOOL_CARDS = [['calc', '🧮 Calculator', 'Everyday sums on a big screen: + − × ÷, percent, and a history of your answers.'],
   ['sci', '🔬 Scientific calculator', 'Sine, cosine and tangent, logs, powers and roots, π, n!, degrees or radians.'],
   ['conv', '🔢 Unit converter & calculators', 'Any measurement converted; area, concrete, roof pitch, tanks, rainwater, water pressure, volts and watts, batteries, wire size, recipes, fuel mix, doses.'],
+  ['morse', '📡 Morse code', 'Words into Morse and back, played as beeps or as flashes of the screen at any speed, a key to practise sending, and the whole code.'],
   ['pill', '🔍 Pill identifier', 'Identify a loose pill by the code printed on it — about 32,000 US pills.'],
   ['plantid', '📷 Identify a plant or mushroom', 'Take a photo: the offline AI names it from the plants and mushrooms of the area, marks the poisonous ones, and opens the guides about it.'],
   ['walk', '🥾 Routes: walk, bike, drive', 'From Cave Junction to 359 Oregon and N. California cities: walking days, bicycle riding hours and normal driving times, with turn-by-turn directions and GPS tracks.']];
@@ -765,10 +772,10 @@ const PAGES = { sos: 'EMERGENCY-FINDER', az: 'SUBJECT-INDEX', iv: 'ILLINOIS-VALL
   expect: 'WHAT-TO-EXPECT-GUIDE', wildfire: 'WILDFIRE-GUIDE', nuke: 'NUCLEAR-FALLOUT-GUIDE', emp: 'EMP-GUIDE',
   stories: 'STORIES-GAMES-GUIDE',
   device: 'START-ON-ANY-DEVICE', ammocan: 'AMMO-CAN-COMPUTER-GUIDE', get: 'GET-THE-LIBRARY', all: 'README',
-  calc: 'CALCULATOR', sci: 'CALCULATOR', conv: 'UNIT-CONVERTER', pill: 'PILL-IDENTIFIER', walk: 'WALKING-ROUTES', plantid: 'PLANT-ID' };
+  calc: 'CALCULATOR', sci: 'CALCULATOR', conv: 'UNIT-CONVERTER', morse: 'MORSE-CODE', pill: 'PILL-IDENTIFIER', walk: 'WALKING-ROUTES', plantid: 'PLANT-ID' };
 const DRIVE_AT = { sos: 'EMERGENCY-FINDER.html', az: 'SUBJECT-INDEX.html', med: 'Medical/READ-ME-FIRST.html', radio: 'Manuals/Radio-Communications/RADIO-GUIDE.html',
   device: 'START-ON-ANY-DEVICE.html', ammocan: 'AMMO-CAN-COMPUTER-GUIDE.html', get: null, all: 'README.html',
-  calc: 'CALCULATOR.html#basic', sci: 'CALCULATOR.html#sci', conv: 'UNIT-CONVERTER.html', plantid: 'PLANT-ID.html',
+  calc: 'CALCULATOR.html#basic', sci: 'CALCULATOR.html#sci', conv: 'UNIT-CONVERTER.html', morse: 'MORSE-CODE.html', plantid: 'PLANT-ID.html',
   pill: 'Medical/Pill-Identifier/PILL-IDENTIFIER.html', walk: 'Southern-Oregon/Walking-Routes/WALKING-ROUTES.html' };
 const WEB_AT = { all: null, calc: 'pages/CALCULATOR.html#basic', sci: 'pages/CALCULATOR.html#sci',
   pill: 'tools/pill-identifier/PILL-IDENTIFIER.html', walk: 'tools/walking-routes/WALKING-ROUTES.html' };

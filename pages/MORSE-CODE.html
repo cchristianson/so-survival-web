@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Morse code (offline)</title>
+<style>
+:root{--bg:#0f1420;--card:#171f2e;--ink:#e7ecf3;--muted:#9fb0c3;--accent:#4fd1c5;--accent2:#f6ad55;--line:#273246;--key:#1f2939;--op:#22364a;--danger:#fc8181}
+@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--key:#eef2f7;--op:#dbeafe;--danger:#c53030}}:root[data-theme=light]{--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--key:#eef2f7;--op:#dbeafe;--danger:#c53030}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:620px;margin:0 auto;padding:18px 16px 60px}
+a{color:var(--accent)}
+h1{font-size:26px;margin:6px 0 4px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+h1 .e{-webkit-text-fill-color:initial;color:var(--ink)}
+h2{font-size:17px;margin:0 0 8px}h3{font-size:15px;margin:14px 0 6px}
+.sub{color:var(--muted);margin:0 0 12px;font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.chip{font:inherit;font-size:14px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.chip.on{background:var(--accent);color:#04201d;border-color:var(--accent);font-weight:600}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:10px 0}
+.card[hidden]{display:none}
+label{display:block;font-size:14px;color:var(--muted);margin-bottom:4px}
+textarea,select{font:inherit;font-size:18px;width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+select{font-size:16px;width:auto;max-width:100%}
+.code{font:bold 30px/1.35 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.08em;margin:12px 0 6px;overflow-wrap:anywhere;min-height:1.35em}
+.code.small{font-size:26px;text-align:center}
+.out{font:bold 26px/1.35 -apple-system,"Segoe UI",Roboto,Arial,sans-serif;margin:12px 0 4px;overflow-wrap:anywhere;letter-spacing:.04em}
+#tab-key .out{text-align:center;min-height:1.4em}
+.letters{display:flex;flex-wrap:wrap;gap:4px 12px;font:15px/1.6 ui-monospace,Menlo,Consolas,monospace;color:var(--muted)}
+.letters b{color:var(--ink);font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif}.letters i{color:var(--accent2);font-style:normal}
+.warn{color:var(--danger);font-size:14px;margin:6px 0 0}
+.row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;align-items:center}
+.btn{font:inherit;font-size:15px;padding:9px 14px;border-radius:12px;border:1px solid var(--line);background:var(--key);color:var(--ink);cursor:pointer;touch-action:manipulation}
+.btn.main,.btn.on{background:var(--accent);color:#04201d;border-color:var(--accent);font-weight:600}
+.btn.big{font-size:30px;line-height:1;padding:6px 22px;font-weight:700}
+.pad{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.check{display:flex;gap:8px;align-items:center;margin-top:10px;color:var(--ink);font-size:15px}
+.key{display:block;margin:14px auto;width:170px;height:170px;border-radius:50%;border:4px solid var(--accent);background:var(--key);color:var(--ink);font:600 18px/1.2 inherit;cursor:pointer;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.key.on{background:var(--accent);color:#04201d}
+.speed{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}.speed label{margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(74px,1fr));gap:6px}
+.grid button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;padding:6px 4px;cursor:pointer;display:flex;flex-direction:column;align-items:center}
+.grid b{font-size:18px}.grid span,.mono{font:15px ui-monospace,Menlo,Consolas,monospace;color:var(--accent);letter-spacing:.05em}
+.pro{width:100%;border-collapse:collapse;font-size:14.5px}.pro td{padding:6px 4px;border-top:1px solid var(--line);vertical-align:top}.pro tr{cursor:pointer}
+.tips{font-size:14px;color:var(--muted)}.tips b{color:var(--ink)}.tips ul{margin:0;padding-left:20px}.tips li{margin:4px 0}
+#flash{position:fixed;inset:0;z-index:50;background:#000;display:flex;align-items:flex-end;justify-content:center;cursor:pointer}
+#flash.on{background:#fff}#flash[hidden]{display:none}#flash p{color:#777;font-size:14px;margin:0 0 24px}
+@media print{.chips,.row,.pad,.key,.speed,textarea,#flash{display:none}}
+</style>
+<style>:root{color-scheme:dark}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){color-scheme:light}}:root[data-theme=light]{color-scheme:light}.themebtn{font:inherit;font-size:14px;line-height:1.3;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:3px 11px;cursor:pointer;white-space:nowrap;text-decoration:none}.themefloat{position:absolute;top:10px;right:12px;z-index:9}@media print{.themebtn{display:none}}</style><script>/* so-theme: light or dark screen */(function(){var K="so-theme",d=document.documentElement,L={auto:"\uD83C\uDF13 Auto",dark:"\uD83C\uDF19 Dark",light:"\u2600\uFE0F Light"},N={auto:"dark",dark:"light",light:"auto"},cur="auto";try{cur=localStorage.getItem(K)||"auto"}catch(e){}function a(){if(cur==="dark"||cur==="light")d.setAttribute("data-theme",cur);else d.removeAttribute("data-theme");var b=document.querySelectorAll(".themebtn");for(var i=0;i<b.length;i++){b[i].textContent=L[cur]||L.auto;b[i].title="Screen: "+cur+" - tap to change (Auto follows this device)"}}a();window.soTheme=function(){cur=N[cur]||"dark";try{localStorage.setItem(K,cur)}catch(e){}a()};function btn(){var b=document.createElement("button");b.type="button";b.className="themebtn";return b}document.addEventListener("DOMContentLoaded",function(){if(!document.querySelector(".themebtn")){var n=document.querySelector(".topnav"),b=btn();if(n){n.appendChild(document.createTextNode(" \u00B7 "));n.appendChild(b)}else{b.className+=" themefloat";document.body.appendChild(b)}}var all=document.querySelectorAll(".themebtn");for(var i=0;i<all.length;i++)all[i].onclick=window.soTheme;a()})})();</script>
+<style>.topnav{position:sticky;top:0;z-index:4;background:var(--bg);border-bottom:1px solid var(--line);margin:-18px -16px 8px;padding:10px 16px 8px;font-size:14.5px;color:var(--muted)}.topnav a{text-decoration:none;white-space:nowrap}[id]{scroll-margin-top:72px}@media print{.topnav{position:static}}</style><style>.backbtn{font-weight:700;text-decoration:none;white-space:nowrap}@media print{.backbtn{display:none}}@media(max-width:600px){.topnav{white-space:nowrap;overflow-x:auto;scrollbar-width:none;font-size:14px}.topnav::-webkit-scrollbar{display:none}.topnav .lbl{display:none}.topnav .themebtn{font-size:13px;padding:2px 9px}}</style><script>/* so-back: a Back button on every page after the first */(function(){function add(){var n=document.querySelector(".topnav");if(!n||n.querySelector(".backbtn"))return;var f=n.querySelector("a"),a=document.createElement("a");a.className="backbtn";a.href=f?f.href:"#";a.textContent="\u2190 Back";a.title="Back to the page you came from";a.onclick=function(e){if(history.length>1&&document.referrer){e.preventDefault();history.back()}};n.insertBefore(document.createTextNode(" \u00B7 "),n.firstChild);n.insertBefore(a,n.firstChild)}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",add);else add();document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a[href^=\"#\"]"):null;if(!a||e.defaultPrevented)return;var id=decodeURIComponent(a.getAttribute("href").slice(1)),t=id?document.getElementById(id):null;if(!t)return;e.preventDefault();t.scrollIntoView();try{history.replaceState(history.state,"","#"+id)}catch(x){}})})();</script></head>
+<body>
+<div class="wrap">
+<p class="topnav"><a href="../#kit" data-app="/#kit">🔧 Tools</a> · <a href="EMERGENCY-FINDER.html">🆘<span class="lbl"> Emergency</span></a> · <a href="SUBJECT-INDEX.html">📇<span class="lbl"> Index A–Z</span></a> · <a href="SIGNALS-MORSE-GUIDE.html">📡 Signals guide</a></p>
+<h1><span class="e">📡</span> Morse code</h1>
+<p class="sub">Works with no internet. Turn words into Morse or Morse into words, play it as beeps or flashes of light, and practise sending it.</p>
+
+<div class="chips" role="tablist">
+  <button class="chip on" type="button" data-tab="to">Words → Morse</button>
+  <button class="chip" type="button" data-tab="from">Morse → words</button>
+  <button class="chip" type="button" data-tab="key">Practise sending</button>
+</div>
+
+<section class="card" id="tab-to">
+  <label for="txt">Words</label>
+  <textarea id="txt" rows="2" placeholder="Type here, e.g. SOS or HELP" autocapitalize="characters" spellcheck="false"></textarea>
+  <div class="code" id="code" aria-live="polite">…</div>
+  <div class="letters" id="letters"></div>
+  <p class="warn" id="unknown" hidden></p>
+  <div class="row">
+    <button class="btn main" type="button" id="playSound">🔊 Play as beeps</button>
+    <button class="btn" type="button" id="playLight">💡 Flash the screen</button>
+    <button class="btn" type="button" id="copy">Copy</button>
+  </div>
+  <label class="check"><input type="checkbox" id="repeat"> Repeat until I stop it (for signalling)</label>
+</section>
+
+<section class="card" id="tab-from" hidden>
+  <label for="mor">Morse: dots and dashes, a space between letters, / between words</label>
+  <textarea id="mor" rows="2" placeholder="... --- ..." spellcheck="false" autocapitalize="off" autocorrect="off"></textarea>
+  <div class="pad">
+    <button class="btn big" type="button" data-ins=".">·</button>
+    <button class="btn big" type="button" data-ins="-">–</button>
+    <button class="btn" type="button" data-ins=" ">next letter</button>
+    <button class="btn" type="button" data-ins=" / ">next word</button>
+    <button class="btn" type="button" id="bk">⌫</button>
+  </div>
+  <div class="out" id="words" aria-live="polite">…</div>
+  <p class="warn" id="bad" hidden></p>
+</section>
+
+<section class="card" id="tab-key" hidden>
+  <p class="tips">Hold the key down for a dash, tap it for a dot. Pause for a letter; pause longer for a new word. It reads back what you sent at the speed set below (start slow).</p>
+  <button class="key" type="button" id="key" aria-label="Morse key: hold for a dash, tap for a dot">Hold to send</button>
+  <div class="code small" id="cur">&nbsp;</div>
+  <div class="out" id="sent" aria-live="polite">&nbsp;</div>
+  <div class="row"><button class="btn" type="button" id="clearKey">Clear</button><label class="check"><input type="checkbox" id="keyTone" checked> Beep while I press</label></div>
+</section>
+
+<div class="card speed">
+  <label for="wpm">Speed</label>
+  <select id="wpm">
+    <option value="5">5 words a minute (learning)</option><option value="8">8 words a minute</option>
+    <option value="10" selected>10 words a minute</option><option value="13">13 words a minute</option>
+    <option value="15">15 words a minute</option><option value="20">20 words a minute (fast)</option>
+  </select>
+  <span class="tips" id="unitMs"></span>
+</div>
+
+<section class="card">
+  <h2>The whole code <span class="tips">(tap one to hear it)</span></h2>
+  <div class="grid" id="chart"></div>
+  <h3>Signals sent as one run, with no gaps</h3>
+  <table class="pro" id="pros"></table>
+</section>
+
+<section class="card tips">
+  <h2>Good to know</h2>
+  <ul>
+    <li><b>The timing is the code:</b> a dash lasts three dots. Leave one dot of silence inside a letter, three between letters and seven between words.</li>
+    <li><b>SOS</b> is sent as one unbroken run, <code>...---...</code>, over and over. Any signal sent three times (three flashes, three blasts) also means help.</li>
+    <li><b>At night,</b> 💡 Flash the screen turns the whole phone into a signal lamp: turn the brightness all the way up and point it.</li>
+    <li>More, with pictures: the <a href="SIGNALS-MORSE-GUIDE.html#morse-quick-reference-print-this">Signals &amp; Morse guide</a> (how to learn it by ear, and sending it by light, sound and flags).</li>
+  </ul>
+</section>
+</div>
+
+<div id="flash" hidden><p>Tap anywhere to stop</p></div>
+
+<script>
+const $ = id => document.getElementById(id);
+const store = { get: k => { try { return localStorage.getItem(k); } catch { return null; } }, set: (k, v) => { try { localStorage.setItem(k, v); } catch {} } };
+// International Morse (ITU-R M.1677-1), as in the Signals & Morse guide
+const MORSE = { A: '.-', B: '-...', C: '-.-.', D: '-..', E: '.', F: '..-.', G: '--.', H: '....', I: '..', J: '.---', K: '-.-', L: '.-..', M: '--',
+  N: '-.', O: '---', P: '.--.', Q: '--.-', R: '.-.', S: '...', T: '-', U: '..-', V: '...-', W: '.--', X: '-..-', Y: '-.--', Z: '--..',
+  1: '.----', 2: '..---', 3: '...--', 4: '....-', 5: '.....', 6: '-....', 7: '--...', 8: '---..', 9: '----.', 0: '-----',
+  '.': '.-.-.-', ',': '--..--', '?': '..--..', "'": '.----.', '!': '-.-.--', '/': '-..-.', '(': '-.--.', ')': '-.--.-', '&': '.-...',
+  ':': '---...', ';': '-.-.-.', '=': '-...-', '+': '.-.-.', '-': '-....-', '_': '..--.-', '"': '.-..-.', '@': '.--.-.' };
+const DECODE = Object.fromEntries(Object.entries(MORSE).map(([k, v]) => [v, k]));
+DECODE['...---...'] = 'SOS';
+const PROS = [['SOS', '...---...', 'Distress: I need help'], ['AR', '.-.-.', 'End of message'], ['SK', '...-.-', 'End of contact'],
+  ['BT', '-...-', 'Break, new subject'], ['K', '-.-', 'Over: your turn'], ['AS', '.-...', 'Wait'], ['HH', '........', 'Mistake: I\'ll send that again']];
+const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const pretty = c => c.replace(/\./g, '·').replace(/-/g, '–');
+
+// ---- words to Morse
+function toMorse(text) {
+  const bad = new Set(), words = text.toUpperCase().replace(/[‘’]/g, "'").replace(/[“”]/g, '"').split(/\s+/).filter(Boolean);
+  const code = words.map(w => [...w].map(ch => MORSE[ch] || (bad.add(ch), '')).filter(Boolean).join(' ')).filter(Boolean).join(' / ');
+  return { code, words, bad };
+}
+function showTo() {
+  const r = toMorse($('txt').value);
+  $('code').textContent = r.code ? pretty(r.code) : '…';
+  $('letters').innerHTML = r.words.map(w => [...w].filter(ch => MORSE[ch]).map(ch => `<span><b>${esc(ch)}</b> ${pretty(MORSE[ch])}</span>`).join('')).filter(Boolean).join('<i>/</i>');
+  $('unknown').hidden = !r.bad.size; $('unknown').textContent = r.bad.size ? 'No Morse for: ' + [...r.bad].join(' ') + ' (left out)' : '';
+  store.set('so-morse-text', $('txt').value);
+  return r.code;
+}
+
+// ---- Morse to words
+function fromMorse(s) {
+  const t = s.replace(/[•·∙]/g, '.').replace(/[–—−_]/g, '-').trim(); let bad = 0;
+  const words = t.split(/\s*[\/|]\s*|\s{3,}/).filter(Boolean).map(w => w.split(/\s+/).filter(Boolean).map(l => DECODE[l] || (bad++, '¿')).join(''));
+  return { text: words.join(' '), bad };
+}
+function showFrom() {
+  const r = fromMorse($('mor').value);
+  $('words').textContent = r.text || '…';
+  $('bad').hidden = !r.bad; $('bad').textContent = r.bad ? '¿ marks a letter that isn\'t Morse: check its dots and dashes, and the spaces around it.' : '';
+}
+
+// ---- sound and light
+let actx = null, gain = null, playing = 0;
+function audio() {
+  if (!actx) {
+    const A = window.AudioContext || window.webkitAudioContext; if (!A) return null;
+    actx = new A(); const o = actx.createOscillator(); gain = actx.createGain(); gain.gain.value = 0;
+    o.frequency.value = 650; o.type = 'sine'; o.connect(gain); gain.connect(actx.destination); o.start();
+  }
+  if (actx.state === 'suspended') actx.resume();
+  return actx;
+}
+function tone(on) { if (!gain) return; gain.gain.setTargetAtTime(on ? 0.35 : 0, actx.currentTime, 0.004); }
+const unit = () => 1200 / +$('wpm').value;   // one dot, in milliseconds (the standard "PARIS" timing)
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+let wake = null;
+async function play(code, how) {
+  const me = ++playing, u = unit(), light = how === 'light';
+  if (!code) return;
+  if (light) { $('flash').hidden = false; try { wake = await navigator.wakeLock?.request('screen'); } catch {} }
+  else audio();
+  const set = on => light ? $('flash').classList.toggle('on', on) : tone(on);
+  setBusy(how);
+  do {
+    for (const word of code.split(' / ')) {
+      for (const letter of word.split(' ')) {
+        for (const s of letter) {
+          if (me !== playing) return done();
+          set(true); await sleep(s === '-' ? 3 * u : u); set(false); await sleep(u);
+        }
+        await sleep(2 * u);   // 3 dots between letters in all
+      }
+      await sleep(4 * u);     // 7 between words
+    }
+    if ($('repeat').checked) await sleep(10 * u);
+  } while ($('repeat').checked && me === playing);
+  done();
+  function done() { if (me === playing) stop(); }
+}
+function stop() {
+  playing++; tone(false); $('flash').classList.remove('on'); $('flash').hidden = true;
+  try { wake?.release(); } catch {} wake = null; setBusy('');
+}
+function setBusy(how) {
+  $('playSound').textContent = how === 'sound' ? '⏹ Stop' : '🔊 Play as beeps';
+  $('playSound').classList.toggle('on', how === 'sound');
+}
+$('playSound').onclick = () => { if ($('playSound').classList.contains('on')) stop(); else { stop(); play(showTo(), 'sound'); } };
+$('playLight').onclick = () => { stop(); play(showTo(), 'light'); };
+$('flash').onclick = stop;
+$('copy').onclick = async () => {
+  const c = showTo(); if (!c) return;
+  try { await navigator.clipboard.writeText(c); $('copy').textContent = 'Copied ✓'; } catch { $('copy').textContent = 'Copy failed'; }
+  setTimeout(() => $('copy').textContent = 'Copy', 1500);
+};
+
+// ---- the practice key: hold for a dash, tap for a dot
+let down = 0, cur = '', sent = '', gap1 = 0, gap2 = 0;
+function keyDown(e) {
+  e.preventDefault(); if (down) return;
+  clearTimeout(gap1); clearTimeout(gap2); down = performance.now();
+  $('key').classList.add('on'); if ($('keyTone').checked) { audio(); tone(true); }
+}
+function keyUp(e) {
+  if (!down) return; e.preventDefault();
+  const d = performance.now() - down, u = unit(); down = 0;
+  $('key').classList.remove('on'); tone(false);
+  cur += d < 2 * u ? '.' : '-'; $('cur').textContent = pretty(cur);
+  gap1 = setTimeout(() => {   // a letter's end: 3 dots of quiet (a little less, for a person's hand)
+    sent += DECODE[cur] || '¿'; cur = ''; $('cur').innerHTML = '&nbsp;'; $('sent').textContent = sent;
+    gap2 = setTimeout(() => { if (sent && !sent.endsWith(' ')) { sent += ' '; $('sent').textContent = sent; } }, 4.5 * u);
+  }, 2.5 * u);
+}
+$('key').addEventListener('pointerdown', keyDown); $('key').addEventListener('pointerup', keyUp);
+$('key').addEventListener('pointerleave', keyUp); $('key').addEventListener('pointercancel', keyUp);
+$('key').addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('keydown', e => { if (e.code === 'Space' && !$('tab-key').hidden && !e.repeat) keyDown(e); });
+document.addEventListener('keyup', e => { if (e.code === 'Space' && !$('tab-key').hidden) keyUp(e); });
+$('clearKey').onclick = () => { clearTimeout(gap1); clearTimeout(gap2); cur = sent = ''; $('cur').innerHTML = '&nbsp;'; $('sent').innerHTML = '&nbsp;'; };
+
+// ---- tabs, speed, chart
+function tab(t) {
+  for (const b of document.querySelectorAll('[data-tab]')) b.classList.toggle('on', b.dataset.tab === t);
+  for (const k of ['to', 'from', 'key']) $('tab-' + k).hidden = k !== t;
+  store.set('so-morse-tab', t);
+  try { history.replaceState(null, '', '#' + t); } catch {}
+}
+document.querySelectorAll('[data-tab]').forEach(b => b.onclick = () => { stop(); tab(b.dataset.tab); });
+document.querySelectorAll('[data-ins]').forEach(b => b.onclick = () => {
+  const m = $('mor'), v = m.value, ins = b.dataset.ins;
+  m.value = ins.trim() ? v + ins : v.replace(/\s+$/, '') + ins; showFrom(); m.focus();
+});
+$('bk').onclick = () => { const m = $('mor'); m.value = m.value.replace(/(\s*\/\s*|\s+|.)$/, ''); showFrom(); };
+$('txt').oninput = showTo; $('mor').oninput = showFrom;
+function showUnit() { $('unitMs').textContent = `a dot lasts ${Math.round(unit())} ms`; store.set('so-morse-wpm', $('wpm').value); }
+$('wpm').onchange = showUnit;
+const ORDER = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890', ...Object.keys(MORSE).filter(k => !/^[A-Z0-9]$/.test(k))];
+$('chart').innerHTML = ORDER.map(k => [k, MORSE[k]]).map(([k, v]) => `<button type="button" data-code="${v}"><b>${esc(k)}</b><span>${pretty(v)}</span></button>`).join('');
+$('pros').innerHTML = PROS.map(([k, v, d]) => `<tr data-code="${v}"><td><b>${k}</b></td><td class="mono">${pretty(v)}</td><td>${d}</td></tr>`).join('');
+document.addEventListener('click', e => { const c = e.target.closest('[data-code]'); if (c) { stop(); play(c.dataset.code.split('').join(''), 'sound'); } });
+
+const w = store.get('so-morse-wpm'); if (w && [...$('wpm').options].some(o => o.value === w)) $('wpm').value = w;
+$('txt').value = store.get('so-morse-text') || '';
+showUnit(); showTo(); showFrom();
+tab(['to', 'from', 'key'].includes(location.hash.slice(1)) ? location.hash.slice(1) : store.get('so-morse-tab') || 'to');
+</script>
+<script>if(location.protocol.indexOf('http')===0&&location.pathname.indexOf('/lib/')===0)document.querySelectorAll('a[data-app]').forEach(function(a){a.href=a.getAttribute('data-app')})</script><script>(function(){function f(){var n=document.querySelector('.topnav');document.documentElement.style.setProperty('--navh',(n?n.offsetHeight:0)+'px')}addEventListener('load',f);addEventListener('resize',f);f()})()</script></body>
+</body>
+</html>
