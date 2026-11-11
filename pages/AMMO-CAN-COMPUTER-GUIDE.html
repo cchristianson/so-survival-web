@@ -22,10 +22,10 @@
 <h2 id="the-idea">🧰 The idea</h2>
 <p><strong>What lives inside the can, sealed:</strong></p>
 <ul>
-<li>the <strong>Raspberry Pi</strong> on the underside of the <strong>lid</strong>, with its <strong>library drive</strong> (a small thumb drive) in a USB port</li>
+<li>the <strong>Raspberry Pi</strong> on the underside of the <strong>lid</strong>, beside the hinge, with its <strong>library drive</strong> (a small thumb drive) in a USB port</li>
 <li>the <strong>battery</strong> (LiFePO4, the safe lithium kind)</li>
 <li>the <strong>wall charger</strong>, lying on the <strong>solar charge controller</strong> (stored, not wired)</li>
-<li>a printed <strong>riser</strong> at the latch end holding the <strong>receipt printer</strong>, the <strong>power switch</strong>, the <strong>volt/amp meter</strong> and its button, and under the printer the <strong>5 V converter</strong> and the <strong>fuse</strong></li>
+<li>a printed <strong>riser</strong> at the hinge end holding the <strong>receipt printer</strong>, the <strong>power switch</strong>, the <strong>volt/amp meter</strong> and its button, and under the printer the <strong>5 V converter</strong> and the <strong>fuse</strong></li>
 <li>a <strong>crank radio</strong> and an <strong>old phone</strong> (the screen; the model has an iPhone XR), about half charged</li>
 <li>the <strong>Wi-Fi card</strong> taped in the lid, and a spare roll of <strong>foil tape</strong> for the seal</li>
 </ul>
@@ -68,7 +68,7 @@
 <iframe src="AMMO-CAN-MODEL.html?embed" title="The ARK Vault in 3D" loading="lazy" style="width:100%;height:760px;max-height:92vh;border:0;border-radius:12px;background:#e6ebf2"></iframe>
 
 <p><a class="guide" href="AMMO-CAN-MODEL.html">Open the 3D model full size</a></p>
-<p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/the-build.png" alt="Two views of the ARK Vault from its 3D model. Left: the lid open, with the Raspberry Pi on the underside of the lid, the battery along the back, the wall charger in front of it, and the meter and power switch at the latch end. Right: see-through, with the printer on its riser at the latch end, the radio and the phone along the front wall, and the solar controller under the wall charger" /> <em>Lid open (left) and see-through (right): pictures of the 3D model.</em></p>
+<p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/the-build.png" alt="Two views of the ARK Vault from its 3D model. Left: the lid swung right over past the hinge, with the Raspberry Pi lying face-up on it just beyond the can&#39;s end, the meter and power switch on the riser at the hinge end, and the battery at the latch end. Right: see-through, with the printer on its riser at the hinge end, the radio and the phone along the front wall, the battery along the back at the latch end, and the wall charger on the solar controller in front of it" /> <em>Lid open (left) and see-through (right): pictures of the 3D model.</em></p>
 <hr />
 <h2 id="how-it-works">🧭 How it works</h2>
 <table>
@@ -205,31 +205,32 @@
 <li>The <strong>Pi's base</strong> (62 × 91 × 7 mm), which sticks under the lid.</li>
 </ul>
 <p>Print in <strong>ABS</strong> (it stands the heat of a car better than PLA <em>(rule of thumb)</em>), 3 walls, 15–20% infill. The riser prints upside down, its top on the bed; let the slicer add supports under its floor if it asks. These are a first fit for this layout: print the Pi's base first, then the riser, and check them against your can and your parts.</p></li>
-<li><p><strong>laser/</strong>: the <strong>ARK Vault logo</strong> for the side of the can, and two <strong>bare-metal strips</strong> along the lid seam on both long sides, for the foil tape. For a laser that burns through paint.</p></li>
+<li><p><strong>laser/</strong>: the <strong>ARK Vault logo</strong> for both long sides of the can, and <strong>bare-metal strips</strong> all the way round the lid seam, for the foil tape. For a laser that burns through paint.</p></li>
 </ul>
-<p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/can-plan.png" alt="The ammo can after etching: the ARK Vault logo on one long side, and two bare-metal strips along the lid seam on both long sides, with foil tape over the closed seam" /> <em>Where the logo and the bare-metal strips go. No laser? Scrape the paint off the same strips by hand.</em></p>
+<p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/can-plan.png" alt="The ammo can after etching: the ARK Vault logo on a long side, and two bare-metal strips along the lid seam, the same on both long sides, with foil tape over the closed seam" /> <em>The long sides: the same file on each. No laser? Scrape the paint off the same strips by hand.</em></p>
+<p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/can-plan-ends.png" alt="The two ends and the lid&#39;s top after etching: on each end a bare band on the end wall just below the hinge or the latch, and a bare band across the lid&#39;s top near each end; taped, three pieces of foil tape side by side run from the lid&#39;s top band, over the hinge or the latch, down past the band below" /> <em>The ends: the hinge and the latch sit right on the seam, so the tape goes over them, from a band on the lid's top to a band on the end wall below.</em></p>
 <hr />
 <h2 id="build-it-step-by-step">🔧 Build it, step by step</h2>
 <h3 id="1-get-the-can-ready">1. Get the can ready</h3>
 <ol type="1">
-<li><strong>Bare metal at the seam.</strong> Etch the two strips with a laser, or scrape the paint off by hand: a strip on the lid's edge and one on the body just below it, on both long sides. The foil tape goes over these, metal to metal. See the EMP guide's <a class="guide" href="EMP-GUIDE.html">Faraday containers</a> section.</li>
+<li><strong>Bare metal all round the seam.</strong> Etch with a laser, or scrape the paint off by hand. On <strong>both long sides</strong>: a strip on the lid's edge and one on the body just below it (the logo goes on both long sides too). On <strong>each end</strong>: a band across the lid's top near the end, and a band on the end wall just below the hinge, or just below the latch lever. The foil tape goes over these, metal to metal. See the EMP guide's <a class="guide" href="EMP-GUIDE.html">Faraday containers</a> section.</li>
 <li><strong>Nothing lines the can.</strong> Every part is in its own case or on the riser. Keep bare wire ends and bolts covered (rubber boots, heat-shrink, tape) so nothing metal can touch the steel.</li>
 </ol>
 <h3 id="2-the-battery">2. The battery</h3>
-<p>Stand the battery at the <strong>hinge end</strong>, straight on the raised panel in the can's floor, terminals toward the <strong>back</strong> wall. Put the ring terminals on its bolts: the main <strong>+</strong> lead (to the fuse), the main <strong>−</strong> lead (to the meter) and the wall charger's leads. Then push the <strong>rubber boots</strong> over both terminals: they keep the bolts off the lid.</p>
+<p>Stand the battery at the <strong>latch end</strong>, straight on the raised panel in the can's floor, against the <strong>back</strong> wall, terminals toward the back. Put the ring terminals on its bolts: the main <strong>+</strong> lead (to the fuse), the main <strong>−</strong> lead (to the meter) and the wall charger's leads. Then push the <strong>rubber boots</strong> over both terminals: they keep the bolts off the lid.</p>
 <h3 id="3-the-chargers">3. The chargers</h3>
-<p>In front of the battery, against the hinge wall: stand the <strong>solar controller</strong> on its long, narrow edge (100 × 40 mm) on the floor, terminals toward the latch end. It's stored, not wired. Lay the <strong>wall charger</strong> flat on top of it, coil its mains cord on top and lay the plug on the coil. The quick-connect plug of its battery leads sits beside the coil.</p>
+<p>In front of the battery, against the latch wall: stand the <strong>solar controller</strong> on its long, narrow edge (100 × 40 mm) on the floor, terminals toward the hinge end. It's stored, not wired. Lay the <strong>wall charger</strong> flat on top of it, coil its mains cord on top and lay the plug on the coil. The quick-connect plug of its battery leads sits beside the coil.</p>
 <h3 id="4-the-printer-riser">4. The printer riser</h3>
 <ol type="1">
 <li>Snap the <strong>meter</strong> and the <strong>rocker switch</strong> into their holes in the riser's front strip. Set the <strong>microswitch</strong> in its slot, red button up, flush with the top, and screw it to the rib beside it (2 × M2).</li>
 <li>Fix the <strong>converter</strong> and the <strong>fuse holder</strong> on the riser's floor (double-sided tape or a zip tie), the converter's screw terminals toward the fuse holder.</li>
 <li>Drop the <strong>printer</strong> into the top: its face rests on the riser.</li>
-<li>Wire it (next steps), then stand the riser at the <strong>latch end</strong> of the can. It lifts straight out again for repairs and to change the fuse.</li>
+<li>Wire it (next steps), then stand the riser at the <strong>hinge end</strong> of the can, against the back wall. It lifts straight out again for repairs and to change the fuse, with the lid open all the way.</li>
 </ol>
 <h3 id="5-the-pi-on-the-lid">5. The Pi on the lid</h3>
 <ol type="1">
 <li>Fit the <strong>cooler</strong> on the Pi, and plug its fan onto <strong>pins 4, 6 and 8</strong> (red, black, blue), as its leaflet shows (diagram below).</li>
-<li>Screw the Pi onto its printed <strong>base</strong> (4 × M2.5 screws), and stick the base under the <strong>lid</strong> at the latch end, over the printer, with the Pi's <strong>USB ports toward the front</strong> of the can.</li>
+<li>Screw the Pi onto its printed <strong>base</strong> (4 × M2.5 screws), and stick the base under the <strong>lid</strong> at the <strong>hinge end</strong>, over the printer, with the Pi's <strong>USB ports toward the front</strong> of the can and the base's edge about <strong>12 mm (½ in)</strong> in from the inside of the hinge wall: the 5 V wires run in that gap. Opened all the way, the lid swings right over past the hinge and the Pi lies face-up just beyond the can's end. The latch lever hangs from the lid's far end and can flop onto the inside of the open lid: it reaches about 11 cm, and the Pi is about 21 cm away, so it can't touch it.</li>
 <li>Plug the <strong>library drive</strong> into a <strong>blue</strong> USB port and the printer's <strong>USB lead</strong> into a black one.</li>
 </ol>
 <h3 id="6-wiring">6. Wiring</h3>
@@ -241,7 +242,7 @@
 <li><strong>The converter's Output +</strong> → Pi <strong>pin 2</strong> (5 V); <strong>Output −</strong> → Pi <strong>pin 14</strong> (ground). <strong>Before</strong> you plug this lead onto the Pi, switch on and check it with a multimeter: <strong>5.0 to 5.25 V</strong>, + and − the right way round. The 5 V pins skip the Pi's own input protection, so a mistake here can kill it.</li>
 <li><strong>The fan</strong> → pins <strong>4</strong> (red, 5 V), <strong>6</strong> (black, ground), <strong>8</strong> (blue, GPIO 14).</li>
 <li><strong>The printer's USB lead</strong> → a USB port on the Pi.</li>
-<li><strong>The route:</strong> the 5 V pair and the printer's lead go together up the gap at the battery's latch end, over the battery's top to the hinge, loop up into the lid (leave about <strong>10 cm (4 in) of slack</strong> there, so the lid opens freely) and along the lid to the Pi; the 5 V pair goes round the board's back edge to its pins.</li>
+<li><strong>The route:</strong> the 5 V pair and the printer's lead go together up the gap between the battery and the riser, along the front wall (over the phone) to the hinge corner, and loop up into the lid there (leave about <strong>6 cm (2½ in)</strong> in the loop, so the lid opens freely). On the lid, the printer's lead runs a few centimetres along the front to its USB port, and the 5 V pair runs along the hinge end, between the Pi's base and the lid's rim, to its pins.</li>
 <li><strong>The fuse</strong> is on the riser's floor, so about 35 cm of wire runs from battery + to the fuse with no fuse on it. Tie that wire down along its route, away from sharp edges. (The battery's own protection is the back-up.)</li>
 </ul>
 <p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/pi-pins-ark.svg" alt="The Raspberry Pi pins the ARK Vault uses, at the end of the 40-pin row farthest from the USB ports, all on the row along the board&#39;s edge: pin 2 (5 volts) takes the converter&#39;s plus wire, pins 4, 6 and 8 take the cooler fan&#39;s red, black and blue wires (5 volts, ground, GPIO 14), and pin 14 (ground) takes the converter&#39;s minus wire" /> <em>All five wires go on the row along the board's edge. Pin 2 is the corner pin at the end farthest from the USB ports (a diagram drawn for this guide).</em></p>
@@ -332,7 +333,7 @@
 <hr />
 <h2 id="using-it">🆘 Using it</h2>
 <ol type="1">
-<li><strong>Open the lid</strong> and <strong>flip the red power switch on</strong>. Keep the can in the shade.</li>
+<li><strong>Open the lid</strong> all the way (it swings right over and rests past the hinge) and <strong>flip the red power switch on</strong>. Keep the can in the shade.</li>
 <li><strong>Take out the phone</strong> and switch it on. <strong>Wait 2–3 minutes</strong> for the Pi.</li>
 <li><strong>On the phone</strong> (and any others): join the Pi's Wi-Fi, open the browser, type the address from the card in the lid. Save it as a bookmark on the can's phone so it's one tap next time.</li>
 <li><strong>To turn it off:</strong> <strong>flip the switch off</strong>, any time. Close the lid and <strong>tape the seam</strong> again.</li>
@@ -446,7 +447,7 @@
 <ol type="1">
 <li><strong>Flip the power switch off.</strong> Unplug the wall charger and the solar panel if they're connected, and put the phone back in its place.</li>
 <li><strong>Charge the battery to about half or a bit more</strong> for long storage <em>(rule of thumb)</em>, then top it up every few months.</li>
-<li><strong>Close the lid</strong> and run the <strong>foil tape</strong> all the way around the seam, over the bare-metal strips, so it touches bare metal on the lid and on the body (<a class="lib pic" target="_blank" rel="noopener" href="https://www.wbdg.org/FFC/NAVFAC/DMMHNAV/hdbk419a_vol1.pdf#page=275" title="MIL-HDBK-419A Grounding Bonding and Shielding Vol 1 Basic Theory (DoD 1987).pdf — page 275">why seams matter</a>). Keep a spare roll of tape in the can.</li>
+<li><strong>Close the lid</strong> and tape it shut over the bare metal, so the tape touches bare metal on the lid and on the body: one strip of 2-inch foil tape along each long side, over the seam, then on each end three pieces side by side, from the band on the lid's top, over the hinge (or the latch), down past the band below. Overlap the pieces a little, and overlap the long sides' tape at the corners (<a class="lib pic" target="_blank" rel="noopener" href="https://www.wbdg.org/FFC/NAVFAC/DMMHNAV/hdbk419a_vol1.pdf#page=275" title="MIL-HDBK-419A Grounding Bonding and Shielding Vol 1 Basic Theory (DoD 1987).pdf — page 275">why seams matter</a>). Keep a spare roll of tape in the can.</li>
 <li><strong>Test the seal</strong> with the phone-and-radio test in the <a class="guide" href="EMP-GUIDE.html">EMP guide</a>: tape the can shut with a phone inside and call it, then a battery AM radio tuned to a station. Silence means no big leaks.</li>
 </ol>
 <p>Store it somewhere cool and dry, not in a hot car or shed.</p>
