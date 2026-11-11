@@ -48,7 +48,53 @@ async function init() {
 
 async function refreshServer() {
   try { server = await (await fetch('api/status')).json(); } catch {}
-  renderStatus();
+  renderStatus(); renderHealth();
+}
+
+// ⚙️ Settings on the drive: a bigger map for the browser map (roads and topo lines for a wide area around the local
+// one). The Library Assistant cuts it out of the public world maps, so it needs the internet: once, on a computer.
+let wideTimer = 0;
+async function loadWide(act) {
+  const card = $('widemap'); if (!card || mode !== 'drive') return;
+  let j; try { j = await (await fetch('api/mapwide', act ? { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ do: act }) } : {})).json(); } catch { return; }
+  card.hidden = !j.offer || !j.local;
+  if (card.hidden) return;
+  const st = j.state || {}, gbs = (j.offer.mb / 1024).toFixed(1);
+  $('widetext').innerHTML = j.have && !st.running
+    ? `The map (🔧 Tools → 🗺️ Map) has roads, trails and topo lines for <b>${esc(j.offer.label)}</b>. Property lines cover the local area.`
+    : `The map (🔧 Tools → 🗺️ Map) covers the local area. This adds roads, trails and topo lines for <b>${esc(j.offer.label)}</b>: about ${gbs} GB. It needs the internet, so do it on a computer, before the drive goes into an ARK Vault.`;
+  $('widego').hidden = st.running; $('widego').textContent = j.have ? 'Download it again (a newer map)' : 'Download it';
+  $('widestop').hidden = !st.running;
+  $('widebarw').hidden = !st.running;
+  if (st.running) $('widebar').style.width = (st.totalMB ? Math.round(st.doneMB / st.totalMB * 100) : 0) + '%';
+  $('wideprog').textContent = st.running ? `${st.step || ''}${st.totalMB ? ` — ${Math.round(st.doneMB)} of ${Math.round(st.totalMB)} MB` : ''}. Keep this window open.`
+    : st.error || (st.step === 'Done' ? 'Done. The bigger map is on the drive.' : '');
+  clearTimeout(wideTimer);
+  if (st.running) wideTimer = setTimeout(loadWide, 2000);
+}
+
+// ⚙️ Settings on a Raspberry Pi: what slows the AI down, in plain words (from /api/status, every 5 seconds)
+let lastPace = null;   // how fast the AI read and wrote in the last answer (llama-server's timings)
+function renderHealth() {
+  const box = $('pihealth');
+  if (!box) return;
+  const th = server.throttled;
+  box.hidden = !(mode === 'drive' && (typeof th === 'number' && th >= 0 || server.tempC));
+  if (box.hidden) return;
+  const row = (k, v) => `<tr><td>${k}</td><td>${v}</td></tr>`;
+  let h = '<table class="health">';
+  if (th >= 0) h += row('Power', th & 0x1 ? '⚠️ <b>Too weak right now</b>'
+    : th & 0x10000 ? '⚠️ <b>Dipped</b> at least once since it was switched on' : '✅ OK since it was switched on');
+  if (th >= 0) h += row('Slowed down?', th & 0x6 ? '⚠️ <b>Yes, right now</b>: the Pi has cut its own speed, so the AI is very slow'
+    : th & 0x60000 ? '⚠️ Not now, but it has since it was switched on' : '✅ No, not since it was switched on');
+  if (server.tempC) h += row('Temperature', `${server.tempC} °C — ` + (server.tempC >= 80 ? '⚠️ <b>too hot</b>: it slows itself down'
+    : server.tempC >= 60 ? 'warm (the fan comes on at 60 °C)' : 'fine'));
+  if (server.cpuMHz) h += row('Processor speed', `${server.cpuMHz} MHz` + (server.cpuMaxMHz ? ` of ${server.cpuMaxMHz} MHz at most` : '')
+    + (server.cpuMaxMHz && server.cpuMHz < server.cpuMaxMHz ? ' (low is normal when it has nothing to do)' : ''));
+  if (server.memFreeMB != null) h += row('Free memory', `${server.memFreeMB} MB` + (server.memFreeMB < 300 ? ' — ⚠️ low: the AI slows right down' : ''));
+  h += row('AI', esc(server.model || 'off'));
+  if (lastPace) h += row('Last answer', `read about ${lastPace.read} words a second, wrote about ${lastPace.wrote} a second`);
+  box.querySelector('#pihbody').innerHTML = h + '</table>';
 }
 
 // The search loads in two steps to spare phones' memory (a page that runs short of it crashes):
@@ -112,9 +158,8 @@ function renderStatus() {
     h += pill(server.kiwix, 'Encyclopedias', server.kiwix === 'off' ? 'not available' : w(server.kiwix) + (server.zims ? ` (${server.zims})` : ''));
     h += pill(server.docs ? 'ready' : 'off', 'Documents', server.docs ? `${server.docs} files` : 'index missing');
     // a Raspberry Pi that has slowed itself down (weak power or heat): everything, the AI most, runs slower
-    const th = server.throttled > 0 ? server.throttled : 0;
-    if (th & 0x10001) h += pill('off', '⚠️ Power too weak', '— the Pi is slowing down. Use a stronger power supply or a shorter, thicker cable');
-    else if (th & 0x8000e) h += pill('off', '⚠️ Too hot', '— the Pi is slowing down. Keep the lid open and the can in the shade');
+    const slow = piSlow();
+    if (slow) h += pill('off', slow.label, '— ' + slow.detail);
   } else {
     h += pill(navigator.onLine ? 'ready' : 'starting', navigator.onLine ? 'Online' : 'Offline', navigator.onLine ? '' : '— using saved copy');
     h += pill(workerReady || (workerSearchable && !fullAsked) ? 'ready' : 'starting', 'Search', workerReady ? `${workerInfo.docs} documents`
@@ -124,6 +169,26 @@ function renderStatus() {
       : chosen ? esc(chosen[2]) + ' — starts when you ask' : 'off — turn on in ⚙️');
   }
   $('status').innerHTML = h;
+}
+
+// A Raspberry Pi's own record (server.throttled, the firmware's get_throttled): 0x1 the power is too weak now,
+// 0x2/0x4 it has slowed its processor down now, 0x8 it's hot enough to start doing that; 0x10000, 0x20000/0x40000
+// and 0x80000 the same at some point since it was switched on. Weak power doesn't always slow it down (0x10001 is
+// "too weak, but running at full speed"); slowed down, a Pi 4 runs at about a third of its speed, and the AI takes
+// minutes instead of seconds. null when all is well (or it isn't a Pi). now: slowed down at this moment.
+function piSlow() {
+  const th = mode === 'drive' && server.throttled > 0 ? server.throttled : 0;
+  if (!th) return null;
+  const power = server.ark ? 'Charge the battery, then check the 5 V wires to the Pi (ARK Vault guide, "If something goes wrong").'
+    : 'Use the official Raspberry Pi power supply and its own cable.';
+  const heat = server.ark ? 'Keep the lid open and the can in the shade.' : 'Give it more air, or a cooler with a fan.';
+  const slowNow = !!(th & 0x6), hot = !!(th & 0x80008), weak = !!(th & 0x10001);
+  const why = hot && !weak ? 'the Pi is too hot' : 'the Pi is short of power';
+  if (slowNow) return { now: true, why, label: hot && !weak ? '⚠️ Too hot' : '⚠️ Power too weak',
+    detail: 'the Pi has slowed itself down, so the AI is very slow. ' + (hot && !weak ? heat : power) };
+  if (th & 0x1) return { now: false, why, label: '⚠️ Power too weak', detail: 'right now. The Pi may slow itself down, and the AI with it. ' + power };
+  if (th & 0x10000) return { now: false, why, label: '⚠️ Power dipped', detail: 'since the Pi was switched on. It may slow itself down when it does. ' + power };
+  return { now: false, why, label: '⚠️ Got too hot', detail: 'since the Pi was switched on. It slows itself down when it does. ' + heat };
 }
 
 // An app saved to the home screen has no browser around it: a book (a PDF) would fill the screen with no way
@@ -174,6 +239,9 @@ function bindUI() {
   $('aioff').addEventListener('click', async () => { store.set('aiModel', null); try { await ai.engine?.unload?.(); } catch {} ai.engine = null; ai.kind = 'none'; renderSetup(); renderStatus(); });
   $('savelib').addEventListener('click', () => saveOffline('library'));
   $('saveroutes').addEventListener('click', () => saveOffline('routes'));
+  $('savemap').addEventListener('click', () => saveOffline('map'));
+  $('widego').addEventListener('click', () => loadWide('start'));
+  $('widestop').addEventListener('click', () => loadWide('stop'));
   $('shareon').addEventListener('click', () => setShare(true));
   $('shareoff').addEventListener('click', () => setShare(false));
   bindPhotos();
@@ -397,7 +465,11 @@ async function answer(id, q, srcs, kind) {
   const messages = [{ role: 'system', content: SYSTEM },
     { role: 'user', content: `Question: ${q}\n\nSources:\n\n${ctx || '(no matching sources)'}\n\nQuestion: ${q}` }];
   const t0 = Date.now(); let text = '', stopped = false, ctrl = new AbortController(), speed = null;
-  const setMeta = (label) => { meta.innerHTML = `<span class="spin"></span>${label} <button class="sec" type="button">Stop</button> <span class="t"></span>`; meta.querySelector('button').onclick = () => { stopped = true; ctrl.abort(); try { ai.engine?.interruptGenerate?.(); } catch {} }; };
+  const setMeta = (label) => {
+    // on a Pi that has slowed itself down, say why the wait is long (the sources are there to read meanwhile)
+    const slow = kind === 'server' ? piSlow() : null;
+    const why = slow && slow.now ? `<br><small>⚠️ This will be slow: ${slow.why}. The sources below are ready to read now.</small>` : '';
+    meta.innerHTML = `<span class="spin"></span>${label} <button class="sec" type="button">Stop</button> <span class="t"></span>${why}`; meta.querySelector('button').onclick = () => { stopped = true; ctrl.abort(); try { ai.engine?.interruptGenerate?.(); } catch {} }; };
   setMeta('The AI is reading the sources…');
   if (srcs.length) showBest(id, srcs, q);   // something to read straight away; the AI's answer takes its place
   const tick = setInterval(() => { const t = meta.querySelector('.t'); if (t) t.textContent = Math.round((Date.now() - t0) / 1000) + 's'; }, 1000);
@@ -413,20 +485,50 @@ async function answer(id, q, srcs, kind) {
   const loopMsg = 'Stopped: the AI started repeating itself. Check the sources below.';
   try {
     if (kind === 'server') {
-      const r = await fetch('llm/v1/chat/completions', { method: 'POST', signal: ctrl.signal, headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages, stream: true, temperature: 0.2, max_tokens: server.tier === 'quick' ? 400 : 700,
-          repeat_penalty: 1.1, dry_multiplier: 0.8, dry_base: 1.75, dry_allowed_length: 2 }) });
-      if (!r.ok) throw new Error('AI error ' + r.status);
-      const reader = r.body.getReader(), dec = new TextDecoder(); let buf = '';
-      for (;;) {
-        const { value, done } = await reader.read(); if (done) break;
-        buf += dec.decode(value, { stream: true }); let i;
-        while ((i = buf.indexOf('\n')) >= 0) {
-          const line = buf.slice(0, i).trim(); buf = buf.slice(i + 1);
-          if (!line.startsWith('data:')) continue; const data = line.slice(5).trim(); if (data === '[DONE]') continue;
-          try { const j = JSON.parse(data); if (j.timings) speed = j.timings; const piece = j.choices?.[0]?.delta?.content; if (piece) add(piece); } catch {}
+      // The connection to the AI can drop without a word: a phone that locks its screen during a long wait
+      // usually loses it, and the answer would sit on "Writing…" for ever. Then it starts again by itself,
+      // which is quick: the AI keeps what it has already read, so it goes straight to writing.
+      let tries = 0, dropped = false, hiddenAt = 0, lastData = Date.now();
+      const restart = () => { dropped = true; ctrl.abort(); };
+      const onVis = () => {
+        if (document.hidden) { hiddenAt = Date.now(); return; }
+        if (hiddenAt && Date.now() - hiddenAt > 15000) restart();   // back after the screen was off
+        hiddenAt = 0;
+      };
+      document.addEventListener('visibilitychange', onVis);
+      // once writing has begun the words keep coming, even on a slow Pi: a minute of silence is a lost connection
+      const dog = setInterval(() => { if (text && !document.hidden && Date.now() - lastData > 60000) restart(); }, 5000);
+      try {
+        for (;;) {
+          let finished = false, err = null;
+          dropped = false; lastData = Date.now();
+          try {
+            const r = await fetch('llm/v1/chat/completions', { method: 'POST', signal: ctrl.signal, headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ messages, stream: true, temperature: 0.2, max_tokens: server.tier === 'quick' ? 400 : 700, cache_prompt: true,
+                repeat_penalty: 1.1, dry_multiplier: 0.8, dry_base: 1.75, dry_allowed_length: 2 }) });
+            if (!r.ok) { const e = new Error('AI error ' + r.status); e.fatal = true; throw e; }
+            const reader = r.body.getReader(), dec = new TextDecoder(); let buf = '';
+            for (;;) {
+              const { value, done } = await reader.read(); if (done) break;
+              lastData = Date.now();
+              buf += dec.decode(value, { stream: true }); let i;
+              while ((i = buf.indexOf('\n')) >= 0) {
+                const line = buf.slice(0, i).trim(); buf = buf.slice(i + 1);
+                if (!line.startsWith('data:')) continue; const data = line.slice(5).trim(); if (data === '[DONE]') { finished = true; continue; }
+                try { const j = JSON.parse(data); if (j.timings) speed = j.timings; if (j.choices?.[0]?.finish_reason) finished = true;
+                  const piece = j.choices?.[0]?.delta?.content; if (piece) add(piece); } catch {}
+              }
+            }
+          } catch (e) { err = e; }
+          if (stopped) { if (err) throw err; break; }          // Stop pressed, or the AI was going round in circles
+          if (finished && !err) break;
+          if (err && err.fatal) throw err;
+          if (++tries > 3) throw err || new Error('the connection to the AI kept dropping');
+          // dropped: ask again (the old words stay on screen until the new ones come)
+          ctrl = new AbortController(); text = ''; looped = false;
+          setMeta('The connection to the AI dropped. Picking up again…');
         }
-      }
+      } finally { clearInterval(dog); document.removeEventListener('visibilitychange', onVis); }
     } else {
       const stream = await ai.engine.chat.completions.create({ messages, stream: true, temperature: 0.2, max_tokens: 600 });
       for await (const ch of stream) { const piece = ch.choices?.[0]?.delta?.content; if (piece) add(piece); if (stopped) break; }
@@ -434,6 +536,7 @@ async function answer(id, q, srcs, kind) {
     // how fast the AI read and wrote (about 3 words to 4 tokens): a slow device, or one slowing itself down, shows here
     const pace = speed && speed.prompt_per_second && speed.predicted_per_second
       ? ` It read about ${Math.round(speed.prompt_per_second * 0.75)} words a second and wrote about ${Math.round(speed.predicted_per_second * 7.5) / 10}.` : '';
+    if (pace) { lastPace = { read: Math.round(speed.prompt_per_second * 0.75), wrote: Math.round(speed.predicted_per_second * 7.5) / 10 }; renderHealth(); }
     meta.textContent = looped ? loopMsg : stopped ? 'Stopped.' : `Answered in ${Math.round((Date.now() - t0) / 1000)} seconds from ${srcs.length} sources.${pace} Check the sources before relying on it.`;
   } catch (e) {
     meta.innerHTML = (looped ? esc(loopMsg) : stopped || e.name === 'AbortError' ? 'Stopped.' : esc('The AI could not answer (' + e.message + '). The sources below are still the search results.')) +
@@ -499,7 +602,7 @@ async function renderSetup() {
   { const P = guidePaths(); if (P.ammocan) $('vaultguide').href = P.ammocan;   // the ARK Vault card: the guide and 3D model, here or on the drive
     $('vaultmodel').href = mode === 'drive' ? '/lib/AMMO-CAN-MODEL.html' : 'pages/AMMO-CAN-MODEL.html'; }
   if (mode === 'drive') {
-    $('webai').hidden = true; $('driveai').hidden = false; $('getkit').hidden = true; loadTiers();
+    $('webai').hidden = true; $('driveai').hidden = false; $('getkit').hidden = true; loadTiers(); renderHealth(); loadWide();
   } else {
     const chosen = store.get('aiModel') && MODELS[store.get('aiModel')];
     $('aiinfo').textContent = ai.error || (ai.kind === 'webllm' ? `On: ${ai.label}. Saved on this device.` : ai.loading ? 'Loading…' :
@@ -512,8 +615,10 @@ async function renderSetup() {
   if (manifest) {
     $('savelibsize').textContent = `≈ ${mb(manifest.offline.library.bytes)}`;
     $('saveroutessize').textContent = `≈ ${mb(manifest.offline.routes.bytes)}`;
+    if (manifest.offline.map) $('savemapsize').textContent = `≈ ${mb(manifest.offline.map.bytes)}`;
   }
-  if (mode === 'drive') { $('savelib').disabled = $('saveroutes').disabled = true; $('saveprog').textContent = 'Not needed on the drive — everything is already here.'; }
+  $('savemaprow').hidden = !(manifest && manifest.offline.map) || mode === 'drive';
+  if (mode === 'drive') { $('savelib').disabled = $('saveroutes').disabled = $('savemap').disabled = true; $('saveprog').textContent = 'Not needed on the drive — everything is already here.'; }
   if (navigator.storage?.estimate) { const e = await navigator.storage.estimate(); $('storage').textContent = `This site is using ${mb(e.usage || 0)} of storage on this device.`; }
   $('about').innerHTML = `Free survival and self-reliance knowledge for the Illinois Valley and southern Oregon. Search runs on your device; the AI runs in your browser.
     Documents that are public domain or openly licensed are searchable in full; others are listed by title and open on the publisher's website.
@@ -580,7 +685,7 @@ async function saveOffline(which) {
   await navigator.serviceWorker.ready;
   try { await navigator.storage?.persist?.(); } catch {}
   const files = manifest.offline[which].files; let done = 0, failed = 0;
-  $('savebarw').hidden = false; $('savelib').disabled = $('saveroutes').disabled = true;
+  $('savebarw').hidden = false; $('savelib').disabled = $('saveroutes').disabled = $('savemap').disabled = true;
   const queue = files.slice(), workers = Array.from({ length: 6 }, async () => {
     while (queue.length) {
       const f = queue.shift();
@@ -590,7 +695,7 @@ async function saveOffline(which) {
   });
   await Promise.all(workers);
   $('saveprog').textContent = failed ? `Saved, but ${failed} files failed — try again with a better connection.` : `Saved ${files.length} files. They now work offline on this device.`;
-  $('savelib').disabled = $('saveroutes').disabled = false; store.set('saved-' + which, manifest.built); renderSetup();
+  $('savelib').disabled = $('saveroutes').disabled = $('savemap').disabled = false; store.set('saved-' + which, manifest.built); renderSetup();
 }
 
 // ------------------------------------------------------------------ library & tools tabs
@@ -691,17 +796,20 @@ function renderLibrary() {
   restoreScroll('library');
 }
 // the Tools tab: calculators and other things you use rather than read
-const TOOL_CARDS = [['calc', '🧮 Calculator', 'Everyday sums on a big screen: + − × ÷, percent, and a history of your answers.'],
+const TOOL_CARDS = [['map', '🗺️ Map', 'A topo map with property lines and layers to switch on: springs and wells, good growing ground, wild food, mines, past fires, flood zones, useful places. Measure, drop pins, print, and see where you are. No signal needed.'],
+  ['calc', '🧮 Calculator', 'Everyday sums on a big screen: + − × ÷, percent, and a history of your answers.'],
   ['sci', '🔬 Scientific calculator', 'Sine, cosine and tangent, logs, powers and roots, π, n!, degrees or radians.'],
   ['conv', '🔢 Unit converter & calculators', 'Any measurement converted; area, concrete, roof pitch, tanks, rainwater, water pressure, volts and watts, batteries, wire size, recipes, fuel mix, doses.'],
   ['morse', '📡 Morse code', 'Words into Morse and back, played as beeps or as flashes of the screen at any speed, a key to practise sending, and the whole code.'],
   ['pill', '🔍 Pill identifier', 'Identify a loose pill by the code printed on it — about 32,000 US pills.'],
   ['plantid', '📷 Identify a plant or mushroom', 'Take a photo: the offline AI names it from the plants and mushrooms of the area, marks the poisonous ones, and opens the guides about it.'],
   ['walk', '🥾 Routes: walk, bike, drive', 'From Cave Junction to 359 Oregon and N. California cities: walking days, bicycle riding hours and normal driving times, with turn-by-turn directions and GPS tracks.']];
+// the map is there when its files are: on the drive the Library Assistant says so, on the website the list of files does
+const hasMap = () => mode === 'drive' ? !!server.map : !!(manifest && manifest.offline && manifest.offline.map);
 function renderKit() {
   const P = guidePaths();
   $('kitgrid').innerHTML = (mode === 'drive' ? PHOTO_CARD : '') +   // family photos: only where the library program runs
-    TOOL_CARDS.filter(([k]) => P[k]).map(([k, t, d]) => `<a class="tool" href="${P[k]}"><b>${t}</b><span>${d}</span></a>`).join('');
+    TOOL_CARDS.filter(([k]) => P[k] && (k !== 'map' || hasMap())).map(([k, t, d]) => `<a class="tool" href="${P[k]}"><b>${t}</b><span>${d}</span></a>`).join('');
 }
 const GUIDE_CARDS = { // guide cards, by shelf (same groups and order as SHELVES and docs/START-HERE.md)
   start: [['sos', '🆘 Emergency finder', 'Something happening right now? Bleeding, not breathing, snakebite, a baby coming, fire, fallout — straight to the right page.'],
@@ -784,12 +892,12 @@ const PAGES = { sos: 'EMERGENCY-FINDER', az: 'SUBJECT-INDEX', iv: 'ILLINOIS-VALL
   expect: 'WHAT-TO-EXPECT-GUIDE', wildfire: 'WILDFIRE-GUIDE', nuke: 'NUCLEAR-FALLOUT-GUIDE', emp: 'EMP-GUIDE',
   stories: 'STORIES-GAMES-GUIDE',
   device: 'START-ON-ANY-DEVICE', ammocan: 'AMMO-CAN-COMPUTER-GUIDE', get: 'GET-THE-LIBRARY', all: 'README',
-  calc: 'CALCULATOR', sci: 'CALCULATOR', conv: 'UNIT-CONVERTER', morse: 'MORSE-CODE', pill: 'PILL-IDENTIFIER', walk: 'WALKING-ROUTES', plantid: 'PLANT-ID' };
+  calc: 'CALCULATOR', sci: 'CALCULATOR', conv: 'UNIT-CONVERTER', morse: 'MORSE-CODE', pill: 'PILL-IDENTIFIER', walk: 'WALKING-ROUTES', plantid: 'PLANT-ID', map: 'MAP' };
 const DRIVE_AT = { sos: 'EMERGENCY-FINDER.html', az: 'SUBJECT-INDEX.html', med: 'Medical/READ-ME-FIRST.html', radio: 'Manuals/Radio-Communications/RADIO-GUIDE.html',
   device: 'START-ON-ANY-DEVICE.html', ammocan: 'AMMO-CAN-COMPUTER-GUIDE.html', get: null, all: 'README.html',
-  calc: 'CALCULATOR.html#basic', sci: 'CALCULATOR.html#sci', conv: 'UNIT-CONVERTER.html', morse: 'MORSE-CODE.html', plantid: 'PLANT-ID.html',
+  calc: 'CALCULATOR.html#basic', sci: 'CALCULATOR.html#sci', conv: 'UNIT-CONVERTER.html', morse: 'MORSE-CODE.html', plantid: 'PLANT-ID.html', map: 'Map/MAP.html',
   pill: 'Medical/Pill-Identifier/PILL-IDENTIFIER.html', walk: 'Southern-Oregon/Walking-Routes/WALKING-ROUTES.html' };
-const WEB_AT = { all: null, calc: 'pages/CALCULATOR.html#basic', sci: 'pages/CALCULATOR.html#sci',
+const WEB_AT = { all: null, calc: 'pages/CALCULATOR.html#basic', sci: 'pages/CALCULATOR.html#sci', map: 'tools/map/MAP.html',
   pill: 'tools/pill-identifier/PILL-IDENTIFIER.html', walk: 'tools/walking-routes/WALKING-ROUTES.html' };
 let pathCache = null;
 function guidePaths() {

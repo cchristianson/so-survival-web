@@ -1,61 +1,46 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>💾 Get the Whole Library on a USB Drive</title><style>:root{--bg:#0f1420;--card:#171f2e;--ink:#e7ecf3;--muted:#9fb0c3;--accent:#4fd1c5;--accent2:#f6ad55;--line:#273246;--code:#0b0f17}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--code:#f1f5f9}}:root[data-theme=light]{--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--code:#f1f5f9}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,Segoe UI,Roboto,Arial,sans-serif}.wrap{max-width:900px;margin:0 auto;padding:28px 20px 80px}h1{font-size:28px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}h2{font-size:22px;border-bottom:2px solid var(--line);padding-bottom:6px;margin-top:30px}h3{font-size:17px;color:var(--accent)}h4{font-size:15px;color:var(--accent2)}a{color:var(--accent)}code{background:var(--code);padding:2px 6px;border-radius:6px;font-family:Consolas,monospace;font-size:14px}pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow-x:auto}pre code{background:none;padding:0}table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}th{background:rgba(127,127,127,.12)}blockquote{border-left:4px solid var(--accent);background:rgba(79,209,197,.08);padding:10px 16px;margin:16px 0;border-radius:0 10px 10px 0}@media(max-width:600px){.wrap{padding:16px 14px 80px}.topnav{margin:-16px -14px 6px;padding:8px 14px 7px}ul,ol{padding-left:20px}blockquote{padding:8px 12px 8px 12px;border-left-width:3px}blockquote ul,blockquote ol{padding-left:18px}h1{font-size:24px;line-height:1.25}h2{font-size:20px;margin-top:26px}h3{font-size:16.5px}table{font-size:14px}th,td{padding:7px 8px}.toc{padding:8px 12px}.toc ol{padding-left:20px}.totop{padding:6px 11px;font-size:13px}li{margin:3px 0}}hr{border:none;border-top:1px solid var(--line);margin:26px 0}ul,ol{padding-left:26px}table{display:block;overflow-x:auto;max-width:100%}code,a{overflow-wrap:anywhere}img{max-width:100%}.wrap p>img{display:block;margin:14px auto 6px;max-width:min(100%,640px);height:auto;border-radius:10px;background:#fff;border:1px solid var(--line)}.wrap p>img+em{display:block;text-align:center;font-size:14px;color:var(--muted);margin-bottom:6px}a.lib{text-decoration-style:dotted}a.lib::before{content:"📖 ";text-decoration:none}.deeper{font-size:15px;opacity:.95}a.wiki::before{content:"📷 "}a.lib.pic::before{content:"🖼️ "}a.lib::before,a.wiki::before{display:inline-block;margin-right:3px}html{scroll-behavior:smooth}h2{scroll-margin-top:12px}.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 16px;margin:18px 0 8px}.toc summary{cursor:pointer;font-weight:600;color:var(--accent);font-size:17px}.toc ol{margin:8px 0 4px;padding-left:26px;columns:2 260px;column-gap:28px}.toc li{margin:4px 0;break-inside:avoid}.toc a{text-decoration:none}.toc a:hover{text-decoration:underline}.totop{position:fixed;right:14px;bottom:max(14px,env(safe-area-inset-bottom));background:var(--card);color:var(--accent);border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:14px;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:5}@media print{.totop{display:none}.toc details{display:block}}.topnav{font-size:14.5px;margin:-28px -20px 4px;padding:10px 20px 8px;color:var(--muted);position:sticky;top:0;z-index:4;background:var(--bg);border-bottom:1px solid var(--line)}h1,h2,h3,h4,[id]{scroll-margin-top:72px}.guidenav{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:36px 0 0;border-top:1px solid var(--line);padding-top:16px}.guidenav a{display:block;height:100%;box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;text-decoration:none;font-weight:600;line-height:1.3;font-size:15px}.guidenav small{display:block;font-weight:400;color:var(--muted);font-size:13px;margin-bottom:2px}.guidenav .up{text-align:center}.guidenav .next{text-align:right}@media(max-width:560px){.guidenav{grid-template-columns:1fr 1fr}.guidenav .up{grid-column:1/-1;order:3}}.topnav a{text-decoration:none;white-space:nowrap}h1 .h1e{-webkit-text-fill-color:initial;color:var(--ink);background:none}.azbar{display:flex;flex-wrap:wrap;gap:4px;background:var(--bg);padding:8px 0;margin:10px 0;border-bottom:1px solid var(--line)}.azbar a{display:inline-block;min-width:30px;text-align:center;padding:4px 6px;border:1px solid var(--line);border-radius:8px;background:var(--card);text-decoration:none;font-weight:600}</style><style>:root{color-scheme:dark}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){color-scheme:light}}:root[data-theme=light]{color-scheme:light}.themebtn{font:inherit;font-size:14px;line-height:1.3;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:3px 11px;cursor:pointer;white-space:nowrap;text-decoration:none}.themefloat{position:absolute;top:10px;right:12px;z-index:9}@media print{.themebtn{display:none}}</style><script>/* so-theme: light or dark screen */(function(){var K="so-theme",d=document.documentElement,L={auto:"\uD83C\uDF13 Auto",dark:"\uD83C\uDF19 Dark",light:"\u2600\uFE0F Light"},N={auto:"dark",dark:"light",light:"auto"},cur="auto";try{cur=localStorage.getItem(K)||"auto"}catch(e){}function a(){if(cur==="dark"||cur==="light")d.setAttribute("data-theme",cur);else d.removeAttribute("data-theme");var b=document.querySelectorAll(".themebtn");for(var i=0;i<b.length;i++){b[i].textContent=L[cur]||L.auto;b[i].title="Screen: "+cur+" - tap to change (Auto follows this device)"}}a();window.soTheme=function(){cur=N[cur]||"dark";try{localStorage.setItem(K,cur)}catch(e){}a()};function btn(){var b=document.createElement("button");b.type="button";b.className="themebtn";return b}document.addEventListener("DOMContentLoaded",function(){if(!document.querySelector(".themebtn")){var n=document.querySelector(".topnav"),b=btn();if(n){n.appendChild(document.createTextNode(" \u00B7 "));n.appendChild(b)}else{b.className+=" themefloat";document.body.appendChild(b)}}var all=document.querySelectorAll(".themebtn");for(var i=0;i<all.length;i++)all[i].onclick=window.soTheme;a()})})();</script><style>.backbtn{font-weight:700;text-decoration:none;white-space:nowrap}@media print{.backbtn{display:none}}@media(max-width:600px){.topnav{font-size:14px;line-height:1.8}.topnav a{white-space:nowrap}.topnav .lbl{display:none}.topnav .themebtn{font-size:13px;padding:2px 9px}}</style><script>/* so-back: a Back button on every page after the first */(function(){function add(){var n=document.querySelector(".topnav");if(!n||n.querySelector(".backbtn"))return;var f=n.querySelector("a"),a=document.createElement("a");a.className="backbtn";a.href=f?f.href:"#";a.textContent="\u2190 Back";a.title="Back to the page you came from";a.onclick=function(e){if(history.length>1&&document.referrer){e.preventDefault();history.back()}};n.insertBefore(document.createTextNode(" \u00B7 "),n.firstChild);n.insertBefore(a,n.firstChild)}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",add);else add();document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a[href^=\"#\"]"):null;if(!a||e.defaultPrevented)return;var id=decodeURIComponent(a.getAttribute("href").slice(1)),t=id?document.getElementById(id):null;if(!t)return;e.preventDefault();t.scrollIntoView();try{history.replaceState(history.state,"","#"+id)}catch(x){}});if(window.matchMedia&&matchMedia("(display-mode: standalone)").matches||navigator.standalone)document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a[href]"):null;if(a&&!a.target&&/\.pdf(?![a-z0-9])/i.test(a.getAttribute("href")))a.target="_blank"},true)})();</script></head><body><div class="wrap"><p class="topnav"><a class="guide" href="../#tools">📘 Guides</a> › <a class="guide" href="../#tools:library">💾 Using this library</a> · <a class="guide" href="EMERGENCY-FINDER.html">🆘<span class="lbl"> Emergency</span></a> · <a class="guide" href="SUBJECT-INDEX.html">📇<span class="lbl"> Index A–Z</span></a> · <a href="../#ask">💬<span class="lbl"> Ask</span></a></p>
 <h1 id="-get-the-whole-library-on-a-usb-drive"><span class="h1e">💾</span> Get the Whole Library on a USB Drive</h1>
-<p>The <strong>full library</strong> has every book, all of Wikipedia, maps that work with no signal, and an AI that needs no internet. It's too big for a website, so you put it on a <strong>USB drive, external hard drive or SD card</strong> while the internet still works. After that, it works with the power and phones out.</p>
-<p>No commands to type: you download a small kit, double-click one file, pick your drive, and press <strong>Start</strong>.</p>
+<p>The full library (every book, Wikipedia, offline maps and an offline AI) is too big for a website. You copy it onto a <strong>USB drive</strong> while you still have internet. After that it works with no internet at all.</p>
 <blockquote>
 <h3 id="️-what-you-need">⚠️ What you need</h3>
 <ul>
-<li><strong>A computer:</strong> Windows, Mac or Linux. (Phones and tablets can <em>use</em> the drive afterwards, but can't make it.)</li>
-<li><strong>A drive:</strong> any size works; the installer fills what fits. See <a href="#how-big-a-drive">How big a drive?</a></li>
-<li><strong>Internet and time:</strong> a few hours, or overnight for everything. Keep the computer plugged in and awake while it runs.</li>
-<li><strong>You can stop any time.</strong> Press <strong>Stop for now</strong>, close it, even turn the computer off: nothing that has downloaded is lost. Run it again, pick the same drive and press <strong>Continue</strong>. It picks up where it left off (a big file carries on part-way through), and fetches anything that failed.</li>
-<li>The installer only <strong>adds</strong> files. It never erases your drive.</li>
+<li><strong>A Windows, Mac or Linux computer.</strong> (Phones can use the drive later, but can't make it.)</li>
+<li><strong>A USB drive.</strong> Any size works; see <a href="#how-big-a-drive">How big a drive?</a></li>
+<li><strong>Internet and a few hours.</strong> Overnight for everything. Keep the computer plugged in.</li>
 </ul>
+<p>You can stop any time and carry on later. Nothing is lost, and nothing on your drive is erased.</p>
 </blockquote>
 <hr />
-<nav class="toc" id="contents" aria-label="Contents"><details open><summary>📑 Contents</summary><ol><li><a href="#step-1-download-the-kit">📥 Step 1: Download the kit</a></li><li><a href="#step-2-unzip-it-and-start-the-installer">🧰 Step 2: Unzip it and start the installer</a></li><li><a href="#step-3-pick-the-drive-and-press-start">✅ Step 3: Pick the drive and press Start</a></li><li><a href="#how-big-a-drive">📏 How big a drive?</a></li><li><a href="#make-the-drive-work-on-every-device">🔌 Make the drive work on every device</a></li><li><a href="#using-copying-and-updating-it">🔁 Using, copying and updating it</a></li><li><a href="#if-something-goes-wrong">❓ If something goes wrong</a></li></ol></details></nav>
+<nav class="toc" id="contents" aria-label="Contents"><details open><summary>📑 Contents</summary><ol><li><a href="#step-1-download-the-kit">📥 Step 1: Download the kit</a></li><li><a href="#step-2-unzip-it-and-start-the-installer">🧰 Step 2: Unzip it and start the installer</a></li><li><a href="#step-3-pick-your-drive-and-press-start">✅ Step 3: Pick your drive and press Start</a></li><li><a href="#how-big-a-drive">📏 How big a drive?</a></li><li><a href="#make-the-drive-work-everywhere">🔌 Make the drive work everywhere</a></li><li><a href="#using-copying-and-updating-it">🔁 Using, copying and updating it</a></li><li><a href="#if-something-goes-wrong">❓ If something goes wrong</a></li></ol></details></nav>
 <h2 id="step-1-download-the-kit">📥 Step 1: Download the kit</h2>
 <p><strong><a href="../download/ark-illinois-valley-kit.zip">⬇️ Download the installer kit (ark-illinois-valley-kit.zip)</a></strong></p>
-<p>One zip file, about 40 MB. The same kit works on Windows, Mac and Linux.</p>
-<p>🧰 <strong>Building the ARK Vault</strong> (the ammo-can computer)? This is the same kit. Put the library on a <strong>USB drive</strong> (a small SSD, a USB flash drive, or a microSD card in a USB card reader): the Pi's own memory card is a <strong>second, small card</strong> that holds only its system, and the kit's <strong>Finish a Raspberry Pi memory card</strong> button prepares it. See the <a class="guide" href="AMMO-CAN-COMPUTER-GUIDE.html">ARK Vault guide</a>.</p>
+<p>One zip file, about 40 MB. It works on Windows, Mac and Linux.</p>
+<p>🧰 Building the <strong>ARK Vault</strong>? Use this same kit. See the <a class="guide" href="AMMO-CAN-COMPUTER-GUIDE.html">ARK Vault guide</a>.</p>
 <hr />
 <h2 id="step-2-unzip-it-and-start-the-installer">🧰 Step 2: Unzip it and start the installer</h2>
-<p>When you open the unzipped folder you'll see <strong>READ-ME-FIRST</strong>, three <strong>INSTALL</strong> files, and a <strong>files</strong> folder (you don't need to open that one).</p>
 <h3 id="windows">Windows</h3>
 <ol type="1">
-<li>Open your <strong>Downloads</strong> folder.</li>
-<li><strong>Right-click <code>ark-illinois-valley-kit</code></strong> → <strong>Extract All…</strong> → <strong>Extract</strong>. A new folder opens.</li>
-<li><strong>Double-click <code>INSTALL-Windows</code>.</strong></li>
-<li>If a blue box says <em>Windows protected your PC</em>, click <strong>More info</strong>, then <strong>Run anyway</strong>. If it asks <em>Do you want to run this file?</em>, click <strong>Run</strong>.</li>
-<li>A black window opens. <strong>Leave it open</strong> (you can minimize it). The installer page opens in your web browser.</li>
+<li>In your <strong>Downloads</strong> folder, <strong>right-click <code>ark-illinois-valley-kit</code></strong> → <strong>Extract All</strong> → <strong>Extract</strong>.</li>
+<li>In the folder that opens, <strong>double-click <code>INSTALL-Windows</code></strong>.</li>
+<li>If a blue box says <em>Windows protected your PC</em>, click <strong>More info</strong>, then <strong>Run anyway</strong>.</li>
+<li>A black window opens (leave it open), then a page in your web browser.</li>
 </ol>
 <h3 id="mac">Mac</h3>
 <ol type="1">
-<li><p>Open your <strong>Downloads</strong> folder. Safari usually unzips the kit for you. If you see <code>ark-illinois-valley-kit.zip</code> instead, double-click it.</p></li>
-<li><p>Open the <strong>ark-illinois-valley-kit</strong> folder and <strong>double-click <code>INSTALL-Mac</code>.</strong></p></li>
-<li><p>The first time, your Mac will say it can't open or verify it. Click <strong>Done</strong>, then:</p>
-<ol type="1">
-<li>Open the <strong>Apple menu → System Settings → Privacy &amp; Security</strong>.</li>
-<li>Scroll down to the note about <code>INSTALL-Mac</code> and click <strong>Open Anyway</strong>. Type your Mac password if it asks.</li>
+<li>In your <strong>Downloads</strong> folder, open the <strong>ark-illinois-valley-kit</strong> folder (double-click the zip first if needed).</li>
+<li><strong>Double-click <code>INSTALL-Mac</code>.</strong></li>
+<li>If the Mac says it can't open it: click <strong>Done</strong>, go to <strong>Apple menu → System Settings → Privacy &amp; Security</strong>, scroll down and click <strong>Open Anyway</strong>.</li>
+<li>A Terminal window opens (leave it open), then a page in your web browser.</li>
 </ol>
-<p>On older Macs: <strong>right-click <code>INSTALL-Mac</code> → Open → Open</strong> instead.</p></li>
-<li><p>A Terminal window opens. <strong>Leave it open.</strong> The installer page opens in your web browser.</p></li>
-</ol>
-<h3 id="linux-and-raspberry-pi">Linux and Raspberry Pi</h3>
-<ol type="1">
-<li>Unzip the kit (right-click → <strong>Extract Here</strong>).</li>
-<li>Open a terminal in the unzipped folder, type this and press Enter:
-<pre><code>bash INSTALL-Linux.sh</code></pre></li>
-<li>The installer page opens in your web browser.</li>
-</ol>
+<h3 id="linux">Linux</h3>
+<p>Unzip the kit, open a terminal in that folder, type <code>bash INSTALL-Linux.sh</code> and press Enter.</p>
 <hr />
-<h2 id="step-3-pick-the-drive-and-press-start">✅ Step 3: Pick the drive and press Start</h2>
+<h2 id="step-3-pick-your-drive-and-press-start">✅ Step 3: Pick your drive and press Start</h2>
 <ol type="1">
-<li><strong>Plug in your drive.</strong> Each drive is listed with its free space. Click yours. (Not listed? Click <strong>I plugged in a drive - look again</strong>.)</li>
-<li><strong>Check what goes on it.</strong> It has already ticked a set that <strong>fits your drive</strong>. You can change any tick; the bar at the bottom shows if it still fits. Not sure? Keep what it picked.</li>
-<li><strong>Press Start the download.</strong> A bar shows how much is done and about how long is left.</li>
-<li>When it says <strong>The library is on your drive</strong>, click <strong>Open the library</strong> to try it.</li>
-<li><strong>Eject the drive</strong> before you unplug it. Windows: the USB icon by the clock. Mac: click ⏏ next to the drive in Finder.</li>
+<li><strong>Plug in your drive</strong> and click it in the list.</li>
+<li>It has already picked what <strong>fits</strong>. Leave it, or change the ticks.</li>
+<li>Press <strong>Start the download</strong> and leave the computer on.</li>
+<li>When it says <strong>The library is on your drive</strong>, you're done. <strong>Eject the drive</strong> before unplugging it.</li>
 </ol>
 <hr />
 <h2 id="how-big-a-drive">📏 How big a drive?</h2>
@@ -69,7 +54,7 @@
 <tbody>
 <tr class="odd">
 <td><strong>16 GB</strong></td>
-<td>All the guides and local books, the Library Assistant with a small AI, medical encyclopedias, maps of Oregon</td>
+<td>All the guides and local books, a small AI, the medical encyclopedia, maps of Oregon</td>
 </tr>
 <tr class="even">
 <td><strong>32 GB</strong></td>
@@ -77,11 +62,11 @@
 </tr>
 <tr class="odd">
 <td><strong>64 GB</strong></td>
-<td>Adds the repair encyclopedias, the bigger AI and maps of the whole USA</td>
+<td>Adds the repair encyclopedias, a bigger AI and maps of the whole USA</td>
 </tr>
 <tr class="even">
 <td><strong>128 GB</strong></td>
-<td>Adds all of Wikipedia's text (no pictures)</td>
+<td>Adds all of Wikipedia (words only)</td>
 </tr>
 <tr class="odd">
 <td><strong>256 GB or more</strong></td>
@@ -89,104 +74,70 @@
 </tr>
 </tbody>
 </table>
-<p>USB 3 flash drives and small external SSDs both work. An SSD is faster and tougher.</p>
-<p><strong>About the map viewer for computers:</strong> if you tick it, the installer leaves part of the drive <strong>empty on purpose</strong> (about 30 GB for maps of the whole USA). The viewer fills that space the first time you open it. Phones don't need it.</p>
+<p>A small external SSD is faster and tougher than a flash drive, but both work.</p>
+<p>If you tick the <strong>map viewer for computers</strong>, the installer leaves some space empty on purpose (about 30 GB for the whole USA). The viewer uses it the first time you open it.</p>
 <hr />
-<h2 id="make-the-drive-work-on-every-device">🔌 Make the drive work on every device</h2>
-<p>For a drive you'll plug into different computers and tablets:</p>
-<ol type="1">
-<li><strong>Keep "Works on every kind of device" ticked.</strong> The installer ticks it for you on USB and external drives.</li>
-<li><strong>Use a drive formatted exFAT.</strong> The installer shows each drive's format and warns you if it isn't exFAT. Most new drives over 32 GB already are.</li>
-</ol>
-<table>
-<thead>
-<tr class="header">
-<th>Format</th>
-<th>Opens on</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>exFAT</strong> ✅</td>
-<td>Windows, Mac, Linux, Raspberry Pi, most Android tablets</td>
-</tr>
-<tr class="even">
-<td><strong>FAT32</strong> ⚠️</td>
-<td>Everything, but no file over 4 GB, so no Wikipedia and no large AI</td>
-</tr>
-<tr class="odd">
-<td><strong>NTFS</strong> ⚠️</td>
-<td>Windows and Linux. Macs can only read it; most Android tablets can't open it</td>
-</tr>
-<tr class="even">
-<td><strong>Mac formats</strong> (APFS, Mac OS Extended) ❌</td>
-<td>Macs only</td>
-</tr>
-</tbody>
-</table>
-<p><strong>To switch a drive to exFAT.</strong> This <strong>erases everything on the drive</strong>, so copy off anything you want to keep first.</p>
+<h2 id="make-the-drive-work-everywhere">🔌 Make the drive work everywhere</h2>
+<p>Use a drive formatted <strong>exFAT</strong>. It opens on Windows, Mac, Linux and most tablets. Most new drives already are; the installer warns you if yours isn't.</p>
+<p><strong>To change a drive to exFAT</strong> (this <strong>erases</strong> it, so copy off anything you want first):</p>
 <ul>
-<li><strong>Windows:</strong> File Explorer → <strong>This PC</strong> → right-click the drive → <strong>Format…</strong> → File system: <strong>exFAT</strong> → <strong>Start</strong>.</li>
-<li><strong>Mac:</strong> open <strong>Disk Utility</strong> → <strong>View → Show All Devices</strong> → click the drive (the top line for it) → <strong>Erase</strong> → Format: <strong>ExFAT</strong>, Scheme: <strong>Master Boot Record</strong> → <strong>Erase</strong>.</li>
+<li><strong>Windows:</strong> <strong>This PC</strong> → right-click the drive → <strong>Format</strong> → File system <strong>exFAT</strong> → <strong>Start</strong>.</li>
+<li><strong>Mac:</strong> <strong>Disk Utility</strong> → <strong>View → Show All Devices</strong> → click the drive → <strong>Erase</strong> → Format <strong>ExFAT</strong>, Scheme <strong>Master Boot Record</strong> → <strong>Erase</strong>.</li>
 </ul>
 <hr />
 <h2 id="using-copying-and-updating-it">🔁 Using, copying and updating it</h2>
 <ul>
-<li><strong>Use it:</strong> plug in the drive and open <strong><code>START-HERE.html</code></strong>. For the search box and offline AI, double-click <strong><code>START-Windows</code></strong> or <strong><code>START-Mac</code></strong>. Every kind of device is covered in <a class="guide" href="START-ON-ANY-DEVICE.html">Start on any device</a>.</li>
-<li><strong>Copy it for a neighbor:</strong> copy the whole <strong><code>OfflineLibrary</code></strong> folder to their drive. No internet needed.</li>
-<li><strong>Update it:</strong> run the installer again and pick the same drive. It only downloads what's new or missing. When there's a newer edition of Wikipedia or another big reference file, it swaps it in only if the drive has room for both while it downloads, then deletes the old one. If there isn't room, it keeps the one you have.</li>
+<li><strong>Use it:</strong> open <strong><code>START-HERE.html</code></strong> on the drive, or double-click <strong><code>START-Windows</code></strong> / <strong><code>START-Mac</code></strong> for search and the AI. See <a class="guide" href="START-ON-ANY-DEVICE.html">Start on any device</a>.</li>
+<li><strong>Copy it for someone:</strong> copy the whole <strong><code>OfflineLibrary</code></strong> folder to their drive.</li>
+<li><strong>Update it:</strong> run the installer again and pick the same drive. It only adds what's new.</li>
 </ul>
 <hr />
 <h2 id="if-something-goes-wrong">❓ If something goes wrong</h2>
 <table>
 <thead>
 <tr class="header">
-<th>What happens</th>
-<th>What to do</th>
+<th>Problem</th>
+<th>Fix</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>The browser warns about the download</td>
-<td>Choose <strong>Keep</strong> (in Edge or Chrome: click <strong>⋯</strong> → <strong>Keep</strong>)</td>
+<td>Choose <strong>Keep</strong></td>
 </tr>
 <tr class="even">
 <td>Nothing happens, or "files are missing"</td>
-<td>You opened it inside the zip. Unzip first (Step 2), then use the unzipped folder</td>
+<td>You opened it inside the zip. Unzip it first (Step 2)</td>
 </tr>
 <tr class="odd">
-<td>Mac won't open <code>INSTALL-Mac</code></td>
-<td><strong>System Settings → Privacy &amp; Security → Open Anyway</strong> (Step 2)</td>
-</tr>
-<tr class="even">
 <td>The browser page doesn't open</td>
-<td>The black (or Terminal) window shows a web address. Type it into your browser. If that fails, the installer asks its questions in that window instead</td>
+<td>Type the web address shown in the black (or Terminal) window into your browser</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>My drive isn't listed</td>
-<td>Wait a few seconds and click <strong>look again</strong>. Or open <strong>Use a different folder instead</strong> and type the drive, like <code>E:\</code></td>
+<td>Wait a few seconds and click <strong>look again</strong></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>It stopped partway</td>
-<td>Run the installer again, pick the same drive, press <strong>Continue</strong></td>
-</tr>
-<tr class="odd">
-<td>It says some items are <strong>missing</strong></td>
-<td>A few websites didn't answer. Everything else works. Press <strong>Try the missing ones again</strong>, or run the installer again later. Click <strong>Show what's missing</strong> to see the list</td>
+<td>Run it again, pick the same drive, press <strong>Continue</strong></td>
 </tr>
 <tr class="even">
+<td>Some items are <strong>missing</strong></td>
+<td>A few websites didn't answer. Press <strong>Try the missing ones again</strong>, or run it again later</td>
+</tr>
+<tr class="odd">
 <td>It says <strong>too big</strong></td>
-<td>Untick something (Wikipedia with pictures and US maps are the biggest), or click <strong>Fill it automatically again</strong></td>
-</tr>
-<tr class="odd">
-<td>Lots of space still <strong>free when it's done</strong></td>
-<td>That's the map viewer's space (see <a href="#how-big-a-drive">How big a drive?</a>)</td>
+<td>Untick something (Wikipedia with pictures and US maps are the biggest)</td>
 </tr>
 <tr class="even">
-<td>A drive won't open on a Mac or tablet</td>
-<td>Check its format: exFAT opens everywhere (see above)</td>
+<td>Lots of space still free when it's done</td>
+<td>That's the map viewer's space (see above)</td>
+</tr>
+<tr class="odd">
+<td>A Mac or tablet won't open the drive</td>
+<td>The drive needs to be exFAT (see above)</td>
 </tr>
 </tbody>
 </table>
-<p>Still stuck? Take a photo of the text window and show it to whoever is helping you.</p>
+<p>Still stuck? Take a photo of the black window and show it to someone helping you.</p>
 <nav class="guidenav"><div class="prev"><a class="guide" href="AMMO-CAN-COMPUTER-GUIDE.html"><small>← Previous</small>ARK Vault (ammo-can computer)</a></div><div class="up"><a class="guide" href="../#tools:library"><small>All guides in</small>💾 Using this library</a></div><div class="next"><a class="guide" href="HOW-TO-RUN-OFFLINE-AI.html"><small>Next →</small>The offline AI</a></div></nav></div><a class="totop" href="#contents" aria-label="Back to contents">↑ Contents</a></body></html>

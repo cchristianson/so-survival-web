@@ -1,0 +1,149 @@
+{
+ "id": "illinois-valley",
+ "name": "Illinois Valley",
+ "bbox": [
+  -124.05,
+  41.99,
+  -123.2,
+  42.75
+ ],
+ "center": [
+  -123.648,
+  42.163,
+  12
+ ],
+ "streets": "illinois-valley-streets.pmtiles",
+ "built": "November 2026",
+ "credits": [
+  "© OpenStreetMap contributors (ODbL)",
+  "Protomaps",
+  "Heights: Mapterhorn (USGS 3DEP and others)",
+  "Tax lots: Josephine County Assessor",
+  "Land ownership: Bureau of Land Management, Oregon State Office",
+  "Water: USGS National Hydrography Dataset",
+  "Wells: Oregon Water Resources Department well reports",
+  "Dams: Oregon Water Resources Department",
+  "Soils: USDA NRCS Soil Survey, from Josephine County GIS",
+  "Wild food sightings: iNaturalist (research grade, open positions)",
+  "Fish streams: Oregon Department of Fish and Wildlife",
+  "Mines and quarries: Oregon Department of Geology and Mineral Industries (MILO)",
+  "Fire history: National Interagency Fire Center",
+  "Flood zones: FEMA National Flood Hazard Layer",
+  "Landslides: Oregon DOGAMI (SLIDO)",
+  "Places: OpenStreetMap contributors",
+  "Fire stations, evacuation points, lifeline places, bridges, escape routes: Josephine County GIS",
+  "Recreation sites: USDA Forest Service",
+  "Routes: OpenStreetMap contributors, OSRM",
+  "Section grid: BLM Public Land Survey System"
+ ],
+ "terrain": {
+  "file": "illinois-valley-terrain.pmtiles",
+  "maxzoom": 12
+ },
+ "property": {
+  "file": "illinois-valley-property.pmtiles",
+  "parcels": true,
+  "ownership": true,
+  "owners": [
+   "BLM",
+   "LG",
+   "NPS",
+   "PV",
+   "ST",
+   "STF",
+   "STL",
+   "STP",
+   "UND",
+   "USFS",
+   "WATER"
+  ]
+ },
+ "places": "illinois-valley-places.json",
+ "overlays": [
+  {
+   "group": "water",
+   "file": "illinois-valley-water.pmtiles",
+   "layers": [
+    "springs",
+    "streams",
+    "wells",
+    "dams"
+   ],
+   "maxzoom": 13
+  },
+  {
+   "group": "food",
+   "file": "illinois-valley-food.pmtiles",
+   "layers": [
+    "soils",
+    "wildfood",
+    "fish"
+   ],
+   "maxzoom": 13
+  },
+  {
+   "group": "materials",
+   "file": "illinois-valley-materials.pmtiles",
+   "layers": [
+    "mines"
+   ],
+   "maxzoom": 13
+  },
+  {
+   "group": "hazards",
+   "file": "illinois-valley-hazards.pmtiles",
+   "layers": [
+    "fires",
+    "flood",
+    "landslides"
+   ],
+   "maxzoom": 13
+  },
+  {
+   "group": "places",
+   "file": "illinois-valley-places.pmtiles",
+   "layers": [
+    "places"
+   ],
+   "maxzoom": 13
+  },
+  {
+   "group": "travel",
+   "file": "illinois-valley-travel.pmtiles",
+   "layers": [
+    "routes",
+    "sections",
+    "section_labels",
+    "townships",
+    "escape"
+   ],
+   "maxzoom": 13
+  }
+ ],
+ "wide": {
+  "label": "Oregon and Northern California",
+  "bbox": [
+   -124.7,
+   37.8,
+   -116.4,
+   46.3
+  ],
+  "streets": "https://build.protomaps.com/{date}.pmtiles",
+  "terrain": "https://download.mapterhorn.com/planet.pmtiles",
+  "terrain_maxzoom": 12,
+  "mb": 2444
+ },
+ "files": {
+  "illinois-valley-streets.pmtiles": 13869867,
+  "illinois-valley-terrain.pmtiles": 29417466,
+  "illinois-valley-property.pmtiles": 7818714,
+  "illinois-valley-places.json": 219931,
+  "illinois-valley-water.pmtiles": 4611941,
+  "illinois-valley-food.pmtiles": 1914239,
+  "illinois-valley-materials.pmtiles": 270698,
+  "illinois-valley-hazards.pmtiles": 1030941,
+  "illinois-valley-places.pmtiles": 98264,
+  "illinois-valley-travel.pmtiles": 849792
+ },
+ "v": "50f7b8c77360"
+}

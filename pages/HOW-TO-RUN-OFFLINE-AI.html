@@ -1,34 +1,31 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>🤖 How to Run the Offline AI</title><style>:root{--bg:#0f1420;--card:#171f2e;--ink:#e7ecf3;--muted:#9fb0c3;--accent:#4fd1c5;--accent2:#f6ad55;--line:#273246;--code:#0b0f17}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--code:#f1f5f9}}:root[data-theme=light]{--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--code:#f1f5f9}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,Segoe UI,Roboto,Arial,sans-serif}.wrap{max-width:900px;margin:0 auto;padding:28px 20px 80px}h1{font-size:28px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}h2{font-size:22px;border-bottom:2px solid var(--line);padding-bottom:6px;margin-top:30px}h3{font-size:17px;color:var(--accent)}h4{font-size:15px;color:var(--accent2)}a{color:var(--accent)}code{background:var(--code);padding:2px 6px;border-radius:6px;font-family:Consolas,monospace;font-size:14px}pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow-x:auto}pre code{background:none;padding:0}table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}th{background:rgba(127,127,127,.12)}blockquote{border-left:4px solid var(--accent);background:rgba(79,209,197,.08);padding:10px 16px;margin:16px 0;border-radius:0 10px 10px 0}@media(max-width:600px){.wrap{padding:16px 14px 80px}.topnav{margin:-16px -14px 6px;padding:8px 14px 7px}ul,ol{padding-left:20px}blockquote{padding:8px 12px 8px 12px;border-left-width:3px}blockquote ul,blockquote ol{padding-left:18px}h1{font-size:24px;line-height:1.25}h2{font-size:20px;margin-top:26px}h3{font-size:16.5px}table{font-size:14px}th,td{padding:7px 8px}.toc{padding:8px 12px}.toc ol{padding-left:20px}.totop{padding:6px 11px;font-size:13px}li{margin:3px 0}}hr{border:none;border-top:1px solid var(--line);margin:26px 0}ul,ol{padding-left:26px}table{display:block;overflow-x:auto;max-width:100%}code,a{overflow-wrap:anywhere}img{max-width:100%}.wrap p>img{display:block;margin:14px auto 6px;max-width:min(100%,640px);height:auto;border-radius:10px;background:#fff;border:1px solid var(--line)}.wrap p>img+em{display:block;text-align:center;font-size:14px;color:var(--muted);margin-bottom:6px}a.lib{text-decoration-style:dotted}a.lib::before{content:"📖 ";text-decoration:none}.deeper{font-size:15px;opacity:.95}a.wiki::before{content:"📷 "}a.lib.pic::before{content:"🖼️ "}a.lib::before,a.wiki::before{display:inline-block;margin-right:3px}html{scroll-behavior:smooth}h2{scroll-margin-top:12px}.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 16px;margin:18px 0 8px}.toc summary{cursor:pointer;font-weight:600;color:var(--accent);font-size:17px}.toc ol{margin:8px 0 4px;padding-left:26px;columns:2 260px;column-gap:28px}.toc li{margin:4px 0;break-inside:avoid}.toc a{text-decoration:none}.toc a:hover{text-decoration:underline}.totop{position:fixed;right:14px;bottom:max(14px,env(safe-area-inset-bottom));background:var(--card);color:var(--accent);border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:14px;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:5}@media print{.totop{display:none}.toc details{display:block}}.topnav{font-size:14.5px;margin:-28px -20px 4px;padding:10px 20px 8px;color:var(--muted);position:sticky;top:0;z-index:4;background:var(--bg);border-bottom:1px solid var(--line)}h1,h2,h3,h4,[id]{scroll-margin-top:72px}.guidenav{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:36px 0 0;border-top:1px solid var(--line);padding-top:16px}.guidenav a{display:block;height:100%;box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;text-decoration:none;font-weight:600;line-height:1.3;font-size:15px}.guidenav small{display:block;font-weight:400;color:var(--muted);font-size:13px;margin-bottom:2px}.guidenav .up{text-align:center}.guidenav .next{text-align:right}@media(max-width:560px){.guidenav{grid-template-columns:1fr 1fr}.guidenav .up{grid-column:1/-1;order:3}}.topnav a{text-decoration:none;white-space:nowrap}h1 .h1e{-webkit-text-fill-color:initial;color:var(--ink);background:none}.azbar{display:flex;flex-wrap:wrap;gap:4px;background:var(--bg);padding:8px 0;margin:10px 0;border-bottom:1px solid var(--line)}.azbar a{display:inline-block;min-width:30px;text-align:center;padding:4px 6px;border:1px solid var(--line);border-radius:8px;background:var(--card);text-decoration:none;font-weight:600}</style><style>:root{color-scheme:dark}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){color-scheme:light}}:root[data-theme=light]{color-scheme:light}.themebtn{font:inherit;font-size:14px;line-height:1.3;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:3px 11px;cursor:pointer;white-space:nowrap;text-decoration:none}.themefloat{position:absolute;top:10px;right:12px;z-index:9}@media print{.themebtn{display:none}}</style><script>/* so-theme: light or dark screen */(function(){var K="so-theme",d=document.documentElement,L={auto:"\uD83C\uDF13 Auto",dark:"\uD83C\uDF19 Dark",light:"\u2600\uFE0F Light"},N={auto:"dark",dark:"light",light:"auto"},cur="auto";try{cur=localStorage.getItem(K)||"auto"}catch(e){}function a(){if(cur==="dark"||cur==="light")d.setAttribute("data-theme",cur);else d.removeAttribute("data-theme");var b=document.querySelectorAll(".themebtn");for(var i=0;i<b.length;i++){b[i].textContent=L[cur]||L.auto;b[i].title="Screen: "+cur+" - tap to change (Auto follows this device)"}}a();window.soTheme=function(){cur=N[cur]||"dark";try{localStorage.setItem(K,cur)}catch(e){}a()};function btn(){var b=document.createElement("button");b.type="button";b.className="themebtn";return b}document.addEventListener("DOMContentLoaded",function(){if(!document.querySelector(".themebtn")){var n=document.querySelector(".topnav"),b=btn();if(n){n.appendChild(document.createTextNode(" \u00B7 "));n.appendChild(b)}else{b.className+=" themefloat";document.body.appendChild(b)}}var all=document.querySelectorAll(".themebtn");for(var i=0;i<all.length;i++)all[i].onclick=window.soTheme;a()})})();</script><style>.backbtn{font-weight:700;text-decoration:none;white-space:nowrap}@media print{.backbtn{display:none}}@media(max-width:600px){.topnav{font-size:14px;line-height:1.8}.topnav a{white-space:nowrap}.topnav .lbl{display:none}.topnav .themebtn{font-size:13px;padding:2px 9px}}</style><script>/* so-back: a Back button on every page after the first */(function(){function add(){var n=document.querySelector(".topnav");if(!n||n.querySelector(".backbtn"))return;var f=n.querySelector("a"),a=document.createElement("a");a.className="backbtn";a.href=f?f.href:"#";a.textContent="\u2190 Back";a.title="Back to the page you came from";a.onclick=function(e){if(history.length>1&&document.referrer){e.preventDefault();history.back()}};n.insertBefore(document.createTextNode(" \u00B7 "),n.firstChild);n.insertBefore(a,n.firstChild)}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",add);else add();document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a[href^=\"#\"]"):null;if(!a||e.defaultPrevented)return;var id=decodeURIComponent(a.getAttribute("href").slice(1)),t=id?document.getElementById(id):null;if(!t)return;e.preventDefault();t.scrollIntoView();try{history.replaceState(history.state,"","#"+id)}catch(x){}});if(window.matchMedia&&matchMedia("(display-mode: standalone)").matches||navigator.standalone)document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a[href]"):null;if(a&&!a.target&&/\.pdf(?![a-z0-9])/i.test(a.getAttribute("href")))a.target="_blank"},true)})();</script></head><body><div class="wrap"><p class="topnav"><a class="guide" href="../#tools">📘 Guides</a> › <a class="guide" href="../#tools:library">💾 Using this library</a> · <a class="guide" href="EMERGENCY-FINDER.html">🆘<span class="lbl"> Emergency</span></a> · <a class="guide" href="SUBJECT-INDEX.html">📇<span class="lbl"> Index A–Z</span></a> · <a href="../#ask">💬<span class="lbl"> Ask</span></a></p>
 <h1 id="-how-to-run-the-offline-ai"><span class="h1e">🤖</span> How to Run the Offline AI</h1>
-<p>The <strong>AI-Offline</strong> folder on the drive holds an AI that runs on the computer itself, from an old laptop to a gaming PC. It needs <strong>no internet</strong>, and nothing you type leaves the computer.</p>
+<p>The library comes with an AI that runs on the computer itself. It needs <strong>no internet</strong>, and nothing you type leaves the computer.</p>
 <blockquote>
 <h3 id="-easiest-use-the-library-assistant">⭐ Easiest: use the Library Assistant</h3>
-<p>On a computer, double-click <strong>START-Windows</strong>, <strong>START-Mac</strong> or <strong>START-Linux.sh</strong> in the <strong>OfflineLibrary</strong> folder (Android and other devices: see <a class="guide" href="START-ON-ANY-DEVICE.html">Start on Any Device</a>). Your web browser opens one page that <strong>searches the whole library at once</strong>: every PDF manual and guide, the Illinois Valley pack, the walking routes, <strong>and</strong> Wikipedia, WikiMed, iFixit, Appropedia and the survival archives. Then the AI writes an answer with numbered sources you can click to open the exact page.</p>
+<p>Double-click <strong>START-Windows</strong>, <strong>START-Mac</strong> or <strong>START-Linux.sh</strong> in the <strong>OfflineLibrary</strong> folder (other devices: see <a class="guide" href="START-ON-ANY-DEVICE.html">Start on Any Device</a>). Type a question. It searches every book, guide and encyclopedia on the drive, and the AI writes an answer with links to the exact pages.</p>
 <ul>
-<li><strong>The AI size is picked for you:</strong> <strong>Quick</strong> (Qwen 2.5 1.5B) on phones, tablets and older laptops, <strong>Standard</strong> (Llama 3.2 3B) on most laptops. It times a test answer and steps down if the device is too slow. To change it, use <strong>⚙️ Settings</strong>: <strong>Off</strong> (search only), <strong>Quick</strong>, <strong>Standard</strong>, <strong>Smart</strong> (8B, about 3× slower) or <strong>Graphics card</strong> (Qwen 7B, 6 GB+ card only).</li>
-<li>Search results appear in a second or two; the written answer takes <strong>30 seconds to a few minutes</strong> without a graphics card. Untick <strong>AI writes an answer</strong> for search only.</li>
-<li>Keep the black window open while you use it. Close it to stop.</li>
+<li>It picks the right AI size for your computer. To change it, open <strong>⚙️ Settings</strong>.</li>
+<li>Search results show up in a second. The written answer takes <strong>30 seconds to a few minutes</strong>.</li>
+<li>Keep the black window open while you use it.</li>
 </ul>
 </blockquote>
-<p><strong>Most people can stop reading here.</strong> The rest of this page is for chatting with the AI directly, without the library search.</p>
+<p><strong>Most people can stop reading here.</strong> The rest is for chatting with the AI on its own, without the library search.</p>
 <blockquote>
-<h3 id="️-please-remember">⚠️ Please remember</h3>
+<h3 id="️-remember">⚠️ Remember</h3>
 <ul>
-<li><strong>The AI can be wrong or make things up.</strong> Treat it as a knowledgeable helper, not an authority. Check anything medical, electrical, legal or life-and-death against the books.</li>
-<li><strong>Its knowledge is frozen</strong> at the time it was trained. It can't look anything up online.</li>
+<li><strong>The AI can be wrong or make things up.</strong> Check anything about health or safety in the books.</li>
+<li><strong>It can't look anything up online.</strong> Its knowledge stops when it was made.</li>
 </ul>
 </blockquote>
 <hr />
-<nav class="toc" id="contents" aria-label="Contents"><details open><summary>📑 Contents</summary><ol><li><a href="#just-chat-with-the-ai-windows">💬 Just chat with the AI (Windows)</a></li><li><a href="#on-a-mac-or-linux">🍎🐧 On a Mac or Linux</a></li><li><a href="#which-model-should-i-use">🧠 Which model should I use?</a></li><li><a href="#if-something-goes-wrong">🔧 If something goes wrong</a></li><li><a href="#for-helpers-run-it-by-hand">🛠️ For helpers: run it by hand</a></li><li><a href="#what-s-in-the-folder">📁 What&#x27;s in the folder</a></li><li><a href="#technical-summary">📋 Technical summary</a></li></ol></details></nav>
+<nav class="toc" id="contents" aria-label="Contents"><details open><summary>📑 Contents</summary><ol><li><a href="#just-chat-with-the-ai-windows">💬 Just chat with the AI (Windows)</a></li><li><a href="#mac-or-linux">🍎🐧 Mac or Linux</a></li><li><a href="#if-something-goes-wrong">🔧 If something goes wrong</a></li><li><a href="#for-helpers-what-s-in-the-folder">📋 For helpers: what&#x27;s in the folder</a></li></ol></details></nav>
 <h2 id="just-chat-with-the-ai-windows">💬 Just chat with the AI (Windows)</h2>
 <ol type="1">
 <li>On the drive, open <strong>OfflineLibrary → AI-Offline</strong>.</li>
-<li>Double-click <strong>CHAT-3B-light</strong>. It works on almost any computer.</li>
-<li>A black window opens. Wait a few seconds while the AI loads.</li>
-<li>When it stops printing and waits for you, type a question and press <strong>Enter</strong>. Keep chatting.</li>
-<li>To quit, close the window.</li>
+<li>Double-click <strong>CHAT-3B-light</strong>. A black window opens.</li>
+<li>When it's ready, type a question and press <strong>Enter</strong>. Close the window to quit.</li>
 </ol>
-<p>Other choices in the same folder:</p>
 <table>
 <thead>
 <tr class="header">
@@ -39,164 +36,66 @@
 <tbody>
 <tr class="odd">
 <td><strong>CHAT-3B-light</strong></td>
-<td>Almost any computer (about 4 GB of memory). Fast</td>
+<td>Almost any computer. Fast</td>
 </tr>
 <tr class="even">
 <td><strong>CHAT-8B-smart</strong></td>
-<td>Computers with 8 GB+ of memory. Smarter, but slower</td>
+<td>Computers with 8 GB+ of memory. Smarter, slower</td>
 </tr>
 <tr class="odd">
 <td><strong>CHAT-GPU-Qwen7B</strong></td>
-<td>Computers with a graphics card that has 6 GB+ of its own memory. Much faster. If it says <em>out of memory</em>, use one of the two above instead</td>
+<td>Gaming computers with a graphics card. Much faster</td>
 </tr>
 <tr class="even">
 <td><strong>WEB-UI</strong></td>
-<td>To chat in your web browser instead. Wait until the window says <strong>server listening</strong>, then open <strong><a href="http://127.0.0.1:8080">http://127.0.0.1:8080</a></strong> in your browser (it's a page served by your own computer, not the internet)</td>
+<td>Chat in your web browser: wait until it says <strong>server listening</strong>, then go to <strong><a href="http://127.0.0.1:8080">http://127.0.0.1:8080</a></strong></td>
 </tr>
 </tbody>
 </table>
-<p><strong>CHAT-8B-smart</strong> and <strong>CHAT-GPU-Qwen7B</strong> need the large AI models, which are only on drives where the large AI was ticked (it's picked automatically on drives of about 64 GB or more).</p>
-<hr />
-<h2 id="on-a-mac-or-linux">🍎🐧 On a Mac or Linux</h2>
-<p>The chat shortcuts match the computer that <strong>made</strong> the drive: <code>.bat</code> files if it was made on Windows, <code>.sh</code> files if it was made on a Mac or Linux. (The START file above works on every kind of computer either way.)</p>
-<p>If your <strong>AI-Offline</strong> folder has <code>.sh</code> files, open a terminal (a window where you type commands) in that folder:</p>
-<ul>
-<li><strong>Mac:</strong> open the <strong>Terminal</strong> app, type <code>cd </code> (with a space after it), drag the <strong>AI-Offline</strong> folder into the window, and press Enter.</li>
-<li><strong>Linux:</strong> right-click an empty spot in the <strong>AI-Offline</strong> folder → <strong>Open in Terminal</strong>.</li>
-</ul>
-<p>Then type one of these and press Enter.</p>
-<p>The fast, light AI:</p>
+<p>The <strong>8B</strong> and <strong>GPU</strong> ones are only on bigger drives (about 64 GB or more).</p>
+<h2 id="mac-or-linux">🍎🐧 Mac or Linux</h2>
+<p>Open a terminal in the <strong>AI-Offline</strong> folder (Mac: open <strong>Terminal</strong>, type <code>cd </code>, drag the folder in, press Enter. Linux: right-click in the folder → <strong>Open in Terminal</strong>). Then type:</p>
 <pre><code>./chat-3B-light.sh</code></pre>
-<p>The smarter AI (large models only):</p>
-<pre><code>./chat-8B-smart.sh</code></pre>
-<p>Chat in your web browser (then open **<a href="http://127.0.0.1:8080**">http://127.0.0.1:8080**</a>):</p>
-<pre><code>./web-ui.sh</code></pre>
-<p>Linux only, with a graphics card (large models only):</p>
-<pre><code>./chat-GPU-Qwen7B.sh</code></pre>
-<p>If it says <em>permission denied</em>, type <code>chmod +x *.sh</code>, press Enter, and try again. On a Mac the AI uses the Mac's graphics chip automatically. <strong>Intel Macs</strong> need macOS 13.3 or newer to run the AI.</p>
-<hr />
-<h2 id="which-model-should-i-use">🧠 Which model should I use?</h2>
-<p>Up to <strong>four</strong> AI models are in the <code>models</code> folder. The two small ones are on every drive with the AI; the two large ones only where the large AI was ticked.</p>
-<table>
-<thead>
-<tr class="header">
-<th>Model</th>
-<th>Size</th>
-<th>Good for</th>
-<th>Started by</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Qwen 2.5 1.5B</td>
-<td>1.0 GB</td>
-<td>Phones, tablets and old laptops. Quick, simple answers</td>
-<td>Library Assistant: <strong>Quick</strong></td>
-</tr>
-<tr class="even">
-<td>Llama 3.2 3B</td>
-<td>1.9 GB</td>
-<td>Almost any computer (about 4 GB of memory)</td>
-<td><strong>Standard</strong>; <strong>CHAT-3B-light</strong></td>
-</tr>
-<tr class="odd">
-<td>Llama 3.1 8B <em>(large)</em></td>
-<td>4.6 GB</td>
-<td>About 8 GB of memory to chat (the Library Assistant wants 16 GB). Smarter, slower</td>
-<td><strong>Smart</strong>; <strong>CHAT-8B-smart</strong></td>
-</tr>
-<tr class="even">
-<td>Qwen 2.5 7B <em>(large)</em></td>
-<td>4.4 GB</td>
-<td>A graphics card with about 6 GB of its own memory. Fastest there</td>
-<td><strong>Graphics card</strong>; <strong>CHAT-GPU-Qwen7B</strong></td>
-</tr>
-</tbody>
-</table>
-<p>The small models need <strong>no</strong> graphics card. A slow computer only means slower answers; it still works. If the graphics-card model won't fit your card, nothing breaks: use one of the others.</p>
+<p>(or <code>./chat-8B-smart.sh</code>, or <code>./web-ui.sh</code> for the browser). If it says <em>permission denied</em>, type <code>chmod +x *.sh</code> first. These files are only on drives made on a Mac or Linux computer.</p>
 <hr />
 <h2 id="if-something-goes-wrong">🔧 If something goes wrong</h2>
 <table>
 <thead>
 <tr class="header">
-<th>What happens</th>
-<th>What to do</th>
+<th>Problem</th>
+<th>Fix</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><strong>Windows protected your PC</strong></td>
-<td>Click <strong>More info</strong>, then <strong>Run anyway</strong>. It appears because the files came from the internet</td>
+<td>Click <strong>More info</strong>, then <strong>Run anyway</strong></td>
 </tr>
 <tr class="even">
 <td>The black window flashes and closes</td>
-<td>A model file may be missing or only partly downloaded: check the <code>models</code> folder against the sizes above. To see the error, run it by hand (<em>For helpers</em> below)</td>
+<td>A model file may be missing. Run the installer again to fetch it</td>
 </tr>
 <tr class="odd">
-<td>The graphics-card one says <em>out of memory</em></td>
-<td>Your graphics card is too small. Use <strong>CHAT-3B-light</strong> or <strong>CHAT-8B-smart</strong> instead</td>
+<td><em>Out of memory</em>, or it crashes</td>
+<td>Use <strong>CHAT-3B-light</strong> and close other programs</td>
 </tr>
 <tr class="even">
-<td><em>Not enough memory</em>, or it crashes while loading</td>
-<td>Use the <strong>3B</strong> model and close other programs (web browsers especially)</td>
-</tr>
-<tr class="odd">
 <td>It's very slow</td>
-<td>Normal on older computers, especially with 8B. Use the 3B model</td>
+<td>Normal on older computers. Use the <strong>3B</strong> one</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>The web page won't open</td>
-<td>Check the <strong>WEB-UI</strong> window is still open and says <strong>server listening</strong>. Type exactly <strong><a href="http://127.0.0.1:8080">http://127.0.0.1:8080</a></strong> (not https)</td>
+<td>Check the <strong>WEB-UI</strong> window says <strong>server listening</strong>, and type exactly <strong><a href="http://127.0.0.1:8080">http://127.0.0.1:8080</a></strong></td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="for-helpers-run-it-by-hand">🛠️ For helpers: run it by hand</h2>
-<p>Useful if a shortcut fails, or to read an error. Press the <strong>Windows key</strong>, type <code>cmd</code> and press Enter to open <strong>Command Prompt</strong>. Paste one of these, change <code>E:</code> to your drive's letter, and press Enter.</p>
-<p>Normal Intel/AMD computer:</p>
-<pre><code>&quot;E:\OfflineLibrary\AI-Offline\engine\x64\llama-cli.exe&quot; -m &quot;E:\OfflineLibrary\AI-Offline\models\Llama-3.2-3B-Instruct-Q4_K_M.gguf&quot; -c 4096 -cnv</code></pre>
-<p>ARM computer (Surface Pro X, Snapdragon laptop):</p>
-<pre><code>&quot;E:\OfflineLibrary\AI-Offline\engine\arm64\llama-cli.exe&quot; -m &quot;E:\OfflineLibrary\AI-Offline\models\Llama-3.2-3B-Instruct-Q4_K_M.gguf&quot; -c 4096 -cnv</code></pre>
-<p>With a graphics card (NVIDIA, AMD or Intel):</p>
-<pre><code>&quot;E:\OfflineLibrary\AI-Offline\engine\vulkan-x64\llama-cli.exe&quot; -m &quot;E:\OfflineLibrary\AI-Offline\models\Qwen2.5-7B-Instruct-Q4_K_M.gguf&quot; -c 4096 -ngl 99 -cnv</code></pre>
-<p>Browser chat by hand (then open **<a href="http://127.0.0.1:8080**">http://127.0.0.1:8080**</a>):</p>
-<pre><code>&quot;E:\OfflineLibrary\AI-Offline\engine\x64\llama-server.exe&quot; -m &quot;E:\OfflineLibrary\AI-Offline\models\Llama-3.2-3B-Instruct-Q4_K_M.gguf&quot; -c 4096 --host 127.0.0.1 --port 8080</code></pre>
-<p><strong>What the options mean:</strong></p>
+<h2 id="for-helpers-what-s-in-the-folder">📋 For helpers: what's in the folder</h2>
 <ul>
-<li><code>-m "...gguf"</code>: which model file to load.</li>
-<li><code>-c 4096</code>: how much of the conversation it remembers. Use <code>2048</code> if memory runs low.</li>
-<li><code>-cnv</code>: chat mode (back-and-forth).</li>
-<li><code>-ngl 99</code>: (graphics card only) how much of the model goes on the card; 99 means all. On an out-of-memory or device error, lower it (e.g. <code>-ngl 20</code>); to change the shortcut, edit the number in <strong>CHAT-GPU-Qwen7B.bat</strong> with Notepad.</li>
-<li><code>-t 4</code>: (optional) use 4 processor cores; set it to your core count for best speed.</li>
+<li><p><strong>Models</strong> (in <code>AI-Offline\models</code>): Qwen 2.5 1.5B (Quick), Llama 3.2 3B (Standard), Llama 3.1 8B (Smart) and Qwen 2.5 7B (Graphics card). Free open-weight models.</p></li>
+<li><p><strong>Engine</strong> (in <code>AI-Offline\engine</code>): llama.cpp, for Intel/AMD, ARM and graphics cards.</p></li>
+<li><p><strong>To copy the AI to another computer,</strong> copy the whole <strong>AI-Offline</strong> folder. Nothing needs installing.</p></li>
+<li><p><strong>To run it by hand</strong> (to see an error), in Command Prompt, with your drive letter:</p>
+<pre><code>&quot;E:\OfflineLibrary\AI-Offline\engine\x64\llama-cli.exe&quot; -m &quot;E:\OfflineLibrary\AI-Offline\models\Llama-3.2-3B-Instruct-Q4_K_M.gguf&quot; -c 4096 -cnv</code></pre></li>
 </ul>
-<p>The engine picks the right processor build (<code>ggml-cpu-*.dll</code>) by itself.</p>
-<hr />
-<h2 id="what-s-in-the-folder">📁 What's in the folder</h2>
-<pre><code>OfflineLibrary\AI-Offline\
-├─ Library-Assistant\    &lt;- the search-everything assistant (started by the START files)
-├─ CHAT-3B-light.bat     &lt;- chat: small, fast model        (.sh versions on Mac/Linux-made drives)
-├─ CHAT-8B-smart.bat     &lt;- chat: bigger, smarter model
-├─ CHAT-GPU-Qwen7B.bat   &lt;- chat: on a graphics card (6 GB+)
-├─ WEB-UI.bat            &lt;- chat in your web browser
-├─ engine\               &lt;- the program that runs the AI (llama.cpp), one folder per kind of computer
-├─ models\               &lt;- the AI models themselves (.gguf files; see the table above)
-├─ DocReader-GPT4All\    &lt;- optional app that answers questions from your PDFs
-└─ HOW-TO-RUN-OFFLINE-AI &lt;- this guide</code></pre>
-<p><strong>To copy it to another computer,</strong> copy the whole <strong>AI-Offline</strong> folder to a USB stick or drive. Nothing needs installing. The 3B model and the engine alone fit on an 8 GB stick.</p>
-<hr />
-<h2 id="technical-summary">📋 Technical summary</h2>
-<ul>
-<li><strong>Engine:</strong> llama.cpp, the newest release when the drive was made. CPU builds (Windows x64 and ARM64, Mac, Linux) need no graphics card; the Vulkan build (<code>engine\vulkan-x64</code>) uses NVIDIA, AMD or Intel cards with no CUDA install.</li>
-<li><strong>Format:</strong> GGUF, Q4_K_M (4-bit): small files, good quality.</li>
-<li><strong>Models:</strong> Qwen 2.5 1.5B, Llama 3.2 3B, Llama 3.1 8B and Qwen 2.5 7B (all Instruct): free open-weight models from Meta and Alibaba. The <code>.gguf</code> files were made by the community (bartowski) from the official models.</li>
-<li><strong>Sources</strong> (only needed to download them again):
-<ul>
-<li>Engine: <a href="https://github.com/ggml-org/llama.cpp/releases">https://github.com/ggml-org/llama.cpp/releases</a></li>
-<li>1.5B: <a href="https://huggingface.co/bartowski/Qwen2.5-1.5B-Instruct-GGUF">https://huggingface.co/bartowski/Qwen2.5-1.5B-Instruct-GGUF</a></li>
-<li>3B: <a href="https://huggingface.co/bartowski/Llama-3.2-3B-Instruct-GGUF">https://huggingface.co/bartowski/Llama-3.2-3B-Instruct-GGUF</a></li>
-<li>8B: <a href="https://huggingface.co/bartowski/Meta-Llama-3.1-8B-Instruct-GGUF">https://huggingface.co/bartowski/Meta-Llama-3.1-8B-Instruct-GGUF</a></li>
-<li>7B: <a href="https://huggingface.co/bartowski/Qwen2.5-7B-Instruct-GGUF">https://huggingface.co/bartowski/Qwen2.5-7B-Instruct-GGUF</a></li>
-</ul></li>
-</ul>
-<p>This kit is designed to keep working when nothing else does.</p>
 <nav class="guidenav"><div class="prev"><a class="guide" href="GET-THE-LIBRARY.html"><small>← Previous</small>Get the whole library</a></div><div class="up"><a class="guide" href="../#tools:library"><small>All guides in</small>💾 Using this library</a></div><div class="next"><a class="guide" href="HOW-TO-ASK-YOUR-DOCS.html"><small>Next →</small>Ask the AI about your own PDFs</a></div></nav></div><a class="totop" href="#contents" aria-label="Back to contents">↑ Contents</a></body></html>

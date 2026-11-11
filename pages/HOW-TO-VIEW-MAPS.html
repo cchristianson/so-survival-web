@@ -1,49 +1,101 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>🗺️ Offline Maps — How to View Them (PC or Phone)</title><style>:root{--bg:#0f1420;--card:#171f2e;--ink:#e7ecf3;--muted:#9fb0c3;--accent:#4fd1c5;--accent2:#f6ad55;--line:#273246;--code:#0b0f17}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--code:#f1f5f9}}:root[data-theme=light]{--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--code:#f1f5f9}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,Segoe UI,Roboto,Arial,sans-serif}.wrap{max-width:900px;margin:0 auto;padding:28px 20px 80px}h1{font-size:28px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}h2{font-size:22px;border-bottom:2px solid var(--line);padding-bottom:6px;margin-top:30px}h3{font-size:17px;color:var(--accent)}h4{font-size:15px;color:var(--accent2)}a{color:var(--accent)}code{background:var(--code);padding:2px 6px;border-radius:6px;font-family:Consolas,monospace;font-size:14px}pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow-x:auto}pre code{background:none;padding:0}table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}th{background:rgba(127,127,127,.12)}blockquote{border-left:4px solid var(--accent);background:rgba(79,209,197,.08);padding:10px 16px;margin:16px 0;border-radius:0 10px 10px 0}@media(max-width:600px){.wrap{padding:16px 14px 80px}.topnav{margin:-16px -14px 6px;padding:8px 14px 7px}ul,ol{padding-left:20px}blockquote{padding:8px 12px 8px 12px;border-left-width:3px}blockquote ul,blockquote ol{padding-left:18px}h1{font-size:24px;line-height:1.25}h2{font-size:20px;margin-top:26px}h3{font-size:16.5px}table{font-size:14px}th,td{padding:7px 8px}.toc{padding:8px 12px}.toc ol{padding-left:20px}.totop{padding:6px 11px;font-size:13px}li{margin:3px 0}}hr{border:none;border-top:1px solid var(--line);margin:26px 0}ul,ol{padding-left:26px}table{display:block;overflow-x:auto;max-width:100%}code,a{overflow-wrap:anywhere}img{max-width:100%}.wrap p>img{display:block;margin:14px auto 6px;max-width:min(100%,640px);height:auto;border-radius:10px;background:#fff;border:1px solid var(--line)}.wrap p>img+em{display:block;text-align:center;font-size:14px;color:var(--muted);margin-bottom:6px}a.lib{text-decoration-style:dotted}a.lib::before{content:"📖 ";text-decoration:none}.deeper{font-size:15px;opacity:.95}a.wiki::before{content:"📷 "}a.lib.pic::before{content:"🖼️ "}a.lib::before,a.wiki::before{display:inline-block;margin-right:3px}html{scroll-behavior:smooth}h2{scroll-margin-top:12px}.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 16px;margin:18px 0 8px}.toc summary{cursor:pointer;font-weight:600;color:var(--accent);font-size:17px}.toc ol{margin:8px 0 4px;padding-left:26px;columns:2 260px;column-gap:28px}.toc li{margin:4px 0;break-inside:avoid}.toc a{text-decoration:none}.toc a:hover{text-decoration:underline}.totop{position:fixed;right:14px;bottom:max(14px,env(safe-area-inset-bottom));background:var(--card);color:var(--accent);border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:14px;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:5}@media print{.totop{display:none}.toc details{display:block}}.topnav{font-size:14.5px;margin:-28px -20px 4px;padding:10px 20px 8px;color:var(--muted);position:sticky;top:0;z-index:4;background:var(--bg);border-bottom:1px solid var(--line)}h1,h2,h3,h4,[id]{scroll-margin-top:72px}.guidenav{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:36px 0 0;border-top:1px solid var(--line);padding-top:16px}.guidenav a{display:block;height:100%;box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;text-decoration:none;font-weight:600;line-height:1.3;font-size:15px}.guidenav small{display:block;font-weight:400;color:var(--muted);font-size:13px;margin-bottom:2px}.guidenav .up{text-align:center}.guidenav .next{text-align:right}@media(max-width:560px){.guidenav{grid-template-columns:1fr 1fr}.guidenav .up{grid-column:1/-1;order:3}}.topnav a{text-decoration:none;white-space:nowrap}h1 .h1e{-webkit-text-fill-color:initial;color:var(--ink);background:none}.azbar{display:flex;flex-wrap:wrap;gap:4px;background:var(--bg);padding:8px 0;margin:10px 0;border-bottom:1px solid var(--line)}.azbar a{display:inline-block;min-width:30px;text-align:center;padding:4px 6px;border:1px solid var(--line);border-radius:8px;background:var(--card);text-decoration:none;font-weight:600}</style><style>:root{color-scheme:dark}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){color-scheme:light}}:root[data-theme=light]{color-scheme:light}.themebtn{font:inherit;font-size:14px;line-height:1.3;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:3px 11px;cursor:pointer;white-space:nowrap;text-decoration:none}.themefloat{position:absolute;top:10px;right:12px;z-index:9}@media print{.themebtn{display:none}}</style><script>/* so-theme: light or dark screen */(function(){var K="so-theme",d=document.documentElement,L={auto:"\uD83C\uDF13 Auto",dark:"\uD83C\uDF19 Dark",light:"\u2600\uFE0F Light"},N={auto:"dark",dark:"light",light:"auto"},cur="auto";try{cur=localStorage.getItem(K)||"auto"}catch(e){}function a(){if(cur==="dark"||cur==="light")d.setAttribute("data-theme",cur);else d.removeAttribute("data-theme");var b=document.querySelectorAll(".themebtn");for(var i=0;i<b.length;i++){b[i].textContent=L[cur]||L.auto;b[i].title="Screen: "+cur+" - tap to change (Auto follows this device)"}}a();window.soTheme=function(){cur=N[cur]||"dark";try{localStorage.setItem(K,cur)}catch(e){}a()};function btn(){var b=document.createElement("button");b.type="button";b.className="themebtn";return b}document.addEventListener("DOMContentLoaded",function(){if(!document.querySelector(".themebtn")){var n=document.querySelector(".topnav"),b=btn();if(n){n.appendChild(document.createTextNode(" \u00B7 "));n.appendChild(b)}else{b.className+=" themefloat";document.body.appendChild(b)}}var all=document.querySelectorAll(".themebtn");for(var i=0;i<all.length;i++)all[i].onclick=window.soTheme;a()})})();</script><style>.backbtn{font-weight:700;text-decoration:none;white-space:nowrap}@media print{.backbtn{display:none}}@media(max-width:600px){.topnav{font-size:14px;line-height:1.8}.topnav a{white-space:nowrap}.topnav .lbl{display:none}.topnav .themebtn{font-size:13px;padding:2px 9px}}</style><script>/* so-back: a Back button on every page after the first */(function(){function add(){var n=document.querySelector(".topnav");if(!n||n.querySelector(".backbtn"))return;var f=n.querySelector("a"),a=document.createElement("a");a.className="backbtn";a.href=f?f.href:"#";a.textContent="\u2190 Back";a.title="Back to the page you came from";a.onclick=function(e){if(history.length>1&&document.referrer){e.preventDefault();history.back()}};n.insertBefore(document.createTextNode(" \u00B7 "),n.firstChild);n.insertBefore(a,n.firstChild)}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",add);else add();document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a[href^=\"#\"]"):null;if(!a||e.defaultPrevented)return;var id=decodeURIComponent(a.getAttribute("href").slice(1)),t=id?document.getElementById(id):null;if(!t)return;e.preventDefault();t.scrollIntoView();try{history.replaceState(history.state,"","#"+id)}catch(x){}});if(window.matchMedia&&matchMedia("(display-mode: standalone)").matches||navigator.standalone)document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a[href]"):null;if(a&&!a.target&&/\.pdf(?![a-z0-9])/i.test(a.getAttribute("href")))a.target="_blank"},true)})();</script></head><body><div class="wrap"><p class="topnav"><a class="guide" href="../#tools">📘 Guides</a> › <a class="guide" href="../#tools:library">💾 Using this library</a> · <a class="guide" href="EMERGENCY-FINDER.html">🆘<span class="lbl"> Emergency</span></a> · <a class="guide" href="SUBJECT-INDEX.html">📇<span class="lbl"> Index A–Z</span></a> · <a href="../#ask">💬<span class="lbl"> Ask</span></a></p>
 <h1 id="️-offline-maps--how-to-view-them-pc-or-phone"><span class="h1e">🗺️</span> Offline Maps — How to View Them (PC or Phone)</h1>
-<p>The <strong>OsmAnd</strong> folder on the drive holds detailed maps (roads, towns, terrain and place search) that work with <strong>no internet</strong>, on a phone or on a computer. Which area you have was picked when the drive was made: <strong>the whole USA</strong>, <strong>Oregon and California</strong>, or <strong>Oregon only</strong>. To change it, run the installer again (<a class="guide" href="GET-THE-LIBRARY.html">Get the whole library</a>).</p>
-<p><strong>A phone is best for finding your way:</strong> the OsmAnd app gives directions. The computer viewer is plain, but fine for finding places, roads and coordinates.</p>
+<p>The <strong>OsmAnd</strong> folder on the drive has detailed maps (roads, towns and place search) that work with <strong>no internet</strong>. Which area you have was picked when the drive was made: <strong>the whole USA</strong>, <strong>Oregon and California</strong>, or <strong>Oregon only</strong>. To change it, run the installer again.</p>
+<p>There are two kinds of map on the drive:</p>
+<ul>
+<li><strong>The map in the web browser</strong> (below): nothing to install. Roads, trails, topo lines and, where the area's library has them, property lines. It covers the Illinois Valley.</li>
+<li><strong>OsmAnd</strong>, an app for phones: bigger areas, and it gives directions.</li>
+</ul>
 <hr />
-<nav class="toc" id="contents" aria-label="Contents"><details open><summary>📑 Contents</summary><ol><li><a href="#android-phone-or-tablet">🤖 Android phone or tablet</a></li><li><a href="#iphone-or-ipad">🍏 iPhone or iPad</a></li><li><a href="#windows-computer">🪟 Windows computer</a></li><li><a href="#mac-or-linux-computer">🍎 Mac or 🐧 Linux computer</a></li><li><a href="#for-helpers-maps-of-other-countries-or-regions">🧰 For helpers: maps of other countries or regions</a></li></ol></details></nav>
+<nav class="toc" id="contents" aria-label="Contents"><details open><summary>📑 Contents</summary><ol><li><a href="#easiest-the-map-in-the-web-browser">🗺️ Easiest: the map in the web browser</a></li><li><a href="#android-phone-or-tablet">🤖 Android phone or tablet</a></li><li><a href="#iphone-or-ipad">🍏 iPhone or iPad</a></li><li><a href="#windows-computer">🪟 Windows computer</a></li><li><a href="#mac-or-linux-computer">🍎 Mac or 🐧 Linux computer</a></li><li><a href="#for-helpers-maps-of-other-places">🧰 For helpers: maps of other places</a></li></ol></details></nav>
+<h2 id="easiest-the-map-in-the-web-browser">🗺️ Easiest: the map in the web browser</h2>
+<p>In the library, open <strong>🔧 Tools → 🗺️ Map</strong>. It works on a phone, tablet or computer, and on any phone using the library over Wi-Fi (the ARK Vault's too). No app, no signal.</p>
+<ul>
+<li><p><strong>What it shows:</strong> roads, forest roads and trails, creeks, peaks and towns, with <strong>topo lines</strong> (heights in feet) and shaded hills.</p></li>
+<li><p><strong>Property lines and public land:</strong> thin orange lines are tax lots. Colors show who manages the land (BLM, National Forest, state, county); private land has no color.</p></li>
+<li><p><strong>🗂️ Layers:</strong> switch on what you need, and tap anything on the map to see what it is. Which layers there are depends on the area's library:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Group</th>
+<th>Layers</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Water</strong></td>
+<td>Creeks that run all year or only part of it, springs, wells and how deep they are, dams</td>
+</tr>
+<tr class="even">
+<td><strong>Food and growing</strong></td>
+<td>Good growing ground, sightings of wild food plants and mushrooms, salmon and trout streams</td>
+</tr>
+<tr class="odd">
+<td><strong>Materials</strong></td>
+<td>Mines, quarries and mineral sites, and what came out of them</td>
+</tr>
+<tr class="even">
+<td><strong>Hazards</strong></td>
+<td>Past wildfires, flood zones, old landslides</td>
+</tr>
+<tr class="odd">
+<td><strong>Places and getting around</strong></td>
+<td>Medical, fuel, food and hardware, fire stations, bridges and their weight limits, camps, escape routes, walking routes</td>
+</tr>
+<tr class="even">
+<td><strong>Base map and land</strong></td>
+<td>Steep ground, sunny (south-facing) slopes, the township and section grid</td>
+</tr>
+</tbody>
+</table></li>
+<li><p><strong>📏 Measure:</strong> tap points along a way for the distance and the ups and downs. With two points it also says whether one can see the other, which is what a radio link needs.</p></li>
+<li><p><strong>📌 Pins:</strong> tap the map, then <strong>Save as a pin</strong>, to mark your own places. Pins are kept on that phone or computer only; <strong>Save my pins to a file</strong> carries them to another.</p></li>
+<li><p><strong>Tap anywhere</strong> for the height, the position (latitude and longitude), the tax lot, its acres and, where the county publishes it, the recorded owner.</p></li>
+<li><p><strong>Find a place:</strong> type part of a name (a creek, a peak, a road) in the box at the top.</p></li>
+<li><p><strong>📍 Where am I:</strong> shows your position as a blue dot. From the <strong>library website</strong> (saved on the phone) it just works. On a phone using a library over Wi-Fi (the ARK Vault's too), tap 📍 and follow the steps: the phone warns once that the connection is "not private", because the library makes its own security certificate. Accept it, tap 📍 again, and allow location.</p></li>
+<li><p><strong>🖨️ Print:</strong> prints the part of the map on the screen, north up, with a scale bar. On the library's receipt printer it comes out in black and white, in one to four strips to tape side by side; on an ordinary printer, as one color page.</p></li>
+<li><p><strong>A bigger map:</strong> the map covers the Illinois Valley. To add roads, trails and topo lines for a much wider area, start the library on a computer with internet, open <strong>⚙️ Settings → A bigger map</strong> and press <strong>Download it</strong> (a few GB). Do this before the drive goes into an ARK Vault.</p></li>
+</ul>
+<p><strong>To carry the map on a phone:</strong> while you have internet, open the library website, go to <strong>⚙️ Offline</strong> and tap <strong>Also save the map</strong> (about 50 MB). Then it works anywhere, with the dot.</p>
+<blockquote>
+<p>⚠️ <strong>A map is not a promise.</strong> A wild-food sighting says someone saw the plant there once: check any plant or mushroom in the guides before eating it. Old mines are dangerous: stay out of shafts and tunnels. Wells are from old drilling reports and may be dry or gone.</p>
+<p>Property lines and owners come from the county assessor's tax-lot map. The lines can be off by many feet and are <strong>not a survey</strong>: don't use them to settle where a boundary is. Owners are as recorded when the map was made; land changes hands.</p>
+</blockquote>
+<hr />
 <h2 id="android-phone-or-tablet">🤖 Android phone or tablet</h2>
 <ol type="1">
-<li>Install OsmAnd from the drive's <strong>Phone-Apps</strong> folder (the <code>OsmAnd-….apk</code> file). Step-by-step help: <a class="guide" href="USE-ON-PHONE.html">Use the library on a phone</a>.</li>
+<li>Install <strong>OsmAnd</strong> from the drive's <strong>Phone-Apps</strong> folder (see <a class="guide" href="USE-ON-PHONE.html">Use the library on a phone</a>).</li>
 <li>Copy your area's map files (in the <strong>OsmAnd</strong> folder, ending in <code>.obf.zip</code>) to the phone. For Oregon, that's the files starting with <code>Us_oregon</code>.</li>
-<li>Open <strong>OsmAnd</strong> → <strong>Menu</strong> → <strong>Configure map / Download maps → Import</strong> and pick the files. Maps, search and directions now work offline.</li>
+<li>Open <strong>OsmAnd</strong> → <strong>Menu</strong> → <strong>Download maps → Import</strong> and pick the files.</li>
 </ol>
-<p><strong>If that didn't work:</strong> copy the map files into the phone's <code>Android/data/net.osmand.plus/files/</code> folder instead.</p>
 <h2 id="iphone-or-ipad">🍏 iPhone or iPad</h2>
-<p>Apple doesn't allow installing apps from a file, so the drive's app won't work on an iPhone.</p>
 <ol type="1">
-<li><strong>While you still have internet,</strong> install <strong>OsmAnd Maps</strong> (free) from the <strong>App Store</strong>.</li>
-<li>Copy the map files onto the iPhone and open them in OsmAnd (see <a class="guide" href="USE-ON-PHONE.html">Use the library on a phone</a>). Or, while online, download your area inside the OsmAnd app.</li>
+<li><strong>While you have internet,</strong> install <strong>OsmAnd Maps</strong> (free) from the App Store.</li>
+<li>Copy the map files onto the iPhone and open them in OsmAnd (see <a class="guide" href="USE-ON-PHONE.html">Use the library on a phone</a>).</li>
 </ol>
 <hr />
 <h2 id="windows-computer">🪟 Windows computer</h2>
-<p>Everything the viewer needs, Java included, is on the drive. Nothing to install. (It's only on drives made on a Windows computer.)</p>
+<p>Nothing to install.</p>
 <ol type="1">
-<li>On the drive, open <strong>OfflineLibrary</strong> → <strong>OsmAnd</strong> → <strong>MapViewer-Desktop</strong>.</li>
-<li>Double-click <strong><code>VIEW-MAPS-ON-PC</code></strong> (the <code>.bat</code> file).</li>
-<li>A black window opens. <strong>The first time only,</strong> it unpacks the maps, which can take several minutes. Leave the window open.</li>
-<li>The map viewer (<strong>OsmAndMapCreator</strong>) opens. Your maps are the <code>.obf</code> files in the <code>OsmAnd\obf</code> folder. Use its menus to open a map, then zoom and search.</li>
+<li>On the drive, open <strong>OfflineLibrary → OsmAnd → MapViewer-Desktop</strong>.</li>
+<li>Double-click <strong><code>VIEW-MAPS-ON-PC</code></strong>.</li>
+<li><strong>The first time only,</strong> it unpacks the maps, which takes several minutes. Leave the black window open.</li>
+<li>The map viewer opens. Use its menus to open a map, then zoom and search.</li>
 </ol>
-<blockquote>
-<h3 id="️-the-computer-viewer-needs-free-space">⚠️ The computer viewer needs free space</h3>
-<p>Unpacking takes about <strong>30 GB</strong> for the whole USA (much less for Oregon). The installer left that space <strong>empty on purpose</strong>, so keep it free if you want maps on a computer. Phones use the map files as they are and don't need it. Short on space later? Delete the <code>OsmAnd\obf</code> folder; the viewer makes it again next time.</p>
-</blockquote>
+<p>The first time uses a lot of free space (about <strong>30 GB</strong> for the whole USA, much less for Oregon). The installer left that space empty on purpose.</p>
 <h2 id="mac-or-linux-computer">🍎 Mac or 🐧 Linux computer</h2>
-<p>The Mac/Linux viewer, <strong><code>VIEW-MAPS-ON-PC.sh</code></strong>, is only on drives made on a Mac or Linux computer.</p>
 <ol type="1">
-<li><strong>Mac:</strong> open <strong>Terminal</strong> (press <strong>Command + Space</strong>, type <code>Terminal</code>, press <strong>Return</strong>). <strong>Linux:</strong> open a terminal.</li>
-<li>Type <code>bash </code> (with a space), drag <strong><code>VIEW-MAPS-ON-PC.sh</code></strong> (in <strong>OsmAnd</strong> → <strong>MapViewer-Desktop</strong>) into the window, and press <strong>Return</strong>.</li>
-<li>As on Windows, the first time it unpacks the maps, then the viewer opens.</li>
+<li>Open <strong>Terminal</strong> (Mac: press <strong>Command + Space</strong>, type <code>Terminal</code>, press <strong>Return</strong>).</li>
+<li>Type <code>bash </code> (with a space), drag <strong><code>VIEW-MAPS-ON-PC.sh</code></strong> (in <strong>OsmAnd → MapViewer-Desktop</strong>) into the window, and press <strong>Return</strong>.</li>
 </ol>
+<p>This file is only on drives that were made on a Mac or Linux computer.</p>
 <hr />
-<h2 id="for-helpers-maps-of-other-countries-or-regions">🧰 For helpers: maps of other countries or regions</h2>
+<h2 id="for-helpers-maps-of-other-places">🧰 For helpers: maps of other places</h2>
 <p>The point-and-click installer offers only the USA, Oregon and California, or Oregon. For anywhere else, run the installer script from the kit's <code>files</code> folder with a region:</p>
 <pre><code># Windows (PowerShell)
 ./Get-OfflineLibrary.ps1 -Destination &quot;E:\&quot; -Region France
 # Mac / Linux
 ./get-offline-library.sh -d /Volumes/MYDRIVE --region France</code></pre>
-<p>A region can be a country (<code>France</code>), several (<code>"Germany,Austria"</code>), a continent (<code>Europe</code>), part of a country (<code>US_texas</code>) or <code>world</code>. To list the names, run it with just <code>-ListRegions</code> (Windows) or <code>--list-regions</code> (Mac/Linux). Sizes vary: the whole USA is about 17 GB, a small country can be under 1 GB, and <code>world</code> is hundreds of GB. The viewer and phone apps work with any region.</p>
+<p>A region can be a country, a continent (<code>Europe</code>), part of a country (<code>US_texas</code>) or <code>world</code>. Add <code>-ListRegions</code> (Windows) or <code>--list-regions</code> (Mac/Linux) to see the names.</p>
 <p>Keep a <strong>paper map</strong> as a backup too. Electronics fail.</p>
 <nav class="guidenav"><div class="prev"><a class="guide" href="HOW-TO-USE-KIWIX.html"><small>← Previous</small>Wikipedia and Kiwix</a></div><div class="up"><a class="guide" href="../#tools:library"><small>All guides in</small>💾 Using this library</a></div><div class="next"><a class="guide" href="USE-ON-PHONE.html"><small>Next →</small>The library on a phone</a></div></nav></div><a class="totop" href="#contents" aria-label="Back to contents">↑ Contents</a></body></html>

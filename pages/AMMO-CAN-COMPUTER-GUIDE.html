@@ -3,105 +3,76 @@
 <img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/ark-vault-logo.svg" alt="The ARK Vault logo: ARK in stencil letters inside a crate-label frame, with VAULT cut out of a solid bar below, its V drawn as an open book" width="260">
 <figure id="video" style="margin:14px 0"><video controls preload="none" playsinline poster="../media/ark-vault-promo.jpg" style="display:block;width:100%;aspect-ratio:16/9;border-radius:12px;background:#000"><source src="../media/ark-vault-promo.mp4" type="video/mp4"><a href="../media/ark-vault-promo.mp4">Watch the video</a></video><figcaption style="font-size:14px;opacity:.75;margin:6px 2px 0">The ARK Vault in under three minutes: what it is, what&rsquo;s inside, the guides and tools, the printer, and power after an EMP. With music; it plays from the website, so it needs the internet.</figcaption></figure>
 
-<p>The <strong>ARK Vault</strong> is this whole library, ready for the day the power and the internet are gone, packed in one steel ammo can you can carry. Inside is everything it needs: a small computer (a Raspberry Pi) with the library and the offline AI, a battery, a wall charger, a solar charge controller kept for later, a small printer, a crank radio, and an <strong>old phone to read it on</strong>.</p>
-<p>Most of the time it sits <strong>sealed</strong>: lid shut and taped, nothing switched on, the steel shielding everything inside from an EMP or a solar storm. When you need it, <strong>open the lid and flip the red power switch on</strong>: the Pi starts and makes its own Wi-Fi, and the phone from the can (or any phone nearby) opens the library and the AI in its web browser, with <strong>no screen, keyboard or internet</strong>. <strong>Flip the switch off</strong> when you're done. Close the lid, tape it, and it's protected again.</p>
+<p>The <strong>ARK Vault</strong> is the whole library packed in one steel ammo can: a small computer (a Raspberry Pi), a battery, a charger, a little printer, a crank radio and an old phone to read it on.</p>
+<p><strong>Most of the time it sits sealed</strong>, lid taped shut, protected from an EMP or solar storm. <strong>When you need it,</strong> open the lid and flip the red switch on. The phone joins the Vault's own Wi-Fi and opens the library and the AI in its web browser. No internet, screen or keyboard needed.</p>
 <blockquote>
 <h3 id="the-short-version">The short version</h3>
 <ul>
-<li><strong>Switch on, switch off.</strong> A plain red power switch, in front of the printer, turns everything on and off. The Pi's memory card is <strong>read-only</strong>, so cutting the power is always safe: nothing is ever half-written, and nothing draws from the battery while it's off.</li>
-<li><strong>Hold the little red button to check the battery.</strong> The meter beside the switch shows the volts and the amps the library is drawing.</li>
-<li><strong>Shut = protected, open = in use.</strong> The can only shields while the lid is closed and taped. Never run it with the lid shut: it overheats, and phones can't reach it.</li>
-<li><strong>The phone is the screen, and it lives in the can.</strong> An old phone with no SIM card or phone plan is fine. Any other phone nearby can join too.</li>
-<li><strong>Charge it from the wall, lid open.</strong> The wall charger lives in the can. The <strong>solar charge controller</strong> is stored in the can too, not wired: after an event, take it out and wire it to the battery and a panel. The panel stays outside, <strong>not connected to anything</strong>.</li>
-<li><strong>No TV or keyboard needed to set it up.</strong> Write Raspberry Pi OS onto the memory card, let the library installer <strong>finish the card</strong>, plug everything in and switch on. It sets itself up.</li>
-<li><strong>Steel can only.</strong> Plastic ammo cans block nothing. The lid seam gets taped over bare metal (see the <a class="guide" href="EMP-GUIDE.html">EMP guide</a>).</li>
-<li><strong>Practice now.</strong> Build it, test it on the battery with the internet off, and check it every few months.</li>
+<li><strong>Switch on, switch off.</strong> Flipping the switch off is always safe.</li>
+<li><strong>Lid shut and taped = protected. Lid open = in use.</strong> Never run it with the lid shut.</li>
+<li><strong>The phone in the can is the screen.</strong> Any other phone nearby can join too.</li>
+<li><strong>Hold the little red button</strong> to see how much battery is left.</li>
+<li><strong>Charge it from the wall with the lid open.</strong> Solar is for after an emergency (see <a href="#power-and-charging">Power and charging</a>).</li>
+<li><strong>Steel can only.</strong> Plastic ammo cans don't block anything.</li>
+<li><strong>Practice now.</strong> Build it, test it with the internet off, and check it every few months.</li>
 </ul>
 </blockquote>
 <hr />
-<nav class="toc" id="contents" aria-label="Contents"><details open><summary>📑 Contents</summary><ol><li><a href="#the-idea">🧰 The idea</a></li><li><a href="#see-it-in-3d">🧊 See it in 3D</a></li><li><a href="#how-it-works">🧭 How it works</a></li><li><a href="#what-to-buy">🛒 What to buy</a></li><li><a href="#the-parts-to-print-and-etch">📐 The parts to print and etch</a></li><li><a href="#build-it-step-by-step">🔧 Build it, step by step</a></li><li><a href="#set-up-the-pi-no-tv-or-keyboard">💾 Set up the Pi (no TV or keyboard)</a></li><li><a href="#using-it">🆘 Using it</a></li><li><a href="#printing-on-paper">🖨️ Printing on paper</a></li><li><a href="#power-and-charging">🔋 Power and charging</a></li><li><a href="#packing-and-sealing">📦 Packing and sealing</a></li><li><a href="#if-something-goes-wrong">🛠️ If something goes wrong</a></li><li><a href="#other-ways-to-build-it">🖐️ Other ways to build it</a></li><li><a href="#every-few-months">🔄 Every few months</a></li><li><a href="#pictures-diagrams">🖼️ Pictures &amp; diagrams</a></li><li><a href="#related-guides">🔗 Related guides</a></li></ol></details></nav>
+<nav class="toc" id="contents" aria-label="Contents"><details open><summary>📑 Contents</summary><ol><li><a href="#the-idea">🧰 The idea</a></li><li><a href="#see-it-in-3d">🧊 See it in 3D</a></li><li><a href="#how-it-works">🧭 How it works</a></li><li><a href="#what-to-buy">🛒 What to buy</a></li><li><a href="#the-parts-to-print-and-etch">📐 The parts to print and etch</a></li><li><a href="#build-it-step-by-step">🔧 Build it, step by step</a></li><li><a href="#set-up-the-pi-no-tv-or-keyboard">💾 Set up the Pi (no TV or keyboard)</a></li><li><a href="#using-it">🆘 Using it</a></li><li><a href="#printing-on-paper">🖨️ Printing on paper</a></li><li><a href="#power-and-charging">🔋 Power and charging</a></li><li><a href="#packing-and-sealing">📦 Packing and sealing</a></li><li><a href="#if-something-goes-wrong">🛠️ If something goes wrong</a></li><li><a href="#other-ways-to-build-it">🖐️ Other ways to build it</a></li><li><a href="#every-few-months">🔄 Every few months</a></li><li><a href="#pictures-diagrams">🖼️ Pictures &amp; diagrams</a></li></ol></details></nav>
 <h2 id="the-idea">🧰 The idea</h2>
-<p><strong>What lives inside the can, sealed:</strong></p>
+<p><strong>Inside the can:</strong></p>
 <ul>
-<li>the <strong>Raspberry Pi</strong> on the underside of the <strong>lid</strong>, beside the hinge, with its <strong>library drive</strong> (a small thumb drive) in a USB port</li>
-<li>the <strong>battery</strong> (LiFePO4, the safe lithium kind)</li>
-<li>the <strong>wall charger</strong>, lying on the <strong>solar charge controller</strong> (stored, not wired)</li>
-<li>a printed <strong>riser</strong> at the hinge end holding the <strong>receipt printer</strong>, the <strong>power switch</strong>, the <strong>volt/amp meter</strong> and its button, and on the inside of one leg the <strong>5 V converter</strong> and the <strong>fuse</strong></li>
-<li>a <strong>crank radio</strong> and an <strong>old phone</strong> (the screen; the model has an iPhone XR), about half charged</li>
-<li>the <strong>Wi-Fi card</strong> taped in the lid, and a spare roll of <strong>foil tape</strong> for the seal</li>
+<li>the <strong>Raspberry Pi</strong> stuck under the <strong>lid</strong>, with the <strong>library drive</strong> (a small thumb drive) plugged in</li>
+<li>the <strong>battery</strong></li>
+<li>the <strong>wall charger</strong>, and a <strong>solar charge controller</strong> stored for later (not wired)</li>
+<li>a printed stand (the <strong>riser</strong>) holding the <strong>printer</strong>, the <strong>power switch</strong> and the <strong>battery meter</strong></li>
+<li>a <strong>crank radio</strong> and an <strong>old phone</strong>, about half charged</li>
+<li>a card with the Wi-Fi name and password, and a spare roll of <strong>foil tape</strong></li>
 </ul>
-<p><strong>What stays outside:</strong> the <strong>solar panel</strong>, with <strong>nothing plugged into it</strong>. A panel is too big for the can, and it doesn't need shielding: tests in the library found panels hit with a strong pulse came through with only very minor change (<a class="lib" target="_blank" rel="noopener" href="https://www.osti.gov/servlets/purl/1614961#page=39" title="HEMP Testing of Photovoltaic Modules (Sandia 2020).pdf — page 39">Sandia, p. 39</a>). The danger is the <strong>wires</strong>: a pulse gathers on long wires and travels down them into whatever they're plugged into, which is the charge controller (<a class="guide" href="EMP-GUIDE.html">EMP guide</a>). So the panel sits unplugged in the shed or under the bed.</p>
-<p><strong>Why the charge controller is stored in the can:</strong> it's the electronic part a surge would damage, so it waits inside the shield, not wired to anything. After an event, take it out and wire it between the battery and the panel (see <a href="#power-and-charging">Power and charging</a>). It's what makes solar charging safe: it feeds the battery exactly what a lithium battery needs and stops when it's full. <strong>Never connect a panel straight to the battery.</strong></p>
+<p><strong>Outside the can:</strong> the <strong>solar panel</strong>, with <strong>nothing plugged into it</strong>. Panels survive a pulse fine (<a class="lib" target="_blank" rel="noopener" href="https://www.osti.gov/servlets/purl/1614961#page=39" title="HEMP Testing of Photovoltaic Modules (Sandia 2020).pdf — page 39">Sandia, p. 39</a>); the danger is a pulse running down the wires into whatever they're plugged into (<a class="guide" href="EMP-GUIDE.html">EMP guide</a>). So the charge controller waits inside the can, and you wire it up only after an event. <strong>Never connect a panel straight to the battery.</strong></p>
 <table>
 <thead>
 <tr class="header">
 <th></th>
 <th>What you do</th>
-<th>What's happening</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><strong>Stored</strong> (most of the time)</td>
-<td>Lid shut and taped, power switch off, panel outside</td>
-<td>Nothing is on or connected. The steel can shields everything inside</td>
+<td>Lid shut and taped, switch off, panel outside</td>
 </tr>
 <tr class="even">
 <td><strong>In use</strong></td>
-<td>Open the lid, flip the power switch on, take out the phone</td>
-<td>The Pi makes its own Wi-Fi; phones open the library in the browser</td>
+<td>Open the lid, flip the switch on, take out the phone</td>
 </tr>
 <tr class="odd">
 <td><strong>Charging</strong></td>
-<td>Lid open: plug the wall charger into the wall. After an event: wire up the solar controller and the panel</td>
-<td>The battery fills while the Vault sits open (it can be in use at the same time)</td>
+<td>Lid open, wall charger plugged in (or, after an event, the solar panel)</td>
 </tr>
 <tr class="even">
 <td><strong>Back to storage</strong></td>
-<td>Flip the switch off, unplug the charger, put the phone back, close and tape the lid</td>
-<td>Shielded again. Do this right away if a solar-storm warning comes</td>
+<td>Switch off, unplug, put the phone back, close and tape the lid</td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h2 id="see-it-in-3d">🧊 See it in 3D</h2>
-<p>Turn it, open the lid, look through the can, take a close-up of the Pi, or lift the printer's riser out. <strong>Tap a part's name</strong> under the model to hide or show it; to see one part on its own, tap <strong>Hide all</strong>, then that part. It works offline. Every wire is in it too.</p>
+<p>Turn it, open the lid, or tap a part's name to hide or show it. Every wire is in it too.</p>
 <iframe src="AMMO-CAN-MODEL.html?embed" title="The ARK Vault in 3D" loading="lazy" style="width:100%;height:760px;max-height:92vh;border:0;border-radius:12px;background:#e6ebf2"></iframe>
 
 <p><a class="guide" href="AMMO-CAN-MODEL.html">Open the 3D model full size</a></p>
-<p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/the-build.png" alt="Two views of the ARK Vault from its 3D model. Left: the lid swung right over past the hinge, with the Raspberry Pi lying face-up on it just beyond the can&#39;s end, the meter and power switch on the riser at the hinge end, and the battery at the latch end. Right: see-through, with the printer on its riser at the hinge end, the radio and the phone along the front wall, the battery along the back at the latch end, and the wall charger on the solar controller in front of it" /> <em>Lid open (left) and see-through (right): pictures of the 3D model.</em></p>
+<p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/the-build.png" alt="Two views of the ARK Vault from its 3D model. Left: the lid swung right over past the hinge, with the Raspberry Pi lying face-up on it just beyond the can&#39;s end, the meter and power switch on the riser at the hinge end, and the battery at the latch end. Right: see-through, with the printer on its riser at the hinge end, the radio and the phone along the front wall, the battery along the back at the latch end, and the wall charger on the solar controller in front of it" /> <em>Lid open (left) and see-through (right).</em></p>
 <hr />
 <h2 id="how-it-works">🧭 How it works</h2>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th>Lid <strong>shut</strong> and taped (storage)</th>
-<th>Lid <strong>open</strong>, switch <strong>on</strong> (in use)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Shielded from EMP?</td>
-<td><strong>Yes</strong>: a closed metal shell keeps the pulse out (<a class="guide" href="EMP-GUIDE.html">EMP guide</a>)</td>
-<td>No, but an EMP lasts seconds to minutes. Solar storms come with hours of warning</td>
-</tr>
-<tr class="even">
-<td>Running?</td>
-<td>No: the power switch is off, and nothing passes through the can</td>
-<td>Yes: the Pi, the printer and the Wi-Fi to the phones</td>
-</tr>
-<tr class="odd">
-<td>Heat</td>
-<td>None</td>
-<td>The Pi gets warm; its fan comes on when it needs to. The open lid lets the heat out</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Why not run it sealed?</strong> A computer that's on needs Wi-Fi going out and a way to shed heat, and every cable or hole through the can breaks the shield. The government guidance is plain: <strong>no wires through, no holes drilled</strong> (<a class="lib pic" target="_blank" rel="noopener" href="https://www.wbdg.org/FFC/NAVFAC/DMMHNAV/hdbk419a_vol2.pdf#page=315" title="MIL-HDBK-419A Grounding Bonding and Shielding Vol 2 Applications (DoD 1987).pdf — page 315">right and wrong ways through a shield</a>). So the can is the computer's <strong>storage box and shield</strong>, not its case while it runs. Charging is the same: lid open, cables in from the top, never through the wall.</p>
-<p><strong>The power switch.</strong> Flip it on and the Pi starts by itself (2–3 minutes). Flip it off and the power is simply cut. That's safe because the Pi's memory card and the library drive are <strong>read-only</strong>: the Pi keeps anything that changes in memory and forgets it when the power goes, so nothing can be left half-written. The other side of that: settings changed on the Pi while it runs don't stick (see <a href="#changing-a-setting-later">Changing a setting later</a>).</p>
-<p><strong>The meter.</strong> It sits in the power line and measures everything the library draws. It's dark most of the time; <strong>hold the little red button</strong> beside the switch and it shows the battery's <strong>volts</strong> (top row) and the <strong>amps</strong> being drawn (bottom row). Let go and it goes dark again, so it never drains the battery.</p>
-<p><strong>What the phones see:</strong> the Pi makes its <strong>own Wi-Fi network</strong>. Phones join it and open the library in the browser, the same way as <a class="guide" href="START-ON-ANY-DEVICE.html">sharing with phones nearby</a>. Several phones can use it at once. Search and the books answer instantly. The AI answers one person at a time, in about a minute.</p>
+<ul>
+<li><strong>Lid shut and taped:</strong> the steel can acts as a shield (a Faraday cage) and keeps an EMP out. Nothing is switched on.</li>
+<li><strong>Lid open, switch on:</strong> the Pi starts in 2–3 minutes and makes its own Wi-Fi. Phones join it and use the library. An EMP lasts only seconds, and solar storms come with hours of warning, so having it open is fine the rest of the time.</li>
+<li><strong>Why not run it sealed?</strong> It would overheat, phones couldn't reach it, and any wire or hole through the can ruins the shield (<a class="lib pic" target="_blank" rel="noopener" href="https://www.wbdg.org/FFC/NAVFAC/DMMHNAV/hdbk419a_vol2.pdf#page=315" title="MIL-HDBK-419A Grounding Bonding and Shielding Vol 2 Applications (DoD 1987).pdf — page 315">right and wrong ways through a shield</a>).</li>
+<li><strong>The power switch</strong> just cuts the power. That's safe because the Pi is set to <strong>read-only</strong>: it never writes anything that could be left half-done. (The catch: a setting changed on the running Pi is forgotten. See <a href="#changing-a-setting-later">Changing a setting later</a>.)</li>
+<li><strong>The meter</strong> stays dark. <strong>Hold the little red button</strong> and it shows the battery's <strong>volts</strong> (top) and the <strong>amps</strong> being used (bottom).</li>
+<li><strong>The phone is the screen.</strong> Several phones can use it at once. The AI answers one person at a time, in about a minute.</li>
+</ul>
 <hr />
 <h2 id="what-to-buy">🛒 What to buy</h2>
 <table>
@@ -109,160 +80,141 @@
 <tr class="header">
 <th>Part</th>
 <th>What to get</th>
-<th>Why</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><strong>The can</strong></td>
-<td>A <strong>steel .50 cal ammo can</strong> (inside about 279 × 140 mm, 179 mm deep; 11 × 5½ × 7 in)</td>
-<td>Holds everything with the lid shut. Measure yours: cans vary a little</td>
+<td>A <strong>steel .50 cal ammo can</strong> (inside about 11 × 5½ in, 7 in deep). Not plastic</td>
 </tr>
 <tr class="even">
 <td><strong>Battery</strong></td>
-<td><strong>12.8 V LiFePO4</strong> (lithium iron phosphate), <strong>20 Ah</strong>, about 182 × 77 × 170 mm, and <strong>rubber boots</strong> for its two terminals</td>
-<td>Runs the Pi for a day or two. LiFePO4 is the safe, long-lived lithium kind</td>
+<td><strong>12.8 V LiFePO4</strong>, <strong>20 Ah</strong> (about 182 × 77 × 170 mm), with <strong>rubber boots</strong> for its terminals</td>
 </tr>
 <tr class="odd">
 <td><strong>Computer</strong></td>
-<td><strong>Raspberry Pi 4</strong> (4 GB or more) or <strong>Raspberry Pi 5</strong> (8 GB)</td>
-<td>A Pi 4 runs the small AI and is easy on the battery. A Pi 5 runs a bigger AI. Same size, same holes, same base on the lid: swap later</td>
+<td><strong>Raspberry Pi 4</strong> (4 GB or more) or <strong>Raspberry Pi 5</strong> (8 GB). A Pi 5 runs a bigger AI</td>
 </tr>
 <tr class="even">
 <td><strong>Cooler</strong></td>
-<td>A low heatsink with a small fan, <strong>no taller than 16 mm</strong> over the board (the model has a <strong>GeeekPi Armor Lite</strong>)</td>
-<td>The AI works the chip hard. On a Pi 4 its fan goes on pins 4, 6 and 8; the setup switches it for you</td>
+<td>A low heatsink with a fan, no taller than 16 mm (the model has a <strong>GeeekPi Armor Lite</strong>)</td>
 </tr>
 <tr class="odd">
-<td><strong>Memory card</strong> (the Pi's own)</td>
-<td>A <strong>small</strong> microSD card, <strong>32 GB or more</strong></td>
-<td>Holds only the Pi's own system. It goes in the Pi's card slot. <strong>Not</strong> the library: see <a href="#two-separate-pieces-the-pis-card-and-the-library-drive">Two separate pieces</a></td>
+<td><strong>Pi's memory card</strong></td>
+<td>A small <strong>microSD card</strong>, 32 GB or more. Holds only the Pi's system</td>
 </tr>
 <tr class="even">
 <td><strong>Library drive</strong></td>
-<td>A <strong>small USB 3 thumb drive</strong>, <strong>256 GB or more</strong>, formatted <strong>exFAT</strong>, that sticks out <strong>no more than about 19 mm (¾ in)</strong> from the port</td>
-<td>The full library is about 170 GB; see <a class="guide" href="GET-THE-LIBRARY.html">How big a drive?</a>. The Pi rides on the lid, so there's no room for an SSD</td>
+<td>A <strong>small USB 3 thumb drive</strong>, <strong>256 GB or more</strong>, sticking out no more than ¾ in (19 mm)</td>
 </tr>
 <tr class="odd">
-<td><strong>Power for the Pi</strong></td>
-<td>A <strong>12 V to 5 V step-down converter, 5 A</strong> (the model has a <strong>TOBSUN EA25-5V</strong>, 52 × 48 × 19 mm, screw terminals: the "5V 5A" one), about <strong>80 cm of 18 AWG red/black pair</strong>, and <strong>two female jumper housings</strong> for the Pi's pins (right-angle ones if you can get them)</td>
-<td>Powers the Pi straight on its 5 V pins: thick wire all the way, and no USB-C plug to work loose. 5 A is enough for a Pi 5 too</td>
+<td><strong>Pi power</strong></td>
+<td>A <strong>12 V to 5 V, 5 A step-down converter</strong> (the model has a <strong>TOBSUN EA25-5V</strong>), about 80 cm of <strong>18 AWG</strong> red/black wire, and two <strong>female jumper plugs</strong> for the Pi's pins</td>
 </tr>
 <tr class="even">
-<td><strong>Switch, meter and fuse</strong></td>
-<td>A <strong>rocker switch</strong> (21 × 15 mm face, snaps into its hole); a <strong>DC volt/amp meter</strong> with thick and thin wires (48 × 29 mm face, snaps in; the common 100 V, 10 A kind); a <strong>microswitch</strong> with its lever taken off (20 × 10 × 6.4 mm, the meter's button); an <strong>inline blade fuse holder</strong> with a <strong>7.5 A</strong> fuse</td>
-<td>The switch turns it all on and off, the meter checks the battery, the fuse protects the wiring</td>
+<td><strong>Switch, meter, fuse</strong></td>
+<td>A <strong>rocker switch</strong> (21 × 15 mm), a <strong>DC volt/amp meter</strong> (48 × 29 mm, 100 V 10 A kind), a small <strong>microswitch</strong> (20 × 10 mm, lever removed) for the meter button, an <strong>inline blade fuse holder</strong> with a <strong>7.5 A</strong> fuse</td>
 </tr>
 <tr class="odd">
 <td><strong>Wire and screws</strong></td>
-<td>About 1.5 m each of <strong>16 AWG red and black wire</strong>, ring terminals for the battery's bolts, crimp connectors; 4 × M2.5 × 8 mm screws (the Pi), 2 × M2 screws (the microswitch), 2–4 short self-tapping screws for the converter (<strong>M3 × 6 mm</strong> or #4 × ¼ in, no longer), zip ties, <strong>double-sided foam tape</strong> (the strong kind, such as VHB)</td>
-<td></td>
+<td>About 1.5 m each of <strong>16 AWG</strong> red and black wire, ring terminals, crimp connectors; 4 × M2.5 × 8 mm screws (Pi), 2 × M2 screws (microswitch), 2–4 short <strong>M3 × 6 mm</strong> self-tapping screws (converter), zip ties, strong <strong>double-sided foam tape</strong> (VHB)</td>
 </tr>
 <tr class="even">
 <td><strong>Printer</strong> (optional)</td>
-<td><strong>DFRobot Embedded Thermal Printer (DFR0503)</strong>, and <strong>57 × 30 mm thermal paper</strong></td>
-<td>Prints guides and answers (<a href="#printing-on-paper">printing</a>)</td>
+<td><strong>DFRobot DFR0503</strong> thermal printer and <strong>57 × 30 mm</strong> thermal paper rolls</td>
 </tr>
 <tr class="odd">
 <td><strong>Radio</strong></td>
 <td>A small <strong>crank radio</strong>, about 128 × 60 × 46 mm or smaller</td>
-<td>News and weather with no grid (<a class="guide" href="RADIO-GUIDE.html">Radio guide</a>)</td>
 </tr>
 <tr class="even">
-<td><strong>Wall charging</strong></td>
-<td>A small <strong>LiFePO4 charger</strong>, 12 V, about 2 A, with a lithium setting (the model has a <strong>MOTOPOWER MP00207A</strong>, 175 × 60 × 45 mm)</td>
-<td>Lies flat on the solar controller</td>
+<td><strong>Wall charger</strong></td>
+<td>A <strong>12 V LiFePO4 charger</strong>, about 2 A (the model has a <strong>MOTOPOWER MP00207A</strong>)</td>
 </tr>
 <tr class="odd">
 <td><strong>Solar, for later</strong></td>
-<td><strong>Victron BlueSolar MPPT 75/15</strong> (100 × 113 × 40 mm), a <strong>20 A fuse</strong>, and a 12 V solar panel (50–100 W)</td>
-<td>Stored in the can, not wired. Charges the battery right (<a class="guide" href="OFF-GRID-POWER-GUIDE.html">Off-Grid Power</a>)</td>
+<td><strong>Victron BlueSolar MPPT 75/15</strong>, a <strong>20 A fuse</strong>, and a 12 V panel (50–100 W)</td>
 </tr>
 <tr class="even">
 <td><strong>Seal</strong></td>
-<td>Copper or aluminum <strong>foil tape with conductive glue</strong></td>
-<td>Closes the gap the rubber gasket leaves (<a class="guide" href="EMP-GUIDE.html">EMP guide</a>)</td>
+<td><strong>Foil tape with conductive glue</strong> (copper or aluminum), 2 in wide</td>
 </tr>
 <tr class="odd">
 <td><strong>Screen</strong></td>
-<td>An <strong>old phone</strong> (or small tablet) with a web browser, and its charging cable</td>
-<td>It lives in the can. Any phone works, iPhones too; no SIM card or plan needed</td>
+<td>An <strong>old phone</strong> and its charging cable. No SIM card or plan needed</td>
 </tr>
 <tr class="even">
 <td><strong>For setup</strong></td>
-<td>Your regular computer with a <strong>memory-card reader</strong>, a <strong>multimeter</strong>, and a USB-C power supply (5 V, 3 A) for a first test on the bench</td>
-<td>No TV, keyboard or mouse needed</td>
+<td>Your regular computer, a <strong>memory-card reader</strong>, a <strong>multimeter</strong>, and a USB-C power supply (5 V, 3 A) for testing</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Plastic cans don't work.</strong> Plastic and fiberglass cans let the pulse straight through. Buy steel (<a class="wiki" href="https://en.wikipedia.org/wiki/Ammunition_box" data-title="Ammunition_box" target="_blank" rel="noopener" title="Wikipedia: Ammunition box (offline copy with photos when opened through the Library Assistant)">Ammunition box</a>).</p>
 <hr />
 <h2 id="the-parts-to-print-and-etch">📐 The parts to print and etch</h2>
-<p><strong><a href="../download/ark-can-parts.zip">⬇️ Download the parts (ark-can-parts.zip)</a></strong> (from the website). Its <strong>READ-ME-FIRST.txt</strong> has every size, the wiring and the settings in one place, and <strong>ARK-Vault-assembly.3dm</strong> is the whole build to scale, for checking the fit in Rhino.</p>
+<p><strong><a href="../download/ark-can-parts.zip">⬇️ Download the parts (ark-can-parts.zip)</a></strong>. It has every measurement and the wiring in one file (<strong>READ-ME-FIRST.txt</strong>).</p>
 <ul>
-<li><p><strong>printed/</strong>: three simple parts, about 42 cm³ of plastic in all. None needs supports.</p>
+<li><p><strong>printed/</strong>: three parts to 3D-print in <strong>ABS</strong>, <strong>no supports</strong>, <strong>3 walls</strong> (0.4 mm nozzle):</p>
 <ul>
-<li>The <strong>printer riser</strong> (96 × 91 × 153 mm): a table with one flat leg. The printer drops into its top; the walled strip in front of the printer holds the meter, the power switch and the meter's button; the converter screws to the raised frame on the inside of the leg, and the fuse holder sticks on below it.</li>
-<li>The <strong>wall cleat</strong> (27 × 77 × 3 mm): a small strip that sticks to the can's hinge-end wall. The riser's other end hooks onto it, and its shallow V keeps the riser from sliding sideways.</li>
-<li>The <strong>Pi's base</strong> (57 × 66 × 5 mm): a thin plate with four posts, which sticks under the lid.</li>
+<li>the <strong>printer riser</strong>: a stand that holds the printer, switch and meter</li>
+<li>the <strong>wall cleat</strong>: a small strip the riser hooks onto</li>
+<li>the <strong>Pi's base</strong>: a thin plate that sticks under the lid</li>
 </ul>
-<p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/printed-parts.png" alt="The three printed parts as they sit on the printer&#39;s bed: the riser upside down with its deck on the bed and its one leg standing up, the Pi&#39;s base flat with its four posts up, and the wall cleat flat" /> <em>The files open in the slicer the way they print: the riser deck-down, the other two flat.</em></p>
-<p>Print in <strong>ABS</strong> (it stands the heat of a car better than PLA <em>(rule of thumb)</em>) with <strong>no supports</strong>. The riser's leg is a 1.2 mm wall, so set <strong>3 walls</strong> with a 0.4 mm nozzle (2 with a 0.6) and it prints solid; layers of 0.2 to 0.28 mm are fine. These are a first fit for this layout: print the Pi's base first, then the riser, and check them against your can and your parts.</p></li>
-<li><p><strong>laser/</strong>: the <strong>ARK Vault logo</strong> for both long sides of the can, and <strong>bare-metal strips</strong> all the way round the lid seam, for the foil tape. For a laser that burns through paint.</p></li>
+<p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/printed-parts.png" alt="The three printed parts as they sit on the printer&#39;s bed: the riser upside down with its deck on the bed and its one leg standing up, the Pi&#39;s base flat with its four posts up, and the wall cleat flat" /> <em>The parts as they print.</em></p></li>
+<li><p><strong>laser/</strong>: the <strong>ARK Vault logo</strong>, and <strong>bare-metal strips</strong> around the lid seam for the foil tape. No laser? Scrape the paint off the same strips by hand.</p></li>
 </ul>
-<p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/can-plan.png" alt="The ammo can after etching: the ARK Vault logo on a long side, and two bare-metal strips along the lid seam, the same on both long sides, with foil tape over the closed seam" /> <em>The long sides: the same file on each. No laser? Scrape the paint off the same strips by hand.</em></p>
-<p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/can-plan-ends.png" alt="The two ends after etching: on each end a bare band at the same height as the lower strip on the long sides, on the hinge plate under the hinge at one end and around the latch at the other; taped, one band of foil tape runs right round the can, over the hinge and over the closed latch" /> <em>The ends: the lower strip carries on round at the same height, and one band of tape goes right round the can, over the hinge and the latch.</em></p>
+<p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/can-plan.png" alt="The ammo can after etching: the ARK Vault logo on a long side, and two bare-metal strips along the lid seam, the same on both long sides, with foil tape over the closed seam" /> <em>The long sides (both the same).</em></p>
+<p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/can-plan-ends.png" alt="The two ends after etching: on each end a bare band at the same height as the lower strip on the long sides, on the hinge plate under the hinge at one end and around the latch at the other; taped, one band of foil tape runs right round the can, over the hinge and over the closed latch" /> <em>The ends: one band of tape goes right round the can, over the hinge and the latch.</em></p>
 <hr />
 <h2 id="build-it-step-by-step">🔧 Build it, step by step</h2>
 <h3 id="1-get-the-can-ready">1. Get the can ready</h3>
 <ol type="1">
-<li><strong>Bare metal all round the seam.</strong> Etch with a laser, or scrape the paint off by hand. On <strong>both long sides</strong>: a strip on the lid's edge and one on the body just below it (the logo goes on both long sides too). On <strong>each end</strong>: the body's strip carried on round at the same height, on the hinge plate under the hinge at one end and, with the latch flipped up out of the way, across the other. The foil tape goes over these, metal to metal. See the EMP guide's <a class="guide" href="EMP-GUIDE.html">Faraday containers</a> section.</li>
-<li><strong>Nothing lines the can.</strong> Every part is in its own case or on the riser. Keep bare wire ends and bolts covered (rubber boots, heat-shrink, tape) so nothing metal can touch the steel.</li>
+<li><strong>Bare metal around the seam:</strong> etch or scrape the paint off a strip on the lid's edge and one on the body just below it, all the way round (see the pictures above). The foil tape sticks here, metal to metal.</li>
+<li><strong>Cover every bare wire end and bolt</strong> (rubber boots, heat-shrink or tape) so nothing metal touches the can.</li>
 </ol>
 <h3 id="2-the-battery">2. The battery</h3>
-<p>Stand the battery at the <strong>latch end</strong>, straight on the raised panel in the can's floor, against the <strong>back</strong> wall, terminals toward the back. Put the ring terminals on its bolts: the main <strong>+</strong> lead (to the fuse), the main <strong>−</strong> lead (to the meter) and the wall charger's leads. Then push the <strong>rubber boots</strong> over both terminals: they keep the bolts off the lid.</p>
+<p>Stand it at the <strong>latch end</strong>, against the <strong>back</strong> wall, terminals toward the back. Bolt on the main <strong>+</strong> and <strong>−</strong> leads and the wall charger's leads, then push the <strong>rubber boots</strong> over both terminals.</p>
 <h3 id="3-the-chargers">3. The chargers</h3>
-<p>In front of the battery, against the latch wall: stand the <strong>solar controller</strong> on its long, narrow edge (100 × 40 mm) on the floor, terminals toward the hinge end. It's stored, not wired. Lay the <strong>wall charger</strong> flat on top of it, coil its mains cord on top and lay the plug on the coil. The quick-connect plug of its battery leads sits beside the coil.</p>
+<p>In front of the battery: stand the <strong>solar controller</strong> on its long edge, terminals toward the hinge end (stored, not wired). Lay the <strong>wall charger</strong> flat on top, with its cord coiled on top of it.</p>
 <h3 id="4-the-printer-riser">4. The printer riser</h3>
 <ol type="1">
-<li>Snap the <strong>meter</strong> and the <strong>rocker switch</strong> into their holes in the riser's front strip. Set the <strong>microswitch</strong> in its slot, red button up, flush with the top, and screw it to the rib beside it (2 × M2).</li>
-<li>Both small parts go on the inside of the riser's <strong>leg</strong>. Hold the <strong>converter</strong> on the raised frame, its screw terminals toward the front, and fix it through its mounting holes with short self-tapping screws (<strong>M3 × 6 mm</strong> or #4 × ¼ in; anything longer comes out the other side, against the battery). The frame is thick all the way round, so the screws can go wherever the holes are. Stick the <strong>fuse holder</strong> across the leg below it, about 1 cm (⅜ in) above the bottom, with double-sided foam tape.</li>
-<li>Drop the <strong>printer</strong> into the top: its face rests on the riser.</li>
-<li>Stick the <strong>wall cleat</strong> to the inside of the can's <strong>hinge-end wall</strong> with foam tape: thick edge up, its sloped face toward the wall, the low point of its V in the middle. Its two top corners go about <strong>29 mm (1⅛ in) below the top of the can's rim</strong>, and its back end about 6 mm (¼ in) from the back wall, where the corner's curve ends.</li>
-<li>Wire the riser (next steps; it has one leg, so lay it on its side while you work), then lower it into the <strong>hinge end</strong> of the can, against the back wall: its leg stands on the floor beside the battery, and the lip under its other end drops in behind the cleat and settles into the V. Check the deck sits level. It lifts straight out again for repairs and to change the fuse, with the lid open all the way.</li>
+<li>Snap the <strong>meter</strong> and <strong>power switch</strong> into their holes in the riser's front strip. Screw the <strong>microswitch</strong> into its slot, button up (2 × M2).</li>
+<li>On the inside of the riser's <strong>leg</strong>: screw the <strong>converter</strong> to the raised frame, terminals toward the front, with <strong>short</strong> screws (M3 × 6 mm; longer ones poke through). Stick the <strong>fuse holder</strong> across the leg below it, about 1 cm up from the bottom.</li>
+<li>Drop the <strong>printer</strong> into the top.</li>
+<li>Stick the <strong>wall cleat</strong> inside the can's <strong>hinge-end wall</strong>, thick edge up, its top corners about <strong>29 mm (1⅛ in) below the rim</strong> and about 6 mm from the back wall.</li>
+<li>Wire it (step 6), then lower the riser into the <strong>hinge end</strong>: its leg stands beside the battery and its other end hooks onto the cleat. It lifts straight out for repairs.</li>
 </ol>
 <h3 id="5-the-pi-on-the-lid">5. The Pi on the lid</h3>
 <ol type="1">
-<li>Fit the <strong>cooler</strong> on the Pi, and plug its fan onto <strong>pins 4, 6 and 8</strong> (red, black, blue), as its leaflet shows (diagram below).</li>
-<li>Screw the Pi onto its printed <strong>base</strong> (4 × M2.5 screws; the base is shorter than the board, so the USB end overhangs it), and stick the base under the <strong>lid</strong> at the <strong>hinge end</strong>, over the printer, with double-sided foam tape. Point the Pi's <strong>USB ports toward the front</strong> of the can, with the base's edges about <strong>13 mm (½ in)</strong> in from the inside of the hinge wall and <strong>9 mm (⅜ in)</strong> in from the back wall: the 5 V wires run in the gap at the hinge end. Opened all the way, the lid swings right over past the hinge and the Pi lies face-up just beyond the can's end. The latch lever hangs from the lid's far end and can flop onto the inside of the open lid: it reaches about 11 cm, and the Pi is about 21 cm away, so it can't touch it.</li>
-<li>Plug the <strong>library drive</strong> into a <strong>blue</strong> USB port and the printer's <strong>USB lead</strong> into a black one.</li>
+<li>Fit the <strong>cooler</strong> and plug its fan onto <strong>pins 4, 6 and 8</strong> (red, black, blue).</li>
+<li>Screw the Pi to its printed <strong>base</strong>, and stick the base under the <strong>lid</strong> at the <strong>hinge end</strong>, <strong>USB ports toward the front</strong>, about <strong>13 mm</strong> in from the hinge wall and <strong>9 mm</strong> in from the back wall.</li>
+<li>Plug the <strong>library drive</strong> into a <strong>blue</strong> USB port and the printer's cable into a black one.</li>
 </ol>
 <h3 id="6-wiring">6. Wiring</h3>
-<p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/wiring.svg" alt="The ARK Vault wiring. Battery plus goes through a 7.5 amp fuse and the power switch to the printer and the 5 volt converter. Battery minus goes through the volt/amp meter&#39;s thick wires (black in, red out) to the printer and the converter. The meter&#39;s thin black wire goes to battery minus, its thin yellow wire to plus after the fuse, and its thin red wire through the meter button to plus after the fuse, so it lights only while the button is held. The converter&#39;s 5 volt output goes to the Pi&#39;s pin 2 (plus) and pin 14 (ground); the fan is on pins 4, 6 and 8; the printer&#39;s USB lead goes to a Pi USB port" /> <em>The whole wiring (a diagram drawn for this guide). The 3D model shows where each wire runs.</em></p>
+<p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/wiring.svg" alt="The ARK Vault wiring. Battery plus goes through a 7.5 amp fuse and the power switch to the printer and the 5 volt converter. Battery minus goes through the volt/amp meter&#39;s thick wires (black in, red out) to the printer and the converter. The meter&#39;s thin black wire goes to battery minus, its thin yellow wire to plus after the fuse, and its thin red wire through the meter button to plus after the fuse, so it lights only while the button is held. The converter&#39;s 5 volt output goes to the Pi&#39;s pin 2 (plus) and pin 14 (ground); the fan is on pins 4, 6 and 8; the printer&#39;s USB lead goes to a Pi USB port" /> <em>The whole wiring. The 3D model shows where each wire runs.</em></p>
 <ul>
-<li><strong>Battery +</strong> → <strong>7.5 A fuse</strong> → <strong>power switch</strong> → the converter's <strong>Input +</strong> and the printer's +.</li>
-<li><strong>Battery −</strong> → the meter's <strong>thick black</strong> wire; the meter's <strong>thick red</strong> wire → the converter's <strong>Input −</strong> and the printer's −. Everything the library draws goes through the meter.</li>
-<li><strong>The meter's thin wires:</strong> <strong>black</strong> → battery −. <strong>Yellow</strong> → + after the fuse (it reads the battery's volts). <strong>Red</strong> → the meter button (the microswitch's <strong>COM</strong> and <strong>NO</strong>) → + after the fuse, so the meter lights only while you hold the button. Check your meter's own wiring sheet: some put the thick wires the other way round.</li>
-<li><strong>The converter's Output +</strong> → Pi <strong>pin 2</strong> (5 V); <strong>Output −</strong> → Pi <strong>pin 14</strong> (ground). <strong>Before</strong> you plug this lead onto the Pi, switch on and check it with a multimeter: <strong>5.0 to 5.25 V</strong>, + and − the right way round. The 5 V pins skip the Pi's own input protection, so a mistake here can kill it.</li>
-<li><strong>The fan</strong> → pins <strong>4</strong> (red, 5 V), <strong>6</strong> (black, ground), <strong>8</strong> (blue, GPIO 14).</li>
-<li><strong>The printer's USB lead</strong> → a USB port on the Pi.</li>
-<li><strong>The route:</strong> the 5 V pair and the printer's lead go together up the gap between the battery and the riser, along the front wall (over the phone) to the hinge corner, and loop up into the lid there (leave about <strong>6 cm (2½ in)</strong> in the loop, so the lid opens freely). On the lid, the printer's lead runs a few centimetres along the front to its USB port, and the 5 V pair runs along the hinge end, between the Pi's base and the lid's rim, to its pins.</li>
-<li><strong>The fuse</strong> is on the riser's leg beside the battery, so only about 23 cm (9 in) of wire runs from battery + to the fuse with no fuse on it. Tie that wire down along its route, away from sharp edges. (The battery's own protection is the back-up.)</li>
+<li><strong>Battery +</strong> → <strong>7.5 A fuse</strong> → <strong>power switch</strong> → converter <strong>Input +</strong> and printer <strong>+</strong>.</li>
+<li><strong>Battery −</strong> → meter's <strong>thick black</strong> wire. Meter's <strong>thick red</strong> wire → converter <strong>Input −</strong> and printer <strong>−</strong>.</li>
+<li><strong>Meter's thin wires:</strong> <strong>black</strong> → battery −. <strong>Yellow</strong> → + after the fuse. <strong>Red</strong> → the microswitch (<strong>COM</strong> and <strong>NO</strong>) → + after the fuse. (Check your meter's own wiring sheet; some are reversed.)</li>
+<li><strong>Converter Output +</strong> → Pi <strong>pin 2</strong>. <strong>Output −</strong> → Pi <strong>pin 14</strong>.
+<blockquote>
+<p>⚠️ <strong>Before plugging this onto the Pi</strong>, switch on and check it with a multimeter: it must read <strong>5.0 to 5.25 V</strong>, with + and − the right way round. A mistake here can kill the Pi.</p>
+</blockquote></li>
+<li><strong>Fan</strong> → pins <strong>4</strong> (red), <strong>6</strong> (black), <strong>8</strong> (blue).</li>
+<li><strong>Printer's USB cable</strong> → a Pi USB port.</li>
+<li><strong>Route:</strong> run the Pi's power wires and the printer cable together along the front wall to the hinge corner, and up into the lid. Leave a loop of about <strong>6 cm (2½ in)</strong> so the lid opens freely. Tie the short wire from battery + to the fuse down, away from sharp edges.</li>
 </ul>
-<p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/pi-pins-ark.svg" alt="The Raspberry Pi pins the ARK Vault uses, at the end of the 40-pin row farthest from the USB ports, all on the row along the board&#39;s edge: pin 2 (5 volts) takes the converter&#39;s plus wire, pins 4, 6 and 8 take the cooler fan&#39;s red, black and blue wires (5 volts, ground, GPIO 14), and pin 14 (ground) takes the converter&#39;s minus wire" /> <em>All five wires go on the row along the board's edge. Pin 2 is the corner pin at the end farthest from the USB ports (a diagram drawn for this guide).</em></p>
-<p>Bend the wires off the jumper housings toward the board's edge: with the lid shut, the printer sits just below them. <strong>A Pi 5's</strong> cooler plugs into the Pi 5's own fan socket instead, and its power lead goes on the same pins 2 and 14.</p>
+<p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/pi-pins-ark.svg" alt="The Raspberry Pi pins the ARK Vault uses, at the end of the 40-pin row farthest from the USB ports, all on the row along the board&#39;s edge: pin 2 (5 volts) takes the converter&#39;s plus wire, pins 4, 6 and 8 take the cooler fan&#39;s red, black and blue wires (5 volts, ground, GPIO 14), and pin 14 (ground) takes the converter&#39;s minus wire" /> <em>All five wires go on the outer row. Pin 2 is the corner pin farthest from the USB ports.</em></p>
+<p><strong>Pi 5:</strong> its cooler plugs into its own fan socket instead; the power still goes on pins 2 and 14.</p>
 <h3 id="7-the-rest">7. The rest</h3>
 <ul>
-<li>The <strong>radio</strong> stands in front of the riser, partly under the meter, straight on the floor in the hinge-end corner, up against the phone. The <strong>phone</strong> stands on its end against the front wall beside it. To take the radio out: lift the phone out, slide the radio toward the front wall, then lift it.</li>
-<li><strong>Solar:</strong> the controller stays stored, its terminals empty (see <a href="#power-and-charging">Power and charging</a>).</li>
-<li><strong>Nothing should touch bare metal.</strong> Loose metal can short things out, and the EMP guidance is to keep items off the walls (<a class="lib" target="_blank" rel="noopener" href="https://www.cisa.gov/sites/default/files/publications/19_0307_CISA_EMP-Protection-Resilience-Guidelines.pdf#page=45" title="EMP Protection and Resilience Guidelines for Critical Infrastructure and Equipment (CISA 2019).pdf — page 45">CISA, p. 45</a>).</li>
+<li>The <strong>radio</strong> stands on the floor in front of the riser, and the <strong>phone</strong> stands on its end against the front wall beside it.</li>
+<li>Keep loose metal off the can's walls (<a class="lib" target="_blank" rel="noopener" href="https://www.cisa.gov/sites/default/files/publications/19_0307_CISA_EMP-Protection-Resilience-Guidelines.pdf#page=45" title="EMP Protection and Resilience Guidelines for Critical Infrastructure and Equipment (CISA 2019).pdf — page 45">CISA, p. 45</a>).</li>
 </ul>
 <hr />
 <h2 id="set-up-the-pi-no-tv-or-keyboard">💾 Set up the Pi (no TV or keyboard)</h2>
-<p>The library installer prepares the Pi's memory card so the Pi <strong>sets itself up the first time it starts</strong>. The steps are the same for a Pi 4 and a Pi 5.</p>
+<p>The library installer prepares the Pi's memory card, and the Pi <strong>sets itself up</strong> the first time it starts.</p>
 <h3 id="two-separate-pieces-the-pis-card-and-the-library-drive">Two separate pieces: the Pi's card and the library drive</h3>
-<p>The Vault needs <strong>two</strong> storage pieces, and they must not be the same one:</p>
-<p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/two-pieces.svg" alt="The Raspberry Pi seen from the side: a small memory card in the card slot underneath holds the Pi&#39;s own system; the library drive, a USB stick, a small SSD or a big microSD card in a USB card reader, plugs into a blue USB port" /> <em>The Pi's own card in its slot; the library on a USB drive (a diagram drawn for this guide).</em></p>
+<p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/two-pieces.svg" alt="The Raspberry Pi seen from the side: a small memory card in the card slot underneath holds the Pi&#39;s own system; the library drive, a USB stick, a small SSD or a big microSD card in a USB card reader, plugs into a blue USB port" /></p>
 <table>
 <thead>
 <tr class="header">
@@ -274,185 +226,100 @@
 <tbody>
 <tr class="odd">
 <td>What it holds</td>
-<td>Only the Pi's own system (Raspberry Pi OS)</td>
-<td>The whole library, the AI, and the programs</td>
+<td>Only the Pi's own system</td>
+<td>The whole library and the AI</td>
 </tr>
 <tr class="even">
 <td>What it is</td>
-<td>A <strong>small microSD card</strong>, 32 GB or more</td>
-<td>A <strong>USB</strong> drive, 256 GB or more. In the Vault: a <strong>small thumb drive</strong> (no more than about 19 mm long beyond the port)</td>
+<td>A small microSD card (32 GB+)</td>
+<td>A USB thumb drive (256 GB+)</td>
 </tr>
 <tr class="odd">
 <td>Where it goes</td>
-<td>The card slot <strong>under</strong> the Pi</td>
-<td>A <strong>blue</strong> USB port</td>
-</tr>
-<tr class="even">
-<td>Filled by</td>
-<td><strong>Raspberry Pi Imager</strong>, then the library installer's <strong>Finish a Raspberry Pi memory card</strong></td>
-<td>The library <strong>installer</strong> (the same kit)</td>
+<td>The card slot under the Pi</td>
+<td>A blue USB port</td>
 </tr>
 </tbody>
 </table>
-<ul>
-<li><strong>Never point Raspberry Pi Imager at the library drive.</strong> Imager <strong>erases</strong> the whole card or drive it writes to. When you pick the storage in Imager, check its size: about 32 GB is the Pi's card; 256 GB is your library.</li>
-<li><strong>The library can't go on the Pi's card.</strong> The Pi has one card slot, and its own system has to be there, so the library always comes in through USB. (Outside the Vault, a USB SSD or a big microSD card in a USB card reader works too.)</li>
-<li>Keeping them separate also means the library drive stays readable by any computer or phone: pull it out of the Vault and it works anywhere, like any copy of the library.</li>
-</ul>
+<p>Outside the Vault, the library drive can also be a small SSD, or a big microSD card in a USB card reader. It just can't share the Pi's own card slot.</p>
+<blockquote>
+<p>⚠️ <strong>Never point Raspberry Pi Imager at the library drive.</strong> It erases whatever it writes to. Check the size before you write: about 32 GB is the Pi's card; 256 GB is the library.</p>
+</blockquote>
 <h3 id="the-steps">The steps</h3>
 <ol type="1">
-<li><strong>Fill the library drive</strong> with the installer: <strong><a href="../download/ark-illinois-valley-kit.zip">⬇️ Download the installer kit (ark-illinois-valley-kit.zip)</a></strong>. It's the same kit for every computer and for the ARK Vault; see <a class="guide" href="GET-THE-LIBRARY.html">Get the whole library</a>. Keep the drive <strong>exFAT</strong>, and keep <strong>Offline AI</strong> and <strong>Works on every kind of device</strong> ticked (that one puts the Raspberry Pi version on the drive).</li>
-<li><strong>Write Raspberry Pi OS onto the Pi's own small memory card</strong> (not the library) with <strong>Raspberry Pi Imager</strong> (free, from raspberrypi.com) on your regular computer. Unplug the library drive first, so you can't pick it by mistake.
+<li><strong>Fill the library drive</strong> with the installer kit, like any library drive: <strong><a href="../download/ark-illinois-valley-kit.zip">⬇️ Download the installer kit (ark-illinois-valley-kit.zip)</a></strong> (see <a class="guide" href="GET-THE-LIBRARY.html">Get the whole library</a>). Keep <strong>Offline AI</strong> and <strong>Works on every kind of device</strong> ticked. <em>Want maps beyond the local area?</em> With the drive still in your computer, start the library and use <strong>⚙️ Settings → A bigger map</strong> (see <a class="guide" href="HOW-TO-VIEW-MAPS.html">Offline maps</a>).</li>
+<li><strong>Write the Pi's own small card</strong> with <strong>Raspberry Pi Imager</strong> (free, from raspberrypi.com). Unplug the library drive first.
 <ul>
-<li>Device: your Pi (<strong>Raspberry Pi 4</strong> or <strong>5</strong>).</li>
-<li>Operating system: <strong>Raspberry Pi OS (other)</strong> → <strong>Raspberry Pi OS Lite (64-bit)</strong>.</li>
-<li>Storage: the <strong>small</strong> card (check the size). When it asks about <strong>customisation</strong>, choose <strong>No</strong>. Write it.</li>
-<li>When it's finished, take the card out and plug it back in.</li>
+<li>Device: your Pi. Operating system: <strong>Raspberry Pi OS (other)</strong> → <strong>Raspberry Pi OS Lite (64-bit)</strong>. Storage: the <strong>small</strong> card.</li>
+<li>When it asks about <strong>customisation</strong>, choose <strong>No</strong>.</li>
+<li>When it's done, take the card out and put it back in.</li>
 </ul></li>
-<li><strong>Finish the card with the library installer.</strong> Start <strong>INSTALL</strong> again (the same kit you filled the drive with) and press <strong>Finish a Raspberry Pi memory card</strong> on its first page. Pick the card (it's called <strong>bootfs</strong>), keep or change the Wi-Fi name and password, leave <strong>It's in the ARK ammo can, with an on/off switch</strong> ticked, and press <strong>Finish the memory card</strong>. <strong>Write down the Wi-Fi name and password</strong> it shows.</li>
-<li><strong>Eject the card</strong> and put it in the Pi's card slot (underneath). Plug the <strong>library drive</strong> into a <strong>blue</strong> USB port.</li>
-<li><strong>Switch it on.</strong> On the bench: a USB-C power supply (5 V, 3 A or more) in the Pi's USB-C port. In the can: the red power switch. (Never both at once.) Its green light <strong>beats like a heart</strong> while it sets itself up (about 5–10 minutes). Then it restarts by itself. 2–3 minutes after that, its Wi-Fi appears (a bit longer the first time, while the AI times itself and picks its size).</li>
+<li><strong>Finish the card:</strong> start the installer again and press <strong>Finish a Raspberry Pi memory card</strong>. Pick the card (called <strong>bootfs</strong>), keep <strong>It's in the ARK ammo can</strong> ticked, and press <strong>Finish the memory card</strong>. <strong>Write down the Wi-Fi name and password</strong> it shows.</li>
+<li><strong>Put the card in the Pi</strong> and plug the <strong>library drive</strong> into a <strong>blue</strong> USB port.</li>
+<li><strong>Switch on.</strong> The green light <strong>flickers like a heartbeat</strong> while it sets itself up (5–10 minutes), then it restarts. A few minutes later its Wi-Fi appears.</li>
 </ol>
-<p>What the setup does: the Pi makes its <strong>own Wi-Fi</strong> every time it starts, <strong>starts the library by itself</strong> and shares it, mounts the library drive in the same place every time, lets the library use the printer, opens any USB drive of <strong>photos and videos</strong> (read-only) for the library's <strong>Photos</strong> page, runs the cooler's <strong>fan</strong> on a Pi 4 (pins 4, 6 and 8: on at 60 °C, off at 50 °C), and makes the Pi's memory card and the library drive <strong>read-only</strong>: the Pi keeps changes in memory and forgets them when the power goes, so flipping the power switch off is always safe. It also saves <strong><code>PI-WIFI-CARD.html</code></strong> at the top of the library drive with the Wi-Fi name, password and address: print it later on any computer and tape it inside the lid.</p>
-<p><strong>If the green light keeps blinking fast instead</strong>, it got stuck. Switch it off, put the memory card in your computer and open <strong>ark</strong> → <strong>setup-log.txt</strong>: the last lines say why (usually the library drive wasn't plugged in). Fix it, put the card back and switch on again. It tries again at every start until it has worked.</p>
-<p><strong>Updating later</strong> (a new version of the library or its programs): run the installer again on the <strong>library drive</strong> (pick the same drive; it only adds what's new), then <strong>finish the Pi's card again</strong> (step 3) and switch on: it sets itself up again with the new version. Finishing the card turns its read-only mode off for that, and the setup turns it back on when it's done.</p>
-<p><strong>Moving to a Pi 5 later:</strong> finish the same card again with the installer (step 3), then put it in the Pi 5. Finishing the card makes it set itself up again for the new Pi.</p>
+<p>It also saves <strong><code>PI-WIFI-CARD.html</code></strong> on the library drive with the Wi-Fi details. Print it and tape it inside the lid.</p>
+<p><strong>If the green light keeps blinking fast,</strong> it got stuck. Switch off, put the card in your computer and open <strong>ark → setup-log.txt</strong> to see why (usually the library drive wasn't plugged in). Fix it and switch on again.</p>
+<p><strong>Updating later, or moving to a Pi 5:</strong> run the installer on the library drive again, then finish the Pi's card again (step 3) and switch on.</p>
 <h3 id="changing-a-setting-later">Changing a setting later</h3>
-<p>The card is read-only, so a change made on the running Pi is gone at the next start.</p>
+<p>The Pi forgets changes made while it runs (that's what makes switching off safe).</p>
 <ul>
-<li><strong>The Wi-Fi name or password:</strong> finish the card again with the installer (step 3), with the new ones, and switch on.</li>
-<li><strong>Anything else</strong> (with a screen and keyboard): log in and type <code>bash /mnt/emergency-library/OfflineLibrary/SETUP-Raspberry-Pi.sh --writable</code>, restart, make the change, then run <code>bash /mnt/emergency-library/OfflineLibrary/SETUP-Raspberry-Pi.sh</code> again to make it read-only again.</li>
+<li><strong>To change the Wi-Fi name or password:</strong> finish the card again (step 3) with the new ones.</li>
+<li><strong>Anything else</strong> needs a screen and keyboard: log in (user <strong>ark</strong>, password = the Wi-Fi password), type <code>bash /mnt/emergency-library/OfflineLibrary/SETUP-Raspberry-Pi.sh --writable</code>, restart, make the change, then run the same line <strong>without</strong> <code>--writable</code> to lock it again.</li>
 </ul>
-<p><strong>The Pi's own login</strong> is only needed for repairs with a screen and keyboard: user name <strong>ark</strong>, password the same as the Wi-Fi password.</p>
-<h3 id="test-it-the-way-youll-use-it">Test it the way you'll use it</h3>
+<h3 id="test-it">Test it</h3>
 <ol type="1">
-<li>Flip the <strong>power switch</strong> on and wait <strong>2–3 minutes</strong>.</li>
-<li>On the phone, open <strong>Settings → Wi-Fi</strong>, join the Pi's Wi-Fi (<strong>Emergency-Library</strong> unless you changed it) with the password. If it says <em>no internet</em>, tap <strong>Stay connected</strong> / <strong>Keep</strong>.</li>
-<li>Open the phone's browser (on an iPhone, <strong>Safari</strong>) and type the address <strong>exactly</strong>: <code>http://192.168.4.1:8096</code>. To keep it one tap away, add it to the home screen (<strong>Share → Add to Home Screen</strong>).</li>
-<li>Search for something, open a guide, ask the AI a question, and print something. Plug a USB drive of photos into a free USB port and open <strong>🔧 Tools → 🖼️ Family photos &amp; videos</strong>.</li>
-<li><strong>Hold the meter's button:</strong> it shows the battery's volts and the amps being drawn.</li>
-<li><strong>Flip the switch off.</strong> Everything goes dark at once; that's fine.</li>
-<li>Do it all again with the home internet switched off.</li>
+<li>Flip the switch on and wait <strong>2–3 minutes</strong>.</li>
+<li>On the phone, join the Pi's Wi-Fi (<strong>Emergency-Library</strong> unless you changed it). If it says <em>no internet</em>, tap <strong>Stay connected</strong>.</li>
+<li>In the browser (Safari on an iPhone), type <strong><code>http://192.168.4.1:8096</code></strong>. Add it to the home screen.</li>
+<li>Search, open a guide, ask the AI, print something, and hold the meter button.</li>
+<li>Switch off. Then do it all again with your home internet off.</li>
 </ol>
 <hr />
 <h2 id="using-it">🆘 Using it</h2>
 <ol type="1">
-<li><strong>Open the lid</strong> all the way (it swings right over and rests past the hinge) and <strong>flip the red power switch on</strong>. Keep the can in the shade.</li>
-<li><strong>Take out the phone</strong> and switch it on. <strong>Wait 2–3 minutes</strong> for the Pi.</li>
-<li><strong>On the phone</strong> (and any others): join the Pi's Wi-Fi, open the browser, type the address from the card in the lid. Save it as a bookmark on the can's phone so it's one tap next time.</li>
-<li><strong>To turn it off:</strong> <strong>flip the switch off</strong>, any time. Close the lid and <strong>tape the seam</strong> again.</li>
+<li><strong>Open the lid</strong> all the way and <strong>flip the red switch on</strong>. Keep it in the shade.</li>
+<li><strong>Take out the phone</strong> and wait <strong>2–3 minutes</strong>.</li>
+<li><strong>Join the Pi's Wi-Fi</strong> and open the address from the card in the lid.</li>
+<li><strong>When you're done,</strong> flip the switch off, close the lid and <strong>tape the seam</strong> again.</li>
 </ol>
-<p><strong>Is it safe to have it out?</strong> A nuclear EMP is over in seconds to minutes. A solar storm comes with 18–72 hours' warning. If a warning comes, switch off and seal the can (see <a class="guide" href="EMP-GUIDE.html">when a solar-storm warning comes</a>). Use it the rest of the time.</p>
-<p><strong>Save the battery:</strong> switch off when nobody needs it, and check the battery now and then with the meter's button. Searching and reading use little power; the AI uses the most.</p>
-<p><strong>Family photos and videos:</strong> plug a USB drive of them into a free USB port on the Pi, any time. They show under <strong>🔧 Tools → 🖼️ Family photos &amp; videos</strong>, folder by folder, full screen or as a slideshow. The drive opens read-only, so nothing on it can change.</p>
+<p>If a <strong>solar-storm warning</strong> comes, switch off and seal it right away (see the <a class="guide" href="EMP-GUIDE.html">EMP guide</a>). Switch off when nobody's using it to save the battery; the AI uses the most power.</p>
+<p><strong>The map:</strong> <strong>🔧 Tools → 🗺️ Map</strong> shows roads, topo lines and property lines on any phone on the Vault's Wi-Fi. <strong>📍</strong> shows where you are (the phone warns once; the map says what to tap), and <strong>🖨️</strong> prints the part on screen in strips. See <a class="guide" href="HOW-TO-VIEW-MAPS.html">Offline maps</a>.</p>
+<p><strong>Family photos:</strong> plug a USB drive of photos into a free USB port. They show under <strong>🔧 Tools → 🖼️ Family photos &amp; videos</strong>. Nothing on that drive can be changed.</p>
 <hr />
 <h2 id="printing-on-paper">🖨️ Printing on paper</h2>
-<p>The <strong>receipt printer</strong> on the riser lets anyone on the Pi's Wi-Fi print a guide section, an AI answer or a book page, to take to the garden, the barn or a neighbor. It's a thermal printer: heat-sensitive paper, <strong>no ink or ribbon</strong> to run out of. It gets its power from the battery with everything else, so it's on whenever the power switch is.</p>
-<p><strong>Paper:</strong> <strong>thermal rolls 57 × 30 mm</strong> (2¼ inches wide, no more than 30 mm across the roll), plain, not sticker paper. A roll is about <strong>8.5 m (28 ft)</strong>. Only one side prints: if the paper comes out blank, turn the roll over.</p>
-<p><strong>Printing:</strong></p>
+<p>Anyone on the Vault's Wi-Fi can print a guide section, an AI answer or a book page on the little receipt printer. It uses heat-sensitive paper: <strong>no ink</strong> to run out.</p>
 <ul>
-<li><strong>🖨️ Print</strong> is at the top of every guide and every other page of the library, in an e-book's top bar, and at the bottom right of encyclopedia articles. Under each AI answer there's <strong>🖨️ Print this answer</strong>. Every book has a <strong>🖨️</strong> of its own: next to it in the <strong>Books</strong> tab, and next to each book in an answer's sources (<strong>🖨️ page</strong>, already set to the page the answer used).</li>
-<li>For a guide, choose <strong>this section</strong> (the one you're reading), the <strong>whole page</strong>, or text you selected first.</li>
-<li>The <strong>preview</strong> shows exactly what will come out, and how much paper it takes. <strong>Save the picture</strong> keeps it on the phone instead.</li>
+<li><strong>🖨️ Print</strong> is at the top of every guide and page, and under each AI answer (<strong>🖨️ Print this answer</strong>). Every book has a <strong>🖨️</strong> button too.</li>
+<li><strong>Pick a size:</strong> <strong>Tiny</strong> fits the most on the paper; <strong>Small</strong> or <strong>Medium</strong> are easier to read; <strong>Large</strong> for weak eyes. The preview shows how much paper it will take.</li>
+<li><strong>Book pages:</strong> print the <strong>words</strong> (re-flowed to fit, least paper) or a <strong>picture</strong> of the page (for drawings and tables). A picture can be printed <strong>bigger</strong>, in strips you tape together; each strip is labelled (A1, A2, B1…) so you know where it goes.</li>
+<li><strong>Doses and measurements:</strong> in <strong>Tiny</strong>, check every number, or print in Small.</li>
 </ul>
-<p><strong>Printing from a book.</strong> A whole book page shrunk onto 2¼-inch paper can't be read, so there are two ways to print one. Choose a page, or a run of pages (up to 20 at a time), then:</p>
-<ul>
-<li><strong>The words, re-flowed to fit the paper:</strong> the page's text set out again in the size you choose, one strip for all the pages, with "page 13" between them. The least paper, and easy to read.</li>
-<li><strong>A picture of each page,</strong> for drawings, tables and diagrams. The phone draws the page itself (with PDF.js, the PDF reader in Firefox), so this works on the Vault with no internet.
-<ul>
-<li><strong>Bigger</strong> prints the page 2, 3 or 4 strips wide, so small print comes out large enough to read.</li>
-<li><strong>Cut each strip into</strong> 2–4 pieces turns long strips into shorter ones.</li>
-<li>Each piece prints on its own, labelled <strong>A1, A2 … B1</strong> with a little map: lay the columns (A, B …) left to right and the pieces (1, 2 …) top to bottom, and tape them together on the back.</li>
-</ul></li>
-</ul>
-<table>
-<thead>
-<tr class="header">
-<th>One page as a picture</th>
-<th>Paper it takes <em>(about)</em></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Whole page</td>
-<td>2½ in (6 cm)</td>
-</tr>
-<tr class="even">
-<td>2 strips across</td>
-<td>10 in (25 cm)</td>
-</tr>
-<tr class="odd">
-<td>3 strips across</td>
-<td>22 in (56 cm)</td>
-</tr>
-<tr class="even">
-<td>4 strips across</td>
-<td>3¼ ft (1 m)</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr class="header">
-<th>Size</th>
-<th>Characters a line</th>
-<th>A typical guide section</th>
-<th>Good for</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Tiny</strong></td>
-<td>76</td>
-<td>about <strong>2–3 inches</strong></td>
-<td>the most on the least paper; read it close up</td>
-</tr>
-<tr class="even">
-<td><strong>Small</strong></td>
-<td>64</td>
-<td>about 3 inches</td>
-<td>everyday use</td>
-</tr>
-<tr class="odd">
-<td><strong>Medium</strong></td>
-<td>48</td>
-<td>about 4–5 inches</td>
-<td>easier reading</td>
-</tr>
-<tr class="even">
-<td><strong>Large</strong></td>
-<td>38</td>
-<td>about 7 inches</td>
-<td>weak eyes, signs and notes</td>
-</tr>
-</tbody>
-</table>
-<p><em>(Lengths measured with the library's own preview.)</em> In <strong>Tiny</strong> the letters are about 1 mm tall. The preview warns when a print has <strong>doses or measurements</strong> in it: in Tiny, check every number on the paper, or print those in Small or Medium.</p>
-<p><strong>To save paper and power:</strong> print one section at a time, use Tiny, and leave <strong>Pictures</strong> and <strong>Book page references</strong> off (both are off unless you tick them). Dark pictures take the most power <em>(rule of thumb)</em>.</p>
-<p><strong>Looking after prints:</strong> thermal prints fade with heat, sunlight and time. Keep them out of the sun and away from the stove, and copy anything you'll need for years in pencil <em>(rule of thumb)</em>. Keep spare rolls sealed in a bag, cool and dark.</p>
-<p>Another printer: other 58 mm receipt printers with USB that understand standard "ESC/POS" commands should work too <em>(rule of thumb)</em>; they need <strong>9–24 volts</strong> and up to 2.5 amps while printing, so a USB power bank won't run them. A printer on the Pi's serial pins needs the library started with <code>-printer /dev/serial0</code> (and then the fan needs a different pin than GPIO 14).</p>
+<p><strong>Paper:</strong> <strong>57 × 30 mm</strong> thermal rolls (2¼ in wide). If the paper comes out blank, the roll is in upside down. Prints fade in heat and sun, so copy anything important in pencil. Keep spare rolls cool and dark.</p>
 <hr />
 <h2 id="power-and-charging">🔋 Power and charging</h2>
-<p>The Pi 4 uses roughly <strong>3–4 watts</strong> while it sits waiting and around <strong>7 watts</strong> while the AI writes an answer; a Pi 5 a bit more <em>(rule of thumb)</em>. The 20 Ah battery holds about 250 watt-hours, so it runs the Pi for <strong>about 30–40 hours</strong> of normal use: a long day of use for a week, switched off in between <em>(rule of thumb)</em>.</p>
-<p><strong>Checking the battery:</strong> hold the meter's button. A resting LiFePO4 battery reads about <strong>13.3 V full</strong>, <strong>13.0 V</strong> at half, and <strong>12.0 V</strong> nearly empty: charge it then <em>(rule of thumb)</em>. The bottom row shows the amps the library draws: well under 1 A while the Pi just runs, more while the AI works or the printer prints.</p>
-<p><strong>From the wall:</strong> plug the charger in with the lid open, set it to <strong>lithium</strong> (LiFePO4). At 2 A it takes <strong>about 10 hours</strong> from empty. Unplug it when its <strong>Full</strong> light comes on. Its leads stay on the battery (with their own 7.5 A fuse), so you only plug it in.</p>
-<p><strong>From the sun (after an event):</strong> the Victron controller is stored in the can with its terminals empty. To charge from a panel:</p>
+<p><strong>How long it runs:</strong> a full battery runs the Pi for about <strong>30–40 hours</strong> of use: a long day of use every day for a week <em>(rule of thumb)</em>.</p>
+<p><strong>Checking the battery:</strong> hold the meter button. About <strong>13.3 V</strong> is full, <strong>13.0 V</strong> half, and <strong>12.0 V</strong> nearly empty: charge it then <em>(rule of thumb)</em>.</p>
+<p><strong>From the wall:</strong> with the lid open, plug the wall charger in (set to <strong>lithium</strong>). About <strong>10 hours</strong> from empty. Unplug it when the <strong>Full</strong> light comes on.</p>
+<p><strong>From the sun (after an event):</strong></p>
 <ol type="1">
-<li>Take the controller out (or work with the lid open), and set it up once in the <strong>VictronConnect</strong> phone app: battery type <strong>LiFePO4</strong>, maximum charge current about <strong>10 A</strong> (check your battery's manual). The BlueSolar model has no Bluetooth of its own: it talks to the app through a Victron <strong>VE.Direct</strong> Bluetooth dongle or USB cable (the SmartSolar model has Bluetooth built in).</li>
-<li>Wire the <strong>battery first</strong>: BATT+ to battery + through the <strong>20 A fuse</strong>, BATT− to battery −.</li>
-<li>Then the <strong>panel</strong>: PV+ and PV−. A plug-and-socket pair on the panel lead (an SAE or Anderson connector) makes this a five-second job.</li>
-<li>When you're done, unplug the <strong>panel first</strong>, then the battery, and store the panel outside the can with nothing connected to it (see <a href="#the-idea">The idea</a>).</li>
+<li>Set the controller up once in the <strong>VictronConnect</strong> phone app (battery type <strong>LiFePO4</strong>, charge current about <strong>10 A</strong>). The BlueSolar needs a Victron <strong>VE.Direct</strong> Bluetooth dongle or USB cable to talk to the app.</li>
+<li>Wire the <strong>battery first</strong>: BATT+ → battery + through the <strong>20 A fuse</strong>, BATT− → battery −.</li>
+<li>Then the <strong>panel</strong>: PV+ and PV−.</li>
+<li>When done, unplug the <strong>panel first</strong>, then the battery, and store the panel outside with nothing plugged in.</li>
 </ol>
-<p>A 100 W panel fills the battery in about a sunny day; much less in winter. More about panels and batteries: <a class="guide" href="OFF-GRID-POWER-GUIDE.html">Off-Grid Power</a>.</p>
-<p><strong>The phone:</strong> charge it from any phone charger, or from one of the Pi's USB ports while the Vault is running (slowly; if the Pi ever restarts, unplug the phone). Keep it about half charged in storage.</p>
-<p><strong>Never charge with the lid shut</strong>, and never run a cable through a hole in the can. <strong>Never connect the panel straight to the battery:</strong> always through the controller.</p>
+<p>A 100 W panel fills it in about a sunny day. More in <a class="guide" href="OFF-GRID-POWER-GUIDE.html">Off-Grid Power</a>.</p>
+<p><strong>The phone:</strong> charge it from any phone charger, or from the Pi's USB port while it runs. Keep it about half charged in storage.</p>
+<blockquote>
+<p>⚠️ Never charge with the lid shut, never run a cable through a hole in the can, and <strong>never connect the panel straight to the battery</strong>.</p>
+</blockquote>
 <hr />
 <h2 id="packing-and-sealing">📦 Packing and sealing</h2>
 <ol type="1">
-<li><strong>Flip the power switch off.</strong> Unplug the wall charger and the solar panel if they're connected, and put the phone back in its place.</li>
-<li><strong>Charge the battery to about half or a bit more</strong> for long storage <em>(rule of thumb)</em>, then top it up every few months.</li>
-<li><strong>Close the lid, latch it,</strong> and tape it shut over the bare metal, so the tape touches bare metal on the lid and on the body: <strong>one band of 2-inch foil tape right round the can</strong> (about 1 m, 40 in), over the seam on the long sides, over the hinge at one end and over the closed latch at the other, overlapping where it meets itself. Press it down well on the bare strips (<a class="lib pic" target="_blank" rel="noopener" href="https://www.wbdg.org/FFC/NAVFAC/DMMHNAV/hdbk419a_vol1.pdf#page=275" title="MIL-HDBK-419A Grounding Bonding and Shielding Vol 1 Basic Theory (DoD 1987).pdf — page 275">why seams matter</a>). Keep a spare roll of tape in the can.</li>
-<li><strong>Test the seal</strong> with the phone-and-radio test in the <a class="guide" href="EMP-GUIDE.html">EMP guide</a>: tape the can shut with a phone inside and call it, then a battery AM radio tuned to a station. Silence means no big leaks.</li>
+<li><strong>Switch off,</strong> unplug the chargers, and put the phone back.</li>
+<li><strong>Charge the battery to about half</strong> for storage, and top it up every few months.</li>
+<li><strong>Close and latch the lid,</strong> then run <strong>one band of foil tape right round the can</strong> over the bare strips (about 1 m), over the hinge and the latch, overlapping at the end. Press it down well (<a class="lib pic" target="_blank" rel="noopener" href="https://www.wbdg.org/FFC/NAVFAC/DMMHNAV/hdbk419a_vol1.pdf#page=275" title="MIL-HDBK-419A Grounding Bonding and Shielding Vol 1 Basic Theory (DoD 1987).pdf — page 275">why seams matter</a>).</li>
+<li><strong>Test the seal:</strong> tape a phone inside and call it. If it doesn't ring, the seal is good. (More in the <a class="guide" href="EMP-GUIDE.html">EMP guide</a>.)</li>
 </ol>
 <p>Store it somewhere cool and dry, not in a hot car or shed.</p>
 <hr />
@@ -461,99 +328,104 @@
 <thead>
 <tr class="header">
 <th>Problem</th>
-<th>Try this</th>
+<th>Fix</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>The first setup: the green light <strong>blinks fast</strong> and keeps blinking</td>
-<td>It got stuck. Switch off, put the memory card in your computer and read <strong>ark/setup-log.txt</strong>. Usually: plug in the library drive, then switch on again</td>
+<td>First setup: the green light <strong>blinks fast</strong> and keeps blinking</td>
+<td>It got stuck. Read <strong>ark/setup-log.txt</strong> on the card. Usually: plug in the library drive and switch on again</td>
 </tr>
 <tr class="even">
-<td>The first setup: nothing happens at all, no light</td>
-<td>Check the power: the fuse, the battery's charge (hold the meter's button) and the switch. Check the converter gives <strong>5.0–5.25 V</strong> at the plug on pins 2 and 14. Was the card written with Raspberry Pi Imager <strong>and</strong> finished by the installer?</td>
+<td>Nothing lights up</td>
+<td>Check the fuse, the battery (hold the meter button) and the switch. Check the converter gives <strong>5.0–5.25 V</strong></td>
 </tr>
 <tr class="odd">
-<td>The Wi-Fi name doesn't show up on the phone</td>
-<td>Wait the full 3 minutes. Is the lid open? Switch off, wait 10 seconds, switch on and wait again</td>
+<td>The Wi-Fi doesn't show up</td>
+<td>Wait the full 3 minutes with the lid open. Switch off, wait 10 seconds, switch on</td>
 </tr>
 <tr class="even">
 <td>Joined the Wi-Fi, but the page won't open</td>
-<td>On an <strong>iPhone</strong>, use <strong>Safari</strong>: Chrome and other browsers can't reach the Pi until you turn on <strong>Settings → (the browser) → Local Network</strong>. Type the address exactly, including <code>http://</code> and <code>:8096</code>. Turn on <strong>airplane mode</strong>, then turn <strong>Wi-Fi</strong> back on (some phones use mobile data instead of a Wi-Fi with no internet). Right after power-up, wait another minute</td>
+<td>On an iPhone, use <strong>Safari</strong>. Type the address exactly, with <code>http://</code> and <code>:8096</code>. Try <strong>airplane mode</strong> on, then Wi-Fi back on</td>
 </tr>
 <tr class="odd">
-<td>The page opens but the AI says it isn't ready</td>
-<td>It's still loading. Give it a minute or two. Search and the books work meanwhile</td>
+<td>The AI says it isn't ready</td>
+<td>Give it a minute or two. Search works meanwhile</td>
 </tr>
 <tr class="even">
-<td>The AI is very slow</td>
-<td>It picks a size to suit the Pi. On a Pi 4 it uses the small AI. Searching and reading the books stay fast</td>
+<td>An answer sits on <strong>Writing…</strong> and goes no further</td>
+<td>It picks up again by itself. If it doesn't, press <strong>Stop</strong>, then <strong>Try again</strong>: that's quick, because the AI keeps what it already read</td>
 </tr>
 <tr class="odd">
-<td>The Pi keeps restarting, or the drive disappears</td>
-<td>Not enough power. Check the converter's output while the Pi runs (5.0–5.25 V), that the 5 V wires are 18 AWG and well crimped, and the battery's charge</td>
+<td><strong>⚠️ Power too weak</strong>, the AI takes minutes, or the Pi keeps restarting</td>
+<td>The Pi isn't getting enough power. See <a href="#power-too-weak-or-the-ai-takes-minutes">below</a></td>
 </tr>
 <tr class="even">
-<td>The meter stays dark when I hold the button</td>
-<td>Its thin red wire must go through the microswitch's <strong>COM</strong> and <strong>NO</strong> (not NC). Check the fuse</td>
+<td>The meter stays dark</td>
+<td>Its thin red wire must go to the microswitch's <strong>COM</strong> and <strong>NO</strong> (not NC)</td>
 </tr>
 <tr class="odd">
-<td>The meter shows no amps, or odd ones</td>
-<td>Its thick wires may be the wrong way round: check the meter's wiring sheet</td>
-</tr>
-<tr class="even">
 <td>The fan never runs</td>
-<td>It only runs above 60 °C, so it's off much of the time. Check its blue wire is on pin 8, and that <strong>It's in the ARK ammo can</strong> was ticked when the card was finished</td>
-</tr>
-<tr class="odd">
-<td>A setting I changed was gone after switching off</td>
-<td>That's the read-only card doing its job: see <a href="#changing-a-setting-later">Changing a setting later</a></td>
+<td>It only runs when the Pi is hot (above 60 °C). Check the blue wire is on pin 8</td>
 </tr>
 <tr class="even">
-<td>The printer: <em>No printer found</em></td>
-<td>Is its USB lead in the Pi, and is the printer's power lead on? Close the print window and open it again</td>
+<td>A setting I changed was gone</td>
+<td>That's normal: see <a href="#changing-a-setting-later">Changing a setting later</a></td>
 </tr>
 <tr class="odd">
-<td>The printer: <em>not allowed to use the printer</em></td>
-<td>Finish the card again, switch on and let it set itself up again</td>
+<td>Printer: <em>No printer found</em></td>
+<td>Check its USB cable is in the Pi. Close the print window and open it again</td>
 </tr>
 <tr class="even">
-<td>The printer feeds blank paper</td>
-<td>The roll is in upside down: only one side of thermal paper prints. Turn it over</td>
+<td>Printer: <em>not allowed to use the printer</em></td>
+<td>Finish the card again and let it set itself up again</td>
 </tr>
 <tr class="odd">
-<td>The print is faint or stops partway</td>
+<td>Printer feeds blank paper</td>
+<td>Turn the paper roll over</td>
+</tr>
+<tr class="even">
+<td>Print is faint or stops</td>
 <td>The battery is low. Charge it</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Forgot the Wi-Fi password</td>
 <td>Plug the library drive into any computer and open <strong><code>PI-WIFI-CARD.html</code></strong></td>
 </tr>
-<tr class="odd">
-<td>No phone can connect at all, or there's no phone</td>
-<td>Use a <strong>TV or computer monitor</strong> instead: plug it into the Pi (the micro-HDMI port next to the power socket) with a USB keyboard, log in (user <strong>ark</strong>, the Wi-Fi password) and make the card writable (see <a href="#changing-a-setting-later">Changing a setting later</a>), then type <code>bash /mnt/emergency-library/OfflineLibrary/SETUP-Raspberry-Pi.sh --screen</code>. Say <strong>y</strong> to restart. Lite has no desktop, so for a screen use <strong>Raspberry Pi OS (64-bit)</strong>, the desktop version, from the start</td>
-</tr>
 <tr class="even">
-<td>Want home internet on the Pi again (for updates)</td>
-<td>Plug in a network cable. Or log in and run the setup with <code>--undo</code> (twice: the first time makes the card writable and restarts). Running the setup again later keeps the same Wi-Fi name and password</td>
+<td>No phone at all</td>
+<td>Plug a TV (micro-HDMI) and keyboard into the Pi, log in (user <strong>ark</strong>, the Wi-Fi password), and run <strong>SETUP-Raspberry-Pi.sh</strong> with <code>--screen</code> (make the card writable first; see above). This needs the desktop version of Raspberry Pi OS, not Lite</td>
+</tr>
+<tr class="odd">
+<td>Want home internet on the Pi (for updates)</td>
+<td>Plug in a network cable</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Running the setup by hand</strong> (with a screen and keyboard): log in, then type <code>bash /mnt/emergency-library/OfflineLibrary/SETUP-Raspberry-Pi.sh</code> (or the path to wherever your library is) and press Enter. It asks the same questions the installer did. On a read-only card it tells you to run it with <code>--writable</code> first.</p>
+<h3 id="power-too-weak-or-the-ai-takes-minutes">"Power too weak", or the AI takes minutes</h3>
+<p>The Pi isn't getting a full 5 volts. It can then slow itself down to about a third of its speed, and the AI suffers most: an answer can take 10 minutes instead of one or two. Weak power can also make the Pi or its drive misbehave, so fix it even if the AI seems fine.</p>
+<p><strong>Quick test:</strong> switch off, unplug the Pi's power plugs from pins 2 and 14, and run the Pi from an <strong>official Raspberry Pi USB-C power supply</strong> instead (never both at once). If the warning goes away, the can's power wiring is the problem.</p>
+<p>To see what the Pi is doing, open <strong>⚙️ Settings → How the Pi is doing</strong> on the phone, while the AI is answering. It shows the power, the temperature and how fast the processor is running.</p>
+<ol type="1">
+<li><strong>Check the battery:</strong> hold the meter button. Under about 12.5 V, charge it.</li>
+<li><strong>Check the converter:</strong> ask the AI a question, and <strong>while it's working</strong>, touch a multimeter to the converter's two <strong>output</strong> screws. It should read <strong>5.1 to 5.25 V</strong>. Lower than that? If the converter has a small adjusting screw, turn it up to about 5.2 V; if not, replace it.</li>
+<li><strong>Check the wires to the Pi:</strong> if the converter reads fine, the power is lost on the way to the Pi. The usual weak spot is the two little plugs on <strong>pins 2 and 14</strong>: thick wire doesn't crimp well into them. Re-crimp or solder them so they're solid, and keep the wires as short as the route allows.</li>
+<li><strong>Switch off and on again</strong> so the old warning clears, and ask the same question. A healthy Pi should start writing within a minute or two.</li>
+</ol>
 <hr />
 <h2 id="other-ways-to-build-it">🖐️ Other ways to build it</h2>
 <ul>
-<li><strong>A touchscreen on the Pi</strong> (a 7-inch screen, say) shows the library right on the Pi, with no phone. It needs <strong>Raspberry Pi OS (64-bit)</strong>, the desktop version, not Lite, and the <strong>touchscreen</strong> box ticked when you finish the card. It won't fit in the can: it's for a bigger box.</li>
-<li><strong>No power switch</strong> (a Pi on a shelf, or in a bigger box): untick <strong>It's in the ARK ammo can</strong> when you finish the card, and power it from a USB-C supply or power bank (5 V, 3 A or more; a 27 W Raspberry Pi supply for a Pi 5). Then shut it down before unplugging it: a <strong>Pi 5</strong> has a <strong>power button</strong> (press once, wait for the red light, unplug). A <strong>Pi 4</strong> gets one on <strong>pins 5 and 6</strong>: a spring-back push button on two female jumper wires.</li>
+<li><strong>With a touchscreen</strong> (for a bigger box): use the desktop version of <strong>Raspberry Pi OS (64-bit)</strong>, not Lite, and tick <strong>touchscreen</strong> when you finish the card.</li>
+<li><strong>No power switch</strong> (a Pi on a shelf): untick <strong>It's in the ARK ammo can</strong> when you finish the card, and power it with a normal USB-C supply. Shut it down before unplugging: a <strong>Pi 5</strong> has a power button; on a <strong>Pi 4</strong>, add a push button on <strong>pins 5 and 6</strong>.</li>
 </ul>
-<p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/pi4-power-button-pins.svg" alt="A Raspberry Pi 4 seen from above, with the USB ports at the right end; the push button&#39;s two wires go onto the third pair of pins counted from the left end of the 40-pin row, pins 5 and 6" /> <em>No power switch, on a Pi 4: a push button on pins 5 and 6 shuts it down safely (a diagram drawn for this guide).</em></p>
+<p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/pi4-power-button-pins.svg" alt="A Raspberry Pi 4 seen from above, with the USB ports at the right end; the push button&#39;s two wires go onto the third pair of pins counted from the left end of the 40-pin row, pins 5 and 6" /> <em>A push button on pins 5 and 6 shuts a Pi 4 down safely.</em></p>
 <hr />
 <h2 id="every-few-months">🔄 Every few months</h2>
 <ul>
-<li><strong>Check the battery</strong> with the meter's button, and top it and the phone up to about half or a bit more.</li>
-<li><strong>Flip the switch on</strong> and run through the test above. Then switch off, close the lid and re-tape the seam.</li>
-<li><strong>Updating the library:</strong> plug the drive into your regular computer and run the installer again (it adds what's new). If the programs changed, finish the Pi's card again too (see <a href="#the-steps">Updating later</a>).</li>
-<li>Swap the foil tape if it's torn or stops sticking.</li>
+<li><strong>Check the battery</strong> with the meter button, and top it and the phone up to about half.</li>
+<li><strong>Switch on and run the test</strong> above. Then switch off and re-tape the seam.</li>
+<li><strong>Update the library:</strong> run the installer on the library drive again, then finish the Pi's card again (see <a href="#the-steps">The steps</a>).</li>
+<li>Replace the foil tape if it's torn or loose.</li>
 </ul>
 <hr />
 <h2 id="pictures-diagrams">🖼️ Pictures &amp; diagrams</h2>
@@ -562,16 +434,5 @@
 <li>Steel ammunition cans — <a class="wiki" href="https://en.wikipedia.org/wiki/Ammunition_box" data-title="Ammunition_box" target="_blank" rel="noopener" title="Wikipedia: Ammunition box (offline copy with photos when opened through the Library Assistant)">Ammunition box</a></li>
 <li>How a closed metal box blocks a pulse — <a class="wiki" href="https://en.wikipedia.org/wiki/Faraday_cage" data-title="Faraday_cage" target="_blank" rel="noopener" title="Wikipedia: Faraday cage (offline copy with photos when opened through the Library Assistant)">Faraday cage</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Electromagnetic_shielding" data-title="Electromagnetic_shielding" target="_blank" rel="noopener" title="Wikipedia: Electromagnetic shielding (offline copy with photos when opened through the Library Assistant)">Electromagnetic shielding</a></li>
 <li>Why a wire through the box ruins it — <a class="lib pic" target="_blank" rel="noopener" href="https://www.wbdg.org/FFC/NAVFAC/DMMHNAV/hdbk419a_vol2.pdf#page=315" title="MIL-HDBK-419A Grounding Bonding and Shielding Vol 2 Applications (DoD 1987).pdf — page 315">MIL-HDBK-419A Vol 2, p. 315</a></li>
-<li>How fields leak through seams and slots — <a class="lib pic" target="_blank" rel="noopener" href="https://www.wbdg.org/FFC/NAVFAC/DMMHNAV/hdbk419a_vol1.pdf#page=275" title="MIL-HDBK-419A Grounding Bonding and Shielding Vol 1 Basic Theory (DoD 1987).pdf — page 275">MIL-HDBK-419A Vol 1, p. 275</a></li>
-<li>What 10, 20 and 30 dB of shielding buys — <a class="lib pic" target="_blank" rel="noopener" href="https://www.cisa.gov/sites/default/files/publications/19_0307_CISA_EMP-Protection-Resilience-Guidelines.pdf#page=77" title="EMP Protection and Resilience Guidelines for Critical Infrastructure and Equipment (CISA 2019).pdf — page 77">CISA, p. 77</a></li>
-<li>The battery kind — <a class="wiki" href="https://en.wikipedia.org/wiki/Lithium_iron_phosphate_battery" data-title="Lithium_iron_phosphate_battery" target="_blank" rel="noopener" title="Wikipedia: Lithium iron phosphate battery (offline copy with photos when opened through the Library Assistant)">Lithium iron phosphate battery</a>; solar chargers — <a class="wiki" href="https://en.wikipedia.org/wiki/Maximum_power_point_tracking" data-title="Maximum_power_point_tracking" target="_blank" rel="noopener" title="Wikipedia: Maximum power point tracking (offline copy with photos when opened through the Library Assistant)">Maximum power point tracking</a></li>
-</ul>
-<h2 id="related-guides">🔗 Related guides</h2>
-<ul>
-<li><a class="guide" href="EMP-GUIDE.html">EMP, Solar Storms &amp; Faraday Cages</a>: building and testing the shield</li>
-<li><a class="guide" href="START-ON-ANY-DEVICE.html">Start the Library on Any Device</a>: sharing with phones, and other devices</li>
-<li><a class="guide" href="OFF-GRID-POWER-GUIDE.html">Off-Grid Power</a>: batteries and solar to keep it running</li>
-<li><a class="guide" href="GET-THE-LIBRARY.html">Get the Whole Library</a>: filling the library drive</li>
-<li><a class="guide" href="RADIO-GUIDE.html">Emergency Radio Guide</a>: another thing worth keeping in a sealed can</li>
 </ul>
 <nav class="guidenav"><div class="prev"><a class="guide" href="START-ON-ANY-DEVICE.html"><small>← Previous</small>Start the library on any device</a></div><div class="up"><a class="guide" href="../#tools:library"><small>All guides in</small>💾 Using this library</a></div><div class="next"><a class="guide" href="GET-THE-LIBRARY.html"><small>Next →</small>Get the whole library</a></div></nav></div><a class="totop" href="#contents" aria-label="Back to contents">↑ Contents</a></body></html>

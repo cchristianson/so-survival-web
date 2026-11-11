@@ -21,6 +21,7 @@ header h1{font-size:24px;margin:4px 0 2px;background:linear-gradient(135deg,var(
 .hrow{display:flex;align-items:center;justify-content:space-between;gap:10px}.hrow h1{min-width:0}
 header h1 .logo{width:1.25em;height:1.25em;vertical-align:-.27em;margin-right:.35em;border-radius:22%}
 .sub{color:var(--muted);font-size:14px;margin:0 0 10px}
+.health{border-collapse:collapse;font-size:14px;margin:0 0 8px}.health td{padding:3px 10px 3px 0;vertical-align:top}.health td:first-child{color:var(--muted);white-space:nowrap}
 .status{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 10px}
 .pill{font-size:12.5px;padding:3px 10px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--muted)}
 .pill b{font-weight:600;color:var(--ink)}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;background:var(--off);vertical-align:middle}
@@ -193,6 +194,18 @@ body.osk-open{padding-bottom:236px}
     <p class="meta">Not sure? Leave it on <b>Automatic</b>. It picks what this device can handle, times a test answer, and steps down if it's too slow. Your choice is remembered for this device.</p>
     <div class="note" id="remotenote" hidden>You're using the library shared from another device. Only that device can change the AI or stop sharing.</div>
   </div>
+  <div class="card" id="widemap" hidden>
+    <h3 style="margin-top:0">🗺️ A bigger map</h3>
+    <p class="meta" id="widetext"></p>
+    <p><button class="sec" id="widego">Download it</button> <button class="sec" id="widestop" hidden>Stop</button></p>
+    <div class="bar" id="widebarw" hidden><i id="widebar"></i></div>
+    <p class="meta" id="wideprog"></p>
+  </div>
+  <div class="card" id="pihealth" hidden>
+    <h3 style="margin-top:0">📟 How the Pi is doing</h3>
+    <div id="pihbody"></div>
+    <p class="meta">Updates every few seconds. Look at it <b>while the AI is answering</b>: when it has nothing to do, a Pi runs slowly on purpose to save power.</p>
+  </div>
   <div class="card" id="sharecard" hidden>
     <h3 style="margin-top:0">📡 Share with phones nearby</h3>
     <p class="meta">Let every phone, tablet or laptop on the same Wi-Fi use this library in its web browser — <b>iPhones too</b>. No internet needed: the search and the AI run on this device.</p>
@@ -232,6 +245,7 @@ body.osk-open{padding-bottom:236px}
     <p class="meta">Once saved, search, guides and tools work on this device with no internet. The AI model (above) is saved separately when you turn it on.</p>
     <p><button class="sec" id="savelib">Save library &amp; guides</button> <span class="meta" id="savelibsize"></span></p>
     <p><button class="sec" id="saveroutes">Also save walking routes</button> <span class="meta" id="saveroutessize"></span><br><span class="meta">Turn-by-turn directions to every town. A route's GPS track (for a map app) downloads from that route's page, one at a time.</span></p>
+    <p id="savemaprow" hidden><button class="sec" id="savemap">Also save the map</button> <span class="meta" id="savemapsize"></span><br><span class="meta">Roads, topo lines, property lines and public land for the Illinois Valley. Saved on the phone, the map shows where you are with no signal.</span></p>
     <div class="bar" id="savebarw" hidden><i id="savebar"></i></div>
     <p class="meta" id="saveprog"></p>
     <p class="meta" id="storage"></p>

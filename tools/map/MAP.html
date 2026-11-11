@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="library-print" content="off">
+<title>Map of the Illinois Valley (offline)</title>
+<link rel="stylesheet" href="maplibre-gl.css">
+<style>
+:root{--bg:#0f1420;--card:#171f2e;--ink:#e7ecf3;--muted:#9fb0c3;--accent:#4fd1c5;--line:#273246;--warnbg:#3a311a;--on:#04201d}
+@media(prefers-color-scheme:light){:root{--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--line:#e2e8f0;--warnbg:#fff4d6;--on:#fff}}
+*{box-sizing:border-box}html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.45 -apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-text-size-adjust:100%;display:flex;flex-direction:column;overflow:hidden}
+a{color:var(--accent)}[hidden]{display:none!important}button{font:inherit;color:inherit}
+#bar{display:flex;gap:8px;align-items:center;padding:8px 10px;padding-top:max(8px,env(safe-area-inset-top));background:var(--bg);border-bottom:1px solid var(--line);flex:none}
+#bar a{text-decoration:none;white-space:nowrap;font-weight:600;font-size:15px}
+#q{flex:1;min-width:0;max-width:520px;font:inherit;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.btn{font-weight:600;cursor:pointer;border-radius:10px;padding:8px 12px;border:1px solid var(--line);background:var(--card);color:var(--ink);white-space:nowrap}
+.btn.go{background:var(--accent);border-color:var(--accent);color:var(--on)}.btn[disabled]{opacity:.45;cursor:not-allowed}a.btn{text-decoration:none;display:inline-block}
+.btn.sm{padding:5px 10px;font-size:14px;font-weight:500}
+#wrap{position:relative;flex:1;min-height:0}
+#map{position:absolute;inset:0;background:#f6f3e9}
+/* the tools: a column of buttons with words under them, on the right */
+#tools{position:absolute;z-index:4;right:8px;top:8px;display:flex;flex-direction:column;gap:6px}
+#tools button{width:58px;padding:6px 2px 4px;border-radius:12px;border:1px solid #cfd6e0;background:#fff;color:#1f2a37;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25);display:flex;flex-direction:column;align-items:center;gap:1px;font-size:11px;font-weight:600;line-height:1.15}
+#tools button i{font-style:normal;font-size:21px;line-height:1.1}
+#tools button.on{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent)}
+/* one panel for everything: a sheet from the bottom on a phone, a column on the left on a wide screen */
+#sheet{position:absolute;z-index:6;background:var(--card);border:1px solid var(--line);box-shadow:0 -4px 24px rgba(0,0,0,.3);left:0;right:0;bottom:0;max-height:62%;border-radius:16px 16px 0 0;display:flex;flex-direction:column;padding-bottom:env(safe-area-inset-bottom)}
+#sheet.tall{max-height:86%}
+#sheethead{display:flex;align-items:center;gap:8px;padding:10px 14px 6px;flex:none}
+#sheethead b{font-size:17px;flex:1}
+#sheethead button{border:0;background:none;color:var(--muted);font-size:26px;cursor:pointer;line-height:1;padding:0 4px}
+#sheetbody{overflow:auto;padding:0 14px 14px;-webkit-overflow-scrolling:touch}
+@media(min-width:820px){
+  #sheet{left:10px;top:10px;bottom:10px;right:auto;width:370px;max-height:none;border-radius:14px;box-shadow:0 6px 24px rgba(0,0,0,.3)}
+  #sheet.tall{max-height:none}
+  body.sheet-open .maplibregl-ctrl-top-left{left:380px}
+}
+.small{font-size:13.5px;color:var(--muted)}p{margin:6px 0}
+/* layers */
+.grp{border-top:1px solid var(--line);padding:2px 0}.grp:first-child{border-top:0}
+.grp>summary{list-style:none;cursor:pointer;padding:9px 0;font-weight:700;display:flex;align-items:center;gap:8px}
+.grp>summary::-webkit-details-marker{display:none}
+.grp>summary::after{content:"▸";margin-left:auto;color:var(--muted);transition:transform .15s}.grp[open]>summary::after{transform:rotate(90deg)}
+.grp>summary .n{font-weight:500;font-size:13px;color:var(--accent)}
+.lay{display:flex;gap:10px;align-items:flex-start;padding:7px 0;cursor:pointer}
+.lay .tx{flex:1;min-width:0}.lay .tx small{display:block;color:var(--muted);font-size:13px;line-height:1.3}
+/* a switch that reads as on or off at a glance */
+.sw{position:relative;flex:none;width:44px;height:26px;margin-top:1px}
+.sw input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}
+.sw span{position:absolute;inset:0;border-radius:26px;background:#8793a3;transition:background .15s}
+.sw span::after{content:"";position:absolute;left:3px;top:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .15s}
+.sw input:checked+span{background:var(--accent)}.sw input:checked+span::after{transform:translateX(18px)}
+.sw input:focus-visible+span{outline:2px solid var(--ink);outline-offset:2px}
+.legend{display:flex;flex-wrap:wrap;gap:3px 12px;font-size:13px;margin:2px 0 6px 54px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:3px;border:1px solid rgba(0,0,0,.3);flex:none}
+.legend i.dot{border-radius:50%}.legend i.ln{height:0;border:0;border-top:3px solid;border-radius:0;width:18px}
+/* what's here */
+.fact{border-top:1px solid var(--line);padding:8px 0}.fact:first-child{border-top:0}
+.fact b{display:block}.fact .k{display:block;font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+table.kv{border-collapse:collapse;font-size:14.5px}table.kv td{padding:2px 10px 2px 0;vertical-align:top}table.kv td:first-child{color:var(--muted);white-space:nowrap}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+input.t,textarea.t{width:100%;font:inherit;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);margin:4px 0}
+.pinrow{display:flex;gap:8px;align-items:flex-start;border-top:1px solid var(--line);padding:8px 0}.pinrow:first-child{border-top:0}
+.pinrow .tx{flex:1;min-width:0;cursor:pointer}.pinrow .tx small{display:block;color:var(--muted);font-size:13px}
+#profile{width:100%;height:120px;display:block;background:var(--bg);border-radius:8px;margin:6px 0}
+#results,#msg{position:absolute;z-index:7;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 6px 24px rgba(0,0,0,.3)}
+#results{top:6px;left:8px;right:74px;max-width:520px;max-height:55%;overflow:auto;padding:4px}
+#results button{display:block;width:100%;text-align:left;background:none;border:0;padding:9px 10px;border-radius:9px;cursor:pointer}
+#results button:hover,#results button:focus{background:var(--line)}#results small{color:var(--muted)}
+#msg{left:8px;right:74px;top:6px;padding:12px 14px;background:var(--warnbg);max-width:560px}
+#hint{position:absolute;z-index:5;left:50%;transform:translateX(-50%);top:8px;background:#1f2a37;color:#fff;border-radius:999px;padding:6px 14px;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.3);white-space:nowrap;max-width:calc(100% - 150px);overflow:hidden;text-overflow:ellipsis}
+.seg{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}.seg button{cursor:pointer;border:1px solid var(--line);background:transparent;border-radius:999px;padding:5px 14px}
+.seg button.on{background:var(--accent);border-color:var(--accent);color:var(--on);font-weight:700}
+#pr-prev{max-height:34vh;overflow:auto;border:1px dashed var(--line);border-radius:8px;background:#fff;text-align:center;margin:6px 0}#pr-prev img{max-width:100%;display:block;margin:0 auto;image-rendering:pixelated}
+#pr-page{border-top:1px solid var(--line);margin-top:8px;padding-top:8px}
+.maplibregl-ctrl-bottom-left{bottom:env(safe-area-inset-bottom)}.maplibregl-ctrl-attrib{font-size:11px}
+#printwork{position:fixed;left:-20000px;top:0;visibility:hidden}
+#printsheet{display:none}
+@media print{body>*{display:none!important}body{overflow:visible;display:block}#printsheet{display:block!important}#printsheet img{width:100%;height:auto}@page{margin:10mm}}
+</style>
+</head>
+<body data-routes="Southern-Oregon/Walking-Routes/WALKING-ROUTES.html">
+<div id="bar">
+  <a href="../../#kit" data-app="/#kit">‹ Tools</a>
+  <input id="q" type="search" placeholder="Find a place…" autocomplete="off" enterkeyhint="search">
+</div>
+<div id="wrap">
+  <div id="map"></div>
+  <div id="tools">
+    <button type="button" id="t-layers"><i>🗂️</i>Layers</button>
+    <button type="button" id="locate"><i>📍</i>Me</button>
+    <button type="button" id="t-measure"><i>📏</i>Measure</button>
+    <button type="button" id="t-pins"><i>📌</i>Pins</button>
+    <button type="button" id="t-print"><i>🖨️</i>Print</button>
+  </div>
+  <div id="hint" hidden></div>
+  <div id="results" hidden></div>
+  <div id="msg" hidden></div>
+  <div id="sheet" hidden>
+    <div id="sheethead"><b id="sheettitle"></b><button type="button" id="sheetclose" aria-label="Close">×</button></div>
+    <div id="sheetbody">
+      <section id="s-layers" hidden>
+        <p class="small">Switch on what you want to see. Tap anything on the map to find out what it is.</p>
+        <div id="layerlist"></div>
+        <p class="small" id="propnote" hidden>Property lines and owners are from the county assessor's tax-lot map. The lines can be off by many feet and are not a survey: don't use them to settle where a boundary is. Owners are as recorded when this map was made.</p>
+        <p class="small" id="credits"></p>
+      </section>
+      <section id="s-info" hidden></section>
+      <section id="s-measure" hidden>
+        <p class="small" id="m-hint">Tap the map to mark points along the way. Two points also tell you whether one can see the other (for radio).</p>
+        <div id="m-out"></div>
+        <canvas id="profile" hidden></canvas>
+        <div id="m-prof"></div>
+        <div class="row"><button class="btn sm" type="button" id="m-undo">Undo last point</button><button class="btn sm" type="button" id="m-clear">Start over</button></div>
+      </section>
+      <section id="s-pins" hidden>
+        <p class="small">Your own marks: a spring you found, a cache, a berry patch. They are kept on this phone or computer only. To add one, tap the map and choose <b>Save as a pin</b>.</p>
+        <div id="pinlist"></div>
+        <div class="row"><button class="btn sm" type="button" id="p-export">Save my pins to a file</button><label class="btn sm">Load pins from a file<input type="file" id="p-import" accept=".json,application/json" hidden></label></div>
+      </section>
+      <section id="s-print" hidden>
+        <p class="small">It prints what's on the screen now, north up, with a scale bar. Move and zoom the map first.</p>
+        <div id="pr-receipt">
+          <b>On the receipt printer</b> <span class="small">(black and white)</span>
+          <div class="seg" id="pr-cols"><button type="button" data-v="1">1 strip</button><button type="button" data-v="2" class="on">2 strips</button><button type="button" data-v="3">3</button><button type="button" data-v="4">4</button></div>
+          <p class="small" id="pr-how">More strips make a bigger map: tape them side by side, A on the left.</p>
+          <div id="pr-prev"><img alt="How it will print"></div>
+          <p class="small" id="pr-info"></p>
+          <p><button class="btn go" type="button" id="pr-go" disabled>Print</button> <a class="btn" id="pr-save" download="map.png" hidden>Save the picture</a></p>
+        </div>
+        <div id="pr-page">
+          <b>On an ordinary printer</b> <span class="small">(color, one page)</span>
+          <p><button class="btn" type="button" id="pr-color">Print a full page</button> <span class="small" id="pr-colorinfo"></span></p>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<div id="printwork"></div>
+<div id="printsheet"></div>
+<script src="maplibre-gl.js"></script>
+<script src="pmtiles.js"></script>
+<script src="maplibre-contour.js"></script>
+<script src="map.js"></script>
+</body>
+</html>

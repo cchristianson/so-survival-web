@@ -1,88 +1,69 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>📄 Ask Your Documents with GPT4All</title><style>:root{--bg:#0f1420;--card:#171f2e;--ink:#e7ecf3;--muted:#9fb0c3;--accent:#4fd1c5;--accent2:#f6ad55;--line:#273246;--code:#0b0f17}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--code:#f1f5f9}}:root[data-theme=light]{--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--code:#f1f5f9}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,Segoe UI,Roboto,Arial,sans-serif}.wrap{max-width:900px;margin:0 auto;padding:28px 20px 80px}h1{font-size:28px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}h2{font-size:22px;border-bottom:2px solid var(--line);padding-bottom:6px;margin-top:30px}h3{font-size:17px;color:var(--accent)}h4{font-size:15px;color:var(--accent2)}a{color:var(--accent)}code{background:var(--code);padding:2px 6px;border-radius:6px;font-family:Consolas,monospace;font-size:14px}pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow-x:auto}pre code{background:none;padding:0}table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}th{background:rgba(127,127,127,.12)}blockquote{border-left:4px solid var(--accent);background:rgba(79,209,197,.08);padding:10px 16px;margin:16px 0;border-radius:0 10px 10px 0}@media(max-width:600px){.wrap{padding:16px 14px 80px}.topnav{margin:-16px -14px 6px;padding:8px 14px 7px}ul,ol{padding-left:20px}blockquote{padding:8px 12px 8px 12px;border-left-width:3px}blockquote ul,blockquote ol{padding-left:18px}h1{font-size:24px;line-height:1.25}h2{font-size:20px;margin-top:26px}h3{font-size:16.5px}table{font-size:14px}th,td{padding:7px 8px}.toc{padding:8px 12px}.toc ol{padding-left:20px}.totop{padding:6px 11px;font-size:13px}li{margin:3px 0}}hr{border:none;border-top:1px solid var(--line);margin:26px 0}ul,ol{padding-left:26px}table{display:block;overflow-x:auto;max-width:100%}code,a{overflow-wrap:anywhere}img{max-width:100%}.wrap p>img{display:block;margin:14px auto 6px;max-width:min(100%,640px);height:auto;border-radius:10px;background:#fff;border:1px solid var(--line)}.wrap p>img+em{display:block;text-align:center;font-size:14px;color:var(--muted);margin-bottom:6px}a.lib{text-decoration-style:dotted}a.lib::before{content:"📖 ";text-decoration:none}.deeper{font-size:15px;opacity:.95}a.wiki::before{content:"📷 "}a.lib.pic::before{content:"🖼️ "}a.lib::before,a.wiki::before{display:inline-block;margin-right:3px}html{scroll-behavior:smooth}h2{scroll-margin-top:12px}.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 16px;margin:18px 0 8px}.toc summary{cursor:pointer;font-weight:600;color:var(--accent);font-size:17px}.toc ol{margin:8px 0 4px;padding-left:26px;columns:2 260px;column-gap:28px}.toc li{margin:4px 0;break-inside:avoid}.toc a{text-decoration:none}.toc a:hover{text-decoration:underline}.totop{position:fixed;right:14px;bottom:max(14px,env(safe-area-inset-bottom));background:var(--card);color:var(--accent);border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:14px;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:5}@media print{.totop{display:none}.toc details{display:block}}.topnav{font-size:14.5px;margin:-28px -20px 4px;padding:10px 20px 8px;color:var(--muted);position:sticky;top:0;z-index:4;background:var(--bg);border-bottom:1px solid var(--line)}h1,h2,h3,h4,[id]{scroll-margin-top:72px}.guidenav{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:36px 0 0;border-top:1px solid var(--line);padding-top:16px}.guidenav a{display:block;height:100%;box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;text-decoration:none;font-weight:600;line-height:1.3;font-size:15px}.guidenav small{display:block;font-weight:400;color:var(--muted);font-size:13px;margin-bottom:2px}.guidenav .up{text-align:center}.guidenav .next{text-align:right}@media(max-width:560px){.guidenav{grid-template-columns:1fr 1fr}.guidenav .up{grid-column:1/-1;order:3}}.topnav a{text-decoration:none;white-space:nowrap}h1 .h1e{-webkit-text-fill-color:initial;color:var(--ink);background:none}.azbar{display:flex;flex-wrap:wrap;gap:4px;background:var(--bg);padding:8px 0;margin:10px 0;border-bottom:1px solid var(--line)}.azbar a{display:inline-block;min-width:30px;text-align:center;padding:4px 6px;border:1px solid var(--line);border-radius:8px;background:var(--card);text-decoration:none;font-weight:600}</style><style>:root{color-scheme:dark}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){color-scheme:light}}:root[data-theme=light]{color-scheme:light}.themebtn{font:inherit;font-size:14px;line-height:1.3;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:3px 11px;cursor:pointer;white-space:nowrap;text-decoration:none}.themefloat{position:absolute;top:10px;right:12px;z-index:9}@media print{.themebtn{display:none}}</style><script>/* so-theme: light or dark screen */(function(){var K="so-theme",d=document.documentElement,L={auto:"\uD83C\uDF13 Auto",dark:"\uD83C\uDF19 Dark",light:"\u2600\uFE0F Light"},N={auto:"dark",dark:"light",light:"auto"},cur="auto";try{cur=localStorage.getItem(K)||"auto"}catch(e){}function a(){if(cur==="dark"||cur==="light")d.setAttribute("data-theme",cur);else d.removeAttribute("data-theme");var b=document.querySelectorAll(".themebtn");for(var i=0;i<b.length;i++){b[i].textContent=L[cur]||L.auto;b[i].title="Screen: "+cur+" - tap to change (Auto follows this device)"}}a();window.soTheme=function(){cur=N[cur]||"dark";try{localStorage.setItem(K,cur)}catch(e){}a()};function btn(){var b=document.createElement("button");b.type="button";b.className="themebtn";return b}document.addEventListener("DOMContentLoaded",function(){if(!document.querySelector(".themebtn")){var n=document.querySelector(".topnav"),b=btn();if(n){n.appendChild(document.createTextNode(" \u00B7 "));n.appendChild(b)}else{b.className+=" themefloat";document.body.appendChild(b)}}var all=document.querySelectorAll(".themebtn");for(var i=0;i<all.length;i++)all[i].onclick=window.soTheme;a()})})();</script><style>.backbtn{font-weight:700;text-decoration:none;white-space:nowrap}@media print{.backbtn{display:none}}@media(max-width:600px){.topnav{font-size:14px;line-height:1.8}.topnav a{white-space:nowrap}.topnav .lbl{display:none}.topnav .themebtn{font-size:13px;padding:2px 9px}}</style><script>/* so-back: a Back button on every page after the first */(function(){function add(){var n=document.querySelector(".topnav");if(!n||n.querySelector(".backbtn"))return;var f=n.querySelector("a"),a=document.createElement("a");a.className="backbtn";a.href=f?f.href:"#";a.textContent="\u2190 Back";a.title="Back to the page you came from";a.onclick=function(e){if(history.length>1&&document.referrer){e.preventDefault();history.back()}};n.insertBefore(document.createTextNode(" \u00B7 "),n.firstChild);n.insertBefore(a,n.firstChild)}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",add);else add();document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a[href^=\"#\"]"):null;if(!a||e.defaultPrevented)return;var id=decodeURIComponent(a.getAttribute("href").slice(1)),t=id?document.getElementById(id):null;if(!t)return;e.preventDefault();t.scrollIntoView();try{history.replaceState(history.state,"","#"+id)}catch(x){}});if(window.matchMedia&&matchMedia("(display-mode: standalone)").matches||navigator.standalone)document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a[href]"):null;if(a&&!a.target&&/\.pdf(?![a-z0-9])/i.test(a.getAttribute("href")))a.target="_blank"},true)})();</script></head><body><div class="wrap"><p class="topnav"><a class="guide" href="../#tools">📘 Guides</a> › <a class="guide" href="../#tools:library">💾 Using this library</a> · <a class="guide" href="EMERGENCY-FINDER.html">🆘<span class="lbl"> Emergency</span></a> · <a class="guide" href="SUBJECT-INDEX.html">📇<span class="lbl"> Index A–Z</span></a> · <a href="../#ask">💬<span class="lbl"> Ask</span></a></p>
 <h1 id="-ask-your-documents-with-gpt4all"><span class="h1e">📄</span> Ask Your Documents with GPT4All</h1>
-<p><strong>GPT4All</strong> is an optional extra app. You point it at folders of PDFs and text files, ask a question, and it answers from what's <em>in them</em>, showing which file it used. It runs <strong>offline on an ordinary computer</strong>: no internet and no graphics card needed.</p>
-<p>Example: ask <em>"According to the Army survival manual, how do I purify water?"</em> and it answers from that manual.</p>
-<p><strong>Most people don't need it.</strong> The Library Assistant (the START file, see <a class="guide" href="START-ON-ANY-DEVICE.html">Start on Any Device</a>) already searches every book on the drive. GPT4All is handy if you also want to ask about <strong>your own</strong> PDFs and notes.</p>
+<p><strong>GPT4All</strong> is an optional extra app. Point it at a folder of PDFs or notes, ask a question, and it answers from what's in them. It runs offline on an ordinary computer.</p>
+<p><strong>Most people don't need it.</strong> The Library Assistant (see <a class="guide" href="START-ON-ANY-DEVICE.html">Start on Any Device</a>) already searches every book on the drive. GPT4All is handy for asking about <strong>your own</strong> files.</p>
 <blockquote>
 <h3 id="️-set-it-up-now-while-you-have-internet">⚠️ Set it up now, while you have internet</h3>
-<p>GPT4All needs the internet <strong>once</strong>, to download a small "reading" model (the <em>embedding model</em>, which lets it search your documents). After that it works offline for good.</p>
+<p>It needs the internet <strong>once</strong>, to download a small add-on. After that it works offline.</p>
 </blockquote>
 <hr />
-<nav class="toc" id="contents" aria-label="Contents"><details open><summary>📑 Contents</summary><ol><li><a href="#install-it-one-time-about-2-minutes">💾 Install it (one time, about 2 minutes)</a></li><li><a href="#first-time-setup-while-you-have-internet">⚙️ First-time setup (while you have internet)</a></li><li><a href="#point-it-at-your-books">📂 Point it at your books</a></li><li><a href="#ask-a-question">💬 Ask a question</a></li><li><a href="#if-something-goes-wrong">🔧 If something goes wrong</a></li></ol></details></nav>
-<h2 id="install-it-one-time-about-2-minutes">💾 Install it (one time, about 2 minutes)</h2>
+<nav class="toc" id="contents" aria-label="Contents"><details open><summary>📑 Contents</summary><ol><li><a href="#install-it-windows-about-2-minutes">💾 Install it (Windows, about 2 minutes)</a></li><li><a href="#first-time-setup-while-you-have-internet">⚙️ First-time setup (while you have internet)</a></li><li><a href="#point-it-at-your-books">📂 Point it at your books</a></li><li><a href="#ask-a-question">💬 Ask a question</a></li><li><a href="#if-something-goes-wrong">🔧 If something goes wrong</a></li></ol></details></nav>
+<h2 id="install-it-windows-about-2-minutes">💾 Install it (Windows, about 2 minutes)</h2>
 <ol type="1">
 <li>On the drive, open <strong>OfflineLibrary → AI-Offline → DocReader-GPT4All</strong>.</li>
-<li>Double-click the installer, <strong>gpt4all-installer-win64-….exe</strong> (the version number varies).</li>
+<li>Double-click the <strong>gpt4all-installer</strong> file.</li>
 <li>If a blue box says <strong>Windows protected your PC</strong>, click <strong>More info</strong>, then <strong>Run anyway</strong>.</li>
-<li>Click through the installer (the normal choices are fine), then open <strong>GPT4All</strong>.</li>
+<li>Click through the installer, then open <strong>GPT4All</strong>.</li>
 </ol>
-<p>That's all. GPT4All brings its own AI engine (no Python or other add-ons) and runs on any 64-bit Windows 10 or 11 computer.</p>
-<p><em>Mac or Linux:</em> the folder holds the installer for the kind of computer that made the drive (<code>.dmg</code> for a Mac, <code>.run</code> for Linux). If there's no installer, GPT4All wasn't ticked when the drive was made.</p>
+<p>(Mac or Linux: the folder has the installer for the kind of computer that made the drive.)</p>
 <hr />
 <h2 id="first-time-setup-while-you-have-internet">⚙️ First-time setup (while you have internet)</h2>
-<p><strong>A. Use the AI models already on the drive:</strong></p>
 <ol type="1">
-<li>In GPT4All, click <strong>Settings</strong> (the gear) → <strong>Application</strong>.</li>
-<li>Find <strong>Model Folder</strong> (or <strong>Download path</strong>) and set it to the drive's <strong>OfflineLibrary → AI-Offline → models</strong> folder (on Windows, something like <code>E:\OfflineLibrary\AI-Offline\models</code>).</li>
-<li>Go to <strong>Chats</strong> and open the model list at the top. Pick <strong>Llama 3.2 3B Instruct</strong> (fast) or, if your drive has it, <strong>Meta Llama 3.1 8B Instruct</strong> (smarter; needs about 8 GB of memory).</li>
+<li><strong>Use the AI already on the drive:</strong> <strong>Settings</strong> (gear) → <strong>Application</strong> → set <strong>Model Folder</strong> to the drive's <strong>OfflineLibrary → AI-Offline → models</strong> folder. Then pick <strong>Llama 3.2 3B Instruct</strong> in the model list at the top of <strong>Chats</strong>.</li>
+<li><strong>Turn on the document reader:</strong> click <strong>LocalDocs</strong> → <strong>+ Add Collection</strong>. The first time, it downloads a small add-on. Let it finish.</li>
 </ol>
-<p><em>No models listed?</em> Use <strong>Add Model</strong> (or <strong>Download Models</strong>) to download one small model, such as Llama 3.2 3B. This needs internet, once.</p>
-<p><strong>B. Turn on the document reader (LocalDocs):</strong></p>
-<ol type="1">
-<li>Click <strong>LocalDocs</strong> (left side).</li>
-<li>Click <strong>+ Add Collection</strong>.</li>
-<li>The first time, GPT4All downloads the small reading model by itself (tens of MB). Let it finish.</li>
-</ol>
-<p>After A and B, <strong>everything works offline.</strong></p>
+<p>After that, <strong>everything works offline.</strong></p>
 <hr />
 <h2 id="point-it-at-your-books">📂 Point it at your books</h2>
-<p>A <em>collection</em> is just a folder of documents for GPT4All to read.</p>
 <ol type="1">
 <li>Click <strong>LocalDocs → + Add Collection</strong>.</li>
-<li>Type a name (for example <code>Army Manuals</code>) and choose a folder on the drive, such as <strong>OfflineLibrary → Manuals → ArmyFieldManuals</strong>.</li>
-<li>Click <strong>Create</strong> (or <strong>Add</strong>). A progress bar shows it reading the files; big folders take a few minutes the first time only.</li>
-<li>Repeat for other folders: <strong>Medical → Manuals-PDF</strong>, <strong>Manuals → Radio-Communications</strong>, the <strong>Southern-Oregon</strong> local pack, or your own folders of notes.</li>
+<li>Give it a name (like <code>Army Manuals</code>) and pick a folder, such as <strong>Manuals → ArmyFieldManuals</strong>, <strong>Medical → Manuals-PDF</strong>, the <strong>Southern-Oregon</strong> folder, or your own notes.</li>
+<li>Click <strong>Create</strong>. It reads the files (a few minutes the first time).</li>
 </ol>
-<p>It reads PDF, plain text (<code>.txt</code>), Markdown (<code>.md</code>), Word (<code>.docx</code>) and several other office and code files. It does <strong>not</strong> read <code>.zim</code> files (Wikipedia, WikiMed, iFixit, Appropedia, zimgit). Open those in <strong>Kiwix</strong> instead (<a class="guide" href="HOW-TO-USE-KIWIX.html">How to Use Kiwix</a>), which has its own fast search.</p>
+<p>It reads PDFs, Word files and text files. It can't read the <code>.zim</code> encyclopedias; use <a class="guide" href="HOW-TO-USE-KIWIX.html">Kiwix</a> for those.</p>
 <hr />
 <h2 id="ask-a-question">💬 Ask a question</h2>
 <ol type="1">
 <li>Go to <strong>Chats</strong> and start a new chat.</li>
-<li>Check that a <strong>model is picked</strong> (at the top) and your <strong>LocalDocs</strong> collections are <strong>turned on</strong> for this chat (use the LocalDocs button in the chat).</li>
-<li>Type one clear question, such as:
-<ul>
-<li><em>"How do I treat a deep cut and stop bleeding?"</em></li>
-<li><em>"How do I purify water if I have no filter?"</em></li>
-<li><em>"What knots should I know, and how do I tie a bowline?"</em></li>
-</ul></li>
-<li>It answers <strong>from your documents</strong> and lists its <strong>sources</strong>. The AI can make mistakes, so open the cited PDF and check anything about health or safety.</li>
+<li>Check a <strong>model</strong> is picked and your <strong>LocalDocs</strong> collections are <strong>turned on</strong>.</li>
+<li>Ask one clear question, like <em>"How do I purify water if I have no filter?"</em></li>
+<li>It answers and shows which files it used. Check anything about health or safety in the file itself.</li>
 </ol>
-<p><strong>Every time after that:</strong> open GPT4All, pick a model (<strong>3B</strong> is fast, <strong>8B</strong> smarter but slower), turn on the collections you want, and ask.</p>
 <hr />
 <h2 id="if-something-goes-wrong">🔧 If something goes wrong</h2>
 <table>
 <thead>
 <tr class="header">
-<th>What happens</th>
-<th>What to do</th>
+<th>Problem</th>
+<th>Fix</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>No models listed</td>
-<td>Set <strong>Model Folder</strong> to the drive's <code>AI-Offline\models</code> (<strong>Settings → Application</strong>), or download one small model while online</td>
+<td>Set <strong>Model Folder</strong> to the drive's <code>AI-Offline\models</code> (see setup step 1)</td>
 </tr>
 <tr class="even">
-<td>LocalDocs won't read the files, or an <em>embedding model</em> error</td>
-<td>It needs the one-time reading-model download: do step <strong>B</strong> while online</td>
+<td>LocalDocs won't read the files</td>
+<td>It needs its one-time download: do setup step 2 while online</td>
 </tr>
 <tr class="odd">
 <td>Slow answers</td>
-<td>Use the <strong>3B</strong> model and close other programs. Older computers are slower but still work</td>
+<td>Use the <strong>3B</strong> model and close other programs</td>
 </tr>
 <tr class="even">
 <td>The answer ignores my documents</td>
-<td>Check the collection is <strong>turned on</strong> in the chat and has finished reading</td>
+<td>Check the collection is turned on in the chat and has finished reading</td>
 </tr>
 </tbody>
 </table>
