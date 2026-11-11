@@ -61,11 +61,14 @@ function renderHealth() {
   if (box.hidden) return;
   const row = (k, v) => `<tr><td>${k}</td><td>${v}</td></tr>`;
   let h = '<table class="health">';
-  if (th >= 0) h += row('Power', th & 0x1 ? '⚠️ <b>Too weak right now</b>: the Pi has slowed itself down'
-    : th & 0x10000 ? '⚠️ <b>Dipped</b> at least once since it was switched on (it slows down while it does)' : '✅ OK since it was switched on');
+  if (th >= 0) h += row('Power', th & 0x1 ? '⚠️ <b>Too weak right now</b>'
+    : th & 0x10000 ? '⚠️ <b>Dipped</b> at least once since it was switched on' : '✅ OK since it was switched on');
+  if (th >= 0) h += row('Slowed down?', th & 0x6 ? '⚠️ <b>Yes, right now</b>: the Pi has cut its own speed, so the AI is very slow'
+    : th & 0x60000 ? '⚠️ Not now, but it has since it was switched on' : '✅ No, not since it was switched on');
   if (server.tempC) h += row('Temperature', `${server.tempC} °C — ` + (server.tempC >= 80 ? '⚠️ <b>too hot</b>: it slows itself down'
-    : server.tempC >= 60 ? 'warm (the fan comes on at 60 °C)' : 'fine') + (th & 0xe && !(th & 0x1) ? ' — ⚠️ slowed down right now' : ''));
-  if (server.cpuMHz) h += row('Processor speed', `${server.cpuMHz} MHz` + (server.cpuMaxMHz ? ` of ${server.cpuMaxMHz} MHz at most` : ''));
+    : server.tempC >= 60 ? 'warm (the fan comes on at 60 °C)' : 'fine'));
+  if (server.cpuMHz) h += row('Processor speed', `${server.cpuMHz} MHz` + (server.cpuMaxMHz ? ` of ${server.cpuMaxMHz} MHz at most` : '')
+    + (server.cpuMaxMHz && server.cpuMHz < server.cpuMaxMHz ? ' (low is normal when it has nothing to do)' : ''));
   if (server.memFreeMB != null) h += row('Free memory', `${server.memFreeMB} MB` + (server.memFreeMB < 300 ? ' — ⚠️ low: the AI slows right down' : ''));
   h += row('AI', esc(server.model || 'off'));
   if (lastPace) h += row('Last answer', `read about ${lastPace.read} words a second, wrote about ${lastPace.wrote} a second`);
@@ -146,20 +149,24 @@ function renderStatus() {
   $('status').innerHTML = h;
 }
 
-// A Raspberry Pi's own record of slowing itself down (server.throttled, the firmware's get_throttled): 0x1 the
-// power is too weak now, 0x2/0x4/0x8 slowed down now (heat, when the power is fine), and 0x10000 / 0x80000 /
-// 0x60000 the same at some point since it started. Slowed down, a Pi 4 runs at about a third of its speed, and
-// the AI takes minutes instead of seconds. null when it's running at full speed (or isn't a Pi).
+// A Raspberry Pi's own record (server.throttled, the firmware's get_throttled): 0x1 the power is too weak now,
+// 0x2/0x4 it has slowed its processor down now, 0x8 it's hot enough to start doing that; 0x10000, 0x20000/0x40000
+// and 0x80000 the same at some point since it was switched on. Weak power doesn't always slow it down (0x10001 is
+// "too weak, but running at full speed"); slowed down, a Pi 4 runs at about a third of its speed, and the AI takes
+// minutes instead of seconds. null when all is well (or it isn't a Pi). now: slowed down at this moment.
 function piSlow() {
   const th = mode === 'drive' && server.throttled > 0 ? server.throttled : 0;
   if (!th) return null;
   const power = server.ark ? 'Charge the battery, then check the 5 V wires to the Pi (ARK Vault guide, "If something goes wrong").'
     : 'Use the official Raspberry Pi power supply and its own cable.';
   const heat = server.ark ? 'Keep the lid open and the can in the shade.' : 'Give it more air, or a cooler with a fan.';
-  if (th & 0x1) return { now: true, why: 'the Pi is short of power', label: '⚠️ Power too weak', detail: 'the Pi has slowed itself down, so the AI is very slow. ' + power };
-  if (th & 0xe) return { now: true, why: 'the Pi is too hot', label: '⚠️ Too hot', detail: 'the Pi has slowed itself down, so the AI is slow. ' + heat };
-  if (th & 0x10000) return { now: false, label: '⚠️ Power dipped', detail: 'the Pi slows itself down when it does, the AI most. ' + power };
-  return { now: false, label: '⚠️ Got too hot', detail: 'the Pi slows itself down when it does. ' + heat };
+  const slowNow = !!(th & 0x6), hot = !!(th & 0x80008), weak = !!(th & 0x10001);
+  const why = hot && !weak ? 'the Pi is too hot' : 'the Pi is short of power';
+  if (slowNow) return { now: true, why, label: hot && !weak ? '⚠️ Too hot' : '⚠️ Power too weak',
+    detail: 'the Pi has slowed itself down, so the AI is very slow. ' + (hot && !weak ? heat : power) };
+  if (th & 0x1) return { now: false, why, label: '⚠️ Power too weak', detail: 'right now. The Pi may slow itself down, and the AI with it. ' + power };
+  if (th & 0x10000) return { now: false, why, label: '⚠️ Power dipped', detail: 'since the Pi was switched on. It may slow itself down when it does. ' + power };
+  return { now: false, why, label: '⚠️ Got too hot', detail: 'since the Pi was switched on. It slows itself down when it does. ' + heat };
 }
 
 // An app saved to the home screen has no browser around it: a book (a PDF) would fill the screen with no way

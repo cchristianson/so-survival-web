@@ -402,7 +402,8 @@
 </tbody>
 </table>
 <h3 id="power-too-weak-or-the-ai-takes-minutes">"Power too weak", or the AI takes minutes</h3>
-<p>The Pi isn't getting a full 5 volts, so it slows itself down to about a third of its speed. The AI suffers most: an answer can take 10 minutes instead of one or two.</p>
+<p>The Pi isn't getting a full 5 volts. It can then slow itself down to about a third of its speed, and the AI suffers most: an answer can take 10 minutes instead of one or two. Weak power can also make the Pi or its drive misbehave, so fix it even if the AI seems fine.</p>
+<p><strong>Quick test:</strong> switch off, unplug the Pi's power plugs from pins 2 and 14, and run the Pi from an <strong>official Raspberry Pi USB-C power supply</strong> instead (never both at once). If the warning goes away, the can's power wiring is the problem.</p>
 <p>To see what the Pi is doing, open <strong>⚙️ Settings → How the Pi is doing</strong> on the phone, while the AI is answering. It shows the power, the temperature and how fast the processor is running.</p>
 <ol type="1">
 <li><strong>Check the battery:</strong> hold the meter button. Under about 12.5 V, charge it.</li>
