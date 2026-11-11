@@ -1,6 +1,6 @@
 # The map in the web browser
 
-`MAP.html` is the library's own map: it runs in any web browser, on the website and from the drive
+`MAP.html` (with `map.js`) is the library's own map: it runs in any web browser, on the website and from the drive
 (through the Library Assistant, at `/lib/Map/MAP.html`), with no app and no internet.
 
 ## What draws it (unmodified files from npm, bundled so the map works offline)
@@ -20,6 +20,12 @@
 | `<area>-terrain.pmtiles` | ground heights; the browser draws the contour lines and hill shading from them | Mapterhorn (https://mapterhorn.com; in the US, USGS 3DEP) |
 | `<area>-property.pmtiles` | tax-lot outlines and who manages the land | the public map servers named in the area's `region.json` (`web_map`) |
 | `<area>-places.json` | names to search for | taken from the streets file |
+| `<area>-water.pmtiles` | creeks (year-round or seasonal), springs, wells, dams | USGS National Hydrography Dataset; the state's well reports and dam inventory |
+| `<area>-food.pmtiles` | good growing ground, wild food sightings, fish streams | USDA NRCS Soil Survey; iNaturalist (research grade, open positions only); the state's fish habitat map |
+| `<area>-materials.pmtiles` | mines, quarries and mineral sites | the state geology agency |
+| `<area>-hazards.pmtiles` | past wildfires, flood zones, old landslides | National Interagency Fire Center; FEMA; the state geology agency |
+| `<area>-places.pmtiles` | useful places and bridges | OpenStreetMap (from the streets file); the county; USDA Forest Service |
+| `<area>-travel.pmtiles` | walking routes, section grid, escape routes | the library's routes; BLM's land survey; the county |
 
 Of tax lots, the outlines, lot numbers and acres are fetched, and the owner's name where the area's
 `region.json` names that field (`web_map.parcels.owner`): never mailing addresses or values.

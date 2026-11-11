@@ -796,7 +796,7 @@ function renderLibrary() {
   restoreScroll('library');
 }
 // the Tools tab: calculators and other things you use rather than read
-const TOOL_CARDS = [['map', '🗺️ Map', 'Roads, trails and creeks with topo lines, property lines and public land, a search for places, and a dot that shows where you are. No signal needed.'],
+const TOOL_CARDS = [['map', '🗺️ Map', 'A topo map with property lines and layers to switch on: springs and wells, good growing ground, wild food, mines, past fires, flood zones, useful places. Measure, drop pins, print, and see where you are. No signal needed.'],
   ['calc', '🧮 Calculator', 'Everyday sums on a big screen: + − × ÷, percent, and a history of your answers.'],
   ['sci', '🔬 Scientific calculator', 'Sine, cosine and tangent, logs, powers and roots, π, n!, degrees or radians.'],
   ['conv', '🔢 Unit converter & calculators', 'Any measurement converted; area, concrete, roof pitch, tanks, rainwater, water pressure, volts and watts, batteries, wire size, recipes, fuel mix, doses.'],
