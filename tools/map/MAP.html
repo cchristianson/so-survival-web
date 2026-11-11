@@ -182,7 +182,7 @@ a{color:var(--accent)}[hidden]{display:none!important}
       geo.on('geolocate', function () { say(''); });
       geo.on('trackuserlocationend', function () { if (geo._watchState === 'OFF') $('locate').classList.remove('on'); });
       map.addControl(geo, 'top-left');
-      map.once('idle', function () { var c = document.querySelector('.maplibregl-ctrl-geolocate'); if (c) c.parentNode.style.display = 'none'; });   // our own button drives it
+      if (geo._container) geo._container.style.display = 'none';   // its own button stays out of sight: ours (📍) drives it
     }
     $('locate').onclick = function () {
       if (!canLocate) {
