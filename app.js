@@ -217,6 +217,7 @@ function bindUI() {
   $('aioff').addEventListener('click', async () => { store.set('aiModel', null); try { await ai.engine?.unload?.(); } catch {} ai.engine = null; ai.kind = 'none'; renderSetup(); renderStatus(); });
   $('savelib').addEventListener('click', () => saveOffline('library'));
   $('saveroutes').addEventListener('click', () => saveOffline('routes'));
+  $('savemap').addEventListener('click', () => saveOffline('map'));
   $('shareon').addEventListener('click', () => setShare(true));
   $('shareoff').addEventListener('click', () => setShare(false));
   bindPhotos();
@@ -590,8 +591,10 @@ async function renderSetup() {
   if (manifest) {
     $('savelibsize').textContent = `≈ ${mb(manifest.offline.library.bytes)}`;
     $('saveroutessize').textContent = `≈ ${mb(manifest.offline.routes.bytes)}`;
+    if (manifest.offline.map) $('savemapsize').textContent = `≈ ${mb(manifest.offline.map.bytes)}`;
   }
-  if (mode === 'drive') { $('savelib').disabled = $('saveroutes').disabled = true; $('saveprog').textContent = 'Not needed on the drive — everything is already here.'; }
+  $('savemaprow').hidden = !(manifest && manifest.offline.map) || mode === 'drive';
+  if (mode === 'drive') { $('savelib').disabled = $('saveroutes').disabled = $('savemap').disabled = true; $('saveprog').textContent = 'Not needed on the drive — everything is already here.'; }
   if (navigator.storage?.estimate) { const e = await navigator.storage.estimate(); $('storage').textContent = `This site is using ${mb(e.usage || 0)} of storage on this device.`; }
   $('about').innerHTML = `Free survival and self-reliance knowledge for the Illinois Valley and southern Oregon. Search runs on your device; the AI runs in your browser.
     Documents that are public domain or openly licensed are searchable in full; others are listed by title and open on the publisher's website.
@@ -658,7 +661,7 @@ async function saveOffline(which) {
   await navigator.serviceWorker.ready;
   try { await navigator.storage?.persist?.(); } catch {}
   const files = manifest.offline[which].files; let done = 0, failed = 0;
-  $('savebarw').hidden = false; $('savelib').disabled = $('saveroutes').disabled = true;
+  $('savebarw').hidden = false; $('savelib').disabled = $('saveroutes').disabled = $('savemap').disabled = true;
   const queue = files.slice(), workers = Array.from({ length: 6 }, async () => {
     while (queue.length) {
       const f = queue.shift();
@@ -668,7 +671,7 @@ async function saveOffline(which) {
   });
   await Promise.all(workers);
   $('saveprog').textContent = failed ? `Saved, but ${failed} files failed — try again with a better connection.` : `Saved ${files.length} files. They now work offline on this device.`;
-  $('savelib').disabled = $('saveroutes').disabled = false; store.set('saved-' + which, manifest.built); renderSetup();
+  $('savelib').disabled = $('saveroutes').disabled = $('savemap').disabled = false; store.set('saved-' + which, manifest.built); renderSetup();
 }
 
 // ------------------------------------------------------------------ library & tools tabs
@@ -769,17 +772,20 @@ function renderLibrary() {
   restoreScroll('library');
 }
 // the Tools tab: calculators and other things you use rather than read
-const TOOL_CARDS = [['calc', '🧮 Calculator', 'Everyday sums on a big screen: + − × ÷, percent, and a history of your answers.'],
+const TOOL_CARDS = [['map', '🗺️ Map', 'Roads, trails and creeks with topo lines, property lines and public land, a search for places, and a dot that shows where you are. No signal needed.'],
+  ['calc', '🧮 Calculator', 'Everyday sums on a big screen: + − × ÷, percent, and a history of your answers.'],
   ['sci', '🔬 Scientific calculator', 'Sine, cosine and tangent, logs, powers and roots, π, n!, degrees or radians.'],
   ['conv', '🔢 Unit converter & calculators', 'Any measurement converted; area, concrete, roof pitch, tanks, rainwater, water pressure, volts and watts, batteries, wire size, recipes, fuel mix, doses.'],
   ['morse', '📡 Morse code', 'Words into Morse and back, played as beeps or as flashes of the screen at any speed, a key to practise sending, and the whole code.'],
   ['pill', '🔍 Pill identifier', 'Identify a loose pill by the code printed on it — about 32,000 US pills.'],
   ['plantid', '📷 Identify a plant or mushroom', 'Take a photo: the offline AI names it from the plants and mushrooms of the area, marks the poisonous ones, and opens the guides about it.'],
   ['walk', '🥾 Routes: walk, bike, drive', 'From Cave Junction to 359 Oregon and N. California cities: walking days, bicycle riding hours and normal driving times, with turn-by-turn directions and GPS tracks.']];
+// the map is there when its files are: on the drive the Library Assistant says so, on the website the list of files does
+const hasMap = () => mode === 'drive' ? !!server.map : !!(manifest && manifest.offline && manifest.offline.map);
 function renderKit() {
   const P = guidePaths();
   $('kitgrid').innerHTML = (mode === 'drive' ? PHOTO_CARD : '') +   // family photos: only where the library program runs
-    TOOL_CARDS.filter(([k]) => P[k]).map(([k, t, d]) => `<a class="tool" href="${P[k]}"><b>${t}</b><span>${d}</span></a>`).join('');
+    TOOL_CARDS.filter(([k]) => P[k] && (k !== 'map' || hasMap())).map(([k, t, d]) => `<a class="tool" href="${P[k]}"><b>${t}</b><span>${d}</span></a>`).join('');
 }
 const GUIDE_CARDS = { // guide cards, by shelf (same groups and order as SHELVES and docs/START-HERE.md)
   start: [['sos', '🆘 Emergency finder', 'Something happening right now? Bleeding, not breathing, snakebite, a baby coming, fire, fallout — straight to the right page.'],
@@ -862,12 +868,12 @@ const PAGES = { sos: 'EMERGENCY-FINDER', az: 'SUBJECT-INDEX', iv: 'ILLINOIS-VALL
   expect: 'WHAT-TO-EXPECT-GUIDE', wildfire: 'WILDFIRE-GUIDE', nuke: 'NUCLEAR-FALLOUT-GUIDE', emp: 'EMP-GUIDE',
   stories: 'STORIES-GAMES-GUIDE',
   device: 'START-ON-ANY-DEVICE', ammocan: 'AMMO-CAN-COMPUTER-GUIDE', get: 'GET-THE-LIBRARY', all: 'README',
-  calc: 'CALCULATOR', sci: 'CALCULATOR', conv: 'UNIT-CONVERTER', morse: 'MORSE-CODE', pill: 'PILL-IDENTIFIER', walk: 'WALKING-ROUTES', plantid: 'PLANT-ID' };
+  calc: 'CALCULATOR', sci: 'CALCULATOR', conv: 'UNIT-CONVERTER', morse: 'MORSE-CODE', pill: 'PILL-IDENTIFIER', walk: 'WALKING-ROUTES', plantid: 'PLANT-ID', map: 'MAP' };
 const DRIVE_AT = { sos: 'EMERGENCY-FINDER.html', az: 'SUBJECT-INDEX.html', med: 'Medical/READ-ME-FIRST.html', radio: 'Manuals/Radio-Communications/RADIO-GUIDE.html',
   device: 'START-ON-ANY-DEVICE.html', ammocan: 'AMMO-CAN-COMPUTER-GUIDE.html', get: null, all: 'README.html',
-  calc: 'CALCULATOR.html#basic', sci: 'CALCULATOR.html#sci', conv: 'UNIT-CONVERTER.html', morse: 'MORSE-CODE.html', plantid: 'PLANT-ID.html',
+  calc: 'CALCULATOR.html#basic', sci: 'CALCULATOR.html#sci', conv: 'UNIT-CONVERTER.html', morse: 'MORSE-CODE.html', plantid: 'PLANT-ID.html', map: 'Map/MAP.html',
   pill: 'Medical/Pill-Identifier/PILL-IDENTIFIER.html', walk: 'Southern-Oregon/Walking-Routes/WALKING-ROUTES.html' };
-const WEB_AT = { all: null, calc: 'pages/CALCULATOR.html#basic', sci: 'pages/CALCULATOR.html#sci',
+const WEB_AT = { all: null, calc: 'pages/CALCULATOR.html#basic', sci: 'pages/CALCULATOR.html#sci', map: 'tools/map/MAP.html',
   pill: 'tools/pill-identifier/PILL-IDENTIFIER.html', walk: 'tools/walking-routes/WALKING-ROUTES.html' };
 let pathCache = null;
 function guidePaths() {

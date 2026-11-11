@@ -1,0 +1,54 @@
+{
+ "id": "illinois-valley",
+ "name": "Illinois Valley",
+ "bbox": [
+  -124.05,
+  41.99,
+  -123.2,
+  42.75
+ ],
+ "center": [
+  -123.648,
+  42.163,
+  12
+ ],
+ "streets": "illinois-valley-streets.pmtiles",
+ "built": "November 2026",
+ "credits": [
+  "© OpenStreetMap contributors (ODbL)",
+  "Protomaps",
+  "Heights: Mapterhorn (USGS 3DEP and others)",
+  "Tax lots: Josephine County Assessor",
+  "Land ownership: Bureau of Land Management, Oregon State Office"
+ ],
+ "terrain": {
+  "file": "illinois-valley-terrain.pmtiles",
+  "maxzoom": 12
+ },
+ "property": {
+  "file": "illinois-valley-property.pmtiles",
+  "parcels": true,
+  "ownership": true,
+  "owners": [
+   "BLM",
+   "LG",
+   "NPS",
+   "PV",
+   "ST",
+   "STF",
+   "STL",
+   "STP",
+   "UND",
+   "USFS",
+   "WATER"
+  ]
+ },
+ "places": "illinois-valley-places.json",
+ "files": {
+  "illinois-valley-streets.pmtiles": 13869867,
+  "illinois-valley-terrain.pmtiles": 29417466,
+  "illinois-valley-property.pmtiles": 5457200,
+  "illinois-valley-places.json": 219931
+ },
+ "v": "3c5edf2e0870"
+}
