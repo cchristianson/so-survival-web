@@ -30,7 +30,7 @@
 
   // ---- the little round signs for places (drawn from the device's own emoji, so they need no picture files)
   var BADGE = { spring: '💧', fall: '🌊', dam: '🧱', med: '🏥', vet: '🐾', fuel: '⛽', food: '🛒', supply: '🔧', fire: '🚒', police: '🚓', school: '🏫', hall: '🏛️',
-    camp: '⛺', air: '✈️', tap: '🚰', wc: '🚻', evac: '🚩', bridge: '🌉', pin: '📌' };
+    camp: '⛺', air: '✈️', tap: '🚰', wc: '🚻', evac: '🚩', bridge: '🌉', pin: '📌', shared: '📍', gate: '🚧', block: '⛔', tower: '📡', lookout: '🔭' };
   var PLACE = { med: 'Medical', vet: 'Vet', fuel: 'Fuel', food: 'Food store', supply: 'Hardware, feed or repair', fire: 'Fire station', police: 'Police or ranger', school: 'School',
     hall: 'Hall, church, library or post office', camp: 'Camp or recreation site', air: 'Airstrip', tap: 'Drinking water', wc: 'Toilets', evac: 'Evacuation point', bridge: 'Bridge' };
   function addBadge(m, id) {
@@ -46,6 +46,24 @@
   var WF = { nut: ['#8d6e63', 'Nuts and acorns'], berry: ['#7b1fa2', 'Berries'], fruit: ['#d81b60', 'Fruit'], root: ['#ef6c00', 'Roots and bulbs'], green: ['#2e7d32', 'Greens'], mushroom: ['#b08d57', 'Mushrooms'] };
   var MINE = { gold: ['#f5b301', 'Gold'], chrome: ['#607d8b', 'Chromite'], copper: ['#bf5b17', 'Copper'], lime: ['#e0e0e0', 'Limestone (lime)'], clay: ['#a1543f', 'Clay'],
     stone: ['#9e9e9e', 'Stone, sand, gravel'], coal: ['#212121', 'Coal'], metal: ['#455a64', 'Other metals'], mineral: ['#ec407a', 'Other minerals'] };
+  var ROAD = { car: ['#2b8a3e', 'open: an ordinary car can drive it'], high: ['#f08c00', 'open, but rough: high clearance'], season: ['#1c7ed6', 'closed part of the year'],
+    closed: ['#c92a2a', 'gated or closed to vehicles'], unk: ['#868e96', 'not recorded'] };
+  var HAB = { winter: ['#1d4ed8', 'winter gathering ground'], summer: ['#f59e0b', 'summer gathering ground'], major: ['#65a30d', 'here all year, in good numbers'],
+    edge: ['#bfe37a', 'here all year, fewer'], town: ['#9ca3af', 'around farms and towns'] };
+  var GAME = { deer: ['#a16207', 'Deer'], elk: ['#7c2d12', 'Elk'], bear: ['#111827', 'Black bear'], bird: ['#0e7490', 'Game birds'], small: ['#9333ea', 'Rabbits, hares, squirrels'] };
+  var ROCK = { serp: ['#2a9d8f', 'Serpentine and peridotite', 'Thin red soil where little grows. Chromite and nickel are found in it. Dust from some of it holds asbestos: don\'t crush or grind it.'],
+    lime: ['#4ea8de', 'Limestone or marble', 'Burned in a kiln it makes lime for mortar, plaster and sweetening soil. Caves and sinkholes form in it.'],
+    gravel: ['#f4d35e', 'River sand, gravel and clay', 'Loose ground laid down by rivers: building sand and gravel, clay for bricks and pots, the best ground for wells and gardens, and where placer gold settles.'],
+    granite: ['#e56b6f', 'Granite-like rock', 'Hard, even stone for building and millstones. It weathers to coarse sand that drains fast.'],
+    volcanic: ['#8e44ad', 'Lava rock (basalt, andesite)', 'Hard, dark rock: good crushed rock for roads, and tough building stone.'],
+    sand: ['#d4a373', 'Sandstone', 'Easy to cut for building, and good for sharpening stones. Often carries springs.'],
+    mud: ['#8d99ae', 'Mudstone, shale or slate', 'Soft rock that breaks down into clay. Slopes on it slide when wet, and springs are few.'],
+    meta: ['#b5838d', 'Schist and mixed hard rock', 'Hard, folded rock of mixed kinds. Quartz veins in rock like this are where lode gold was mined.'], other: ['#cccccc', 'Other rock', ''] };
+  var VEG = { fir: ['Fir, Douglas-fir, hemlock', 'Straight softwood for building; fair firewood.'], mixed: ['Douglas-fir with tanoak and madrone', 'Douglas-fir for building; tanoak and madrone for acorns and hot-burning firewood.'],
+    pine: ['Pine', 'Easy-to-work building wood, pitch for starting fires, and pine nuts from some kinds.'], oak: ['Oak', 'Acorns for food, and the best firewood.'],
+    cedar: ['Cedar or redwood', 'Wood that resists rot: posts, shakes, boats.'], hard: ['Alder, maple, other broadleaf trees', 'Firewood, smoking wood, tool handles.'],
+    wet: ['Streamside woods and marsh', 'Water is near. Willow and cattail for weaving; good ground for wildlife.'], brush: ['Brush', 'Thick brush: hard to walk through, and it burns fiercely.'],
+    grass: ['Grass and meadow', 'Open ground: grazing, hay, easy walking.'], farm: ['Fields and pasture', 'Cleared, worked ground.'], rock: ['Bare rock', 'Bare rock or scree.'] };
   var LAYERS = [
     ['Base map', [
       { id: 'contours', title: 'Topo lines', note: 'Lines of equal height, in feet', layers: ['contour-lines', 'contour-labels'], on: true, need: 'terrain' },
@@ -69,8 +87,19 @@
         legend: [['#1b7f3b', 'best cropland'], ['#7cb342', 'good, with care'], ['#c0ca33', 'fair: limited crops']] },
       { id: 'wildfood', title: 'Wild food sightings', note: 'Where people have recorded edible plants and mushrooms. A sighting is not a promise, and never eat anything on a map\'s word: check it in the guides', layers: ['wildfood'], src: 'wildfood',
         legend: Object.keys(WF).map(function (k) { return [WF[k][0], WF[k][1], 'dot']; }) },
-      { id: 'fish', title: 'Salmon and trout streams', layers: ['fish-trout', 'fish-salmon'], src: 'fish', legend: [['#e8590c', 'salmon, steelhead', 'ln'], ['#845ef7', 'trout', 'ln']] }]],
+      { id: 'fish', title: 'Salmon and trout streams', layers: ['fish-trout', 'fish-salmon'], src: 'fish', legend: [['#e8590c', 'salmon, steelhead', 'ln'], ['#845ef7', 'trout', 'ln']] },
+      { id: 'frost', title: 'Frost pockets', note: 'Low, flat ground where cold air settles on still nights: frost comes earlier in fall and stays later in spring. Worked out from the shape of the ground, so take it as a guide',
+        layers: ['frost'], need: 'terrain', legend: [['#5b7cfa', 'coldest hollows'], ['#a9c1ff', 'cool flats']] }]],
+    ['Hunting', [
+      { id: 'deer_elk', title: 'Deer and elk country', note: 'Where the state\'s wildlife staff say deer and elk live, and where they gather by season', layers: ['deer-elk'], src: 'deer_elk',
+        legend: Object.keys(HAB).map(function (k) { return [HAB[k][0], HAB[k][1]]; }) },
+      { id: 'game', title: 'Game sightings', note: 'Where people have recorded game animals and birds. A sighting is not a promise', layers: ['game'], src: 'game',
+        legend: Object.keys(GAME).map(function (k) { return [GAME[k][0], GAME[k][1], 'dot']; }) },
+      { id: 'hunt_units', title: 'Hunting units', note: 'The state\'s units, as the hunting rules name them', layers: ['hunt-units', 'hunt-unit-names'], src: 'hunt_units', legend: [['#3f6212', 'unit edge', 'ln']] }]],
     ['Materials', [
+      { id: 'timber', title: 'Timber: what grows where', note: 'The main trees or cover, from the national vegetation map. Good to about a city block', layers: ['timber'], src: 'timber', raster: true },
+      { id: 'rocks', title: 'Rock types', note: 'The rock under the ground. Tap for what it is good for', layers: ['rocks'], src: 'rocks',
+        legend: Object.keys(ROCK).filter(function (k) { return k !== 'other'; }).map(function (k) { return [ROCK[k][0], ROCK[k][1]]; }) },
       { id: 'mines', title: 'Mines, quarries and mineral sites', note: 'Old workings are dangerous: stay out of shafts and tunnels', layers: ['mines'], src: 'mines',
         legend: Object.keys(MINE).map(function (k) { return [MINE[k][0], MINE[k][1], 'dot']; }) }]],
     ['Hazards', [
@@ -81,9 +110,13 @@
     ['Places and getting around', [
       { id: 'places', title: 'Useful places', note: 'Medical, fuel, food, fire stations, bridges, camps, halls', layers: ['poi'], src: 'places',
         legend: ['med', 'fuel', 'food', 'supply', 'fire', 'bridge', 'camp', 'hall', 'school', 'evac'].map(function (k) { return ['', BADGE[k] + ' ' + PLACE[k].toLowerCase()]; }) },
+      { id: 'backroads', title: 'Forest and BLM roads', note: 'The number on the road sign, and whether you can drive it. A closed road is still a way on foot', layers: ['backroads', 'backroad-nums'], src: 'backroads',
+        legend: Object.keys(ROAD).map(function (k) { return [ROAD[k][0], ROAD[k][1], 'ln']; }) },
+      { id: 'gates', title: 'Gates and road blocks', note: 'On BLM roads. A gate may be locked: know another way round', layers: ['gates'], src: 'gates', legend: [['', '🚧 gate'], ['', '⛔ road blocked']] },
+      { id: 'towers', title: 'Radio towers and fire lookouts', note: 'High ground with a road to it. Lookouts have the widest views', layers: ['towers'], src: 'towers', legend: [['', '📡 radio site'], ['', '🔭 fire lookout']] },
       { id: 'escape', title: 'Escape routes', note: 'The county\'s back ways out when the main road is cut', layers: ['escape'], src: 'escape', legend: [['#2f9e44', 'escape route', 'ln']] },
       { id: 'routes', title: 'Walking routes to other towns', layers: ['routes'], src: 'routes', legend: [['#7b2cbf', 'route', 'ln']] },
-      { id: 'pins', title: 'My pins', note: 'Your own marks, kept on this device', layers: ['pins'], on: true }]]
+      { id: 'pins', title: 'Pins', note: 'Your own marks, and the ones shared on this library', layers: ['pins', 'shared-pins'], on: true }]]
   ];
 
   fetch(DATA + 'index.json').then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (cfg) {
@@ -111,6 +144,7 @@
     // which of the layers this area's files have
     var have = { terrain: !!cfg.terrain, parcels: !!(cfg.property && cfg.property.parcels), ownership: !!(cfg.property && cfg.property.ownership) };
     (cfg.overlays || []).forEach(function (o) { o.layers.forEach(function (l) { have[l] = true; }); });
+    var V = cfg.v ? '?v=' + cfg.v : '', vegOv = (cfg.overlays || []).filter(function (o) { return o.raster && o.group === 'timber'; })[0] || {}, vegPM = null;
     var ITEMS = [], GROUPS = {};
     LAYERS.forEach(function (g) { g[1].forEach(function (it) { if (it.id === 'pins' || have[it.need || it.src]) { ITEMS.push(it); GROUPS[it.id] = it.layers; } }); });
 
@@ -155,6 +189,7 @@
       var lg = it.legend;
       if (it.id === 'own') lg = (cfg.property.owners || ['BLM', 'USFS', 'ST', 'LG']).filter(function (c) { return OWN[c] && OWN[c][1]; })
         .map(function (c) { return [OWN[c][1], c.indexOf('ST') === 0 ? 'State of Oregon' : OWN[c][0]]; }).filter(function (v, i, a) { return a.map(function (x) { return x[1]; }).indexOf(v[1]) === i; });
+      if (it.id === 'timber') lg = (vegOv.classes || []).filter(function (c) { return VEG[c[0]]; }).map(function (c) { return [c[1], VEG[c[0]][0]]; });
       if (!lg) return '';
       return '<div class="legend" id="lg-' + it.id + '">' + lg.map(function (l) {
         return '<span>' + (l[0] ? '<i class="' + (l[2] || '') + '" style="' + (l[2] === 'ln' ? 'border-color:' : 'background:') + l[0] + '"></i>' : '') + esc(l[1]) + '</span>'; }).join('') + '</div>';
@@ -180,7 +215,7 @@
       $('layerlist').querySelectorAll('details').forEach(function (d) { d.ontoggle = function () { var o = store.get('arkMapOpen', { 'Base map': true, Land: true }); o[d.dataset.g] = d.open; store.set('arkMapOpen', o); }; });
     }
     renderLayers();
-    map.on('load', function () { ITEMS.forEach(function (it) { show(it.layers, isOn(it)); }); drawPins(); });
+    map.on('load', function () { ITEMS.forEach(function (it) { show(it.layers, isOn(it)); }); drawPins(); drawShared(); });
     $('propnote').hidden = !have.parcels;
     if (cfg.wide) $('propnote').insertAdjacentHTML('afterend', '<p class="small">Roads, trails and topo lines cover ' + esc(cfg.wide) + '. The other layers and the search cover ' + esc(cfg.name) + '.</p>');
     $('credits').innerHTML = 'Map data: ' + (cfg.credits || []).map(esc).join(' · ') + (cfg.built ? '. Made ' + esc(cfg.built) + '.' : '');
@@ -227,6 +262,16 @@
       if (L === 'poi') { add(p.d); return [(p.k === 'bridge' && p.r ? 'Bridge with a weight limit' : PLACE[p.k] || 'Place'), p.n || '', out]; }
       if (L === 'escape') { add(p.s); add(p.se); add(p.su); add(p.d); return ['Escape route', p.n || '', out]; }
       if (L === 'routes') return ['Walking route', 'One of the routes to other towns', ['<a href="' + esc(routesPage()) + '">Open the list of routes</a>']];
+      if (L === 'backroads') { add(p.nm); add((ROAD[p.k] || ROAD.unk)[1].replace(/^./, function (c) { return c.toUpperCase(); })); if (p.s) add('Surface: ' + p.s); add(p.d);
+        return [p.a === 'fs' ? 'Forest Service road' : 'BLM road', p.n ? 'Road ' + p.n : (p.nm || ''), out]; }
+      if (L === 'gates') { add(p.k === 'gate' ? 'It may be locked. Know another way round.' : 'Blocked to vehicles with rocks, a berm or a barrier. Still a way on foot.'); return [p.k === 'gate' ? 'Gate' : 'Road block', '', out]; }
+      if (L === 'towers') { if (p.k === 'lookout') { add('A high point with a wide view.'); return ['Fire lookout', p.n || '', out]; }
+        add('Transmitters here: ' + (p.d || 'radio')); add('High ground with a road to it, and often its own power.'); return ['Radio site', '', out]; }
+      if (L === 'hunt-units') return ['Hunting unit', (p.n || '') + (p.u ? ' (unit ' + p.u + ')' : ''), ['Seasons and tags go by unit: see the hunting rules in the local guides.']];
+      if (L === 'deer-elk') return ['Deer and elk', '', [esc({ winter: 'Winter gathering ground: deer and elk crowd here from about November to April.', summer: 'Summer gathering ground.',
+        major: 'They live here all year, in good numbers.', edge: 'They live here all year, but fewer of them.', town: 'Around farms and towns: deer and elk are here, and clash with people.' }[p.k] || '')]];
+      if (L === 'game') { if (p.y) add('seen ' + p.y); add('A sighting, not a promise.'); return ['Game sighting', p.n || '', out]; }
+      if (L === 'rocks') { var rk = ROCK[p.k] || ROCK.other; add(p.n); if (p.r) add('Mostly ' + p.r); add(rk[2]); return ['Rock', rk[1], out]; }
       if (L === 'sections') return ['Section grid', 'Section ' + (p.s || '?') + (p.t ? ', ' + p.t : ''), out];
       return null;
     }
@@ -242,31 +287,74 @@
       if (lot && lot.properties.owner) rows.push(['Owner', esc(ownerName(lot.properties.owner)) + ' <span class="small">(county records' + (cfg.built ? ', ' + esc(cfg.built) + ')' : ')') + '</span>']);
       rows.push(['Position', ll.lat.toFixed(5) + ', ' + ll.lng.toFixed(5)]);
       // everything in the switched-on layers within a finger's width of the tap
-      var ids = []; ITEMS.forEach(function (it) { if (it.src && $('l-' + it.id).checked) it.layers.forEach(function (l) { if (has(l)) ids.push(l); }); });
+      var ids = []; ITEMS.forEach(function (it) { if (it.src && !it.raster && $('l-' + it.id).checked) it.layers.forEach(function (l) { if (has(l)) ids.push(l); }); });
       var box = [[e.point.x - 12, e.point.y - 12], [e.point.x + 12, e.point.y + 12]];
       (ids.length ? map.queryRenderedFeatures(box, { layers: ids }) : []).forEach(function (f) {
         var d = describe(f); if (!d) return;
         var key = d[0] + '|' + d[1] + '|' + d[2].join('|'); if (seen[key] || facts.length >= 12) return; seen[key] = 1; facts.push(d);
       });
-      var mine = has('pins') ? map.queryRenderedFeatures(box, { layers: ['pins'] })[0] : null;
+      var mine = has('pins') ? map.queryRenderedFeatures(box, { layers: ['pins', 'shared-pins'].filter(has) })[0] : null;
       var draw = function () {
-        $('s-info').innerHTML = (mine ? '<div class="fact"><span class="k">My pin</span><b>📌 ' + esc(mine.properties.name) + '</b>' + (mine.properties.note ? esc(mine.properties.note) : '') +
+        $('s-info').innerHTML = (mine ? '<div class="fact"><span class="k">' + (mine.properties.shared ? 'Shared pin' : 'My pin') + '</span><b>' + (mine.properties.shared ? '📍 ' : '📌 ') + esc(mine.properties.name) + '</b>' + (mine.properties.note ? esc(mine.properties.note) : '') +
             '<div class="row"><button class="btn sm" type="button" id="i-del">Remove this pin</button></div></div>' : '') +
           facts.map(function (d) { return '<div class="fact"><span class="k">' + esc(d[0]) + '</span>' + (d[1] ? '<b>' + esc(d[1]) + '</b>' : '') + d[2].filter(Boolean).join('<br>') + '</div>'; }).join('') +
           '<div class="fact"><table class="kv">' + rows.map(function (r) { return '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td></tr>'; }).join('') + '</table>' +
           '<div class="row"><button class="btn sm" type="button" id="i-pin">📌 Save as a pin</button><button class="btn sm" type="button" id="i-meas">📏 Measure from here</button></div>' +
           '<div id="i-form" hidden><input class="t" id="i-name" placeholder="A name for this pin" maxlength="60"><textarea class="t" id="i-note" rows="2" placeholder="A note (optional)" maxlength="300"></textarea>' +
+          (sharing ? '<label class="chk"><input type="checkbox" id="i-share"> Share it with everyone using this library</label>' : '') +
           '<div class="row"><button class="btn sm go" type="button" id="i-save">Save pin</button></div></div></div>';
         $('i-pin').onclick = function () { $('i-form').hidden = false; $('i-name').focus(); };
-        $('i-save').onclick = function () { addPin(ll, $('i-name').value.trim() || 'Pin', $('i-note').value.trim()); closeSheet(); };
+        $('i-save').onclick = function () {
+          var nm = $('i-name').value.trim() || 'Pin', nt = $('i-note').value.trim();
+          if ($('i-share') && $('i-share').checked) sharePin('add', { pin: { name: nm, note: nt, lng: ll.lng, lat: ll.lat } }); else addPin(ll, nm, nt);
+          closeSheet();
+        };
         $('i-meas').onclick = function () { startMeasure(); addMeasure(ll); };
-        if (mine) $('i-del').onclick = function () { removePin(mine.properties.id); closeSheet(); };
+        if (mine) $('i-del').onclick = function () { if (mine.properties.shared) sharePin('remove', { id: mine.properties.id }); else removePin(mine.properties.id); closeSheet(); };
       };
       draw(); openSheet('info', facts.length ? facts[0][1] || facts[0][0] : lot ? 'Tax lot' : 'What\'s here');
       if (pin) pin.remove();
       pin = new maplibregl.Marker({ color: '#d9480f' }).setLngLat(ll).addTo(map); pinKept = false;
+      vegAt(ll).then(function (k) { if (k && VEG[k] && sheet === 'info') { facts.push(['What grows here', VEG[k][0], [esc(VEG[k][1])]]); draw(); } });
       elevationAt(ll).then(function (m) { if (m != null && sheet === 'info') { rows.splice(rows.length - 1, 0, ['Height', Math.round(m * 3.28084).toLocaleString() + ' ft <span class="small">(' + Math.round(m) + ' m)</span>']); draw(); } });
     });
+
+    // the timber layer is pictures, not shapes: what is at a point is read from the colour of its dot
+    function vegAt(ll) {
+      if (!vegOv.file || !$('l-timber') || !$('l-timber').checked) return Promise.resolve(null);
+      vegPM = vegPM || new pmtiles.PMTiles(DATA + vegOv.file + V);
+      var z = vegOv.maxzoom, n = Math.pow(2, z), fx = (ll.lng + 180) / 360 * n, sn = Math.sin(ll.lat * Math.PI / 180), fy = (0.5 - Math.log((1 + sn) / (1 - sn)) / (4 * Math.PI)) * n;
+      var tx = Math.floor(fx), ty = Math.floor(fy);
+      return vegPM.getZxy(z, tx, ty).then(function (t) {
+        if (!t || !t.data) return null;
+        return createImageBitmap(new Blob([t.data], { type: 'image/png' })).then(function (bm) {
+          var c = document.createElement('canvas'); c.width = bm.width; c.height = bm.height; var g = c.getContext('2d', { willReadFrequently: true }); g.drawImage(bm, 0, 0);
+          var d = g.getImageData(Math.min(bm.width - 1, Math.floor((fx - tx) * bm.width)), Math.min(bm.height - 1, Math.floor((fy - ty) * bm.height)), 1, 1).data, best = null, bd = 1e9;
+          if (d[3] < 128) return null;
+          (vegOv.classes || []).forEach(function (cl) {
+            var r = parseInt(cl[1].slice(1, 3), 16), gg = parseInt(cl[1].slice(3, 5), 16), b = parseInt(cl[1].slice(5, 7), 16), dd = Math.abs(r - d[0]) + Math.abs(gg - d[1]) + Math.abs(b - d[2]);
+            if (dd < bd) { bd = dd; best = cl[0]; }
+          });
+          return bd < 24 ? best : null;
+        });
+      }).catch(function () { return null; });
+    }
+
+    // ---- shared pins: kept by the library itself (on a drive or an ARK Vault), so every phone on its Wi-Fi sees them
+    var sharing = false, shared = [];
+    function drawShared() {
+      var src = map.getSource('shared-pins'); if (!src) return;
+      src.setData({ type: 'FeatureCollection', features: shared.map(function (p) { return { type: 'Feature', geometry: { type: 'Point', coordinates: [p.lng, p.lat] }, properties: { id: p.id, name: p.name, note: p.note || '', shared: 1 } }; }) });
+    }
+    function gotShared(j) { if (j && j.pins) { sharing = true; shared = j.pins; drawShared(); if (sheet === 'pins') renderPins(); } }
+    function sharePin(what, body) {
+      body.do = what;
+      return fetch('/api/pins', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+        .then(function (r) { return r.ok ? r.json() : r.text().then(function (t) { throw new Error(t); }); }).then(gotShared)
+        .catch(function (e) { say('<b>The pin could not be shared.</b> ' + esc(String(e && e.message || '').slice(0, 160)) + ' <button class="btn" type="button" onclick="this.parentNode.hidden=true">OK</button>'); });
+    }
+    function loadShared() { if (!document.hidden) fetch('/api/pins').then(function (r) { return r.ok ? r.json() : null; }).then(gotShared).catch(function () {}); }
+    if (drive) { loadShared(); setInterval(loadShared, 30000); document.addEventListener('visibilitychange', loadShared); }
 
     // ---- where am I: the phone only tells a secure page (https, or the device the library runs on)
     var geo = null, canLocate = window.isSecureContext && !!navigator.geolocation;
@@ -350,8 +438,12 @@
       $('pinlist').innerHTML = pins.length ? pins.map(function (p, i) {
         return '<div class="pinrow"><span>📌</span><span class="tx" data-i="' + i + '">' + esc(p.name) + '<small>' + (p.note ? esc(p.note) + ' · ' : '') + p.lat.toFixed(5) + ', ' + p.lng.toFixed(5) + '</small></span><button class="btn sm" type="button" data-d="' + esc(p.id) + '">Remove</button></div>';
       }).join('') : '<p class="small">No pins yet.</p>';
-      $('pinlist').querySelectorAll('.tx').forEach(function (el) { el.onclick = function () { var p = pins[+el.dataset.i]; map.flyTo({ center: [p.lng, p.lat], zoom: Math.max(map.getZoom(), 14) }); if (innerWidth < 820) closeSheet(); }; });
+      if (sharing) $('pinlist').innerHTML += '<h4 class="sub">Shared on this library</h4>' + (shared.length ? shared.map(function (p, i) {
+        return '<div class="pinrow"><span>📍</span><span class="tx" data-s="' + i + '">' + esc(p.name) + '<small>' + (p.note ? esc(p.note) + ' · ' : '') + p.lat.toFixed(5) + ', ' + p.lng.toFixed(5) + '</small></span><button class="btn sm" type="button" data-r="' + esc(p.id) + '">Remove</button></div>';
+      }).join('') : '<p class="small">None yet. Everyone using this library sees these. To share one, tap the map, then <b>Save as a pin</b>, and tick <b>Share it</b>.</p>');
+      $('pinlist').querySelectorAll('.tx').forEach(function (el) { el.onclick = function () { var p = el.dataset.s != null ? shared[+el.dataset.s] : pins[+el.dataset.i]; map.flyTo({ center: [p.lng, p.lat], zoom: Math.max(map.getZoom(), 14) }); if (innerWidth < 820) closeSheet(); }; });
       $('pinlist').querySelectorAll('[data-d]').forEach(function (el) { el.onclick = function () { removePin(el.dataset.d); }; });
+      $('pinlist').querySelectorAll('[data-r]').forEach(function (el) { el.onclick = function () { sharePin('remove', { id: el.dataset.r }); }; });
     }
     $('t-pins').onclick = toggleSheet('pins', renderPins);
     $('p-export').onclick = function () {
@@ -555,6 +647,7 @@
   function slopeTiles(dem) {
     return function (params) {
       var m = /^ark-slope:\/\/(\w+)\/(\d+)\/(\d+)\/(\d+)/.exec(params.url), what = m[1], z = +m[2], x = +m[3], y = +m[4];
+      if (what === 'frost') return frostTile(dem, z, x, y);
       return dem.getDemTile(z, x, y).then(function (t) {
         var w = t.width, h = t.height, d = t.data, c = document.createElement('canvas'); c.width = w; c.height = h;
         var g = c.getContext('2d'), im = g.createImageData(w, h), o = im.data;
@@ -572,15 +665,53 @@
     };
   }
 
+  // "Frost pockets": cold air is heavy and runs downhill on a still, clear night, pooling on low, flat ground. A spot is
+  // marked when it is nearly level and well below the average height of the ground for a mile and a half around (so:
+  // valley floors and hollows, not benches or ridges). It needs the eight tiles around the one asked for.
+  function frostTile(dem, z, x, y) {
+    var jobs = [], dx, dy;
+    for (dy = -1; dy <= 1; dy++) for (dx = -1; dx <= 1; dx++) jobs.push(dem.getDemTile(z, x + dx, y + dy).catch(function () { return null; }));
+    return Promise.all(jobs).then(function (ts) {
+      if (!ts[4]) throw new Error('no heights here');
+      var Q = 256, G = 3 * Q, el = new Float32Array(G * G), ok = new Uint8Array(G * G), i, j, k;
+      ts.forEach(function (t, n) {
+        if (!t) return;
+        var ox = (n % 3) * Q, oy = Math.floor(n / 3) * Q, st = t.width / Q, v;
+        for (j = 0; j < Q; j++) for (i = 0; i < Q; i++) { v = t.data[Math.floor(j * st) * t.width + Math.floor(i * st)]; if (isFinite(v)) { el[(oy + j) * G + ox + i] = v; ok[(oy + j) * G + ox + i] = 1; } }
+      });
+      var W1 = G + 1, S = new Float64Array(W1 * W1), N = new Int32Array(W1 * W1), rs, rn;   // running sums: the average of any box in four look-ups
+      for (j = 0; j < G; j++) { rs = 0; rn = 0; for (i = 0; i < G; i++) { k = j * G + i; if (ok[k]) { rs += el[k]; rn++; } S[(j + 1) * W1 + i + 1] = S[j * W1 + i + 1] + rs; N[(j + 1) * W1 + i + 1] = N[j * W1 + i + 1] + rn; } }
+      var lat = Math.atan(Math.sinh(Math.PI * (1 - 2 * (y + 0.5) / Math.pow(2, z)))), cell = 40075016.686 * Math.cos(lat) / Math.pow(2, z) / Q, r = Math.max(2, Math.min(Q - 1, Math.round(2500 / cell)));
+      var c = document.createElement('canvas'); c.width = c.height = Q; var g = c.getContext('2d'), im = g.createImageData(Q, Q), o = im.data;
+      for (j = 0; j < Q; j++) for (i = 0; i < Q; i++) {
+        var gi = Q + i, gj = Q + j, e = el[gj * G + gi]; if (!ok[gj * G + gi]) continue;
+        var x0 = gi - r, x1 = gi + r + 1, y0 = gj - r, y1 = gj + r + 1;
+        var cnt = N[y1 * W1 + x1] - N[y0 * W1 + x1] - N[y1 * W1 + x0] + N[y0 * W1 + x0]; if (cnt < 9) continue;
+        var low = e - (S[y1 * W1 + x1] - S[y0 * W1 + x1] - S[y1 * W1 + x0] + S[y0 * W1 + x0]) / cnt;
+        var sx = (el[gj * G + gi + 1] - el[gj * G + gi - 1]) / (2 * cell), sy = (el[(gj + 1) * G + gi] - el[(gj - 1) * G + gi]) / (2 * cell), deg = Math.atan(Math.sqrt(sx * sx + sy * sy)) * 57.2958;
+        var col = deg < 4 && low < -60 ? [91, 124, 250, 125] : (deg < 6 && low < -20) || (deg < 2 && low < -6) ? [169, 193, 255, 115] : null;
+        if (col) { k = (j * Q + i) * 4; o[k] = col[0]; o[k + 1] = col[1]; o[k + 2] = col[2]; o[k + 3] = col[3]; }
+      }
+      g.putImageData(im, 0, 0);
+      return new Promise(function (done) { c.toBlob(function (bl) { bl.arrayBuffer().then(function (ab) { done({ data: ab }); }); }, 'image/png'); });
+    });
+  }
+
   // The layers that are switched on and off, put into the style where they belong: areas under the roads, lines over
   // them, signs and dots on top.
   function addOverlays(S, cfg, dem, V) {
     var L = S.layers, at = function (id) { for (var i = 0; i < L.length; i++) if (L[i].id === id) return i; return -1; };
     var src = {}, zw = function (stops) { var o = ['interpolate', ['exponential', 1.6], ['zoom']]; stops.forEach(function (s) { o.push(s[0], s[1]); }); return o; };
-    (cfg.overlays || []).forEach(function (o) { S.sources['ov-' + o.group] = { type: 'vector', url: 'pmtiles://' + DATA + o.file + V }; o.layers.forEach(function (l) { src[l] = 'ov-' + o.group; }); });
+    (cfg.overlays || []).forEach(function (o) {
+      S.sources['ov-' + o.group] = o.raster ? { type: 'raster', url: 'pmtiles://' + DATA + o.file + V, tileSize: 256 } : { type: 'vector', url: 'pmtiles://' + DATA + o.file + V };
+      o.layers.forEach(function (l) { src[l] = 'ov-' + o.group; });
+    });
     var mk = function (id, type, layer, paint, extra) { var l = { id: id, type: type, source: src[layer], 'source-layer': layer, paint: paint }; if (extra) Object.keys(extra).forEach(function (k) { l[k] = extra[k]; }); return l; };
     var match = function (prop, table, other) { var m = ['match', ['get', prop]]; Object.keys(table).forEach(function (k) { m.push(k, table[k][0]); }); m.push(other); return m; };
     var fills = [], lines = [], tops = [];
+    if (src.timber) fills.push({ id: 'timber', type: 'raster', source: src.timber, paint: { 'raster-opacity': 0.6, 'raster-fade-duration': 0, 'raster-resampling': 'nearest' } });
+    if (src.rocks) fills.push(mk('rocks', 'fill', 'rocks', { 'fill-color': match('k', ROCK, '#cccccc'), 'fill-opacity': 0.5, 'fill-outline-color': 'rgba(60,60,60,.45)' }));
+    if (src.deer_elk) fills.push(mk('deer-elk', 'fill', 'deer_elk', { 'fill-color': match('k', HAB, '#cccccc'), 'fill-opacity': 0.38 }));
     if (src.soils) fills.push(mk('soils', 'fill', 'soils', { 'fill-color': ['match', ['get', 'c'], 1, '#1b7f3b', 2, '#1b7f3b', 3, '#7cb342', '#c0ca33'], 'fill-opacity': 0.45 }));
     if (src.landslides) fills.push(mk('landslides', 'fill', 'landslides', { 'fill-color': '#8d5524', 'fill-opacity': 0.4, 'fill-outline-color': '#5d3310' }));
     if (src.flood) fills.push(mk('flood', 'fill', 'flood', { 'fill-color': '#3b82f6', 'fill-opacity': 0.32 }));
@@ -589,7 +720,7 @@
       fills.push(mk('fires-line', 'line', 'fires', { 'line-color': ['step', ['to-number', ['get', 'y'], 0], '#5c4f42', 2000, '#8a5a00', 2010, '#a33a00', 2020, '#8f1d1d'], 'line-width': 1.6, 'line-opacity': 0.85 }));
     }
     if (dem) {
-      ['steep', 'sunny'].forEach(function (w) {
+      ['steep', 'sunny', 'frost'].forEach(function (w) {
         S.sources[w] = { type: 'raster', tiles: ['ark-slope://' + w + '/{z}/{x}/{y}'], tileSize: 512, minzoom: 9, maxzoom: cfg.terrain.maxzoom, bounds: cfg.bbox };
         fills.push({ id: w, type: 'raster', source: w, minzoom: 9, paint: { 'raster-opacity': 1, 'raster-fade-duration': 0, 'raster-resampling': 'linear' } });
       });
@@ -607,6 +738,9 @@
       lines.push(mk('sections', 'line', 'sections', { 'line-color': '#555', 'line-width': 0.8, 'line-dasharray': [4, 3], 'line-opacity': 0.8 }, { minzoom: 11 }));
       if (src.townships) lines.push(mk('townships', 'line', 'townships', { 'line-color': '#333', 'line-width': 1.6, 'line-opacity': 0.7 }));
     }
+    if (src.backroads) lines.push(mk('backroads', 'line', 'backroads', { 'line-color': match('k', ROAD, '#868e96'), 'line-width': zw([[11, 2.5], [14, 5.5], [17, 9]]), 'line-opacity': 0.6 },
+      { minzoom: 11, layout: { 'line-cap': 'round', 'line-join': 'round' } }));
+    if (src.hunt_units) lines.push(mk('hunt-units', 'line', 'hunt_units', { 'line-color': '#3f6212', 'line-width': zw([[7, 1.6], [13, 3]]), 'line-dasharray': [4, 2], 'line-opacity': 0.9 }));
     if (src.escape) lines.push(mk('escape', 'line', 'escape', { 'line-color': '#2f9e44', 'line-width': zw([[9, 2.5], [14, 5]]), 'line-opacity': 0.75 }, { layout: { 'line-cap': 'round', 'line-join': 'round' } }));
     if (src.routes) lines.push(mk('routes', 'line', 'routes', { 'line-color': '#7b2cbf', 'line-width': zw([[8, 2], [14, 4]]), 'line-dasharray': [2, 1.5], 'line-opacity': 0.85 }));
     var dot = function (id, layer, color, minzoom) { return mk(id, 'circle', layer, { 'circle-color': color, 'circle-radius': zw([[10, 3.2], [14, 5.5]]), 'circle-stroke-color': '#fff', 'circle-stroke-width': 1.2 }, minzoom ? { minzoom: minzoom } : null); };
@@ -615,6 +749,11 @@
         layout: { 'icon-image': icon, 'icon-size': zw([[9, 0.6], [14, 0.95]]), 'icon-allow-overlap': true, 'text-field': ['step', ['zoom'], '', 13, ['coalesce', ['get', 'n'], '']], 'text-font': ['Noto Sans Regular'],
           'text-size': 11.5, 'text-offset': [0, 1.2], 'text-anchor': 'top', 'text-optional': true, 'text-max-width': 8 } });
     };
+    if (src.backroad_labels) tops.push(mk('backroad-nums', 'symbol', 'backroad_labels', { 'text-color': '#1f1f1f', 'text-halo-color': 'rgba(255,255,255,.95)', 'text-halo-width': 2 }, { minzoom: 12,
+      layout: { 'text-field': ['get', 'n'], 'text-font': ['Noto Sans Medium'], 'text-size': zw([[12, 10], [15, 12.5]]), 'text-padding': 3 } }));
+    if (src.hunt_units) tops.push(mk('hunt-unit-names', 'symbol', 'hunt_units', { 'text-color': '#2f4a0d', 'text-halo-color': 'rgba(255,255,255,.9)', 'text-halo-width': 1.6 },
+      { layout: { 'symbol-placement': 'line', 'text-field': ['concat', ['get', 'n'], ' unit'], 'text-font': ['Noto Sans Medium'], 'text-size': 12.5, 'symbol-spacing': 420, 'text-offset': [0, 0.9], 'text-max-angle': 30 } }));
+    if (src.game) tops.push(dot('game', 'game', match('k', GAME, '#666')));
     if (src.wells) tops.push(dot('wells', 'wells', ['step', ['to-number', ['get', 'd'], 0], '#2b8a3e', 75, '#f08c00', 200, '#c92a2a'], 12));
     if (src.wildfood) tops.push(dot('wildfood', 'wildfood', match('k', { nut: ['#8d6e63'], berry: ['#7b1fa2'], fruit: ['#d81b60'], root: ['#ef6c00'], green: ['#2e7d32'], mushroom: ['#b08d57'] }, '#666')));
     if (src.mines) { var md = dot('mines', 'mines', match('k', { gold: ['#f5b301'], chrome: ['#607d8b'], copper: ['#bf5b17'], lime: ['#e0e0e0'], clay: ['#a1543f'], stone: ['#9e9e9e'], coal: ['#212121'], metal: ['#455a64'], mineral: ['#ec407a'] }, '#777')); md.paint['circle-stroke-color'] = '#222'; tops.push(md); }
@@ -622,12 +761,17 @@
     if (src.springs) tops.push(sign('springs', 'springs', ['match', ['get', 'k'], 'fall', 'b-fall', 'b-spring'], 10));
     if (src.dams) tops.push(sign('dams', 'dams', 'b-dam', 9));
     if (src.places) tops.push(sign('poi', 'places', ['concat', 'b-', ['get', 'k']], 11));
+    if (src.gates) tops.push(sign('gates', 'gates', ['concat', 'b-', ['get', 'k']], 11));
+    if (src.towers) tops.push(sign('towers', 'towers', ['concat', 'b-', ['get', 'k']], 9));
     S.sources.measure = { type: 'geojson', data: { type: 'FeatureCollection', features: [] } };
     S.sources.pins = { type: 'geojson', data: { type: 'FeatureCollection', features: [] } };
+    S.sources['shared-pins'] = { type: 'geojson', data: { type: 'FeatureCollection', features: [] } };
     tops.push({ id: 'measure-line', type: 'line', source: 'measure', filter: ['==', ['geometry-type'], 'LineString'], paint: { 'line-color': '#0b7285', 'line-width': 3.5, 'line-dasharray': [2, 1] } });
     tops.push({ id: 'measure-pts', type: 'circle', source: 'measure', filter: ['==', ['geometry-type'], 'Point'], paint: { 'circle-radius': 6, 'circle-color': '#fff', 'circle-stroke-color': '#0b7285', 'circle-stroke-width': 3 } });
     tops.push({ id: 'pins', type: 'symbol', source: 'pins', layout: { 'icon-image': 'b-pin', 'icon-size': 1, 'icon-allow-overlap': true, 'icon-anchor': 'bottom', 'text-field': ['get', 'name'], 'text-font': ['Noto Sans Medium'], 'text-size': 12.5,
       'text-offset': [0, 0.3], 'text-anchor': 'top', 'text-optional': true }, paint: { 'text-color': '#7a1f1f', 'text-halo-color': '#fff', 'text-halo-width': 1.6 } });
+    tops.push({ id: 'shared-pins', type: 'symbol', source: 'shared-pins', layout: { 'icon-image': 'b-shared', 'icon-size': 1, 'icon-allow-overlap': true, 'icon-anchor': 'bottom', 'text-field': ['get', 'name'], 'text-font': ['Noto Sans Medium'], 'text-size': 12.5,
+      'text-offset': [0, 0.3], 'text-anchor': 'top', 'text-optional': true }, paint: { 'text-color': '#0b4f6c', 'text-halo-color': '#fff', 'text-halo-width': 1.6 } });
     var i = at('hillshade'); if (i < 0) i = at('water'); L.splice.apply(L, [i, 0].concat(fills));
     i = at('rail'); L.splice.apply(L, [i + 1, 0].concat(lines));
     tops.forEach(function (l) { L.push(l); });

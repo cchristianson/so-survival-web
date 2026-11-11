@@ -22,10 +22,16 @@
 | `<area>-places.json` | names to search for | taken from the streets file |
 | `<area>-water.pmtiles` | creeks (year-round or seasonal), springs, wells, dams | USGS National Hydrography Dataset; the state's well reports and dam inventory |
 | `<area>-food.pmtiles` | good growing ground, wild food sightings, fish streams | USDA NRCS Soil Survey; iNaturalist (research grade, open positions only); the state's fish habitat map |
-| `<area>-materials.pmtiles` | mines, quarries and mineral sites | the state geology agency |
+| `<area>-materials.pmtiles` | rock types; mines, quarries and mineral sites | USGS State Geologic Map Compilation; the state geology agency |
 | `<area>-hazards.pmtiles` | past wildfires, flood zones, old landslides | National Interagency Fire Center; FEMA; the state geology agency |
-| `<area>-places.pmtiles` | useful places and bridges | OpenStreetMap (from the streets file); the county; USDA Forest Service |
-| `<area>-travel.pmtiles` | walking routes, section grid, escape routes | the library's routes; BLM's land survey; the county |
+| `<area>-places.pmtiles` | useful places and bridges; radio towers and fire lookouts | OpenStreetMap (from the streets file); the county; USDA Forest Service; FCC licences as gathered by the National Interagency Fire Center; the state forestry agency |
+| `<area>-travel.pmtiles` | walking routes, section grid, escape routes; forest and BLM roads (number, whether they can be driven), gates and road blocks | the library's routes; BLM's land survey; the county; USDA Forest Service; BLM |
+| `<area>-game.pmtiles` | hunting units, deer and elk habitat, game sightings | the state wildlife agency; iNaturalist (research grade, open positions only) |
+| `<area>-timber.pmtiles` | what grows where, as pictures (PNG tiles, a dozen kinds) | LANDFIRE existing vegetation type (30 m) |
+
+**Frost pockets**, like steep ground and sunny slopes, are worked out in the browser from the height tiles
+(`frostTile` in `map.js`). **Shared pins** are kept by the Library Assistant (`/api/pins`, `pins.go`, in
+`map-pins.json` next to its `settings.json`), so they only exist on a drive or an ARK Vault, not on the website.
 
 Of tax lots, the outlines, lot numbers and acres are fetched, and the owner's name where the area's
 `region.json` names that field (`web_map.parcels.owner`): never mailing addresses or values.
