@@ -44,11 +44,24 @@
   ]
  },
  "places": "illinois-valley-places.json",
+ "wide": {
+  "label": "Oregon and Northern California",
+  "bbox": [
+   -124.7,
+   37.8,
+   -116.4,
+   46.3
+  ],
+  "streets": "https://build.protomaps.com/{date}.pmtiles",
+  "terrain": "https://download.mapterhorn.com/planet.pmtiles",
+  "terrain_maxzoom": 12,
+  "mb": 2444
+ },
  "files": {
   "illinois-valley-streets.pmtiles": 13869867,
   "illinois-valley-terrain.pmtiles": 29417466,
-  "illinois-valley-property.pmtiles": 5457200,
+  "illinois-valley-property.pmtiles": 7818714,
   "illinois-valley-places.json": 219931
  },
- "v": "3c5edf2e0870"
+ "v": "6dca03a7ad43"
 }

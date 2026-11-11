@@ -21,7 +21,13 @@
 | `<area>-property.pmtiles` | tax-lot outlines and who manages the land | the public map servers named in the area's `region.json` (`web_map`) |
 | `<area>-places.json` | names to search for | taken from the streets file |
 
-Only tax-lot outlines, lot numbers and acres are fetched: never owners' names, addresses or values.
+Of tax lots, the outlines, lot numbers and acres are fetched, and the owner's name where the area's
+`region.json` names that field (`web_map.parcels.owner`): never mailing addresses or values.
+A drive can also hold a **bigger map** (streets and heights for a wide area, `wide-*.pmtiles` and `wide.json`
+in `Map/data/`): the Library Assistant cuts it out of the same two world maps on request (Settings > A bigger
+map, `mapwide.go`); what area is `web_map.wide` in `region.json`. Over a shared library the page can move to
+the Library Assistant's https address (`secure.go`), where a phone will give its position.
+
 On the website the files are in `maps/` (the height tiles also as plain files in `maps/terrain/`, since
 a website has no program to hand them out one at a time); on the drive in `Map/data/`, where the
 Library Assistant hands out the height tiles (`/maptiles/...`, `maptiles.go`).

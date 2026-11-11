@@ -51,6 +51,28 @@ async function refreshServer() {
   renderStatus(); renderHealth();
 }
 
+// ⚙️ Settings on the drive: a bigger map for the browser map (roads and topo lines for a wide area around the local
+// one). The Library Assistant cuts it out of the public world maps, so it needs the internet: once, on a computer.
+let wideTimer = 0;
+async function loadWide(act) {
+  const card = $('widemap'); if (!card || mode !== 'drive') return;
+  let j; try { j = await (await fetch('api/mapwide', act ? { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ do: act }) } : {})).json(); } catch { return; }
+  card.hidden = !j.offer || !j.local;
+  if (card.hidden) return;
+  const st = j.state || {}, gbs = (j.offer.mb / 1024).toFixed(1);
+  $('widetext').innerHTML = j.have && !st.running
+    ? `The map (🔧 Tools → 🗺️ Map) has roads, trails and topo lines for <b>${esc(j.offer.label)}</b>. Property lines cover the local area.`
+    : `The map (🔧 Tools → 🗺️ Map) covers the local area. This adds roads, trails and topo lines for <b>${esc(j.offer.label)}</b>: about ${gbs} GB. It needs the internet, so do it on a computer, before the drive goes into an ARK Vault.`;
+  $('widego').hidden = st.running; $('widego').textContent = j.have ? 'Download it again (a newer map)' : 'Download it';
+  $('widestop').hidden = !st.running;
+  $('widebarw').hidden = !st.running;
+  if (st.running) $('widebar').style.width = (st.totalMB ? Math.round(st.doneMB / st.totalMB * 100) : 0) + '%';
+  $('wideprog').textContent = st.running ? `${st.step || ''}${st.totalMB ? ` — ${Math.round(st.doneMB)} of ${Math.round(st.totalMB)} MB` : ''}. Keep this window open.`
+    : st.error || (st.step === 'Done' ? 'Done. The bigger map is on the drive.' : '');
+  clearTimeout(wideTimer);
+  if (st.running) wideTimer = setTimeout(loadWide, 2000);
+}
+
 // ⚙️ Settings on a Raspberry Pi: what slows the AI down, in plain words (from /api/status, every 5 seconds)
 let lastPace = null;   // how fast the AI read and wrote in the last answer (llama-server's timings)
 function renderHealth() {
@@ -218,6 +240,8 @@ function bindUI() {
   $('savelib').addEventListener('click', () => saveOffline('library'));
   $('saveroutes').addEventListener('click', () => saveOffline('routes'));
   $('savemap').addEventListener('click', () => saveOffline('map'));
+  $('widego').addEventListener('click', () => loadWide('start'));
+  $('widestop').addEventListener('click', () => loadWide('stop'));
   $('shareon').addEventListener('click', () => setShare(true));
   $('shareoff').addEventListener('click', () => setShare(false));
   bindPhotos();
@@ -578,7 +602,7 @@ async function renderSetup() {
   { const P = guidePaths(); if (P.ammocan) $('vaultguide').href = P.ammocan;   // the ARK Vault card: the guide and 3D model, here or on the drive
     $('vaultmodel').href = mode === 'drive' ? '/lib/AMMO-CAN-MODEL.html' : 'pages/AMMO-CAN-MODEL.html'; }
   if (mode === 'drive') {
-    $('webai').hidden = true; $('driveai').hidden = false; $('getkit').hidden = true; loadTiers(); renderHealth();
+    $('webai').hidden = true; $('driveai').hidden = false; $('getkit').hidden = true; loadTiers(); renderHealth(); loadWide();
   } else {
     const chosen = store.get('aiModel') && MODELS[store.get('aiModel')];
     $('aiinfo').textContent = ai.error || (ai.kind === 'webllm' ? `On: ${ai.label}. Saved on this device.` : ai.loading ? 'Loading…' :
