@@ -25,7 +25,7 @@
 <li>the <strong>Raspberry Pi</strong> on the underside of the <strong>lid</strong>, beside the hinge, with its <strong>library drive</strong> (a small thumb drive) in a USB port</li>
 <li>the <strong>battery</strong> (LiFePO4, the safe lithium kind)</li>
 <li>the <strong>wall charger</strong>, lying on the <strong>solar charge controller</strong> (stored, not wired)</li>
-<li>a printed <strong>riser</strong> at the hinge end holding the <strong>receipt printer</strong>, the <strong>power switch</strong>, the <strong>volt/amp meter</strong> and its button, and under the printer the <strong>5 V converter</strong> and the <strong>fuse</strong></li>
+<li>a printed <strong>riser</strong> at the hinge end holding the <strong>receipt printer</strong>, the <strong>power switch</strong>, the <strong>volt/amp meter</strong> and its button, and on the inside of one leg the <strong>5 V converter</strong> and the <strong>fuse</strong></li>
 <li>a <strong>crank radio</strong> and an <strong>old phone</strong> (the screen; the model has an iPhone XR), about half charged</li>
 <li>the <strong>Wi-Fi card</strong> taped in the lid, and a spare roll of <strong>foil tape</strong> for the seal</li>
 </ul>
@@ -154,7 +154,7 @@
 </tr>
 <tr class="odd">
 <td><strong>Wire and screws</strong></td>
-<td>About 1.5 m each of <strong>16 AWG red and black wire</strong>, ring terminals for the battery's bolts, crimp connectors; 4 × M2.5 × 8 mm screws (the Pi), 2 × M2 screws (the microswitch), zip ties, double-sided tape or magnets</td>
+<td>About 1.5 m each of <strong>16 AWG red and black wire</strong>, ring terminals for the battery's bolts, crimp connectors; 4 × M2.5 × 8 mm screws (the Pi), 2 × M2 screws (the microswitch), 2–4 short self-tapping screws for the converter (<strong>M3 × 6 mm</strong> or #4 × ¼ in, no longer), zip ties, <strong>double-sided foam tape</strong> (the strong kind, such as VHB)</td>
 <td></td>
 </tr>
 <tr class="even">
@@ -199,12 +199,14 @@
 <h2 id="the-parts-to-print-and-etch">📐 The parts to print and etch</h2>
 <p><strong><a href="../download/ark-can-parts.zip">⬇️ Download the parts (ark-can-parts.zip)</a></strong> (from the website). Its <strong>READ-ME-FIRST.txt</strong> has every size, the wiring and the settings in one place, and <strong>ARK-Vault-assembly.3dm</strong> is the whole build to scale, for checking the fit in Rhino.</p>
 <ul>
-<li><p><strong>printed/</strong>: just two parts.</p>
+<li><p><strong>printed/</strong>: three simple parts, about 42 cm³ of plastic in all. None needs supports.</p>
 <ul>
-<li>The <strong>printer riser</strong> (about 96 × 128 × 156 mm): the printer drops into its top; the strip in front of the printer holds the meter, the power switch and the meter's button; its floor holds the converter and the fuse holder; a low pad in front is where the radio stands.</li>
-<li>The <strong>Pi's base</strong> (62 × 91 × 7 mm), which sticks under the lid.</li>
+<li>The <strong>printer riser</strong> (96 × 91 × 153 mm): a table with one flat leg. The printer drops into its top; the walled strip in front of the printer holds the meter, the power switch and the meter's button; the converter screws to the raised frame on the inside of the leg, and the fuse holder sticks on below it.</li>
+<li>The <strong>wall cleat</strong> (27 × 77 × 3 mm): a small strip that sticks to the can's hinge-end wall. The riser's other end hooks onto it, and its shallow V keeps the riser from sliding sideways.</li>
+<li>The <strong>Pi's base</strong> (57 × 66 × 5 mm): a thin plate with four posts, which sticks under the lid.</li>
 </ul>
-<p>Print in <strong>ABS</strong> (it stands the heat of a car better than PLA <em>(rule of thumb)</em>), 3 walls, 15–20% infill. The riser prints upside down, its top on the bed; let the slicer add supports under its floor if it asks. These are a first fit for this layout: print the Pi's base first, then the riser, and check them against your can and your parts.</p></li>
+<p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/printed-parts.png" alt="The three printed parts as they sit on the printer&#39;s bed: the riser upside down with its deck on the bed and its one leg standing up, the Pi&#39;s base flat with its four posts up, and the wall cleat flat" /> <em>The files open in the slicer the way they print: the riser deck-down, the other two flat.</em></p>
+<p>Print in <strong>ABS</strong> (it stands the heat of a car better than PLA <em>(rule of thumb)</em>) with <strong>no supports</strong>. The riser's leg is a 1.2 mm wall, so set <strong>3 walls</strong> with a 0.4 mm nozzle (2 with a 0.6) and it prints solid; layers of 0.2 to 0.28 mm are fine. These are a first fit for this layout: print the Pi's base first, then the riser, and check them against your can and your parts.</p></li>
 <li><p><strong>laser/</strong>: the <strong>ARK Vault logo</strong> for both long sides of the can, and <strong>bare-metal strips</strong> all the way round the lid seam, for the foil tape. For a laser that burns through paint.</p></li>
 </ul>
 <p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/can-plan.png" alt="The ammo can after etching: the ARK Vault logo on a long side, and two bare-metal strips along the lid seam, the same on both long sides, with foil tape over the closed seam" /> <em>The long sides: the same file on each. No laser? Scrape the paint off the same strips by hand.</em></p>
@@ -223,14 +225,15 @@
 <h3 id="4-the-printer-riser">4. The printer riser</h3>
 <ol type="1">
 <li>Snap the <strong>meter</strong> and the <strong>rocker switch</strong> into their holes in the riser's front strip. Set the <strong>microswitch</strong> in its slot, red button up, flush with the top, and screw it to the rib beside it (2 × M2).</li>
-<li>Fix the <strong>converter</strong> and the <strong>fuse holder</strong> on the riser's floor (double-sided tape or a zip tie), the converter's screw terminals toward the fuse holder.</li>
+<li>Both small parts go on the inside of the riser's <strong>leg</strong>. Hold the <strong>converter</strong> on the raised frame, its screw terminals toward the front, and fix it through its mounting holes with short self-tapping screws (<strong>M3 × 6 mm</strong> or #4 × ¼ in; anything longer comes out the other side, against the battery). The frame is thick all the way round, so the screws can go wherever the holes are. Stick the <strong>fuse holder</strong> across the leg below it, about 1 cm (⅜ in) above the bottom, with double-sided foam tape.</li>
 <li>Drop the <strong>printer</strong> into the top: its face rests on the riser.</li>
-<li>Wire it (next steps), then stand the riser at the <strong>hinge end</strong> of the can, against the back wall. It lifts straight out again for repairs and to change the fuse, with the lid open all the way.</li>
+<li>Stick the <strong>wall cleat</strong> to the inside of the can's <strong>hinge-end wall</strong> with foam tape: thick edge up, its sloped face toward the wall, the low point of its V in the middle. Its two top corners go about <strong>29 mm (1⅛ in) below the top of the can's rim</strong>, and its back end about 6 mm (¼ in) from the back wall, where the corner's curve ends.</li>
+<li>Wire the riser (next steps; it has one leg, so lay it on its side while you work), then lower it into the <strong>hinge end</strong> of the can, against the back wall: its leg stands on the floor beside the battery, and the lip under its other end drops in behind the cleat and settles into the V. Check the deck sits level. It lifts straight out again for repairs and to change the fuse, with the lid open all the way.</li>
 </ol>
 <h3 id="5-the-pi-on-the-lid">5. The Pi on the lid</h3>
 <ol type="1">
 <li>Fit the <strong>cooler</strong> on the Pi, and plug its fan onto <strong>pins 4, 6 and 8</strong> (red, black, blue), as its leaflet shows (diagram below).</li>
-<li>Screw the Pi onto its printed <strong>base</strong> (4 × M2.5 screws), and stick the base under the <strong>lid</strong> at the <strong>hinge end</strong>, over the printer, with the Pi's <strong>USB ports toward the front</strong> of the can and the base's edge about <strong>12 mm (½ in)</strong> in from the inside of the hinge wall: the 5 V wires run in that gap. Opened all the way, the lid swings right over past the hinge and the Pi lies face-up just beyond the can's end. The latch lever hangs from the lid's far end and can flop onto the inside of the open lid: it reaches about 11 cm, and the Pi is about 21 cm away, so it can't touch it.</li>
+<li>Screw the Pi onto its printed <strong>base</strong> (4 × M2.5 screws; the base is shorter than the board, so the USB end overhangs it), and stick the base under the <strong>lid</strong> at the <strong>hinge end</strong>, over the printer, with double-sided foam tape. Point the Pi's <strong>USB ports toward the front</strong> of the can, with the base's edges about <strong>13 mm (½ in)</strong> in from the inside of the hinge wall and <strong>9 mm (⅜ in)</strong> in from the back wall: the 5 V wires run in the gap at the hinge end. Opened all the way, the lid swings right over past the hinge and the Pi lies face-up just beyond the can's end. The latch lever hangs from the lid's far end and can flop onto the inside of the open lid: it reaches about 11 cm, and the Pi is about 21 cm away, so it can't touch it.</li>
 <li>Plug the <strong>library drive</strong> into a <strong>blue</strong> USB port and the printer's <strong>USB lead</strong> into a black one.</li>
 </ol>
 <h3 id="6-wiring">6. Wiring</h3>
@@ -243,13 +246,13 @@
 <li><strong>The fan</strong> → pins <strong>4</strong> (red, 5 V), <strong>6</strong> (black, ground), <strong>8</strong> (blue, GPIO 14).</li>
 <li><strong>The printer's USB lead</strong> → a USB port on the Pi.</li>
 <li><strong>The route:</strong> the 5 V pair and the printer's lead go together up the gap between the battery and the riser, along the front wall (over the phone) to the hinge corner, and loop up into the lid there (leave about <strong>6 cm (2½ in)</strong> in the loop, so the lid opens freely). On the lid, the printer's lead runs a few centimetres along the front to its USB port, and the 5 V pair runs along the hinge end, between the Pi's base and the lid's rim, to its pins.</li>
-<li><strong>The fuse</strong> is on the riser's floor, so about 35 cm of wire runs from battery + to the fuse with no fuse on it. Tie that wire down along its route, away from sharp edges. (The battery's own protection is the back-up.)</li>
+<li><strong>The fuse</strong> is on the riser's leg beside the battery, so only about 23 cm (9 in) of wire runs from battery + to the fuse with no fuse on it. Tie that wire down along its route, away from sharp edges. (The battery's own protection is the back-up.)</li>
 </ul>
 <p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/pi-pins-ark.svg" alt="The Raspberry Pi pins the ARK Vault uses, at the end of the 40-pin row farthest from the USB ports, all on the row along the board&#39;s edge: pin 2 (5 volts) takes the converter&#39;s plus wire, pins 4, 6 and 8 take the cooler fan&#39;s red, black and blue wires (5 volts, ground, GPIO 14), and pin 14 (ground) takes the converter&#39;s minus wire" /> <em>All five wires go on the row along the board's edge. Pin 2 is the corner pin at the end farthest from the USB ports (a diagram drawn for this guide).</em></p>
 <p>Bend the wires off the jumper housings toward the board's edge: with the lid shut, the printer sits just below them. <strong>A Pi 5's</strong> cooler plugs into the Pi 5's own fan socket instead, and its power lead goes on the same pins 2 and 14.</p>
 <h3 id="7-the-rest">7. The rest</h3>
 <ul>
-<li>The <strong>radio</strong> stands in front of the riser, partly under the meter, on the riser's low pad. The <strong>phone</strong> stands on its end against the front wall beside it. To take the radio out: lift the phone out, slide the radio toward the front wall, then lift it.</li>
+<li>The <strong>radio</strong> stands in front of the riser, partly under the meter, straight on the floor in the hinge-end corner, up against the phone. The <strong>phone</strong> stands on its end against the front wall beside it. To take the radio out: lift the phone out, slide the radio toward the front wall, then lift it.</li>
 <li><strong>Solar:</strong> the controller stays stored, its terminals empty (see <a href="#power-and-charging">Power and charging</a>).</li>
 <li><strong>Nothing should touch bare metal.</strong> Loose metal can short things out, and the EMP guidance is to keep items off the walls (<a class="lib" target="_blank" rel="noopener" href="https://www.cisa.gov/sites/default/files/publications/19_0307_CISA_EMP-Protection-Resilience-Guidelines.pdf#page=45" title="EMP Protection and Resilience Guidelines for Critical Infrastructure and Equipment (CISA 2019).pdf — page 45">CISA, p. 45</a>).</li>
 </ul>
