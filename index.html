@@ -21,6 +21,7 @@ header h1{font-size:24px;margin:4px 0 2px;background:linear-gradient(135deg,var(
 .hrow{display:flex;align-items:center;justify-content:space-between;gap:10px}.hrow h1{min-width:0}
 header h1 .logo{width:1.25em;height:1.25em;vertical-align:-.27em;margin-right:.35em;border-radius:22%}
 .sub{color:var(--muted);font-size:14px;margin:0 0 10px}
+.health{border-collapse:collapse;font-size:14px;margin:0 0 8px}.health td{padding:3px 10px 3px 0;vertical-align:top}.health td:first-child{color:var(--muted);white-space:nowrap}
 .status{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 10px}
 .pill{font-size:12.5px;padding:3px 10px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--muted)}
 .pill b{font-weight:600;color:var(--ink)}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;background:var(--off);vertical-align:middle}
@@ -192,6 +193,11 @@ body.osk-open{padding-bottom:236px}
     <div class="note" id="tiernote" hidden></div>
     <p class="meta">Not sure? Leave it on <b>Automatic</b>. It picks what this device can handle, times a test answer, and steps down if it's too slow. Your choice is remembered for this device.</p>
     <div class="note" id="remotenote" hidden>You're using the library shared from another device. Only that device can change the AI or stop sharing.</div>
+  </div>
+  <div class="card" id="pihealth" hidden>
+    <h3 style="margin-top:0">📟 How the Pi is doing</h3>
+    <div id="pihbody"></div>
+    <p class="meta">Updates every few seconds. Look at it <b>while the AI is answering</b>: when it has nothing to do, a Pi runs slowly on purpose to save power.</p>
   </div>
   <div class="card" id="sharecard" hidden>
     <h3 style="margin-top:0">📡 Share with phones nearby</h3>

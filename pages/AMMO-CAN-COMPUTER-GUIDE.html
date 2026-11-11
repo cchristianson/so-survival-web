@@ -352,46 +352,50 @@
 <td>Give it a minute or two. Search works meanwhile</td>
 </tr>
 <tr class="even">
+<td>An answer sits on <strong>Writing…</strong> and goes no further</td>
+<td>It picks up again by itself. If it doesn't, press <strong>Stop</strong>, then <strong>Try again</strong>: that's quick, because the AI keeps what it already read</td>
+</tr>
+<tr class="odd">
 <td><strong>⚠️ Power too weak</strong>, the AI takes minutes, or the Pi keeps restarting</td>
 <td>The Pi isn't getting enough power. See <a href="#power-too-weak-or-the-ai-takes-minutes">below</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>The meter stays dark</td>
 <td>Its thin red wire must go to the microswitch's <strong>COM</strong> and <strong>NO</strong> (not NC)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>The fan never runs</td>
 <td>It only runs when the Pi is hot (above 60 °C). Check the blue wire is on pin 8</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>A setting I changed was gone</td>
 <td>That's normal: see <a href="#changing-a-setting-later">Changing a setting later</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Printer: <em>No printer found</em></td>
 <td>Check its USB cable is in the Pi. Close the print window and open it again</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Printer: <em>not allowed to use the printer</em></td>
 <td>Finish the card again and let it set itself up again</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Printer feeds blank paper</td>
 <td>Turn the paper roll over</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Print is faint or stops</td>
 <td>The battery is low. Charge it</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Forgot the Wi-Fi password</td>
 <td>Plug the library drive into any computer and open <strong><code>PI-WIFI-CARD.html</code></strong></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>No phone at all</td>
 <td>Plug a TV (micro-HDMI) and keyboard into the Pi, log in (user <strong>ark</strong>, the Wi-Fi password), and run <strong>SETUP-Raspberry-Pi.sh</strong> with <code>--screen</code> (make the card writable first; see above). This needs the desktop version of Raspberry Pi OS, not Lite</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Want home internet on the Pi (for updates)</td>
 <td>Plug in a network cable</td>
 </tr>
@@ -399,6 +403,7 @@
 </table>
 <h3 id="power-too-weak-or-the-ai-takes-minutes">"Power too weak", or the AI takes minutes</h3>
 <p>The Pi isn't getting a full 5 volts, so it slows itself down to about a third of its speed. The AI suffers most: an answer can take 10 minutes instead of one or two.</p>
+<p>To see what the Pi is doing, open <strong>⚙️ Settings → How the Pi is doing</strong> on the phone, while the AI is answering. It shows the power, the temperature and how fast the processor is running.</p>
 <ol type="1">
 <li><strong>Check the battery:</strong> hold the meter button. Under about 12.5 V, charge it.</li>
 <li><strong>Check the converter:</strong> ask the AI a question, and <strong>while it's working</strong>, touch a multimeter to the converter's two <strong>output</strong> screws. It should read <strong>5.1 to 5.25 V</strong>. Lower than that? If the converter has a small adjusting screw, turn it up to about 5.2 V; if not, replace it.</li>

@@ -48,7 +48,28 @@ async function init() {
 
 async function refreshServer() {
   try { server = await (await fetch('api/status')).json(); } catch {}
-  renderStatus();
+  renderStatus(); renderHealth();
+}
+
+// ⚙️ Settings on a Raspberry Pi: what slows the AI down, in plain words (from /api/status, every 5 seconds)
+let lastPace = null;   // how fast the AI read and wrote in the last answer (llama-server's timings)
+function renderHealth() {
+  const box = $('pihealth');
+  if (!box) return;
+  const th = server.throttled;
+  box.hidden = !(mode === 'drive' && (typeof th === 'number' && th >= 0 || server.tempC));
+  if (box.hidden) return;
+  const row = (k, v) => `<tr><td>${k}</td><td>${v}</td></tr>`;
+  let h = '<table class="health">';
+  if (th >= 0) h += row('Power', th & 0x1 ? '⚠️ <b>Too weak right now</b>: the Pi has slowed itself down'
+    : th & 0x10000 ? '⚠️ <b>Dipped</b> at least once since it was switched on (it slows down while it does)' : '✅ OK since it was switched on');
+  if (server.tempC) h += row('Temperature', `${server.tempC} °C — ` + (server.tempC >= 80 ? '⚠️ <b>too hot</b>: it slows itself down'
+    : server.tempC >= 60 ? 'warm (the fan comes on at 60 °C)' : 'fine') + (th & 0xe && !(th & 0x1) ? ' — ⚠️ slowed down right now' : ''));
+  if (server.cpuMHz) h += row('Processor speed', `${server.cpuMHz} MHz` + (server.cpuMaxMHz ? ` of ${server.cpuMaxMHz} MHz at most` : ''));
+  if (server.memFreeMB != null) h += row('Free memory', `${server.memFreeMB} MB` + (server.memFreeMB < 300 ? ' — ⚠️ low: the AI slows right down' : ''));
+  h += row('AI', esc(server.model || 'off'));
+  if (lastPace) h += row('Last answer', `read about ${lastPace.read} words a second, wrote about ${lastPace.wrote} a second`);
+  box.querySelector('#pihbody').innerHTML = h + '</table>';
 }
 
 // The search loads in two steps to spare phones' memory (a page that runs short of it crashes):
@@ -432,20 +453,50 @@ async function answer(id, q, srcs, kind) {
   const loopMsg = 'Stopped: the AI started repeating itself. Check the sources below.';
   try {
     if (kind === 'server') {
-      const r = await fetch('llm/v1/chat/completions', { method: 'POST', signal: ctrl.signal, headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages, stream: true, temperature: 0.2, max_tokens: server.tier === 'quick' ? 400 : 700,
-          repeat_penalty: 1.1, dry_multiplier: 0.8, dry_base: 1.75, dry_allowed_length: 2 }) });
-      if (!r.ok) throw new Error('AI error ' + r.status);
-      const reader = r.body.getReader(), dec = new TextDecoder(); let buf = '';
-      for (;;) {
-        const { value, done } = await reader.read(); if (done) break;
-        buf += dec.decode(value, { stream: true }); let i;
-        while ((i = buf.indexOf('\n')) >= 0) {
-          const line = buf.slice(0, i).trim(); buf = buf.slice(i + 1);
-          if (!line.startsWith('data:')) continue; const data = line.slice(5).trim(); if (data === '[DONE]') continue;
-          try { const j = JSON.parse(data); if (j.timings) speed = j.timings; const piece = j.choices?.[0]?.delta?.content; if (piece) add(piece); } catch {}
+      // The connection to the AI can drop without a word: a phone that locks its screen during a long wait
+      // usually loses it, and the answer would sit on "Writing…" for ever. Then it starts again by itself,
+      // which is quick: the AI keeps what it has already read, so it goes straight to writing.
+      let tries = 0, dropped = false, hiddenAt = 0, lastData = Date.now();
+      const restart = () => { dropped = true; ctrl.abort(); };
+      const onVis = () => {
+        if (document.hidden) { hiddenAt = Date.now(); return; }
+        if (hiddenAt && Date.now() - hiddenAt > 15000) restart();   // back after the screen was off
+        hiddenAt = 0;
+      };
+      document.addEventListener('visibilitychange', onVis);
+      // once writing has begun the words keep coming, even on a slow Pi: a minute of silence is a lost connection
+      const dog = setInterval(() => { if (text && !document.hidden && Date.now() - lastData > 60000) restart(); }, 5000);
+      try {
+        for (;;) {
+          let finished = false, err = null;
+          dropped = false; lastData = Date.now();
+          try {
+            const r = await fetch('llm/v1/chat/completions', { method: 'POST', signal: ctrl.signal, headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ messages, stream: true, temperature: 0.2, max_tokens: server.tier === 'quick' ? 400 : 700, cache_prompt: true,
+                repeat_penalty: 1.1, dry_multiplier: 0.8, dry_base: 1.75, dry_allowed_length: 2 }) });
+            if (!r.ok) { const e = new Error('AI error ' + r.status); e.fatal = true; throw e; }
+            const reader = r.body.getReader(), dec = new TextDecoder(); let buf = '';
+            for (;;) {
+              const { value, done } = await reader.read(); if (done) break;
+              lastData = Date.now();
+              buf += dec.decode(value, { stream: true }); let i;
+              while ((i = buf.indexOf('\n')) >= 0) {
+                const line = buf.slice(0, i).trim(); buf = buf.slice(i + 1);
+                if (!line.startsWith('data:')) continue; const data = line.slice(5).trim(); if (data === '[DONE]') { finished = true; continue; }
+                try { const j = JSON.parse(data); if (j.timings) speed = j.timings; if (j.choices?.[0]?.finish_reason) finished = true;
+                  const piece = j.choices?.[0]?.delta?.content; if (piece) add(piece); } catch {}
+              }
+            }
+          } catch (e) { err = e; }
+          if (stopped) { if (err) throw err; break; }          // Stop pressed, or the AI was going round in circles
+          if (finished && !err) break;
+          if (err && err.fatal) throw err;
+          if (++tries > 3) throw err || new Error('the connection to the AI kept dropping');
+          // dropped: ask again (the old words stay on screen until the new ones come)
+          ctrl = new AbortController(); text = ''; looped = false;
+          setMeta('The connection to the AI dropped. Picking up again…');
         }
-      }
+      } finally { clearInterval(dog); document.removeEventListener('visibilitychange', onVis); }
     } else {
       const stream = await ai.engine.chat.completions.create({ messages, stream: true, temperature: 0.2, max_tokens: 600 });
       for await (const ch of stream) { const piece = ch.choices?.[0]?.delta?.content; if (piece) add(piece); if (stopped) break; }
@@ -453,6 +504,7 @@ async function answer(id, q, srcs, kind) {
     // how fast the AI read and wrote (about 3 words to 4 tokens): a slow device, or one slowing itself down, shows here
     const pace = speed && speed.prompt_per_second && speed.predicted_per_second
       ? ` It read about ${Math.round(speed.prompt_per_second * 0.75)} words a second and wrote about ${Math.round(speed.predicted_per_second * 7.5) / 10}.` : '';
+    if (pace) { lastPace = { read: Math.round(speed.prompt_per_second * 0.75), wrote: Math.round(speed.predicted_per_second * 7.5) / 10 }; renderHealth(); }
     meta.textContent = looped ? loopMsg : stopped ? 'Stopped.' : `Answered in ${Math.round((Date.now() - t0) / 1000)} seconds from ${srcs.length} sources.${pace} Check the sources before relying on it.`;
   } catch (e) {
     meta.innerHTML = (looped ? esc(loopMsg) : stopped || e.name === 'AbortError' ? 'Stopped.' : esc('The AI could not answer (' + e.message + '). The sources below are still the search results.')) +
@@ -518,7 +570,7 @@ async function renderSetup() {
   { const P = guidePaths(); if (P.ammocan) $('vaultguide').href = P.ammocan;   // the ARK Vault card: the guide and 3D model, here or on the drive
     $('vaultmodel').href = mode === 'drive' ? '/lib/AMMO-CAN-MODEL.html' : 'pages/AMMO-CAN-MODEL.html'; }
   if (mode === 'drive') {
-    $('webai').hidden = true; $('driveai').hidden = false; $('getkit').hidden = true; loadTiers();
+    $('webai').hidden = true; $('driveai').hidden = false; $('getkit').hidden = true; loadTiers(); renderHealth();
   } else {
     const chosen = store.get('aiModel') && MODELS[store.get('aiModel')];
     $('aiinfo').textContent = ai.error || (ai.kind === 'webllm' ? `On: ${ai.label}. Saved on this device.` : ai.loading ? 'Loading…' :
