@@ -112,9 +112,8 @@ function renderStatus() {
     h += pill(server.kiwix, 'Encyclopedias', server.kiwix === 'off' ? 'not available' : w(server.kiwix) + (server.zims ? ` (${server.zims})` : ''));
     h += pill(server.docs ? 'ready' : 'off', 'Documents', server.docs ? `${server.docs} files` : 'index missing');
     // a Raspberry Pi that has slowed itself down (weak power or heat): everything, the AI most, runs slower
-    const th = server.throttled > 0 ? server.throttled : 0;
-    if (th & 0x10001) h += pill('off', '⚠️ Power too weak', '— the Pi is slowing down. Use a stronger power supply or a shorter, thicker cable');
-    else if (th & 0x8000e) h += pill('off', '⚠️ Too hot', '— the Pi is slowing down. Keep the lid open and the can in the shade');
+    const slow = piSlow();
+    if (slow) h += pill('off', slow.label, '— ' + slow.detail);
   } else {
     h += pill(navigator.onLine ? 'ready' : 'starting', navigator.onLine ? 'Online' : 'Offline', navigator.onLine ? '' : '— using saved copy');
     h += pill(workerReady || (workerSearchable && !fullAsked) ? 'ready' : 'starting', 'Search', workerReady ? `${workerInfo.docs} documents`
@@ -124,6 +123,22 @@ function renderStatus() {
       : chosen ? esc(chosen[2]) + ' — starts when you ask' : 'off — turn on in ⚙️');
   }
   $('status').innerHTML = h;
+}
+
+// A Raspberry Pi's own record of slowing itself down (server.throttled, the firmware's get_throttled): 0x1 the
+// power is too weak now, 0x2/0x4/0x8 slowed down now (heat, when the power is fine), and 0x10000 / 0x80000 /
+// 0x60000 the same at some point since it started. Slowed down, a Pi 4 runs at about a third of its speed, and
+// the AI takes minutes instead of seconds. null when it's running at full speed (or isn't a Pi).
+function piSlow() {
+  const th = mode === 'drive' && server.throttled > 0 ? server.throttled : 0;
+  if (!th) return null;
+  const power = server.ark ? 'Charge the battery, then check the 5 V wires to the Pi (ARK Vault guide, "If something goes wrong").'
+    : 'Use the official Raspberry Pi power supply and its own cable.';
+  const heat = server.ark ? 'Keep the lid open and the can in the shade.' : 'Give it more air, or a cooler with a fan.';
+  if (th & 0x1) return { now: true, why: 'the Pi is short of power', label: '⚠️ Power too weak', detail: 'the Pi has slowed itself down, so the AI is very slow. ' + power };
+  if (th & 0xe) return { now: true, why: 'the Pi is too hot', label: '⚠️ Too hot', detail: 'the Pi has slowed itself down, so the AI is slow. ' + heat };
+  if (th & 0x10000) return { now: false, label: '⚠️ Power dipped', detail: 'the Pi slows itself down when it does, the AI most. ' + power };
+  return { now: false, label: '⚠️ Got too hot', detail: 'the Pi slows itself down when it does. ' + heat };
 }
 
 // An app saved to the home screen has no browser around it: a book (a PDF) would fill the screen with no way
@@ -397,7 +412,11 @@ async function answer(id, q, srcs, kind) {
   const messages = [{ role: 'system', content: SYSTEM },
     { role: 'user', content: `Question: ${q}\n\nSources:\n\n${ctx || '(no matching sources)'}\n\nQuestion: ${q}` }];
   const t0 = Date.now(); let text = '', stopped = false, ctrl = new AbortController(), speed = null;
-  const setMeta = (label) => { meta.innerHTML = `<span class="spin"></span>${label} <button class="sec" type="button">Stop</button> <span class="t"></span>`; meta.querySelector('button').onclick = () => { stopped = true; ctrl.abort(); try { ai.engine?.interruptGenerate?.(); } catch {} }; };
+  const setMeta = (label) => {
+    // on a Pi that has slowed itself down, say why the wait is long (the sources are there to read meanwhile)
+    const slow = kind === 'server' ? piSlow() : null;
+    const why = slow && slow.now ? `<br><small>⚠️ This will be slow: ${slow.why}. The sources below are ready to read now.</small>` : '';
+    meta.innerHTML = `<span class="spin"></span>${label} <button class="sec" type="button">Stop</button> <span class="t"></span>${why}`; meta.querySelector('button').onclick = () => { stopped = true; ctrl.abort(); try { ai.engine?.interruptGenerate?.(); } catch {} }; };
   setMeta('The AI is reading the sources…');
   if (srcs.length) showBest(id, srcs, q);   // something to read straight away; the AI's answer takes its place
   const tick = setInterval(() => { const t = meta.querySelector('.t'); if (t) t.textContent = Math.round((Date.now() - t0) / 1000) + 's'; }, 1000);

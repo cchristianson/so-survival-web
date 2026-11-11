@@ -352,8 +352,8 @@
 <td>Give it a minute or two. Search works meanwhile</td>
 </tr>
 <tr class="even">
-<td>The Pi keeps restarting</td>
-<td>Not enough power. Check the battery, the converter's 5 V, and the wire crimps</td>
+<td><strong>⚠️ Power too weak</strong>, the AI takes minutes, or the Pi keeps restarting</td>
+<td>The Pi isn't getting enough power. See <a href="#power-too-weak-or-the-ai-takes-minutes">below</a></td>
 </tr>
 <tr class="odd">
 <td>The meter stays dark</td>
@@ -397,6 +397,14 @@
 </tr>
 </tbody>
 </table>
+<h3 id="power-too-weak-or-the-ai-takes-minutes">"Power too weak", or the AI takes minutes</h3>
+<p>The Pi isn't getting a full 5 volts, so it slows itself down to about a third of its speed. The AI suffers most: an answer can take 10 minutes instead of one or two.</p>
+<ol type="1">
+<li><strong>Check the battery:</strong> hold the meter button. Under about 12.5 V, charge it.</li>
+<li><strong>Check the converter:</strong> ask the AI a question, and <strong>while it's working</strong>, touch a multimeter to the converter's two <strong>output</strong> screws. It should read <strong>5.1 to 5.25 V</strong>. Lower than that? If the converter has a small adjusting screw, turn it up to about 5.2 V; if not, replace it.</li>
+<li><strong>Check the wires to the Pi:</strong> if the converter reads fine, the power is lost on the way to the Pi. The usual weak spot is the two little plugs on <strong>pins 2 and 14</strong>: thick wire doesn't crimp well into them. Re-crimp or solder them so they're solid, and keep the wires as short as the route allows.</li>
+<li><strong>Switch off and on again</strong> so the old warning clears, and ask the same question. A healthy Pi should start writing within a minute or two.</li>
+</ol>
 <hr />
 <h2 id="other-ways-to-build-it">🖐️ Other ways to build it</h2>
 <ul>
