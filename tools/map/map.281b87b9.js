@@ -120,11 +120,11 @@
   ];
 
   fetch(DATA + 'index.json').then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (cfg) {
-    if (!drive) return cfg;
+    if (!drive) return farMap(cfg);
     // on a drive there may be a bigger map too (Settings > A bigger map): its streets and heights take the local ones' place
     return fetch(DATA + 'wide.json').then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }).then(function (w) {
       cfg.home = cfg.bbox;
-      if (w && w.streets) { cfg.streets = w.streets; cfg.streetsV = w.v; cfg.bbox = w.bbox; if (w.terrain) cfg.terrain = w.terrain; cfg.wide = w.label; cfg.widePlaces = w.places; cfg.streets_maxzoom = w.streets_maxzoom || 15; }
+      if (w && w.streets) { cfg.streets = w.streets; cfg.streetsV = w.v; cfg.bbox = w.bbox; if (w.terrain) cfg.terrain = w.terrain; cfg.wideLabel = w.label; cfg.widePlaces = w.places; cfg.streets_maxzoom = w.streets_maxzoom || 15; }
       return cfg;
     });
   }).then(start).catch(function (e) {
@@ -132,17 +132,92 @@
     say('<b>The map files aren\'t here yet.</b><br>' + (drive ? 'Run the installer again: it fetches the map with everything else.' : 'They may still be on their way: try again later.'));
   });
 
+  // On the website the library may keep a bigger map online ("online" in index.json: the address of a folder with the
+  // same wide.json and street file a drive's bigger map has, and where heights can be had tile by tile). It is used
+  // only for what the map on this device does not have, and only while there is a signal: the local map is never
+  // waited for it. What the folder holds is remembered, so the next visit does not wait to ask.
+  function farMap(cfg) {
+    var on = cfg.online; cfg.home = cfg.bbox;
+    if (!on || !on.url) return cfg;
+    var base = on.url.replace(/\/?$/, '/'), kept = store.get('arkFar', null);
+    var use = function (w) {
+      if (w && w.streets && w.bbox) cfg.far = { label: w.label || 'a wider area', bbox: w.bbox, streets: base + w.streets + (w.v ? '?v=' + w.v : ''), streets_maxzoom: w.streets_maxzoom || 15,
+        places: w.places ? base + w.places : '', terrain: on.terrain || '', terrain_maxzoom: on.terrain_maxzoom || 12 };
+      return cfg;
+    };
+    var ask = function () {
+      var ac = window.AbortController ? new AbortController() : null, t = setTimeout(function () { if (ac) ac.abort(); }, 2500);
+      return fetch(base + 'wide.json', ac ? { signal: ac.signal } : {}).then(function (r) { clearTimeout(t); if (!r.ok) throw 0; return r.json(); })
+        .then(function (w) { store.set('arkFar', { url: base, w: w }); return w; });
+    };
+    if (kept && kept.url === base && kept.w) { if (navigator.onLine) ask().catch(function () {}); return use(kept.w); }
+    if (!navigator.onLine) return cfg;
+    return ask().then(use, function () { return cfg; });
+  }
+
+  // Heights from two places as one: the tiles on this device (the map's own area) and, for the rest, a far source read
+  // over the internet. The map and the tools ask this for a tile and never know which it came from. Topo lines need a
+  // tile's neighbours too, so along the edge of the local area they come from the far source while there is a signal.
+  function heights(near, far, cfg) {
+    var hb = cfg.home || cfg.bbox, top = cfg.terrain.maxzoom;
+    var span = function (z) {
+      var n = Math.pow(2, z), tx = function (lon) { return Math.floor((lon + 180) / 360 * n); };
+      var ty = function (lat) { var sn = Math.sin(lat * Math.PI / 180); return Math.floor((0.5 - Math.log((1 + sn) / (1 - sn)) / (4 * Math.PI)) * n); };
+      return [tx(hb[0]), ty(hb[3]), tx(hb[2]), ty(hb[1])];
+    };
+    var local = function (z, x, y, ring) { var r = span(z), k = ring ? 1 : 0; return x >= r[0] + k && x <= r[2] - k && y >= r[1] + k && y <= r[3] - k; };
+    var pick = function (z, x, y, ring) { return !far || !navigator.onLine || local(z, x, y, ring) ? near : far; };
+    var zxy = function (url) { var m = /:\/\/(\d+)\/(\d+)\/(\d+)/.exec(url); return [+m[1], +m[2], +m[3]]; };
+    var at = function (pattern, t) { return pattern.replace('{z}', t[0]).replace('{x}', t[1]).replace('{y}', t[2]); };
+    return {
+      sharedDemProtocolUrl: 'ark-dem://{z}/{x}/{y}',
+      contourProtocolUrl: function (o) { return 'ark-contour://{z}/{x}/{y}?' + near.contourProtocolUrl(o).split('?')[1]; },
+      getDemTile: function (z, x, y) {
+        var s = pick(z, x, y);
+        return s.getDemTile(z, x, y).catch(function (e) { if (s === far && local(z, x, y)) return near.getDemTile(z, x, y); throw e; });
+      },
+      demTile: function (params, abort) {
+        var t = zxy(params.url), s = pick(t[0], t[1], t[2]), go = function (src) { return src.sharedDemProtocolV4({ url: at(src.sharedDemProtocolUrl, t) }, abort); };
+        return go(s).catch(function (e) { if (s === far && local(t[0], t[1], t[2])) return go(near); throw e; });
+      },
+      contourTile: function (params, abort) {   // a tile of topo lines is worked out from the height tile one zoom coarser (never finer than the finest there is)
+        var t = zxy(params.url), q = params.url.split('?')[1] || '', dz = Math.min(Math.max(t[0] - 1, 0), top), sh = t[0] - dz;
+        var s = pick(dz, t[1] >> sh, t[2] >> sh, true), go = function (src) { return src.contourProtocolV4({ url: at(src.contourProtocolUrlBase, t) + '?' + q }, abort); };
+        return go(s).catch(function (e) { if (s === far && local(dz, t[1] >> sh, t[2] >> sh)) return go(near); throw e; });
+      }
+    };
+  }
+
   function start(cfg) {
-    // A bigger map (on a drive) is fine near home and coarser far away, so many fine tiles are simply not in its
-    // files. For those the reader reports an error (not an empty tile, and not "404", which the map would also take
-    // for an empty tile), and the map then draws the coarser tile above, larger.
+    // A bigger map is fine near home and coarser far away, so many fine tiles are simply not in its files. For those
+    // the reader reports an error (not an empty tile, and not "404", which the map would also take for an empty tile),
+    // and the map then draws the coarser tile above, larger.
     var protocol = new pmtiles.Protocol({ errorOnMissingTile: true });
     maplibregl.addProtocol('pmtiles', protocol.tile);
+    // The street map is asked for tile by tile: from the file on this device, and for a tile that is not in it, from
+    // the bigger map kept online (the website, with a signal). No signal, or no such map: the tile is "not found".
+    var streetsV = cfg.streetsV ? '?v=' + cfg.streetsV : (cfg.v ? '?v=' + cfg.v : '');
+    var homePM = new pmtiles.PMTiles(DATA + cfg.streets + streetsV), farPM = cfg.far ? new pmtiles.PMTiles(cfg.far.streets) : null, farRest = 0;
+    maplibregl.addProtocol('ark-streets', function (params, abort) {
+      var m = /:\/\/(\d+)\/(\d+)\/(\d+)/.exec(params.url), z = +m[1], x = +m[2], y = +m[3], sig = abort && abort.signal;
+      var gone = function () { throw new Error('Tile not found.'); };
+      var from = function (pm) { return pm.getZxy(z, x, y, sig).then(function (r) { return r && r.data ? { data: new Uint8Array(r.data) } : gone(); }); };
+      return from(homePM).catch(function () {
+        if (!farPM || !navigator.onLine || Date.now() < farRest) return gone();
+        return from(farPM).catch(function (e) {
+          if (!/not found/i.test(String(e && e.message)) && !(sig && sig.aborted)) farRest = Date.now() + 20000;   // it did not answer: leave it be for a while
+          return gone();
+        });
+      });
+    });
     var terrainUrl = cfg.terrain ? (drive ? location.origin + '/maptiles/' + cfg.terrain.file.replace(/\.pmtiles$/, '') + '/{z}/{x}/{y}.webp' : DATA + 'terrain/{z}/{x}/{y}.webp') : '';
     var dem = null;
+    cfg.reach = cfg.far ? cfg.far.bbox : cfg.bbox;   // how far the roads and the heights go
     if (terrainUrl) {
-      dem = new mlcontour.DemSource({ url: terrainUrl, encoding: 'terrarium', maxzoom: cfg.terrain.maxzoom, worker: true, cacheSize: 80, timeoutMs: 20000 });
-      dem.setupMaplibre(maplibregl);
+      var demSource = function (url, id, maxzoom, keep) { return new mlcontour.DemSource({ url: url, id: id, encoding: 'terrarium', maxzoom: maxzoom, worker: true, cacheSize: keep, timeoutMs: 20000 }); };
+      dem = heights(demSource(terrainUrl, 'dem', cfg.terrain.maxzoom, 80), cfg.far && cfg.far.terrain ? demSource(cfg.far.terrain, 'far', Math.min(cfg.far.terrain_maxzoom, cfg.terrain.maxzoom), 60) : null, cfg);
+      maplibregl.addProtocol('ark-dem', dem.demTile);
+      maplibregl.addProtocol('ark-contour', dem.contourTile);
       maplibregl.addProtocol('ark-slope', slopeTiles(dem));
     }
     // which of the layers this area's files have
@@ -152,7 +227,7 @@
     var ITEMS = [], GROUPS = {};
     LAYERS.forEach(function (g) { g[1].forEach(function (it) { if (it.id === 'pins' || have[it.need || it.src]) { ITEMS.push(it); GROUPS[it.id] = it.layers; } }); });
 
-    var b = cfg.bbox;
+    var b = cfg.reach;
     var S0 = style(cfg, dem), BASE = {};   // the layers as designed, to work each one's opacity out from
     JSON.parse(JSON.stringify(S0.layers)).forEach(function (l) { BASE[l.id] = l; });
     var map = new maplibregl.Map({
@@ -323,7 +398,9 @@
     renderLayers();
     map.on('load', function () { ITEMS.forEach(function (it) { show(it.layers, isOn(it)); if (opac[it.id] > 0) setOpacity(it, opac[it.id]); }); drawPins(); drawShared(); });
     $('propnote').hidden = !have.parcels;
-    if (cfg.wide) $('propnote').insertAdjacentHTML('afterend', '<p class="small">Roads and topo lines cover ' + esc(cfg.wide) + ', in less detail the further from home. The other layers cover ' + esc(cfg.name) + '.</p>');
+    if (cfg.far) $('propnote').insertAdjacentHTML('afterend', '<p class="small">While this device has a signal, roads and topo lines also cover ' + esc(cfg.far.label) +
+      ', in less detail the further from home. With no signal, and for the other layers, the map covers ' + esc(cfg.name) + '.</p>');
+    if (cfg.wideLabel) $('propnote').insertAdjacentHTML('afterend', '<p class="small">Roads and topo lines cover ' + esc(cfg.wideLabel) + ', in less detail the further from home. The other layers cover ' + esc(cfg.name) + '.</p>');
     $('credits').innerHTML = 'Map data: ' + (cfg.credits || []).map(esc).join(' · ') + (cfg.built ? '. Made ' + esc(cfg.built) + '.' : '');
     $('t-layers').onclick = toggleSheet('layers');
 
@@ -332,7 +409,7 @@
     var demGone = {};   // height tiles the files turned out not to have (a bigger map is coarser far from home)
     function elevationAt(lngLat) {
       if (!dem) return Promise.resolve(null);
-      var top = cfg.terrain.maxzoom, low = Math.max(0, Math.min(top, cfg.terrain.coarsest || top));
+      var top = cfg.terrain.maxzoom, low = cfg.far ? Math.max(0, top - 4) : Math.max(0, Math.min(top, cfg.terrain.coarsest || top));
       var sn = Math.sin(lngLat.lat * Math.PI / 180), wx = (lngLat.lng + 180) / 360, wy = 0.5 - Math.log((1 + sn) / (1 - sn)) / (4 * Math.PI);
       var at = function (z) {   // the finest tile first, then the coarser ones above it
         var n = Math.pow(2, z), fx = wx * n, fy = wy * n, tx = Math.floor(fx), ty = Math.floor(fy), key = z + '/' + tx + '/' + ty;
@@ -512,7 +589,8 @@
     var places = null, cfg0 = cfg.home || cfg.bbox;
     if (cfg.places) fetch(DATA + cfg.places).then(function (r) { return r.json(); }).then(function (p) {
       places = p;
-      if (cfg.widePlaces) fetch(DATA + cfg.widePlaces).then(function (r) { return r.json(); }).then(function (far) {   // a bigger map's towns, after the local names
+      var farPlaces = cfg.far ? cfg.far.places : cfg.widePlaces ? DATA + cfg.widePlaces : '';
+      if (farPlaces) fetch(farPlaces).then(function (r) { return r.json(); }).then(function (far) {   // a bigger map's towns, after the local names
         var have = {}; p.forEach(function (x) { if (x[1] === 'locality') have[x[0]] = 1; });
         places = p.concat(far.filter(function (x) { return !have[x[0]] || x[2] < cfg0[0] || x[2] > cfg0[2] || x[3] < cfg0[1] || x[3] > cfg0[3]; }));
       }).catch(function () {});
@@ -890,7 +968,7 @@
     }
     if (dem) {
       ['steep', 'sunny', 'frost'].forEach(function (w) {
-        S.sources[w] = { type: 'raster', tiles: ['ark-slope://' + w + '/{z}/{x}/{y}'], tileSize: 512, minzoom: 9, maxzoom: cfg.terrain.maxzoom, bounds: cfg.bbox };
+        S.sources[w] = { type: 'raster', tiles: ['ark-slope://' + w + '/{z}/{x}/{y}'], tileSize: 512, minzoom: 9, maxzoom: cfg.terrain.maxzoom, bounds: cfg.reach || cfg.bbox };
         fills.push({ id: w, type: 'raster', source: w, minzoom: 9, paint: { 'raster-opacity': 1, 'raster-fade-duration': 0, 'raster-resampling': 'linear' } });
       });
     }
@@ -949,8 +1027,8 @@
   // The street map is asked for tile by tile, with no fence round it. Beyond the map's own area the fine tiles are
   // not in the file; the coarse ones that are (each reaches far past the area) are drawn instead, so the country round
   // the map shows when it is zoomed out.
-  function streetsSource(cfg, V) {
-    return { type: 'vector', tiles: ['pmtiles://' + DATA + cfg.streets + (cfg.streetsV ? '?v=' + cfg.streetsV : V) + '/{z}/{x}/{y}'], minzoom: 0, maxzoom: cfg.streets_maxzoom || 15,
+  function streetsSource(cfg) {
+    return { type: 'vector', tiles: ['ark-streets://{z}/{x}/{y}'], minzoom: 0, maxzoom: Math.max(cfg.streets_maxzoom || 15, cfg.far ? cfg.far.streets_maxzoom : 0),
       attribution: '© OpenStreetMap contributors' };
   }
 
@@ -961,7 +1039,7 @@
     var FONT = ['Noto Sans Regular'], BOLD = ['Noto Sans Medium'], ITAL = ['Noto Sans Italic'], V = cfg.v ? '?v=' + cfg.v : '';
     var kind = function (v) { return ['==', ['get', 'kind'], v]; }, kinds = function (a) { return ['in', ['get', 'kind'], ['literal', a]]; };
     var detail = function (a) { return ['in', ['get', 'kind_detail'], ['literal', a]]; };
-    var S = { version: 8, glyphs: new URL('fonts/', location.href).href + '{fontstack}/{range}.pbf', sources: { streets: streetsSource(cfg, V) }, layers: [] };
+    var S = { version: 8, glyphs: new URL('fonts/', location.href).href + '{fontstack}/{range}.pbf', sources: { streets: streetsSource(cfg) }, layers: [] };
     var L = S.layers, prop = cfg.property, K = '#000';
     var line = function (id, src, layer, filter, w, dash, minzoom, color) {
       var l = { id: id, type: 'line', source: src, 'source-layer': layer, layout: { 'line-join': 'round' }, paint: { 'line-color': color || K, 'line-width': w } };
@@ -970,7 +1048,7 @@
     L.push({ id: 'bg', type: 'background', paint: { 'background-color': '#fff' } });
     L.push({ id: 'water', type: 'fill', source: 'streets', 'source-layer': 'water', filter: ['==', ['geometry-type'], 'Polygon'], paint: { 'fill-color': '#c8c8c8', 'fill-antialias': false } });
     if (dem && on.contours) {
-      S.sources.contours = { type: 'vector', maxzoom: 15, bounds: cfg.bbox, tiles: [dem.contourProtocolUrl({ multiplier: 3.28084, overzoom: 1, elevationKey: 'ele', levelKey: 'level', contourLayer: 'contours',
+      S.sources.contours = { type: 'vector', maxzoom: 15, bounds: cfg.reach || cfg.bbox, tiles: [dem.contourProtocolUrl({ multiplier: 3.28084, overzoom: 1, elevationKey: 'ele', levelKey: 'level', contourLayer: 'contours',
         thresholds: { 10: [200, 1000], 12: [80, 400], 13: [40, 200] } })] };
       L.push({ id: 'contour-lines', type: 'line', source: 'contours', 'source-layer': 'contours', minzoom: 10, paint: { 'line-color': K, 'line-width': ['match', ['get', 'level'], 1, 1.3, 0.55] } });
     }
@@ -1019,13 +1097,13 @@
     var detail = function (a) { return ['in', ['get', 'kind_detail'], ['literal', a]]; };
     var zw = function (stops) { var o = ['interpolate', ['exponential', 1.6], ['zoom']]; stops.forEach(function (s) { o.push(s[0], s[1]); }); return o; };
     var S = { version: 8, glyphs: new URL('fonts/', location.href).href + '{fontstack}/{range}.pbf',
-      sources: { streets: streetsSource(cfg, V) }, layers: [] };
+      sources: { streets: streetsSource(cfg) }, layers: [] };
     var L = S.layers, prop = cfg.property;
     if (prop) S.sources.property = { type: 'vector', url: 'pmtiles://' + DATA + prop.file + V };
     if (dem) {
-      S.sources.dem = { type: 'raster-dem', encoding: 'terrarium', tiles: [dem.sharedDemProtocolUrl], maxzoom: cfg.terrain.maxzoom, tileSize: 512, bounds: cfg.bbox };
+      S.sources.dem = { type: 'raster-dem', encoding: 'terrarium', tiles: [dem.sharedDemProtocolUrl], maxzoom: cfg.terrain.maxzoom, tileSize: 512, bounds: cfg.reach || cfg.bbox };
       // feet: 200 ft lines from far out, 40 ft lines (every 5th one heavy) close in, as on a USGS quad
-      S.sources.contours = { type: 'vector', maxzoom: 15, bounds: cfg.bbox, attribution: '© Mapterhorn', tiles: [dem.contourProtocolUrl({ multiplier: 3.28084, overzoom: 1, elevationKey: 'ele', levelKey: 'level', contourLayer: 'contours',
+      S.sources.contours = { type: 'vector', maxzoom: 15, bounds: cfg.reach || cfg.bbox, attribution: '© Mapterhorn', tiles: [dem.contourProtocolUrl({ multiplier: 3.28084, overzoom: 1, elevationKey: 'ele', levelKey: 'level', contourLayer: 'contours',
         thresholds: { 10: [200, 1000], 12: [80, 400], 13: [40, 200] } })] };
     }
     L.push({ id: 'bg', type: 'background', paint: { 'background-color': '#f6f3e9' } });
