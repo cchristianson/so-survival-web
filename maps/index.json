@@ -2,8 +2,8 @@
  "id": "illinois-valley",
  "name": "Illinois Valley",
  "bbox": [
-  -124.05,
-  41.99,
+  -124.6,
+  41.5,
   -123.2,
   42.75
  ],
@@ -20,6 +20,8 @@
   "Heights: Mapterhorn (USGS 3DEP and others)",
   "Tax lots: Josephine County Assessor",
   "Land ownership: Bureau of Land Management, Oregon State Office",
+  "Public land in California: Bureau of Land Management, Surface Management Agency",
+  "Addresses: Josephine County Assessor",
   "Water: USGS National Hydrography Dataset",
   "Wells: Oregon Water Resources Department well reports",
   "Dams: Oregon Water Resources Department",
@@ -53,7 +55,9 @@
   "parcels": true,
   "ownership": true,
   "owners": [
+   "BIA",
    "BLM",
+   "FWS",
    "LG",
    "NPS",
    "PV",
@@ -67,6 +71,7 @@
   ]
  },
  "places": "illinois-valley-places.json",
+ "addresses": "illinois-valley-addresses.json",
  "overlays": [
   {
    "group": "water",
@@ -213,18 +218,19 @@
   "mb": 2444
  },
  "files": {
-  "illinois-valley-streets.pmtiles": 13869867,
-  "illinois-valley-terrain.pmtiles": 29417466,
-  "illinois-valley-property.pmtiles": 7818714,
-  "illinois-valley-places.json": 219931,
-  "illinois-valley-water.pmtiles": 4611941,
-  "illinois-valley-food.pmtiles": 1914239,
-  "illinois-valley-materials.pmtiles": 1398850,
-  "illinois-valley-hazards.pmtiles": 1030941,
-  "illinois-valley-places.pmtiles": 117825,
-  "illinois-valley-travel.pmtiles": 2270362,
-  "illinois-valley-game.pmtiles": 2233926,
-  "illinois-valley-timber.pmtiles": 1928131
+  "illinois-valley-streets.pmtiles": 26054598,
+  "illinois-valley-terrain.pmtiles": 53896152,
+  "illinois-valley-property.pmtiles": 16383791,
+  "illinois-valley-places.json": 382657,
+  "illinois-valley-addresses.json": 1021568,
+  "illinois-valley-water.pmtiles": 9099163,
+  "illinois-valley-food.pmtiles": 2712949,
+  "illinois-valley-materials.pmtiles": 2298565,
+  "illinois-valley-hazards.pmtiles": 2555414,
+  "illinois-valley-places.pmtiles": 193388,
+  "illinois-valley-travel.pmtiles": 3752172,
+  "illinois-valley-game.pmtiles": 2315485,
+  "illinois-valley-timber.pmtiles": 3543494
  },
- "v": "5d7f7e017ebf"
+ "v": "d8d721ad0f25"
 }
