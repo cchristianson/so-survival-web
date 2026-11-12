@@ -124,7 +124,7 @@
     // on a drive there may be a bigger map too (Settings > A bigger map): its streets and heights take the local ones' place
     return fetch(DATA + 'wide.json').then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }).then(function (w) {
       cfg.home = cfg.bbox;
-      if (w && w.streets) { cfg.streets = w.streets; cfg.streetsV = w.v; cfg.bbox = w.bbox; if (w.terrain) cfg.terrain = w.terrain; cfg.wide = w.label; cfg.widePlaces = w.places; }
+      if (w && w.streets) { cfg.streets = w.streets; cfg.streetsV = w.v; cfg.bbox = w.bbox; if (w.terrain) cfg.terrain = w.terrain; cfg.wide = w.label; cfg.widePlaces = w.places; cfg.streets_maxzoom = w.streets_maxzoom || 15; }
       return cfg;
     });
   }).then(start).catch(function (e) {
@@ -152,12 +152,26 @@
     var ITEMS = [], GROUPS = {};
     LAYERS.forEach(function (g) { g[1].forEach(function (it) { if (it.id === 'pins' || have[it.need || it.src]) { ITEMS.push(it); GROUPS[it.id] = it.layers; } }); });
 
-    var b = cfg.bbox, pad = 0.15;
+    var b = cfg.bbox;
     var S0 = style(cfg, dem), BASE = {};   // the layers as designed, to work each one's opacity out from
     JSON.parse(JSON.stringify(S0.layers)).forEach(function (l) { BASE[l.id] = l; });
     var map = new maplibregl.Map({
-      container: 'map', style: S0, center: [cfg.center[0], cfg.center[1]], zoom: cfg.center[2], minZoom: cfg.wide ? 3.2 : 7, maxZoom: 18,
-      maxBounds: [[b[0] - pad, b[1] - pad], [b[2] + pad, b[3] + pad]], attributionControl: false, dragRotate: false, pitchWithRotate: false, hash: true
+      container: 'map', style: S0, center: [cfg.center[0], cfg.center[1]], zoom: cfg.center[2], minZoom: 2, maxZoom: 18,
+      attributionControl: false, dragRotate: false, pitchWithRotate: false, hash: true
+    });
+    // How far out it zooms: far enough to see the whole map at once on this screen, and a bit more for the country round
+    // it. (The view used to be fenced to the map's own area, and on a tall phone the fence stopped the zoom before the
+    // whole area showed.) Beyond the map's edge the coarser tiles that reach past it are drawn.
+    function farthest() {
+      var cam = map.cameraForBounds([[b[0], b[1]], [b[2], b[3]]], { padding: 10 });
+      if (cam && isFinite(cam.zoom)) map.setMinZoom(Math.max(1.5, cam.zoom - 1.3));
+    }
+    farthest(); map.on('resize', farthest);
+    // The middle of the screen stays on the map: let go of it beyond the edge, and the view slides back.
+    map.on('moveend', function () {
+      if (geo && /ACTIVE_LOCK|WAITING_ACTIVE/.test(geo._watchState || '')) return;   // following the blue dot, wherever it goes
+      var c = map.getCenter(), lng = Math.max(b[0], Math.min(b[2], c.lng)), lat = Math.max(b[1], Math.min(b[3], c.lat));
+      if (Math.abs(lng - c.lng) > 1e-6 || Math.abs(lat - c.lat) > 1e-6) map.easeTo({ center: [lng, lat], duration: 350 });
     });
     map.touchZoomRotate.disableRotation();
     map.on('styleimagemissing', function (e) { addBadge(map, e.id); });
@@ -932,6 +946,14 @@
     tops.forEach(function (l) { L.push(l); });
   }
 
+  // The street map is asked for tile by tile, with no fence round it. Beyond the map's own area the fine tiles are
+  // not in the file; the coarse ones that are (each reaches far past the area) are drawn instead, so the country round
+  // the map shows when it is zoomed out.
+  function streetsSource(cfg, V) {
+    return { type: 'vector', tiles: ['pmtiles://' + DATA + cfg.streets + (cfg.streetsV ? '?v=' + cfg.streetsV : V) + '/{z}/{x}/{y}'], minzoom: 0, maxzoom: cfg.streets_maxzoom || 15,
+      attribution: '© OpenStreetMap contributors' };
+  }
+
   // The same map for the receipt printer: no colours, so everything is told apart by the kind of line. Roads are solid
   // (main roads a double line), forest tracks dashed, trails dotted, creeks dash-dot, contour lines thin, tax lots long
   // dashes, public-land edges short heavy dashes, water a pattern of dots (blackAndWhite makes it from the grey).
@@ -939,7 +961,7 @@
     var FONT = ['Noto Sans Regular'], BOLD = ['Noto Sans Medium'], ITAL = ['Noto Sans Italic'], V = cfg.v ? '?v=' + cfg.v : '';
     var kind = function (v) { return ['==', ['get', 'kind'], v]; }, kinds = function (a) { return ['in', ['get', 'kind'], ['literal', a]]; };
     var detail = function (a) { return ['in', ['get', 'kind_detail'], ['literal', a]]; };
-    var S = { version: 8, glyphs: new URL('fonts/', location.href).href + '{fontstack}/{range}.pbf', sources: { streets: { type: 'vector', url: 'pmtiles://' + DATA + cfg.streets + (cfg.streetsV ? '?v=' + cfg.streetsV : V) } }, layers: [] };
+    var S = { version: 8, glyphs: new URL('fonts/', location.href).href + '{fontstack}/{range}.pbf', sources: { streets: streetsSource(cfg, V) }, layers: [] };
     var L = S.layers, prop = cfg.property, K = '#000';
     var line = function (id, src, layer, filter, w, dash, minzoom, color) {
       var l = { id: id, type: 'line', source: src, 'source-layer': layer, layout: { 'line-join': 'round' }, paint: { 'line-color': color || K, 'line-width': w } };
@@ -997,7 +1019,7 @@
     var detail = function (a) { return ['in', ['get', 'kind_detail'], ['literal', a]]; };
     var zw = function (stops) { var o = ['interpolate', ['exponential', 1.6], ['zoom']]; stops.forEach(function (s) { o.push(s[0], s[1]); }); return o; };
     var S = { version: 8, glyphs: new URL('fonts/', location.href).href + '{fontstack}/{range}.pbf',
-      sources: { streets: { type: 'vector', url: 'pmtiles://' + DATA + cfg.streets + (cfg.streetsV ? '?v=' + cfg.streetsV : V), attribution: '© OpenStreetMap contributors' } }, layers: [] };
+      sources: { streets: streetsSource(cfg, V) }, layers: [] };
     var L = S.layers, prop = cfg.property;
     if (prop) S.sources.property = { type: 'vector', url: 'pmtiles://' + DATA + prop.file + V };
     if (dem) {
