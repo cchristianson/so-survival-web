@@ -561,12 +561,15 @@
       if (s) s.setData({ type: 'FeatureCollection', features: fs });
       var total = 0, i; for (i = 1; i < mpts.length; i++) total += dist(mpts[i - 1], mpts[i]);
       $('m-hint').hidden = mpts.length > 1; $('hint').hidden = mpts.length > 1;
+      var stretches = (mpts.length - 1) + ' stretch' + (mpts.length > 2 ? 'es' : '') + ', straight from point to point';
+      var clock = function (min) { min = Math.max(1, Math.round(min)); if (min < 60) return min + ' minutes'; min = Math.round(min / 5) * 5; return Math.floor(min / 60) + ' hr' + (min % 60 ? ' ' + (min % 60) + ' min' : ''); };
+      // first the distance flat on the map; the heights along the way (below) then give the distance over the ground
       $('m-out').innerHTML = mpts.length < 2 ? (mpts.length ? '<p>First point marked. Tap the next one.</p>' : '') : '<p style="font-size:20px;font-weight:700;margin:2px 0">' + far(total) + '</p>' +
-        '<p class="small">' + (mpts.length - 1) + ' stretch' + (mpts.length > 2 ? 'es' : '') + ', as the crow flies between points' + (total > 800 ? ' · about ' + Math.max(1, Math.round(total / 1609.34 / 2.5 * 60)) + ' minutes on foot on level ground' : '') + '</p>';
+        '<p class="small">' + stretches + (total > 800 ? ' · about ' + clock(total / 1609.34 / 2.5 * 60) + ' on foot on level ground' : '') + '</p>';
       $('profile').hidden = true; $('m-prof').innerHTML = '';
       if (mpts.length < 2 || !dem) return;
       // heights along the way
-      var seq = ++mseq, N = 100, pts = [], acc = 0, segs = [];
+      var seq = ++mseq, N = Math.max(100, Math.min(600, Math.round(total / 40))), pts = [], acc = 0, segs = [];   // a height about every 130 ft
       for (i = 1; i < mpts.length; i++) { var d = dist(mpts[i - 1], mpts[i]); segs.push([acc, d, mpts[i - 1], mpts[i]]); acc += d; }
       for (i = 0; i <= N; i++) {
         var at = total * i / N, sg = segs[0]; segs.forEach(function (g) { if (at >= g[0]) sg = g; });
@@ -579,6 +582,16 @@
         els = els.map(function (v, k) { return v == null ? (els[k - 1] != null ? els[k - 1] : ok[0]) : v; });
         var lo = Math.min.apply(null, els), hi = Math.max.apply(null, els), up = 0, down = 0;
         for (i = 1; i < els.length; i++) { var dv = els[i] - els[i - 1]; if (dv > 0) up += dv; else down -= dv; }
+        // Over the ground: each short piece is the long side of its rise and its run. And the time on foot with the climbs
+        // counted, there and back (Tobler's hiking rule: quickest on a slight downhill, slower the steeper it gets either
+        // way), set so that level ground is the same 2.5 miles an hour as above.
+        var sm = els.map(function (v, k) { return (els[Math.max(k - 1, 0)] + v + els[Math.min(k + 1, N)]) / 3; }), run = total / N, ground = 0, there = 0, back = 0;
+        var pace = function (slope) { return 6 * Math.exp(-3.5 * Math.abs(slope + 0.05)) * 0.798 / 3.6; };   // metres a second
+        for (i = 1; i <= N; i++) { var rise = sm[i] - sm[i - 1]; ground += Math.sqrt(run * run + rise * rise); there += run / pace(rise / run); back += run / pace(-rise / run); }
+        $('m-out').innerHTML = '<p style="font-size:20px;font-weight:700;margin:2px 0">' + far(ground) + ' <span class="small" style="font-weight:400">over the ground</span></p>' +
+          '<p class="small">' + far(total) + ' flat on the map · ' + stretches + '</p>' +
+          (total > 400 ? '<p style="margin:6px 0">🥾 About <b>' + clock(there / 60) + '</b> on foot' + (Math.abs(there - back) > 120 ? ', <b>' + clock(back / 60) + '</b> coming back' : '') +
+            '. <span class="small">The climbs are counted. This is a steady walker on a road or trail: off trail, or with a heavy load, allow half as much again.</span></p>' : '');
         var cv = $('profile'); cv.hidden = false; var W = cv.width = cv.clientWidth * 2, H = cv.height = 240, g = cv.getContext('2d'), padL = 8, padB = 8, span = Math.max(hi - lo, 10);
         var X = function (k) { return padL + (W - 2 * padL) * k / N; }, Y = function (v) { return H - padB - (H - 2 * padB - 22) * (v - lo) / span; };
         g.clearRect(0, 0, W, H); g.beginPath(); g.moveTo(X(0), H - padB); els.forEach(function (v, k) { g.lineTo(X(k), Y(v)); }); g.lineTo(X(N), H - padB); g.closePath();
