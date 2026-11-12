@@ -20,6 +20,7 @@
   "Heights: Mapterhorn (USGS 3DEP and others)",
   "Tax lots: Josephine County Assessor",
   "Land ownership: Bureau of Land Management, Oregon State Office",
+  "Addresses: Josephine County Assessor",
   "Water: USGS National Hydrography Dataset",
   "Wells: Oregon Water Resources Department well reports",
   "Dams: Oregon Water Resources Department",
@@ -67,6 +68,7 @@
   ]
  },
  "places": "illinois-valley-places.json",
+ "addresses": "illinois-valley-addresses.json",
  "overlays": [
   {
    "group": "water",
@@ -217,6 +219,7 @@
   "illinois-valley-terrain.pmtiles": 29417466,
   "illinois-valley-property.pmtiles": 7818714,
   "illinois-valley-places.json": 219931,
+  "illinois-valley-addresses.json": 1021568,
   "illinois-valley-water.pmtiles": 4611941,
   "illinois-valley-food.pmtiles": 1914239,
   "illinois-valley-materials.pmtiles": 1398850,
@@ -226,5 +229,5 @@
   "illinois-valley-game.pmtiles": 2233926,
   "illinois-valley-timber.pmtiles": 1928131
  },
- "v": "5d7f7e017ebf"
+ "v": "59ad681be514"
 }

@@ -1,7 +1,7 @@
 // Service worker: keeps the app and the saved library available offline.
 // - "shell" cache: the app itself, replaced on each new version
 // - "content" cache: search data, guides, tools, walking routes — kept across versions
-const BUILD = 'ffa645d573';
+const BUILD = 'b537693d3a';
 const SHELL = 'shell-' + BUILD, CONTENT = 'content-v1';
 const SHELL_FILES = ['./', 'index.html', 'app.js', 'search-worker.js', 'manifest.webmanifest', 'icon.svg', 'icon-192.png', 'icon-512.png', 'data/manifest.json'];
 const shellPaths = new Set(SHELL_FILES.map(f => new URL(f, self.registration.scope).pathname));
@@ -20,13 +20,17 @@ self.addEventListener('fetch', e => {
   if (url.pathname.includes('/download/')) return; // the installer kit zip: straight from the network, never stored
   if (url.pathname.includes('/media/')) return;    // the video: straight from the network (it asks for a piece at a time), never stored
   if (url.pathname.endsWith('.pmtiles')) { e.respondWith(mapFile(req)); return; }   // the map's files: read a piece at a time
-  const fresh = req.mode === 'navigate' || url.pathname.endsWith('/data/manifest.json') || url.pathname.endsWith('/maps/index.json') || shellPaths.has(url.pathname);
+  // asked for afresh each time (the saved copy is for when there is no network): pages, the app, and the map's lists
+  // (which files the map has, the place names, the addresses), so a newer map is seen as soon as there is one
+  const fresh = req.mode === 'navigate' || url.pathname.endsWith('/data/manifest.json') || (url.pathname.includes('/maps/') && url.pathname.endsWith('.json')) || shellPaths.has(url.pathname);
   e.respondWith(fresh ? networkFirst(req, url) : cacheFirst(req, url));
 });
 const cacheFor = url => shellPaths.has(url.pathname) ? SHELL : CONTENT;
 async function networkFirst(req, url) {
   try {
-    const r = await fetch(req);
+    // with a saved copy to fall back on, a signal too weak to answer in a few seconds counts as none
+    const saved = await caches.match(req, { ignoreSearch: true });
+    const r = await (saved ? Promise.race([fetch(req), new Promise((_, no) => setTimeout(() => no(new Error('slow')), 7000))]) : fetch(req));
     // a page that was redirected (e.g. a folder without its last /): let the browser follow the redirect itself;
     // Safari and every iPhone browser refuse to show a redirected page handed over by a service worker
     if (req.mode === 'navigate' && r.redirected) return Response.redirect(r.url, 302);

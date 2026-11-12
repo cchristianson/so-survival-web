@@ -20,6 +20,7 @@
 | `<area>-terrain.pmtiles` | ground heights; the browser draws the contour lines and hill shading from them | Mapterhorn (https://mapterhorn.com; in the US, USGS 3DEP) |
 | `<area>-property.pmtiles` | tax-lot outlines and who manages the land | the public map servers named in the area's `region.json` (`web_map`) |
 | `<area>-places.json` | names to search for | taken from the streets file |
+| `<area>-addresses.json` | house numbers to search for, by street, each with the middle of its lot | the tax-lot server named in `region.json` (`web_map.addresses`): the lot's own street address only, no names |
 | `<area>-water.pmtiles` | creeks (year-round or seasonal), springs, wells, dams | USGS National Hydrography Dataset; the state's well reports and dam inventory |
 | `<area>-food.pmtiles` | good growing ground, wild food sightings, fish streams | USDA NRCS Soil Survey; iNaturalist (research grade, open positions only); the state's fish habitat map |
 | `<area>-materials.pmtiles` | rock types; mines, quarries and mineral sites | USGS State Geologic Map Compilation; the state geology agency |
@@ -28,6 +29,11 @@
 | `<area>-travel.pmtiles` | walking routes, section grid, escape routes; forest and BLM roads (number, whether they can be driven), gates and road blocks | the library's routes; BLM's land survey; the county; USDA Forest Service; BLM |
 | `<area>-game.pmtiles` | hunting units, deer and elk habitat, game sightings | the state wildlife agency; iNaturalist (research grade, open positions only) |
 | `<area>-timber.pmtiles` | what grows where, as pictures (PNG tiles, a dozen kinds) | LANDFIRE existing vegetation type (30 m) |
+
+On the **website** the page's programs get their version in their names (`map.js` becomes `map.1a2b3c4d.js`; the
+website build does it), because a phone's saved copy of a file is never asked for again: a changed program must be
+a new file. The page itself, `index.json`, the place names and the addresses are asked for afresh whenever there
+is a network. On a drive nothing is saved by the browser, so the names stay plain.
 
 **Frost pockets**, like steep ground and sunny slopes, are worked out in the browser from the height tiles
 (`frostTile` in `map.js`). **Shared pins** are kept by the Library Assistant (`/api/pins`, `pins.go`, in
