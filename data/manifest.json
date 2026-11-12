@@ -1,8 +1,8 @@
 {
-"built": "2026-11-12 01:38 UTC",
+"built": "2026-11-12 02:43 UTC",
 "docs": "docs-8e81aaa911.json",
 "shards": [
-"chunks00-357f15e9e3.json",
+"chunks00-ad545d8cf3.json",
 "chunks01-db17873bdc.json",
 "chunks02-2b7a8c83d6.json",
 "chunks03-cb7b4471d7.json",
@@ -77,7 +77,7 @@
 "icon-192.png",
 "icon-512.png",
 "data/docs-8e81aaa911.json",
-"data/chunks00-357f15e9e3.json",
+"data/chunks00-ad545d8cf3.json",
 "data/chunks01-db17873bdc.json",
 "data/chunks02-2b7a8c83d6.json",
 "data/chunks03-cb7b4471d7.json",
@@ -524,7 +524,7 @@
 "vendor/README.md",
 "vendor/web-llm-0.2.85.js"
 ],
-"bytes": 207539379
+"bytes": 207539719
 },
 "routes": {
 "files": [
@@ -907,7 +907,7 @@
 "tools/map/fonts/Noto Sans Regular/256-511.pbf",
 "tools/map/fonts/Noto Sans Regular/8192-8447.pbf",
 "tools/map/fonts/OFL.txt",
-"tools/map/map.303bf30a.js",
+"tools/map/map.f3c8c838.js",
 "tools/map/maplibre-contour.055e45d0.js",
 "tools/map/maplibre-gl.576b085f.css",
 "tools/map/maplibre-gl.be9633c4.js",
@@ -1439,7 +1439,7 @@
 "maps/terrain/9/80/190.webp",
 "maps/terrain/9/80/191.webp"
 ],
-"bytes": 126078848
+"bytes": 126081228
 }
 }
 }

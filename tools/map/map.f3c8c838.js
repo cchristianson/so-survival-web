@@ -171,6 +171,7 @@
       Object.keys(SHEETS).forEach(function (k) { $('s-' + k).hidden = k !== name; if (SHEETS[k][1]) $(SHEETS[k][1]).classList.toggle('on', k === name); });
       $('sheettitle').textContent = title || SHEETS[name][0]; $('sheet').classList.toggle('tall', SHEETS[name][2]);
       $('sheet').hidden = false; document.body.classList.add('sheet-open'); $('results').hidden = true; $('sheetbody').scrollTop = 0;
+      fitSheet();
     }
     function closeSheet() {
       if (sheet === 'measure') endMeasure();
@@ -180,6 +181,36 @@
       if (pin && !pinKept) { pin.remove(); pin = null; }
     }
     $('sheetclose').onclick = closeSheet;
+    // On a phone the panel is dragged taller or shorter by the handle at its top; each kind of panel (layers, what's
+    // here, measure ...) keeps the height it was given, as a share of the screen. Pulled right down, it closes.
+    var sheetSize = store.get('arkMapSheetSize', {});
+    function fitSheet() {
+      var el = $('sheet'), f = innerWidth < 820 && el.offsetParent ? sheetSize[sheet] : 0;
+      el.style.height = f ? Math.round(Math.max(96, f * el.offsetParent.clientHeight)) + 'px' : ''; el.style.maxHeight = f ? 'none' : '';
+    }
+    (function () {
+      var el = $('sheet'), y0 = 0, h0 = 0, h = 0, on = false;
+      var move = function (e) {
+        if (!on) return;
+        h = Math.max(40, Math.min(el.offsetParent.clientHeight - 6, h0 + y0 - e.clientY)); el.style.maxHeight = 'none'; el.style.height = h + 'px'; e.preventDefault();
+      };
+      var end = function () {
+        if (!on) return; on = false; el.classList.remove('drag');
+        if (h < 84) { closeSheet(); return; }
+        if (Math.abs(h - h0) > 4) { sheetSize[sheet] = Math.round(h / el.offsetParent.clientHeight * 1000) / 1000; store.set('arkMapSheetSize', sheetSize); }
+        fitSheet();
+      };
+      [$('sheetgrip'), $('sheethead')].forEach(function (g) {
+        g.addEventListener('pointerdown', function (e) {
+          if (innerWidth >= 820 || (e.target.closest && e.target.closest('button'))) return;
+          on = true; y0 = e.clientY; h0 = h = el.getBoundingClientRect().height; el.classList.add('drag');
+          try { g.setPointerCapture(e.pointerId); } catch (err) {}
+          e.preventDefault();
+        });
+        g.addEventListener('pointermove', move); g.addEventListener('pointerup', end); g.addEventListener('pointercancel', end);
+      });
+      addEventListener('resize', function () { if (sheet) fitSheet(); });
+    })();
     var toggleSheet = function (name, then) { return function () { if (sheet === name) closeSheet(); else { openSheet(name); if (then) then(); } }; };
 
     // ---- layers: a switch for each, in groups that fold; what is on is remembered on this device
