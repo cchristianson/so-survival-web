@@ -28,13 +28,19 @@ a{color:var(--accent)}[hidden]{display:none!important}button{font:inherit;color:
 /* one panel for everything: a sheet from the bottom on a phone, a column on the left on a wide screen */
 #sheet{position:absolute;z-index:6;background:var(--card);border:1px solid var(--line);box-shadow:0 -4px 24px rgba(0,0,0,.3);left:0;right:0;bottom:0;max-height:62%;border-radius:16px 16px 0 0;display:flex;flex-direction:column;padding-bottom:env(safe-area-inset-bottom)}
 #sheet.tall{max-height:86%}
-#sheethead{display:flex;align-items:center;gap:8px;padding:10px 14px 6px;flex:none}
+#sheethead{display:flex;align-items:center;gap:8px;padding:4px 14px 6px;flex:none}
 #sheethead b{font-size:17px;flex:1}
 #sheethead button{border:0;background:none;color:var(--muted);font-size:26px;cursor:pointer;line-height:1;padding:0 4px}
-#sheetbody{overflow:auto;padding:0 14px 14px;-webkit-overflow-scrolling:touch}
+#sheetbody{overflow:auto;padding:0 14px 14px;-webkit-overflow-scrolling:touch;flex:1 1 auto}
+/* on a phone: a handle to drag the panel taller or shorter by (map.js); a wide screen has none */
+#sheetgrip{flex:none;display:flex;justify-content:center;padding:9px 0 3px;cursor:ns-resize;touch-action:none}
+#sheetgrip i{display:block;width:46px;height:5px;border-radius:3px;background:var(--muted);opacity:.55}
+#sheethead{touch-action:none}
+#sheet.drag{user-select:none;-webkit-user-select:none}
 @media(min-width:820px){
   #sheet{left:10px;top:10px;bottom:10px;right:auto;width:370px;max-height:none;border-radius:14px;box-shadow:0 6px 24px rgba(0,0,0,.3)}
   #sheet.tall{max-height:none}
+  #sheetgrip{display:none}
   body.sheet-open .maplibregl-ctrl-top-left{left:380px}
 }
 .small{font-size:13.5px;color:var(--muted)}p{margin:6px 0}
@@ -105,6 +111,7 @@ input.t,textarea.t{width:100%;font:inherit;padding:8px 10px;border-radius:10px;b
   <div id="results" hidden></div>
   <div id="msg" hidden></div>
   <div id="sheet" hidden>
+    <div id="sheetgrip" title="Drag to make this taller or shorter"><i></i></div>
     <div id="sheethead"><b id="sheettitle"></b><button type="button" id="sheetclose" aria-label="Close">×</button></div>
     <div id="sheetbody">
       <section id="s-layers" hidden>
@@ -149,6 +156,6 @@ input.t,textarea.t{width:100%;font:inherit;padding:8px 10px;border-radius:10px;b
 <script src="maplibre-gl.be9633c4.js"></script>
 <script src="pmtiles.caf981bc.js"></script>
 <script src="maplibre-contour.055e45d0.js"></script>
-<script src="map.303bf30a.js"></script>
+<script src="map.57297d60.js"></script>
 </body>
 </html>

@@ -61,8 +61,8 @@ async function loadWide(act) {
   if (card.hidden) return;
   const st = j.state || {}, gbs = (j.offer.mb / 1024).toFixed(1);
   $('widetext').innerHTML = j.have && !st.running
-    ? `The map (🔧 Tools → 🗺️ Map) has roads, trails and topo lines for <b>${esc(j.offer.label)}</b>. Property lines cover the local area.`
-    : `The map (🔧 Tools → 🗺️ Map) covers the local area. This adds roads, trails and topo lines for <b>${esc(j.offer.label)}</b>: about ${gbs} GB. It needs the internet, so do it on a computer, before the drive goes into an ARK Vault.`;
+    ? `The map (🔧 Tools → 🗺️ Map) has roads and topo lines for <b>${esc(j.offer.label)}</b>${j.offer.note ? ' (' + esc(j.offer.note) + ')' : ''}. Property lines and the other layers cover the local area.`
+    : `The map (🔧 Tools → 🗺️ Map) covers the local area. This adds roads and topo lines for <b>${esc(j.offer.label)}</b>${j.offer.note ? ' (' + esc(j.offer.note) + ')' : ''}: about ${gbs} GB. It needs the internet and can take some hours, so do it on a computer, before the drive goes into an ARK Vault. If it stops part way, press Download again and it carries on.`;
   $('widego').hidden = st.running; $('widego').textContent = j.have ? 'Download it again (a newer map)' : 'Download it';
   $('widestop').hidden = !st.running;
   $('widebarw').hidden = !st.running;
