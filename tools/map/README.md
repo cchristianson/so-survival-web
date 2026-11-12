@@ -35,6 +35,13 @@ website build does it), because a phone's saved copy of a file is never asked fo
 a new file. The page itself, `index.json`, the place names and the addresses are asked for afresh whenever there
 is a network. On a drive nothing is saved by the browser, so the names stay plain.
 
+On the **website** the map can reach as far as the bigger map while a phone has a signal (`web_map.online` in
+`region.json`, `online` in `index.json`; `farMap` and `heights` in `map.js`). The streets are asked for tile by tile
+(`ark-streets://`): from the file on the device first, and only for a tile that is not in it, from the bigger map's
+street file on a file host. Heights work the same way (`ark-dem://`, `ark-contour://`): the device's own tiles for
+its own area, a far source of plain tile addresses for the rest. So the local map never waits for the network, and
+with no signal the far map is simply not there. Nothing of the far map is saved on the phone.
+
 **Frost pockets**, like steep ground and sunny slopes, are worked out in the browser from the height tiles
 (`frostTile` in `map.js`). **Shared pins** are kept by the Library Assistant (`/api/pins`, `pins.go`, in
 `map-pins.json` next to its `settings.json`), so they only exist on a drive or an ARK Vault, not on the website.
