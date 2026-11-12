@@ -1,8 +1,8 @@
 {
-"built": "2026-11-11 23:03 UTC",
+"built": "2026-11-11 23:46 UTC",
 "docs": "docs-8e81aaa911.json",
 "shards": [
-"chunks00-a97902570a.json",
+"chunks00-5de2fa23db.json",
 "chunks01-72569499b4.json",
 "chunks02-9fe5e412b7.json",
 "chunks03-577e085db5.json",
@@ -77,7 +77,7 @@
 "icon-192.png",
 "icon-512.png",
 "data/docs-8e81aaa911.json",
-"data/chunks00-a97902570a.json",
+"data/chunks00-5de2fa23db.json",
 "data/chunks01-72569499b4.json",
 "data/chunks02-9fe5e412b7.json",
 "data/chunks03-577e085db5.json",
@@ -524,7 +524,7 @@
 "vendor/README.md",
 "vendor/web-llm-0.2.85.js"
 ],
-"bytes": 207529525
+"bytes": 207534995
 },
 "routes": {
 "files": [
@@ -912,15 +912,17 @@
 "tools/map/maplibre-gl.css",
 "tools/map/maplibre-gl.js",
 "tools/map/pmtiles.js",
-"maps/illinois-valley-food.pmtiles?v=50f7b8c77360",
-"maps/illinois-valley-hazards.pmtiles?v=50f7b8c77360",
-"maps/illinois-valley-materials.pmtiles?v=50f7b8c77360",
+"maps/illinois-valley-food.pmtiles?v=5d7f7e017ebf",
+"maps/illinois-valley-game.pmtiles?v=5d7f7e017ebf",
+"maps/illinois-valley-hazards.pmtiles?v=5d7f7e017ebf",
+"maps/illinois-valley-materials.pmtiles?v=5d7f7e017ebf",
 "maps/illinois-valley-places.json",
-"maps/illinois-valley-places.pmtiles?v=50f7b8c77360",
-"maps/illinois-valley-property.pmtiles?v=50f7b8c77360",
-"maps/illinois-valley-streets.pmtiles?v=50f7b8c77360",
-"maps/illinois-valley-travel.pmtiles?v=50f7b8c77360",
-"maps/illinois-valley-water.pmtiles?v=50f7b8c77360",
+"maps/illinois-valley-places.pmtiles?v=5d7f7e017ebf",
+"maps/illinois-valley-property.pmtiles?v=5d7f7e017ebf",
+"maps/illinois-valley-streets.pmtiles?v=5d7f7e017ebf",
+"maps/illinois-valley-timber.pmtiles?v=5d7f7e017ebf",
+"maps/illinois-valley-travel.pmtiles?v=5d7f7e017ebf",
+"maps/illinois-valley-water.pmtiles?v=5d7f7e017ebf",
 "maps/index.json",
 "maps/terrain/0/0/0.webp",
 "maps/terrain/1/0/0.webp",
@@ -1141,7 +1143,7 @@
 "maps/terrain/9/80/189.webp",
 "maps/terrain/9/80/190.webp"
 ],
-"bytes": 61936980
+"bytes": 68687457
 }
 }
 }

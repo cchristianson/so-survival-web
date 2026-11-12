@@ -26,6 +26,7 @@
   "Soils: USDA NRCS Soil Survey, from Josephine County GIS",
   "Wild food sightings: iNaturalist (research grade, open positions)",
   "Fish streams: Oregon Department of Fish and Wildlife",
+  "Rock types: U.S. Geological Survey, State Geologic Map Compilation",
   "Mines and quarries: Oregon Department of Geology and Mineral Industries (MILO)",
   "Fire history: National Interagency Fire Center",
   "Flood zones: FEMA National Flood Hazard Layer",
@@ -33,8 +34,15 @@
   "Places: OpenStreetMap contributors",
   "Fire stations, evacuation points, lifeline places, bridges, escape routes: Josephine County GIS",
   "Recreation sites: USDA Forest Service",
+  "Radio sites: FCC licences, gathered by the National Interagency Fire Center",
+  "Fire lookouts: Oregon Department of Forestry",
   "Routes: OpenStreetMap contributors, OSRM",
-  "Section grid: BLM Public Land Survey System"
+  "Section grid: BLM Public Land Survey System",
+  "Forest roads: USDA Forest Service",
+  "BLM roads, gates and road blocks: Bureau of Land Management, Oregon State Office",
+  "Hunting units, deer and elk habitat: Oregon Department of Fish and Wildlife",
+  "Game sightings: iNaturalist (research grade, open positions)",
+  "What grows where: LANDFIRE (U.S. Forest Service and Department of the Interior)"
  ],
  "terrain": {
   "file": "illinois-valley-terrain.pmtiles",
@@ -85,6 +93,7 @@
    "group": "materials",
    "file": "illinois-valley-materials.pmtiles",
    "layers": [
+    "rocks",
     "mines"
    ],
    "maxzoom": 13
@@ -103,7 +112,8 @@
    "group": "places",
    "file": "illinois-valley-places.pmtiles",
    "layers": [
-    "places"
+    "places",
+    "towers"
    ],
    "maxzoom": 13
   },
@@ -115,9 +125,78 @@
     "sections",
     "section_labels",
     "townships",
-    "escape"
+    "escape",
+    "gates",
+    "backroads",
+    "backroad_labels"
    ],
    "maxzoom": 13
+  },
+  {
+   "group": "game",
+   "file": "illinois-valley-game.pmtiles",
+   "layers": [
+    "hunt_units",
+    "deer_elk",
+    "game"
+   ],
+   "maxzoom": 13
+  },
+  {
+   "group": "timber",
+   "file": "illinois-valley-timber.pmtiles",
+   "layers": [
+    "timber"
+   ],
+   "maxzoom": 12,
+   "raster": true,
+   "minzoom": 8,
+   "classes": [
+    [
+     "fir",
+     "#14532d"
+    ],
+    [
+     "mixed",
+     "#3f9b4b"
+    ],
+    [
+     "pine",
+     "#e9a23b"
+    ],
+    [
+     "oak",
+     "#8b5a2b"
+    ],
+    [
+     "cedar",
+     "#b91c1c"
+    ],
+    [
+     "hard",
+     "#84cc16"
+    ],
+    [
+     "wet",
+     "#0ea5e9"
+    ],
+    [
+     "brush",
+     "#9d6bd1"
+    ],
+    [
+     "grass",
+     "#fde047"
+    ],
+    [
+     "farm",
+     "#e879a6"
+    ],
+    [
+     "rock",
+     "#9ca3af"
+    ]
+   ]
   }
  ],
  "wide": {
@@ -140,10 +219,12 @@
   "illinois-valley-places.json": 219931,
   "illinois-valley-water.pmtiles": 4611941,
   "illinois-valley-food.pmtiles": 1914239,
-  "illinois-valley-materials.pmtiles": 270698,
+  "illinois-valley-materials.pmtiles": 1398850,
   "illinois-valley-hazards.pmtiles": 1030941,
-  "illinois-valley-places.pmtiles": 98264,
-  "illinois-valley-travel.pmtiles": 849792
+  "illinois-valley-places.pmtiles": 117825,
+  "illinois-valley-travel.pmtiles": 2270362,
+  "illinois-valley-game.pmtiles": 2233926,
+  "illinois-valley-timber.pmtiles": 1928131
  },
- "v": "50f7b8c77360"
+ "v": "5d7f7e017ebf"
 }
