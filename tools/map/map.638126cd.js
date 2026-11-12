@@ -587,14 +587,18 @@
 
     // ---- find a place by name
     var places = null, cfg0 = cfg.home || cfg.bbox;
-    if (cfg.places) fetch(DATA + cfg.places).then(function (r) { return r.json(); }).then(function (p) {
-      places = p;
-      var farPlaces = cfg.far ? cfg.far.places : cfg.widePlaces ? DATA + cfg.widePlaces : '';
-      if (farPlaces) fetch(farPlaces).then(function (r) { return r.json(); }).then(function (far) {   // a bigger map's towns, after the local names
-        var have = {}; p.forEach(function (x) { if (x[1] === 'locality') have[x[0]] = 1; });
-        places = p.concat(far.filter(function (x) { return !have[x[0]] || x[2] < cfg0[0] || x[2] > cfg0[2] || x[3] < cfg0[1] || x[3] > cfg0[3]; }));
-      }).catch(function () {});
-    }).catch(function () {});
+    // The towns of a bigger map join the local names. On a drive they are a file beside the others. On the website they
+    // are a couple of MB over the air, so they are fetched only when someone goes to search.
+    var farPlaces = cfg.far ? cfg.far.places : cfg.widePlaces ? DATA + cfg.widePlaces : '', farAsked = false;
+    function moreNames() {
+      if (farAsked || !farPlaces || !places) return; farAsked = true;
+      fetch(farPlaces).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (far) {
+        var have = {}; places.forEach(function (x) { if (x[1] === 'locality') have[x[0]] = 1; });
+        places = places.concat(far.filter(function (x) { return !have[x[0]] || x[2] < cfg0[0] || x[2] > cfg0[2] || x[3] < cfg0[1] || x[3] > cfg0[3]; }));
+        if ($('q').value.trim()) search();
+      }).catch(function () { farAsked = false; });
+    }
+    if (cfg.places) fetch(DATA + cfg.places).then(function (r) { return r.json(); }).then(function (p) { places = p; if (!cfg.far || document.activeElement === $('q')) moreNames(); }).catch(function () {});
     else if (!cfg.addresses) $('q').hidden = true;
     if (cfg.addresses) $('q').placeholder = 'Find a place or address…';
     var ICON = { locality: '🏘️', peak: '⛰️', lake: '💧', river: '🌊', stream: '💧', park: '🌲', road: '🛣️', poi: '📌' };
@@ -626,6 +630,14 @@
       near.sort(function (a, c) { return a.d - c.d; });
       return near.slice(0, 6);
     }
+    // a place beyond the local map: how far it is from the middle of the screen and which way, to tell towns of one name apart
+    function away(p) {
+      if (p[2] >= cfg0[0] && p[2] <= cfg0[2] && p[3] >= cfg0[1] && p[3] <= cfg0[3]) return '';
+      var c = map.getCenter(), mi = dist(c, { lng: p[2], lat: p[3] }) / 1609.34, r = Math.PI / 180;
+      var y = Math.sin((p[2] - c.lng) * r) * Math.cos(p[3] * r), x = Math.cos(c.lat * r) * Math.sin(p[3] * r) - Math.sin(c.lat * r) * Math.cos(p[3] * r) * Math.cos((p[2] - c.lng) * r);
+      var way = ['north', 'northeast', 'east', 'southeast', 'south', 'southwest', 'west', 'northwest'][Math.round(((Math.atan2(y, x) / r + 360) % 360) / 45) % 8];
+      return ' · ' + Math.round(mi).toLocaleString() + ' mi ' + way;
+    }
     function search() {
       var text = $('q').value.trim(), words = text.toLowerCase().split(/\s+/).filter(Boolean), box = $('results'), hit = [], note = '', m, i, p, n;
       if (!words.length) { box.hidden = true; return; }
@@ -640,7 +652,7 @@
       if (!hit.length && !note && places) {
         for (i = 0; i < places.length && hit.length < 400; i++) {
           p = places[i]; n = p[0].toLowerCase();
-          if (words.every(function (w) { return n.indexOf(w) >= 0; })) hit.push({ icon: ICON[p[1]] || '📌', t: p[0], k: KIND[p[1]] || '', ll: [p[2], p[3]], z: ZOOM[p[1]] || 14 });
+          if (words.every(function (w) { return n.indexOf(w) >= 0; })) hit.push({ icon: ICON[p[1]] || '📌', t: p[0], k: (KIND[p[1]] || '') + away(p), ll: [p[2], p[3]], z: ZOOM[p[1]] || 14 });
         }
         var first = words[0];   // names that start with what was typed come first; the list is already in order of importance
         hit.sort(function (a, c) { return (a.t.toLowerCase().indexOf(first) === 0 ? 0 : 1) - (c.t.toLowerCase().indexOf(first) === 0 ? 0 : 1); });
@@ -886,7 +898,7 @@
     };
     $('t-print').onclick = toggleSheet('print', function () { receiptPreview(); });
     $('q').addEventListener('input', search);
-    $('q').addEventListener('focus', search);
+    $('q').addEventListener('focus', function () { moreNames(); search(); });
     $('q').addEventListener('keydown', function (e) { if (e.key === 'Enter') { var f = $('results').querySelector('button'); if (f) f.click(); } });
   }
 
