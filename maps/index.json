@@ -13,6 +13,7 @@
   12
  ],
  "streets": "illinois-valley-streets.pmtiles",
+ "streets_maxzoom": 15,
  "built": "November 2026",
  "credits": [
   "© OpenStreetMap contributors (ODbL)",
