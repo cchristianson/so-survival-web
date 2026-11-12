@@ -272,6 +272,11 @@
    }
   ]
  },
+ "online": {
+  "url": "https://maps.theofflineark.com/",
+  "terrain": "https://tiles.mapterhorn.com/{z}/{x}/{y}.webp",
+  "terrain_maxzoom": 12
+ },
  "files": {
   "illinois-valley-streets.pmtiles": 26054598,
   "illinois-valley-terrain.pmtiles": 53896152,
