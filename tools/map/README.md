@@ -43,7 +43,7 @@ Of tax lots, the outlines, lot numbers and acres are fetched, and the owner's na
 `region.json` names that field (`web_map.parcels.owner`): never mailing addresses or values.
 A drive can also hold a **bigger map** (streets and heights for a wide area, `wide-*.pmtiles` and `wide.json`
 in `Map/data/`): the Library Assistant cuts it out of the same two world maps on request (Settings > A bigger
-map, `mapwide.go`); what area is `web_map.wide` in `region.json`. Over a shared library the page can move to
+map, `mapwide.go`); what area is `web_map.wide` in `region.json`. It can be coarser far from home and finer near it (`tiers`): the fine tiles are then simply not in the files, the reader reports each as missing, and `map.js` has the map look again so that it draws the coarser tile above (MapLibre does not do that by itself for vector tiles). A download that stops carries on where it stopped; the towns of the whole area are listed for the search (`mapplaces.go`). Over a shared library the page can move to
 the Library Assistant's https address (`secure.go`), where a phone will give its position.
 
 On the website the files are in `maps/` (the height tiles also as plain files in `maps/terrain/`, since
