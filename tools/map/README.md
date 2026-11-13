@@ -26,7 +26,7 @@
 | `<area>-materials.pmtiles` | rock types; mines, quarries and mineral sites | USGS State Geologic Map Compilation; the state geology agency |
 | `<area>-hazards.pmtiles` | past wildfires, flood zones, old landslides | National Interagency Fire Center; FEMA; the state geology agency |
 | `<area>-places.pmtiles` | useful places and bridges; radio towers and fire lookouts | OpenStreetMap (from the streets file); the county; USDA Forest Service; FCC licences as gathered by the National Interagency Fire Center; the state forestry agency |
-| `<area>-travel.pmtiles` | walking routes, section grid, escape routes; forest and BLM roads (number, whether they can be driven), gates and road blocks | the library's routes; BLM's land survey; the county; USDA Forest Service; BLM |
+| `<area>-travel.pmtiles` | walking routes, section grid, escape routes; forest and BLM roads (number, whether they can be driven), gates and road blocks; trails (name, number, who may use them, how rough, surface, length) and trailheads | the library's routes; BLM's land survey; the county; USDA Forest Service; BLM; National Park Service |
 | `<area>-game.pmtiles` | hunting units, deer and elk habitat, game sightings | the state wildlife agency; iNaturalist (research grade, open positions only) |
 | `<area>-timber.pmtiles` | what grows where, as pictures (PNG tiles, a dozen kinds) | LANDFIRE existing vegetation type (30 m) |
 
@@ -41,6 +41,12 @@ On the **website** the map can reach as far as the bigger map while a phone has 
 street file on a file host. Heights work the same way (`ark-dem://`, `ark-contour://`): the device's own tiles for
 its own area, a far source of plain tile addresses for the rest. So the local map never waits for the network, and
 with no signal the far map is simply not there. Nothing of the far map is saved on the phone.
+
+**One town's walking routes**, all the way there: `MAP.html?route=<town>` (the routes page's **Show on the map**, or
+**Walking route to ...** in the map's search) draws the back-road, highway and bicycle routes from the routes' own
+folder (`tracks/<town>.json` and `towns.json`, made by `tools/maintenance/build_routes_page.py`), each with a switch,
+and lets the view go as far as the route does. The town is in `?route=`, not after the `#`, which holds where the map
+is looking. The full-page colour print carries the route; the receipt printer's map does not yet.
 
 **Frost pockets**, like steep ground and sunny slopes, are worked out in the browser from the height tiles
 (`frostTile` in `map.js`). **Shared pins** are kept by the Library Assistant (`/api/pins`, `pins.go`, in
