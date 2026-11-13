@@ -44,6 +44,9 @@
   "Section grid: BLM Public Land Survey System",
   "Forest roads: USDA Forest Service",
   "BLM roads, gates and road blocks: Bureau of Land Management, Oregon State Office",
+  "Trails: USDA Forest Service",
+  "Trails: Bureau of Land Management",
+  "Trails: National Park Service",
   "Hunting units, deer and elk habitat: Oregon Department of Fish and Wildlife",
   "Game sightings: iNaturalist (research grade, open positions)",
   "What grows where: LANDFIRE (U.S. Forest Service and Department of the Interior)"
@@ -142,7 +145,9 @@
     "escape",
     "gates",
     "backroads",
-    "backroad_labels"
+    "backroad_labels",
+    "trails",
+    "trailheads"
    ],
    "maxzoom": 13
   },
@@ -296,10 +301,10 @@
   "illinois-valley-food.pmtiles": 2712949,
   "illinois-valley-materials.pmtiles": 2298565,
   "illinois-valley-hazards.pmtiles": 2555414,
-  "illinois-valley-places.pmtiles": 193388,
-  "illinois-valley-travel.pmtiles": 3752172,
+  "illinois-valley-places.pmtiles": 179373,
+  "illinois-valley-travel.pmtiles": 4317054,
   "illinois-valley-game.pmtiles": 2315485,
   "illinois-valley-timber.pmtiles": 3543494
  },
- "v": "f58bd9ccb262"
+ "v": "f11e311d9566"
 }

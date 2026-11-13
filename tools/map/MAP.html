@@ -75,6 +75,8 @@ body.full #tools{top:max(8px,env(safe-area-inset-top))}
 .fact b{display:block}.fact .k{display:block;font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
 table.kv{border-collapse:collapse;font-size:14.5px}table.kv td{padding:2px 10px 2px 0;vertical-align:top}table.kv td:first-child{color:var(--muted);white-space:nowrap}
 .row{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+.rway{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--line);cursor:pointer}.rway:first-of-type{border-top:0}.rway input{width:20px;height:20px;flex:none;accent-color:var(--accent)}
+.rway i{flex:none;width:26px;height:6px;border-radius:3px}.rway i.dash{background-image:repeating-linear-gradient(90deg,currentColor 0 6px,transparent 6px 10px)!important}.rway span{line-height:1.35}.rway small{display:block;color:var(--muted);font-size:13.5px}
 input.t,textarea.t{width:100%;font:inherit;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);margin:4px 0}
 .pinrow{display:flex;gap:8px;align-items:flex-start;border-top:1px solid var(--line);padding:8px 0}.pinrow:first-child{border-top:0}
 .pinrow .tx{flex:1;min-width:0;cursor:pointer}.pinrow .tx small{display:block;color:var(--muted);font-size:13px}
@@ -131,6 +133,7 @@ input.t,textarea.t{width:100%;font:inherit;padding:8px 10px;border-radius:10px;b
         <p class="small" id="credits"></p>
       </section>
       <section id="s-info" hidden></section>
+      <section id="s-route" hidden></section>
       <section id="s-measure" hidden>
         <p class="small" id="m-hint">Tap the map to mark points along the way. Two points also tell you whether one can see the other (for radio).</p>
         <div id="m-out"></div>
@@ -166,6 +169,6 @@ input.t,textarea.t{width:100%;font:inherit;padding:8px 10px;border-radius:10px;b
 <script src="maplibre-gl.be9633c4.js"></script>
 <script src="pmtiles.caf981bc.js"></script>
 <script src="maplibre-contour.055e45d0.js"></script>
-<script src="map.cd35e57a.js"></script>
+<script src="map.6e33742f.js"></script>
 </body>
 </html>
