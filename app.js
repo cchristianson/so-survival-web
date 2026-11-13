@@ -43,11 +43,12 @@ const ICONS = {
   compass: '<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/>', cross: '<path d="M9 4h6v5h5v6h-5v5H9v-5H4V9h5z"/>',
   drop: '<path d="M12 3c3.5 4.2 6 7.3 6 10.5a6 6 0 0 1-12 0C6 10.3 8.5 7.2 12 3z"/>', bowl: '<path d="M4 11h16a8 8 0 0 1-16 0z"/><path d="M9 7c0-1.5 1-1.5 1-3M14 7c0-1.5 1-1.5 1-3"/>',
   tree: '<path d="M12 3 6 11h3l-4 6h14l-4-6h3z"/><path d="M12 17v4"/>', paw: '<circle cx="7.5" cy="9" r="1.7"/><circle cx="12" cy="6.5" r="1.7"/><circle cx="16.5" cy="9" r="1.7"/><path d="M8 17c0-2.5 2-4.5 4-4.5s4 2 4 4.5c0 1.5-1.3 2-4 2s-4-.5-4-2z"/>',
-  bolt: '<path d="M13 3 5 14h6l-1 7 8-11h-6z"/>', folder: '<path d="M3 6h6l2 2h10v11H3z"/>' };
+  bolt: '<path d="M13 3 5 14h6l-1 7 8-11h-6z"/>', folder: '<path d="M3 6h6l2 2h10v11H3z"/>',
+  draft: '<path d="M4 20V5l15 15z"/><path d="M8 20v-5.5l5.5 5.5"/>' };
 const ic = (n, size = 22) => `<svg class="ic" width="${size}" height="${size}" viewBox="0 0 24 24" aria-hidden="true">${ICONS[n] || ICONS.page}</svg>`;
 const noPic = t => t.replace(/^[^\w(&]+\s*/u, '');   // a title without the little picture in front of it
 const SHELF_ICON = { start: 'compass', health: 'cross', water: 'drop', food: 'bowl', wild: 'tree', animals: 'paw', shelter: 'home', power: 'bolt', making: 'wrench', travel: 'route', comms: 'wifi', disaster: 'alert', fun: 'book', library: 'usb', other: 'folder' };
-const TOOL_ICON = { map: 'pin', calc: 'calc', sci: 'calc', conv: 'ruler', morse: 'morse', pill: 'pill', plantid: 'leaf', walk: 'route' };
+const TOOL_ICON = { map: 'pin', calc: 'calc', sci: 'calc', conv: 'ruler', morse: 'morse', pill: 'pill', plantid: 'leaf', walk: 'route', cad: 'draft' };
 
 // ------------------------------------------------------------------ the screens
 // Each is a <section> of the page. nav: the button it lights up. back: the screen above it (it then gets a Back
@@ -878,6 +879,7 @@ const TOOL_CARDS = [['map', '🗺️ Map', 'A topo map with property lines and l
   ['morse', '📡 Morse code', 'Words into Morse and back, played as beeps or as flashes of the screen at any speed, a key to practise sending, and the whole code.'],
   ['pill', '🔍 Pill identifier', 'Identify a loose pill by the code printed on it — about 32,000 US pills.'],
   ['plantid', '📷 Identify a plant or mushroom', 'Take a photo: the offline AI names it from the plants and mushrooms of the area, marks the poisonous ones, and opens the guides about it.'],
+  ['cad', '📐 CAD', 'Draw to scale: a plan, a part, a pattern to cut out. Type in sizes, add dimensions, print at true size, or save a DXF for a laser or CNC machine.'],
   ['walk', '🥾 Routes: walk, bike, drive', 'From Cave Junction to 359 Oregon and N. California cities: walking days, bicycle riding hours and normal driving times, with turn-by-turn directions and GPS tracks.']];
 // the map is there when its files are: on the drive the Library Assistant says so, on the website the list of files does
 const hasMap = () => mode === 'drive' ? !!server.map : !!(manifest && manifest.offline && manifest.offline.map);
@@ -967,10 +969,10 @@ const PAGES = { sos: 'EMERGENCY-FINDER', az: 'SUBJECT-INDEX', iv: 'ILLINOIS-VALL
   expect: 'WHAT-TO-EXPECT-GUIDE', wildfire: 'WILDFIRE-GUIDE', nuke: 'NUCLEAR-FALLOUT-GUIDE', emp: 'EMP-GUIDE',
   stories: 'STORIES-GAMES-GUIDE',
   device: 'START-ON-ANY-DEVICE', ammocan: 'AMMO-CAN-COMPUTER-GUIDE', get: 'GET-THE-LIBRARY', all: 'README',
-  calc: 'CALCULATOR', sci: 'CALCULATOR', conv: 'UNIT-CONVERTER', morse: 'MORSE-CODE', pill: 'PILL-IDENTIFIER', walk: 'WALKING-ROUTES', plantid: 'PLANT-ID', map: 'MAP' };
+  calc: 'CALCULATOR', sci: 'CALCULATOR', conv: 'UNIT-CONVERTER', morse: 'MORSE-CODE', pill: 'PILL-IDENTIFIER', walk: 'WALKING-ROUTES', plantid: 'PLANT-ID', map: 'MAP', cad: 'CAD' };
 const DRIVE_AT = { sos: 'EMERGENCY-FINDER.html', az: 'SUBJECT-INDEX.html', med: 'Medical/READ-ME-FIRST.html', radio: 'Manuals/Radio-Communications/RADIO-GUIDE.html',
   device: 'START-ON-ANY-DEVICE.html', ammocan: 'AMMO-CAN-COMPUTER-GUIDE.html', get: null, all: 'README.html',
-  calc: 'CALCULATOR.html#basic', sci: 'CALCULATOR.html#sci', conv: 'UNIT-CONVERTER.html', morse: 'MORSE-CODE.html', plantid: 'PLANT-ID.html', map: 'Map/MAP.html',
+  calc: 'CALCULATOR.html#basic', sci: 'CALCULATOR.html#sci', conv: 'UNIT-CONVERTER.html', morse: 'MORSE-CODE.html', plantid: 'PLANT-ID.html', map: 'Map/MAP.html', cad: 'CAD.html',
   pill: 'Medical/Pill-Identifier/PILL-IDENTIFIER.html', walk: 'Southern-Oregon/Walking-Routes/WALKING-ROUTES.html' };
 const WEB_AT = { all: null, calc: 'pages/CALCULATOR.html#basic', sci: 'pages/CALCULATOR.html#sci', map: 'tools/map/MAP.html',
   pill: 'tools/pill-identifier/PILL-IDENTIFIER.html', walk: 'tools/walking-routes/WALKING-ROUTES.html' };
