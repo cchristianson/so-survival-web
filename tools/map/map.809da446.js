@@ -293,7 +293,9 @@
         timer = 0;
         if (document.hidden || !(broken || dead())) return;
         var last = 0; try { last = +sessionStorage.getItem('arkMapRestart') || 0; } catch (e) {}
-        var busy = measuring || /^(INPUT|TEXTAREA)$/.test((document.activeElement || {}).tagName || '');
+        // "typing" is words in a box that would be lost (a pin's name or note): not the search box, and not a switch or slider
+        var el = document.activeElement || {}, box = el.tagName === 'TEXTAREA' || (el.tagName === 'INPUT' && !/^(checkbox|radio|range|file|button)$/.test(el.type || ''));
+        var busy = measuring || (box && el.id !== 'q' && !!el.value);
         if (!busy && Date.now() - last > 60000) { restart(); return; }
         if (!asked) {
           asked = true;
