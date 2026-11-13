@@ -14,6 +14,67 @@ if (!AbortSignal.timeout) AbortSignal.timeout = ms => { const c = new AbortContr
 let mode = 'public', server = {}, manifest = null, worker = null, workerReady = false, workerSearchable = false, workerInfo = {};
 const ai = { kind: 'none', engine: null, label: '', loading: false, error: '' };
 
+// ------------------------------------------------------------------ line icons (drawn here: nothing to fetch)
+const ICONS = {
+  home: '<path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+  book: '<path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-13c-3-.5-6 0-8 1.5z"/><path d="M12 6v13"/>',
+  page: '<path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/>',
+  chat: '<path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-7l-5 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/>',
+  map: '<path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/>',
+  more: '<circle cx="5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="19" cy="12" r="1.3"/>',
+  right: '<path d="m9 6 6 6-6 6"/>', alert: '<path d="M12 4 2.5 20h19z"/><path d="M12 10v5M12 17.6v.4"/>',
+  wrench: '<path d="M14.5 6.5a4 4 0 0 0-5.3 5.3L3 18l3 3 6.2-6.2a4 4 0 0 0 5.3-5.3l-2.7 2.7-2.5-.5-.5-2.5z"/>',
+  down: '<path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/>',
+  chip: '<rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/>',
+  usb: '<rect x="4" y="13" width="16" height="7" rx="1.5"/><path d="M8 13V6h8v7M10.5 9h.01M13.5 9h.01"/>',
+  wifi: '<path d="M5 12a10 10 0 0 1 14 0M8 15a6 6 0 0 1 8 0"/><circle cx="12" cy="18.5" r="1"/>',
+  box: '<rect x="3" y="8" width="18" height="12" rx="1.5"/><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2M10 13h4"/>',
+  help: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 1-1 1.7M12 17v.4"/>',
+  info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.4v.4"/>',
+  sliders: '<path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/>',
+  pin: '<path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/>',
+  calc: '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 12h.01M12 12h.01M16 12h.01M8 16h.01M12 16h.01M16 16h.01"/>',
+  ruler: '<path d="M3 16 16 3l5 5L8 21z"/><path d="m7 12 2 2M10 9l2 2M13 6l2 2"/>',
+  morse: '<path d="M3 12h3M9 12h1M13 12h3M19 12h2"/>',
+  pill: '<rect x="2.5" y="8.5" width="19" height="7" rx="3.5" transform="rotate(-45 12 12)"/><path d="m9.5 9.5 5 5"/>',
+  leaf: '<path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"/><path d="M5 19 13 11"/>',
+  route: '<circle cx="6" cy="18" r="2"/><circle cx="18" cy="6" r="2"/><path d="M8 18h7a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h7"/>',
+  photo: '<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="m4 17 5-4 4 3 3-2 4 3"/>',
+  compass: '<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/>', cross: '<path d="M9 4h6v5h5v6h-5v5H9v-5H4V9h5z"/>',
+  drop: '<path d="M12 3c3.5 4.2 6 7.3 6 10.5a6 6 0 0 1-12 0C6 10.3 8.5 7.2 12 3z"/>', bowl: '<path d="M4 11h16a8 8 0 0 1-16 0z"/><path d="M9 7c0-1.5 1-1.5 1-3M14 7c0-1.5 1-1.5 1-3"/>',
+  tree: '<path d="M12 3 6 11h3l-4 6h14l-4-6h3z"/><path d="M12 17v4"/>', paw: '<circle cx="7.5" cy="9" r="1.7"/><circle cx="12" cy="6.5" r="1.7"/><circle cx="16.5" cy="9" r="1.7"/><path d="M8 17c0-2.5 2-4.5 4-4.5s4 2 4 4.5c0 1.5-1.3 2-4 2s-4-.5-4-2z"/>',
+  bolt: '<path d="M13 3 5 14h6l-1 7 8-11h-6z"/>', folder: '<path d="M3 6h6l2 2h10v11H3z"/>' };
+const ic = (n, size = 22) => `<svg class="ic" width="${size}" height="${size}" viewBox="0 0 24 24" aria-hidden="true">${ICONS[n] || ICONS.page}</svg>`;
+const noPic = t => t.replace(/^[^\w(&]+\s*/u, '');   // a title without the little picture in front of it
+const SHELF_ICON = { start: 'compass', health: 'cross', water: 'drop', food: 'bowl', wild: 'tree', animals: 'paw', shelter: 'home', power: 'bolt', making: 'wrench', travel: 'route', comms: 'wifi', disaster: 'alert', fun: 'book', library: 'usb', other: 'folder' };
+const TOOL_ICON = { map: 'pin', calc: 'calc', sci: 'calc', conv: 'ruler', morse: 'morse', pill: 'pill', plantid: 'leaf', walk: 'route' };
+
+// ------------------------------------------------------------------ the screens
+// Each is a <section> of the page. nav: the button it lights up. back: the screen above it (it then gets a Back
+// button). sec + page: one of the cards kept in the #setup section. The old addresses still mean what they did:
+// #ask, #tools (Guides), #library (Books), #kit (Tools), #setup (now Offline & downloads), #tools:food, #photos.
+const VIEWS = {
+  welcome: { bare: true },
+  home: { nav: 'home', title: 'Home' },
+  ask: { nav: 'ask', title: 'Ask ARK' },
+  tools: { nav: 'tools', title: 'Library' },
+  library: { nav: 'tools', title: 'Library' },
+  maps: { nav: 'maps', title: 'Maps & Routes' },
+  kit: { nav: 'kit', title: 'Tools' },
+  photos: { nav: 'kit', title: 'Family photos & videos', back: 'kit' },
+  more: { nav: 'more', title: 'More' },
+  help: { nav: 'more', title: 'Help', back: 'more' },
+  setup: { nav: 'more', title: 'Offline & downloads', back: 'more', page: 'offline' },
+  ai: { nav: 'more', title: 'Offline AI', back: 'setup', sec: 'setup', page: 'ai' },
+  usb: { nav: 'more', title: 'Complete offline library (USB)', back: 'setup', sec: 'setup', page: 'usb' },
+  sharing: { nav: 'more', title: 'Share with nearby devices', back: 'more', sec: 'setup', page: 'sharing' },
+  vault: { nav: 'more', title: 'ARK Vault', back: 'more', sec: 'setup', page: 'vault' },
+  status: { nav: 'more', title: 'System status', back: 'more', sec: 'setup', page: 'status' },
+  about: { nav: 'more', title: 'About', back: 'more', sec: 'setup', page: 'about' } };
+const NAV = [['home', 'Home', 'home'], ['tools', 'Library', 'book'], ['ask', 'Ask', 'chat'], ['maps', 'Maps', 'map'], ['kit', 'Tools', 'wrench'], ['more', 'More', 'more']];
+const SIDE = [['home', 'Home', 'home'], ['ask', 'Ask ARK', 'chat'], ['tools', 'Guides', 'page'], ['library', 'Books', 'book'], ['maps', 'Maps & Routes', 'map'], ['kit', 'Tools', 'wrench'], ['setup', 'Offline & downloads', 'down'], ['more', 'Settings & help', 'sliders']];
+let view = '', pushed = 0, SAVED = {};
+
 // ------------------------------------------------------------------ start-up
 init();
 screenKeyboard();
@@ -27,7 +88,6 @@ async function init() {
   if (mode === 'drive') {
     $('tagline').textContent = 'Searches every manual, guide and offline encyclopedia on this drive, then has the offline AI answer from what it finds. Everything runs on this device (or the one sharing it with you) — no internet.';
     $('wikilabel').textContent = 'Include Wikipedia & archives';
-    document.querySelector('#tabs [data-tab=setup]').textContent = '⚙️ Settings';
     setInterval(refreshServer, 5000);
     const pr = document.createElement('script'); pr.src = '/print.js'; pr.defer = true; document.head.appendChild(pr); // receipt printer (print.go)
   } else {
@@ -39,8 +99,8 @@ async function init() {
     addEventListener('pagehide', stopAI);   // leaving the page frees the AI's memory; it starts again at the next question
     addEventListener('online', renderStatus); addEventListener('offline', renderStatus);
   }
-  renderStatus(); renderTools(); renderKit(); renderSetup(); loadLibrary(); restoreAnswers();
-  openFromHash(); restoreScroll(location.hash.slice(1).split(':')[0] || 'ask');
+  renderNav(); renderStatus(); renderTools(); renderKit(); renderSetup(); loadLibrary(); restoreAnswers();
+  openFromHash(); restoreScroll(location.hash.slice(1).split(':')[0] || 'home');
   addEventListener('pagehide', saveScroll);
   const q0 = new URLSearchParams(location.search).get('q');
   if (q0) { $('q').value = q0; ask(); }
@@ -51,7 +111,7 @@ async function refreshServer() {
   renderStatus(); renderHealth();
 }
 
-// ⚙️ Settings on the drive: a bigger map for the browser map (roads and topo lines for a wide area around the local
+// More > Offline & downloads on the drive: a detailed map for the browser map (roads and topo lines for a wide area around the local
 // one). The Library Assistant cuts it out of the public world maps, so it needs the internet: once, on a computer.
 let wideTimer = 0;
 async function loadWide(act) {
@@ -61,8 +121,8 @@ async function loadWide(act) {
   if (card.hidden) return;
   const st = j.state || {}, gbs = (j.offer.mb / 1024).toFixed(1);
   $('widetext').innerHTML = j.have && !st.running
-    ? `The map (🔧 Tools → 🗺️ Map) has roads and topo lines for <b>${esc(j.offer.label)}</b>${j.offer.note ? ' (' + esc(j.offer.note) + ')' : ''}. Property lines and the other layers cover the local area.`
-    : `The map (🔧 Tools → 🗺️ Map) covers the local area. This adds roads and topo lines for <b>${esc(j.offer.label)}</b>${j.offer.note ? ' (' + esc(j.offer.note) + ')' : ''}: about ${gbs} GB. It needs the internet and can take some hours, so do it on a computer, before the drive goes into an ARK Vault. If it stops part way, press Download again and it carries on.`;
+    ? `The map (Tools → Map) has roads and topo lines for <b>${esc(j.offer.label)}</b>${j.offer.note ? ' (' + esc(j.offer.note) + ')' : ''}. Property lines and the other layers cover the local area.`
+    : `The map (Tools → Map) covers the local area. This adds roads and topo lines for <b>${esc(j.offer.label)}</b>${j.offer.note ? ' (' + esc(j.offer.note) + ')' : ''}: about ${gbs} GB. It needs the internet and can take some hours, so do it on a computer, before the drive goes into an ARK Vault. If it stops part way, press Download again and it carries on.`;
   $('widego').hidden = st.running; $('widego').textContent = j.have ? 'Download it again (a newer map)' : 'Download it';
   $('widestop').hidden = !st.running;
   $('widebarw').hidden = !st.running;
@@ -73,7 +133,7 @@ async function loadWide(act) {
   if (st.running) wideTimer = setTimeout(loadWide, 2000);
 }
 
-// ⚙️ Settings on a Raspberry Pi: what slows the AI down, in plain words (from /api/status, every 5 seconds)
+// More > Vault system status, on a Raspberry Pi: what slows the AI down, in plain words (from /api/status, every 5 seconds)
 let lastPace = null;   // how fast the AI read and wrote in the last answer (llama-server's timings)
 function renderHealth() {
   const box = $('pihealth');
@@ -81,6 +141,7 @@ function renderHealth() {
   const th = server.throttled;
   box.hidden = !(mode === 'drive' && (typeof th === 'number' && th >= 0 || server.tempC));
   if (box.hidden) return;
+  $('pihtitle').textContent = server.ark ? 'Vault system status' : 'Raspberry Pi status';
   const row = (k, v) => `<tr><td>${k}</td><td>${v}</td></tr>`;
   let h = '<table class="health">';
   if (th >= 0) h += row('Power', th & 0x1 ? '⚠️ <b>Too weak right now</b>'
@@ -166,9 +227,13 @@ function renderStatus() {
       : workerInfo.error ? 'failed to load' : workerSearchable && !fullAsked ? 'guides ready' : workerSearchable ? `ready, still loading ${workerInfo.progress}` : 'loading…');
     const chosen = store.get('aiModel') && MODELS[store.get('aiModel')];
     h += pill(ai.kind === 'webllm' || chosen ? 'ready' : ai.loading ? 'starting' : 'off', 'AI', ai.kind === 'webllm' ? esc(ai.label) : ai.loading ? 'loading…'
-      : chosen ? esc(chosen[2]) + ' — starts when you ask' : 'off — turn on in ⚙️');
+      : chosen ? esc(chosen[2]) + ' — starts when you ask' : 'off — turn on under More');
   }
   $('status').innerHTML = h;
+  const chip = $('netchip'); chip.hidden = false;   // the one word in the header: where this library is, or whether there is a signal
+  if (mode === 'drive') { chip.textContent = server.ark ? 'On a Vault' : 'On this drive'; chip.classList.remove('off'); }
+  else { chip.textContent = navigator.onLine ? 'Online' : 'Offline'; chip.classList.toggle('off', !navigator.onLine); }
+  if (view === 'home') renderHomeOff();
 }
 
 // A Raspberry Pi's own record (server.throttled, the firmware's get_throttled): 0x1 the power is too weak now,
@@ -202,13 +267,19 @@ if (window.matchMedia && matchMedia('(display-mode: standalone)').matches || nav
 
 // ------------------------------------------------------------------ tabs & bindings
 function bindUI() {
-  $('tabs').addEventListener('click', e => {
-    const b = e.target.closest('button'); if (!b) return;
-    document.querySelectorAll('#tabs button').forEach(x => x.classList.toggle('on', x === b));
-    document.querySelectorAll('section').forEach(s => s.hidden = s.id !== b.dataset.tab);
-    try { if (location.hash.slice(1).split(':')[0] !== b.dataset.tab) history.replaceState(history.state, '', '#' + b.dataset.tab); } catch {}
-    const top = document.querySelector('header').getBoundingClientRect().bottom + scrollY; if (scrollY > top) scrollTo(0, top);   // the new tab starts at its top (the bar itself stays put)
+  document.addEventListener('click', e => {   // anything that goes to a screen says which: data-go, or data-tab on the two bars
+    const th = e.target.closest('[data-theme-set]'); if (th) { setTheme(th.dataset.themeSet); renderMore(); return; }
+    const b = e.target.closest('[data-go],#tabs button,#side button'); if (!b || e.defaultPrevented) return;
+    e.preventDefault();
+    if (b.closest('#welcome')) store.set('ark-welcomed', '1');
+    go(b.dataset.go || b.dataset.tab, { grp: b.dataset.grp, ask: b.dataset.ask });
   });
+  $('backbtn').addEventListener('click', goBack);
+  $('openark').addEventListener('click', () => { store.set('ark-welcomed', '1'); go('home'); });
+  $('showwelcome').addEventListener('click', () => go('welcome'));
+  $('hq').addEventListener('input', homeSearch);
+  $('hq').addEventListener('keydown', e => { const q = $('hq').value.trim(); if (e.key === 'Enter' && q) { e.preventDefault(); go('ask', { ask: q }); } });
+  $('guideq').addEventListener('input', filterGuides);
   document.addEventListener('click', onLinkClick, true);
   const EX = ['How do I purify creek water?', 'Signs of milk fever in a goat', 'How far is Grants Pass on foot?', 'How do I stop bleeding from a deep cut?',
     'How do I can venison safely?', 'How much power can a small creek make?', 'What plants here are poisonous?', 'How do I make soap from wood ash?',
@@ -256,7 +327,7 @@ async function askOnce() {
   const box = document.createElement('div'); box.className = 'qa';
   box.innerHTML = `<div class="q">${esc(q)}</div><div class="meta" id="m${id}"><span class="spin"></span>Searching the library…</div><div class="answer" id="a${id}"></div><div class="sources" id="s${id}" hidden></div>`;
   $('out').prepend(box); $('q').value = ''; $('examples').hidden = true;
-  document.querySelector('#tabs [data-tab=ask]').click();
+  if (view !== 'ask') go('ask');
   if (box.getBoundingClientRect().top > innerHeight * 0.5) box.scrollIntoView({ behavior: 'smooth', block: 'start' });
   saveAnswers();
 
@@ -291,13 +362,13 @@ async function askOnce() {
   if (mc) { showMorse(id, mc); meta.textContent = 'Answered from the standard Morse code table (no AI needed).'; saveAnswers(); return; }
   if (!useAI) { showBest(id, srcs, q); saveAnswers(); return; }
   if (mode === 'drive') {
-    if (server.llm === 'off') { showBest(id, srcs, q); saveAnswers(); meta.innerHTML += ' <span>' + esc(server.llmError || 'The AI is turned off on this device.') + ' You can change the AI in <a href="#" onclick="document.querySelector(\'[data-tab=setup]\').click();return false">⚙️ Settings</a>.</span>'; return; }
+    if (server.llm === 'off') { showBest(id, srcs, q); saveAnswers(); meta.innerHTML += ' <span>' + esc(server.llmError || 'The AI is turned off on this device.') + ' You can change the AI in <a href="#ai" data-go="ai">Offline AI settings</a>.</span>'; return; }
     if (server.llm !== 'ready') { meta.innerHTML = '<span class="spin"></span>Waiting for the AI to finish loading…'; await waitFor(() => server.llm === 'ready' || server.llm === 'off'); }
     if (server.llm === 'ready') await answer(id, q, srcs, 'server');
   } else {
     if (ai.loading || aiStart) { meta.innerHTML = '<span class="spin"></span>Starting the AI (the first answer after opening takes a little longer)…'; await (aiStart || waitFor(() => !ai.loading)); }
     if (ai.kind === 'webllm') await answer(id, q, srcs, 'webllm');
-    else showBest(id, srcs, q), meta.innerHTML += ' <span>To get written answers, turn on the AI in <a href="#" onclick="document.querySelector(\'[data-tab=setup]\').click();return false">⚙️ Offline</a>.</span>';
+    else showBest(id, srcs, q), meta.innerHTML += ' <span>To get written answers, turn on the AI in <a href="#ai" data-go="ai">Offline AI settings</a>.</span>';
   }
   saveAnswers();
 }
@@ -599,6 +670,8 @@ async function initWebLLM(key, auto) {
 // ------------------------------------------------------------------ setup tab
 function mb(bytes) { return bytes >= 1e9 ? (bytes / 1e9).toFixed(1) + ' GB' : Math.round(bytes / 1e6) + ' MB'; }
 async function renderSetup() {
+  $('savecard').hidden = mode === 'drive'; $('ondrive').hidden = mode !== 'drive'; $('aboutwelcome').hidden = mode === 'drive';
+  renderOffLinks(); renderShareHelp();
   { const P = guidePaths(); if (P.ammocan) $('vaultguide').href = P.ammocan;   // the ARK Vault card: the guide and 3D model, here or on the drive
     $('vaultmodel').href = mode === 'drive' ? '/lib/AMMO-CAN-MODEL.html' : 'pages/AMMO-CAN-MODEL.html'; }
   if (mode === 'drive') {
@@ -620,6 +693,7 @@ async function renderSetup() {
   $('savemaprow').hidden = !(manifest && manifest.offline.map) || mode === 'drive';
   if (mode === 'drive') { $('savelib').disabled = $('saveroutes').disabled = $('savemap').disabled = true; $('saveprog').textContent = 'Not needed on the drive — everything is already here.'; }
   if (navigator.storage?.estimate) { const e = await navigator.storage.estimate(); $('storage').textContent = `This site is using ${mb(e.usage || 0)} of storage on this device.`; }
+  renderSaved();
   $('about').innerHTML = `Free survival and self-reliance knowledge for the Illinois Valley and southern Oregon. Search runs on your device; the AI runs in your browser.
     Documents that are public domain or openly licensed are searchable in full; others are listed by title and open on the publisher's website.
     Map and route data © OpenStreetMap contributors (ODbL); pill data: US National Library of Medicine Pillbox (ODbL); AI: Meta Llama 3.2 via WebLLM (Apache-2.0).
@@ -654,7 +728,7 @@ function renderTiers(st) {
   if (st.state === 'starting') setTimeout(loadTiers, 3000);
 }
 function renderShare(sh) {
-  $('sharecard').hidden = !sh.local;
+  $('sharecard').hidden = !sh.local; renderShareHelp();
   if (!sh.local) return;
   $('shareon').hidden = !!sh.on; $('shareoff').hidden = !sh.on;
   $('sharelinks').innerHTML = sh.on
@@ -662,7 +736,7 @@ function renderShare(sh) {
         ? '<p class="meta">On the other phone or tablet, connect to the same Wi-Fi, open the web browser and type:</p>' +
           sh.links.map(l => `<p style="font-size:21px;margin:4px 0"><b>${esc(l.replace(/\/$/, ''))}</b></p>`).join('') +
           '<p class="meta">Then tap <b>Share → Add to Home Screen</b> (iPhone) or <b>⋮ → Add to Home screen</b> (Android) so it has an icon.</p>'
-        : '<p class="meta">Sharing is on, but this device isn\'t connected to a Wi-Fi network yet. Connect it (or turn on its hotspot), then reopen Settings.</p>')
+        : '<p class="meta">Sharing is on, but this device isn\'t connected to a Wi-Fi network yet. Connect it (or turn on its hotspot), then open this screen again.</p>')
     : (sh.error ? `<p class="meta">${esc(sh.error)}</p>` : '');
 }
 async function setShare(on) {
@@ -685,6 +759,7 @@ async function saveOffline(which) {
   await navigator.serviceWorker.ready;
   try { await navigator.storage?.persist?.(); } catch {}
   const files = manifest.offline[which].files; let done = 0, failed = 0;
+  SAVED[which] = 'busy'; { const p = $('st-' + which); if (p) { p.className = 'pill busy'; p.textContent = 'Downloading'; } }
   $('savebarw').hidden = false; $('savelib').disabled = $('saveroutes').disabled = $('savemap').disabled = true;
   const queue = files.slice(), workers = Array.from({ length: 6 }, async () => {
     while (queue.length) {
@@ -788,14 +863,14 @@ function renderLibrary() {
     const n = subs.reduce((t, [, ds]) => t + ds.length, 0);
     const inner = subs.length === 1 && !filtering ? subs[0][1].map(doc).join('')
       : subs.map(([g, ds]) => `<details class="sub" data-k="lib:${esc(k)}:${esc(g)}"${filtering || isOpen('lib:' + k + ':' + g, false) ? ' open' : ''}><summary>${esc(g)} <span class="n">${ds.length}</span></summary>${ds.map(doc).join('')}</details>`).join('');
-    return `<details class="shelf" data-k="lib:${k}"${filtering || isOpen('lib:' + k, false) ? ' open' : ''}><summary><span class="ic">${icon}</span><span class="nm">${esc(name)} <span class="n">${n}</span><small>${esc(blurb)}</small></span></summary><div class="shelfbody">${inner}</div></details>`;
+    return `<details class="shelf" data-k="lib:${k}"${filtering || isOpen('lib:' + k, false) ? ' open' : ''}><summary><span class="ic0">${ic(SHELF_ICON[k] || 'page', 20)}</span><span class="nm">${esc(name)} <span class="n">${n}</span><small>${esc(blurb)}</small></span></summary><div class="shelfbody">${inner}</div></details>`;
   }).join('');
   $('libout').innerHTML = html ? `<div class="openall"><button class="link" data-all="1">Open all</button> · <button class="link" data-all="0">Close all</button>${filtering ? ` <span class="meta">${items.length} match${items.length === 1 ? '' : 'es'}</span>` : ''}</div>` + html
     : '<p class="meta">Nothing matches. Try fewer or shorter words.</p>';
   if (filtering) $('libout').querySelectorAll('details').forEach(d => d.dataset.filtering = '1');
   restoreScroll('library');
 }
-// the Tools tab: calculators and other things you use rather than read
+// the Tools screen: calculators and other things you use rather than read
 const TOOL_CARDS = [['map', '🗺️ Map', 'A topo map with property lines and layers to switch on: springs and wells, good growing ground, wild food, mines, past fires, flood zones, useful places. Measure, drop pins, print, and see where you are. No signal needed.'],
   ['calc', '🧮 Calculator', 'Everyday sums on a big screen: + − × ÷, percent, and a history of your answers.'],
   ['sci', '🔬 Scientific calculator', 'Sine, cosine and tangent, logs, powers and roots, π, n!, degrees or radians.'],
@@ -809,7 +884,7 @@ const hasMap = () => mode === 'drive' ? !!server.map : !!(manifest && manifest.o
 function renderKit() {
   const P = guidePaths();
   $('kitgrid').innerHTML = (mode === 'drive' ? PHOTO_CARD : '') +   // family photos: only where the library program runs
-    TOOL_CARDS.filter(([k]) => P[k] && (k !== 'map' || hasMap())).map(([k, t, d]) => `<a class="tool" href="${P[k]}"><b>${t}</b><span>${d}</span></a>`).join('');
+    TOOL_CARDS.filter(([k]) => P[k] && (k !== 'map' || hasMap())).map(([k, t, d]) => `<a class="tool withic" href="${P[k]}">${ic(TOOL_ICON[k] || 'wrench')}<span><b>${noPic(t)}</b><span>${d}</span></span></a>`).join('');
 }
 const GUIDE_CARDS = { // guide cards, by shelf (same groups and order as SHELVES and docs/START-HERE.md)
   start: [['sos', '🆘 Emergency finder', 'Something happening right now? Bleeding, not breathing, snakebite, a baby coming, fire, fallout — straight to the right page.'],
@@ -911,12 +986,13 @@ function guidePaths() {
 }
 function renderTools() {
   const P = guidePaths(), T = GUIDE_CARDS;
-  const card = k => ([g, t, d]) => `<a class="tool" href="${P[g]}" data-shelf="${k}"><b>${t}</b><span>${d}</span></a>`;
+  const card = k => ([g, t, d]) => `<a class="tool" href="${P[g]}" data-shelf="${k}"><b>${noPic(t)}</b><span>${d}</span></a>`;
   const groups = SHELVES.filter(([k]) => T[k] && T[k].some(([g]) => P[g]));
+  $('guidequick').innerHTML = (P.sos ? `<a class="sec sos" href="${P.sos}">${ic('alert', 18)}Emergency finder</a>` : '') + (P.az ? `<a class="sec" href="${P.az}">Subject index A–Z</a>` : '');
   $('toolgrid').innerHTML = `<p class="meta">Plain-English guides in ${groups.length} groups. Tap a group to open it; each guide links to the next one in its group. <button class="link" data-all="1">Open all</button> · <button class="link" data-all="0">Close all</button></p>` +
     groups.map(([k, icon, name]) => {
       const list = T[k].filter(([g]) => P[g]);
-      return `<details class="shelf" id="g-${k}" data-k="tools:${k}"${isOpen('tools:' + k, k === 'start') ? ' open' : ''}><summary><span class="ic">${icon}</span><span class="nm">${esc(name)} <span class="n">${list.length}</span><small>${list.map(c => esc(c[1].replace(/^\S+\s/, ''))).join(' · ')}</small></span></summary><div class="grid shelfbody">${list.map(card(k)).join('')}</div></details>`;
+      return `<details class="shelf" id="g-${k}" data-k="tools:${k}"${isOpen('tools:' + k, k === 'start') ? ' open' : ''}><summary><span class="ic0">${ic(SHELF_ICON[k] || 'page', 20)}</span><span class="nm">${esc(name)} <span class="n">${list.length}</span><small>${list.map(c => esc(c[1].replace(/^\S+\s/, ''))).join(' · ')}</small></span></summary><div class="grid shelfbody">${list.map(card(k)).join('')}</div></details>`;
     }).join('');
 }
 
@@ -927,7 +1003,7 @@ function renderTools() {
 // The grid shows a few hundred at a time; small previews load as they come into view and are let go
 // far out of view, so a folder of thousands doesn't fill a phone's memory. A tap opens the viewer:
 // swipe or arrow keys, pinch to zoom, swipe down or tap beside the picture to close, and a slideshow.
-const PHOTO_CARD = '<a class="tool" href="#photos"><b>🖼️ Family photos &amp; videos</b><span>Look through the pictures and home videos on a USB drive plugged into the library: folder by folder, full screen, or as a slideshow.</span></a>';
+const PHOTO_CARD = `<a class="tool withic" href="#photos">${ic('photo')}<span><b>Family photos &amp; videos</b><span>Look through the pictures and home videos on a USB drive plugged into the library: folder by folder, full screen, or as a slideshow.</span></span></a>`;
 const PH = { info: null, drives: null, drive: null, path: '', key: '', data: null, shown: 0, seq: 0, lists: new Map(), scroll: new Map() };
 const PH_CHUNK = 240;
 const phJoin = (a, b) => a ? a + '/' + b : b;
@@ -940,9 +1016,7 @@ const phLabel = f => `<span class="phlab"><span class="phic">${f.kind === 'video
 async function showPhotos(raw) {
   const was = !$('photos').hidden;
   if (was && PH.key) PH.scroll.set(PH.key, scrollY);   // to come back to the same place in this folder
-  document.querySelectorAll('#tabs button').forEach(x => x.classList.toggle('on', x.dataset.tab === 'kit'));
-  document.querySelectorAll('section').forEach(s => s.hidden = s.id !== 'photos');
-  const top = document.querySelector('header').getBoundingClientRect().bottom + scrollY; if (scrollY > top) scrollTo(0, top);
+  setView('photos'); if (!was) scrollTo(0, 0);
   const seq = ++PH.seq;
   if (mode !== 'drive') {
     PH.drive = null; phCrumbs('');
@@ -1036,7 +1110,7 @@ function phCrumbs(path) {
   const many = (PH.drives || []).length > 1, d = PH.drive, segs = path ? path.split('/') : [];
   const step = (href, label, here) => here ? `<span>${label}</span>` : `<a href="${href}">${label}</a>`;
   const parts = [];
-  if (!d || many) parts.push(step('#photos', '🖼️ Photos', !d));
+  if (!d || many) parts.push(step('#photos', 'Photos', !d));
   if (d) parts.push(step(phHash(d.id, ''), (many ? '' : '🖼️ ') + esc(d.name), !segs.length));
   segs.forEach((s, i) => parts.push(step(phHash(d.id, segs.slice(0, i + 1).join('/')), esc(s), i === segs.length - 1)));
   $('phcrumbs').innerHTML = parts.join('<span class="sep">›</span>');
@@ -1206,10 +1280,7 @@ function bindPhotos() {
   }, true);
   addEventListener('hashchange', () => {
     if (!$('phview').hidden) pvClose(true);
-    const toPhotos = /^#photos(:|$)/.test(location.hash);
-    if (!toPhotos && $('photos').hidden) return;   // the other tabs work as before
-    if (!toPhotos && !location.hash.slice(1)) document.querySelector('#tabs [data-tab=ask]').click();
-    else openFromHash();
+    openFromHash();   // the Back button, a link back from a guide, a photo folder: show what the address says
   });
 
   $('pvclose').onclick = () => pvClose();
@@ -1278,14 +1349,191 @@ function onLinkClick(e) {
 // "#tools:food" opens the Guides tab at the Food group; "#library" the Books tab, "#photos:…" a photo folder, and so on
 function openFromHash() {
   if (/^#photos(:|$)/.test(location.hash)) { showPhotos(location.hash.slice(1)); return; }
-  const [tab, grp] = decodeURIComponent(location.hash.slice(1)).split(':');
-  if (!tab) return;
-  document.querySelector(`#tabs [data-tab="${CSS.escape(tab)}"]`)?.click();
-  if (tab === 'tools' && grp) {
-    const d = document.getElementById('g-' + grp);
-    if (d) { d.open = true; requestAnimationFrame(() => d.scrollIntoView({ block: 'start' })); }
-    try { history.replaceState(history.state, '', '#tools:' + grp); } catch {}
+  let tab = '', grp = ''; try { [tab, grp] = decodeURIComponent(location.hash.slice(1)).split(':'); } catch {}
+  if (!VIEWS[tab] || tab === 'photos') tab = firstView();
+  setView(tab);
+  if (tab === 'tools' && grp) { openShelf(grp); try { history.replaceState(history.state, '', '#tools:' + grp); } catch {} }
+}
+function openShelf(grp) { const d = document.getElementById('g-' + grp); if (d) { d.open = true; requestAnimationFrame(() => d.scrollIntoView({ block: 'start' })); } }
+// The first screen: Home. Someone new to the website sees one short welcome first (not on a drive or a Vault, and
+// not when they came by a link to something particular).
+const firstView = () => mode !== 'drive' && !store.get('ark-welcomed') && !new URLSearchParams(location.search).get('q') ? 'welcome' : 'home';
+const sideOn = (tab, name) => tab === name || (tab === 'setup' && ['ai', 'usb'].includes(name)) || (tab === 'more' && ['help', 'sharing', 'vault', 'status', 'about'].includes(name)) || (tab === 'kit' && name === 'photos');
+function setView(name) {   // show a screen (what the address says is go's business)
+  if (!VIEWS[name]) name = 'home';
+  const v = VIEWS[name], sec = v.sec || name; view = name;
+  document.body.classList.toggle('bare', !!v.bare);
+  document.querySelectorAll('#wrap > section').forEach(s => s.hidden = s.id !== sec);
+  $('libseg').hidden = !(name === 'tools' || name === 'library');
+  $('libseg').querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.go === name));
+  if (v.page) document.querySelectorAll('#setup [data-page]').forEach(c => c.classList.toggle('pg-off', !c.dataset.page.split(' ').includes(v.page)));
+  $('wrap').classList.toggle('wide', name === 'home' || name === 'kit');
+  $('top').classList.toggle('home', name === 'home');
+  $('viewtitle').textContent = name === 'status' && $('pihtitle') ? $('pihtitle').textContent : v.title || '';
+  $('backbtn').hidden = !v.back;
+  document.querySelectorAll('#tabs button').forEach(b => b.classList.toggle('on', b.dataset.tab === v.nav));
+  document.querySelectorAll('#side button').forEach(b => b.classList.toggle('on', sideOn(b.dataset.tab, name)));
+  if (name === 'welcome') $('welcome').querySelectorAll('img[data-src]').forEach(i => { i.src = i.dataset.src; i.removeAttribute('data-src'); });
+  if (name === 'home') renderHome(); else if (name === 'maps') renderMaps(); else if (name === 'more') renderMore(); else if (name === 'help') renderHelp();
+}
+// Go to a screen and put it in the address. Going into a screen that has a Back button is a step of its own, so
+// the phone's Back button comes back out of it; the six main screens take each other's place, as the tabs always did.
+function go(name, o = {}) {
+  if (!VIEWS[name]) name = 'home';
+  if (name === 'photos') { location.hash = '#photos'; return; }
+  const hash = '#' + name + (o.grp ? ':' + o.grp : ''), child = !!VIEWS[name].back && !!view && view !== name && view !== 'welcome';
+  try { if (location.hash !== hash) { history[child ? 'pushState' : 'replaceState'](history.state, '', hash); if (child) pushed++; } } catch {}
+  setView(name); scrollTo(0, 0);
+  if (name === 'tools' && o.grp) openShelf(o.grp);
+  if (o.ask) { $('q').value = o.ask; ask(); }
+}
+function goBack() { const up = VIEWS[view] && VIEWS[view].back; if (!up) return; if (pushed > 0) { pushed--; history.back(); } else go(up); }
+function setTheme(v) { try { localStorage.setItem('so-theme', v); } catch {} const r = document.documentElement; if (v === 'dark' || v === 'light') r.setAttribute('data-theme', v); else r.removeAttribute('data-theme'); }
+function renderNav() {
+  $('tabs').innerHTML = NAV.map(([t, label, i]) => `<button type="button" data-tab="${t}"><i>${ic(i)}</i>${label}</button>`).join('');
+  $('side').innerHTML = `<a class="brand" href="#home" data-go="home"><img class="logo" src="icon.svg" alt="" width="40" height="40"><span><b>ARK</b><small>Illinois Valley</small></span></a>` +
+    SIDE.map(([t, label, i]) => `<button type="button" data-tab="${t}">${ic(i, 20)}${label}</button>`).join('');
+}
+
+// ---- Home: search, the emergency finder, the four big doors, the tools, and what is saved on this device
+const SAVE_WORD = { saved: ['ok', 'Saved'], none: ['', 'Not saved'], update: ['busy', 'Update available'], gone: ['busy', 'Needs saving again'], busy: ['busy', 'Downloading'] };
+const savePill = k => { const [c, w] = SAVE_WORD[SAVED[k] || 'none']; return `<span class="pill ${c}">${w}</span>`; };
+function aiWord() {
+  if (mode === 'drive') return server.llm === 'ready' ? 'On' + (server.model ? ': ' + esc(server.model) : '') : server.llm === 'starting' ? 'Starting…' : 'Off: search only';
+  const chosen = store.get('aiModel') && MODELS[store.get('aiModel')];
+  return ai.kind === 'webllm' ? 'On: ' + esc(ai.label) : ai.loading ? 'Loading…' : chosen ? 'On: ' + esc(chosen[2]) : 'Off';
+}
+function renderHome() {
+  const P = guidePaths();
+  if (P.sos) $('homesos').href = P.sos;
+  $('homecards').innerHTML = `<a class="big go" href="#ask" data-go="ask">${ic('chat')}<b>Ask ARK</b><span>An answer, with its sources</span></a>` +
+    `<a class="big" href="#tools" data-go="tools">${ic('page')}<b>Guides</b><span>Plain-English how-to, by subject</span></a>` +
+    `<a class="big" href="#library" data-go="library">${ic('book')}<b>Books</b><span>Manuals and references</span></a>` +
+    `<a class="big" href="#maps" data-go="maps">${ic('map')}<b>Maps &amp; Routes</b><span>Works with no signal</span></a>`;
+  const SHORT = { map: 'Map', calc: 'Calculator', conv: 'Converter', plantid: 'Plant ID', morse: 'Morse code', pill: 'Pill ID' };
+  const four = TOOL_CARDS.filter(c => c && SHORT[c[0]] && P[c[0]] && (c[0] !== 'map' || hasMap())).sort((a, b) => Object.keys(SHORT).indexOf(a[0]) - Object.keys(SHORT).indexOf(b[0])).slice(0, 4);
+  $('hometools').innerHTML = four.map(([k]) => `<a href="${P[k]}">${ic(TOOL_ICON[k] || 'wrench')}${SHORT[k]}</a>`).join('');
+  renderHomeOff(); homeSearch();
+}
+function renderHomeOff() {
+  let h = '<div class="row"><span class="tx"><b style="font-size:16px">Offline content</b></span></div>';
+  if (mode === 'drive') h += '<div class="row"><span class="tx">Whole library</span><span class="pill ok">On this drive</span></div>';
+  else {
+    h += `<div class="row"><span class="tx">Guides and tools</span>${savePill('library')}</div>`;
+    if (hasMap()) h += `<div class="row"><span class="tx">Illinois Valley map</span>${savePill('map')}</div>`;
+    h += `<div class="row"><span class="tx">Walking routes</span>${savePill('routes')}</div>`;
   }
+  const on = mode === 'drive' ? server.llm === 'ready' : ai.kind === 'webllm' || !!(store.get('aiModel') && MODELS[store.get('aiModel')]);
+  h += `<div class="row"><span class="tx">Offline AI</span><span class="pill ${on ? 'ok' : ''}">${on ? 'On' : (mode === 'drive' ? server.llm === 'starting' : ai.loading) ? 'Starting' : 'Off'}</span></div>`;
+  $('homeoff').innerHTML = h + `<a class="row" href="#setup" data-go="setup"><span class="tx" style="font-weight:600;color:var(--accent)">Manage offline downloads</span><span class="chev">${ic('right', 18)}</span></a>`;
+}
+// What you type on Home is looked for in the names of the guides, the tools and the books, as you type. The first
+// line hands the same words to Ask, which searches inside every page and answers with its sources.
+function homeSearch() {
+  const q = $('hq').value.trim(), box = $('hres'); if (q.length < 2) { box.hidden = true; return; }
+  const ws = q.toLowerCase().split(/\s+/).filter(Boolean), has = s => { s = s.toLowerCase(); return ws.every(w => s.includes(w)); }, P = guidePaths();
+  let h = `<button type="button" class="row" data-go="ask" data-ask="${esc(q)}">${ic('chat')}<span class="tx"><b>Ask ARK: “${esc(q)}”</b><small>Searches inside every guide and book, and answers with its sources</small></span></button>`;
+  const gs = [], ours = new Set(Object.values(P));
+  for (const list of Object.values(GUIDE_CARDS)) for (const c of list) if (c && P[c[0]] && has(c[1] + ' ' + c[2])) gs.push(c);
+  if (gs.length) h += '<h4>Guides</h4>' + gs.slice(0, 6).map(([g, t]) => `<a class="row" href="${P[g]}"><span class="tx"><b>${noPic(t)}</b></span></a>`).join('');
+  const ts = TOOL_CARDS.filter(c => c && P[c[0]] && has(c[1] + ' ' + c[2]));
+  if (ts.length) h += '<h4>Tools</h4>' + ts.slice(0, 4).map(([k, t]) => `<a class="row" href="${P[k]}"><span class="tx"><b>${noPic(t)}</b></span></a>`).join('');
+  const bs = (LIB || []).filter(d => !d.t.startsWith('Walk to ') && !ours.has(d.u) && has(d.t + ' ' + (d.d || ''))).slice(0, 8);
+  if (bs.length) h += '<h4>Books</h4>' + bs.map(d => `<a class="row" href="${esc(d.u)}"><span class="tx"><b>${esc(d.t)}</b><small>${esc(d.d || '')}</small></span></a>`).join('');
+  box.innerHTML = h; box.hidden = false;
+}
+// The box above the guides: only the guides whose name or description has every word stay
+function filterGuides() {
+  const ws = $('guideq').value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  $('toolgrid').querySelectorAll('details.shelf').forEach(d => {
+    let n = 0; d.querySelectorAll('a.tool').forEach(a => { const t = a.textContent.toLowerCase(), ok = ws.every(w => t.includes(w)); a.hidden = !ok; if (ok) n++; });
+    d.hidden = !n;
+    if (ws.length) { d.dataset.filtering = '1'; d.open = true; }
+    else if (d.dataset.filtering) { delete d.dataset.filtering; d.open = isOpen(d.dataset.k, d.dataset.k === 'tools:start'); }
+  });
+}
+
+// ---- Maps & Routes: the two doors, and whether each is saved on this device
+function renderMaps() {
+  const P = guidePaths(), card = k => (TOOL_CARDS.find(c => c && c[0] === k) || [])[2] || '';
+  const here = (k, yes, no) => mode === 'drive' ? '' : `<div class="saverow" style="padding-bottom:0"><span class="tx"><b>On this device</b><small>${SAVED[k] === 'saved' ? yes : no}</small></span>${savePill(k)}${SAVED[k] === 'saved' ? '' : '<a class="sec" href="#setup" data-go="setup">Save it</a>'}</div>`;
+  let h = '';
+  if (P.map && hasMap()) h += `<div class="card"><h3>Illinois Valley map</h3><p class="meta">${card('map').replace(/\s*No signal needed\.$/, '')}</p><p><a class="btn" href="${P.map}">${ic('map', 20)}Open the map</a></p>` +
+    (mode === 'drive' ? '<p class="meta">The map is on this drive. A <a href="#setup" data-go="setup">detailed map of a far wider area</a> can be added to it.</p>' : here('map', 'Saved: the map works with no signal.', 'Not saved yet: until it is, the map needs a signal.')) + '</div>';
+  if (P.walk) h += `<div class="card"><h3>Walking routes</h3><p class="meta">${card('walk')}</p><p><a class="btn" href="${P.walk}">${ic('route', 20)}Open the routes</a></p>` +
+    here('routes', 'Saved: the directions work with no signal.', 'Not saved yet: until they are, the directions need a signal.') + '</div>';
+  $('mapsbody').innerHTML = h || '<p class="note">This library has no map or routes yet.</p>';
+}
+
+// ---- More: everything that is not one of the five other buttons
+function renderMore() {
+  const drive = mode === 'drive', theme = (() => { try { return localStorage.getItem('so-theme') || 'auto'; } catch { return 'auto'; } })();
+  const r = (to, icn, t, sub) => `<button type="button" class="row" data-go="${to}">${ic(icn)}<span class="tx"><b>${t}</b>${sub ? `<small>${sub}</small>` : ''}</span><span class="chev">${ic('right', 18)}</span></button>`;
+  $('morebody').innerHTML = '<p class="label" style="margin-top:0">Offline</p><div class="card rows">' +
+    r('setup', 'down', 'Offline &amp; downloads', drive ? 'What is on this drive, and the detailed map' : 'Save guides, routes and the map to this device') +
+    r('ai', 'chip', 'Offline AI settings', aiWord()) +
+    (drive ? '' : r('usb', 'usb', 'Complete offline library (USB)', 'Every book, Wikipedia, maps and an AI, on a drive')) + '</div>' +
+    '<p class="label">Share and build</p><div class="card rows">' +
+    r('sharing', 'wifi', 'Share with nearby devices', drive ? 'Let phones on the same Wi-Fi use this library' : 'From a library on a drive or an ARK Vault') +
+    r('vault', 'box', 'ARK Vault', 'Build guide, parts, 3D view, wiring') +
+    ($('pihealth').hidden ? '' : r('status', 'chip', server.ark ? 'Vault system status' : 'Raspberry Pi status', 'Power, heat and speed, right now')) + '</div>' +
+    '<p class="label">Settings and help</p><div class="card rows">' +
+    `<div class="row"><span class="tx"><b>Display</b></span><div class="seg small" role="group" aria-label="Display">${['auto', 'light', 'dark'].map(t => `<button type="button" data-theme-set="${t}"${theme === t ? ' class="on"' : ''}>${t[0].toUpperCase() + t.slice(1)}</button>`).join('')}</div></div>` +
+    r('help', 'help', 'Help', 'Getting started, installing, troubleshooting') + r('about', 'info', 'About') + '</div>';
+}
+function renderHelp() {
+  const P = guidePaths(), end = `<span class="chev">${ic('right', 18)}</span>`;
+  const a = (href, icn, t, sub) => href ? `<a class="row" href="${href}">${ic(icn)}<span class="tx"><b>${t}</b>${sub ? `<small>${sub}</small>` : ''}</span>${end}</a>` : '';
+  const b = (to, icn, t, sub) => `<button type="button" class="row" data-go="${to}">${ic(icn)}<span class="tx"><b>${t}</b>${sub ? `<small>${sub}</small>` : ''}</span>${end}</button>`;
+  $('helpbody').innerHTML = '<div class="card rows">' +
+    a(P.device, 'help', 'Getting started', 'Run the library on a computer, an old phone or a tablet') +
+    a(P.sos, 'alert', 'Emergency finder', 'Something happening right now? Straight to the right page') +
+    a(P.az, 'page', 'Subject index A–Z', 'Look anything up, like the index at the back of a book') +
+    b('setup', 'down', 'Using ARK offline', 'What to save, and how') + b('ai', 'chip', 'The offline AI', 'Turning it on, and what it needs') +
+    b('maps', 'map', 'Maps and routes') + b('sharing', 'wifi', 'Sharing with nearby devices') +
+    a(P.get, 'usb', 'Installation help', 'The USB setup tool: drive sizes and troubleshooting') +
+    a(P.ammocan, 'box', 'ARK Vault guide', 'Building it, and what to do when something goes wrong') +
+    a(P.all, 'folder', 'Everything on the drive', 'The full index of every file, archive and program') + '</div>';
+}
+// the rows under Offline & downloads that lead on to the other ways of going offline
+function renderOffLinks() {
+  const P = guidePaths(), end = `<span class="chev">${ic('right', 18)}</span>`;
+  const b = (to, icn, t, sub) => `<button type="button" class="row" data-go="${to}">${ic(icn)}<span class="tx"><b>${t}</b><small>${sub}</small></span>${end}</button>`;
+  $('offlinks').innerHTML = b('ai', 'chip', 'Offline AI', aiWord()) +
+    (mode === 'drive' ? b('sharing', 'wifi', 'Share with nearby devices', 'Let phones on the same Wi-Fi use this library') : b('usb', 'usb', 'Complete offline library (USB)', 'Download the setup tool, choose a drive, and select the library content you want')) +
+    b('vault', 'box', 'ARK Vault', 'A battery-powered library that nearby devices can use without internet') +
+    (P.get ? `<a class="row" href="${P.get}">${ic('help')}<span class="tx"><b>Installation help</b><small>Drive sizes and troubleshooting</small></span>${end}</a>` : '');
+}
+// Sharing, where this copy cannot do it: the website (a library on a drive or a Vault shares, not a website), or a
+// phone that is itself using a library shared from another device
+function renderShareHelp() {
+  const box = $('sharehelp'), P = guidePaths(); box.hidden = !$('sharecard').hidden;
+  if (box.hidden) return;
+  box.innerHTML = '<h3>Share with nearby devices</h3>' + (mode === 'drive'
+    ? '<p class="note" style="margin:0">This library is hosted on another device. Change AI and sharing settings on that device.</p>'
+    : '<p class="meta">Other phones, tablets, and computers on the same local network can open a library in a browser. Internet is not required.</p><p class="meta">Sharing starts from a library on a USB drive or an ARK Vault. This website cannot share itself.</p>' +
+      (P.device ? `<p style="margin-bottom:0"><a class="sec" href="${P.device}">How to run and share a library</a></p>` : ''));
+}
+// Is it really saved? The note that it was saved is checked against three of its files: phones clear saved
+// websites they have not seen for a while. A newer library than the one saved shows as "Update available".
+async function savedState(which) {
+  const set = manifest && manifest.offline && manifest.offline[which], flag = store.get('saved-' + which);
+  if (!set || !flag) return 'none';
+  if (flag !== manifest.built) return 'update';
+  try {
+    const fs = set.files.filter(f => f !== './');
+    for (const f of [fs[0], fs[fs.length >> 1], fs[fs.length - 1]]) if (f && !(await caches.match(new URL(f, BASE).href, { ignoreSearch: !f.includes('.pmtiles') }))) return 'gone';
+  } catch {}
+  return 'saved';
+}
+async function renderSaved() {
+  if (mode === 'drive' || !manifest) return;
+  for (const k of ['library', 'routes', 'map']) if (SAVED[k] !== 'busy' || !$('savelib').disabled) SAVED[k] = await savedState(k);
+  for (const [k, btn] of [['library', 'savelib'], ['routes', 'saveroutes'], ['map', 'savemap']]) {
+    const [c, w] = SAVE_WORD[SAVED[k]], p = $('st-' + k); p.className = 'pill ' + c; p.textContent = w;
+    $(btn).textContent = SAVED[k] === 'saved' ? 'Save again' : SAVED[k] === 'update' ? 'Update' : 'Save';
+  }
+  if (view === 'home') renderHomeOff(); else if (view === 'maps') renderMaps();
 }
 // coming back to the app (Back button, or a reload by the phone): put the page where it was
 function saveScroll() { try { sessionStorage.setItem('so-scroll', JSON.stringify({ h: location.hash, y: scrollY })); } catch {} }

@@ -15,7 +15,7 @@
   var store = { get: function (k, d) { try { var v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } }, set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } };
 
   if (!http) {
-    say('<b>The map needs the library to be running.</b><br>Start the library first (the <b>START</b> file for your device), then open <b>🔧 Tools → 🗺️ Map</b>. A page opened straight from the drive can\'t read the map files.');
+    say('<b>The map needs the library to be running.</b><br>Start the library first (the <b>START</b> file for your device), then open <b>Tools → Map</b>. A page opened straight from the drive can\'t read the map files.');
     $('tools').hidden = true; return;
   }
   if (!window.maplibregl || !window.WebGLRenderingContext) { say('This browser can\'t draw the map. Try a newer browser (Chrome, Safari, Firefox or Edge).'); return; }
