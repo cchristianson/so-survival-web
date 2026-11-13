@@ -1,8 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="840" height="610" viewBox="0 0 840 610" font-family="Arial, Helvetica, sans-serif">
-  <title>The ARK Vault wiring. Battery plus goes through a 7.5 amp fuse and the power switch to the printer and the 5 volt converter. Battery minus goes through the volt/amp meter's thick wires (black in, red out) to the printer and the converter. The meter's thin black wire goes to battery minus, its thin yellow wire to plus after the fuse, and its thin red wire through the meter button to plus after the fuse, so it lights only while the button is held. The converter's 5 volt output goes to the Pi's pin 2 (plus) and pin 14 (ground); the fan is on pins 4, 6 and 8; the printer's USB lead goes to a Pi USB port. The solar controller is stored in the can, not wired.</title>
-  <rect width="840" height="610" fill="#ffffff"/>
-  <text x="20" y="28" font-size="16" font-weight="bold" fill="#222">The ARK Vault wiring</text>
-  <text x="20" y="48" font-size="12" fill="#555">Thick lines: the main power (16 AWG). Thin lines: the meter's own wires. The solar controller is stored, not wired.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="700" viewBox="0 0 840 700" font-family="Arial, Helvetica, sans-serif">
+  <title>The ARK Vault wiring, with each wire's size. Run 1: battery plus to the 7.5 amp fuse, 16 AWG red. Run 2: fuse to the power switch's input, 16 AWG red. Run 3: the switch's output to a splice, 16 AWG red, and from the splice run 4 to the 5 volt converter's input plus and run 5 to the printer's plus, both 16 AWG red. Run 6: battery minus to the volt/amp meter's thick black wire, 16 AWG black. Run 7: the meter's thick red wire to a splice, and from it run 8 to the converter's input minus and run 9 to the printer's minus, 16 AWG black. The meter's thin wires, 22 AWG: run 10, thin black to the battery minus side of the meter; run 11, thin yellow to the switch's input; run 12, thin red to the meter button's COM; run 13, the button's NO to the switch's input, so the meter lights only while the button is held. Runs 14 and 15: the converter's 5 volt output to the Pi's pin 2 (plus) and pin 14 (ground), 18 AWG red and black, ending in female jumper leads. The fan is on pins 4, 6 and 8; the printer's USB lead goes to a Pi USB port. The solar controller is stored in the can, not wired.</title>
+  <rect width="840" height="700" fill="#ffffff"/>
   <polyline points="140,165 180,165" fill="none" stroke="#d03b2f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
   <polyline points="260,165 340,165" fill="none" stroke="#d03b2f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
   <polyline points="440,165 560,165" fill="none" stroke="#d03b2f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
@@ -31,28 +29,30 @@
   <text x="294" y="266" font-size="10.5" fill="#9a7400" text-anchor="end">(reads the volts)</text>
   <text x="326" y="222" font-size="10.5" fill="#d03b2f" text-anchor="start">thin red (powers the meter)</text>
   <rect x="30" y="140" width="110" height="160" rx="7" fill="#fde8d4" stroke="#333" stroke-width="1.5"/>
-  <text x="85.0" y="220.0" font-size="14" font-weight="bold" fill="#222" text-anchor="middle">Battery</text>
+  <text x="85.0" y="220.0" font-size="14" fill="#222" text-anchor="middle" font-weight="bold">Battery</text>
   <text x="85.0" y="237.0" font-size="11.5" fill="#444" text-anchor="middle">12.8 V LiFePO4</text>
   <text x="146" y="158" font-size="14" fill="#d03b2f" text-anchor="start" font-weight="bold">+</text>
   <text x="146" y="292" font-size="16" fill="#222222" text-anchor="start" font-weight="bold">−</text>
   <rect x="180" y="150" width="80" height="30" rx="7" fill="#fff" stroke="#333" stroke-width="1.5"/>
-  <text x="220.0" y="170.0" font-size="14" font-weight="bold" fill="#222" text-anchor="middle">Fuse</text>
+  <text x="220.0" y="170.0" font-size="14" fill="#222" text-anchor="middle" font-weight="bold">Fuse</text>
   <text x="220" y="198" font-size="11.5" fill="#555" text-anchor="middle">7.5 A, inline</text>
   <rect x="340" y="145" width="100" height="40" rx="7" fill="#ffe1dc" stroke="#333" stroke-width="1.5"/>
-  <text x="390.0" y="170.0" font-size="14" font-weight="bold" fill="#222" text-anchor="middle">Power switch</text>
+  <text x="390.0" y="170.0" font-size="14" fill="#222" text-anchor="middle" font-weight="bold">Power switch</text>
   <text x="390" y="201" font-size="11.5" fill="#555" text-anchor="middle">red rocker, on the riser</text>
+  <text x="342" y="140" font-size="10" fill="#555" text-anchor="start">input</text>
+  <text x="438" y="140" font-size="10" fill="#555" text-anchor="end">output</text>
   <rect x="405" y="300" width="90" height="40" rx="7" fill="#fff" stroke="#333" stroke-width="1.5"/>
-  <text x="450.0" y="325.0" font-size="14" font-weight="bold" fill="#222" text-anchor="middle">Meter button</text>
+  <text x="450.0" y="325.0" font-size="14" fill="#222" text-anchor="middle" font-weight="bold">Meter button</text>
   <text x="500" y="316" font-size="11.5" fill="#555" text-anchor="start">microswitch:</text>
   <text x="500" y="330" font-size="11.5" fill="#555" text-anchor="start">COM and NO</text>
   <rect x="330" y="400" width="150" height="90" rx="7" fill="#e3eefb" stroke="#333" stroke-width="1.5"/>
-  <text x="405.0" y="445.0" font-size="14" font-weight="bold" fill="#222" text-anchor="middle">Volt/amp meter</text>
+  <text x="405.0" y="445.0" font-size="14" fill="#222" text-anchor="middle" font-weight="bold">Volt/amp meter</text>
   <text x="405.0" y="462.0" font-size="11.5" fill="#444" text-anchor="middle">hold the button to read it</text>
   <rect x="600" y="60" width="170" height="90" rx="7" fill="#efefef" stroke="#333" stroke-width="1.5"/>
-  <text x="685.0" y="105.0" font-size="14" font-weight="bold" fill="#222" text-anchor="middle">Printer</text>
-  <text x="685.0" y="122.0" font-size="11.5" fill="#444" text-anchor="middle">12 V, on the riser</text>
+  <text x="685.0" y="105.0" font-size="14" fill="#222" text-anchor="middle" font-weight="bold">Printer</text>
+  <text x="685.0" y="122.0" font-size="11.5" fill="#444" text-anchor="middle">DFR0503 V2.0 (9–24 V)</text>
   <rect x="600" y="220" width="170" height="110" rx="7" fill="#efefef" stroke="#333" stroke-width="1.5"/>
-  <text x="685.0" y="275.0" font-size="14" font-weight="bold" fill="#222" text-anchor="middle">5 V converter</text>
+  <text x="685.0" y="275.0" font-size="14" fill="#222" text-anchor="middle" font-weight="bold">5 V converter</text>
   <text x="685.0" y="292.0" font-size="11.5" fill="#444" text-anchor="middle">TOBSUN EA25-5V, 5 A</text>
   <text x="606" y="241" font-size="10.5" fill="#d03b2f" text-anchor="start">IN +</text>
   <text x="606" y="323" font-size="10.5" fill="#222222" text-anchor="start">IN −</text>
@@ -60,16 +60,73 @@
   <text x="606" y="127" font-size="13" fill="#222222" text-anchor="start" font-weight="bold">−</text>
   <polyline points="650,330 650,400" fill="none" stroke="#d03b2f" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
   <polyline points="720,330 720,400" fill="none" stroke="#222222" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
-  <text x="644" y="368" font-size="10.5" fill="#d03b2f" text-anchor="end">5 V +</text>
-  <text x="726" y="368" font-size="10.5" fill="#222222" text-anchor="start">5 V −</text>
   <rect x="600" y="400" width="170" height="120" rx="7" fill="#e2f3e5" stroke="#333" stroke-width="1.5"/>
-  <text x="685.0" y="460.0" font-size="14" font-weight="bold" fill="#222" text-anchor="middle">Raspberry Pi</text>
+  <text x="685.0" y="460.0" font-size="14" fill="#222" text-anchor="middle" font-weight="bold">Raspberry Pi</text>
   <text x="685.0" y="477.0" font-size="11.5" fill="#444" text-anchor="middle">on the lid</text>
   <text x="650" y="418" font-size="11" fill="#d03b2f" text-anchor="middle" font-weight="bold">pin 2</text>
   <text x="720" y="418" font-size="11" fill="#222222" text-anchor="middle" font-weight="bold">pin 14</text>
-  <text x="685" y="498" font-size="11.5" fill="#2b6cb0" text-anchor="middle">fan: pins 4, 6, 8</text>
+  <text x="685" y="498" font-size="11.5" fill="#2b6cb0" text-anchor="middle">fan: pins 4, 6, 8 (run 16)</text>
   <polyline points="770,105 795,105 795,470 770,470" fill="none" stroke="#777" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
-  <text x="801" y="290" font-size="11" fill="#777" text-anchor="start" font-weight="bold">USB</text>
-  <text x="20" y="576" font-size="12.5" fill="#444">Check your meter's own wiring sheet: some put the thick wires the other way round.</text>
-  <text x="20" y="596" font-size="12.5" fill="#444">Check the converter's 5 V output with a meter (5.0 to 5.25 V, + and − the right way round) before plugging it onto the Pi.</text>
+  <text x="801" y="312" font-size="11" fill="#777" text-anchor="start" font-weight="bold">USB</text>
+  <circle cx="160" cy="165" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
+  <text x="160" y="168.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">1</text>
+  <text x="160" y="190" font-size="10" fill="#555" text-anchor="middle">16 AWG</text>
+  <circle cx="280" cy="165" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
+  <text x="280" y="168.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">2</text>
+  <text x="280" y="152" font-size="10" fill="#555" text-anchor="middle">16 AWG</text>
+  <circle cx="505" cy="165" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
+  <text x="505" y="168.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">3</text>
+  <text x="505" y="152" font-size="10" fill="#555" text-anchor="middle">16 AWG</text>
+  <circle cx="560" cy="205" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
+  <text x="560" y="208.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">4</text>
+  <text x="548" y="209" font-size="10" fill="#555" text-anchor="end">16 AWG</text>
+  <circle cx="560" cy="115" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
+  <text x="560" y="118.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">5</text>
+  <text x="548" y="119" font-size="10" fill="#555" text-anchor="end">16 AWG</text>
+  <circle cx="200" cy="410" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
+  <text x="200" y="413.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">6</text>
+  <text x="212" y="414" font-size="10" fill="#555" text-anchor="start">16 AWG</text>
+  <circle cx="535" cy="445" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
+  <text x="535" y="448.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">7</text>
+  <circle cx="590" cy="296" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
+  <text x="590" y="299.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">8</text>
+  <circle cx="580" cy="180" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
+  <text x="580" y="183.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">9</text>
+  <circle cx="270" cy="370" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
+  <text x="270" y="373.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">10</text>
+  <text x="270" y="391" font-size="10" fill="#555" text-anchor="middle">22 AWG</text>
+  <circle cx="345" cy="330" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
+  <text x="345" y="333.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">11</text>
+  <text x="345" y="351" font-size="10" fill="#555" text-anchor="middle">22 AWG</text>
+  <circle cx="430" cy="375" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
+  <text x="430" y="378.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">12</text>
+  <text x="442" y="379" font-size="10" fill="#555" text-anchor="start">22 AWG</text>
+  <circle cx="450" cy="266" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
+  <text x="450" y="269.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">13</text>
+  <text x="462" y="270" font-size="10" fill="#555" text-anchor="start">22 AWG</text>
+  <circle cx="650" cy="372" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
+  <text x="650" y="375.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">14</text>
+  <text x="638" y="376" font-size="10" fill="#555" text-anchor="end">18 AWG</text>
+  <circle cx="720" cy="372" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
+  <text x="720" y="375.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">15</text>
+  <text x="732" y="376" font-size="10" fill="#555" text-anchor="start">18 AWG</text>
+  <circle cx="795" cy="280" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
+  <text x="795" y="283.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">17</text>
+  <text x="20" y="555" font-size="12" fill="#d03b2f" text-anchor="start" font-weight="bold">Runs 1–5</text>
+  <text x="98" y="555" font-size="12" fill="#333" text-anchor="start">16 AWG red: the 12 V plus</text>
+  <text x="20" y="575" font-size="12" fill="#222222" text-anchor="start" font-weight="bold">Runs 6, 8, 9</text>
+  <text x="98" y="575" font-size="12" fill="#333" text-anchor="start">16 AWG black: the 12 V minus</text>
+  <text x="20" y="595" font-size="12" fill="#222222" text-anchor="start" font-weight="bold">Run 7</text>
+  <text x="98" y="595" font-size="12" fill="#333" text-anchor="start">the meter’s own thick red wire</text>
+  <text x="430" y="555" font-size="12" fill="#9a7400" text-anchor="start" font-weight="bold">Runs 10–13</text>
+  <text x="508" y="555" font-size="12" fill="#333" text-anchor="start">22 AWG: the meter’s thin wires and its button</text>
+  <text x="430" y="575" font-size="12" fill="#d03b2f" text-anchor="start" font-weight="bold">Runs 14, 15</text>
+  <text x="508" y="575" font-size="12" fill="#333" text-anchor="start">18 AWG red and black: the Pi’s 5 V</text>
+  <text x="430" y="595" font-size="12" fill="#2b6cb0" text-anchor="start" font-weight="bold">Runs 16, 17</text>
+  <text x="508" y="595" font-size="12" fill="#333" text-anchor="start">the fan’s own lead; the printer’s USB cable</text>
+  <text x="20" y="28" font-size="16" fill="#222" text-anchor="start" font-weight="bold">The ARK Vault wiring</text>
+  <text x="20" y="48" font-size="12" fill="#555" text-anchor="start">Each number is a run in the guide’s table. Thick lines: 16 AWG (12 V). Medium: 18 AWG (the Pi’s 5 V). Thin: 22 AWG.</text>
+  <text x="20" y="636" font-size="12.5" fill="#444" text-anchor="start">The Pi’s pair: 18 AWG most of the way, soldered to two female jumper leads about 5 cm from the pins.</text>
+  <text x="20" y="656" font-size="12.5" fill="#444" text-anchor="start">Check your meter’s own wiring sheet: some put the thick wires the other way round.</text>
+  <text x="20" y="676" font-size="12.5" fill="#444" text-anchor="start">Check the converter’s 5 V output with a meter (5.0 to 5.25 V, + and − the right way round) before plugging it onto the Pi.</text>
 </svg>
