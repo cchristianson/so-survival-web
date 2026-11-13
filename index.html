@@ -5,87 +5,171 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>ARK Illinois Valley</title>
 <meta name="description" content="ARK, the Apocalypse Reference Kit: a free survival and self-reliance library for southern Oregon that keeps working offline, with an AI that answers from the library.">
-<meta name="theme-color" content="#0f1420">
+<meta name="theme-color" content="#233F32">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="ARK">
 <style>
-:root{--bg:#0f1420;--card:#171f2e;--ink:#e7ecf3;--muted:#9fb0c3;--accent:#4fd1c5;--accent2:#f6ad55;--line:#273246;--code:#0b0f17;--ok:#48bb78;--warn:#f6ad55;--off:#718096;--danger:#fc8181}
-@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--code:#f1f5f9;--ok:#2f855a;--warn:#b45309;--off:#718096;--danger:#c53030}}:root[data-theme=light]{--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--accent2:#b45309;--line:#e2e8f0;--code:#f1f5f9;--ok:#2f855a;--warn:#b45309;--off:#718096;--danger:#c53030}
+/* The look: forest green on warm paper, thin lines, plain line icons. Dark colours first (the light ones follow
+   the device, or the choice under More > Display); every colour is one of these names. */
+:root{--bg:#131915;--card:#1B2420;--ink:#E8EDE7;--muted:#A5B0A7;--accent:#8CC7A2;--accent2:#E0B65A;--line:#34413A;--soft:#2A352F;--code:#27322B;--ok:#7FC79A;--warn:#E0B65A;--off:#7C877E;--danger:#F3B5A8;
+  --btn:#3E7355;--btn-ink:#fff;--strong:#D5E8DA;--tint:#25382D;--tint-ink:#A9D6B8;--input:#4C5A51;--warn-bg:#3A3220;--warn-line:#5A4C2A;--warn-ink:#EBD9A6;--danger-bg:#3B2320;--danger-line:#6B3A32;--danger-ink:#F3B5A8;
+  --side-bg:#0F1511;--side-ink:#D5DED7;--side-on:#2C4A39;--side-mute:#93A397;--shadow:0 1px 2px rgba(0,0,0,.4);--show-light:none;--show-dark:block;--top:56px}
+@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--bg:#F5F2EA;--card:#FFFDF8;--ink:#1D2721;--muted:#566058;--accent:#315B43;--accent2:#7A5F1E;--line:#DCD6C8;--soft:#ECE7DB;--code:#E9E4D7;--ok:#2F7D4F;--warn:#8A6D2F;--off:#7C857D;--danger:#9B2C1F;
+  --btn:#315B43;--btn-ink:#fff;--strong:#233F32;--tint:#E4ECE4;--tint-ink:#2C5B40;--input:#C2BBA8;--warn-bg:#F6EFD9;--warn-line:#E2D6B4;--warn-ink:#5E4B1C;--danger-bg:#FBEDE9;--danger-line:#E3B9AE;--danger-ink:#7A2318;
+  --side-bg:#233F32;--side-ink:#E3EBE5;--side-on:#315B43;--side-mute:#B9C9BD;--shadow:0 1px 2px rgba(29,39,33,.12);--show-light:block;--show-dark:none}}:root[data-theme=light]{--bg:#F5F2EA;--card:#FFFDF8;--ink:#1D2721;--muted:#566058;--accent:#315B43;--accent2:#7A5F1E;--line:#DCD6C8;--soft:#ECE7DB;--code:#E9E4D7;--ok:#2F7D4F;--warn:#8A6D2F;--off:#7C857D;--danger:#9B2C1F;
+  --btn:#315B43;--btn-ink:#fff;--strong:#233F32;--tint:#E4ECE4;--tint-ink:#2C5B40;--input:#C2BBA8;--warn-bg:#F6EFD9;--warn-line:#E2D6B4;--warn-ink:#5E4B1C;--danger-bg:#FBEDE9;--danger-line:#E3B9AE;--danger-ink:#7A2318;
+  --side-bg:#233F32;--side-ink:#E3EBE5;--side-on:#315B43;--side-mute:#B9C9BD;--shadow:0 1px 2px rgba(29,39,33,.12);--show-light:block;--show-dark:none}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-text-size-adjust:100%}
-.wrap{max-width:920px;margin:0 auto;padding:16px 16px 100px}
-header h1{font-size:24px;margin:4px 0 2px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.hrow{display:flex;align-items:center;justify-content:space-between;gap:10px}.hrow h1{min-width:0}
-header h1 .logo{width:1.25em;height:1.25em;vertical-align:-.27em;margin-right:.35em;border-radius:22%}
-.sub{color:var(--muted);font-size:14px;margin:0 0 10px}
-.health{border-collapse:collapse;font-size:14px;margin:0 0 8px}.health td{padding:3px 10px 3px 0;vertical-align:top}.health td:first-child{color:var(--muted);white-space:nowrap}
-.status{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 10px}
-.pill{font-size:12.5px;padding:3px 10px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--muted)}
-.pill b{font-weight:600;color:var(--ink)}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;background:var(--off);vertical-align:middle}
-.dot.ready{background:var(--ok)}.dot.starting{background:var(--warn)}
-nav{display:flex;gap:4px;border-bottom:1px solid var(--line);margin:8px -16px 14px;padding:0 16px;overflow-x:auto;position:sticky;top:0;z-index:5;background:var(--bg)}
-nav button{background:none;border:none;border-bottom:3px solid transparent;color:var(--muted);font:inherit;font-weight:600;padding:8px 12px;cursor:pointer;white-space:nowrap}
-nav button.on{color:var(--accent);border-bottom-color:var(--accent)}
-@media(max-width:440px){nav{gap:0}nav button{padding:8px 4px;font-size:14px}}
-@media(max-width:375px){nav button{padding:8px 3px;font-size:13px}}
-@media(max-width:330px){nav button{padding:8px 2px;font-size:12px}}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
 section[hidden],[hidden]{display:none!important}
-form.ask{display:flex;gap:8px;position:sticky;top:0;background:var(--bg);padding:6px 0;z-index:2}
-textarea,input[type=search]{flex:1;width:100%;font:inherit;padding:11px 12px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+a{color:var(--accent)}
+h2,h3{margin:0 0 6px}h3{font-size:17px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+.ic{flex:none;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle}
+
+/* ---- the frame: a header, the page, and six buttons along the bottom (a side menu on a wide screen) */
+.side{display:none;position:fixed;top:0;left:0;bottom:0;width:232px;flex-direction:column;gap:4px;padding:16px 12px;background:var(--side-bg);color:var(--side-ink);overflow-y:auto;z-index:8}
+.side .brand{display:flex;align-items:center;gap:10px;padding:0 6px 14px;color:#fff;text-decoration:none}
+.side .brand b{display:block;font-size:18px;line-height:1.2}.side .brand small{font-size:12.5px;color:var(--side-mute)}
+.side button{display:flex;align-items:center;gap:12px;width:100%;min-height:44px;padding:0 12px;border:0;border-radius:10px;background:none;color:var(--side-ink);font:inherit;font-size:15px;font-weight:600;text-align:left;cursor:pointer}
+.side button.on{background:var(--side-on);color:#fff}
+.top{position:sticky;top:0;z-index:6;display:flex;align-items:center;gap:10px;min-height:var(--top);padding:0 max(16px,env(safe-area-inset-right)) 0 max(16px,env(safe-area-inset-left));background:var(--card);border-bottom:1px solid var(--line)}
+.top .brand{flex:1;min-width:0;display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none}
+.top .brand b{display:block;font-size:17px;line-height:1.2}.top .brand small{display:block;font-size:12.5px;color:var(--muted);line-height:1.3}
+.top h1{flex:1;min-width:0;margin:0;font-size:19px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.top:not(.home) .brand{display:none}.top.home h1{display:none}
+.logo{width:38px;height:38px;border-radius:9px;display:block}
+.iconbtn{display:flex;align-items:center;justify-content:center;width:44px;height:44px;margin-left:-10px;border:0;border-radius:10px;background:none;color:var(--ink);cursor:pointer}
+.chip{flex:none;display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border:1px solid var(--line);border-radius:999px;background:var(--tint);color:var(--tint-ink);font-size:12.5px;font-weight:700;white-space:nowrap}
+.chip.off{background:var(--code);color:var(--muted)}
+.chip::before{content:'';width:8px;height:8px;border-radius:50%;background:currentColor}
+.wrap{max-width:860px;margin:0 auto;padding:16px max(16px,env(safe-area-inset-right)) calc(96px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left))}
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:7;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));padding:6px max(4px,env(safe-area-inset-right)) calc(6px + env(safe-area-inset-bottom)) max(4px,env(safe-area-inset-left));background:var(--card);border-top:1px solid var(--line)}
+.tabs button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:48px;padding:0;border:0;background:none;color:var(--muted);font:inherit;font-size:11.5px;font-weight:600;cursor:pointer}
+.tabs button i{display:flex;align-items:center;justify-content:center;width:46px;max-width:100%;height:28px;border-radius:999px}
+.tabs button.on{color:var(--strong);font-weight:700}.tabs button.on i{background:var(--tint)}
+@media(min-width:760px){.side{display:flex}.tabs{display:none}.col{margin-left:232px}.wrap{padding-bottom:40px;padding-left:28px;padding-right:28px}.top{padding-left:28px;padding-right:28px}.top.home .brand{display:none}.top.home h1{display:block}}
+body.bare .side,body.bare .top,body.bare .tabs,body.bare footer{display:none}body.bare .col{margin-left:0}
+body.osk-open .tabs{display:none}
+@media print{.side,.top,.tabs{display:none}.col{margin-left:0}}
+@media(max-width:759px){.sop-fab{bottom:calc(76px + env(safe-area-inset-bottom))!important}}
+
+/* ---- pieces used on every screen */
+.sub{color:var(--muted);font-size:14px;margin:0 0 10px}
+.card,.qa{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:0 0 14px}
+.rows{padding:0 14px}
+.row{display:flex;align-items:center;gap:12px;min-height:54px;padding:8px 0;border:0;border-top:1px solid var(--soft);background:none;color:var(--ink);font:inherit;text-align:left;text-decoration:none;width:100%;cursor:pointer}
+.rows>.row:first-child{border-top:0}div.row{cursor:default}
+.row .tx{flex:1;min-width:0}.row b{display:block}.row small{display:block;font-size:13px;color:var(--muted);line-height:1.35}
+.row>.ic{color:var(--accent)}.row .chev{color:var(--muted);display:flex}
+.label{margin:18px 2px 6px;font-size:12.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:700;padding:3px 10px;border-radius:999px;border:0;background:var(--code);color:var(--muted);white-space:nowrap}
+.pill b{font-weight:700;color:var(--ink)}.pill.ok{background:var(--tint);color:var(--tint-ink)}.pill.busy{background:var(--warn-bg);color:var(--warn-ink)}
+.status{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 12px}.status .pill{font-weight:500;background:var(--card);border:1px solid var(--line)}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:2px;background:var(--off);vertical-align:middle}
+.dot.ready{background:var(--ok)}.dot.starting{background:var(--warn)}
+textarea,input[type=search],input.t{flex:1;width:100%;font:inherit;padding:11px 12px;border-radius:12px;border:1px solid var(--input);background:var(--card);color:var(--ink)}
 textarea{min-height:50px;max-height:200px;resize:vertical}
-button.main{font:inherit;font-weight:600;padding:0 18px;border-radius:12px;border:none;background:var(--accent);color:#04201d;cursor:pointer;min-height:44px}
-button.sec{font:inherit;font-size:14px;padding:6px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
-button.sec:disabled{opacity:.5;cursor:default}
-a.sec{display:inline-block;font-weight:600;font-size:15px;padding:8px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);text-decoration:none}
-a.btn{display:inline-block;font-weight:600;padding:9px 16px;border-radius:12px;background:var(--accent);color:#04201d;text-decoration:none}
-.opts{display:flex;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:14px;margin:4px 0 14px}
-.opts label{display:flex;align-items:center;gap:6px}
-select{font:inherit;font-size:14px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:2px 6px}
-.examples{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
-.best{border-left:3px solid var(--accent);padding:2px 0 2px 12px;margin:6px 0}.best .bh{font-size:14px;color:var(--muted)}.best p{margin:6px 0 0}.best mark{background:rgba(246,173,85,.3);color:inherit;border-radius:3px;padding:0 1px}
-.ex{font-size:13px;padding:6px 10px;border-radius:999px;border:1px dashed var(--line);color:var(--muted);cursor:pointer;background:transparent;font-family:inherit}
-.qa,.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:0 0 14px}
-.q{font-weight:600;font-size:18px;margin-bottom:8px}
-.answer p{margin:0 0 10px}.answer ul,.answer ol{margin:0 0 10px;padding-left:24px}
-.answer .cite{color:var(--accent);text-decoration:none;font-weight:600;font-size:13px;vertical-align:super}
-.meta{color:var(--muted);font-size:13px;margin:4px 0 8px}.retry{font:inherit;font-size:15px;font-weight:600;color:var(--bg);background:var(--accent);border:none;border-radius:999px;padding:8px 16px;margin:8px 0 4px;cursor:pointer}
-.sources{margin-top:10px;border-top:1px solid var(--line);padding-top:8px}
-.sources h4{margin:0 0 6px;font-size:14px;color:var(--muted);font-weight:600}
-.src{display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--line)}.src:last-child{border-bottom:none}
-.num{flex:0 0 26px;height:26px;border-radius:50%;background:var(--code);color:var(--accent);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
-a{color:var(--accent)}.src a{font-weight:600;text-decoration:none}
-.where{color:var(--muted);font-size:13px}.snip{font-size:14px;margin-top:2px}
+.search{display:flex;align-items:center;gap:10px;min-height:50px;padding:0 14px;margin:0 0 12px;background:var(--card);border:1px solid var(--input);border-radius:12px;color:var(--muted)}
+.search input{flex:1;min-width:0;border:0;outline:0;padding:0;border-radius:0;background:transparent;font-size:16px;color:var(--ink)}
+.search:focus-within{outline:3px solid var(--accent);outline-offset:1px}
+button.main,a.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-weight:700;min-height:46px;padding:0 18px;border-radius:12px;border:1px solid var(--btn);background:var(--btn);color:var(--btn-ink);text-decoration:none;cursor:pointer}
+button.sec,a.sec{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-size:15px;font-weight:600;min-height:40px;padding:0 14px;border-radius:10px;border:1px solid var(--input);background:var(--card);color:var(--strong);text-decoration:none;cursor:pointer}
+button.sec:disabled,button.main:disabled{opacity:.5;cursor:default}
+.block{display:flex!important;width:100%}
+button.link{background:none;border:none;color:var(--accent);padding:2px 0;font:inherit;cursor:pointer;text-decoration:underline}
+.seg{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:4px;padding:4px;margin:0 0 12px;background:var(--code);border-radius:12px}
+.seg button{min-height:40px;padding:0 10px;border:0;border-radius:9px;background:transparent;color:var(--muted);font:inherit;font-weight:600;cursor:pointer}
+.seg button.on{background:var(--card);color:var(--strong);font-weight:700;box-shadow:var(--shadow)}
+.seg.small{margin:0}.seg.small button{min-height:36px;font-size:14px}
+.note{border:1px solid var(--warn-line);background:var(--warn-bg);color:var(--warn-ink);padding:10px 14px;border-radius:12px;font-size:14px;margin:8px 0}
+.note a{color:inherit;font-weight:600}
+.meta{color:var(--muted);font-size:14px;margin:4px 0 8px}
+.bar{height:8px;border-radius:99px;background:var(--code);overflow:hidden;margin:8px 0}.bar i{display:block;height:100%;width:0;background:var(--btn);transition:width .3s}
 .spin{display:inline-block;width:12px;height:12px;border:2px solid var(--muted);border-top-color:transparent;border-radius:50%;animation:s 1s linear infinite;vertical-align:middle;margin-right:6px}
 @keyframes s{to{transform:rotate(360deg)}}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
-.tool{display:block;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
-.tool b{display:block;font-size:17px;margin-bottom:4px;color:var(--accent)}.tool span{color:var(--muted);font-size:14px}
-.cat h3{margin:18px 0 6px;font-size:16px;color:var(--accent2)}
-details.shelf{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:10px 0;scroll-margin-top:56px}
-details.shelf>summary{list-style:none;cursor:pointer;display:flex;gap:12px;align-items:center;padding:12px 14px;min-height:52px}
+.tag{display:inline-block;font-size:11px;font-weight:600;padding:0 7px;border-radius:999px;border:1px solid var(--line);color:var(--muted);margin-left:6px;vertical-align:middle}
+.n{display:inline-block;font-size:12px;font-weight:600;padding:0 8px;border-radius:999px;background:var(--code);color:var(--muted);vertical-align:middle;margin-left:4px}
+select{font:inherit;font-size:14px;background:var(--card);color:var(--ink);border:1px solid var(--input);border-radius:8px;padding:3px 6px}
+footer{color:var(--muted);font-size:13px;margin-top:22px}
+.only-light{display:var(--show-light)}.only-dark{display:var(--show-dark)}
+
+/* ---- Home */
+.emergency{display:flex;align-items:center;gap:12px;min-height:52px;padding:8px 14px;margin:0 0 12px;background:var(--danger-bg);border:1px solid var(--danger-line);border-radius:12px;color:var(--danger-ink);text-decoration:none}
+.emergency .tx{flex:1;min-width:0}.emergency b{display:block}.emergency small{display:block;font-size:13px;line-height:1.35}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 14px}
+.big{display:flex;flex-direction:column;gap:5px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);text-decoration:none}
+.big b{font-size:16px}.big span{font-size:13px;color:var(--muted);line-height:1.35}.big .ic{color:var(--accent)}
+.big.go{background:var(--btn);border-color:var(--btn);color:var(--btn-ink)}.big.go span,.big.go .ic{color:var(--btn-ink);opacity:.9}
+.rowhead{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:0 0 8px}.rowhead h2{font-size:16px;margin:0}.rowhead a{font-weight:600;font-size:15px;text-decoration:none;padding:6px 0}
+.toolrow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:0 0 14px}
+.toolrow a{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 4px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);font-size:12.5px;font-weight:600;text-align:center;text-decoration:none;line-height:1.25}
+.toolrow .ic{color:var(--accent)}
+.results{padding:4px 14px}.results h4{margin:10px 0 2px;font-size:12.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}.results .row{min-height:46px}
+.homecols{display:block}
+@media(min-width:1100px){.homecols{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:20px;align-items:start}.grid2.four{grid-template-columns:repeat(4,minmax(0,1fr))}.wrap.wide{max-width:1080px;margin-left:0}}
+
+/* ---- Ask */
+form.ask{display:flex;gap:8px;position:sticky;top:var(--top);background:var(--bg);padding:8px 0;z-index:2}
+.opts{display:flex;gap:6px 16px;flex-wrap:wrap;color:var(--muted);font-size:14px;margin:4px 0 14px}
+.opts label{display:flex;align-items:center;gap:6px;min-height:32px}.opts input{width:18px;height:18px;margin:0;accent-color:var(--btn)}
+.examples{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.ex{font-size:13.5px;min-height:36px;padding:6px 12px;border-radius:999px;border:1px dashed var(--input);color:var(--muted);cursor:pointer;background:transparent;font-family:inherit}
+.best{border-left:3px solid var(--accent);padding:2px 0 2px 12px;margin:6px 0}.best .bh{font-size:14px;color:var(--muted)}.best p{margin:6px 0 0}.best mark{background:rgba(224,182,90,.35);color:inherit;border-radius:3px;padding:0 1px}
+.q{font-weight:700;font-size:18px;margin-bottom:8px}
+.answer p{margin:0 0 10px}.answer ul,.answer ol{margin:0 0 10px;padding-left:24px}
+.answer .cite{color:var(--accent);text-decoration:none;font-weight:700;font-size:13px;vertical-align:super}
+.retry{font:inherit;font-size:15px;font-weight:700;color:var(--btn-ink);background:var(--btn);border:none;border-radius:999px;padding:8px 16px;margin:8px 0 4px;cursor:pointer}
+.sources{margin-top:10px;border-top:1px solid var(--soft);padding-top:8px}
+.sources h4{margin:0 0 6px;font-size:14px;color:var(--muted);font-weight:700}
+.src{display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--line)}.src:last-child{border-bottom:none}
+.num{flex:0 0 26px;height:26px;border-radius:50%;background:var(--tint);color:var(--tint-ink);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+.src a{font-weight:700;text-decoration:none}
+.where{color:var(--muted);font-size:13px}.snip{font-size:14px;margin-top:2px}
+
+/* ---- Library: the guides and the books, on the same shelves */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.tool{display:block;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.tool b{display:block;font-size:16px;margin-bottom:3px;color:var(--accent)}.tool span{color:var(--muted);font-size:14px;line-height:1.4;display:block}
+.tool.withic{display:flex;gap:12px;align-items:flex-start}.tool.withic>span{flex:1;min-width:0}.tool.withic>.ic{color:var(--accent);margin-top:2px}
+details.shelf{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:8px 0;scroll-margin-top:calc(var(--top) + 8px)}
+details.shelf>summary{list-style:none;cursor:pointer;display:flex;gap:12px;align-items:center;padding:10px 12px;min-height:56px}
 details>summary::-webkit-details-marker{display:none}details>summary{list-style:none}
-.shelf>summary .ic{font-size:26px;line-height:1}.shelf>summary .nm{flex:1;font-weight:700;font-size:17px}
-.shelf>summary small{display:block;font-weight:400;color:var(--muted);font-size:13.5px;line-height:1.35;margin-top:2px}
-.shelf>summary::after,.sub>summary::before{content:'▸';color:var(--muted);display:inline-block;transition:transform .15s}
-.shelf[open]>summary::after,.sub[open]>summary::before{transform:rotate(90deg)}
-.n{display:inline-block;font-size:12px;font-weight:600;padding:0 8px;border-radius:999px;background:rgba(127,127,127,.16);color:var(--muted);vertical-align:middle;margin-left:4px}
-.shelfbody{padding:0 14px 12px}.shelfbody.grid{padding-top:2px}
-details.sub{border-top:1px solid var(--line)}details.sub>summary{cursor:pointer;padding:10px 2px;font-weight:600;color:var(--accent2)}
+.shelf>summary .ic0{display:flex;align-items:center;justify-content:center;flex:none;width:34px;height:34px;border-radius:9px;background:var(--tint);color:var(--tint-ink)}
+.shelf[open]>summary .ic0{background:var(--btn);color:var(--btn-ink)}
+.shelf>summary .nm{flex:1;min-width:0;font-weight:700;font-size:16px}
+.shelf>summary small{display:block;font-weight:400;color:var(--muted);font-size:13px;line-height:1.35;margin-top:1px}
+.shelf>summary::after,details.sub>summary::before{content:'▸';color:var(--muted);display:inline-block;transition:transform .15s}
+.shelf[open]>summary::after,details.sub[open]>summary::before{transform:rotate(90deg)}
+.shelfbody{padding:0 12px 12px}.shelfbody.grid{padding-top:2px}
+details.sub{border-top:1px solid var(--soft)}details.sub>summary{cursor:pointer;padding:10px 2px;font-weight:700;color:var(--accent2)}
 details.sub>summary::before{margin-right:8px}.sub .doc{padding-left:20px}
-button.link{background:none;border:none;color:var(--accent);padding:2px 0;font:inherit;cursor:pointer;text-decoration:underline}
+.cat h3{margin:18px 0 6px;font-size:16px;color:var(--accent2)}
 .openall{margin:2px 0 8px;font-size:14px}
 .doc{padding:6px 0;border-bottom:1px dashed var(--line)}.doc:last-child{border-bottom:none}
-.doc a{font-weight:600;text-decoration:none}.doc .d{color:var(--muted);font-size:14px}
-.tag{display:inline-block;font-size:11px;font-weight:600;padding:0 7px;border-radius:999px;border:1px solid var(--line);color:var(--muted);margin-left:6px;vertical-align:middle}
-.bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden;margin:8px 0}.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
-.note{border-left:4px solid var(--accent2);background:rgba(246,173,85,.08);padding:8px 12px;border-radius:0 8px 8px 0;font-size:14px;color:var(--muted);margin:8px 0}
-.radio{display:block;padding:8px 10px;border:1px solid var(--line);border-radius:10px;margin:6px 0;cursor:pointer}
-.radio small{color:var(--muted)}
-.radio.off{opacity:.55;cursor:default}.radio .rec{color:var(--accent);font-weight:600}.radio input{margin-right:6px}
-footer{color:var(--muted);font-size:13px;margin-top:26px}
+.doc a{font-weight:700;text-decoration:none}.doc .d{color:var(--muted);font-size:14px}
+.quick{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:0 0 12px}
+.quick a{min-height:44px}.quick a.sos{background:var(--danger-bg);border-color:var(--danger-line);color:var(--danger-ink);font-weight:700}
+
+/* ---- Offline, AI, sharing, Vault */
+.radio{display:block;padding:10px 12px;border:1px solid var(--line);border-radius:12px;margin:8px 0;cursor:pointer}
+.radio small{color:var(--muted)}.radio input{margin-right:6px;accent-color:var(--btn)}
+.radio.off{opacity:.55;cursor:default}.radio .rec{color:var(--tint-ink);font-weight:600}
+.saverow{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;padding:12px 0;border-top:1px solid var(--soft)}
+.saverow .tx{flex:1;min-width:150px}.saverow b{display:block}.saverow small{display:block;font-size:13px;color:var(--muted);line-height:1.35}
+.health{border-collapse:collapse;font-size:14px;margin:0 0 8px}.health td{padding:3px 10px 3px 0;vertical-align:top}.health td:first-child{color:var(--muted);white-space:nowrap}
+.pg-off{display:none!important}
+ol.steps{margin:0 0 10px;padding-left:22px;color:var(--muted);font-size:15px}ol.steps li{margin:4px 0}
+
+/* ---- the first visit */
+.welcome{min-height:calc(100vh - 40px);display:flex;flex-direction:column;justify-content:center;gap:22px;max-width:400px;margin:0 auto;text-align:center}
+.welcome img{width:230px;max-width:70%;height:auto;margin:0 auto}
+.welcome h1{margin:0;font-size:23px;line-height:1.25}.welcome p{margin:0}
+.welcome .stack{display:flex;flex-direction:column;gap:10px}
+.welcome a.plain{display:flex;align-items:center;justify-content:center;min-height:44px;font-weight:600;text-decoration:none}
 /* Photos: family pictures and home videos from a USB drive (photos.go); opened from a card under Tools */
 .phtop{display:flex;align-items:center;gap:8px 12px;flex-wrap:wrap;margin:0 0 12px}
 .crumbs{flex:1;min-width:0;font-weight:700;font-size:17px;line-height:1.35;overflow-wrap:anywhere}
@@ -127,32 +211,62 @@ html.pv-open,html.pv-open body{overflow:hidden;overscroll-behavior:none} /* no s
 #osk[hidden]{display:none}
 #osk .r{display:flex;gap:5px;margin:4px 0}
 #osk button{flex:1;min-width:0;min-height:38px;font:inherit;font-size:18px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;padding:0;touch-action:manipulation;-webkit-user-select:none;user-select:none}
-#osk button:active{background:var(--accent);color:#04201d}
-#osk .w{flex:1.5;font-size:16px}#osk .sp{flex:5}#osk .go{background:var(--accent);color:#04201d;font-weight:700}#osk .on{background:var(--accent2);color:#111}
+#osk button:active{background:var(--btn);color:var(--btn-ink)}
+#osk .w{flex:1.5;font-size:16px}#osk .sp{flex:5}#osk .go{background:var(--btn);color:var(--btn-ink);font-weight:700}#osk .on{background:var(--accent2);color:#111}
 body.osk-open{padding-bottom:236px}
 /* a short screen (a 7-inch touchscreen on the Pi, a phone turned sideways): a smaller header */
-@media(max-height:520px){#tagline{display:none}header h1{font-size:20px;margin:0}#osk button{min-height:32px;font-size:16px}#osk .r{margin:3px 0}body.osk-open{padding-bottom:206px}}
-</style>
-<style>:root{color-scheme:dark}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){color-scheme:light}}:root[data-theme=light]{color-scheme:light}.themebtn{font:inherit;font-size:14px;line-height:1.3;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:3px 11px;cursor:pointer;white-space:nowrap;text-decoration:none}.themefloat{position:absolute;top:10px;right:12px;z-index:9}@media print{.themebtn{display:none}}</style><script>/* so-theme: light or dark screen */(function(){var K="so-theme",d=document.documentElement,L={auto:"\uD83C\uDF13 Auto",dark:"\uD83C\uDF19 Dark",light:"\u2600\uFE0F Light"},N={auto:"dark",dark:"light",light:"auto"},cur="auto";try{cur=localStorage.getItem(K)||"auto"}catch(e){}function a(){if(cur==="dark"||cur==="light")d.setAttribute("data-theme",cur);else d.removeAttribute("data-theme");var b=document.querySelectorAll(".themebtn");for(var i=0;i<b.length;i++){b[i].textContent=L[cur]||L.auto;b[i].title="Screen: "+cur+" - tap to change (Auto follows this device)"}}a();window.soTheme=function(){cur=N[cur]||"dark";try{localStorage.setItem(K,cur)}catch(e){}a()};function btn(){var b=document.createElement("button");b.type="button";b.className="themebtn";return b}document.addEventListener("DOMContentLoaded",function(){if(!document.querySelector(".themebtn")){var n=document.querySelector(".topnav"),b=btn();if(n){n.appendChild(document.createTextNode(" \u00B7 "));n.appendChild(b)}else{b.className+=" themefloat";document.body.appendChild(b)}}var all=document.querySelectorAll(".themebtn");for(var i=0;i<all.length;i++)all[i].onclick=window.soTheme;a()})})();</script></head>
-<body>
-<div class="wrap">
-<header>
-  <div class="hrow"><h1><img class="logo" src="icon.svg" alt="" width="30" height="30">ARK Illinois Valley</h1><button class="themebtn" type="button"></button></div>
-  <p class="sub" id="tagline">The Apocalypse Reference Kit for southern Oregon: plain-English survival guides, the books behind them, and an AI that answers from both. Save it and it works with no internet.</p>
-  <style>@media(max-height:520px){#watchvideo{display:none}}</style><p class="sub" id="watchvideo"><a href="pages/AMMO-CAN-COMPUTER-GUIDE.html#video">&#9654;&#65039; Watch: the ARK Vault in about three minutes</a></p>
-  <div class="status" id="status"></div>
-</header>
-<nav id="tabs">
-  <button data-tab="ask" class="on">💬 Ask</button>
-  <button data-tab="tools">📘 Guides</button>
-  <button data-tab="library">📚 Books</button>
-  <button data-tab="kit">🔧 Tools</button>
-  <button data-tab="setup">⚙️ Offline</button>
-</nav>
+@media(max-height:520px){:root{--top:46px}#osk button{min-height:32px;font-size:16px}#osk .r{margin:3px 0}body.osk-open{padding-bottom:206px}}
 
-<section id="ask">
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation-duration:.01s!important}}
+</style>
+<style>:root{color-scheme:dark}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){color-scheme:light}}:root[data-theme=light]{color-scheme:light}.themebtn{font:inherit;font-size:14px;line-height:1.3;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:3px 11px;cursor:pointer;white-space:nowrap;text-decoration:none}.themefloat{position:absolute;top:10px;right:12px;z-index:9}@media print{.themebtn{display:none}}</style><script>/* so-theme: light or dark screen */(function(){var K="so-theme",d=document.documentElement,L={auto:"Display: auto",dark:"Display: dark",light:"Display: light"},N={auto:"dark",dark:"light",light:"auto"},cur="dark";try{cur=localStorage.getItem(K)||"dark"}catch(e){}function a(){if(cur==="dark"||cur==="light")d.setAttribute("data-theme",cur);else d.removeAttribute("data-theme");var b=document.querySelectorAll(".themebtn");for(var i=0;i<b.length;i++){b[i].textContent=L[cur]||L.auto;b[i].title="Screen: "+cur+" - tap to change (Auto follows this device)"}}a();window.soTheme=function(){cur=N[cur]||"dark";try{localStorage.setItem(K,cur)}catch(e){}a()};function btn(){var b=document.createElement("button");b.type="button";b.className="themebtn";return b}document.addEventListener("DOMContentLoaded",function(){if(!document.querySelector(".themebtn")){var n=document.querySelector(".topnav"),b=btn();if(n){n.appendChild(document.createTextNode(" \u00B7 "));n.appendChild(b)}else{b.className+=" themefloat";document.body.appendChild(b)}}var all=document.querySelectorAll(".themebtn");for(var i=0;i<all.length;i++)all[i].onclick=window.soTheme;a()})})();</script></head>
+<body>
+<nav class="side" id="side" aria-label="Main"></nav>
+<div class="col">
+<header class="top" id="top">
+  <button class="iconbtn" id="backbtn" type="button" hidden aria-label="Back"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>
+  <a class="brand" id="brand" href="#home"><img class="logo" src="icon.svg" alt="" width="38" height="38"><span><b>ARK</b><small>Illinois Valley</small></span></a>
+  <h1 id="viewtitle"></h1>
+  <span class="chip" id="netchip" hidden></span>
+  <button class="themebtn" type="button" hidden></button>
+</header>
+<div class="wrap" id="wrap">
+
+<section id="welcome" hidden>
+  <div class="welcome">
+    <img class="only-light" data-src="logo-light.svg" alt="ARK Illinois Valley" width="230" height="183"><img class="only-dark" data-src="logo-dark.svg" alt="ARK Illinois Valley" width="230" height="183">
+    <div class="stack"><h1>Offline Knowledge Library</h1><p class="sub" style="font-size:16px">Practical guides, books, maps, and tools you can use without internet. Offline AI is optional.</p></div>
+    <div class="stack">
+      <button class="main block" type="button" id="openark" style="min-height:52px;font-size:17px">Open ARK</button>
+      <a class="sec block" href="#setup" data-go="setup" style="min-height:48px">Set up offline access</a>
+      <a class="plain" href="#vault" data-go="vault">Build an ARK Vault</a>
+    </div>
+    <p id="watchslot" hidden></p>
+    <style>@media(max-height:520px){#watchvideo{display:none}}</style><p class="sub" id="watchvideo" style="margin:-10px 0 0"><a href="pages/AMMO-CAN-COMPUTER-GUIDE.html#video">Watch: the ARK Vault in about three minutes</a></p>
+    <p class="meta" style="font-size:13px">Reference material, not professional advice.</p>
+  </div>
+</section>
+
+<section id="home" hidden>
+  <label class="search"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" id="hq" placeholder="Search guides, books, and tools…" aria-label="Search ARK" autocomplete="off" enterkeyhint="search"></label>
+  <div class="card results" id="hres" hidden></div>
+  <div class="homecols">
+    <div>
+      <a class="emergency" id="homesos" href="#tools:start"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.5 20h19z"/><path d="M12 10v5M12 17.6v.4"/></svg><span class="tx"><b>Emergency finder</b><small>Bleeding, not breathing, snakebite, a baby coming, fire</small></span><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+      <div class="grid2 four" id="homecards"></div>
+      <div class="rowhead"><h2>Tools</h2><a href="#kit" data-go="kit">View all</a></div>
+      <div class="toolrow" id="hometools"></div>
+    </div>
+    <div>
+      <div class="card rows" id="homeoff"></div>
+      <div class="status" id="status"></div>
+    </div>
+  </div>
+</section>
+
+<section id="ask" hidden>
   <form class="ask" id="f">
-    <textarea id="q" placeholder="Ask anything — e.g. How do I purify creek water?" required></textarea>
+    <textarea id="q" placeholder="Ask anything — e.g. How do I purify creek water?" aria-label="Ask a question" required></textarea>
     <button type="submit" class="main" id="go">Ask</button>
   </form>
   <div class="opts">
@@ -162,17 +276,24 @@ body.osk-open{padding-bottom:236px}
   </div>
   <div class="examples" id="examples"></div>
   <div id="out"></div>
+  <p class="note">AI answers can be wrong. Check the numbered sources, especially for medical, electrical, chemical, or structural questions.</p>
+</section>
+
+<div class="seg" id="libseg" role="tablist" aria-label="Library sections" hidden><button type="button" role="tab" data-go="tools">Guides</button><button type="button" role="tab" data-go="library">Books</button></div>
+
+<section id="tools" hidden>
+  <label class="search"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" id="guideq" placeholder="Search the guides…" aria-label="Search the guides" autocomplete="off"></label>
+  <div class="quick" id="guidequick"></div>
+  <div id="toolgrid"></div>
 </section>
 
 <section id="library" hidden>
-  <input type="search" id="libq" placeholder="Filter the books by title or topic…">
-  <p class="note" id="libnote"></p>
+  <label class="search"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" id="libq" placeholder="Filter the books by title or topic…" aria-label="Filter the books" autocomplete="off"></label>
+  <p class="meta" id="libnote"></p>
   <div id="libout"><p class="meta"><span class="spin"></span>Loading…</p></div>
 </section>
 
-<section id="tools" hidden>
-  <div id="toolgrid"></div>
-</section>
+<section id="maps" hidden><div id="mapsbody"></div></section>
 
 <section id="kit" hidden>
   <p class="meta">Tools that work with no internet, on this device.</p>
@@ -184,80 +305,105 @@ body.osk-open{padding-bottom:236px}
   <div id="phbody"></div>
 </section>
 
+<section id="more" hidden><div id="morebody"></div></section>
+
+<section id="help" hidden><div id="helpbody"></div></section>
+
 <section id="setup" hidden>
-  <div class="card" id="driveai" hidden>
-    <h3 style="margin-top:0">🤖 AI on this device</h3>
-    <p id="devinfo" class="meta"></p>
-    <div id="tierlist"></div>
-    <p id="tierstate" class="meta"></p>
-    <div class="note" id="tiernote" hidden></div>
-    <p class="meta">Not sure? Leave it on <b>Automatic</b>. It picks what this device can handle, times a test answer, and steps down if it's too slow. Your choice is remembered for this device.</p>
-    <div class="note" id="remotenote" hidden>You're using the library shared from another device. Only that device can change the AI or stop sharing.</div>
+  <div class="card" id="savecard" data-page="offline">
+    <h3>Save ARK to this device</h3>
+    <p class="meta">Keep guides and tools available when you’re offline. Save maps, walking routes, and AI separately.</p>
+    <div class="saverow"><span class="tx"><b>Guides and tools</b><small>Search, every guide and the tools <span id="savelibsize"></span></small></span><span class="pill" id="st-library"></span><button class="sec" id="savelib" aria-label="Save guides and tools">Save</button></div>
+    <div class="saverow"><span class="tx"><b>Walking routes</b><small>Turn-by-turn directions to every town <span id="saveroutessize"></span>. A route’s GPS track (for a map app) downloads from that route’s page, one at a time.</small></span><span class="pill" id="st-routes"></span><button class="sec" id="saveroutes" aria-label="Save walking routes">Save</button></div>
+    <div class="saverow" id="savemaprow" hidden><span class="tx"><b>Illinois Valley map</b><small>Roads, topo lines, property lines and public land for the Illinois Valley <span id="savemapsize"></span>. Saved on the phone, the map shows where you are with no signal.</small></span><span class="pill" id="st-map"></span><button class="sec" id="savemap" aria-label="Save Illinois Valley map">Save</button></div>
+    <div class="bar" id="savebarw" hidden><i id="savebar"></i></div>
+    <p class="meta" id="saveprog"></p>
+    <p class="meta" id="storage"></p>
+    <p class="meta">Offline content must finish saving before you disconnect.</p>
+    <div class="note"><b>Keep it on your home screen.</b> iPhone/iPad: in Safari tap <b>Share → Add to Home Screen</b>. Android: in Chrome tap <b>⋮ → Install app</b>. Computers: the install icon in the address bar. Phones may clear saved data for websites you haven't opened in a while unless they're on the home screen — open it now and then.</div>
   </div>
-  <div class="card" id="widemap" hidden>
-    <h3 style="margin-top:0">🗺️ A bigger map</h3>
+  <div class="card" id="ondrive" data-page="offline" hidden>
+    <h3>This library is on a drive</h3>
+    <p class="meta">Every guide, book, the map and the tools are already here, and work with no internet.</p>
+  </div>
+  <div class="card" id="widemap" data-page="offline" hidden>
+    <h3>Detailed offline map</h3>
     <p class="meta" id="widetext"></p>
     <p><button class="sec" id="widego">Download it</button> <button class="sec" id="widestop" hidden>Stop</button></p>
     <div class="bar" id="widebarw" hidden><i id="widebar"></i></div>
     <p class="meta" id="wideprog"></p>
   </div>
-  <div class="card" id="pihealth" hidden>
-    <h3 style="margin-top:0">📟 How the Pi is doing</h3>
-    <div id="pihbody"></div>
-    <p class="meta">Updates every few seconds. Look at it <b>while the AI is answering</b>: when it has nothing to do, a Pi runs slowly on purpose to save power.</p>
+  <div class="card rows" id="offlinks" data-page="offline"></div>
+
+  <div class="card" id="driveai" data-page="ai" hidden>
+    <h3>Offline AI settings</h3>
+    <p id="devinfo" class="meta"></p>
+    <div id="tierlist"></div>
+    <p id="tierstate" class="meta"></p>
+    <div class="note" id="tiernote" hidden></div>
+    <p class="meta">Not sure? Leave it on <b>Automatic</b>. It picks what this device can handle, times a test answer, and steps down if it's too slow. Your choice is remembered for this device.</p>
+    <div class="note" id="remotenote" hidden>This library is hosted on another device. Change AI and sharing settings on that device.</div>
   </div>
-  <div class="card" id="sharecard" hidden>
-    <h3 style="margin-top:0">📡 Share with phones nearby</h3>
-    <p class="meta">Let every phone, tablet or laptop on the same Wi-Fi use this library in its web browser — <b>iPhones too</b>. No internet needed: the search and the AI run on this device.</p>
-    <p><button class="sec" id="shareon">Turn on sharing</button> <button class="sec" id="shareoff" hidden>Stop sharing</button></p>
-    <div id="sharelinks"></div>
-    <div class="note">No Wi-Fi? Turn on a phone's <b>hotspot</b> (mobile data can stay off) or use a small travel router, and connect this device and the other phones to it. If Windows or the Mac asks whether to allow network access, choose <b>Allow</b>.</div>
-  </div>
-  <div class="card" id="webai">
-    <h3 style="margin-top:0">🤖 Offline AI</h3>
+  <div class="card" id="webai" data-page="ai">
+    <h3>Offline AI settings</h3>
+    <p class="meta">Ask questions without internet. The AI is saved on this device and reads only the library.</p>
     <p id="aiinfo" class="meta"></p>
     <div id="aichoices">
       <label class="radio"><input type="radio" name="model" value="small" checked> <b>Small</b> — Llama 3.2 1B · about 0.9 GB download<br><small>Best for phones and tablets. Quick, but a basic writer — always check its sources.</small></label>
       <label class="radio"><input type="radio" name="model" value="medium"> <b>Medium</b> — Llama 3.2 3B · about 2.3 GB download<br><small>Better answers. For laptops and desktops with 8 GB+ memory.</small></label>
     </div>
-    <p><button class="sec" id="aion">Download &amp; turn on the AI</button> <button class="sec" id="aioff" hidden>Turn off</button></p>
+    <p><button class="main" id="aion">Download &amp; turn on AI</button> <button class="sec" id="aioff" hidden>Turn off</button></p>
     <div class="bar" id="aibarw" hidden><i id="aibar"></i></div>
     <p class="meta" id="aiprog"></p>
   </div>
-  <div class="card" id="getkit">
-    <h3 style="margin-top:0">💾 Get the whole library on a USB drive</h3>
-    <p class="meta">The full library adds every book, all of Wikipedia, maps that work with no signal, and an AI that needs no internet. No commands to type:</p>
-    <ol class="meta" style="margin:0 0 10px;padding-left:22px"><li>Download the kit and unzip it.</li><li>Double-click <b>INSTALL-Windows</b> (or <b>INSTALL-Mac</b>).</li><li>In the page that opens, pick your drive and press <b>Start</b>.</li></ol>
-    <p class="meta">&#9208;&#65039; <b>You can stop it any time</b> and carry on later. Run it again, pick the same drive and press <b>Continue</b>: it picks up where it left off and fetches anything that failed.</p>
-    <p><a class="btn" href="download/ark-illinois-valley-kit.zip" download>⬇️ Download the installer kit</a> <span class="meta">one zip, about 40 MB · Windows, Mac, Linux</span></p>
-    <p class="meta">&#129520; <b>Building the ARK Vault</b> (the ammo-can computer)? This is the same kit. It fills the Vault's library drive, then finishes its Raspberry Pi's memory card. <a href="pages/AMMO-CAN-COMPUTER-GUIDE.html" target="_blank" rel="noopener">The ARK Vault guide</a></p>
-    <p class="meta"><a href="pages/GET-THE-LIBRARY.html" target="_blank" rel="noopener">Step-by-step help, drive sizes and fixes</a></p>
+  <p class="note" data-page="ai">AI answers can be wrong. Check the numbered sources, especially for medical, electrical, chemical, or structural questions.</p>
+
+  <div class="card" id="sharecard" data-page="sharing" hidden>
+    <h3>Share with nearby devices</h3>
+    <p class="meta">Other phones, tablets, and computers on the same local network can open this library in a browser. Internet is not required: the search and the AI run on this device. <b>iPhones too.</b></p>
+    <p><button class="main" id="shareon">Start local sharing</button> <button class="sec" id="shareoff" hidden>Stop sharing</button></p>
+    <div id="sharelinks"></div>
+    <div class="note">No Wi-Fi? Turn on a phone's <b>hotspot</b> (mobile data can stay off) or use a small travel router, and connect this device and the other phones to it. If Windows or the Mac asks whether to allow network access, choose <b>Allow</b>.</div>
   </div>
-  <div class="card" id="arkvault">
-    <h3 style="margin-top:0">&#129520; ARK Vault: the whole library in an ammo can</h3>
-    <p class="meta">A steel ammo can that holds this library on a small computer (a Raspberry Pi), a battery, the chargers to fill it from the sun or the wall, a little printer, a crank radio and an old phone to read it on. Sealed, it's shielded from an EMP. Open the lid and flip the power switch on, and the phone (or any phone nearby) uses the library and the AI over the Vault's own Wi-Fi, with no internet and no power grid.</p>
+  <div class="card" id="sharehelp" data-page="sharing"></div>
+
+  <div class="card" id="arkvault" data-page="vault">
+    <h3>ARK Vault</h3>
+    <p class="meta">A battery-powered library that nearby devices can use without internet. A steel ammo can holds this library on a small computer (a Raspberry Pi), a battery, the chargers to fill it from the sun or the wall, a little printer, a crank radio and an old phone to read it on. Open the lid and flip the power switch on, and any phone nearby uses the library and the AI over the Vault's own Wi-Fi.</p>
     <figure style="margin:14px 0"><video controls preload="none" playsinline poster="media/ark-vault-promo.jpg" style="display:block;width:100%;aspect-ratio:16/9;border-radius:12px;background:#000"><source src="media/ark-vault-promo.mp4" type="video/mp4"><a href="media/ark-vault-promo.mp4">Watch the video</a></video><figcaption style="font-size:14px;opacity:.75;margin:6px 2px 0">The ARK Vault in about three minutes: what it is, what&rsquo;s inside, the guides and tools, the printer, and power after an EMP. With music; it plays from the website, so it needs the internet.</figcaption></figure>
-    <p><a class="btn" id="vaultguide" href="pages/AMMO-CAN-COMPUTER-GUIDE.html">Read the ARK Vault guide</a> <a class="sec" id="vaultmodel" href="pages/AMMO-CAN-MODEL.html">&#129482; See it in 3D</a></p>
-    <p class="meta">The guide has the parts list, the files to 3D-print and laser-cut, the wiring, and how the installer kit prepares the Pi so it sets itself up.</p>
+    <p><a class="btn" id="vaultguide" href="pages/AMMO-CAN-COMPUTER-GUIDE.html">Read the build guide</a> <a class="sec" id="vaultmodel" href="pages/AMMO-CAN-MODEL.html">See it in 3D</a></p>
+    <p class="meta">The guide has the parts list, the files to 3D-print and laser-cut, the wiring, and how the setup tool prepares the Pi so it sets itself up.</p>
   </div>
-  <div class="card">
-    <h3 style="margin-top:0">📥 Save for offline use</h3>
-    <p class="meta">Once saved, search, guides and tools work on this device with no internet. The AI model (above) is saved separately when you turn it on.</p>
-    <p><button class="sec" id="savelib">Save library &amp; guides</button> <span class="meta" id="savelibsize"></span></p>
-    <p><button class="sec" id="saveroutes">Also save walking routes</button> <span class="meta" id="saveroutessize"></span><br><span class="meta">Turn-by-turn directions to every town. A route's GPS track (for a map app) downloads from that route's page, one at a time.</span></p>
-    <p id="savemaprow" hidden><button class="sec" id="savemap">Also save the map</button> <span class="meta" id="savemapsize"></span><br><span class="meta">Roads, topo lines, property lines and public land for the Illinois Valley. Saved on the phone, the map shows where you are with no signal.</span></p>
-    <div class="bar" id="savebarw" hidden><i id="savebar"></i></div>
-    <p class="meta" id="saveprog"></p>
-    <p class="meta" id="storage"></p>
-    <div class="note"><b>Keep it on your home screen.</b> iPhone/iPad: in Safari tap <b>Share → Add to Home Screen</b>. Android: in Chrome tap <b>⋮ → Install app</b>. Computers: the install icon in the address bar. Phones may clear saved data for websites you haven't opened in a while unless they're on the home screen — open it now and then.</div>
+  <div class="card" id="pihealth" data-page="vault status" hidden>
+    <h3 id="pihtitle">Vault system status</h3>
+    <div id="pihbody"></div>
+    <p class="meta">Updates every few seconds. Look at it <b>while the AI is answering</b>: when it has nothing to do, a Pi runs slowly on purpose to save power.</p>
   </div>
-  <div class="card">
-    <h3 style="margin-top:0">ℹ️ About</h3>
+
+  <div class="card" id="getkit" data-page="usb">
+    <h3>Complete offline library (USB)</h3>
+    <p class="meta">Every book, all of Wikipedia, maps that work with no signal, and an AI that needs no internet. Download the setup tool, choose a drive, and select the library content you want.</p>
+    <ol class="steps"><li>Download and unzip the setup tool.</li><li>Run the installer for your operating system (<b>INSTALL-Windows</b> or <b>INSTALL-Mac</b>).</li><li>Select a drive and start the download.</li></ol>
+    <p><a class="btn" href="download/ark-illinois-valley-kit.zip" download>Download the setup tool</a></p>
+    <p class="meta">One zip, about 40 MB (the installer kit) · Windows, Mac, Linux. The zip is the installer, not the whole library.</p>
+    <p class="note">You can run the installer again and continue an interrupted download: pick the same drive and press <b>Continue</b>.</p>
+    <p class="meta"><b>Building an ARK Vault?</b> This is the same setup tool. It fills the Vault's library drive, then finishes its Raspberry Pi's memory card. <a href="pages/AMMO-CAN-COMPUTER-GUIDE.html" target="_blank" rel="noopener">The ARK Vault guide</a></p>
+    <p class="meta"><a href="pages/GET-THE-LIBRARY.html" target="_blank" rel="noopener">Installation help</a>: drive sizes and troubleshooting</p>
+  </div>
+
+  <div class="card" data-page="about">
+    <p style="margin:0 0 10px"><img class="logo" src="icon.svg" alt="" width="56" height="56" style="width:56px;height:56px;border-radius:13px"></p>
+    <h3>ARK Illinois Valley</h3>
+    <p class="sub" id="tagline">The Apocalypse Reference Kit for southern Oregon: plain-English survival guides, the books behind them, and an AI that answers from both. Save it and it works with no internet.</p>
     <p class="meta" id="about"></p>
+    <p class="note">Answers come from a small AI and can be wrong — check the numbered sources, especially for medical, electrical, chemical or structural questions. This is reference material, not professional advice.</p>
+    <p id="aboutwelcome"><button class="sec" type="button" id="showwelcome">Show the welcome screen</button></p>
   </div>
 </section>
 
-<footer>Answers come from a small AI and can be wrong — check the numbered sources, especially for medical, electrical, chemical or structural questions. This is reference material, not professional advice.</footer>
+<footer>This is reference material, not professional advice. AI answers can be wrong: check the numbered sources.</footer>
+</div>
+<nav id="tabs" class="tabs" aria-label="Main"></nav>
 </div>
 <div id="phview" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
   <div id="pvstage"></div>

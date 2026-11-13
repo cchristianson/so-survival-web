@@ -15,7 +15,7 @@
   var store = { get: function (k, d) { try { var v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } }, set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } };
 
   if (!http) {
-    say('<b>The map needs the library to be running.</b><br>Start the library first (the <b>START</b> file for your device), then open <b>🔧 Tools → 🗺️ Map</b>. A page opened straight from the drive can\'t read the map files.');
+    say('<b>The map needs the library to be running.</b><br>Start the library first (the <b>START</b> file for your device), then open <b>Tools → Map</b>. A page opened straight from the drive can\'t read the map files.');
     $('tools').hidden = true; return;
   }
   if (!window.maplibregl || !window.WebGLRenderingContext) { say('This browser can\'t draw the map. Try a newer browser (Chrome, Safari, Firefox or Edge).'); return; }
@@ -309,6 +309,19 @@
       document.addEventListener('visibilitychange', function () { if (!document.hidden) soon(1200); });
       addEventListener('pageshow', function () { soon(1200); });
     })();
+    // Full screen: the top row and the app's buttons step aside so the map has the whole screen. One press brings them
+    // back. It is remembered while this tab stays open, so a restart of the map (above) comes back the same way.
+    (function () {
+      var b = $('t-full'), on = false; if (!b) return;
+      var set = function (v) {
+        on = v; document.body.classList.toggle('full', on); b.classList.toggle('on', on);
+        b.lastChild.nodeValue = on ? 'Exit' : 'Full'; b.setAttribute('aria-label', on ? 'Leave full screen' : 'Full screen map');
+        try { sessionStorage.setItem('arkMapFull', on ? '1' : ''); } catch (e) {}
+        setTimeout(function () { map.resize(); }, 60);
+      };
+      b.onclick = function () { set(!on); };
+      try { if (sessionStorage.getItem('arkMapFull')) set(true); } catch (e) {}
+    })();
     map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-left');
     map.addControl(new maplibregl.ScaleControl({ unit: 'imperial', maxWidth: 120 }), 'bottom-left');
     map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-right');
@@ -514,6 +527,7 @@
       return null;
     }
     function routesPage() { var r = document.body.getAttribute('data-routes') || ''; return drive ? '/lib/' + r : '../walking-routes/WALKING-ROUTES.html'; }
+    if ($('toroutes')) $('toroutes').href = routesPage();
     map.on('click', function (e) {
       $('results').hidden = true; say('');
       if (measuring) { addMeasure(e.lngLat); return; }
@@ -537,7 +551,7 @@
             '<div class="row"><button class="btn sm" type="button" id="i-del">Remove this pin</button></div></div>' : '') +
           facts.map(function (d) { return '<div class="fact"><span class="k">' + esc(d[0]) + '</span>' + (d[1] ? '<b>' + esc(d[1]) + '</b>' : '') + d[2].filter(Boolean).join('<br>') + '</div>'; }).join('') +
           '<div class="fact"><table class="kv">' + rows.map(function (r) { return '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td></tr>'; }).join('') + '</table>' +
-          '<div class="row"><button class="btn sm" type="button" id="i-pin">📌 Save as a pin</button><button class="btn sm" type="button" id="i-meas">📏 Measure from here</button></div>' +
+          '<div class="row"><button class="btn sm" type="button" id="i-pin">Save as a pin</button><button class="btn sm" type="button" id="i-meas">Measure from here</button></div>' +
           '<div id="i-form" hidden><input class="t" id="i-name" placeholder="A name for this pin" maxlength="60"><textarea class="t" id="i-note" rows="2" placeholder="A note (optional)" maxlength="300"></textarea>' +
           (sharing ? '<label class="chk"><input type="checkbox" id="i-share"> Share it with everyone using this library</label>' : '') +
           '<div class="row"><button class="btn sm go" type="button" id="i-save">Save pin</button></div></div></div>';
@@ -601,8 +615,8 @@
       geo = new maplibregl.GeolocateControl({ positionOptions: { enableHighAccuracy: true, timeout: 60000 }, trackUserLocation: true, showUserHeading: true, showAccuracyCircle: true });
       geo.on('error', function (err) {
         $('locate').classList.remove('on');
-        say((err && err.code === 1 ? '<b>The phone didn\'t allow its position.</b> Allow location for this page (and for the browser, in the phone\'s Settings), then tap 📍 again.'
-          : '<b>No position yet.</b> Outdoors with a clear view of the sky it can take a minute or two with no cell signal. Tap 📍 to try again.') + ok);
+        say((err && err.code === 1 ? '<b>The phone didn\'t allow its position.</b> Allow location for this page (and for the browser, in the phone\'s Settings), then tap <b>Me</b> again.'
+          : '<b>No position yet.</b> Outdoors with a clear view of the sky it can take a minute or two with no cell signal. Tap <b>Me</b> to try again.') + ok);
       });
       geo.on('geolocate', function () { say(''); });
       geo.on('trackuserlocationend', function () { if (geo._watchState === 'OFF') $('locate').classList.remove('on'); });
@@ -617,7 +631,7 @@
           '<ol style="margin:6px 0 8px;padding-left:20px"><li>Tap <b>Open the secure map</b>.</li>' +
           '<li>The phone warns that the connection is <i>not private</i>. That is expected: the library makes its own security certificate, and nothing leaves this Wi-Fi. ' +
           'On an iPhone tap <b>Show Details</b>, then <b>visit this website</b>. On Android tap <b>Advanced</b>, then <b>Proceed</b>.</li>' +
-          '<li>Tap 📍 again and allow location.</li></ol>' +
+          '<li>Tap <b>Me</b> again and allow location.</li></ol>' +
           '<button class="btn go" type="button" id="gosecure">Open the secure map</button> <button class="btn" type="button" onclick="this.parentNode.hidden=true">Not now</button>');
         $('gosecure').onclick = function () {
           fetch('/api/secure?now=' + Date.now()).then(function (r) { return r.json(); }).then(function (j) {
@@ -808,7 +822,7 @@
         for (i = 1; i <= N; i++) { var rise = sm[i] - sm[i - 1]; ground += Math.sqrt(run * run + rise * rise); there += run / pace(rise / run); back += run / pace(-rise / run); }
         $('m-out').innerHTML = '<p style="font-size:20px;font-weight:700;margin:2px 0">' + far(ground) + ' <span class="small" style="font-weight:400">over the ground</span></p>' +
           '<p class="small">' + far(total) + ' flat on the map · ' + stretches + '</p>' +
-          (total > 400 ? '<p style="margin:6px 0">🥾 About <b>' + clock(there / 60) + '</b> on foot' + (Math.abs(there - back) > 120 ? ', <b>' + clock(back / 60) + '</b> coming back' : '') +
+          (total > 400 ? '<p style="margin:6px 0">About <b>' + clock(there / 60) + '</b> on foot' + (Math.abs(there - back) > 120 ? ', <b>' + clock(back / 60) + '</b> coming back' : '') +
             '. <span class="small">The climbs are counted. This is a steady walker on a road or trail: off trail, or with a heavy load, allow half as much again.</span></p>' : '');
         var cv = $('profile'); cv.hidden = false; var W = cv.width = cv.clientWidth * 2, H = cv.height = 240, g = cv.getContext('2d'), padL = 8, padB = 8, span = Math.max(hi - lo, 10);
         var X = function (k) { return padL + (W - 2 * padL) * k / N; }, Y = function (v) { return H - padB - (H - 2 * padB - 22) * (v - lo) / span; };
