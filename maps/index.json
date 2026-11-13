@@ -22,6 +22,7 @@
   "Tax lots: Josephine County Assessor",
   "Land ownership: Bureau of Land Management, Oregon State Office",
   "Public land in California: Bureau of Land Management, Surface Management Agency",
+  "Satellite photos: USDA NAIP, from USGS The National Map",
   "Addresses: Josephine County Assessor",
   "Water: USGS National Hydrography Dataset",
   "Wells: Oregon Water Resources Department well reports",
@@ -70,6 +71,13 @@
    "USFS",
    "WATER"
   ]
+ },
+ "satellite": {
+  "file": "illinois-valley-satellite.pmtiles",
+  "maxzoom": 13,
+  "online": "https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}",
+  "online_maxzoom": 16,
+  "detail_mb": 2961
  },
  "places": "illinois-valley-places.json",
  "addresses": "illinois-valley-addresses.json",
@@ -281,6 +289,7 @@
   "illinois-valley-streets.pmtiles": 26054598,
   "illinois-valley-terrain.pmtiles": 53896152,
   "illinois-valley-property.pmtiles": 16383791,
+  "illinois-valley-satellite.pmtiles": 11133113,
   "illinois-valley-places.json": 382657,
   "illinois-valley-addresses.json": 1021568,
   "illinois-valley-water.pmtiles": 9099163,
@@ -292,5 +301,5 @@
   "illinois-valley-game.pmtiles": 2315485,
   "illinois-valley-timber.pmtiles": 3543494
  },
- "v": "d8d721ad0f25"
+ "v": "f58bd9ccb262"
 }

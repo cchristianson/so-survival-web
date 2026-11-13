@@ -112,6 +112,30 @@ async function refreshServer() {
   renderStatus(); renderHealth();
 }
 
+// More > Offline & downloads on the drive: sharp satellite photos for the map's Satellite switch. The map's own files have
+// them only from far out; this keeps the close-up ones on the drive (mapsat.go), so they are sharp with no internet.
+let satTimer = 0;
+async function loadSat(act) {
+  const card = $('satmap'); if (!card || mode !== 'drive') return;
+  if (act === 'remove' && !confirm('Remove the sharp satellite photos from the drive? The map keeps the less sharp ones.')) return;
+  let j; try { j = await (await fetch('api/mapsat', act ? { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ do: act }) } : {})).json(); } catch { return; }
+  card.hidden = !j.offer || !j.local;
+  if (card.hidden) return;
+  const st = j.state || {}, gbs = (j.offer.detail_mb / 1024).toFixed(1), size = mb => mb < 1000 ? Math.round(mb) + ' MB' : (mb / 1024).toFixed(1) + ' GB';
+  $('sattext').innerHTML = j.have && !st.running
+    ? `Sharp satellite photos of the area are on the drive (${size(j.haveMB)}). The map's <b>Satellite photo</b> switch (Layers) shows them close up with no internet.`
+    : `The map's <b>Satellite photo</b> switch (Layers) shows the area from the air. With no internet the photos are blurry close up. This keeps sharp ones on the drive, enough to see houses and tracks: about ${gbs} GB. It needs the internet and can take an hour or more, so do it on a computer, before the drive goes into an ARK Vault. If it stops part way, press Download again: it carries on.`;
+  $('satgo').hidden = st.running || j.have; $('satgo').textContent = 'Download them';
+  $('satstop').hidden = !st.running;
+  $('satdel').hidden = st.running || !j.have;
+  $('satbarw').hidden = !st.running;
+  if (st.running) $('satbar').style.width = (st.total ? Math.round(st.done / st.total * 100) : 0) + '%';
+  $('satprog').textContent = st.running ? `${st.step || ''}${st.total ? ` — ${st.done.toLocaleString()} of ${st.total.toLocaleString()} (${size(st.mb)} so far)` : ''}. Keep this window open.`
+    : st.error || (st.step === 'Done' ? 'Done. The sharp photos are on the drive.' : st.step === 'Removed' ? 'Removed.' : '');
+  clearTimeout(satTimer);
+  if (st.running) satTimer = setTimeout(loadSat, 2000);
+}
+
 // More > Offline & downloads on the drive: a detailed map for the browser map (roads and topo lines for a wide area around the local
 // one). The Library Assistant cuts it out of the public world maps, so it needs the internet: once, on a computer.
 let wideTimer = 0;
@@ -314,6 +338,9 @@ function bindUI() {
   $('savemap').addEventListener('click', () => saveOffline('map'));
   $('widego').addEventListener('click', () => loadWide('start'));
   $('widestop').addEventListener('click', () => loadWide('stop'));
+  $('satgo').addEventListener('click', () => loadSat('start'));
+  $('satstop').addEventListener('click', () => loadSat('stop'));
+  $('satdel').addEventListener('click', () => loadSat('remove'));
   $('shareon').addEventListener('click', () => setShare(true));
   $('shareoff').addEventListener('click', () => setShare(false));
   bindPhotos();
@@ -676,7 +703,7 @@ async function renderSetup() {
   { const P = guidePaths(); if (P.ammocan) $('vaultguide').href = P.ammocan;   // the ARK Vault card: the guide and 3D model, here or on the drive
     $('vaultmodel').href = mode === 'drive' ? '/lib/AMMO-CAN-MODEL.html' : 'pages/AMMO-CAN-MODEL.html'; }
   if (mode === 'drive') {
-    $('webai').hidden = true; $('driveai').hidden = false; $('getkit').hidden = true; loadTiers(); renderHealth(); loadWide();
+    $('webai').hidden = true; $('driveai').hidden = false; $('getkit').hidden = true; loadTiers(); renderHealth(); loadWide(); loadSat();
   } else {
     const chosen = store.get('aiModel') && MODELS[store.get('aiModel')];
     $('aiinfo').textContent = ai.error || (ai.kind === 'webllm' ? `On: ${ai.label}. Saved on this device.` : ai.loading ? 'Loading…' :
