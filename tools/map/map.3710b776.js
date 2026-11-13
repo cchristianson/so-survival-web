@@ -230,9 +230,31 @@
     var b = cfg.reach;
     var S0 = style(cfg, dem), BASE = {};   // the layers as designed, to work each one's opacity out from
     JSON.parse(JSON.stringify(S0.layers)).forEach(function (l) { BASE[l.id] = l; });
+    // Which layers are on, and how solid each is drawn: remembered on this device. The map starts out with only those.
+    // (Every layer used to start out drawn and be hidden once the map had finished loading, so each opening fetched
+    // and drew all of them, the heavy ones too: slow to open on a phone, and worse on a weak signal.)
+    var saved = store.get('arkMapLayers', {});
+    var isOn = function (it) { return it.id in saved ? !!saved[it.id] : !!it.on; };
+    var OPROPS = { fill: ['fill-opacity'], line: ['line-opacity'], raster: ['raster-opacity'], circle: ['circle-opacity', 'circle-stroke-opacity'], symbol: ['icon-opacity', 'text-opacity'], hillshade: ['hillshade-exaggeration'] };
+    var opac = store.get('arkMapOpacity', {});
+    ITEMS.forEach(function (it) {
+      if (!isOn(it)) S0.layers.forEach(function (l) { if (it.layers.indexOf(l.id) >= 0) { l.layout = l.layout || {}; l.layout.visibility = 'none'; } });
+      else if (opac[it.id] > 0) setOpacity(it, opac[it.id], S0);
+    });
     var map = new maplibregl.Map({
       container: 'map', style: S0, center: [cfg.center[0], cfg.center[1]], zoom: cfg.center[2], minZoom: 2, maxZoom: 18,
-      attributionControl: false, dragRotate: false, pitchWithRotate: false, hash: true
+      attributionControl: false, dragRotate: false, pitchWithRotate: false, hash: true,
+      // The map's files do not change while the page is open. Left on, every tile on the screen is fetched and worked
+      // out again each time its "keep until" time runs out (ten minutes, on the website).
+      refreshExpiredTiles: false
+    });
+    // MapLibre 4.7 leaves a height tile marked "reloading" for good when its source is loaded again (as when Shaded hills
+    // is switched off and on): the map then never counts as finished. Mark it loaded once the reload is done.
+    map.once('style.load', function () {
+      var src = map.getSource('dem'), load = src && src.loadTile;
+      if (load) src.loadTile = function (tile) {
+        return Promise.resolve(load.call(src, tile)).then(function (r) { if (tile.state === 'reloading' && tile.dem) tile.state = 'loaded'; return r; });
+      };
     });
     // How far out it zooms: far enough to see the whole map at once on this screen, and a bit more for the country round
     // it. (The view used to be fenced to the map's own area, and on a tall phone the fence stopped the zoom before the
@@ -258,6 +280,33 @@
       if (/not found|404|bad response|no heights/i.test(m)) { if (!again) again = requestAnimationFrame(function () { again = 0; if (map._update) map._update(); else map.triggerRepaint(); }); }
       else if (!/abort/i.test(m) && window.console) console.warn('map:', m);
     });
+    // A phone can take the map's drawing surface away (when it runs short of memory, or while the page is in the
+    // background). Whether or not it gives it back, the map is left blank: MapLibre 4.7 does not draw again what it had
+    // drawn before. So the page starts the map again where it was (the address holds the position; the layers and
+    // pins are remembered). By itself at most once a minute, and never in the middle of measuring or typing: then it
+    // says so and waits to be told.
+    (function () {
+      var dead = function () { try { return map.painter.context.gl.isContextLost(); } catch (e) { return false; } };
+      var broken = false, asked = false, timer = 0;
+      var restart = function () { try { sessionStorage.setItem('arkMapRestart', String(Date.now())); } catch (e) {} location.reload(); };
+      var check = function () {
+        timer = 0;
+        if (document.hidden || !(broken || dead())) return;
+        var last = 0; try { last = +sessionStorage.getItem('arkMapRestart') || 0; } catch (e) {}
+        var busy = measuring || /^(INPUT|TEXTAREA)$/.test((document.activeElement || {}).tagName || '');
+        if (!busy && Date.now() - last > 60000) { restart(); return; }
+        if (!asked) {
+          asked = true;
+          say('<b>The map stopped drawing.</b> <button class="btn" type="button" id="maprestart">Start the map again</button>');
+          $('maprestart').onclick = restart;
+        }
+      };
+      var soon = function (ms) { if (!timer) timer = setTimeout(check, ms); };
+      map.on('webglcontextlost', function () { broken = true; soon(2500); });
+      map.on('webglcontextrestored', function () { if (timer) { clearTimeout(timer); timer = 0; } soon(150); });
+      document.addEventListener('visibilitychange', function () { if (!document.hidden) soon(1200); });
+      addEventListener('pageshow', function () { soon(1200); });
+    })();
     map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-left');
     map.addControl(new maplibregl.ScaleControl({ unit: 'imperial', maxWidth: 120 }), 'bottom-left');
     map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-right');
@@ -317,8 +366,6 @@
     // ---- layers: a switch for each, in groups that fold; what is on is remembered on this device
     var has = function (id) { return !!map.getLayer(id); };
     var show = function (ids, on) { ids.forEach(function (id) { if (has(id)) map.setLayoutProperty(id, 'visibility', on ? 'visible' : 'none'); }); };
-    var saved = store.get('arkMapLayers', {});
-    var isOn = function (it) { return it.id in saved ? !!saved[it.id] : !!it.on; };
     function legendHtml(it) {
       var lg = it.legend;
       if (it.id === 'own') lg = (cfg.property.owners || ['BLM', 'USFS', 'ST', 'LG']).filter(function (c) { return OWN[c] && OWN[c][1]; })
@@ -329,8 +376,6 @@
         return '<span>' + (l[0] ? '<i class="' + (l[2] || '') + '" style="' + (l[2] === 'ln' ? 'border-color:' : 'background:') + l[0] + '"></i>' : '') + esc(l[1]) + '</span>'; }).join('') + '</div>';
     }
     // ---- how solid each layer is drawn: a slider under its switch, remembered on this device
-    var OPROPS = { fill: ['fill-opacity'], line: ['line-opacity'], raster: ['raster-opacity'], circle: ['circle-opacity', 'circle-stroke-opacity'], symbol: ['icon-opacity', 'text-opacity'], hillshade: ['hillshade-exaggeration'] };
-    var opac = store.get('arkMapOpacity', {});
     function outs(e, fn) {   // an opacity can change with the zoom or with the thing drawn: fn on each value it can take
       if (typeof e === 'number') return fn(e);
       if (!Array.isArray(e)) return e;
@@ -396,7 +441,9 @@
       $('layerlist').querySelectorAll('details').forEach(function (d) { d.ontoggle = function () { var o = store.get('arkMapOpen', { 'Base map': true, Land: true }); o[d.dataset.g] = d.open; store.set('arkMapOpen', o); }; });
     }
     renderLayers();
-    map.on('load', function () { ITEMS.forEach(function (it) { show(it.layers, isOn(it)); if (opac[it.id] > 0) setOpacity(it, opac[it.id]); }); drawPins(); drawShared(); });
+    // Pins go on as soon as the map's design is in, not when the last tile has arrived (on a weak signal that can be long).
+    var pinsOn = false, putPins = function () { if (pinsOn) return; pinsOn = true; drawPins(); drawShared(); };
+    map.once('style.load', putPins); map.once('load', putPins);
     $('propnote').hidden = !have.parcels;
     if (cfg.far) $('propnote').insertAdjacentHTML('afterend', '<p class="small">While this device has a signal, roads and topo lines also cover ' + esc(cfg.far.label) +
       ', in less detail the further from home. With no signal, and for the other layers, the map covers ' + esc(cfg.name) + '.</p>');
@@ -598,7 +645,16 @@
         if ($('q').value.trim()) search();
       }).catch(function () { farAsked = false; });
     }
-    if (cfg.places) fetch(DATA + cfg.places).then(function (r) { return r.json(); }).then(function (p) { places = p; if (!cfg.far || document.activeElement === $('q')) moreNames(); }).catch(function () {});
+    // The names are for the search only (a few hundred KB), so they wait until the map itself is in, or until someone
+    // goes to search: on a weak signal they used to be fetched ahead of the roads.
+    var namesAsked = false;
+    function loadNames() {
+      if (namesAsked || !cfg.places) return; namesAsked = true;
+      fetch(DATA + cfg.places).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (p) {
+        places = p; if (!cfg.far || document.activeElement === $('q')) moreNames(); if ($('q').value.trim()) search();
+      }).catch(function () { namesAsked = false; });
+    }
+    if (cfg.places) map.once('load', loadNames);
     else if (!cfg.addresses) $('q').hidden = true;
     if (cfg.addresses) $('q').placeholder = 'Find a place or address…';
     var ICON = { locality: '🏘️', peak: '⛰️', lake: '💧', river: '🌊', stream: '💧', park: '🌲', road: '🛣️', poi: '📌' };
@@ -649,6 +705,7 @@
         else if (!m[2]) note = 'Now type the street name, such as <b>' + esc(m[1]) + ' Redwood Hwy</b>.';
         else { hit = findAddress(m[1], m[2]) || []; if (!hit.length) note = 'No street by that name with house numbers on this map. Try just part of the street name, without the town.'; }
       }
+      if (!hit.length && !note && !places && cfg.places) { loadNames(); note = 'Looking up names…'; }
       if (!hit.length && !note && places) {
         for (i = 0; i < places.length && hit.length < 400; i++) {
           p = places[i]; n = p[0].toLowerCase();
@@ -898,7 +955,7 @@
     };
     $('t-print').onclick = toggleSheet('print', function () { receiptPreview(); });
     $('q').addEventListener('input', search);
-    $('q').addEventListener('focus', function () { moreNames(); search(); });
+    $('q').addEventListener('focus', function () { loadNames(); moreNames(); search(); });
     $('q').addEventListener('keydown', function (e) { if (e.key === 'Enter') { var f = $('results').querySelector('button'); if (f) f.click(); } });
   }
 
