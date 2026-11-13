@@ -1,7 +1,7 @@
 // Service worker: keeps the app and the saved library available offline.
 // - "shell" cache: the app itself, replaced on each new version
 // - "content" cache: search data, guides, tools, walking routes — kept across versions
-const BUILD = 'e8ce2c9abb';
+const BUILD = 'ea1e60a128';
 const SHELL = 'shell-' + BUILD, CONTENT = 'content-v1';
 const SHELL_FILES = ['./', 'index.html', 'app.js', 'search-worker.js', 'manifest.webmanifest', 'icon.svg', 'icon-192.png', 'icon-512.png', 'data/manifest.json'];
 const shellPaths = new Set(SHELL_FILES.map(f => new URL(f, self.registration.scope).pathname));
@@ -37,9 +37,20 @@ async function networkFirst(req, url) {
     if (r.ok && r.status === 200) (await caches.open(cacheFor(url))).put(req, r.clone());
     return r;
   } catch (err) {
-    return (await caches.match(req, { ignoreSearch: true })) || (await caches.match('index.html')) || Response.error();
+    const saved = await caches.match(req, { ignoreSearch: true });
+    if (saved) return saved;
+    // a page that is not the app and not saved here: say so. (Handing over the app's own page instead showed the app,
+    // half-loaded, where the page should be: inside the Vault guide's 3D box, for one.)
+    if (req.mode === 'navigate' && !shellPaths.has(url.pathname)) return notSaved();
+    return (await caches.match('index.html')) || Response.error();
   }
 }
+const notSaved = () => new Response('<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">' +
+  '<title>Not saved on this device</title><body style="margin:0;padding:24px;background:#131915;color:#E8EDE7;font:16px/1.5 -apple-system,' +
+  'BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif"><h1 style="font-size:20px;margin:0 0 8px">This page is not saved on this device</h1>' +
+  '<p style="margin:0 0 12px;color:#A5B0A7">There is no signal, or it is too weak. Try again with a signal, or save the library for use ' +
+  'with none.</p><p><a href="' + self.registration.scope + '#setup" target="_top" style="color:#8CC7A2">Save the library for offline use</a></p>',
+  { status: 503, headers: { 'Content-Type': 'text/html; charset=utf-8' } });
 async function cacheFirst(req, url) {
   const hit = await caches.match(req, { ignoreSearch: true });
   if (hit) return hit;

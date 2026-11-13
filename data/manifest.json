@@ -1,5 +1,5 @@
 {
-"built": "2026-11-13 19:52 UTC",
+"built": "2026-11-13 22:23 UTC",
 "docs": "docs-908a999895.json",
 "shards": [
 "chunks00-63ed725f99.json",
@@ -526,7 +526,7 @@
 "vendor/README.md",
 "vendor/web-llm-0.2.85.js"
 ],
-"bytes": 210758011
+"bytes": 210759961
 },
 "routes": {
 "files": [
@@ -1251,7 +1251,7 @@
 "tools/walking-routes/tracks/Yreka-CA.json",
 "tools/walking-routes/tracks/Yuba-City-CA.json"
 ],
-"bytes": 29281589
+"bytes": 29290949
 },
 "map": {
 "files": [
@@ -1802,7 +1802,7 @@
 "maps/terrain/9/80/190.webp",
 "maps/terrain/9/80/191.webp"
 ],
-"bytes": 137810914
+"bytes": 137810940
 }
 }
 }
