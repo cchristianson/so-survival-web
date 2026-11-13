@@ -1351,9 +1351,11 @@ function openFromHash() {
   if (/^#photos(:|$)/.test(location.hash)) { showPhotos(location.hash.slice(1)); return; }
   let tab = '', grp = ''; try { [tab, grp] = decodeURIComponent(location.hash.slice(1)).split(':'); } catch {}
   if (!VIEWS[tab] || tab === 'photos') tab = firstView();
+  if (tab === 'maps' && mapPage()) { location.replace(mapPage()); return; }   // Maps is the map itself (a button on a guide page brought us here)
   setView(tab);
   if (tab === 'tools' && grp) { openShelf(grp); try { history.replaceState(history.state, '', '#tools:' + grp); } catch {} }
 }
+const mapPage = () => { const P = guidePaths(); return P.map && hasMap() ? P.map : ''; };   // '' where this library has no map: then Maps is a screen of its own
 function openShelf(grp) { const d = document.getElementById('g-' + grp); if (d) { d.open = true; requestAnimationFrame(() => d.scrollIntoView({ block: 'start' })); } }
 // The first screen: Home. Someone new to the website sees one short welcome first (not on a drive or a Vault, and
 // not when they came by a link to something particular).
@@ -1381,6 +1383,7 @@ function setView(name) {   // show a screen (what the address says is go's busin
 function go(name, o = {}) {
   if (!VIEWS[name]) name = 'home';
   if (name === 'photos') { location.hash = '#photos'; return; }
+  if (name === 'maps' && mapPage()) { location.href = mapPage(); return; }   // Maps opens the map itself; its own top row has the walking routes
   const hash = '#' + name + (o.grp ? ':' + o.grp : ''), child = !!VIEWS[name].back && !!view && view !== name && view !== 'welcome';
   try { if (location.hash !== hash) { history[child ? 'pushState' : 'replaceState'](history.state, '', hash); if (child) pushed++; } } catch {}
   setView(name); scrollTo(0, 0);

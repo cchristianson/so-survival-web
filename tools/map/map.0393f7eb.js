@@ -309,6 +309,19 @@
       document.addEventListener('visibilitychange', function () { if (!document.hidden) soon(1200); });
       addEventListener('pageshow', function () { soon(1200); });
     })();
+    // Full screen: the top row and the app's buttons step aside so the map has the whole screen. One press brings them
+    // back. It is remembered while this tab stays open, so a restart of the map (above) comes back the same way.
+    (function () {
+      var b = $('t-full'), on = false; if (!b) return;
+      var set = function (v) {
+        on = v; document.body.classList.toggle('full', on); b.classList.toggle('on', on);
+        b.lastChild.nodeValue = on ? 'Exit' : 'Full'; b.setAttribute('aria-label', on ? 'Leave full screen' : 'Full screen map');
+        try { sessionStorage.setItem('arkMapFull', on ? '1' : ''); } catch (e) {}
+        setTimeout(function () { map.resize(); }, 60);
+      };
+      b.onclick = function () { set(!on); };
+      try { if (sessionStorage.getItem('arkMapFull')) set(true); } catch (e) {}
+    })();
     map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-left');
     map.addControl(new maplibregl.ScaleControl({ unit: 'imperial', maxWidth: 120 }), 'bottom-left');
     map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-right');
@@ -514,6 +527,7 @@
       return null;
     }
     function routesPage() { var r = document.body.getAttribute('data-routes') || ''; return drive ? '/lib/' + r : '../walking-routes/WALKING-ROUTES.html'; }
+    if ($('toroutes')) $('toroutes').href = routesPage();
     map.on('click', function (e) {
       $('results').hidden = true; say('');
       if (measuring) { addMeasure(e.lngLat); return; }

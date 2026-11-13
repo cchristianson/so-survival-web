@@ -1,8 +1,8 @@
 {
-"built": "2026-11-13 03:53 UTC",
+"built": "2026-11-13 04:25 UTC",
 "docs": "docs-8e81aaa911.json",
 "shards": [
-"chunks00-1af1fac250.json",
+"chunks00-0216ca648c.json",
 "chunks01-aec9d37892.json",
 "chunks02-5cbcf5d08e.json",
 "chunks03-be604245d7.json",
@@ -77,7 +77,7 @@
 "icon-192.png",
 "icon-512.png",
 "data/docs-8e81aaa911.json",
-"data/chunks00-1af1fac250.json",
+"data/chunks00-0216ca648c.json",
 "data/chunks01-aec9d37892.json",
 "data/chunks02-5cbcf5d08e.json",
 "data/chunks03-be604245d7.json",
@@ -524,7 +524,7 @@
 "vendor/README.md",
 "vendor/web-llm-0.2.85.js"
 ],
-"bytes": 207700439
+"bytes": 208081418
 },
 "routes": {
 "files": [
@@ -889,7 +889,7 @@
 "tools/walking-routes/directions/Yreka-CA.html",
 "tools/walking-routes/directions/Yuba-City-CA.html"
 ],
-"bytes": 21714130
+"bytes": 23553020
 },
 "map": {
 "files": [
@@ -907,7 +907,7 @@
 "tools/map/fonts/Noto Sans Regular/256-511.pbf",
 "tools/map/fonts/Noto Sans Regular/8192-8447.pbf",
 "tools/map/fonts/OFL.txt",
-"tools/map/map.c49837f0.js",
+"tools/map/map.0393f7eb.js",
 "tools/map/maplibre-contour.055e45d0.js",
 "tools/map/maplibre-gl.576b085f.css",
 "tools/map/maplibre-gl.be9633c4.js",
@@ -1439,7 +1439,7 @@
 "maps/terrain/9/80/190.webp",
 "maps/terrain/9/80/191.webp"
 ],
-"bytes": 126098713
+"bytes": 126106816
 }
 }
 }

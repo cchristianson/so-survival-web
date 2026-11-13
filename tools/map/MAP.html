@@ -7,14 +7,21 @@
 <title>Map of the Illinois Valley (offline)</title>
 <link rel="stylesheet" href="maplibre-gl.576b085f.css">
 <style>
-:root{--bg:#0f1420;--card:#171f2e;--ink:#e7ecf3;--muted:#9fb0c3;--accent:#4fd1c5;--line:#273246;--warnbg:#3a311a;--on:#04201d}
-@media(prefers-color-scheme:light){:root{--bg:#f4f6fb;--card:#fff;--ink:#15202b;--muted:#56657a;--accent:#0d9488;--line:#e2e8f0;--warnbg:#fff4d6;--on:#fff}}
+:root{--bg:#131915;--card:#1B2420;--ink:#E8EDE7;--muted:#A5B0A7;--accent:#8CC7A2;--line:#34413A;--warnbg:#3a311a;--on:#04201d}
+@media(prefers-color-scheme:light){:root{--bg:#F5F2EA;--card:#FFFDF8;--ink:#1D2721;--muted:#566058;--accent:#315B43;--line:#DCD6C8;--warnbg:#fff4d6;--on:#fff}}
 *{box-sizing:border-box}html,body{height:100%;margin:0}
 body{background:var(--bg);color:var(--ink);font:16px/1.45 -apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-text-size-adjust:100%;display:flex;flex-direction:column;overflow:hidden}
 a{color:var(--accent)}[hidden]{display:none!important}button{font:inherit;color:inherit}
-#bar{display:flex;gap:8px;align-items:center;padding:8px 10px;padding-top:max(8px,env(safe-area-inset-top));background:var(--bg);border-bottom:1px solid var(--line);flex:none}
+#bar{display:flex;gap:8px;align-items:center;padding:5px 8px;padding-top:max(5px,env(safe-area-inset-top));background:var(--bg);border-bottom:1px solid var(--line);flex:none}
+.mapseg{display:flex;flex:none;gap:2px;padding:3px;border-radius:10px;background:var(--line)}
+.mapseg a,.mapseg b{display:flex;align-items:center;min-height:32px;padding:0 11px;border-radius:8px;font-size:14px;font-weight:600;color:var(--muted)}
+.mapseg b{background:var(--card);color:var(--ink);font-weight:700}
+/* full screen: the top row and the app's buttons step aside, and the map has the whole screen */
+body.full #bar{display:none}body.full .arkbar{display:none!important}body.full.has-arkbar{padding:0!important}
+body.full #tools{top:max(8px,env(safe-area-inset-top))}
+#t-full .shr,#t-full.on .exp{display:none}#t-full.on .shr{display:block}
 #bar a{text-decoration:none;white-space:nowrap;font-weight:600;font-size:15px}
-#q{flex:1;min-width:0;max-width:520px;font:inherit;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+#q{flex:1;min-width:0;max-width:520px;font:inherit;min-height:38px;padding:6px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
 .btn{font-weight:600;cursor:pointer;border-radius:10px;padding:8px 12px;border:1px solid var(--line);background:var(--card);color:var(--ink);white-space:nowrap}
 .btn.go{background:var(--accent);border-color:var(--accent);color:var(--on)}.btn[disabled]{opacity:.45;cursor:not-allowed}a.btn{text-decoration:none;display:inline-block}
 .btn.sm{padding:5px 10px;font-size:14px;font-weight:500}
@@ -22,8 +29,8 @@ a{color:var(--accent)}[hidden]{display:none!important}button{font:inherit;color:
 #map{position:absolute;inset:0;background:#f6f3e9}
 /* the tools: a column of buttons with words under them, on the right */
 #tools{position:absolute;z-index:4;right:8px;top:8px;display:flex;flex-direction:column;gap:6px}
-#tools button{width:58px;padding:6px 2px 4px;border-radius:12px;border:1px solid #cfd6e0;background:#fff;color:#1f2a37;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25);display:flex;flex-direction:column;align-items:center;gap:1px;font-size:11px;font-weight:600;line-height:1.15}
-#tools button i{font-style:normal;font-size:21px;line-height:1.1}
+#tools button{width:58px;padding:7px 2px 5px;border-radius:12px;border:1px solid #DCD6C8;background:#FFFDF8;color:#1D2721;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25);display:flex;flex-direction:column;align-items:center;gap:1px;font-size:11px;font-weight:600;line-height:1.15}
+#tools button i{display:flex;line-height:1}#tools button svg{width:22px;height:22px;fill:none;stroke:#315B43;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
 #tools button.on{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent)}
 /* one panel for everything: a sheet from the bottom on a phone, a column on the left on a wide screen */
 #sheet{position:absolute;z-index:6;background:var(--card);border:1px solid var(--line);box-shadow:0 -4px 24px rgba(0,0,0,.3);left:0;right:0;bottom:0;max-height:62%;border-radius:16px 16px 0 0;display:flex;flex-direction:column;padding-bottom:env(safe-area-inset-bottom)}
@@ -92,20 +99,22 @@ input.t,textarea.t{width:100%;font:inherit;padding:8px 10px;border-radius:10px;b
   .op input{flex:1;min-width:0;height:30px;margin:0;accent-color:#0d9488}.op b{width:40px;text-align:right;font-weight:600}
   .op button{border:1px solid rgba(0,0,0,.2);background:none;border-radius:8px;width:30px;height:30px;font-size:16px;color:inherit;cursor:pointer;flex:none}
 </style>
-</head>
+<style>/* ark-bar: the app's buttons on every page */:root{--side-bg:#0F1511;--side-on:#2C4A39}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--side-bg:#233F32;--side-on:#315B43}}:root[data-theme=light]{--side-bg:#233F32;--side-on:#315B43}.arkbar{position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));margin:0;padding:6px 4px calc(6px + env(safe-area-inset-bottom));background:var(--card);border-top:1px solid var(--line);font:600 11.5px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}.arkbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:48px;color:var(--muted);text-decoration:none}.arkbar a i{display:flex;align-items:center;justify-content:center;width:46px;max-width:100%;height:28px;border-radius:999px}.arkbar a.on{color:var(--ink);font-weight:700}.arkbar a.on i{background:rgba(127,160,135,.28)}.arkbar svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.arkbar .l,.arkbar .wideonly,.arkbar .bn{display:none}body.has-arkbar{padding-bottom:calc(61px + env(safe-area-inset-bottom))}body.has-arkbar .totop,body.has-arkbar .sop-fab{bottom:calc(76px + env(safe-area-inset-bottom))!important}@media(min-width:760px){.arkbar{top:0;right:auto;width:232px;display:flex;flex-direction:column;gap:4px;padding:16px 12px;border-top:0;background:var(--side-bg);font-size:15px;overflow-y:auto}.arkbar a,.arkbar a.wideonly{display:flex;flex-direction:row;justify-content:flex-start;gap:12px;min-height:44px;padding:0 12px;border-radius:10px;color:#E3EBE5;order:0!important}.arkbar a i{width:auto;height:auto;border-radius:0}.arkbar a.on i{background:none}.arkbar svg{width:20px;height:20px}.arkbar a.on{background:var(--side-on);color:#fff}.arkbar .s{display:none}.arkbar .l{display:inline}.arkbar a.bn{display:flex;gap:10px;min-height:0;padding:0 6px 14px;color:#fff;font-size:18px;font-weight:700}.arkbar .bn img{width:40px;height:40px;border-radius:9px}body.has-arkbar{padding-bottom:0;padding-left:232px}body.has-arkbar .totop,body.has-arkbar .sop-fab{bottom:14px!important}}@media print{.arkbar{display:none!important}body.has-arkbar{padding:0!important}}</style><script>/* ark-bar */(function(){function add(){if(document.querySelector(".arkbar")||location.protocol.indexOf("http")!==0)return;var p=location.pathname,root=null;if(p.indexOf("/lib/")===0)root="/";else{var a=document.querySelector('.topnav a[href*="#tools"],.topnav a[href*="#kit"],a[href$="#kit"],a[href$="#ask"]');if(a)root=a.getAttribute("href").replace(/#.*$/,"")}if(root===null)return;var on=document.body.getAttribute("data-ark")||(/walking-routes|\/map\//i.test(p)?"maps":document.querySelector('.topnav a[href*="#kit"],.topnav a[data-app="/#kit"]')?"kit":"tools");var n=document.createElement("nav");n.className="arkbar";n.setAttribute("aria-label","Main");n.innerHTML='<a class="bn" data-v="home"><img src="'+root+'icon.svg" alt="">ARK</a><a data-v="home" style="order:1"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></i><span class="s">Home</span><span class="l">Home</span></a><a data-v="ask" style="order:3"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-7l-5 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg></i><span class="s">Ask</span><span class="l">Ask ARK</span></a><a data-v="tools" style="order:2"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-13c-3-.5-6 0-8 1.5z"/><path d="M12 6v13"/></svg></i><span class="s">Library</span><span class="l">Guides</span></a><a data-v="library" class="wideonly" style="order:0"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/></svg></i><span class="s"></span><span class="l">Books</span></a><a data-v="maps" style="order:4"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg></i><span class="s">Maps</span><span class="l">Maps &amp; Routes</span></a><a data-v="kit" style="order:5"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6.5a4 4 0 0 0-5.3 5.3L3 18l3 3 6.2-6.2a4 4 0 0 0 5.3-5.3l-2.7 2.7-2.5-.5-.5-2.5z"/></svg></i><span class="s">Tools</span><span class="l">Tools</span></a><a data-v="setup" class="wideonly" style="order:0"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></svg></i><span class="s"></span><span class="l">Offline &amp; downloads</span></a><a data-v="more" style="order:6"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="19" cy="12" r="1.3"/></svg></i><span class="s">More</span><span class="l">Settings &amp; help</span></a>';var l=n.querySelectorAll("a");for(var i=0;i<l.length;i++){l[i].href=root+"#"+l[i].getAttribute("data-v");if(l[i].getAttribute("data-v")===on&&l[i].className!=="bn")l[i].className+=" on"}document.body.appendChild(n);document.body.className+=" has-arkbar"}if(document.body)add();else document.addEventListener("DOMContentLoaded",add)})();</script></head>
 <body data-routes="Southern-Oregon/Walking-Routes/WALKING-ROUTES.html">
 <div id="bar">
-  <a href="../../#kit" data-app="/#kit">‹ Tools</a>
+  <a href="../../#kit" data-app="/#kit" hidden>Tools</a>
+  <div class="mapseg" role="group" aria-label="Map or walking routes"><b>Map</b><a id="toroutes" href="../walking-routes/WALKING-ROUTES.html">Routes</a></div>
   <input id="q" type="search" placeholder="Find a place…" autocomplete="off" enterkeyhint="search">
 </div>
 <div id="wrap">
   <div id="map"></div>
   <div id="tools">
-    <button type="button" id="t-layers"><i>🗂️</i>Layers</button>
-    <button type="button" id="locate"><i>📍</i>Me</button>
-    <button type="button" id="t-measure"><i>📏</i>Measure</button>
-    <button type="button" id="t-pins"><i>📌</i>Pins</button>
-    <button type="button" id="t-print"><i>🖨️</i>Print</button>
+    <button type="button" id="t-layers"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></svg></i>Layers</button>
+    <button type="button" id="locate"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></i>Me</button>
+    <button type="button" id="t-measure"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 16 16 3l5 5L8 21z"/><path d="m7 12 2 2M10 9l2 2M13 6l2 2"/></svg></i>Measure</button>
+    <button type="button" id="t-pins"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></i>Pins</button>
+    <button type="button" id="t-print"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8V3h10v5M7 17H5a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="7" y="14" width="10" height="7"/></svg></i>Print</button>
+    <button type="button" id="t-full" aria-label="Full screen map"><i><svg class="exp" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg><svg class="shr" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></svg></i>Full</button>
   </div>
   <div id="hint" hidden></div>
   <div id="results" hidden></div>
@@ -156,6 +165,6 @@ input.t,textarea.t{width:100%;font:inherit;padding:8px 10px;border-radius:10px;b
 <script src="maplibre-gl.be9633c4.js"></script>
 <script src="pmtiles.caf981bc.js"></script>
 <script src="maplibre-contour.055e45d0.js"></script>
-<script src="map.c49837f0.js"></script>
+<script src="map.0393f7eb.js"></script>
 </body>
 </html>
