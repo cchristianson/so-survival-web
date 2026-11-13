@@ -1,7 +1,7 @@
 // Service worker: keeps the app and the saved library available offline.
 // - "shell" cache: the app itself, replaced on each new version
 // - "content" cache: search data, guides, tools, walking routes — kept across versions
-const BUILD = '4a6e7e085e';
+const BUILD = '7d9fc13d1b';
 const SHELL = 'shell-' + BUILD, CONTENT = 'content-v1';
 const SHELL_FILES = ['./', 'index.html', 'app.js', 'search-worker.js', 'manifest.webmanifest', 'icon.svg', 'icon-192.png', 'icon-512.png', 'data/manifest.json'];
 const shellPaths = new Set(SHELL_FILES.map(f => new URL(f, self.registration.scope).pathname));
