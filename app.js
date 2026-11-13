@@ -347,7 +347,7 @@ async function askOnce() {
     let ws; [ws, wiki] = await Promise.all([workerSearch(q, n), nWiki && navigator.onLine ? wikiSearch(keywords(q) || q, nWiki + 2) : []]);
     docs = ws.results;
     if (ws.notReady) note = ' ⚠️ The library search is still downloading — try again in a minute (needs a connection the first time).';
-    else if (ws.partial && lowMem()) note = ' 📱 To save this phone\'s memory, only the guides and book titles were searched. <button class="link" data-full="1">Search every book page too</button>';
+    else if (ws.partial && lowMem()) note = ' To save this phone\'s memory, only the guides and book titles were searched. <button class="link" data-full="1">Search every book page too</button>';
     else if (ws.partial) note = ` ⏳ Library still loading (${ws.loaded} of ${ws.total} parts): guides and book titles were searched; ask again in a minute to search inside every page.`;
   }
   // the library first (its guides are written for exactly this), then the encyclopedia articles that fit
@@ -389,7 +389,7 @@ function restoreAnswers() {
     if (!m.querySelector('.spin')) return;
     setLowMem(true);
     m.innerHTML = '⚠️ This answer was cut off: the phone ran short of memory and restarted the page.<br>' +
-      '<button class="retry" type="button">🔄 Try again</button><br><small>The next tries search the guides and book titles only, which uses much less memory.</small>';
+      '<button class="retry" type="button">Try again</button><br><small>The next tries search the guides and book titles only, which uses much less memory.</small>';
   });
 }
 function waitFor(cond) { return new Promise(res => { const t = setInterval(() => { if (cond()) { clearInterval(t); res(); } }, 500); }); }
@@ -409,7 +409,7 @@ function renderSources(id, srcs) {
   if (!srcs.length) return;
   const el = $('s' + id); el.hidden = false;
   el.innerHTML = '<h4>Sources</h4>' + srcs.map((s, i) => `<div class="src" id="src${id}-${i + 1}"><div class="num">${i + 1}</div><div>
-    <a href="${esc(s.link)}">${s.kind === 'zim' ? '🌐' : '📄'} ${esc(s.title)}</a> <span class="where">${esc(s.where)}</span>
+    <a href="${esc(s.link)}">${esc(noPic(s.title))}</a> <span class="where">${esc(s.where)}</span>
     ${mode === 'public' && s.kind === 'doc' && !s.open ? '<span class="tag">title only — opens the original</span>' : ''}
     <div class="snip">${esc(s.snippet)}</div></div></div>`).join('');
 }
@@ -505,9 +505,9 @@ function morseAsk(q) {
 function showMorse(id, mc) {
   const P = guidePaths(), code = mc.words.map(w => [...w].map(ch => MORSE[ch]).join(' ')).join('  /  ');
   const letters = mc.words.map(w => [...w].map(ch => `<b>${esc(ch.toUpperCase())}</b> <code>${MORSE[ch]}</code>`).join(' · ')).join(' &nbsp;/&nbsp; ');
-  const more = (P.morse ? ` <a href="${P.morse}">📡 Play it as beeps or flashes, or practise sending it</a>.` : '') +
+  const more = (P.morse ? ` <a href="${P.morse}">Play it as beeps or flashes, or practise sending it</a>.` : '') +
     (P.signals ? ` <a href="${P.signals}#morse-quick-reference-print-this">The whole table, and how to send it by light or sound</a>.` : '');
-  $('a' + id).innerHTML = `<div class="best"><div class="bh">📡 “${esc(mc.text)}” in Morse code</div>` +
+  $('a' + id).innerHTML = `<div class="best"><div class="bh">“${esc(mc.text)}” in Morse code</div>` +
     `<p style="font:bold 1.35em/1.4 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.06em;overflow-wrap:anywhere">${esc(code)}</p>` +
     `<p>${letters}</p><p class="meta">A dot is short and a dash is three dots long. Leave a short pause between letters, a longer one between words (shown as /).${more}</p></div>`;
 }
@@ -518,7 +518,7 @@ function showBest(id, srcs, q) {
   const text = focus(around(s), qt, 110, QUANTITY.test(q));
   const marked = text.split(/([\p{L}\p{N}][\p{L}\p{N}'’-]*)/u)
     .map((p, k) => k % 2 && [...qterms(p)].some(t => qt.has(t)) ? `<mark>${esc(p)}</mark>` : esc(p)).join('');
-  $('a' + id).innerHTML = `<div class="best"><div class="bh">📖 Best match: <a href="${esc(s.link)}">${esc(s.title)}</a> <a class="cite" href="#src${id}-${i}">[${i}]</a></div><p>${marked}</p></div>`;
+  $('a' + id).innerHTML = `<div class="best"><div class="bh">Best match: <a href="${esc(s.link)}">${esc(s.title)}</a> <a class="cite" href="#src${id}-${i}">[${i}]</a></div><p>${marked}</p></div>`;
 }
 
 async function answer(id, q, srcs, kind) {
@@ -611,7 +611,7 @@ async function answer(id, q, srcs, kind) {
     meta.textContent = looped ? loopMsg : stopped ? 'Stopped.' : `Answered in ${Math.round((Date.now() - t0) / 1000)} seconds from ${srcs.length} sources.${pace} Check the sources before relying on it.`;
   } catch (e) {
     meta.innerHTML = (looped ? esc(loopMsg) : stopped || e.name === 'AbortError' ? 'Stopped.' : esc('The AI could not answer (' + e.message + '). The sources below are still the search results.')) +
-      ' <button class="retry" type="button">🔄 Try again</button>';
+      ' <button class="retry" type="button">Try again</button>';
   } finally { clearInterval(tick); }
 }
 
@@ -855,7 +855,7 @@ function renderLibrary() {
     const sub = shelves.get(k) || shelves.get('other');
     if (!sub.has(g)) sub.set(g, []); sub.get(g).push(d);
   }
-  const doc = d => `<div class="doc"><a href="${esc(d.u)}">${esc(d.t)}</a>${mode === 'public' && d.o ? '<span class="tag">full text</span>' : ''}<div class="d">${esc(d.d)}</div></div>`;
+  const doc = d => `<div class="doc"><a href="${esc(d.u)}">${esc(noPic(d.t))}</a>${mode === 'public' && d.o ? '<span class="tag">full text</span>' : ''}<div class="d">${esc(d.d)}</div></div>`;
   const filtering = words.length > 0;
   const html = SHELVES.map(([k, icon, name, blurb]) => {
     const subs = [...shelves.get(k)].sort((a, b) => (rank(a[0]) - rank(b[0]) || a[0].localeCompare(b[0])));
@@ -1011,7 +1011,7 @@ const phHash = (id, p) => '#photos:' + id + ':' + (p || '').split('/').map(encod
 const phURL = (what, f) => `api/photos/${what}?d=${encodeURIComponent(PH.drive.id)}&p=${encodeURIComponent(phJoin(PH.path, f.name))}&v=${f.mod}-${f.size}`;
 const phHeic = n => /\.hei[cf]$/i.test(n);
 const phCount = (n, w) => `${n.toLocaleString()} ${w}${n === 1 ? '' : 's'}`;
-const phLabel = f => `<span class="phlab"><span class="phic">${f.kind === 'video' ? '▶' : '🖼️'}</span><span class="phnm">${esc(f.name)}</span></span>`;
+const phLabel = f => `<span class="phlab"><span class="phic">${f.kind === 'video' ? '▶' : ic('photo', 30)}</span><span class="phnm">${esc(f.name)}</span></span>`;
 
 async function showPhotos(raw) {
   const was = !$('photos').hidden;
@@ -1049,23 +1049,23 @@ async function phDrivesView(seq) {
   if (!ds.length) return phNoDrive();
   phCrumbs('');
   $('phbody').innerHTML = '<p class="meta">Which drive are the photos on?</p><div class="phlist">' + ds.map(d =>
-    `<a class="phfold" href="${phHash(d.id, '')}"><span class="phfi">💽</span><span class="phdn">${esc(d.name)}${d.size ? `<small>${esc(d.size)}</small>` : ''}</span></a>`).join('') +
-    '</div><p><button class="sec" type="button" data-ph="again">🔄 Look again</button> <span class="meta">after plugging in another drive</span></p>';
+    `<a class="phfold" href="${phHash(d.id, '')}"><span class="phfi">${ic('usb', 24)}</span><span class="phdn">${esc(d.name)}${d.size ? `<small>${esc(d.size)}</small>` : ''}</span></a>`).join('') +
+    '</div><p><button class="sec" type="button" data-ph="again">Look again</button> <span class="meta">after plugging in another drive</span></p>';
 }
 
 function phNoDrive() {
   const s = PH.info || {}, pi = s.pi, here = s.local;
   const where = pi ? 'one of the Pi’s USB ports' : here ? 'this computer' : 'the computer the library runs on';
   const reader = pi ? 'the Pi' : here ? 'this computer' : 'that computer';
-  $('phbody').innerHTML = `<div class="card"><h3 style="margin-top:0">🔌 No photo drive found</h3>
+  $('phbody').innerHTML = `<div class="card"><h3 style="margin-top:0">No photo drive found</h3>
     <p>Plug the drive with the photos into ${where}, wait a few seconds, then tap <b>Look again</b>.</p>
-    <p><button class="main" type="button" data-ph="again">🔄 Look again</button></p>
+    <p><button class="main" type="button" data-ph="again">Look again</button></p>
     ${s.os === 'darwin' ? '' : `<p class="meta">Still not there? A drive set up on a Mac in the Mac’s own format (APFS) can’t be read by ${reader}. Copy the photos onto a drive formatted as exFAT: Windows, Macs and the Pi can all read that.</p>`}
     <p class="meta">The library’s own drive isn’t listed here, so keep the photos on a drive of their own.</p></div>`;
 }
 
 function phTrouble() {
-  $('phbody').innerHTML = '<div class="note">Couldn’t reach the library program. Is it still running? <button class="sec" type="button" data-ph="again">🔄 Look again</button></div>';
+  $('phbody').innerHTML = '<div class="note">Couldn’t reach the library program. Is it still running? <button class="sec" type="button" data-ph="again">Look again</button></div>';
 }
 
 async function phLookAgain() {
@@ -1093,7 +1093,7 @@ async function phFolder(id, path, seq) {
     if (seq !== PH.seq) return;
     if (!r.ok) {
       PH.key = '';
-      $('phbody').innerHTML = `<div class="note">${esc(j.error || 'That folder couldn’t be opened.')} <button class="sec" type="button" data-ph="again">🔄 Look again</button>${path ? ` <a href="${phHash(id, '')}">Top of the drive</a>` : ''}</div>`;
+      $('phbody').innerHTML = `<div class="note">${esc(j.error || 'That folder couldn’t be opened.')} <button class="sec" type="button" data-ph="again">Look again</button>${path ? ` <a href="${phHash(id, '')}">Top of the drive</a>` : ''}</div>`;
       return;
     }
     data = j; data.at = Date.now(); PH.lists.set(key, data);
@@ -1111,7 +1111,7 @@ function phCrumbs(path) {
   const step = (href, label, here) => here ? `<span>${label}</span>` : `<a href="${href}">${label}</a>`;
   const parts = [];
   if (!d || many) parts.push(step('#photos', 'Photos', !d));
-  if (d) parts.push(step(phHash(d.id, ''), (many ? '' : '🖼️ ') + esc(d.name), !segs.length));
+  if (d) parts.push(step(phHash(d.id, ''), esc(d.name), !segs.length));
   segs.forEach((s, i) => parts.push(step(phHash(d.id, segs.slice(0, i + 1).join('/')), esc(s), i === segs.length - 1)));
   $('phcrumbs').innerHTML = parts.join('<span class="sep">›</span>');
   const up = $('phup');
@@ -1125,7 +1125,7 @@ function phRender() {
   const said = [folders.length && phCount(folders.length, 'folder'), nImg && phCount(nImg, 'photo'), nVid && phCount(nVid, 'video')].filter(Boolean).join(' · ');
   let h = '';
   if (said) h += `<div class="phinfo"><p class="meta">${said}</p>${nImg > 1 ? '<button class="sec" type="button" data-ph="slides">▶ Slideshow</button>' : ''}</div>`;
-  if (folders.length) h += '<div class="phlist">' + folders.map(f => `<a class="phfold" href="${phHash(PH.drive.id, phJoin(PH.path, f.name))}"><span class="phfi">📁</span><span class="phfn">${esc(f.name)}</span></a>`).join('') + '</div>';
+  if (folders.length) h += '<div class="phlist">' + folders.map(f => `<a class="phfold" href="${phHash(PH.drive.id, phJoin(PH.path, f.name))}"><span class="phfi">${ic('folder', 24)}</span><span class="phfn">${esc(f.name)}</span></a>`).join('') + '</div>';
   if (!files.length && !folders.length) h += `<div class="note">There are no photos or videos in this folder${d.other ? ` (only ${phCount(d.other, 'other file')})` : ''}.</div>`;
   if (d.more) h += '<p class="meta">This folder has a great many files: the first 50,000 photos and videos are shown.</p>';
   h += '<div class="phgrid" id="phgrid"></div><button class="sec phmore" type="button" id="phmore" hidden></button>';
@@ -1442,7 +1442,7 @@ function homeSearch() {
   const ts = TOOL_CARDS.filter(c => c && P[c[0]] && has(c[1] + ' ' + c[2]));
   if (ts.length) h += '<h4>Tools</h4>' + ts.slice(0, 4).map(([k, t]) => `<a class="row" href="${P[k]}"><span class="tx"><b>${noPic(t)}</b></span></a>`).join('');
   const bs = (LIB || []).filter(d => !d.t.startsWith('Walk to ') && !ours.has(d.u) && has(d.t + ' ' + (d.d || ''))).slice(0, 8);
-  if (bs.length) h += '<h4>Books</h4>' + bs.map(d => `<a class="row" href="${esc(d.u)}"><span class="tx"><b>${esc(d.t)}</b><small>${esc(d.d || '')}</small></span></a>`).join('');
+  if (bs.length) h += '<h4>Books</h4>' + bs.map(d => `<a class="row" href="${esc(d.u)}"><span class="tx"><b>${esc(noPic(d.t))}</b><small>${esc(d.d || '')}</small></span></a>`).join('');
   box.innerHTML = h; box.hidden = false;
 }
 // The box above the guides: only the guides whose name or description has every word stay
@@ -1470,7 +1470,7 @@ function renderMaps() {
 
 // ---- More: everything that is not one of the five other buttons
 function renderMore() {
-  const drive = mode === 'drive', theme = (() => { try { return localStorage.getItem('so-theme') || 'auto'; } catch { return 'auto'; } })();
+  const drive = mode === 'drive', theme = (() => { try { return localStorage.getItem('so-theme') || 'dark'; } catch { return 'dark'; } })();
   const r = (to, icn, t, sub) => `<button type="button" class="row" data-go="${to}">${ic(icn)}<span class="tx"><b>${t}</b>${sub ? `<small>${sub}</small>` : ''}</span><span class="chev">${ic('right', 18)}</span></button>`;
   $('morebody').innerHTML = '<p class="label" style="margin-top:0">Offline</p><div class="card rows">' +
     r('setup', 'down', 'Offline &amp; downloads', drive ? 'What is on this drive, and the detailed map' : 'Save guides, routes and the map to this device') +
