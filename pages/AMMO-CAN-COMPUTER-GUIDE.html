@@ -311,6 +311,12 @@
 <p>If a <strong>solar-storm warning</strong> comes, switch off and seal it right away (see the <a class="guide" href="EMP-GUIDE.html">EMP guide</a>). Switch off when nobody's using it to save the battery; the AI uses the most power.</p>
 <p><strong>The map:</strong> <strong>Tools → Map</strong> shows roads, topo lines and property lines on any phone on the Vault's Wi-Fi. <strong>📍</strong> shows where you are (the phone warns once; the map says what to tap), and <strong>🖨️</strong> prints the part on screen in strips. See <a class="guide" href="HOW-TO-VIEW-MAPS.html">Offline maps</a>.</p>
 <p><strong>Family photos:</strong> plug a USB drive of photos into a free USB port. They show under <strong>Tools → 🖼️ Family photos &amp; videos</strong>. Nothing on that drive can be changed.</p>
+<p><strong>Drawings:</strong> <strong>Tools → CAD</strong> draws a plan, a part or a pattern to scale, on any phone or laptop on the Vault's Wi-Fi. To keep drawings <strong>on the Vault</strong>, where everyone can open them:</p>
+<ol type="1">
+<li>On any computer, make a folder named <strong><code>ARK-Saved</code></strong> on a small thumb drive (any size will do).</li>
+<li>Plug it into a free USB port on the Pi, then switch on.</li>
+</ol>
+<p>That folder is how the Vault knows it may save there. It is the <strong>only</strong> drive the Vault ever writes to; the library drive and a photo drive can't be changed. With no such drive, a drawing is saved to the phone or laptop you are using instead. <em>A Vault set up before November 2026 has to learn this: finish the Pi's card again (step 3).</em></p>
 <hr />
 <h2 id="the-mesh-radio-optional">The mesh radio (optional)</h2>
 <p>A <strong>mesh radio</strong> sends short <strong>text messages</strong> and <strong>positions</strong> from one radio to another, with no cell service and no internet. Every radio in range passes messages along. It needs no license. The software is <strong>Meshtastic</strong>, which is free.</p>
