@@ -966,6 +966,7 @@ const GUIDE_CARDS = { // guide cards, by shelf (same groups and order as SHELVES
     ['bikes', '🚲 Bicycles & carts', 'Hauling without fuel: loads, trailers, handcarts, bike repair with few tools'],
     ['nav', '🧭 Navigation & weather', 'Map and compass, finding north without one, reading the sky, lightning']],
   comms: [['radio', '📻 Emergency radio guide', 'How ham, CB, GMRS and shortwave work, and emergency communication.'],
+    ['mesh', '📶 Mesh radio (Meshtastic)', 'Texting with no phone service: small radios that pass messages along. What to buy, setting up, private channels, range, a neighborhood mesh.'],
     ['signals', '📡 Signals & Morse code', 'Morse by ear, signal mirrors, ground-to-air codes, runners and message forms'],
     ['community', '🤝 Community & barter', 'Organizing neighbors, fair trade, keeping watch, settling disputes'],
     ['defense', '🛡️ Home & property protection', 'Defensive only: not being a target, doors and locks, barriers and fences, early warning, a safe room, watch rosters, the law on self-defense.']],
@@ -992,12 +993,12 @@ const PAGES = { sos: 'EMERGENCY-FINDER', az: 'SUBJECT-INDEX', iv: 'ILLINOIS-VALL
   firewood: 'FIREWOOD-GUIDE', fuel: 'FUEL-GUIDE', offgrid: 'OFF-GRID-POWER-GUIDE', storage: 'STORING-ENERGY-GUIDE', heatpower: 'HEAT-INTO-POWER-GUIDE', light: 'LIGHTING-GUIDE', eng: 'ENGINES-AND-MOTORS-GUIDE',
   math: 'PRACTICAL-MATH-GUIDE', md: 'MAKE-DO-HOUSEHOLD-GUIDE', smith: 'BLACKSMITHING-GUIDE', clothing: 'CLOTHING-LEATHER-GUIDE', paper: 'PAPER-INK-GUIDE',
   onfoot: 'ON-FOOT-GUIDE', bikes: 'BICYCLES-CARTS-GUIDE', nav: 'NAVIGATION-WEATHER-GUIDE',
-  radio: 'RADIO-GUIDE', signals: 'SIGNALS-MORSE-GUIDE', community: 'COMMUNITY-BARTER-GUIDE', defense: 'HOME-DEFENSE-GUIDE',
+  radio: 'RADIO-GUIDE', mesh: 'MESH-RADIO-GUIDE', signals: 'SIGNALS-MORSE-GUIDE', community: 'COMMUNITY-BARTER-GUIDE', defense: 'HOME-DEFENSE-GUIDE',
   expect: 'WHAT-TO-EXPECT-GUIDE', wildfire: 'WILDFIRE-GUIDE', nuke: 'NUCLEAR-FALLOUT-GUIDE', emp: 'EMP-GUIDE',
   stories: 'STORIES-GAMES-GUIDE',
   device: 'START-ON-ANY-DEVICE', ammocan: 'AMMO-CAN-COMPUTER-GUIDE', get: 'GET-THE-LIBRARY', all: 'README',
   calc: 'CALCULATOR', sci: 'CALCULATOR', conv: 'UNIT-CONVERTER', morse: 'MORSE-CODE', pill: 'PILL-IDENTIFIER', walk: 'WALKING-ROUTES', plantid: 'PLANT-ID', map: 'MAP', cad: 'CAD' };
-const DRIVE_AT = { sos: 'EMERGENCY-FINDER.html', az: 'SUBJECT-INDEX.html', med: 'Medical/READ-ME-FIRST.html', radio: 'Manuals/Radio-Communications/RADIO-GUIDE.html',
+const DRIVE_AT = { sos: 'EMERGENCY-FINDER.html', az: 'SUBJECT-INDEX.html', med: 'Medical/READ-ME-FIRST.html', radio: 'Manuals/Radio-Communications/RADIO-GUIDE.html', mesh: 'Manuals/Radio-Communications/MESH-RADIO-GUIDE.html',
   device: 'START-ON-ANY-DEVICE.html', ammocan: 'AMMO-CAN-COMPUTER-GUIDE.html', get: null, all: 'README.html',
   calc: 'CALCULATOR.html#basic', sci: 'CALCULATOR.html#sci', conv: 'UNIT-CONVERTER.html', morse: 'MORSE-CODE.html', plantid: 'PLANT-ID.html', map: 'Map/MAP.html', cad: 'CAD.html',
   pill: 'Medical/Pill-Identifier/PILL-IDENTIFIER.html', walk: 'Southern-Oregon/Walking-Routes/WALKING-ROUTES.html' };

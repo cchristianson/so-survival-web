@@ -1,0 +1,340 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mesh Radio (Meshtastic)</title><style>:root{--bg:#131915;--card:#1B2420;--ink:#E8EDE7;--muted:#A5B0A7;--accent:#8CC7A2;--accent2:#E0B65A;--line:#34413A;--code:#27322B}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--bg:#F5F2EA;--card:#FFFDF8;--ink:#1D2721;--muted:#566058;--accent:#315B43;--accent2:#7A5F1E;--line:#DCD6C8;--code:#E9E4D7}}:root[data-theme=light]{--bg:#F5F2EA;--card:#FFFDF8;--ink:#1D2721;--muted:#566058;--accent:#315B43;--accent2:#7A5F1E;--line:#DCD6C8;--code:#E9E4D7}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,Segoe UI,Roboto,Arial,sans-serif}.wrap{max-width:900px;margin:0 auto;padding:28px 20px 80px}h1{font-size:28px;}h2{font-size:22px;border-bottom:2px solid var(--line);padding-bottom:6px;margin-top:30px}h3{font-size:17px;color:var(--accent)}h4{font-size:15px;color:var(--accent2)}a{color:var(--accent)}code{background:var(--code);padding:2px 6px;border-radius:6px;font-family:Consolas,monospace;font-size:14px}pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow-x:auto}pre code{background:none;padding:0}table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}th{background:rgba(127,127,127,.12)}blockquote{border-left:4px solid var(--accent);background:rgba(140,199,162,.08);padding:10px 16px;margin:16px 0;border-radius:0 10px 10px 0}@media(max-width:600px){.wrap{padding:16px 14px 80px}.topnav{margin:-16px -14px 6px;padding:8px 14px 7px}ul,ol{padding-left:20px}blockquote{padding:8px 12px 8px 12px;border-left-width:3px}blockquote ul,blockquote ol{padding-left:18px}h1{font-size:24px;line-height:1.25}h2{font-size:20px;margin-top:26px}h3{font-size:16.5px}table{font-size:14px}th,td{padding:7px 8px}.toc{padding:8px 12px}.toc ol{padding-left:20px}.totop{padding:6px 11px;font-size:13px}li{margin:3px 0}}hr{border:none;border-top:1px solid var(--line);margin:26px 0}ul,ol{padding-left:26px}table{display:block;overflow-x:auto;max-width:100%}code,a{overflow-wrap:anywhere}img{max-width:100%}.wrap p>img{display:block;margin:14px auto 6px;max-width:min(100%,640px);height:auto;border-radius:10px;background:#fff;border:1px solid var(--line)}.wrap p>img+em{display:block;text-align:center;font-size:14px;color:var(--muted);margin-bottom:6px}a.lib{text-decoration-style:dotted}a.lib::before{content:"📖 ";text-decoration:none}.deeper{font-size:15px;opacity:.95}a.wiki::before{content:"📷 "}a.lib.pic::before{content:"🖼️ "}a.lib::before,a.wiki::before{display:inline-block;margin-right:3px}html{scroll-behavior:smooth}h2{scroll-margin-top:12px}.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 16px;margin:18px 0 8px}.toc summary{cursor:pointer;font-weight:600;color:var(--accent);font-size:17px}.toc ol{margin:8px 0 4px;padding-left:26px;columns:2 260px;column-gap:28px}.toc li{margin:4px 0;break-inside:avoid}.toc a{text-decoration:none}.toc a:hover{text-decoration:underline}.totop{position:fixed;right:14px;bottom:max(14px,env(safe-area-inset-bottom));background:var(--card);color:var(--accent);border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:14px;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:5}@media print{.totop{display:none}.toc details{display:block}}.topnav{font-size:14.5px;margin:-28px -20px 4px;padding:10px 20px 8px;color:var(--muted);position:sticky;top:0;z-index:4;background:var(--bg);border-bottom:1px solid var(--line)}h1,h2,h3,h4,[id]{scroll-margin-top:72px}.guidenav{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:36px 0 0;border-top:1px solid var(--line);padding-top:16px}.guidenav a{display:block;height:100%;box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;text-decoration:none;font-weight:600;line-height:1.3;font-size:15px}.guidenav small{display:block;font-weight:400;color:var(--muted);font-size:13px;margin-bottom:2px}.guidenav .up{text-align:center}.guidenav .next{text-align:right}@media(max-width:560px){.guidenav{grid-template-columns:1fr 1fr}.guidenav .up{grid-column:1/-1;order:3}}.topnav a{text-decoration:none;white-space:nowrap}h1 .h1e{-webkit-text-fill-color:initial;color:var(--ink);background:none}.azbar{display:flex;flex-wrap:wrap;gap:4px;background:var(--bg);padding:8px 0;margin:10px 0;border-bottom:1px solid var(--line)}.azbar a{display:inline-block;min-width:30px;text-align:center;padding:4px 6px;border:1px solid var(--line);border-radius:8px;background:var(--card);text-decoration:none;font-weight:600}</style><style>:root{color-scheme:dark}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){color-scheme:light}}:root[data-theme=light]{color-scheme:light}.themebtn{font:inherit;font-size:14px;line-height:1.3;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:3px 11px;cursor:pointer;white-space:nowrap;text-decoration:none}.themefloat{position:absolute;top:10px;right:12px;z-index:9}@media print{.themebtn{display:none}}</style><script>/* so-theme: light or dark screen */(function(){var K="so-theme",d=document.documentElement,L={auto:"Display: auto",dark:"Display: dark",light:"Display: light"},N={auto:"dark",dark:"light",light:"auto"},cur="dark";try{cur=localStorage.getItem(K)||"dark"}catch(e){}function a(){if(cur==="dark"||cur==="light")d.setAttribute("data-theme",cur);else d.removeAttribute("data-theme");var b=document.querySelectorAll(".themebtn");for(var i=0;i<b.length;i++){b[i].textContent=L[cur]||L.auto;b[i].title="Screen: "+cur+" - tap to change (Auto follows this device)"}}a();window.soTheme=function(){cur=N[cur]||"dark";try{localStorage.setItem(K,cur)}catch(e){}a()};function btn(){var b=document.createElement("button");b.type="button";b.className="themebtn";return b}document.addEventListener("DOMContentLoaded",function(){if(!document.querySelector(".themebtn")){var n=document.querySelector(".topnav"),b=btn();if(n){n.appendChild(document.createTextNode(" \u00B7 "));n.appendChild(b)}else{b.className+=" themefloat";document.body.appendChild(b)}}var all=document.querySelectorAll(".themebtn");for(var i=0;i<all.length;i++)all[i].onclick=window.soTheme;a()})})();</script><style>.backbtn{font-weight:700;text-decoration:none;white-space:nowrap}@media print{.backbtn{display:none}}@media(max-width:600px){.topnav{font-size:14px;line-height:1.8}.topnav a{white-space:nowrap}.topnav .themebtn{font-size:13px;padding:2px 9px}}</style><script>/* so-back: a Back button on every page after the first */(function(){function add(){var n=document.querySelector(".topnav");if(!n||n.querySelector(".backbtn"))return;var f=n.querySelector("a"),a=document.createElement("a");a.className="backbtn";a.href=f?f.href:"#";a.textContent="\u2190 Back";a.title="Back to the page you came from";a.onclick=function(e){if(history.length>1&&document.referrer){e.preventDefault();history.back()}};n.insertBefore(document.createTextNode(" \u00B7 "),n.firstChild);n.insertBefore(a,n.firstChild)}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",add);else add();document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a[href^=\"#\"]"):null;if(!a||e.defaultPrevented)return;var id=decodeURIComponent(a.getAttribute("href").slice(1)),t=id?document.getElementById(id):null;if(!t)return;e.preventDefault();t.scrollIntoView();try{history.replaceState(history.state,"","#"+id)}catch(x){}});if(window.matchMedia&&matchMedia("(display-mode: standalone)").matches||navigator.standalone)document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a[href]"):null;if(a&&!a.target&&/\.pdf(?![a-z0-9])/i.test(a.getAttribute("href")))a.target="_blank"},true)})();</script>
+<style>/* the top bar keeps to the page's own edge on a phone (it used to stick out 6px each side) */@media(max-width:600px){.topnav{margin:-16px -14px 6px;padding:8px 14px 7px}}</style><style>/* ark-bar: the app's buttons on every page */:root{--side-bg:#0F1511;--side-on:#2C4A39}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--side-bg:#233F32;--side-on:#315B43}}:root[data-theme=light]{--side-bg:#233F32;--side-on:#315B43}.arkbar{position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));margin:0;padding:6px 4px calc(6px + env(safe-area-inset-bottom));background:var(--card);border-top:1px solid var(--line);font:600 11.5px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}.arkbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:48px;color:var(--muted);text-decoration:none}.arkbar a i{display:flex;align-items:center;justify-content:center;width:46px;max-width:100%;height:28px;border-radius:999px}.arkbar a.on{color:var(--ink);font-weight:700}.arkbar a.on i{background:rgba(127,160,135,.28)}.arkbar svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.arkbar .l,.arkbar .wideonly,.arkbar .bn{display:none}body.has-arkbar{padding-bottom:calc(61px + env(safe-area-inset-bottom))}body.has-arkbar .totop,body.has-arkbar .sop-fab{bottom:calc(76px + env(safe-area-inset-bottom))!important}@media(min-width:760px){.arkbar{top:0;right:auto;width:232px;display:flex;flex-direction:column;gap:4px;padding:16px 12px;border-top:0;background:var(--side-bg);font-size:15px;overflow-y:auto}.arkbar a,.arkbar a.wideonly{display:flex;flex-direction:row;justify-content:flex-start;gap:12px;min-height:44px;padding:0 12px;border-radius:10px;color:#E3EBE5;order:0!important}.arkbar a i{width:auto;height:auto;border-radius:0}.arkbar a.on i{background:none}.arkbar svg{width:20px;height:20px}.arkbar a.on{background:var(--side-on);color:#fff}.arkbar .s{display:none}.arkbar .l{display:inline}.arkbar a.bn{display:flex;gap:10px;min-height:0;padding:0 6px 14px;color:#fff;font-size:18px;font-weight:700}.arkbar .bn img{width:40px;height:40px;border-radius:9px}body.has-arkbar{padding-bottom:0;padding-left:232px}body.has-arkbar .totop,body.has-arkbar .sop-fab{bottom:14px!important}}@media print{.arkbar{display:none!important}body.has-arkbar{padding:0!important}}</style><script>/* ark-bar */(function(){function add(){if(document.querySelector(".arkbar")||location.protocol.indexOf("http")!==0)return;var p=location.pathname,root=null;if(p.indexOf("/lib/")===0)root="/";else{var a=document.querySelector('.topnav a[href*="#tools"],.topnav a[href*="#kit"],a[href$="#kit"],a[href$="#ask"]');if(a)root=a.getAttribute("href").replace(/#.*$/,"")}if(root===null)return;var on=document.body.getAttribute("data-ark")||(/walking-routes|\/map\//i.test(p)?"maps":document.querySelector('.topnav a[href*="#kit"],.topnav a[data-app="/#kit"]')?"kit":"tools");var n=document.createElement("nav");n.className="arkbar";n.setAttribute("aria-label","Main");n.innerHTML='<a class="bn" data-v="home"><img src="'+root+'icon.svg" alt="">ARK</a><a data-v="home" style="order:1"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></i><span class="s">Home</span><span class="l">Home</span></a><a data-v="ask" style="order:3"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-7l-5 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg></i><span class="s">Ask</span><span class="l">Ask ARK</span></a><a data-v="tools" style="order:2"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-13c-3-.5-6 0-8 1.5z"/><path d="M12 6v13"/></svg></i><span class="s">Library</span><span class="l">Guides</span></a><a data-v="library" class="wideonly" style="order:0"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/></svg></i><span class="s"></span><span class="l">Books</span></a><a data-v="maps" style="order:4"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg></i><span class="s">Maps</span><span class="l">Maps &amp; Routes</span></a><a data-v="kit" style="order:5"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6.5a4 4 0 0 0-5.3 5.3L3 18l3 3 6.2-6.2a4 4 0 0 0 5.3-5.3l-2.7 2.7-2.5-.5-.5-2.5z"/></svg></i><span class="s">Tools</span><span class="l">Tools</span></a><a data-v="setup" class="wideonly" style="order:0"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></svg></i><span class="s"></span><span class="l">Offline &amp; downloads</span></a><a data-v="more" style="order:6"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="19" cy="12" r="1.3"/></svg></i><span class="s">More</span><span class="l">Settings &amp; help</span></a>';var l=n.querySelectorAll("a");for(var i=0;i<l.length;i++){l[i].href=root+"#"+l[i].getAttribute("data-v");if(l[i].getAttribute("data-v")===on&&l[i].className!=="bn")l[i].className+=" on"}document.body.appendChild(n);document.body.className+=" has-arkbar"}if(document.body)add();else document.addEventListener("DOMContentLoaded",add)})();</script></head><body><div class="wrap"><p class="topnav"><a class="guide" href="../#tools">Guides</a> › <a class="guide" href="../#tools:comms">Radio, community &amp; protection</a> · <a class="guide" href="EMERGENCY-FINDER.html">Emergency</a> · <a class="guide" href="SUBJECT-INDEX.html">Index A–Z</a></p>
+<h1 id="-mesh-radio-meshtastic"><span class="h1e"></span> Mesh Radio (Meshtastic)</h1>
+<p>Small, cheap radios that send <strong>text messages and positions</strong> from one to another with <strong>no phone service, no internet and no license</strong>. Every radio in range passes messages along, so a few of them spread out over a neighborhood or a valley reach further than any one could. The free software they run is called <strong>Meshtastic</strong>. Each radio talks to a phone by Bluetooth: you type and read on the phone, the radio does the sending.</p>
+<p>This guide covers what to buy, what to do <strong>now, while there is internet</strong>, setting a radio up, keeping messages private, getting range, linking up with neighbors, power, and fixing problems. The project's own manual is on the drive too: <a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf" title="Meshtastic Documentation - Offline Copy (November 2026).pdf">the Meshtastic documentation, offline copy</a> (325 pages, in <code>Comms-Signals\Mesh-Radio</code>), with the phone app beside it. The ARK Vault has two of these radios: see <a href="#11-the-ark-vault-s-mesh-radios">The ARK Vault's mesh radios</a>.</p>
+<blockquote>
+<h3 id="️-rules-that-prevent-the-worst-outcomes">⚠️ Rules that prevent the worst outcomes</h3>
+<ul>
+<li><strong>Antenna on before power, every time.</strong> A radio that sends with no antenna can burn out its radio chip (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=64" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 64">docs, p. 64</a>; <a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=264" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 264">p. 264</a>).</li>
+<li><strong>Set the region to US</strong> before anything else. With no region set, the radio does not send at all (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=74" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 74">docs, p. 74</a>).</li>
+<li><strong>The ready-made channel is public.</strong> Its key is printed in the software, so anyone with a Meshtastic radio in range can read it. Use a <strong>private channel</strong> for anything private (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=160" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 160">docs, p. 160</a>).</li>
+<li><strong>It is text, not voice,</strong> and not a way to reach 911. In an emergency, also use the <a class="guide" href="RADIO-GUIDE.html">Radio guide</a> and the <a class="guide" href="SIGNALS-MORSE-GUIDE.html">Signals guide</a>.</li>
+<li><strong>Put the app and the radio's software on now.</strong> Both are downloaded from the internet.</li>
+</ul>
+</blockquote>
+<hr />
+<nav class="toc" id="contents" aria-label="Contents"><details open><summary>Contents</summary><ol><li><a href="#1-what-it-is-and-what-it-is-not">1. What it is, and what it is not</a></li><li><a href="#2-what-to-buy">2. What to buy</a></li><li><a href="#3-do-these-now-while-there-is-internet">3. Do these now, while there is internet</a></li><li><a href="#4-setting-up-a-radio-step-by-step">4. Setting up a radio, step by step</a></li><li><a href="#5-channels-who-can-read-what">5. Channels: who can read what</a></li><li><a href="#6-sending-messages-and-positions">6. Sending messages and positions</a></li><li><a href="#7-range-getting-a-message-across">7. Range: getting a message across</a></li><li><a href="#8-roles-which-job-each-radio-does">8. Roles: which job each radio does</a></li><li><a href="#9-a-neighborhood-mesh">9. A neighborhood mesh</a></li><li><a href="#10-power">10. Power</a></li><li><a href="#11-the-ark-vault-s-mesh-radios">11. The ARK Vault&#x27;s mesh radios</a></li><li><a href="#12-the-law-privacy-and-safety">12. The law, privacy and safety</a></li><li><a href="#13-print-and-keep-mesh-card">13. Print-and-keep mesh card</a></li><li><a href="#14-if-this-goes-wrong">14. If this goes wrong</a></li><li><a href="#15-where-to-learn-more-offline">15. Where to learn more offline</a></li><li><a href="#related-guides">Related guides</a></li></ol></details></nav>
+<h2 id="1-what-it-is-and-what-it-is-not">1. What it is, and what it is not</h2>
+<table>
+<thead>
+<tr class="header">
+<th>It does</th>
+<th>It doesn't</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Short text messages, up to about <strong>200 letters</strong> each (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=108" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 108">docs, p. 108</a>)</td>
+<td>Voice, pictures or files</td>
+</tr>
+<tr class="even">
+<td>Messages to a whole group (a <strong>channel</strong>) or to <strong>one person</strong></td>
+<td>Reach the phone network or 911</td>
+</tr>
+<tr class="odd">
+<td>Share where each radio is, on a map in the app</td>
+<td>Work without a phone, mostly (the radio has no keyboard)</td>
+</tr>
+<tr class="even">
+<td>Pass messages along: up to <strong>3 radios in a row</strong> by default, 7 at most (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=133" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 133">docs, p. 133</a>)</td>
+<td>Get through a big ridge on its own</td>
+</tr>
+<tr class="odd">
+<td>Run for days on a small battery</td>
+<td>Need a license, a tower or a monthly bill</td>
+</tr>
+</tbody>
+</table>
+<p><strong>How far</strong> <em>(rule of thumb)</em>: through thick forest or over hills, ¼ to 1 mile; around town, 1 to 3 miles; with a clear view across a valley or from a hilltop, 5 to 20 miles or more. People have reached over 200 miles from mountain to mountain (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=30" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 30">docs, p. 30</a>). What matters most is <strong>height and a clear line</strong> between the radios, not power.</p>
+<p><strong>Why it works when phones don't:</strong> the radios use a free band (902 to 928 MHz in the US) that anyone may use at low power, and each one repeats what it hears. There is nothing in between to fail but the radios themselves.</p>
+<hr />
+<h2 id="2-what-to-buy">2. What to buy</h2>
+<p>Get radios made for the <strong>915 MHz</strong> band (sold as "US 915" or "902-928 MHz"). The ones sold for Europe (868) or Asia (433) will not talk to American radios.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Kind</th>
+<th>Example</th>
+<th>Good for</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Pocket radio</strong> with its own battery and GPS, nothing to set up</td>
+<td><strong>SenseCAP T1000-E</strong> (card size, rain-proof, about $40)</td>
+<td>Carrying, one per person; the ARK Vault's pocket radio</td>
+</tr>
+<tr class="even">
+<td><strong>Board with a screen</strong></td>
+<td><strong>Heltec WiFi LoRa 32 V4</strong> (about $25, plus a battery and a case)</td>
+<td>A radio at home or in a car; the ARK Vault's own radio</td>
+</tr>
+<tr class="odd">
+<td><strong>Low-power board</strong> for a solar relay</td>
+<td>RAK WisBlock (nRF52 kind)</td>
+<td>A relay on high ground that runs on a small panel</td>
+</tr>
+<tr class="even">
+<td><strong>Ready-made relay</strong> in a weather-proof box with a solar panel</td>
+<td>sold by several makers</td>
+<td>A neighborhood relay with no building</td>
+</tr>
+</tbody>
+</table>
+<p>Also: a <strong>USB-C cable that carries data</strong> (not a charge-only one: test it by copying a file), a <strong>915 MHz antenna</strong> for boards that don't have one built in, and a <strong>power bank</strong> for each radio.</p>
+<p><em>Tip:</em> buy the <strong>same kind for everyone in the household</strong>: one way of charging, one set of buttons to learn.</p>
+<hr />
+<h2 id="3-do-these-now-while-there-is-internet">3. Do these now, while there is internet</h2>
+<ol type="1">
+<li><strong>Put the app on every phone.</strong> Android: <strong>Meshtastic</strong> from Google Play, or the copy on this drive, <a class="lib" target="_blank" rel="noopener" href="https://github.com/meshtastic/Meshtastic-Android/releases/latest/download/androidApp-fdroid-universal-release.apk" title="Meshtastic App for Android (F-Droid build).apk">Meshtastic app for Android</a> (copy it to the phone, tap it, and allow installing from that source when the phone asks). iPhone and iPad: <strong>Meshtastic</strong> from the App Store. An iPhone cannot install it later from a file.</li>
+<li><strong>Put Meshtastic on each radio</strong> if it didn't come with it, and bring it up to date. On a computer with <strong>Chrome or Edge</strong>, plug the radio in with a data cable and open <strong>flasher.meshtastic.org</strong> (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=67" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 67">docs, p. 67</a>). Pocket radios like the T1000-E come with it.</li>
+<li><strong>Set each radio up</strong> (next section): region US, a name, and the household's private channel.</li>
+<li><strong>Print the channel's QR code</strong> and the card in <a href="#13-print-and-keep-mesh-card">section 13</a>, and keep them with the radios.</li>
+<li><strong>Test:</strong> send a message each way, then walk until it stops arriving, so you know your range.</li>
+<li><strong>Find your local mesh:</strong> neighbors may already run one. Ask what channel and preset they use (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=79" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 79">docs, p. 79</a>).</li>
+</ol>
+<hr />
+<h2 id="4-setting-up-a-radio-step-by-step">4. Setting up a radio, step by step</h2>
+<ol type="1">
+<li><strong>Antenna on, then switch on</strong> (the T1000-E: hold its button until it beeps).</li>
+<li><strong>Connect the phone:</strong> in the app, open <strong>Connect</strong>, tap <strong>Scan for Bluetooth devices</strong> and pick the radio. Type the 6-number PIN the radio shows on its screen; a radio with no screen uses <strong>123456</strong> (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=93" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 93">docs, p. 93</a>).</li>
+<li><strong>Set the region:</strong> tap <strong>SET YOUR REGION</strong> (or <strong>Settings → LoRa</strong>), choose <strong>US</strong>, tap <strong>Send</strong> (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=74" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 74">docs, p. 74</a>). The radio restarts.</li>
+<li><strong>Check the preset is Long Fast</strong> (Settings → LoRa). Every radio that should talk to yours must use the same one. A radio whose region was first set <strong>on its own screen</strong> starts on <strong>Long Turbo</strong>, which cannot hear Long Fast: change it (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=131" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 131">docs, p. 131</a>).</li>
+<li><strong>Give it a name:</strong> Settings → <strong>User</strong>: a long name (Dad's radio) and a 4-letter short name (DAD). That is what others see.</li>
+<li><strong>Add the household channel</strong> (next section) and send a test message.</li>
+</ol>
+<blockquote>
+<p><strong>The Vault's Heltec board:</strong> in the web flasher choose <strong>Heltec LoRa32 V4</strong>. If the big chip on the board reads <strong>ESP32-S3R8</strong>, choose <strong>V4-R8</strong> instead: the two take different software (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=268" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 268">docs, p. 268</a>).</p>
+</blockquote>
+<hr />
+<h2 id="5-channels-who-can-read-what">5. Channels: who can read what</h2>
+<ul>
+<li><strong>The primary channel</strong> comes ready-made, named <strong>LongFast</strong>, with a key everyone has. It is how strangers' radios find each other and pass messages along. Treat it like shouting in the street.</li>
+<li><strong>A private channel</strong> has a random key that only the radios you give it to have. Make one for the household: Settings → <strong>Channels</strong> → add a channel and give it a name (the app makes a new random key for it), tap <strong>Save</strong>, then <strong>Send</strong> to put it on the radio (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=100" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 100">docs, p. 100</a>). A radio holds up to 8 channels.</li>
+<li><strong>Sharing it:</strong> the app shows the channel as a <strong>QR code</strong>. On each other phone, scan it with the app. Typing the same name by hand does <strong>not</strong> work: the random key is in the code, and the code carries the radio settings too (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=29" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 29">docs, p. 29</a>). Only scan codes from people you trust, for the same reason.</li>
+<li><strong>Direct messages</strong> (to one radio, from the <strong>Nodes</strong> list) are locked to that person, so other people on the same channel can't read them either. Your radio must have heard the other radio first (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=101" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 101">docs, p. 101</a>).</li>
+<li><strong>Your position:</strong> on the public channel it is only shared roughly (about half a mile). On a private channel you choose how exact (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=154" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 154">docs, p. 154</a>).</li>
+<li><strong>The lock in the app</strong> tells you: green, private; yellow, readable by anyone; red, readable by anyone <em>and</em> sharing exact positions (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=100" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 100">docs, p. 100</a>).</li>
+</ul>
+<hr />
+<h2 id="6-sending-messages-and-positions">6. Sending messages and positions</h2>
+<ul>
+<li><strong>To the group:</strong> open the channel in <strong>Messages</strong> and type. A message to a channel only shows that it went out; no one confirms reading it.</li>
+<li><strong>To one person:</strong> tap them in <strong>Nodes</strong>, then message. You see <strong>Delivered</strong> when their radio has it (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=102" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 102">docs, p. 102</a>).</li>
+<li><strong>Keep it short:</strong> who, where, what, what you need. "DAD at barn. All OK. Back 5pm."</li>
+<li><strong>Positions:</strong> the map in the app shows every radio that shares where it is. The T1000-E sends its position when you <strong>press its button twice</strong>; <strong>three presses</strong> turn its GPS off or on to save the battery (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=302" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 302">docs, p. 302</a>).</li>
+<li><strong>Waypoints:</strong> drop a marked point on the app's map (a meeting place, a water source) and it appears on everyone's map on that channel (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=119" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 119">docs, p. 119</a>).</li>
+<li><strong>Did it get through, and which way?</strong> In Nodes, <strong>Traceroute</strong> shows which radios a message passed through (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=257" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 257">docs, p. 257</a>).</li>
+</ul>
+<hr />
+<h2 id="7-range-getting-a-message-across">7. Range: getting a message across</h2>
+<ol type="1">
+<li><strong>Get it high.</strong> A radio on a roof, in a tree or on a ridge reaches many times further than one in a pocket. Five feet up a fence post beats being on the ground.</li>
+<li><strong>Antenna straight up</strong>, and clear of metal and of your body. Indoors, by a window that faces the other radio.</li>
+<li><strong>Check the line between two places</strong> before carrying a radio there: on the library's map, <strong>Measure</strong> two points, and it says whether one can see the other, which is what a radio link needs (<a class="guide" href="HOW-TO-VIEW-MAPS.html">Maps guide</a>).</li>
+<li><strong>Relay over a ridge:</strong> a radio on the ridge top between two valleys passes messages both ways. It should stay switched on, on a solar panel (<a href="#10-power">section 10</a>).</li>
+<li><strong>A better antenna</strong> helps more than more power: a longer, upright 915 MHz antenna on the house's highest point, with short, good cable (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=261" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 261">docs, p. 261</a>).</li>
+<li><strong>Wet trees and leaves soak up the signal.</strong> Range in a wet forest in winter can be half of what it is in a dry summer <em>(rule of thumb)</em>.</li>
+</ol>
+<hr />
+<h2 id="8-roles-which-job-each-radio-does">8. Roles: which job each radio does</h2>
+<p>Settings → <strong>Device</strong> → <strong>Role</strong>. Leave almost every radio on <strong>Client</strong>: it already passes messages along. The others are for special places (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=166" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 166">docs, p. 166</a>; <a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=179" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 179">choosing a role, p. 179</a>).</p>
+<table>
+<thead>
+<tr class="header">
+<th>Role</th>
+<th>Use it for</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Client</strong></td>
+<td>Every radio people carry or keep at home. The right choice nearly always</td>
+</tr>
+<tr class="even">
+<td><strong>Client Mute</strong></td>
+<td>Several radios in one house: one passes messages along, the others only listen and send</td>
+</tr>
+<tr class="odd">
+<td><strong>Client Base</strong></td>
+<td>Your own radio on the roof: it always passes on messages to and from the radios you mark as <strong>favorites</strong> (your family's)</td>
+</tr>
+<tr class="even">
+<td><strong>Router</strong></td>
+<td><strong>Only</strong> a radio in a high, open place everyone agreed on (a ridge-top relay). Routers always repeat, so one in a low or crowded place clogs the mesh for everyone</td>
+</tr>
+<tr class="odd">
+<td><strong>Tracker</strong></td>
+<td>A radio that only reports where it is (on a pack animal, a vehicle)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="9-a-neighborhood-mesh">9. A neighborhood mesh</h2>
+<p>A mesh is only as good as the radios in it. A street where several houses keep one radio on all the time, with one relay up high, can reach across a whole valley.</p>
+<ol type="1">
+<li><strong>Agree one private channel</strong> for the neighborhood (separate from each household's) and share its QR code in person, on paper.</li>
+<li><strong>One or two relays on high ground</strong>, set to <strong>Router</strong>, on solar power, with the owner's permission (<a href="#10-power">section 10</a>).</li>
+<li><strong>A check-in time:</strong> every evening at 7, each house sends "OK" or "HELP" and what it needs, the radio side of the <a class="guide" href="SIGNALS-MORSE-GUIDE.html#the-neighborhood-ok-help-plan">neighborhood OK/HELP plan</a>.</li>
+<li><strong>Short names that say who:</strong> OAKS for the Oaks place, not a gadget's number.</li>
+<li><strong>Someone keeps the list</strong> of short names and channels, printed (the card in <a href="#13-print-and-keep-mesh-card">section 13</a>). See also <a class="guide" href="COMMUNITY-BARTER-GUIDE.html#forming-a-neighborhood-group">forming a neighborhood group</a>.</li>
+</ol>
+<hr />
+<h2 id="10-power">10. Power</h2>
+<ul>
+<li><strong>Pocket radio (T1000-E):</strong> about a week on a charge if its GPS is off or reports rarely, a few days if it reports often <em>(rule of thumb)</em>. It charges from a magnetic USB cable: <strong>keep that cable with it</strong>, nothing else fits (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=302" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 302">docs, p. 302</a>).</li>
+<li><strong>Boards with screens</strong> use more: run them from a power bank, and switch the screen to turn off after a while.</li>
+<li><strong>A solar relay:</strong> a small panel (5 to 10 watts), a battery pack that charges and powers at the same time, and a weather-proof box, with the antenna on top. The low-power (nRF52) boards run a long time on very little. Power planning: the <a class="guide" href="OFF-GRID-POWER-GUIDE.html">Off-grid power guide</a>.</li>
+<li><strong>Stored for an emergency:</strong> charged every few months, in a sealed metal box with the phone (see the <a class="guide" href="EMP-GUIDE.html#faraday-containers-building-one-that-works">EMP guide</a>).</li>
+</ul>
+<hr />
+<h2 id="11-the-ark-vault-s-mesh-radios">11. The ARK Vault's mesh radios</h2>
+<p>The Vault can hold two radios: a <strong>Heltec board</strong> under the lid, powered whenever the Vault is on, and a <strong>T1000-E pocket radio</strong> taped to a second phone, for whoever goes out. Each talks to its own phone through the Meshtastic app. Fitting them, and the steps to do before the can is sealed, are in the <a class="guide" href="AMMO-CAN-COMPUTER-GUIDE.html#the-mesh-radio-optional">Vault guide</a>. Screw the antenna on <strong>before</strong> flipping the Vault's switch.</p>
+<hr />
+<h2 id="12-the-law-privacy-and-safety">12. The law, privacy and safety</h2>
+<ul>
+<li><strong>No license needed</strong> in the US on the 915 MHz band at Meshtastic's normal settings (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=14" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 14">docs, p. 14</a>).</li>
+<li><strong>Ham radio settings</strong> (the "licensed" mode, and the ham-band regions) are only for licensed amateurs. In that mode messages may not be locked (encrypted), and your call sign is the radio's name. Licensed and unlicensed radios don't talk to each other (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=77" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 77">docs, p. 77</a>; <a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=307" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 307">p. 307</a>).</li>
+<li><strong>Anyone can listen</strong> to the public channel, and see positions shared on it. Some radios also pass the public channel to the internet when they have it. Keep names, addresses and plans to private channels.</li>
+<li><strong>Change the Bluetooth PIN</strong> from 123456 on a radio with no screen, so a stranger nearby can't connect to it (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=216" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 216">docs, p. 216</a>).</li>
+<li><strong>A lost radio:</strong> it holds your private channel's key. Make a new channel and share the new code with everyone else.</li>
+</ul>
+<hr />
+<h2 id="13-print-and-keep-mesh-card">13. Print-and-keep mesh card</h2>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Household</th>
+<th>Neighborhood</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Channel name</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>QR code</td>
+<td><em>(stick a printout here)</em></td>
+<td><em>(stick a printout here)</em></td>
+</tr>
+<tr class="odd">
+<td>Region / preset</td>
+<td>US / Long Fast</td>
+<td>US / Long Fast</td>
+</tr>
+<tr class="even">
+<td>Check-in time</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Meeting place if messages stop</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Short name</th>
+<th>Who</th>
+<th>Where it usually is</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Message form:</strong> WHO · WHERE · OK or HELP · WHAT YOU NEED · WHEN YOU'LL CHECK IN AGAIN.</p>
+<hr />
+<h2 id="14-if-this-goes-wrong">14. If this goes wrong</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Problem</th>
+<th>Try</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Two radios don't see each other</td>
+<td>Same <strong>region</strong> (US), same <strong>preset</strong> (Long Fast), same <strong>channel and key</strong>? Scan the QR code again rather than typing</td>
+</tr>
+<tr class="even">
+<td>A radio set up from its own screen hears nothing</td>
+<td>It started on Long Turbo: set Long Fast (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=131" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 131">docs, p. 131</a>)</td>
+</tr>
+<tr class="odd">
+<td>The app can't find the radio</td>
+<td>Bluetooth on, the app allowed to find <strong>nearby devices</strong>, the radio near the phone. Still no: forget the radio in the phone's Bluetooth settings and pair again (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=93" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 93">docs, p. 93</a>)</td>
+</tr>
+<tr class="even">
+<td>Asked for a PIN you don't know</td>
+<td>It is on the radio's screen; no screen, <strong>123456</strong></td>
+</tr>
+<tr class="odd">
+<td>Messages to a channel never seem to arrive</td>
+<td>Out of range: get higher, add a relay, or send a direct message to see <strong>Delivered</strong></td>
+</tr>
+<tr class="even">
+<td>A direct message won't send</td>
+<td>Your radio hasn't heard theirs yet. Wait until they show in Nodes</td>
+</tr>
+<tr class="odd">
+<td>The T1000-E can't hear an old radio</td>
+<td>Some older radios (SX127x chip) can't be heard by it directly; it works through a third radio (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=301" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 301">docs, p. 301</a>)</td>
+</tr>
+<tr class="even">
+<td>The battery dies fast</td>
+<td>GPS on and reporting often: report less, or turn GPS off (T1000-E: press 3 times)</td>
+</tr>
+<tr class="odd">
+<td>A radio needs new software and there's no internet</td>
+<td>It can't be done offline from this library: carry on with what it has. All radios on 2.x software still talk to each other</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="15-where-to-learn-more-offline">15. Where to learn more offline</h2>
+<ul>
+<li><a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf" title="Meshtastic Documentation - Offline Copy (November 2026).pdf">Meshtastic documentation, offline copy</a>: setting up (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=48" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 48">p. 48</a>), the Android app (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=88" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 88">p. 88</a>), every setting (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=127" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 127">p. 127</a>), antennas (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=261" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 261">p. 261</a>), the Heltec radio (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=267" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 267">p. 267</a>), the T1000-E (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=300" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 300">p. 300</a>) and common questions (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=306" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 306">p. 306</a>).</li>
+<li><a class="lib" target="_blank" rel="noopener" href="https://github.com/meshtastic/Meshtastic-Android/releases/latest/download/androidApp-fdroid-universal-release.apk" title="Meshtastic App for Android (F-Droid build).apk">Meshtastic app for Android</a>, to install with no internet.</li>
+<li>How radio waves travel and antennas: the <a class="guide" href="RADIO-GUIDE.html">Radio guide</a>.</li>
+</ul>
+<p><em>Meshtastic® is a registered trademark of Meshtastic LLC. This guide is not made or endorsed by Meshtastic.</em></p>
+<hr />
+<h2 id="related-guides">Related guides</h2>
+<ul>
+<li><a class="guide" href="RADIO-GUIDE.html">Radio guide</a> — ham, GMRS, CB and shortwave: voice, longer range, and how to call for help</li>
+<li><a class="guide" href="SIGNALS-MORSE-GUIDE.html">Signals guide</a> — the neighborhood OK/HELP plan, runners and message forms</li>
+<li><a class="guide" href="COMMUNITY-BARTER-GUIDE.html">Community and barter guide</a> — organizing the neighbors who share a mesh</li>
+<li><a class="guide" href="AMMO-CAN-COMPUTER-GUIDE.html">ARK Vault guide</a> — the Vault's two mesh radios</li>
+<li><a class="guide" href="HOW-TO-VIEW-MAPS.html">Maps guide</a> — checking the line between two places before a trip</li>
+<li><a class="guide" href="OFF-GRID-POWER-GUIDE.html">Off-grid power guide</a> — panels and batteries for a relay</li>
+<li><a class="guide" href="EMP-GUIDE.html">EMP guide</a> — keeping radios safe in storage</li>
+</ul>
+<nav class="guidenav"><div class="prev"><a class="guide" href="RADIO-GUIDE.html"><small>← Previous</small>Emergency radio</a></div><div class="up"><a class="guide" href="../#tools:comms"><small>All guides in</small>📡 Radio, community &amp; protection</a></div><div class="next"><a class="guide" href="SIGNALS-MORSE-GUIDE.html"><small>Next →</small>Signals &amp; Morse code</a></div></nav></div><a class="totop" href="#contents" aria-label="Back to contents">↑ Contents</a></body></html>
