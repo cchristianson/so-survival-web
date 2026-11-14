@@ -191,6 +191,37 @@
 <hr />
 <h2 id="11-the-ark-vault-s-mesh-radios">11. The ARK Vault's mesh radios</h2>
 <p>The Vault can hold two radios: a <strong>Heltec board</strong> under the lid, powered whenever the Vault is on, and a <strong>T1000-E pocket radio</strong> taped to a second phone, for whoever goes out. Each talks to its own phone through the Meshtastic app. Fitting them, and the steps to do before the can is sealed, are in the <a class="guide" href="AMMO-CAN-COMPUTER-GUIDE.html#the-mesh-radio-optional">Vault guide</a>. Screw the antenna on <strong>before</strong> flipping the Vault's switch.</p>
+<div class="fold"><h3 class="fold-head" id="the-vaults-own-mesh-pages">The Vault's own mesh pages</h3>
+<p class="gist noprint">Messages and a People layer on the map, for any phone on the Vault's Wi-Fi</p>
+<div class="fold-body">
+<p>The Heltec board under the lid is plugged into the Pi by its USB cable, and the Vault reads it. So <strong>any phone on the Vault's Wi-Fi gets the mesh with no Meshtastic app and no Bluetooth pairing</strong>:</p>
+<ul>
+<li><strong>More → Mesh messages:</strong> read what the mesh has said and send a message back. The row only appears when a radio is actually plugged in.</li>
+<li><strong>The map's People layer:</strong> a dot for each radio that knows where it is, its name, and a dashed trail of where it has been. Tap one for when it was last heard. A dot nobody has heard from for an hour fades, so an old position never looks like a live one.</li>
+</ul>
+<p>This is useful for a phone with no app, for a visitor, and for anyone who would rather read a big screen. It does <strong>not</strong> replace the app on your own phone: the app still does direct messages and works away from the Vault.</p>
+<blockquote>
+</div><!--/fold--></div>
+<h3 id="️-three-settings-decide-whether-this-is-any-use">⚠️ Three settings decide whether this is any use</h3>
+<ol type="1">
+<li><strong>Anyone who should appear on the map needs a radio that knows where it is.</strong> Position comes "from either the radio or your paired phone" (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=183" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 183">docs, p. 183</a>). The T1000-E pocket radio has its own GPS. A plain Heltec board has none, so it shows on the map only if a phone is paired to it and sharing, or you set its position by hand.</li>
+<li><strong>Use a private channel, with full precision.</strong> On a channel with no key, the ready-made key or a one-byte key, "the firmware limits precision to 15 bits" (<a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=154" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 154">docs, p. 154</a>) — about <strong>790 yards</strong>, so the map draws a circle that size instead of a dot. On your own channel set <strong>Position precision</strong> to 32 for the exact spot. Section 5 makes the channel.</li>
+<li><strong>A dot moves every 15 minutes by default</strong> (Broadcast Interval, "Default of 0 is 15 minutes", <a class="lib" target="_blank" rel="noopener" href="../download/docs/Meshtastic-Documentation.pdf#page=184" title="Meshtastic Documentation - Offline Copy (November 2026).pdf — page 184">docs, p. 184</a>). Smart Broadcast sends sooner while someone is moving and less when they stop, and the docs say to leave the interval alone if you use it (p. 184). A shorter interval costs battery and airtime.</li>
+</ol>
+</blockquote>
+<p><strong>Everyone on the Vault's Wi-Fi can read every message and see every position.</strong> That was a deliberate choice: in an emergency the people round the Vault are the people who need to know. If that is wrong for you, do not put the radio's private channel on the Vault's own radio.</p>
+<div class="fold"><h3 class="fold-head" id="proving-the-cable-before-you-trust-it">Proving the cable before you trust it</h3>
+<p class="gist noprint">One setting and one command, to check the Pi can really hear the radio</p>
+<div class="fold-body">
+<p>Worth doing once, before you rely on any of it. It needs no programming and proves the cable, the port and the permissions in about five minutes:</p>
+<ol type="1">
+<li>In the Meshtastic app, on the Vault's Heltec board: <strong>Settings → Serial</strong>, turn the module on, set the mode to <strong>CalTopo</strong>, and turn on <strong>Override console serial port</strong>. Save.</li>
+<li>On the Pi, in a terminal: <code>cat /dev/ttyACM0</code> (if nothing comes, try <code>/dev/ttyACM1</code> or <code>/dev/ttyUSB0</code>).</li>
+<li>Lines of text should appear every ten seconds, one per radio that knows where it is. If they do, the Pi can hear the radio and everything else is just software.</li>
+<li><strong>Put the Serial mode back to the default and turn the override off.</strong> While it is on, the Vault's own pages cannot use the radio: only one thing can have that cable at a time.</li>
+</ol>
+<p>If nothing appears: check the USB cable is a <strong>data</strong> cable, not charge-only; check the radio's screen is lit (it only has power when the Vault's switch is on); and if the terminal says "permission denied", the Vault's library program needs to be in the <code>dialout</code> group.</p>
+</div><!--/fold--></div>
 <hr />
 <h2 id="12-the-law-privacy-and-safety">12. The law, privacy and safety</h2>
 <ul>

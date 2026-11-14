@@ -28,6 +28,7 @@ const ICONS = {
   chip: '<rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/>',
   usb: '<rect x="4" y="13" width="16" height="7" rx="1.5"/><path d="M8 13V6h8v7M10.5 9h.01M13.5 9h.01"/>',
   wifi: '<path d="M5 12a10 10 0 0 1 14 0M8 15a6 6 0 0 1 8 0"/><circle cx="12" cy="18.5" r="1"/>',
+  aerial: '<path d="M12 14v7M8.5 8.5a5 5 0 0 1 7 0M6 6a8.5 8.5 0 0 1 12 0"/><circle cx="12" cy="12" r="1.6"/>',
   box: '<rect x="3" y="8" width="18" height="12" rx="1.5"/><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2M10 13h4"/>',
   help: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 1-1 1.7M12 17v.4"/>',
   info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.4v.4"/>',
@@ -71,7 +72,8 @@ const VIEWS = {
   sharing: { nav: 'more', title: 'Share with nearby devices', back: 'more', sec: 'setup', page: 'sharing' },
   vault: { nav: 'more', title: 'ARK Vault', back: 'more', sec: 'setup', page: 'vault' },
   status: { nav: 'more', title: 'System status', back: 'more', sec: 'setup', page: 'status' },
-  about: { nav: 'more', title: 'About', back: 'more', sec: 'setup', page: 'about' } };
+  about: { nav: 'more', title: 'About', back: 'more', sec: 'setup', page: 'about' },
+  mesh: { nav: 'more', title: 'Mesh messages', back: 'more' } };
 const NAV = [['home', 'Home', 'home'], ['tools', 'Library', 'book'], ['ask', 'Ask', 'chat'], ['maps', 'Maps', 'map'], ['kit', 'Tools', 'wrench'], ['more', 'More', 'more']];
 const SIDE = [['home', 'Home', 'home'], ['ask', 'Ask ARK', 'chat'], ['tools', 'Guides', 'page'], ['library', 'Books', 'book'], ['maps', 'Maps & Routes', 'map'], ['kit', 'Tools', 'wrench'], ['setup', 'Offline & downloads', 'down'], ['more', 'Settings & help', 'sliders']];
 let view = '', pushed = 0, SAVED = {};
@@ -90,6 +92,7 @@ async function init() {
     $('tagline').textContent = 'Searches every manual, guide and offline encyclopedia on this drive, then has the offline AI answer from what it finds. Everything runs on this device (or the one sharing it with you) — no internet.';
     $('wikilabel').textContent = 'Wikipedia & archives';
     setInterval(refreshServer, 5000);
+    meshPoll(true); // once: does this Vault have a mesh radio at all (so More knows whether to offer it)
     const pr = document.createElement('script'); pr.src = '/print.js'; pr.defer = true; document.head.appendChild(pr); // receipt printer (print.go)
   } else {
     try { manifest = await (await fetch('data/manifest.json', { cache: 'no-cache' })).json(); } catch {}
@@ -324,6 +327,8 @@ function bindUI() {
     });
   }
   $('f').addEventListener('submit', e => { e.preventDefault(); ask(); });
+  $('meshform').addEventListener('submit', e => { e.preventDefault(); meshSend(); });
+  $('meshtext').addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); meshSend(); } });
   $('q').addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); ask(); } });
   // the example questions are only for an empty page: they go as soon as you type (and stay gone once there are answers)
   $('q').addEventListener('input', () => { $('examples').hidden = !!$('q').value.trim() || !!$('out').children.length; wantFull(); wantAI(); });
@@ -1436,6 +1441,7 @@ function setView(name) {   // show a screen (what the address says is go's busin
   document.querySelectorAll('#side button').forEach(b => b.classList.toggle('on', sideOn(b.dataset.tab, name)));
   if (name === 'welcome') $('welcome').querySelectorAll('img[data-src]').forEach(i => { i.src = i.dataset.src; i.removeAttribute('data-src'); });
   if (name === 'home') renderHome(); else if (name === 'maps') renderMaps(); else if (name === 'more') renderMore(); else if (name === 'help') renderHelp();
+  meshOpen(name === 'mesh'); // only ask the Vault about the radio while that screen is open
 }
 // Go to a screen and put it in the address. Going into a screen that has a Back button is a step of its own, so
 // the phone's Back button comes back out of it; the six main screens take each other's place, as the tabs always did.
@@ -1538,11 +1544,99 @@ function renderMore() {
     '<p class="label">Share and build</p><div class="card rows">' +
     r('sharing', 'wifi', 'Share with nearby devices', drive ? 'Let phones on the same Wi-Fi use this library' : 'From a library on a drive or an ARK Vault') +
     r('vault', 'box', 'ARK Vault', 'Build guide, parts, 3D view, wiring') +
-    ($('pihealth').hidden ? '' : r('status', 'chip', server.ark ? 'Vault system status' : 'Raspberry Pi status', 'Power, heat and speed, right now')) + '</div>' +
+    ($('pihealth').hidden ? '' : r('status', 'chip', server.ark ? 'Vault system status' : 'Raspberry Pi status', 'Power, heat and speed, right now')) +
+    (meshHere ? r('mesh', 'aerial', 'Mesh messages', meshRowWord()) : '') + '</div>' +
     '<p class="label">Settings and help</p><div class="card rows">' +
     `<div class="row"><span class="tx"><b>Display</b></span><div class="seg small" role="group" aria-label="Display">${['auto', 'light', 'dark'].map(t => `<button type="button" data-theme-set="${t}"${theme === t ? ' class="on"' : ''}>${t[0].toUpperCase() + t.slice(1)}</button>`).join('')}</div></div>` +
     r('help', 'help', 'Help', 'Getting started, installing, troubleshooting') + r('about', 'info', 'About') + '</div>';
 }
+// ------------------------------------------------------------------ mesh messages
+// Text over the mesh radio from any phone on this Vault's Wi-Fi: no Meshtastic app, no pairing.
+// Position and text are separate things on a mesh, so this works whether or not anyone has GPS.
+let meshHere = false, meshState = {}, meshTimer = 0, meshSeen = 0;
+
+function meshRowWord() {
+  if (meshState.state === 'ready') return meshState.nodes ? `${meshState.nodes} radio${meshState.nodes === 1 ? '' : 's'} heard` : 'Radio ready';
+  if (meshState.state === 'talking') return 'Starting up…';
+  return 'No radio found';
+}
+
+// meshPoll asks the Vault what the radio is doing. It runs while the Mesh screen is open, and once at
+// start-up so the More screen knows whether to offer it at all.
+async function meshPoll(once) {
+  if (mode !== 'drive') return;
+  const wasHere = meshHere;
+  try {
+    const r = await fetch('api/mesh/status', { cache: 'no-store' });
+    if (!r.ok) return;
+    meshState = await r.json();
+    if (meshState.state && meshState.state !== 'off') meshHere = true;
+  } catch { return; }
+  // the answer comes back after More was drawn, so draw it again once we know there is a radio
+  if (meshHere && !wasHere && view === 'more') renderMore();
+  if (!once && view === 'mesh') renderMeshState();
+}
+
+function renderMeshState() {
+  const st = $('meshstate'); if (!st) return;
+  // a radio that has not been given a name shows as its number: say so plainly rather than as a name
+  const named = meshState.node && !/^!/.test(meshState.node);
+  const who = named ? ` as <b>${esc(meshState.node)}</b>` : '';
+  if (meshState.state === 'ready') st.innerHTML = `This Vault's radio is connected${who}. ${esc(meshRowWord())}.`;
+  else if (meshState.state === 'talking') st.textContent = 'The radio is starting up…';
+  else if (meshState.error) st.innerHTML = `No radio. <span class="muted">${esc(meshState.error)}</span>`;
+  else st.textContent = 'No mesh radio is plugged into this Vault.';
+  const live = meshState.state === 'ready';
+  $('meshsend').disabled = !live;
+  $('meshtext').disabled = !live;
+}
+
+async function meshMessages() {
+  if (mode !== 'drive') return;
+  let j;
+  try { j = await (await fetch('api/mesh/messages', { cache: 'no-store' })).json(); } catch { return; }
+  const list = $('meshlist'); if (!list) return;
+  const msgs = j.messages || [];
+  const atEnd = list.scrollTop + list.clientHeight >= list.scrollHeight - 30;
+  if (!msgs.length) {
+    list.innerHTML = '<p class="meta">Nothing yet. A message sent here goes out to every radio in range on the same channel.</p>';
+    return;
+  }
+  list.innerHTML = msgs.map(m => `<div class="msg${m.mine ? ' mine' : ''}"><div class="who">${esc(m.name || '')} · ${esc(ago(j.now - m.t))}</div><p class="what">${esc(m.text)}</p></div>`).join('');
+  if (atEnd || msgs.length !== meshSeen) list.scrollTop = list.scrollHeight;
+  meshSeen = msgs.length;
+}
+
+// ago says how long since something, in the fewest words that are still true.
+function ago(secs) {
+  if (!(secs >= 0)) return 'just now';
+  if (secs < 90) return 'just now';
+  if (secs < 3600) return `${Math.round(secs / 60)} min ago`;
+  if (secs < 86400) return `${Math.round(secs / 3600)} h ago`;
+  return `${Math.round(secs / 86400)} days ago`;
+}
+
+function meshOpen(on) {
+  clearInterval(meshTimer); meshTimer = 0;
+  if (!on) return;
+  renderMeshState(); meshMessages(); meshPoll();
+  meshTimer = setInterval(() => { meshPoll(); meshMessages(); }, 5000);
+}
+
+async function meshSend() {
+  const box = $('meshtext'), text = box.value.trim();
+  if (!text) return;
+  $('meshsend').disabled = true;
+  try {
+    const r = await fetch('api/mesh/messages', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text }) });
+    const j = await r.json().catch(() => ({}));
+    if (j.ok) { box.value = ''; meshMessages(); }
+    else $('meshstate').textContent = j.error ? `Not sent: ${j.error}` : 'Not sent.';
+  } catch { $('meshstate').textContent = 'Not sent: the Vault did not answer.'; }
+  $('meshsend').disabled = meshState.state !== 'ready';
+}
+
 function renderHelp() {
   const P = guidePaths(), end = `<span class="chev">${ic('right', 18)}</span>`;
   const a = (href, icn, t, sub) => href ? `<a class="row" href="${href}">${ic(icn)}<span class="tx"><b>${t}</b>${sub ? `<small>${sub}</small>` : ''}</span>${end}</a>` : '';
