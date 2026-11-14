@@ -1,0 +1,2292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>What can I cook? (offline recipe finder)</title>
+<meta name="description" content="Tick the ingredients you have and what you can cook on, and see what you can make. Works with no internet.">
+<style>
+:root{--bg:#131915;--card:#1B2420;--ink:#E8EDE7;--muted:#A5B0A7;--accent:#8CC7A2;--accent2:#E0B65A;--line:#34413A;--danger:#F3B5A8}
+@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--bg:#F5F2EA;--card:#FFFDF8;--ink:#1D2721;--muted:#566058;--accent:#315B43;--accent2:#7A5F1E;--line:#DCD6C8;--danger:#9B2C1F}}:root[data-theme=light]{--bg:#F5F2EA;--card:#FFFDF8;--ink:#1D2721;--muted:#566058;--accent:#315B43;--accent2:#7A5F1E;--line:#DCD6C8;--danger:#9B2C1F}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:12px 16px 60px}
+a{color:var(--accent)}
+.topnav{position:sticky;top:0;z-index:4;background:var(--bg);border-bottom:1px solid var(--line);margin:0 -16px 8px;padding:10px 16px 8px;font-size:14.5px;color:var(--muted)}
+.topnav a{text-decoration:none;white-space:nowrap}
+h1{font-size:25px;margin:6px 0 4px}
+h2{font-size:19px;margin:22px 0 6px}
+h3{font-size:17px;margin:14px 0 4px}
+.sub{color:var(--muted);margin:0 0 12px;font-size:15px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 14px;margin:10px 0}
+.muted{color:var(--muted)}
+.small{font-size:14px;color:var(--muted)}
+details.pick{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:8px 0;padding:0}
+details.pick>summary{cursor:pointer;padding:10px 14px;font-weight:700;list-style:none}
+details.pick>summary::-webkit-details-marker{display:none}
+details.pick>summary::after{content:"\25BE";float:right;color:var(--muted);font-weight:400}
+details.pick[open]>summary::after{content:"\25B4"}
+details.pick>summary .n{font-weight:400;color:var(--muted);font-size:14px;margin-left:6px}
+.chips{display:flex;flex-wrap:wrap;gap:7px;padding:2px 12px 12px}
+.chip{font:inherit;font-size:14.5px;line-height:1.25;padding:7px 12px;min-height:38px;border-radius:999px;border:1px solid var(--line);
+  background:var(--bg);color:var(--ink);cursor:pointer;text-align:left;touch-action:manipulation}
+.chip[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--bg);font-weight:700}
+.chip .tick{display:none}
+.chip[aria-pressed=true] .tick{display:inline}
+.chip small{display:block;font-weight:400;font-size:12.5px;opacity:.85}
+.btn{font:inherit;font-weight:700;cursor:pointer;border-radius:11px;padding:9px 15px;min-height:40px;border:1px solid var(--accent);
+  background:var(--accent);color:var(--bg);touch-action:manipulation}
+.btn.alt{background:transparent;color:var(--accent)}
+.row{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:10px 0}
+input[type=search]{flex:1 1 190px;min-width:0;font:inherit;padding:10px 12px;border-radius:11px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.count{color:var(--muted);font-size:14.5px;margin:4px 0 2px}
+.rec{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:8px 0}
+.rec>summary{cursor:pointer;padding:11px 14px;list-style:none}
+.rec>summary::-webkit-details-marker{display:none}
+.rec>summary b{font-size:17px}
+.rec>summary .what{display:block;color:var(--muted);font-size:14.5px;margin-top:2px}
+.rec .body{padding:0 14px 14px;border-top:1px solid var(--line);margin-top:2px}
+.rec dl{margin:10px 0 0;display:grid;grid-template-columns:auto 1fr;gap:3px 10px;font-size:15px}
+.rec dt{color:var(--muted)}
+.rec dd{margin:0}
+.rec ol{margin:10px 0 0;padding-left:22px}
+.rec ol li{margin:5px 0}
+.rec .warn{border-left:4px solid var(--accent2);background:rgba(224,182,90,.10);padding:8px 12px;border-radius:0 10px 10px 0;margin:10px 0 0;font-size:15px}
+.rec .src{font-size:13.5px;color:var(--muted);margin:10px 0 0}
+.rec .links{font-size:14.5px;margin:8px 0 0}
+.rec .links a{margin-right:12px;white-space:nowrap}
+.miss{display:inline-block;background:rgba(224,182,90,.16);border:1px solid var(--accent2);color:var(--ink);
+  border-radius:999px;padding:1px 9px;font-size:13px;font-weight:700;margin:4px 6px 0 0}
+.tools{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;font-size:14px}
+.empty{padding:10px 0;color:var(--muted)}
+.link{font:inherit;font-size:14px;background:none;border:0;padding:0 2px;color:var(--accent);cursor:pointer;text-decoration:underline}
+#osk{position:fixed;left:0;right:0;bottom:0;z-index:10060;background:var(--card);border-top:1px solid var(--line);padding:4px 6px 6px;box-shadow:0 -4px 16px rgba(0,0,0,.4)}
+#osk[hidden]{display:none}
+#osk .r{display:flex;gap:5px;margin:4px 0}
+#osk button{flex:1;min-width:0;min-height:38px;font:inherit;font-size:18px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;padding:0;touch-action:manipulation}
+#osk button:active{background:var(--accent);color:var(--bg)}
+#osk .w{flex:1.5;font-size:15px}#osk .sp{flex:5}#osk .on{background:var(--accent2);color:#111}
+body.osk-open{padding-bottom:300px}
+@media(min-width:760px){.chips{gap:8px}.chip{font-size:15px}}
+@media print{
+  .topnav,.noprint,#osk,.sub,.untick,.link{display:none!important}
+  details.pick:not(:has(.chip[aria-pressed=true])){display:none!important}
+  body{background:#fff;color:#000;font-size:11pt}
+  .wrap{max-width:none;padding:0}
+  .card,.rec,details.pick{background:#fff;border:1px solid #999;break-inside:avoid}
+  details::details-content{content-visibility:visible!important}
+  details.pick>.chips{display:flex!important}
+  .chip[aria-pressed=false]{display:none!important}
+  .chip[aria-pressed=true]{background:#fff;color:#000;border:1px solid #666;font-weight:400}
+  .miss{background:#fff;color:#000;border:1px solid #666;font-weight:400}
+  .chip small,.chip .tick{display:none!important}
+  #l-now .rec .body,#l-short .rec .body,#single .body{display:block!important}
+  #l-rest .rec .body{display:none!important}
+  .rec>summary{list-style:none}
+  a{color:#000;text-decoration:none}
+  .rec .src{color:#333}
+}
+</style>
+<style>:root{color-scheme:dark}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){color-scheme:light}}:root[data-theme=light]{color-scheme:light}.themebtn{font:inherit;font-size:14px;line-height:1.3;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:3px 11px;cursor:pointer;white-space:nowrap;text-decoration:none}.themefloat{position:absolute;top:10px;right:12px;z-index:9}@media print{.themebtn{display:none}}</style><script>/* so-theme: light or dark screen */(function(){var K="so-theme",d=document.documentElement,L={auto:"Display: auto",dark:"Display: dark",light:"Display: light"},N={auto:"dark",dark:"light",light:"auto"},cur="dark";try{cur=localStorage.getItem(K)||"dark"}catch(e){}function a(){if(cur==="dark"||cur==="light")d.setAttribute("data-theme",cur);else d.removeAttribute("data-theme");var b=document.querySelectorAll(".themebtn");for(var i=0;i<b.length;i++){b[i].textContent=L[cur]||L.auto;b[i].title="Screen: "+cur+" - tap to change (Auto follows this device)"}}a();window.soTheme=function(){cur=N[cur]||"dark";try{localStorage.setItem(K,cur)}catch(e){}a()};function btn(){var b=document.createElement("button");b.type="button";b.className="themebtn";return b}document.addEventListener("DOMContentLoaded",function(){if(!document.querySelector(".themebtn")){var n=document.querySelector(".topnav"),b=btn();if(n){n.appendChild(document.createTextNode(" \u00B7 "));n.appendChild(b)}else{b.className+=" themefloat";document.body.appendChild(b)}}var all=document.querySelectorAll(".themebtn");for(var i=0;i<all.length;i++)all[i].onclick=window.soTheme;a()})})();</script><style>/* ark-bar: the app's buttons on every page */:root{--side-bg:#0F1511;--side-on:#2C4A39}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--side-bg:#233F32;--side-on:#315B43}}:root[data-theme=light]{--side-bg:#233F32;--side-on:#315B43}.arkbar{position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));margin:0;padding:6px 4px calc(6px + env(safe-area-inset-bottom));background:var(--card);border-top:1px solid var(--line);font:600 11.5px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}.arkbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:48px;color:var(--muted);text-decoration:none}.arkbar a i{display:flex;align-items:center;justify-content:center;width:46px;max-width:100%;height:28px;border-radius:999px}.arkbar a.on{color:var(--ink);font-weight:700}.arkbar a.on i{background:rgba(127,160,135,.28)}.arkbar svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.arkbar .l,.arkbar .wideonly,.arkbar .bn{display:none}body.has-arkbar{padding-bottom:calc(61px + env(safe-area-inset-bottom))}body.has-arkbar .totop,body.has-arkbar .sop-fab{bottom:calc(76px + env(safe-area-inset-bottom))!important}@media(min-width:760px){.arkbar{top:0;right:auto;width:232px;display:flex;flex-direction:column;gap:4px;padding:16px 12px;border-top:0;background:var(--side-bg);font-size:15px;overflow-y:auto}.arkbar a,.arkbar a.wideonly{display:flex;flex-direction:row;justify-content:flex-start;gap:12px;min-height:44px;padding:0 12px;border-radius:10px;color:#E3EBE5;order:0!important}.arkbar a i{width:auto;height:auto;border-radius:0}.arkbar a.on i{background:none}.arkbar svg{width:20px;height:20px}.arkbar a.on{background:var(--side-on);color:#fff}.arkbar .s{display:none}.arkbar .l{display:inline}.arkbar a.bn{display:flex;gap:10px;min-height:0;padding:0 6px 14px;color:#fff;font-size:18px;font-weight:700}.arkbar .bn img{width:40px;height:40px;border-radius:9px}body.has-arkbar{padding-bottom:0;padding-left:232px}body.has-arkbar .totop,body.has-arkbar .sop-fab{bottom:14px!important}}@media print{.arkbar{display:none!important}body.has-arkbar{padding:0!important}}</style><script>/* ark-bar */(function(){function add(){if(document.querySelector(".arkbar")||location.protocol.indexOf("http")!==0||window.self!==window.top)return;var p=location.pathname,root=null;if(p.indexOf("/lib/")===0)root="/";else{var a=document.querySelector('.topnav a[href*="#tools"],.topnav a[href*="#kit"],a[href$="#kit"],a[href$="#ask"]');if(a)root=a.getAttribute("href").replace(/#.*$/,"")}if(root===null)return;var on=document.body.getAttribute("data-ark")||(/walking-routes|\/map\//i.test(p)?"maps":document.querySelector('.topnav a[href*="#kit"],.topnav a[data-app="/#kit"]')?"kit":"tools");var n=document.createElement("nav");n.className="arkbar";n.setAttribute("aria-label","Main");n.innerHTML='<a class="bn" data-v="home"><img src="'+root+'icon.svg" alt="">ARK</a><a data-v="home" style="order:1"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></i><span class="s">Home</span><span class="l">Home</span></a><a data-v="ask" style="order:3"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-7l-5 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg></i><span class="s">Ask</span><span class="l">Ask ARK</span></a><a data-v="tools" style="order:2"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-13c-3-.5-6 0-8 1.5z"/><path d="M12 6v13"/></svg></i><span class="s">Library</span><span class="l">Guides</span></a><a data-v="library" class="wideonly" style="order:0"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/></svg></i><span class="s"></span><span class="l">Books</span></a><a data-v="maps" style="order:4"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg></i><span class="s">Maps</span><span class="l">Maps &amp; Routes</span></a><a data-v="kit" style="order:5"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6.5a4 4 0 0 0-5.3 5.3L3 18l3 3 6.2-6.2a4 4 0 0 0 5.3-5.3l-2.7 2.7-2.5-.5-.5-2.5z"/></svg></i><span class="s">Tools</span><span class="l">Tools</span></a><a data-v="setup" class="wideonly" style="order:0"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></svg></i><span class="s"></span><span class="l">Offline &amp; downloads</span></a><a data-v="more" style="order:6"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="19" cy="12" r="1.3"/></svg></i><span class="s">More</span><span class="l">Settings &amp; help</span></a>';var l=n.querySelectorAll("a");for(var i=0;i<l.length;i++){l[i].href=root+"#"+l[i].getAttribute("data-v");if(l[i].getAttribute("data-v")===on&&l[i].className!=="bn")l[i].className+=" on"}document.body.appendChild(n);document.body.className+=" has-arkbar"}if(document.body)add();else document.addEventListener("DOMContentLoaded",add)})();</script></head>
+<body data-ark="kit">
+<div class="wrap">
+<p class="topnav"><a href="../../#kit" data-app="/#kit">Tools</a> &middot;
+<a href="../../pages/FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch</a> &middot;
+<a href="../../pages/PRESERVING-FOOD-GUIDE.html">Preserving food</a> &middot;
+<a href="../../pages/SUBJECT-INDEX.html">Index A&ndash;Z</a></p>
+
+<h1>What can I cook?</h1>
+<p class="sub">Tick what you have in the house and what you can cook on. The page then shows what you can make now,
+what you are <b>one thing short</b> of, and everything else. It remembers your ticks on this device, so you can
+keep it up to date like a pantry list. Works with no internet.</p>
+
+<div id="single" hidden></div>
+
+<div id="main">
+  <h2>1. Tick what you have</h2>
+  <p class="small"><span id="havecount">Nothing ticked yet.</span>
+    <button class="link" type="button" data-all="1">Open every group</button> &middot;
+    <button class="link" type="button" data-all="0">Close them</button></p>
+  <div id="groups"></div>
+
+  <h2>2. Tick what you can cook on</h2>
+  <p class="small">A recipe that needs an oven will not be offered to someone who only has a fire. Leave this blank
+  and nothing is ruled out.</p>
+  <div id="heats"></div>
+  <div id="gears"></div>
+
+  <div class="row noprint">
+    <input type="search" id="q" placeholder="Search recipes" aria-label="Search recipes">
+    <button class="btn alt" type="button" id="clear">Clear all ticks</button>
+    <button class="btn alt" type="button" id="printall">Print this page</button>
+  </div>
+
+  <h2 id="h-now">You can make these now</h2>
+  <p class="count" id="c-now"></p>
+  <div id="l-now"></div>
+
+  <h2 id="h-short">One thing short</h2>
+  <p class="count" id="c-short"></p>
+  <div id="l-short"></div>
+
+  <details id="d-rest">
+    <summary><h2 style="display:inline;font-size:19px">Everything else</h2> <span class="small" id="c-rest"></span></summary>
+    <div id="l-rest"></div>
+  </details>
+
+  <h2>Where these come from</h2>
+  <p class="small">Every recipe says where it came from: a section of one of this library's guides, or a book on the
+  drive and the page it is on. Old books are fine for <i>methods</i>. For <b>food safety</b> &mdash; canning, curing
+  meat, fermenting &mdash; follow the guides, because the times and pressures depend on how high up you are, and
+  this page links to them rather than repeating them. Where an amount is ordinary kitchen knowledge with no source,
+  the recipe says so. Nothing here is a quantity or a time that somebody made up.</p>
+  <p class="small">The guides behind most of it:
+  <a href="../../pages/FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch</a>,
+  <a href="../../pages/PRESERVING-FOOD-GUIDE.html">Preserving food</a>,
+  <a href="../../pages/ROOT-CELLAR-GUIDE.html">Root cellars</a>,
+  <a href="../../pages/DAIRY-GUIDE.html">Milk, butter &amp; cheese</a>,
+  <a href="../../pages/FOOD-SECURITY-GUIDE.html">Food when it's scarce</a>,
+  <a href="../../pages/MUSHROOM-GUIDE.html">Mushrooms</a>,
+  <a href="../../pages/HUNTING-TRAPPING-FISHING-GUIDE.html">Hunting &amp; fishing</a>.</p>
+</div>
+</div>
+
+<script>/* Recipes for the ARK recipe finder (web/recipes/RECIPES.html).
+ *
+ * Every recipe here comes from one of the library's own guides or from a book on the drive whose
+ * page was read while this was written. "src" says which. Where something is ordinary kitchen
+ * knowledge with no source, src starts with "Ordinary kitchen knowledge" and says so plainly.
+ * Nothing about canning times, curing salt or fermenting is restated loosely: those link to the
+ * guides, which carry this area's elevation and the tested times.
+ *
+ * Fields of a recipe:
+ *   id    short name used in the address bar (#r=id), so a recipe can be linked and printed alone
+ *   n     its name            cat  which list it sits under
+ *   what  one or two plain lines: what it is and why you would make it
+ *   need  ingredient ids it cannot be made without (the "one thing short" list counts these)
+ *   opt   ingredients that improve it but are not needed
+ *   time  roughly how long         on   plain words: what it is cooked on
+ *   ways  how the page checks your heat and pots: any ONE way is enough.
+ *         h = any one of these heats will do; g = ALL of this gear is needed
+ *   steps short numbered steps        yield  how much it makes (where the source says)
+ *   src   where it comes from        note   a warning, or where we changed the source's recipe
+ *   g     guides to open: [page name, heading id, what to call the link]
+ */
+window.RECIPEDATA = {
+  v: 1,
+
+  // ---- what you might have in the house -------------------------------------------------
+  groups: [
+    { id: 'grain', n: 'Grain and flour', items: [
+      ['wheat', 'Wheat flour or wheat'], ['cornmeal', 'Cornmeal or dried corn'], ['oats', 'Oats or rolled oats'],
+      ['barley', 'Barley (pearl or flour)'], ['rye', 'Rye flour or rye meal'], ['rice', 'Rice'],
+      ['hominy', 'Hominy or grits'] ] },
+    { id: 'bean', n: 'Beans and pulses', items: [
+      ['beans', 'Dry beans'], ['lentils', 'Lentils or split peas'] ] },
+    { id: 'fat', n: 'Fats and oils', items: [
+      ['lard', 'Lard'], ['tallow', 'Tallow (deer, elk or beef fat)'], ['butter', 'Butter'],
+      ['oil', 'Cooking oil (nut, seed or bought)'], ['saltpork', 'Salt pork or bacon'],
+      ['cracklings', 'Cracklings (from rendering lard)'] ] },
+    { id: 'dairy', n: 'Dairy and eggs', items: [
+      ['milk', 'Fresh milk (goat or cow)'], ['sourmilk', 'Sour milk or buttermilk'], ['cream', 'Cream'],
+      ['cheese', 'Cheese'], ['eggs', 'Eggs'], ['rennet', 'Rennet or a junket tablet'],
+      ['culture', 'A live yogurt or kefir culture'] ] },
+    { id: 'meat', n: 'Meat and fish', items: [
+      ['venison', 'Venison (deer or elk)'], ['rabbit', 'Rabbit'], ['chicken', 'Chicken or other poultry'],
+      ['duck', 'Duck, goose or wild bird'], ['pork', 'Pork'], ['beef', 'Beef, goat or mutton'],
+      ['fish', 'Fish'], ['bones', 'Bones (for broth)'], ['liver', 'Liver, heart or kidneys'] ] },
+    { id: 'veg', n: 'Roots and vegetables', items: [
+      ['potatoes', 'Potatoes'], ['onions', 'Onions or garlic'], ['carrots', 'Carrots'],
+      ['turnips', 'Turnips, rutabaga or parsnips'], ['cabbage', 'Cabbage'], ['squash', 'Winter squash or pumpkin'],
+      ['greens', 'Garden greens (chard, kale, spinach)'], ['tomatoes', 'Tomatoes, fresh or canned'],
+      ['beets', 'Beets'], ['sweetcorn', 'Sweet corn'], ['cucumbers', 'Cucumbers'],
+      ['peppers', 'Peppers'], ['driedveg', 'Dried vegetables'] ] },
+    { id: 'fruit', n: 'Fruit and sweeteners', items: [
+      ['apples', 'Apples or pears'], ['berries', 'Berries'], ['driedfruit', 'Dried fruit or raisins'],
+      ['honey', 'Honey'], ['syrup', 'Maple syrup, molasses or sorghum'], ['sugar', 'Sugar'],
+      ['cider', 'Cider or fruit juice'], ['vinegar', 'Vinegar'] ] },
+    { id: 'wild', n: 'Wild foods', items: [
+      ['acorns', 'Acorns'], ['camas', 'Camas bulbs'], ['cattail', 'Cattail'], ['nettles', 'Stinging nettles'],
+      ['mushrooms', 'Wild mushrooms (named for certain)'], ['elderberries', 'Elderberries'],
+      ['hazelnuts', 'Hazelnuts or pine nuts'], ['rosehips', 'Rose hips'],
+      ['wildgreens', 'Dandelion or other wild greens'],
+      ['wildseed', 'Wild grass or flower seeds'] ] },
+    { id: 'season', n: 'Flavourings and leavening', items: [
+      ['pepper', 'Pepper'], ['herbs', 'Herbs (sage, thyme, parsley, mint, dill)'],
+      ['spices', 'Spices (cinnamon, cloves, ginger, nutmeg)'], ['soda', 'Baking soda'],
+      ['bakingpowder', 'Baking powder'], ['tartar', 'Cream of tartar'], ['yeast', 'Dry yeast'],
+      ['starter', 'A live sourdough starter'], ['lime', 'Slaked lime (cal) or hardwood ashes'],
+      ['lye', 'Pure lye (sodium hydroxide)'], ['curesalt', 'Curing salt (nitrite premix)'] ] },
+    { id: 'basic', n: 'Water and salt', items: [
+      ['water', 'Clean water'], ['salt', 'Salt'] ] }
+  ],
+
+  // ---- what you can cook on -------------------------------------------------------------
+  heats: [
+    ['fire', 'Open fire', 'Flames: good for boiling, poor for baking.'],
+    ['coals', 'Bed of coals', 'Steady, even heat. What most fire cooking really wants.'],
+    ['stovetop', 'Wood stove top', 'Like a kitchen range: boil, fry, simmer.'],
+    ['oven', 'Wood stove oven', 'Or any oven. Needed for raised bread, biscuits and roasts.'],
+    ['solar', 'Solar oven', 'Slow, clean, free. Good for stews, beans and baking on a clear day.'],
+    ['haybox', 'Hay box (retained heat)', 'Boil 20 minutes, then let insulation finish it over hours.'],
+    ['camp', 'Camp stove', 'Propane or liquid fuel: boiling and frying, limited fuel.'],
+    ['earth', 'Earth oven (a pit with hot stones)', 'A pit of fire-heated stones, covered with earth. Slow and very hot: 12 to 36 hours.'],
+    ['stones', 'Hot stones in a pot or basket', 'Stones heated in the fire and dropped into the food. Boils without a fireproof pot.'],
+    ['dry', 'Drying in sun or smoke', 'Racks, a smoky fire, or a drying frame. For jerky, dried fish, fruit and cakes.'],
+    ['none', 'No heat at all', 'Ferments, cures, soaks and cold-set dishes.']
+  ],
+  gears: [
+    ['pot', 'A pot with a lid'], ['pan', 'A frying pan or skillet'], ['griddle', 'A griddle or flat pan'],
+    ['dutch', 'A dutch oven'], ['crock', 'A crock, bucket or big jar'],
+    ['basket', 'A tight basket, or a flat rock by the fire']
+  ],
+
+  cats: [
+    ['bread', 'Breads and flatbreads'],
+    ['porridge', 'Porridge, mush and grain dishes'],
+    ['beans', 'Beans and pulses'],
+    ['soup', 'Soups, stews and broths'],
+    ['meat', 'Meat, fish and game'],
+    ['eggs', 'Eggs and sweet dishes'],
+    ['dairy', 'Milk, butter and cheese'],
+    ['keep', 'Things that keep: preserves, pickles, dried and cured']
+  ],
+
+  recipes: []
+};
+
+/* ---------------------------------------------------------------- breads and flatbreads */
+(function () { var R = window.RECIPEDATA.recipes;
+R.push(
+{ id: 'yeast-bread', n: 'Everyday yeast bread', cat: 'bread',
+  what: 'One ordinary loaf. The recipe a household lives on when there is flour and something to raise it.',
+  need: ['wheat', 'salt'], opt: ['yeast', 'starter', 'milk', 'lard', 'honey', 'sugar'],
+  time: 'about 3 hours, most of it waiting',
+  on: 'An oven: a wood stove oven, a solar oven, or a dutch oven set in coals',
+  ways: [{ h: ['oven'], g: [] }, { h: ['solar'], g: [] }, { h: ['coals', 'fire'], g: ['dutch'] }],
+  yield: 'one loaf',
+  steps: [
+    'Per loaf: 1 cup lukewarm liquid (water or milk), about 3 cups flour, 1 teaspoon salt, 1 tablespoon sugar or honey, up to 1 tablespoon fat, and yeast — or half a cup of active sourdough starter in place of the yeast and part of the liquid.',
+    'Mix, then knead until the dough is smooth and springy. Stop adding flour as soon as the dough no longer sticks to unfloured hands: too much flour makes heavy bread.',
+    'Cover and let it rise at about 80 degrees until doubled. It is ready when a light touch leaves a slight dent.',
+    'Shape it, put it in a greased pan, and let it rise again.',
+    'Bake at about 400 degrees for 40 to 50 minutes, until it sounds hollow when you tap the bottom.',
+    'No oven thermometer? Put a scrap of white paper or half a teaspoon of flour on a tin plate in the oven. If it turns light golden brown in 5 minutes the oven is right for bread.'],
+  src: 'Food From Scratch guide, Staples (from USDA Farmers\' Bulletin 807, Bread and Bread Making in the Home, 1917, pp. 13-17; the paper test is p. 15).',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'staples', 'Food From Scratch: Staples']] },
+
+{ id: 'sourdough-loaf', n: 'Sourdough loaf', cat: 'bread',
+  what: 'Bread with no bought yeast. Once you have a starter alive in a jar, this is the loaf you keep making.',
+  need: ['wheat', 'starter', 'salt'], opt: [],
+  time: '7 to 13 hours of rising, 40 minutes baking',
+  on: 'An oven, or a preheated dutch oven in coals',
+  ways: [{ h: ['oven'], g: [] }, { h: ['coals', 'fire'], g: ['dutch'] }, { h: ['solar'], g: [] }],
+  yield: 'one loaf',
+  steps: [
+    '1 cup active starter, 1 cup water, about 3 cups flour, 1½ teaspoons salt.',
+    'Knead, then let it rise 4 to 8 hours — longer when the kitchen is cool.',
+    'Shape it and let it rise 2 to 4 hours more.',
+    'The poke test: a floured finger-dent that springs back halfway means bake now. One that stays means it is over-risen, so bake it at once anyway.',
+    'Bake at about 425 degrees for 35 to 45 minutes.',
+    'In a dutch oven: preheat it, bake with the lid on for 30 minutes, then take the lid off to brown the crust.'],
+  src: 'Food From Scratch guide, Staples (from University of Illinois Extension, Sourdough Bread 101, pp. 5-6).',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'staples', 'Food From Scratch: Staples'],
+      ['FOOD-FROM-SCRATCH-GUIDE', 'leavening-without-store-yeast-or-baking-powder', 'Leavening without store yeast']] },
+
+{ id: 'sourdough-starter', n: 'Sourdough starter from flour and water', cat: 'bread',
+  what: 'Not a meal, but the thing every other sourdough recipe needs. Two ingredients and a week of patience.',
+  need: ['wheat', 'water'], opt: ['rye'],
+  time: 'usable about day 7, strong in 2 to 4 weeks',
+  on: 'No heat. A warm corner of the room, 70 to 82 degrees',
+  ways: [{ h: ['*'], g: [] }],
+  steps: [
+    'Mix equal weights of flour and unchlorinated water in a jar. Whole-grain or rye flour starts fastest.',
+    'Every day, throw away all but a little and feed it equal weights of flour and water. From day 4, feed it twice a day.',
+    'Keep it at 70 to 82 degrees, with the lid loose. Glass, not metal.',
+    'It is ready when it doubles within 4 to 6 hours of feeding and smells yeasty and pleasant — usually around day 7.',
+    'Dark liquid on top means it is hungry: pour it off or stir it in, then feed it. Any mould means throw it out and start again.',
+    'Back-up: spread some starter thin, dry it brittle, and store it airtight. Revive it by crumbling it into warm water overnight.'],
+  src: 'Food From Scratch guide, Leavening without store yeast (from University of Illinois, Sourdough 101, pp. 1-3, and University of Alaska Fairbanks FNH-00061, p. 2).',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'leavening-without-store-yeast-or-baking-powder', 'Leavening without store yeast']] },
+
+{ id: 'sourdough-hotcakes', n: 'Sourdough hotcakes', cat: 'bread',
+  what: 'Pancakes from a starter instead of baking powder. Set the sponge the night before and breakfast is quick.',
+  need: ['wheat', 'starter', 'soda', 'salt'], opt: ['eggs', 'milk', 'sugar', 'honey', 'syrup', 'butter'],
+  time: '6 to 8 hours for the sponge, then minutes',
+  on: 'A hot griddle or a frying pan on any heat',
+  ways: [{ h: ['stovetop', 'coals', 'fire', 'camp'], g: ['griddle'] }, { h: ['stovetop', 'coals', 'fire', 'camp'], g: ['pan'] }],
+  steps: [
+    'The night before: put half a cup of starter in a bowl and feed it equal parts flour and water (say 2 cups of each). Leave it warm 6 to 8 hours until bubbly.',
+    'Save half a cup of the sponge back for the next starter. Measure 2 cups of sponge for the batter.',
+    'Add 1 egg, ½ teaspoon salt and 1 tablespoon sugar. Beat with a fork.',
+    'Dissolve ½ teaspoon baking soda in 1 tablespoon water and stir it in LAST, just before cooking. Soda put into the starter itself can kill the yeast.',
+    'Cook on a hot griddle, turning once. Serve with honey, syrup or melted butter.',
+    'Thinner cakes: another egg or a little more water. Thicker: more flour in the sponge.'],
+  src: 'University of Alaska Fairbanks, Sourdough: Alaska Starter and Recipes (FNH-00061), p. 3.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'leavening-without-store-yeast-or-baking-powder', 'Leavening without store yeast']] },
+
+{ id: 'sourdough-english-muffins', n: 'Sourdough English muffins (on a griddle, no oven)', cat: 'bread',
+  what: 'Raised bread when you have no oven at all: they cook on a griddle. Worth knowing in summer or in a shelter.',
+  need: ['wheat', 'starter', 'cornmeal', 'soda', 'salt'], opt: ['milk', 'sourmilk'],
+  time: '6 to 8 hours for the sponge, 45 minutes rising, 30 minutes cooking',
+  on: 'A medium-hot griddle on a stove top, coals or a camp stove',
+  ways: [{ h: ['stovetop', 'coals', 'camp', 'fire'], g: ['griddle'] }, { h: ['stovetop', 'coals', 'camp', 'fire'], g: ['pan'] }],
+  yield: '12 to 14 muffins',
+  steps: [
+    'Set the sponge 6 to 8 hours ahead. Save half a cup back for the next starter.',
+    '1 cup active sponge, ¾ cup milk or buttermilk, 2¾ cups flour, 6 tablespoons cornmeal (keep some back), ½ teaspoon baking soda, ½ teaspoon salt.',
+    'Mix the sponge and milk. Mix the flour, 4 tablespoons of the cornmeal, the soda and the salt in another bowl, then combine.',
+    'Knead on a floured board until smooth and springy. Roll ½ inch thick and cut 3-inch rounds.',
+    'Sprinkle the rest of the cornmeal on paper, set the rounds on it, sprinkle more on top, cover, and let them rise about 45 minutes.',
+    'Cook on a medium-hot, lightly greased griddle for 20 to 30 minutes, turning often. Cool, split and toast.'],
+  src: 'University of Alaska Fairbanks, Sourdough: Alaska Starter and Recipes (FNH-00061), p. 4.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'leavening-without-store-yeast-or-baking-powder', 'Leavening without store yeast']] },
+
+{ id: 'flour-tortillas', n: 'Flour tortillas and flatbread', cat: 'bread',
+  what: 'The quickest bread there is: flour, fat, salt, water, a hot dry pan. No leavening and no oven.',
+  need: ['wheat', 'salt', 'water'], opt: ['lard', 'tallow', 'butter', 'oil', 'acorns', 'barley'],
+  time: '40 minutes',
+  on: 'A hot dry griddle or pan: stove top, coals, camp stove',
+  ways: [{ h: ['stovetop', 'coals', 'fire', 'camp'], g: ['griddle'] }, { h: ['stovetop', 'coals', 'fire', 'camp'], g: ['pan'] }],
+  yield: 'about a dozen',
+  steps: [
+    '2 cups flour, ¼ cup lard, 1 teaspoon salt, about ¾ cup warm water.',
+    'Knead until smooth, then let it rest 20 minutes.',
+    'Divide into balls and roll each one thin.',
+    'Cook on a hot dry pan 30 to 60 seconds a side, until it puffs and browns in spots.',
+    'Part of the wheat flour can be acorn or barley flour.'],
+  src: 'Food From Scratch guide, Staples. Barley flatbread with no leavening is in FAO, Barley: Post-Harvest Operations and Recipes, p. 63.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'staples', 'Food From Scratch: Staples']] },
+
+{ id: 'nixtamal-masa', n: 'Nixtamal and masa (dried corn with lime)', cat: 'bread',
+  what: 'How dried corn becomes dough. Do this before any corn tortilla. It also unlocks the corn\'s niacin, which is why people who live on untreated cornmeal get pellagra.',
+  need: ['cornmeal', 'lime', 'water'], opt: [],
+  time: '30 minutes cooking, then 8 to 12 hours resting',
+  on: 'A pot on any heat',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp'], g: ['pot'] }],
+  steps: [
+    'Weigh the dry corn. Use food-grade slaked lime (cal) at 1 per cent of the corn\'s weight — 5 grams of lime per 500 grams of corn. Water: 1½ times the corn\'s volume.',
+    'Heat to just under a simmer, 200 to 210 degrees, until the skins slip off but the centre of the kernel is still firm. Often under 30 minutes.',
+    'Rest it 8 to 12 hours in the liquid.',
+    'Rub and rinse the skins off thoroughly.',
+    'Grind it while cold, with a little cold water, on a stone mill or metate. Use the masa within a day.',
+    'If the kernels go mushy all the way through they are overcooked and will not make masa. Stop sooner next time. Fresh corn needs less lime and less cooking; old hard corn more.'],
+  note: 'With hardwood ashes instead of lime: boil the shelled corn 15 to 30 minutes in weak ash lye until the hulls loosen, then rinse very thoroughly in running water until no lye remains. Lye is caustic: gloves and eye protection, and never taste it.',
+  src: 'Food From Scratch guide, Corn: masa, tortillas and hominy (from the Smithsonian nixtamalization method, pp. 1-3, and FAO, Maize: Post-Harvest Operations, pp. 13, 66).',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'corn-masa-tortillas-and-hominy', 'Food From Scratch: Corn, masa and hominy']] },
+
+{ id: 'corn-tortillas', n: 'Corn tortillas', cat: 'bread',
+  what: 'Flat corn bread off a dry griddle, made from masa. Keeps a household in bread with no wheat at all.',
+  need: ['cornmeal', 'lime', 'water'], opt: ['salt'],
+  time: '30 minutes once you have masa',
+  on: 'A hot dry griddle on a stove top, coals or a camp stove',
+  ways: [{ h: ['stovetop', 'coals', 'fire', 'camp'], g: ['griddle'] }, { h: ['stovetop', 'coals', 'fire', 'camp'], g: ['pan'] }],
+  steps: [
+    'Make masa first (see Nixtamal and masa).',
+    'Knead the masa with a little water until it feels like soft play dough.',
+    'Roll balls and press them flat between two pieces of plastic or cloth.',
+    'Cook on a hot dry griddle about a minute a side.',
+    'Keep the waiting masa under a damp cloth. Dry masa cracks.'],
+  src: 'Food From Scratch guide, Corn: masa, tortillas and hominy (from the Smithsonian nixtamalization method, p. 3).',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'corn-masa-tortillas-and-hominy', 'Food From Scratch: Corn, masa and hominy']] },
+
+{ id: 'nettle-tortillas', n: 'Nettle tortillas', cat: 'bread',
+  what: 'Green flatbread from spring nettles. A way to eat a free, very nutritious wild green in a form children will eat.',
+  need: ['wheat', 'nettles', 'bakingpowder', 'salt'], opt: ['butter', 'lard', 'oil'],
+  time: '1 hour',
+  on: 'A heated griddle or skillet',
+  ways: [{ h: ['stovetop', 'coals', 'fire', 'camp'], g: ['griddle'] }, { h: ['stovetop', 'coals', 'fire', 'camp'], g: ['pan'] }],
+  yield: '15 tortillas',
+  steps: [
+    'Blanch the nettles first — this is what destroys the stinging hairs. Wearing gloves, stir them into a rolling boil, cover, boil 1½ to 2 minutes, then cool them in cold water, drain and squeeze dry in a towel. Puree them. About 4 to 5 cups of fresh nettles make 1 cup blanched.',
+    'Mix 3 cups flour, 1¼ teaspoons salt and 2 teaspoons baking powder.',
+    'Work in 5 tablespoons butter or shortening (or ⅓ cup oil) until the fat is all through the flour.',
+    'Add 1¼ to 1½ cups of the nettle puree and mix to a soft dough. Knead a few minutes, cover with a damp towel and rest 15 to 20 minutes.',
+    'Divide into 15 balls, flatten, and roll each into a 6- to 8-inch round.',
+    'Cook on a heated griddle, both sides, until it bubbles and shows small brown spots.'],
+  note: 'Gather nettles in early spring before they flower, in long sleeves and long rubber gloves, leaves no wider than 3 inches from plants under 3 feet. Never eat them raw or unblanched.',
+  src: 'Oregon State University Extension, Wild Edibles: Stinging Nettle (EM 9373, 2022), pp. 2 and 7.',
+  g: [['FOOD-SECURITY-GUIDE', 'foraging-safety-rules', 'Food When It\'s Scarce: foraging safety rules']] },
+
+{ id: 'acorn-flatbread', n: 'Acorn flatbread and acorn mush', cat: 'bread',
+  what: 'Bread from the oaks. A tanoak can drop over 200 pounds of acorns in a good year, and it bears something every year.',
+  need: ['acorns', 'water'], opt: ['wheat', 'salt', 'honey', 'lard', 'butter'],
+  time: 'leaching takes hours to a week; cooking, minutes',
+  on: 'A hot stone, griddle or pan — or a pot, for mush',
+  ways: [{ h: ['stovetop', 'coals', 'fire', 'camp'], g: ['griddle'] }, { h: ['stovetop', 'coals', 'fire', 'camp'], g: ['pan'] }, { h: ['stovetop', 'coals', 'fire', 'camp', 'haybox'], g: ['pot'] }],
+  steps: [
+    'Gather in the second fall, late September into October: the first acorns down are mostly wormy. Dry them 2 to 5 days in the sun, or 20 minutes in a 175-degree oven with the door ajar. Whole dry acorns keep several years in sacks or jars.',
+    'Crack and shell them, throw out anything mouldy or wormy, and grind the nutmeats to a coarse meal.',
+    'Leach out the bitter tannins, any one of these ways: soak in hot water an hour, drain and repeat several times (fastest); hang a cloth bag of meal in cold running water for several hours; or stand 3 parts water to 1 part meal in jars somewhere cool, pouring off the dark water and refilling every day for about a week.',
+    'It is done when it tastes sweet, not bitter or puckery. Cold leaching keeps more of the starch\'s binding power, which makes better bread; hot leaching is faster.',
+    'Use it wet as mush or porridge, pat it onto a hot stone or pan as flatbread, or dry it and use it for a quarter to half of the wheat flour in bread. Acorn flour has no gluten of its own.',
+    'Ground meal goes rancid in a warm room: grind only a few weeks\' worth and keep it cold.'],
+  src: 'Food From Scratch guide, Acorn flour (from University of California Cooperative Extension, Foods from the Tanoak Forest, 2013, p. 2, and Goddard, Life and Culture of the Hupa, 1903, p. 38).',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'acorn-flour', 'Food From Scratch: Acorn flour']] },
+
+{ id: 'hardtack', n: 'Hardtack (ship biscuit)', cat: 'bread',
+  what: 'Flour and water, baked hard and dried. Keeps for years, needs nothing but a dry tin, and goes into soup when you want to eat it.',
+  need: ['wheat', 'water'], opt: [],
+  time: '1 hour baking, then 3 days drying',
+  on: 'An oven',
+  ways: [{ h: ['oven'], g: [] }, { h: ['solar'], g: [] }],
+  steps: [
+    '3 parts flour to 1 part water. No salt: salt draws moisture, and moisture means mould.',
+    'Mix to a very stiff dough and roll it ½ inch thick.',
+    'Cut it into squares and prick holes right through.',
+    'Bake 1 hour at 375 degrees.',
+    'Then dry the biscuits 3 more days in a warm, airy place, until they are bone hard.',
+    'To eat: soak them, or crumble them into soup or stew.'],
+  src: 'Food From Scratch guide, Staples (from the City of Alexandria, Ship Biscuits / Hardtack: How to Make).',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'staples', 'Food From Scratch: Staples']] },
+
+{ id: 'biscuits', n: 'Baking-powder biscuits', cat: 'bread',
+  what: 'Hot bread in twenty minutes with no yeast and no waiting. The everyday quick bread.',
+  need: ['wheat', 'bakingpowder', 'salt'], opt: ['lard', 'butter', 'tallow', 'milk', 'water'],
+  time: '25 minutes',
+  on: 'A rather hot oven',
+  ways: [{ h: ['oven'], g: [] }, { h: ['coals', 'fire'], g: ['dutch'] }, { h: ['solar'], g: [] }],
+  yield: '10 small biscuits',
+  steps: [
+    'Sift together 2 cups flour, 1 teaspoon salt and 2 teaspoons baking powder.',
+    'Chop in 2 tablespoons of fat with a knife, then rub it between your fingertips until the mixture is like meal.',
+    'Add just enough cold liquid — about ⅔ to ¾ cup of milk, water, or half and half — to make a soft dough you can handle. Mix fast and handle it lightly.',
+    'Roll ½ inch thick on a floured board and cut rounds.',
+    'Bake in a rather hot oven, about 450 degrees, for 10 to 15 minutes.',
+    'No cutter? Make the dough a little softer and drop it in spoonfuls half an inch apart. These "drop biscuits" are just as good.'],
+  note: 'Keep everything cold and handle it as little as you can. Too much soda or powder turns biscuits yellow and bitter.',
+  src: 'USDA Farmers\' Bulletin 1136, Baking in the Home: Quick Breads and Biscuits (1921), p. 23.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'staples', 'Food From Scratch: Staples']] },
+
+{ id: 'sour-milk-biscuits', n: 'Sour-milk biscuits (no baking powder needed)', cat: 'bread',
+  what: 'The same hot biscuit when the baking powder has run out: sour milk and soda do the lifting.',
+  need: ['wheat', 'soda', 'sourmilk', 'salt'], opt: ['lard', 'butter', 'tallow', 'bakingpowder'],
+  time: '20 minutes',
+  on: 'A hot oven',
+  ways: [{ h: ['oven'], g: [] }, { h: ['coals', 'fire'], g: ['dutch'] }, { h: ['solar'], g: [] }],
+  yield: '12 biscuits',
+  steps: [
+    'Sift together 2¼ cups flour, ¾ teaspoon salt, ¾ teaspoon baking soda and (if you have it) 1 teaspoon baking powder.',
+    'Chop in 2 tablespoons of fat.',
+    'Add about ¾ cup sour milk or buttermilk and mix quickly.',
+    'Roll, cut, and bake in a hot oven 10 to 12 minutes.',
+    'Be sure the milk is sour enough to use up all the soda, or the biscuits taste of soda.'],
+  note: 'The general swap: sour milk or buttermilk plus ½ teaspoon baking soda per cup of milk replaces sweet milk and baking powder. Homemade baking powder is 1 part baking soda to 2 parts cream of tartar.',
+  src: 'USDA Farmers\' Bulletin 1136 (1921), p. 24. The swaps are in the Food From Scratch guide (from FB 1136, p. 23, and the Boston Cooking-School Cook Book, 1896, p. 92).',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'leavening-without-store-yeast-or-baking-powder', 'Leavening without store yeast']] },
+
+{ id: 'whole-wheat-biscuits', n: 'Whole-wheat biscuits', cat: 'bread',
+  what: 'Biscuits from home-ground wheat meal, bran and all. Nothing sifted out and thrown away.',
+  need: ['wheat', 'bakingpowder', 'salt'], opt: ['lard', 'butter', 'milk', 'honey', 'sugar', 'syrup'],
+  time: '30 minutes',
+  on: 'An oven, a little slower than for white biscuits',
+  ways: [{ h: ['oven'], g: [] }, { h: ['coals', 'fire'], g: ['dutch'] }, { h: ['solar'], g: [] }],
+  yield: '10 biscuits',
+  steps: [
+    '2 cups graham flour or home-ground wheat meal (measured before sifting), ½ teaspoon salt, 2½ teaspoons baking powder, 1 or 2 tablespoons sweetening, 2 tablespoons fat, ⅔ to 1 cup liquid.',
+    'Sift the dry things, then tip the bran that stayed in the sieve back into the bowl.',
+    'Dissolve the sweetening in the liquid. Mix as for plain biscuits.',
+    'Roll slightly thinner than white biscuits and bake a little more slowly and thoroughly.'],
+  src: 'USDA Farmers\' Bulletin 1136 (1921), p. 24.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'flour-from-grain', 'Food From Scratch: Flour from grain']] },
+
+{ id: 'potato-biscuits', n: 'Potato biscuits', cat: 'bread',
+  what: 'A cup of mashed potato stretches the flour and keeps the biscuits moist. Good when the root cellar is full and the flour sack is not.',
+  need: ['wheat', 'potatoes', 'bakingpowder', 'salt'], opt: ['lard', 'butter', 'milk'],
+  time: '35 minutes',
+  on: 'A moderately hot oven',
+  ways: [{ h: ['oven'], g: [] }, { h: ['coals', 'fire'], g: ['dutch'] }, { h: ['solar'], g: [] }],
+  yield: '15 biscuits',
+  steps: [
+    'Sift 2 cups flour, 1 teaspoon salt and 3 teaspoons baking powder.',
+    'Rub in 3 tablespoons cold fat, then rub in 1 cup of mashed potato the same way.',
+    'Add just enough cold liquid to make the mass cling together. Do not knead.',
+    'Roll ⅓ inch thick, cut rounds, and bake 15 to 20 minutes in a moderately hot oven.',
+    'All potato breads bake more slowly than breads of flour alone.'],
+  src: 'USDA Farmers\' Bulletin 1136 (1921), p. 24.',
+  g: [['ROOT-CELLAR-GUIDE', 'what-each-crop-needs', 'Root Cellar guide: what each crop needs']] },
+
+{ id: 'cornmeal-biscuits', n: 'Cornmeal biscuits', cat: 'bread',
+  what: 'Biscuits with up to half the wheat flour swapped for cornmeal. Useful wherever corn grows better than wheat.',
+  need: ['cornmeal', 'wheat', 'bakingpowder', 'salt'], opt: ['lard', 'butter', 'milk'],
+  time: '30 minutes',
+  on: 'An oven',
+  ways: [{ h: ['oven'], g: [] }, { h: ['coals', 'fire'], g: ['dutch'] }, { h: ['solar'], g: [] }],
+  yield: '10 to 12 biscuits',
+  steps: [
+    'Make the plain biscuit dough, but use ¾ to 1 scant cup of cornmeal in place of the same amount of flour.',
+    'Better still: scald the meal first with ½ cup boiling water per cup of meal, cover it, and let it stand half an hour. Then mix as for potato biscuits.',
+    'Roll slightly thinner and bake a little more slowly and thoroughly.',
+    'Any other fine meal or flour can replace part of the wheat flour the same way.'],
+  src: 'USDA Farmers\' Bulletin 1136 (1921), pp. 24-25.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'staples', 'Food From Scratch: Staples']] },
+
+{ id: 'plain-muffins', n: 'Plain muffins', cat: 'bread',
+  what: 'A fast bread baked in pans, so it needs no shaping. Eat them hot.',
+  need: ['wheat', 'bakingpowder', 'eggs', 'salt'], opt: ['milk', 'butter', 'lard', 'honey', 'sugar'],
+  time: '35 minutes',
+  on: 'A moderate oven',
+  ways: [{ h: ['oven'], g: [] }, { h: ['solar'], g: [] }],
+  yield: '15 small muffins',
+  steps: [
+    '2 cups sifted flour, 2 teaspoons baking powder, ¾ teaspoon salt, 1 tablespoon sweetening if you like, 1 tablespoon melted fat, 1 egg, about 1 cup milk.',
+    'Beat the egg light, add some of the milk and the sweetening.',
+    'Mix that into the sifted flour, baking powder and salt. Add the melted fat and enough milk for a smooth batter, and beat well.',
+    'Half-fill greased muffin pans and bake 20 to 25 minutes in a moderate oven.',
+    'For whole-wheat muffins: 2 cups graham flour, 2½ teaspoons baking powder, bran tipped back in, and a little more liquid. Bake longer and slower.'],
+  src: 'USDA Farmers\' Bulletin 1136 (1921), p. 25.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'staples', 'Food From Scratch: Staples']] },
+
+{ id: 'corn-muffins', n: 'Corn muffins, southern style', cat: 'bread',
+  what: 'All cornmeal, no wheat flour at all, raised with soda and sour milk.',
+  need: ['cornmeal', 'soda', 'sourmilk', 'eggs', 'salt'], opt: ['butter', 'lard'],
+  time: '35 minutes',
+  on: 'A fairly hot oven',
+  ways: [{ h: ['oven'], g: [] }, { h: ['solar'], g: [] }],
+  yield: '15 small muffins',
+  steps: [
+    '2 cups cornmeal (measured before sifting), ¾ teaspoon baking soda, ¾ teaspoon salt, 1 egg, 1 tablespoon melted fat, 1½ to 2 cups sour milk or buttermilk.',
+    'Mix the dry things, then add the beaten egg, the fat and the milk.',
+    'Spoon into hot, greased muffin pans and bake about 20 minutes in a fairly hot oven.',
+    'The same batter baked in hot greased iron stick pans makes cornmeal sticks.'],
+  src: 'USDA Farmers\' Bulletin 1136 (1921), p. 26.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'corn-masa-tortillas-and-hominy', 'Food From Scratch: Corn, masa and hominy']] },
+
+{ id: 'corn-pone', n: 'Corn pone', cat: 'bread',
+  what: 'Cornmeal cakes shaped by hand and baked. Old, plain and cheap.',
+  need: ['cornmeal', 'sourmilk', 'soda', 'bakingpowder', 'salt', 'water'], opt: ['sugar', 'honey'],
+  time: '40 minutes',
+  on: 'A hot, well-greased pan in a hot oven',
+  ways: [{ h: ['oven'], g: [] }, { h: ['coals', 'fire'], g: ['dutch'] }, { h: ['solar'], g: [] }],
+  steps: [
+    '2 cups cornmeal, ¾ cup water, ¾ cup sour milk or buttermilk, ½ teaspoon baking soda, 1 teaspoon salt, 1 tablespoon sugar, 2 teaspoons baking powder.',
+    'Either cook the water and milk with the meal in a double boiler for a few moments, or boil the water, pour it over the meal, and then add the buttermilk.',
+    'Sift the salt, sugar, baking powder and soda together and stir them in once the meal has cooled.',
+    'The mixture should be just stiff enough to shape into cakes, or "pones". If it is stiffer, add a little water.',
+    'Put the cakes in a hot well-greased pan and bake in a hot oven until brown. Handle them lightly and do not press them down in the pan.'],
+  src: 'USDA Farmers\' Bulletin 1236, Corn and Its Uses as Food (1924), p. 11.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'corn-masa-tortillas-and-hominy', 'Food From Scratch: Corn, masa and hominy']] },
+
+{ id: 'crackling-bread', n: 'Crackling bread', cat: 'bread',
+  what: 'Cornbread made with the crisp brown bits left over from rendering lard. Nothing from the pig is wasted.',
+  need: ['cornmeal', 'cracklings', 'salt', 'water'], opt: [],
+  time: '40 minutes',
+  on: 'An oven, or a greased pan in coals',
+  ways: [{ h: ['oven'], g: [] }, { h: ['coals', 'fire'], g: ['dutch'] }, { h: ['solar'], g: [] }],
+  steps: [
+    'For each cup of cornmeal: ¾ teaspoon salt and ½ cup cracklings.',
+    'If the cracklings are very fatty, wrap them warm in cheesecloth and squeeze some of the fat out.',
+    'Pour boiling water over the meal until you can mash the mixture by hand.',
+    'Mix in the cracklings, shape into cakes, and bake.'],
+  src: 'USDA Farmers\' Bulletin 1236 (1924), p. 12; also in the Food From Scratch guide, Staples.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'staples', 'Food From Scratch: Staples'],
+      ['PRESERVING-FOOD-GUIDE', 'lard-confit-eggs-and-vinegar', 'Preserving Food: lard']] },
+
+{ id: 'sour-milk-cornbread', n: 'Sour-milk cornbread', cat: 'bread',
+  what: 'The good cornbread: the meal is cooked in milk first, which makes the texture far better than a straight mix.',
+  need: ['cornmeal', 'sourmilk', 'eggs', 'soda', 'salt'], opt: ['butter', 'sugar'],
+  time: '45 minutes',
+  on: 'A shallow iron pan in an oven',
+  ways: [{ h: ['oven'], g: [] }, { h: ['coals', 'fire'], g: ['dutch'] }, { h: ['solar'], g: [] }],
+  yield: 'serves 6',
+  steps: [
+    '2 cups cornmeal, 2 cups sour milk, 1½ teaspoons salt, 2 eggs, 1 teaspoon baking soda, 2 tablespoons butter, 2 tablespoons sugar, 1 tablespoon cold water.',
+    'Cook the meal, milk, salt, butter and sugar in a double boiler about 10 minutes.',
+    'When it has cooled, add the well-beaten eggs and the soda dissolved in the cold water.',
+    'Bake in a shallow iron or granite pan about 30 minutes.',
+    'In a hurry, mix everything dry (soda included), then add the sour milk, beaten eggs and butter, and leave out the cold water. The texture is not as good.',
+    'Buttermilk works in place of sour milk; add a little more butter. With sour cream, leave the butter out.'],
+  src: 'USDA Farmers\' Bulletin 1236 (1924), p. 14.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'corn-masa-tortillas-and-hominy', 'Food From Scratch: Corn, masa and hominy']] },
+
+{ id: 'spoon-cornbread', n: 'Spoon cornbread', cat: 'bread',
+  what: 'Soft cornbread served out of the dish with a spoon. Little fat, few ingredients.',
+  need: ['cornmeal', 'eggs', 'salt', 'water'], opt: ['milk', 'butter'],
+  time: '35 minutes',
+  on: 'A greased pan in a hot oven',
+  ways: [{ h: ['oven'], g: [] }, { h: ['coals', 'fire'], g: ['dutch'] }, { h: ['solar'], g: [] }],
+  yield: 'serves 6',
+  steps: [
+    '2 cups water, 1 cup milk, 1 cup white cornmeal, 1 tablespoon butter, 1 teaspoon salt, 2 eggs.',
+    'Cook the meal with the liquid, salt and butter as for sour-milk cornbread, then add the well-beaten eggs.',
+    'Beat it thoroughly and bake 25 minutes in a well-greased pan in a hot oven.',
+    'Serve it from the same dish with a spoon.'],
+  src: 'USDA Farmers\' Bulletin 1236 (1924), p. 14.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'corn-masa-tortillas-and-hominy', 'Food From Scratch: Corn, masa and hominy']] },
+
+{ id: 'brown-bread', n: 'Boston brown bread (steamed, no oven)', cat: 'bread',
+  what: 'A dark, moist loaf steamed in a covered can inside a pot of water. Real bread with no oven at all, and the one to know in summer or on a camp stove.',
+  need: ['cornmeal', 'rye', 'wheat', 'sourmilk', 'soda', 'syrup', 'salt'], opt: ['driedfruit', 'bakingpowder'],
+  time: '3½ hours steaming',
+  on: 'A pot of boiling water on any heat',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp'], g: ['pot'] }],
+  yield: 'serves 8',
+  steps: [
+    '1 cup cornmeal, 1 cup rye meal, 1 cup graham flour, 2½ teaspoons baking soda (or ½ tablespoon), 1 teaspoon salt, ¾ cup molasses, 2 cups sour milk (or 1½ cups sweet milk or water).',
+    'Mix and sift the dry things, add the molasses and milk, and beat it well.',
+    'Butter a mould and its cover — a one-pound baking-powder tin, a melon mould, or a five-pound lard pail all work. Fill it no more than two-thirds full. Butter the cover before you put it on and tie it down with string, or the rising bread pushes it off.',
+    'Stand the mould on a trivet in a kettle of boiling water, with the water halfway up the mould. Cover the kettle closely.',
+    'Steam 3½ hours, adding more boiling water as it goes down.',
+    'Take the cover off at the end and let the top dry.',
+    'A cup of raisins, chopped prunes or currants can go in. With 1½ cups each of cornmeal and rye meal, you can leave the graham flour out altogether.'],
+  src: 'USDA Farmers\' Bulletin 1236 (1924), pp. 13-14, and the Boston Cooking-School Cook Book (Fannie Farmer, 1896), p. 96.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'staples', 'Food From Scratch: Staples']] },
+
+{ id: 'steamed-graham-bread', n: 'Steamed graham bread', cat: 'bread',
+  what: 'The same steaming trick with wheat meal instead of corn. Easier on the stomach than cornmeal breads.',
+  need: ['wheat', 'soda', 'sourmilk', 'syrup', 'salt'], opt: [],
+  time: '4 hours steaming',
+  on: 'A pot of boiling water on any heat',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp'], g: ['pot'] }],
+  steps: [
+    '3 cups graham meal, 1 cup flour, 3½ teaspoons baking soda, 1 teaspoon salt, a scant cup of molasses, 2½ cups sour milk.',
+    'Mix as for Boston brown bread.',
+    'Steam 4 hours in a buttered covered mould standing in boiling water.'],
+  note: 'Our scanned copy of the 1896 book prints the meal as "8 cups"; the recipe only works as 3 cups, which is what the matching recipes in the same chapter use. Treat the amount as about 3 cups meal to 1 cup flour and mix to a thick batter.',
+  src: 'Boston Cooking-School Cook Book (Fannie Farmer, 1896), p. 97.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'staples', 'Food From Scratch: Staples']] },
+
+{ id: 'rye-bread', n: 'Rye bread', cat: 'bread',
+  what: 'A raised loaf half of rye. Rye grows where wheat sulks and the bread keeps well.',
+  need: ['rye', 'wheat', 'yeast', 'salt'], opt: ['milk', 'lard', 'butter', 'sugar', 'syrup', 'starter'],
+  time: 'about 4 hours',
+  on: 'An oven',
+  ways: [{ h: ['oven'], g: [] }, { h: ['coals', 'fire'], g: ['dutch'] }, { h: ['solar'], g: [] }],
+  steps: [
+    '1 cup scalded milk, 1 cup boiling water, 1 tablespoon lard, 1 tablespoon butter, ¼ cup brown sugar, 1½ teaspoons salt, half a yeast cake dissolved in ¼ cup lukewarm water, 3 cups wheat flour, then rye meal.',
+    'Add the lard, butter, sugar and salt to the milk and water. When it is only lukewarm, add the dissolved yeast and the wheat flour.',
+    'Beat it thoroughly, cover, and let it rise until light.',
+    'Work in rye meal until the dough is stiff enough to knead. Knead it well.',
+    'Let it rise, shape into loaves, let them rise again, and bake.'],
+  src: 'Boston Cooking-School Cook Book (Fannie Farmer, 1896), p. 60.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'staples', 'Food From Scratch: Staples']] },
+
+{ id: 'barley-rieska', n: 'Barley rieska (unleavened barley bread)', cat: 'bread',
+  what: 'A Finnish flat barley loaf with no yeast and no waiting. Barley does well in a short, cool season.',
+  need: ['barley', 'sourmilk', 'salt'], opt: ['cream', 'butter', 'sugar'],
+  time: '40 minutes',
+  on: 'A hot oven, 450 degrees',
+  ways: [{ h: ['oven'], g: [] }, { h: ['coals', 'fire'], g: ['dutch'] }],
+  yield: 'serves 4 to 6',
+  steps: [
+    '½ cup buttermilk (or any liquid), ½ cup cream, ½ teaspoon salt, ½ teaspoon sugar, 1 cup barley flour, 1 tablespoon melted butter.',
+    'Mix the buttermilk, cream, salt and sugar. Stir in the flour and beat until smooth, then add the butter.',
+    'Pour the batter into a well-buttered and floured 9-inch round pan — or spread the dough on cabbage leaves on a greased sheet, the old way.',
+    'Bake at 450 degrees about 30 minutes, until lightly browned. Serve hot with butter.'],
+  src: 'FAO, Barley: Post-Harvest Operations and Recipes, pp. 62-63.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'flour-from-grain', 'Food From Scratch: Flour from grain']] },
+
+{ id: 'sour-milk-griddle-cakes', n: 'Sour-milk griddle cakes (pancakes)', cat: 'bread',
+  what: 'Five ingredients, no baking powder, straight onto a hot griddle. The pancake for a morning when the milk has turned.',
+  need: ['wheat', 'sourmilk', 'soda', 'eggs', 'salt'], opt: ['butter', 'syrup', 'honey'],
+  time: '20 minutes',
+  on: 'A greased hot griddle or pan',
+  ways: [{ h: ['stovetop', 'coals', 'fire', 'camp'], g: ['griddle'] }, { h: ['stovetop', 'coals', 'fire', 'camp'], g: ['pan'] }],
+  steps: [
+    'Mix and sift 2½ cups flour, ½ teaspoon salt and ½ teaspoon baking soda.',
+    'Add 2 cups sour milk and 1 well-beaten egg.',
+    'Drop by spoonfuls onto a greased hot griddle and cook one side.',
+    'When the cake is puffed, full of bubbles and cooked at the edges, turn it and cook the other side.',
+    'Serve with butter and maple syrup.'],
+  src: 'Boston Cooking-School Cook Book (Fannie Farmer, 1896), p. 113.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'staples', 'Food From Scratch: Staples']] },
+
+{ id: 'corn-griddle-cakes', n: 'Corn griddle cakes', cat: 'bread',
+  what: 'Pancakes with cornmeal scalded first, so they are tender rather than gritty.',
+  need: ['cornmeal', 'wheat', 'bakingpowder', 'eggs', 'salt', 'water'], opt: ['milk', 'butter', 'sugar'],
+  time: '30 minutes',
+  on: 'A hot griddle',
+  ways: [{ h: ['stovetop', 'coals', 'fire', 'camp'], g: ['griddle'] }, { h: ['stovetop', 'coals', 'fire', 'camp'], g: ['pan'] }],
+  steps: [
+    '½ cup cornmeal, 1½ cups boiling water, 2½ cups flour, 1½ tablespoons baking powder, 1¼ teaspoons salt, ¼ cup sugar, 1 cup milk, 1 egg, 2 tablespoons melted butter.',
+    'Add the meal to the boiling water and boil 5 minutes.',
+    'Tip it into a bowl, add the milk, then the dry things sifted together, then the well-beaten egg and the butter.',
+    'Cook like any other griddle cake.'],
+  src: 'Boston Cooking-School Cook Book (Fannie Farmer, 1896), p. 114.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'corn-masa-tortillas-and-hominy', 'Food From Scratch: Corn, masa and hominy']] },
+
+{ id: 'hominy-griddle-bread', n: 'Cornmeal and hominy bread or griddle cakes', cat: 'bread',
+  what: 'Yesterday\'s grits turned into today\'s bread. Bake it as spoon bread or cook it on a griddle.',
+  need: ['hominy', 'cornmeal', 'eggs', 'bakingpowder', 'salt'], opt: ['milk', 'lard', 'butter'],
+  time: '30 minutes',
+  on: 'A griddle, or a greased pan in an oven',
+  ways: [{ h: ['stovetop', 'coals', 'fire', 'camp'], g: ['griddle'] }, { h: ['oven'], g: [] }],
+  steps: [
+    '1 cup cornmeal, 1 cup boiled hominy grits, 1 cup milk, 1 egg, 1 tablespoon melted fat, 1 teaspoon baking powder, ¾ teaspoon salt.',
+    'Beat the milk and egg into the grits, then add the melted fat and the dry things. Mix well.',
+    'Either bake it in a greased pan and serve it with a spoon, or cook spoonfuls on a griddle as cakes.'],
+  src: 'USDA Farmers\' Bulletin 1236 (1924), p. 20.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'corn-masa-tortillas-and-hominy', 'Food From Scratch: Corn, masa and hominy']] },
+
+{ id: 'dumplings', n: 'Steamed dumplings', cat: 'bread',
+  what: 'Bread cooked on top of a stew instead of in an oven. Twelve minutes, no baking.',
+  need: ['wheat', 'bakingpowder', 'salt'], opt: ['butter', 'lard', 'milk', 'water'],
+  time: '20 minutes',
+  on: 'Steam over a pot of boiling water, or on top of a stew',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp'], g: ['pot'] }],
+  steps: [
+    'Mix and sift 2 cups flour, ¼ teaspoon salt and 4 teaspoons baking powder.',
+    'Work in 2 teaspoons butter with your fingertips, then add about ¾ cup milk gradually, mixing with a knife.',
+    'Roll out ½ inch thick on a floured board and cut rounds.',
+    'Set them close together in a buttered steamer over boiling water, cover closely, and steam 12 minutes. A tin pie plate with holes punched in it will do for a steamer.',
+    'Or make the dough a little softer, drop it in spoonfuls on top of a stew, and cover. Ladle some liquid out first so the dumplings rest on the meat and potatoes instead of sinking.'],
+  src: 'Boston Cooking-School Cook Book (Fannie Farmer, 1896), p. 218.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'staples', 'Food From Scratch: Staples']] },
+
+{ id: 'egg-noodles', n: 'Egg noodles and pasta', cat: 'bread',
+  what: 'Flour and eggs, rolled thin and cut. Dried properly they keep about a month in a jar.',
+  need: ['wheat', 'eggs', 'salt'], opt: ['water'],
+  time: '30 minutes, plus drying',
+  on: 'A pot of boiling water',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp'], g: ['pot'] }],
+  steps: [
+    '2 cups flour, 1 egg plus 2 yolks, ½ teaspoon salt, about ⅓ cup water. The old way is simply one egg, a pinch of salt, and enough flour for a very stiff dough.',
+    'Knead 8 to 10 minutes and rest the dough 10 to 20 minutes.',
+    'Roll it paper-thin and cut strips ⅛ to ¼ inch wide.',
+    'Cook fresh noodles 2 to 4 minutes; dried, 10 to 12.',
+    'To store: dry them until they snap, then keep them airtight for about a month.'],
+  note: 'Because of the raw egg, Illinois Extension says do not air-dry noodles for more than 2 hours; finish them with gentle heat at about 135 degrees.',
+  src: 'Food From Scratch guide, Staples (from University of Illinois Extension, Homemade Egg Noodles, p. 2, and the Boston Cooking-School Cook Book, 1896, p. 167).',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'staples', 'Food From Scratch: Staples']] }
+);
+})();
+
+/* ------------------------------------------------- porridge, mush and grain dishes */
+(function () { var R = window.RECIPEDATA.recipes;
+R.push(
+{ id: 'porridge', n: 'Porridge and mush (any grain)', cat: 'porridge',
+  what: 'The cheapest hot meal there is. Any cracked grain, three or four times its volume of water, a pinch of salt.',
+  need: ['water', 'salt'], any: [['oats', 'wheat', 'barley', 'cornmeal', 'rice', 'hominy', 'acorns']],
+  opt: ['milk', 'honey', 'syrup', 'butter', 'driedfruit'],
+  time: '20 minutes to 3 hours, depending on the grain',
+  on: 'A pot on any heat; a hay box will finish it',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp', 'haybox', 'solar'], g: ['pot'] }],
+  steps: [
+    'Cracked wheat, oats, barley, cornmeal or leached acorn meal, simmered in about 3 to 4 times its volume of water with a pinch of salt.',
+    'Cracked or ground grain cooks much faster than whole kernels. In a fuel shortage, grind first.',
+    'To save fuel: boil it briefly with at least 4 parts water to 1, then put the covered pot in a hay box and let it finish over 4 to 5 hours.',
+    'Milk, honey, syrup, butter or dried fruit on top.'],
+  src: 'Food From Scratch guide, Staples, and Food When It\'s Scarce, Cooking with little fuel (the fireless-cooker times are from Kearny, Nuclear War Survival Skills, p. 89, and Practical Action\'s fireless cooker brief, p. 5).',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'staples', 'Food From Scratch: Staples'],
+      ['FOOD-SECURITY-GUIDE', 'cooking-with-little-fuel', 'Food When It\'s Scarce: cooking with little fuel']] },
+
+{ id: 'cornmeal-mush', n: 'Cornmeal mush', cat: 'porridge',
+  what: 'The plain version done properly: start the meal in cold water so it cannot lump.',
+  need: ['cornmeal', 'water', 'salt'], opt: ['milk', 'butter', 'honey', 'syrup', 'cheese'],
+  time: '30 minutes to 4 hours',
+  on: 'A pot on any heat, or standing in a pot of water (a double boiler)',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp', 'haybox', 'solar'], g: ['pot'] }],
+  steps: [
+    'Per cup of meal: 1 to 1½ level teaspoons salt and 3½ to 6½ cups water, depending on how long you will cook it. Milk can replace part or all of the water.',
+    'Put the meal, cold water and salt together in the top of a double boiler — a bowl or small pot standing in a pot of water. No stirring is needed.',
+    'Heat it slowly and cook half an hour, or longer if convenient. Many people cook it as long as four hours.',
+    'Just before serving, lift the inner pot out and boil the mush hard for two or three minutes. That is what gives it a good flavour, and at this point it will not lump.',
+    'With cheese: for 1 cup of meal, stir in about ½ cup (2 ounces) of grated cheese just before it comes off the fire. Then it needs no butter or cream.'],
+  src: 'USDA Farmers\' Bulletin 1236 (1924), pp. 11-12.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'corn-masa-tortillas-and-hominy', 'Food From Scratch: Corn, masa and hominy']] },
+
+{ id: 'fried-mush', n: 'Fried mush', cat: 'porridge',
+  what: 'Last night\'s mush, set firm, sliced and fried. Breakfast out of a leftover.',
+  need: ['cornmeal', 'water', 'salt'], opt: ['lard', 'butter', 'oil', 'syrup', 'honey', 'eggs'],
+  time: '15 minutes the next morning',
+  on: 'A frying pan on any heat',
+  ways: [{ h: ['stovetop', 'coals', 'fire', 'camp'], g: ['pan'] }],
+  steps: [
+    'Pack hot mush into a greased tin or small bread pan, cover it (a cover stops a crust forming), and let it go cold overnight.',
+    'Turn it out, slice it thin, dip the slices in flour, and fry them.',
+    'Cook slowly if you want them crisp and dry.',
+    'Mush meant for frying is cooked with less water so it sets firmer.',
+    'Serve with syrup or honey.'],
+  src: 'USDA Farmers\' Bulletin 1236 (1924), p. 12, and the Boston Cooking-School Cook Book (1896), p. 122.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'corn-masa-tortillas-and-hominy', 'Food From Scratch: Corn, masa and hominy']] },
+
+{ id: 'baked-mush', n: 'Baked cornmeal mush', cat: 'porridge',
+  what: 'Mush finished in the oven until the top browns. Half a step towards a bread.',
+  need: ['cornmeal', 'water', 'salt'], opt: ['milk', 'cheese', 'butter'],
+  time: '1 hour',
+  on: 'A shallow pan in an oven',
+  ways: [{ h: ['oven'], g: [] }, { h: ['solar'], g: [] }],
+  steps: [
+    'Cook the mush until it is partly done.',
+    'Pour it into shallow pans, no more than 2 inches deep.',
+    'Bake until it is well browned on top.'],
+  src: 'USDA Farmers\' Bulletin 1236 (1924), p. 12.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'corn-masa-tortillas-and-hominy', 'Food From Scratch: Corn, masa and hominy']] },
+
+{ id: 'buttermilk-mush', n: 'Buttermilk cornmeal mush', cat: 'porridge',
+  what: 'White cornmeal cooked in buttermilk. It comes out tasting like cottage cheese, and is good cold with cream.',
+  need: ['cornmeal', 'sourmilk', 'salt'], opt: ['cream'],
+  time: '40 minutes',
+  on: 'A pot on any heat',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp', 'haybox'], g: ['pot'] }],
+  steps: [
+    '1 part cornmeal to 6 parts buttermilk, and 1 teaspoon salt per cup of meal.',
+    'Cook it as for cornmeal mush.',
+    'Eat it hot, or mould it in cups, chill it, and serve it very cold with cream.'],
+  src: 'USDA Farmers\' Bulletin 1236 (1924), p. 12.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'corn-masa-tortillas-and-hominy', 'Food From Scratch: Corn, masa and hominy']] },
+
+{ id: 'hominy-grits', n: 'Boiled hominy grits (hay box)', cat: 'porridge',
+  what: 'Ten minutes of fire and then the hay box does the rest overnight. One of the cheapest hot breakfasts in fuel.',
+  need: ['hominy', 'water', 'salt'], opt: ['milk', 'butter', 'driedfruit', 'honey'],
+  time: '10 minutes boiling, then overnight',
+  on: 'Boil on any heat, then a hay box — or 2 hours in a double boiler',
+  ways: [{ h: ['haybox'], g: ['pot'] }, { h: ['stovetop', 'fire', 'coals', 'camp'], g: ['pot'] }],
+  steps: [
+    '1 cup hominy grits, 5 cups water, 2 teaspoons salt.',
+    'Add the grits slowly to the salted boiling water.',
+    'Boil 10 minutes over the fire.',
+    'Put the covered pot into a hay box and leave it overnight. With no hay box, cook it 2 hours in a double boiler instead.',
+    'Poured warm into a dish or mould and cooled, it can be sliced and fried, or served with fruit or preserves as a simple pudding.'],
+  src: 'USDA Farmers\' Bulletin 1236 (1924), pp. 19-20.',
+  g: [['FOOD-SECURITY-GUIDE', 'cooking-with-little-fuel', 'Food When It\'s Scarce: cooking with little fuel'],
+      ['MAKE-DO-HOUSEHOLD-GUIDE', 'hay-box-cooking-saves-fuel', 'Make-Do Household: hay-box cooking']] },
+
+{ id: 'coarse-hominy', n: 'Boiled coarse hominy or samp (hay box)', cat: 'porridge',
+  what: 'Whole hulled kernels, cooked long and slow. Make a lot at once: it keeps a few days somewhere cool.',
+  need: ['hominy', 'water', 'salt'], opt: ['milk', 'lard', 'butter'],
+  time: 'soak overnight, then 8 to 12 hours in a hay box',
+  on: 'Boil briefly on any heat, then a hay box; or 5 to 6 hours in a double boiler, or 2 hours straight over the fire',
+  ways: [{ h: ['haybox'], g: ['pot'] }, { h: ['stovetop', 'fire', 'coals', 'camp'], g: ['pot'] }],
+  steps: [
+    'Soak 1 cup coarse hominy in 2 cups water for 6 hours or overnight.',
+    'Add 6 cups boiling water and 3 teaspoons salt, and boil it over the fire 10 minutes.',
+    'Put it in the hay box for 8 to 12 hours. If the box holds the heat poorly, boil it 45 minutes first, and expect to reheat it and put it back once.',
+    'In a double boiler it takes 5 or 6 hours, and straight over the fire about 2 hours; a cup of milk can be stirred in 15 minutes before the end.',
+    'Serve it plain, or browned in a little fat, in place of a vegetable.'],
+  src: 'USDA Farmers\' Bulletin 1236 (1924), p. 19.',
+  g: [['FOOD-SECURITY-GUIDE', 'cooking-with-little-fuel', 'Food When It\'s Scarce: cooking with little fuel']] },
+
+{ id: 'lye-hominy', n: 'Lye hominy (hulled corn)', cat: 'porridge',
+  what: 'Whole dried corn hulled with lye, the old American way. Makes 15 to 20 quarts at a time.',
+  need: ['cornmeal', 'lye', 'water', 'salt'], opt: [],
+  time: '15 hours soaking, then 3 to 4 hours boiling',
+  on: 'A big pot on any heat',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp'], g: ['pot'] }],
+  yield: '15 to 20 quarts',
+  steps: [
+    'Use pure lye — 100 per cent sodium hydroxide, the kind sold for soap-making. Never a drain cleaner with other chemicals in it.',
+    'Dissolve 5 ounces of lye in 6 quarts of cold water. Stir in 5 quarts of whole corn and let it stand 15 hours.',
+    'Wash it thoroughly to get the lye and the hulls off. Rubbing the corn in a cloth bag helps. When you are done the hull and the black tip should be gone and the kernel should look clean.',
+    'Boil it 3 to 4 hours in salted water, changing the water once or twice to take away any taste of lye.'],
+  note: 'Lye burns skin and eyes and blinds. Gloves and eye protection, add lye to water (never water to lye), keep children away, and never taste the soaking water. Use only clean, sound ears of dent or flint corn; big kernels hull more easily.',
+  src: 'USDA Farmers\' Bulletin 1236 (1924), pp. 17 and 20-21; also in the Food From Scratch guide.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'corn-masa-tortillas-and-hominy', 'Food From Scratch: Corn, masa and hominy']] },
+
+{ id: 'hominy-turnover', n: 'Hominy turnover', cat: 'porridge',
+  what: 'Cooked hominy and eggs folded like an omelet. A supper dish out of very little.',
+  need: ['hominy', 'eggs', 'salt'], opt: ['milk', 'lard', 'butter', 'cheese'],
+  time: '20 minutes',
+  on: 'A frying pan on any heat',
+  ways: [{ h: ['stovetop', 'coals', 'fire', 'camp'], g: ['pan'] }],
+  steps: [
+    '1 pint cooked coarse hominy, 2 well-beaten eggs, 1 cup milk, 1 tablespoon fat, 1 teaspoon salt.',
+    'Mix it all together.',
+    'Melt the fat in a frying pan and turn the mixture in. Stir until it is hot right through.',
+    'Let it cook until golden brown on the bottom, then fold it over like an omelet and serve.'],
+  src: 'USDA Farmers\' Bulletin 1236 (1924), p. 19.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'corn-masa-tortillas-and-hominy', 'Food From Scratch: Corn, masa and hominy']] },
+
+{ id: 'scalloped-hominy', n: 'Scalloped hominy with meat or cheese', cat: 'porridge',
+  what: 'Layers of cooked hominy and whatever meat, fish or cheese you have, baked together. Makes a little meat feed everybody.',
+  need: ['hominy'], any: [['venison', 'rabbit', 'chicken', 'fish', 'beef', 'pork', 'cheese']],
+  opt: ['milk', 'butter', 'wheat', 'salt', 'pepper'],
+  time: '45 minutes',
+  on: 'A baking dish in an oven',
+  ways: [{ h: ['oven'], g: [] }, { h: ['solar'], g: [] }, { h: ['coals'], g: ['dutch'] }],
+  steps: [
+    'Put alternate layers of boiled coarse hominy and minced meat, fish or grated cheese in a baking dish.',
+    'Pour a cup of white sauce over the whole thing. (White sauce: melt a tablespoon of fat, stir in a tablespoon of flour, add a cup of milk, and cook until it thickens. Salt and pepper.)',
+    'Bake 30 minutes.'],
+  src: 'USDA Farmers\' Bulletin 1236 (1924), p. 19. The white sauce proportions are ordinary kitchen knowledge, with no source.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'corn-masa-tortillas-and-hominy', 'Food From Scratch: Corn, masa and hominy']] },
+
+{ id: 'boiled-rice', n: 'Boiled and steamed rice', cat: 'porridge',
+  what: 'Rice done so the grains stay separate. Worth getting right: rice stores for decades.',
+  need: ['rice', 'water', 'salt'], opt: ['milk'],
+  time: '30 to 45 minutes',
+  on: 'A pot on any heat',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp', 'haybox'], g: ['pot'] }],
+  steps: [
+    'Wash the rice: put it in a strainer over a bowl of cold water, rub it between your hands, lift the strainer out, change the water. Three or four times, until the water runs clear.',
+    'Boiled: add 1 cup rice slowly to 2 quarts of boiling water with 1 tablespoon salt, so the water does not stop boiling. Boil 30 minutes, or until a kernel is soft. Drain, pour a quart of hot water through it, return it to the pot, cover, and stand it somewhere warm to dry off.',
+    'Steamed (less water, less fuel): 1 cup rice, 1 teaspoon salt, 2½ to 3½ cups boiling water depending on how old the rice is. Boil 5 minutes, then cover and steam 45 minutes until the kernels are soft. Uncover at the end to let the steam out.',
+    'Stir rice with a fork, never a spoon, or you break the kernels. Old rice drinks much more water and takes longer.'],
+  src: 'Boston Cooking-School Cook Book (Fannie Farmer, 1896), pp. 122-123.',
+  g: [['FOOD-SECURITY-GUIDE', 'storing-it-for-years', 'Food When It\'s Scarce: storing it for years']] },
+
+{ id: 'camas', n: 'Camas bulbs, pit-roasted', cat: 'porridge',
+  what: 'A starchy bulb that was a staple food here. It must be cooked a very long time: that is what turns its indigestible starch sweet.',
+  need: ['camas', 'water'], opt: [],
+  time: '24 to 36 hours',
+  on: 'An earth oven over coals, or very slow baking',
+  ways: [{ h: ['coals', 'fire'], g: [] }, { h: ['oven'], g: [] }],
+  steps: [
+    'Dig after the plants have flowered. Take only the big bulbs, replant the small ones, and rest each patch a few years.',
+    'Pit-roast or slow-bake them for 24 to 36 hours. Less than that and they are not food.',
+    'Fresh bulbs do not keep. Dry the cooked bulbs, or dry them as cakes, and soak the cakes overnight before eating.'],
+  note: 'DEADLY LOOK-ALIKE. Death camas grows in the same meadows and its bulbs look the same; flower colour is not a safe test. Only harvest from a bed you have watched bloom and learned plant by plant. If there is any doubt, leave it. Symptoms start 1 to 8 hours after eating — drooling, vomiting, weakness, an irregular heartbeat. Get help at once. Read the guide before you dig anything.',
+  src: 'Food From Scratch guide, Camas, cattail and other local starches (from the USDA NRCS Great Camas plant guide, pp. 1-2, and PNW 104, Meadow Deathcamas in the Pacific Northwest).',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'camas-cattail-and-other-local-starches', 'Food From Scratch: camas and cattail'],
+      ['FOOD-SECURITY-GUIDE', 'foraging-safety-rules', 'Food When It\'s Scarce: foraging safety rules']] },
+
+{ id: 'cattail', n: 'Cattail: shoots, spikes, pollen and root flour', cat: 'porridge',
+  what: 'Four foods from one marsh plant. The root core is 30 to 46 per cent starch.',
+  need: ['cattail', 'water'], opt: ['salt', 'butter', 'wheat'],
+  time: 'shoots, 20 minutes; root flour, a day',
+  on: 'A pot on any heat, or roasted in coals',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp'], g: ['pot'] }],
+  steps: [
+    'Young shoots and stem bases in spring, 4 to 16 inches long: boil or roast them.',
+    'Green flower spikes: boil them like corn on the cob.',
+    'Pollen, shaken off the ripe spikes into a bag: use it to stretch flour.',
+    'Root flour: pound the root cores, soak them in water, let the starch settle out, pour off the water, and dry the starch.',
+    'Harvest only from clean water. Cattails take up whatever pollutes the water they stand in.'],
+  note: 'DEADLY LOOK-ALIKE in the same wet ground: western water hemlock, the most poisonous plant in North America. Its stem base and roots are hollow with cross-walls and ooze a yellow, oily juice. Never dig roots in wet ground unless you are certain. See the guide.',
+  src: 'Food From Scratch guide, Camas, cattail and other local starches (from the USDA NRCS Broadleaf Cattail plant guide, p. 1, and PNW 109, Western Waterhemlock).',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'camas-cattail-and-other-local-starches', 'Food From Scratch: camas and cattail']] },
+
+{ id: 'barley-kasha', n: 'Barley and mushrooms (kasha)', cat: 'porridge',
+  what: 'Barley cooked in mushroom water, with the mushrooms. A filling dish from two things that store well dried.',
+  need: ['barley', 'mushrooms', 'water', 'salt'], opt: ['butter', 'eggs', 'cheese', 'pepper'],
+  time: '1 hour',
+  on: 'A pot on any heat; finish it in an oven or hay box if you like',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp', 'haybox'], g: ['pot'] }],
+  steps: [
+    '½ pound pearl barley, 1 ounce dried mushrooms (or ½ pound fresh), 1 to 2 ounces butter, salt and pepper, 1 egg, 2 tablespoons grated cheese.',
+    'Beat the egg and stir it through the barley so every grain is coated, then leave the barley to dry.',
+    'Soak the dried mushrooms in a pint of warm salted water, then simmer them covered in the same water about a quarter of an hour, until tender. Fresh mushrooms: wipe, slice and simmer them.',
+    'Cook the barley in the mushroom water until tender, adding more water if it needs it.',
+    'Stir the mushrooms and butter through, season, and sprinkle the cheese over.'],
+  note: 'Only with mushrooms you have named for certain. Cook all wild mushrooms, never eat them raw, and eat a few mouthfuls the first time, not a plateful.',
+  src: 'FAO, Barley: Post-Harvest Operations and Recipes, p. 61.',
+  g: [['MUSHROOM-GUIDE', 'cooking-drying-and-storing', 'Mushroom guide: cooking, drying and storing']] }
+);
+})();
+
+/* ---------------------------------------------------------- beans, soups and stews */
+(function () { var R = window.RECIPEDATA.recipes;
+R.push(
+{ id: 'beans', n: 'Dry beans, soaked and simmered', cat: 'beans',
+  what: 'The plainest, cheapest protein in the house. Beans with corn or wheat in the same day make complete protein.',
+  need: ['beans', 'water', 'salt'], opt: ['saltpork', 'onions', 'lard', 'herbs', 'pepper'],
+  time: 'soak overnight, then simmer 2 to 4 hours',
+  on: 'A pot on any heat; a hay box or solar oven finishes them well',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp', 'haybox', 'solar'], g: ['pot'] }],
+  steps: [
+    'Soak overnight in 6 cups of water with 2 teaspoons salt per pound of beans. Or quick-soak: boil 2 minutes, take off the heat and stand 1 hour.',
+    'Simmer 2 to 4 hours. Old beans take longer. Lentils and split peas need no soak at all.',
+    'Add tomatoes or vinegar only after the beans are tender: acid stops beans softening.',
+    'To save fuel: boil them 20 to 25 minutes and finish them in a hay box. Old beans need the longer boil.'],
+  note: 'Canning beans takes a PRESSURE canner, and the pressure depends on your elevation. Do not guess: open the Preserving Food guide.',
+  src: 'Food From Scratch guide, Staples (from Utah State University, Dry Beans and Peas, pp. 2-4); hay-box times from Practical Action\'s fireless cooker brief, p. 5, and USDA FB 771, p. 16.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'staples', 'Food From Scratch: Staples'],
+      ['PRESERVING-FOOD-GUIDE', 'botulism-why-low-acid-food-needs-a-pressure-canner', 'Preserving Food: why beans need a pressure canner']] },
+
+{ id: 'baked-beans', n: 'Baked beans with salt pork', cat: 'beans',
+  what: 'Beans baked slowly for most of a day. The dish that fed New England, and it suits a wood stove or a solar oven exactly.',
+  need: ['beans', 'saltpork', 'syrup', 'salt', 'water'], opt: ['sugar', 'onions'],
+  time: 'soak overnight, then 6 to 8 hours baking',
+  on: 'A slow oven, a solar oven, or a covered pot banked in coals',
+  ways: [{ h: ['oven'], g: ['pot'] }, { h: ['solar'], g: ['pot'] }, { h: ['coals'], g: ['dutch'] }],
+  steps: [
+    'Pick over 1 quart of pea beans, cover with cold water and soak overnight.',
+    'In the morning, drain, cover with fresh water and heat slowly, keeping the water below boiling, until the skins burst. Test by taking a few beans on a spoon and blowing on them: the skins split when they are ready.',
+    'Drain them. Throw the bean water outdoors, not down the sink.',
+    'Scald the rind of ½ pound of fat salt pork and scrape it. Cut a ¼-inch slice off and put it in the bottom of the pot. Score the rind of the rest every half inch, an inch deep.',
+    'Put the beans in the pot and bury the pork in them, leaving the rind showing.',
+    'Mix 1 tablespoon salt, 1 tablespoon molasses and 3 tablespoons sugar with 1 cup boiling water, pour it over the beans, then add enough more boiling water to cover them.',
+    'Cover and bake slowly 6 to 8 hours, adding water as needed. Take the cover off for the last hour so the rind browns and crisps.',
+    'A five-pound lard pail works as well as a proper bean pot.'],
+  src: 'Boston Cooking-School Cook Book (Fannie Farmer, 1896), pp. 247-248.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'staples', 'Food From Scratch: Staples']] },
+
+{ id: 'split-pea-soup', n: 'Split pea soup', cat: 'beans',
+  what: 'Split peas need no soaking, so this is the quickest pulse soup. Thick enough to be a meal.',
+  need: ['lentils', 'water', 'salt'], opt: ['milk', 'butter', 'wheat', 'onions', 'pepper', 'saltpork', 'bones'],
+  time: '3 to 4 hours',
+  on: 'A pot on any heat',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp', 'haybox'], g: ['pot'] }],
+  steps: [
+    '1 cup dried split peas, 2½ quarts cold water, half an onion.',
+    'Pick over the peas and soak them several hours if you have time, then drain, and add the cold water and onion.',
+    'Simmer 3 or 4 hours, until soft, then rub it through a sieve.',
+    'Cook 3 tablespoons butter with 2 tablespoons flour together, stir that in with 1½ teaspoons salt and ¼ teaspoon pepper, and add 1 pint of milk.',
+    'A ham bone or a piece of salt pork simmered with the peas is the old way to flavour it.'],
+  src: 'Boston Cooking-School Cook Book (Fannie Farmer, 1896), p. 160.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'staples', 'Food From Scratch: Staples']] },
+
+{ id: 'hominy-bean-cakes', n: 'Hominy and bean cakes', cat: 'beans',
+  what: 'Cooked hominy and cooked beans ground together and browned in a pan. Takes the place of meat.',
+  need: ['hominy', 'beans', 'salt'], opt: ['milk', 'lard', 'butter', 'pepper', 'cornmeal'],
+  time: '30 minutes',
+  on: 'A frying pan on any heat',
+  ways: [{ h: ['stovetop', 'coals', 'fire', 'camp'], g: ['pan'] }],
+  steps: [
+    '1 cup boiled coarse hominy, 1 cup cooked beans, ½ cup milk, 1 tablespoon fat, ½ tablespoon cornstarch (or flour), 1 teaspoon salt, a little pepper.',
+    'Make a white sauce: melt the fat, blend in the cornstarch, salt and pepper, add the milk, and cook until it thickens.',
+    'Grind or mash the hominy and beans together and mix them into the sauce.',
+    'Form cakes and brown them in a little fat.'],
+  src: 'USDA Farmers\' Bulletin 1236 (1924), p. 19.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'corn-masa-tortillas-and-hominy', 'Food From Scratch: Corn, masa and hominy']] },
+
+{ id: 'bone-broth', n: 'Soup stock from bones', cat: 'soup',
+  what: 'The base of every other soup, and a way to get food value out of bones that would otherwise go to the dogs.',
+  need: ['bones', 'water', 'salt'], opt: ['beef', 'venison', 'carrots', 'turnips', 'onions', 'herbs', 'pepper'],
+  time: '4 hours or more',
+  on: 'A covered pot on any heat; a hay box holds it overnight',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp', 'haybox', 'solar'], g: ['pot'] }],
+  steps: [
+    '6 pounds of shin of beef (or the bones and trim of any large animal), 3 quarts cold water, ½ cup each of carrot, turnip, onion and celery in dice, 1 tablespoon salt, a few peppercorns, herbs.',
+    'Cut the lean meat in inch cubes. Brown about a third of it in a hot pan in a little marrow or fat: that browning is what gives stock its colour and flavour.',
+    'Put the browned meat, the rest of the raw meat and the sawn bones in the pot and cover with the cold water. Always start stock in COLD water.',
+    'Bring it up slowly and keep it just below a boil. A hard boil makes it cloudy and greasy.',
+    'Simmer for hours, skimming. Add the vegetables, salt and seasonings for the last hour.',
+    'Strain it. Let it cool and lift the fat off the top — keep that fat, it is good cooking fat.'],
+  src: 'Boston Cooking-School Cook Book (Fannie Farmer, 1896), p. 142 (Soup Stock).',
+  g: [['HUNTING-TRAPPING-FISHING-GUIDE', 'butchering-using-the-whole-animal-and-hides', 'Hunting guide: using the whole animal']] },
+
+{ id: 'stew-with-dumplings', n: 'Stew with dumplings', cat: 'soup',
+  what: 'Tough meat and root vegetables cooked soft, with dumplings steamed on top. One pot, no oven, feeds a lot of people.',
+  need: ['water', 'salt'], any: [['beef', 'venison', 'rabbit', 'chicken', 'duck', 'pork']],
+  opt: ['potatoes', 'carrots', 'turnips', 'onions', 'wheat', 'bakingpowder', 'pepper'],
+  time: 'about 3 hours',
+  on: 'A covered pot on a stove top, over a fire or on coals',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp', 'solar'], g: ['pot'] }],
+  steps: [
+    'Cut the meat off the bone into 1-inch cubes, sprinkle with salt and pepper, and dredge with flour.',
+    'Try out some of the fat in a frying pan, add the meat and stir constantly so the surface sears quickly. When it is well browned, put it in the pot and rinse the pan out with boiling water into the pot so nothing is lost.',
+    'Add the bones, cover with boiling water, boil 5 minutes, then cook at a lower heat until the meat is tender — about 3 hours.',
+    'For the last hour add about ½ cup each of carrot and turnip in half-inch cubes and a sliced onion, with salt and pepper.',
+    'Parboil 4 cups of sliced potatoes 5 minutes and add them 15 minutes before the end.',
+    'Take out the bones and big lumps of fat, and skim. Thicken with ¼ cup flour mixed smooth with cold water.',
+    'Serve with dumplings steamed on top (see Steamed dumplings).'],
+  src: 'Boston Cooking-School Cook Book (Fannie Farmer, 1896), pp. 218-219 (Beef Stew with Dumplings) and p. 233 (Irish Stew with Dumplings).',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'staples', 'Food From Scratch: Staples']] },
+
+{ id: 'scotch-broth', n: 'Scotch broth (meat and barley)', cat: 'soup',
+  what: 'Barley thickens the broth and makes a little meat into a full meal. Mutton or goat is the traditional meat.',
+  need: ['barley', 'water', 'salt'], any: [['beef', 'venison', 'rabbit', 'chicken', 'bones']],
+  opt: ['carrots', 'turnips', 'onions', 'herbs', 'butter', 'wheat', 'rice'],
+  time: 'about 2 hours',
+  on: 'A pot on any heat',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp', 'haybox', 'solar'], g: ['pot'] }],
+  steps: [
+    '3 pounds of meat cut from the fore-quarter, ½ cup pearl barley soaked overnight, 3 pints cold water, 1 tablespoon salt.',
+    'Cut the lean meat in 1-inch cubes, cover with the cold water, bring it quickly to the boil, and skim.',
+    'Add the soaked barley and simmer 1½ hours, until the meat is tender.',
+    'Put the bones in a second pot, cover with cold water, heat slowly to boiling, skim, and boil 1½ hours. Strain that water into the meat pot.',
+    'Fry ¼ cup each of carrot, turnip, onion and celery in half-inch dice in 2 tablespoons butter for 5 minutes, add them to the soup with salt and pepper, and cook until soft.',
+    'Thicken with 2 tablespoons each of butter and flour cooked together. Chopped parsley at the end.',
+    'Rice can take the place of barley.'],
+  src: 'Boston Cooking-School Cook Book (Fannie Farmer, 1896), p. 233; the same broth is in FAO, Barley: Post-Harvest Operations and Recipes, p. 59.',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'flour-from-grain', 'Food From Scratch: Flour from grain']] },
+
+{ id: 'barley-krupnik', n: 'Barley soup with mushrooms (krupnik)', cat: 'soup',
+  what: 'Half a pound of bone, some barley, dried mushrooms and potatoes: a Polish winter soup out of almost nothing.',
+  need: ['barley', 'potatoes', 'water', 'salt'], opt: ['bones', 'mushrooms', 'driedveg', 'carrots', 'butter', 'cream', 'eggs', 'herbs', 'pepper'],
+  time: 'about 2 hours',
+  on: 'A pot on any heat',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp', 'haybox', 'solar'], g: ['pot'] }],
+  steps: [
+    '½ pound cracked soup bone with some meat on it, ½ pound diced mixed vegetables, 2 dried mushrooms, 3 or 4 diced medium potatoes, ½ cup pearl barley, 1 tablespoon butter, 1 teaspoon salt and pepper, 1 cup sour cream and 1 or 2 egg yolks if you have them, chopped parsley.',
+    'Put the bone, vegetables and mushrooms in the pot with water and simmer until the meat is tender.',
+    'Add the barley and the potatoes and cook until both are soft.',
+    'Finish with the butter, and, off the heat, the sour cream beaten with the egg yolks. Parsley on top.'],
+  note: 'Only with mushrooms you have named for certain.',
+  src: 'FAO, Barley: Post-Harvest Operations and Recipes, p. 60.',
+  g: [['MUSHROOM-GUIDE', 'cooking-drying-and-storing', 'Mushroom guide: cooking, drying and storing']] },
+
+{ id: 'fish-chowder', n: 'Fish chowder', cat: 'soup',
+  what: 'A whole fish, potatoes, salt pork and milk. The bones make the broth, so nothing is thrown away.',
+  need: ['fish', 'potatoes', 'salt'], opt: ['saltpork', 'onions', 'milk', 'butter', 'pepper', 'wheat'],
+  time: '1 hour',
+  on: 'A pot on any heat',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp'], g: ['pot'] }],
+  steps: [
+    'About 4 pounds of fish, 4 to 6 cups sliced potatoes, 1 sliced onion, a 1½-inch cube of fat salt pork, 1 tablespoon salt, ½ teaspoon pepper, 3 tablespoons butter, 4 cups scalded milk, and crackers or hardtack.',
+    'Cut off the head and tail and take the fish off the backbone. Cut the flesh in 2-inch pieces and set it aside.',
+    'Put the head, tail and broken backbone in a pan with 2 cups cold water, bring it slowly to the boil and cook 20 minutes. That is your broth.',
+    'Cut the salt pork small and try it out, add the onion and fry 5 minutes, then strain the fat into the pot.',
+    'Parboil the potatoes 5 minutes, drain, add them to the fat, then add 2 cups boiling water and cook 5 minutes.',
+    'Add the strained broth and the fish, cover, and simmer 10 minutes.',
+    'Add the milk, salt, pepper and butter, and crackers split and soaked in a little cold milk.',
+    'With tomatoes instead of milk, and cracker crumbs stirred in at the end, it is the same chowder made without any dairy at all.'],
+  src: 'Boston Cooking-School Cook Book (Fannie Farmer, 1896), pp. 163-164.',
+  g: [['HUNTING-TRAPPING-FISHING-GUIDE', 'fishing-nets-fish-traps-and-fish-care', 'Hunting and fishing guide: fish care']] },
+
+{ id: 'corn-chowder', n: 'Corn chowder', cat: 'soup',
+  what: 'The same chowder with corn in place of fish. Good with home-canned or dried sweet corn in winter.',
+  need: ['sweetcorn', 'potatoes', 'salt'], opt: ['saltpork', 'onions', 'milk', 'butter', 'pepper'],
+  time: '45 minutes',
+  on: 'A pot on any heat',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp'], g: ['pot'] }],
+  steps: [
+    'About 2 cups corn, 4 cups sliced potatoes, 1 sliced onion, a 1½-inch cube of fat salt pork, 4 cups scalded milk, 3 tablespoons butter, salt and pepper, crackers.',
+    'Cut the pork small and try it out. Add the onion and cook 5 minutes, stirring so it does not burn, then strain the fat into a pot.',
+    'Parboil the potatoes 5 minutes in boiling water, drain, and add them to the fat. Add 2 cups boiling water and cook until the potatoes are soft.',
+    'Add the corn and the milk and bring it just to the boil.',
+    'Season, add the butter, and the crackers split and soaked in a little cold milk.'],
+  src: 'Boston Cooking-School Cook Book (Fannie Farmer, 1896), p. 163.',
+  g: [['ROOT-CELLAR-GUIDE', 'drying-food', 'Root Cellar guide: drying food']] },
+
+{ id: 'potato-soup', n: 'Potato and turnip soup', cat: 'soup',
+  what: 'Root cellar soup: potatoes, a turnip, an onion, milk. Nothing fresh needed.',
+  need: ['potatoes', 'salt'], opt: ['turnips', 'onions', 'milk', 'butter', 'wheat', 'pepper'],
+  time: '45 minutes',
+  on: 'A pot on any heat',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp', 'haybox'], g: ['pot'] }],
+  steps: [
+    '4 small potatoes, half an onion, 1 large white turnip, 4 tablespoons butter, 3 cups boiling water, ½ cup flour, 1 quart scalded milk, 1½ teaspoons salt, ¼ teaspoon pepper.',
+    'Wash, pare and halve the potatoes. Slice the turnip a quarter-inch thick.',
+    'Parboil them together 10 minutes and drain.',
+    'Cook them in the boiling water until soft, then rub them through a sieve with their water.',
+    'Cook the butter and flour together, stir in the scalded milk, add the vegetable puree, and season.'],
+  src: 'Boston Cooking-School Cook Book (Fannie Farmer, 1896), p. 161 (Swiss Potato Soup).',
+  g: [['ROOT-CELLAR-GUIDE', 'what-each-crop-needs', 'Root Cellar guide: what each crop needs']] },
+
+{ id: 'nettle-soup', n: 'Nettle soup', cat: 'soup',
+  what: 'Spring\'s first green food, before anything in the garden is ready. Nettles, potatoes, an onion and broth.',
+  need: ['nettles', 'potatoes', 'onions', 'water', 'salt'], opt: ['butter', 'oil', 'bones', 'cream', 'pepper'],
+  time: '45 minutes',
+  on: 'A pot on any heat',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp'], g: ['pot'] }],
+  yield: '5 to 6 cups',
+  steps: [
+    'Blanch the nettles first: wearing gloves, stir them into a rolling boil, cover, boil 1½ to 2 minutes, cool them in cold water and drain. 2 pounds of fresh nettles gives about 2 cups blanched.',
+    'In a large pot over medium heat, put 2 to 3 tablespoons of oil or butter and cook 1 chopped onion 3 to 4 minutes until clear and just browning. Add 2 or 3 cloves of minced garlic.',
+    'Add 1 pound of diced potatoes, 4 cups of broth of any kind, salt, pepper and ½ teaspoon red pepper flakes. Lower the heat and cook until the potatoes are soft.',
+    'Add the blanched nettles and cook 4 or 5 minutes more.',
+    'Take it off the heat, let it cool 10 minutes, then mash or blend it smooth. Half a cup of cream makes it a cream soup.'],
+  note: 'Gather nettles in early spring before they flower, in long sleeves and long rubber gloves. Blanching or drying is what destroys the stinging hairs: never eat them raw.',
+  src: 'Oregon State University Extension, Wild Edibles: Stinging Nettle (EM 9373, 2022), pp. 2 and 6.',
+  g: [['FOOD-SECURITY-GUIDE', 'foraging-safety-rules', 'Food When It\'s Scarce: foraging safety rules']] },
+
+{ id: 'boiled-fish', n: 'Boiled fish with potatoes', cat: 'soup',
+  what: 'The simplest way to cook a big fatty fish: a pot of salted water and two potatoes. Nothing else needed.',
+  need: ['fish', 'potatoes', 'water', 'salt'], opt: ['butter', 'pepper'],
+  time: '30 minutes',
+  on: 'A big pot on any heat',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp'], g: ['pot'] }],
+  steps: [
+    'Fill a 2-gallon pot about three-quarters with water.',
+    'Add two large potatoes and about ½ cup of salt, and bring it to the boil.',
+    'Put in a fatty fish such as trout. Allow 2 pounds of fish for every 2 potatoes.',
+    'Cook until a fork goes in easily. Season and serve.',
+    'This suits larger fish better than small ones.'],
+  src: 'NDSU Extension, Wild Side of the Menu No. 1: Care and Cookery, p. 10.',
+  g: [['HUNTING-TRAPPING-FISHING-GUIDE', 'fishing-nets-fish-traps-and-fish-care', 'Hunting and fishing guide: fish care']] }
+);
+})();
+
+/* ------------------------------------------------------------- meat, fish and game */
+(function () { var R = window.RECIPEDATA.recipes;
+R.push(
+{ id: 'pot-roast', n: 'Pot roast (beef, goat or venison a la mode)', cat: 'meat',
+  what: 'A tough cut cooked four hours in a covered kettle, below the boil. No oven needed, and it makes its own gravy.',
+  need: ['water', 'salt'], any: [['beef', 'venison', 'pork']],
+  opt: ['saltpork', 'carrots', 'turnips', 'onions', 'wheat', 'herbs', 'pepper', 'lard', 'tallow'],
+  time: 'about 4½ hours',
+  on: 'A covered kettle on a stove top, over a fire, on coals, or in a solar oven',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp', 'solar'], g: ['pot'] }, { h: ['oven'], g: ['pot'] }],
+  steps: [
+    'Take a 3- to 4-pound piece from the round or rump. Season it with salt and pepper and dredge it with flour.',
+    'Brown the whole outside in pork fat or lard. Turn it with tongs or two spoons: a fork lets the juices out.',
+    'Stand it on a trivet (or a few sticks, or a ring of foil) in the kettle so it is not sitting on the bottom.',
+    'Put ⅓ cup each of carrot, turnip, celery and onion in dice round it, a sprig of parsley and a bit of bay leaf, and water to half cover the meat.',
+    'Cover closely and cook slowly 4 hours, keeping the liquid BELOW boiling the whole time. Turn the meat after the second hour and baste it every half hour.',
+    'Lift the meat out, strain the liquid, thicken it with a little flour mixed in cold water, and season.'],
+  note: 'Game has little fat of its own, so it dries out. Add cream, butter or oil, or lay salt pork over it, and do not overcook it. Cook game meat to 160 degrees, game birds to 165.',
+  src: 'Boston Cooking-School Cook Book (Fannie Farmer, 1896), p. 217 (Braised Beef and Beef a la Mode). The notes on game are from NDSU Extension, Wild Side of the Menu No. 1, p. 5.',
+  g: [['HUNTING-TRAPPING-FISHING-GUIDE', 'butchering-using-the-whole-animal-and-hides', 'Hunting guide: using the whole animal']] },
+
+{ id: 'venison-with-tomatoes', n: 'Venison steak with tomatoes and onion', cat: 'meat',
+  what: 'Steaks dredged and fried, then simmered in tomatoes until tender. The simplest way to make venison forgiving.',
+  need: ['venison', 'tomatoes', 'onions', 'wheat', 'salt'], opt: ['peppers', 'herbs', 'pepper', 'lard', 'oil', 'rice'],
+  time: '1 to 1½ hours',
+  on: 'A skillet on a stove top, coals or a camp stove',
+  ways: [{ h: ['stovetop', 'coals', 'fire', 'camp'], g: ['pan'] }],
+  yield: 'four servings',
+  steps: [
+    '4 venison steaks, half a medium onion sliced, 1 green pepper in strips, about 2 cups of chopped tomatoes, salt and pepper, a dash of garlic and oregano if you have them.',
+    'Dredge the steaks in flour.',
+    'Fry them in a skillet with the sliced onion until brown.',
+    'Add the pepper strips and the tomatoes, and season.',
+    'Simmer half an hour to an hour. Serve on rice.'],
+  src: 'NDSU Extension, Wild Side of the Menu No. 1: Care and Cookery, p. 6.',
+  g: [['HUNTING-TRAPPING-FISHING-GUIDE', 'butchering-using-the-whole-animal-and-hides', 'Hunting guide: using the whole animal']] },
+
+{ id: 'rabbit-braised', n: 'Braised rabbit', cat: 'meat',
+  what: 'Rabbit is lean and can be tough: boil it first, then brown it and let it finish slowly. Always cook rabbit well through.',
+  need: ['rabbit', 'wheat', 'salt', 'water'], opt: ['saltpork', 'onions', 'lard', 'herbs', 'pepper', 'vinegar', 'mushrooms'],
+  time: 'about 2 hours',
+  on: 'A pot and a pan on any heat',
+  ways: [{ h: ['stovetop', 'coals', 'fire', 'camp'], g: ['pot'] }],
+  steps: [
+    'Cut the rabbit into serving pieces with a knife, not a cleaver: rabbit bones splinter. A fryer makes seven pieces.',
+    'Boil the pieces 1 hour, then dry them thoroughly.',
+    'Shake them in a bag with flour, salt and pepper.',
+    'Brown them in a little fat, with sliced onion, and lay strips of bacon or salt pork over the top.',
+    'Add a little water, cover closely, and cook slowly until tender — about another half hour. A bay leaf and a clove of garlic go in with it.'],
+  note: 'Rabbits can carry tularemia, which people catch from skinning and from undercooked meat: cook rabbit thoroughly, and bury any rabbit whose liver and spleen were both swollen and spotted. Take the gall bladder out and keep the liver, heart and kidneys, which are good food.',
+  src: 'NDSU Extension, Wild Side of the Menu No. 1, p. 8 (Hasenpfeffer / Rabbit Supreme), with the canned soup, wine and bottled sauces left out — what is left is the braising method. The butchering and tularemia notes are from the Rabbits guide (USDA FB 1730, pp. 52-56).',
+  g: [['RABBITS-GUIDE', 'humane-slaughter-and-butchering', 'Rabbits guide: slaughter and butchering']] },
+
+{ id: 'roast-duck', n: 'Roast duck or goose with apples', cat: 'meat',
+  what: 'A bird stuffed with apples and roasted. Plucked birds do not dry out; skinned ones need fat laid over them.',
+  need: ['duck', 'apples', 'onions', 'salt'], opt: ['saltpork', 'pepper', 'cider'],
+  time: '1 to 1½ hours',
+  on: 'An oven, or a dutch oven in coals',
+  ways: [{ h: ['oven'], g: [] }, { h: ['coals'], g: ['dutch'] }, { h: ['solar'], g: [] }],
+  steps: [
+    'Fill the cavity with peeled, quartered apples — about 2 cups for a small duck. Close it with skewers.',
+    'Tie the legs and wings close to the body.',
+    'Rub the bird with a slice of onion, 2 teaspoons salt and about ⅓ teaspoon pepper.',
+    'Roast it back side up, uncovered, at 325 degrees for 1 to 1½ hours, basting every 10 minutes with its own fat, with cider, or with a little broth.',
+    'A large duck such as a mallard feeds two; a small one such as a teal feeds one.',
+    'Cook game birds to at least 165 degrees. If the bird was skinned, wrap it in bacon or salt pork, or dredge it with flour, so it does not dry out.'],
+  note: 'The source bastes with orange juice. Cider, broth or the bird\'s own fat does the same job and is what a household here would have — that substitution is ours, not NDSU\'s.',
+  src: 'NDSU Extension, Wild Side of the Menu No. 1, pp. 5 and 9 (Roast Duck).',
+  g: [['HUNTING-TRAPPING-FISHING-GUIDE', 'butchering-using-the-whole-animal-and-hides', 'Hunting guide: using the whole animal']] },
+
+{ id: 'jerky', n: 'Jerky', cat: 'keep',
+  what: 'Dried meat that keeps a month or two with no cold at all. Do it the tested way: drying alone does not kill what makes people sick.',
+  need: ['venison', 'salt'], opt: ['beef', 'rabbit', 'pepper', 'herbs', 'water'],
+  time: 'most of a day',
+  on: 'A low oven, a dryer, or a wood stove with moving air — 145 to 155 degrees',
+  ways: [{ h: ['oven'], g: [] }, { h: ['stovetop'], g: [] }, { h: ['solar'], g: [] }],
+  steps: [
+    'Slice lean meat into strips. Trim off fat, which goes rancid.',
+    'Bring the meat to 160 degrees (poultry 165): either dip the strips 1½ to 2 minutes in simmering brine before drying, or heat the dried strips 10 minutes in a 275-degree oven afterwards.',
+    'Dry at 145 to 155 degrees, checked with a thermometer. An oven with the door propped open works.',
+    'It is done when a cooled strip cracks but does not snap.',
+    'Keep it sealed. It is best within 1 to 2 months. About 16 ounces of raw meat makes 4 ounces of jerky.'],
+  note: 'Do not sun-dry meat. Bear and cougar carry trichinosis — ten people caught it from cougar jerky in 1995. The hot-brine recipe and the temperatures are in PNW 632; read it before your first batch.',
+  src: 'Food From Scratch guide, Jerky, and Preserving Food guide, Jerky and pemmican (from PNW 632, Making Jerky at Home Safely, pp. 7-9, 17-18, 21).',
+  g: [['PRESERVING-FOOD-GUIDE', 'jerky-and-pemmican', 'Preserving Food: jerky and pemmican'],
+      ['FOOD-FROM-SCRATCH-GUIDE', 'jerky', 'Food From Scratch: Jerky']] },
+
+{ id: 'pemmican', n: 'Pemmican', cat: 'keep',
+  what: 'Dried meat pounded to powder and mixed with hot rendered fat. About 6 pounds of meat makes 1 pound, and it keeps for years.',
+  need: ['venison', 'tallow'], opt: ['berries', 'driedfruit', 'salt'],
+  time: 'a day, after the meat is dried',
+  on: 'A pot to melt the fat; the drying needs low heat',
+  ways: [{ h: ['stovetop', 'coals', 'fire', 'camp'], g: ['pot'] }],
+  steps: [
+    'Do the 160-degree step first, exactly as for jerky, then dry the meat until it is brittle.',
+    'Pound the dried meat to a coarse powder.',
+    'Render the fat until it stops bubbling.',
+    'Mix about equal weights of meat powder and hot fat. Firm tallow — deer, elk or beef — keeps far better than lard.',
+    'Any berries that go in must be fully dry.',
+    'Store it cool, dark and airtight. Throw it out if it smells rancid or sour.'],
+  note: 'There is NO modern tested recipe for pemmican. The 160-degree step, the brittle drying and the equal weights are the library\'s own rule of thumb built on the tested jerky method, not a tested recipe.',
+  src: 'Preserving Food guide, Jerky and pemmican (the 6-pounds-to-1 figure and the keeping time are from the Special Forces Medical Handbook, p. 174; the rest is marked in the guide as general practice).',
+  g: [['PRESERVING-FOOD-GUIDE', 'jerky-and-pemmican', 'Preserving Food: jerky and pemmican']] },
+
+{ id: 'hot-smoked-fish', n: 'Hot-smoked fish', cat: 'keep',
+  what: 'Brined and smoked until it is cooked through. It is food, not a preserve: about two weeks, and only if it stays cold.',
+  need: ['fish', 'salt', 'water'], opt: ['sugar', 'honey'],
+  time: 'about an hour brining, then hours of smoke',
+  on: 'A smoker over hardwood coals',
+  ways: [{ h: ['coals', 'fire'], g: [] }],
+  steps: [
+    'Brine 2 to 3 pounds of fish in 1 cup of salt to 7 cups of water for about an hour.',
+    'Let it dry until a tacky skin (a pellicle) forms.',
+    'Smoke with hardwood — red alder, bigleaf maple, oak or fruitwood here. NEVER fir, pine or cedar.',
+    'The fish must reach 150 degrees inside, and 160 is better, and hold it for at least 30 minutes.',
+    'It keeps about two weeks refrigerated. Cold smoke, under 80 to 90 degrees, does NOT cook the fish: it is still raw.'],
+  note: 'Smoke alone does not preserve. With no refrigerator the tested way to keep smoked fish is to CAN it the same day, and the pressure and time depend on your elevation: open the Preserving Food guide, do not guess.',
+  src: 'Preserving Food guide, Fish: smoking, canning and salting (from PNW 238, Smoking Fish at Home Safely, pp. 1-3, and PNW 450, Canning Smoked Fish).',
+  g: [['PRESERVING-FOOD-GUIDE', 'fish-smoking-canning-and-salting', 'Preserving Food: smoking, canning and salting fish']] },
+
+{ id: 'salt-fish', n: 'Salt fish', cat: 'keep',
+  what: 'The old way to hold a run of fish with no ice and no jars. Dry salting keeps longer than brine and suits warm weather.',
+  need: ['fish', 'salt'], opt: ['water'],
+  time: 'days to weeks',
+  on: 'No heat for the salting; cook it well before eating',
+  ways: [{ h: ['*'], g: [] }],
+  steps: [
+    'Bleed, gut and clean the fish thoroughly. Dirty fish spoils at the bone whatever you do to the outside.',
+    'To hold a fish a day with no ice: rub in about 1 tablespoon of salt per ¾ pound of fish and keep it under wet burlap in the shade.',
+    'Rolled in salt, it keeps about 10 days. Soak it 10 hours in fresh water before cooking.',
+    'For longer: dry salting keeps better than brining in warm weather. Brined fish keeps up to 9 months if you change the brine at 3 months.',
+    'Dried salt fish is done when your thumb leaves no dent in the thick part.'],
+  note: 'No modern guide has tested long-term salting of fatty salmon. Treat it as an old-time method, and cook the fish well.',
+  src: 'Preserving Food guide, Fish: smoking, canning and salting (from USFWS Fishery Leaflet 18, Home Preservation of Fishery Products, pp. 2-7).',
+  g: [['PRESERVING-FOOD-GUIDE', 'fish-smoking-canning-and-salting', 'Preserving Food: smoking, canning and salting fish']] },
+
+{ id: 'rendering-lard', n: 'Rendering lard or tallow', cat: 'keep',
+  what: 'Turning raw fat into clean white cooking fat that keeps for months. Fat is the thing people miss most in a lean year.',
+  need: ['pork', 'water'], opt: ['venison', 'beef'],
+  time: '2 to 4 hours',
+  on: 'A heavy pot on a stove top, over coals or on a camp stove',
+  ways: [{ h: ['stovetop', 'coals', 'fire', 'camp'], g: ['pot'] }],
+  steps: [
+    'Chill the fat and render it within about a week. Raw fat keeps only 5 to 7 days even chilled.',
+    'Cut it small, put it in a heavy pot with a little water, and melt it slowly at 235 to 245 degrees, stirring. Never a copper pot.',
+    'It is done when the bubbling stops and the cracklings float and turn chestnut brown.',
+    'Strain it into clean jars. Fill them full, and store them cool and dark.',
+    'Leaf fat, from around the kidneys, makes the best lard. Strong-tasting gut fat is for soap.',
+    'Keep the cracklings: they make crackling bread.',
+    'Slightly rancid lard can be rescued by heating it with sliced potatoes until they are dark brown, then straining it.'],
+  src: 'Food From Scratch guide, Salt, sweeteners and fat (from University of Minnesota, Making Lard at Home, 1962, pp. 2-4).',
+  g: [['FOOD-FROM-SCRATCH-GUIDE', 'salt-sweeteners-and-fat', 'Food From Scratch: salt, sweeteners and fat'],
+      ['PRESERVING-FOOD-GUIDE', 'lard-confit-eggs-and-vinegar', 'Preserving Food: lard, eggs and vinegar']] },
+
+{ id: 'venison-mincemeat', n: 'Venison mincemeat', cat: 'keep',
+  what: 'Venison, apples, suet, dried fruit and spices cooked down together. A way to put a deer and an apple crop into jars in the same week.',
+  need: ['venison', 'apples', 'driedfruit', 'spices', 'salt'], opt: ['tallow', 'sugar', 'syrup', 'cider'],
+  time: 'overnight, then 2 hours simmering',
+  on: 'A big pot on any heat',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp', 'solar'], g: ['pot'] }],
+  steps: [
+    '4 pounds venison with bones, 3 pounds apples peeled and quartered, ¾ pound suet, 2 pounds seedless raisins and about a pound of light raisins and currants, 1 pound brown sugar, 2 quarts cider or other fruit juice, 1 tablespoon each salt, cinnamon, ginger, cloves and nutmeg, 1 teaspoon allspice.',
+    'Trim the fat off the venison, cover it with water, and simmer until the meat is tender.',
+    'Let it cool overnight in its liquid, then lift all the fat off the top.',
+    'Take the meat off the bones and grind it coarse. There should be at least 2 quarts of ground meat. Grind the suet and the apples too.',
+    'Put everything in a big kettle and simmer 2 hours to plump the fruit and blend the flavours, stirring often so it does not stick.',
+    'Use it as it is for cookies and tarts; for pie, add 1 cup of apple for every 2 cups of mincemeat.'],
+  note: 'This is meat, so shelf-stable jars need a PRESSURE canner and the pressure depends on your elevation. NDSU gives 90 minutes, but says the pressure must be adjusted above 1,000 feet — and we are above that. Read the Preserving Food guide for the settings here before you can any of it. It also keeps frozen, or a few weeks in a cold cellar.',
+  src: 'NDSU Extension, Wild Side of the Menu No. 1, p. 7 (Yuletide Mincemeat).',
+  g: [['PRESERVING-FOOD-GUIDE', 'botulism-why-low-acid-food-needs-a-pressure-canner', 'Preserving Food: low-acid food and the pressure canner']] },
+
+{ id: 'country-ham', n: 'Dry-cured country ham', cat: 'keep',
+  what: 'A ham that keeps a year or more hanging in a dry, airy room, with no cold at all. The biggest single thing a household can do with a pig.',
+  need: ['pork', 'salt', 'sugar'], opt: ['curesalt', 'syrup', 'pepper'],
+  time: 'two days per pound of ham, then smoking and months of aging',
+  on: 'No heat for the cure; hardwood smoke at 100 to 120 degrees after',
+  ways: [{ h: ['none', 'coals', 'fire', 'dry'], g: [] }],
+  steps: [
+    'Cure only in the cold season. The meat must stay between 36 and 40 degrees for the WHOLE cure: warmer risks spoilage, and below 34 degrees the salt stops going in.',
+    'Plain cure: 8 pounds of salt and 2 pounds of sugar per 100 pounds of meat. Never more sugar than salt. Rub it in, and rub again after about a week.',
+    'Allow about 2 days per pound of ham (1½ to 2 days per pound).',
+    'Smoke with hardwood, never pine, at 100 to 120 degrees.',
+    'In spring, hold the hams at 50 to 60 degrees so the salt evens out.',
+    'Wrap the cooled hams, bag them in muslin or paper, and hang them in a dark, dry, airy, rat-proof place. Trim off surface mould. Eat bacon by early summer.',
+    'Throw it out if it smells sour at the bone, or has wet patches and holes through the meat.'],
+  note: 'A nitrite cure is DIFFERENT and must be weighed exactly: too much nitrate or nitrite is toxic. Use a commercial premix by its label, store it away from table salt and children, and read the Preserving Food guide\'s cure table before you start. Nothing here is a substitute for reading it.',
+  src: 'Preserving Food guide and Root Cellar guide, Curing and smoking meat (from USDA Leaflet 273, Curing Pork Country Style, pp. 5 and 8; University of Kentucky, How to Make a Country Ham, pp. 2-5; Mississippi State P2648).',
+  g: [['PRESERVING-FOOD-GUIDE', 'curing-pork-and-venison', 'Preserving Food: curing pork and venison'],
+      ['ROOT-CELLAR-GUIDE', 'curing-and-smoking-meat', 'Root Cellar guide: curing and smoking meat']] }
+);
+})();
+
+/* ------------------------------------------------- eggs, sweet dishes, milk and cheese */
+(function () { var R = window.RECIPEDATA.recipes;
+R.push(
+{ id: 'scrambled-eggs', n: 'Scrambled eggs', cat: 'eggs',
+  what: 'Five eggs, a little milk, butter, and a pan. The quickest hot food in the house.',
+  need: ['eggs', 'salt'], opt: ['milk', 'butter', 'lard', 'pepper', 'cheese', 'nettles', 'greens'],
+  time: '10 minutes',
+  on: 'A pan on any heat',
+  ways: [{ h: ['stovetop', 'coals', 'fire', 'camp'], g: ['pan'] }],
+  steps: [
+    '5 eggs, ½ teaspoon salt, ½ cup milk, a little pepper, 2 tablespoons butter.',
+    'Beat the eggs slightly with a fork, then add the salt, pepper and milk.',
+    'Heat the pan, melt the butter, and turn the mixture in.',
+    'Cook until creamy, stirring and scraping it off the bottom of the pan. Take it off before it looks done: it finishes in the pan.'],
+  src: 'Boston Cooking-School Cook Book (Fannie Farmer, 1896), p. 131.',
+  g: [['ROOT-CELLAR-GUIDE', 'fermenting-salting-eggs-and-vinegar', 'Root Cellar guide: keeping eggs']] },
+
+{ id: 'omelet', n: 'Plain omelet', cat: 'eggs',
+  what: 'One egg per person and a tablespoon of water each. Anything left over from yesterday can go in it.',
+  need: ['eggs', 'salt', 'water'], opt: ['butter', 'cheese', 'mushrooms', 'greens', 'nettles', 'chicken', 'pepper'],
+  time: '15 minutes',
+  on: 'A pan on any heat',
+  ways: [{ h: ['stovetop', 'coals', 'fire', 'camp'], g: ['pan'] }],
+  steps: [
+    '4 eggs, ½ teaspoon salt, a few grains of pepper, 4 tablespoons hot water, 1 tablespoon butter.',
+    'Allow one egg per person and one tablespoon of liquid per egg.',
+    'Beat them lightly, melt the butter in a hot pan, and pour the eggs in.',
+    'As it sets, lift the edge and let the loose egg run underneath.',
+    'When it is set but still soft, fold it over and turn it onto a hot plate.',
+    'Finely chopped cooked meat, cooked greens or grated cheese can be folded in.'],
+  src: 'Boston Cooking-School Cook Book (Fannie Farmer, 1896), pp. 134-135.' },
+
+{ id: 'baked-custard', n: 'Baked custard', cat: 'eggs',
+  what: 'Eggs, milk and a little sweetening, baked gently. Good food for a sick person or a child, and it uses nothing but what a milk animal and a hen give you.',
+  need: ['eggs', 'milk', 'salt'], opt: ['sugar', 'honey', 'spices'],
+  time: '1 hour',
+  on: 'A dish standing in a pan of hot water, in a slow oven',
+  ways: [{ h: ['oven'], g: [] }, { h: ['solar'], g: [] }, { h: ['stovetop'], g: ['pot'] }],
+  steps: [
+    'Allow 4 eggs to 4 cups of milk for cup custards; 6 eggs if you are turning a big one out of a mould.',
+    'Scald the milk. Beat the eggs slightly, add salt and sweetening, and pour the hot milk slowly onto the eggs, stirring.',
+    'Strain it into a buttered dish or cups.',
+    'Stand the dish in a pan of hot water and bake slowly. The water around it must NEVER reach boiling, or the custard goes watery.',
+    'Eggs and milk together must always be cooked at a low temperature. It is done when a knife slipped into the middle comes out clean.',
+    'With fewer eggs than this, a moulded custard cracks when you turn it out.'],
+  src: 'Boston Cooking-School Cook Book (Fannie Farmer, 1896), p. 392.' },
+
+{ id: 'nettle-quiche', n: 'Nettle and egg bake', cat: 'eggs',
+  what: 'Eggs, milk, stale bread and blanched nettles baked together. Wedges are good hot or cold, so it travels.',
+  need: ['eggs', 'milk', 'wheat', 'nettles', 'salt'], opt: ['cheese', 'fish', 'pork', 'onions', 'pepper'],
+  time: '1 hour',
+  on: 'An oven, 350 degrees',
+  ways: [{ h: ['oven'], g: [] }, { h: ['solar'], g: [] }],
+  yield: 'six servings',
+  steps: [
+    'Blanch the nettles first (boil 1½ to 2 minutes, cool, drain, chop). You need 1 cup, drained.',
+    'Whisk 4 eggs, 1⅓ cups milk, and ½ teaspoon each of salt, pepper and ground mustard. Stir in the nettles and ¼ cup of sliced onion or chives.',
+    'Cube 3 slices of bread and spread them in a greased 9-inch pie pan. Scatter about ¾ cup of crumbled smoked fish or browned sausage among the cubes if you have it.',
+    'Pour the egg mixture slowly over everything and sprinkle ¼ cup of grated cheese on top.',
+    'Bake uncovered on a lower rack at 350 degrees for 40 to 45 minutes, until a knife put in near the middle comes out clean. It puffs up as it cooks.',
+    'Serve the wedges hot or cold. Put leftovers somewhere cold within 2 hours.'],
+  src: 'Oregon State University Extension, Wild Edibles: Stinging Nettle (EM 9373, 2022), p. 5.' },
+
+{ id: 'apple-fritters', n: 'Apple fritters', cat: 'eggs',
+  what: 'Apple slices in batter, fried. A way to make windfall apples into something people are glad to see.',
+  need: ['apples', 'wheat', 'bakingpowder', 'eggs', 'salt'], opt: ['milk', 'lard', 'oil', 'tallow', 'sugar', 'honey'],
+  time: '30 minutes',
+  on: 'Deep fat in a pan or pot on any heat',
+  ways: [{ h: ['stovetop', 'coals', 'fire', 'camp'], g: ['pan'] }, { h: ['stovetop', 'coals', 'fire', 'camp'], g: ['pot'] }],
+  steps: [
+    'Batter: 1⅓ cups flour, 2 teaspoons baking powder, ½ teaspoon salt, 1 well-beaten egg, and enough milk (about ⅔ cup) to make a thick batter.',
+    'Pare and core 2 medium-sized sour apples, cut them in eighths, then slice the eighths.',
+    'Stir the apple into the batter.',
+    'Drop it by spoonfuls into deep fat hot enough to brown a cube of bread in about a minute.',
+    'Drain them on paper and dust with sugar if you have it. Serve hot.'],
+  note: 'Our scanned copy of the 1896 book is faint on the cup fractions in this batter; the amounts above are "about". Go by the look: a thick batter that coats the apple and does not run off.',
+  src: 'Boston Cooking-School Cook Book (Fannie Farmer, 1896), pp. 346-347 (Batter III and Apple Fritters I).' },
+
+{ id: 'butter', n: 'Butter from cream', cat: 'dairy',
+  what: 'Salted to 3 per cent and packed in a crock, butter keeps up to four months with no fridge.',
+  need: ['cream', 'salt', 'water'], opt: ['milk'],
+  time: '12 hours ripening, then an hour',
+  on: 'No heat, but the temperatures matter',
+  ways: [{ h: ['*'], g: [] }],
+  steps: [
+    'Ripen: warm the saved cream to 65 to 75 degrees and hold it until it thickens, looks glossy and tastes mildly sour — about 12 hours. Cream gone too sour makes poor butter.',
+    'Cool it to churning heat and hold it there 2 hours: 52 to 60 degrees in summer, 58 to 66 in winter. Set it so the butter comes in 30 to 40 minutes. Warm or cool it by standing the can in water; never pour hot water or ice into cream.',
+    'Churn with the churn only a third full. With no churn, a jar or a closed can, shaken, rolled on a mat, or swung from a tripod. Let the gas out a few times early on.',
+    'STOP when the grains are the size of wheat, and drain the buttermilk off through a strainer. Churning on into one lump traps buttermilk in the butter and it will not keep.',
+    'Wash, do not work, the buttermilk out: twice, with clean water at the buttermilk\'s temperature, twice its volume in all. Three times in hot weather.',
+    'Salt and work: about ½ ounce of salt per pound (3 per cent) for butter you mean to keep. Press and fold with a wooden paddle, never warm hands, just until the salt is even and the butter breaks "like broken steel".',
+    'Pack it firmly from one churning into a well-glazed crock, cool and dark. Or submerge rolls of it in brine of 1 pound salt to 4 pounds water.'],
+  src: 'Milk, Butter and Cheese guide, Butter and buttermilk (from USDA Farmers\' Bulletin 876, Making Butter on the Farm, 1930, pp. 8-20, and ILCA Rural Dairy Technology, pp. 46-62).',
+  g: [['DAIRY-GUIDE', 'butter-and-buttermilk', 'Milk, Butter and Cheese: butter and buttermilk']] },
+
+{ id: 'ghee', n: 'Ghee (butter that keeps a year)', cat: 'dairy',
+  what: 'Butter with the water and milk solids cooked out, so germs have nothing to grow in. It keeps more than 12 months at room temperature.',
+  need: ['butter'], opt: ['cream'],
+  time: '1 to 2 hours',
+  on: 'A heavy pot on a stove top or steady coals',
+  ways: [{ h: ['stovetop', 'coals', 'camp'], g: ['pot'] }],
+  yield: 'about ¾ pound of ghee per pound of butter',
+  steps: [
+    'Melt the butter in a heavy pot (the traditional way boils cream instead) and boil it gently and steadily, skimming the scum. Do not scorch it.',
+    'It is done when the water stops spitting and the milk solids on the bottom turn golden brown. Colour is the only test.',
+    'Let it settle, then pour it off through boiled cheesecloth until it runs clear.',
+    'Store it airtight, dark and cool, in glass or a glazed crock. Never iron or copper, which speed rancidity. Fill the jar full and use a clean dry spoon every time.'],
+  note: 'In fire season, do the long boil indoors on the stove or before dawn, not over an open fire outside.',
+  src: 'Milk, Butter and Cheese guide, Ghee and clarified butter (from Practical Action, Butter and Ghee, p. 4, and ILCA Rural Dairy Technology, pp. 45-49).',
+  g: [['DAIRY-GUIDE', 'ghee-and-clarified-butter-for-storage', 'Milk, Butter and Cheese: ghee']] },
+
+{ id: 'yogurt', n: 'Yogurt (in a hay box)', cat: 'dairy',
+  what: 'Milk that keeps days longer than fresh milk, and a hay box or a cooler of hot-water jars will hold the warmth for you.',
+  need: ['milk', 'culture'], opt: [],
+  time: '30 minutes, then 4 to 6 hours warm',
+  on: 'A pot to heat the milk, then anything that holds warmth',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp', 'haybox'], g: ['pot'] }],
+  steps: [
+    'Heat the milk to 176 to 185 degrees and hold it there 15 to 20 minutes, stirring.',
+    'Cool it fast to 104 to 113 degrees by standing the pot in cold water.',
+    'Stir in live yogurt: about 1½ to 3 tablespoons per quart.',
+    'Keep it at 104 to 113 degrees for 4 to 6 hours — a thermos, an insulated box, a hay box, or a cooler with jars of hot water in it. Then cool it.',
+    'It keeps up to 10 days cold. In a springhouse, plan on less.',
+    'Keep a small mother culture going from clean, freshly heated milk and use 1 to 3 per cent of it to seed each batch. Keep two of each culture in two places, and share with neighbours: their jar is your backup.'],
+  src: 'Milk, Butter and Cheese guide, Cultured milk, yogurt and kefir (from Practical Action, Soured Milk and Yoghurt, pp. 1-4).',
+  g: [['DAIRY-GUIDE', 'cultured-milk-yogurt-and-kefir', 'Milk, Butter and Cheese: yogurt and kefir'],
+      ['MAKE-DO-HOUSEHOLD-GUIDE', 'hay-box-cooking-saves-fuel', 'Make-Do Household: hay-box cooking']] },
+
+{ id: 'kefir', n: 'Kefir (needs no warm box)', cat: 'dairy',
+  what: 'Soured milk that sets at ordinary room temperature, so it needs no insulated box. The grains last for years if you feed them.',
+  need: ['milk', 'culture'], opt: [],
+  time: '30 minutes, then about 12 hours',
+  on: 'A pot to heat the milk; then room temperature',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp'], g: ['pot'] }],
+  steps: [
+    'Heat the milk to 185 degrees for 30 minutes, then cool it.',
+    'Add kefir grains — the lumps the bacteria and yeasts live in.',
+    'Leave it about 12 hours at 72 degrees.',
+    'Lift the grains out with a clean spoon into the next jar of milk. They multiply: give the spares away or feed them to the hens.'],
+  src: 'Milk, Butter and Cheese guide, Cultured milk, yogurt and kefir (from ILCA Rural Dairy Technology, p. 59).',
+  g: [['DAIRY-GUIDE', 'cultured-milk-yogurt-and-kefir', 'Milk, Butter and Cheese: yogurt and kefir']] },
+
+{ id: 'paneer', n: 'Paneer or queso blanco (cheese with no rennet)', cat: 'dairy',
+  what: 'Cheese in under an hour from milk and something sour. No rennet, no culture, no press needed.',
+  need: ['milk', 'salt'], opt: ['vinegar', 'cider'],
+  time: '1 hour, plus pressing overnight',
+  on: 'A pot on any heat',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp'], g: ['pot'] }],
+  yield: 'about ½ pound of moist cheese per gallon of milk; a pressed one about 1 pound',
+  steps: [
+    'Heat the milk to 180 degrees, or to a simmer for 5 minutes. That pasteurizes it at the same time.',
+    'Stir in lemon juice, lime juice or vinegar — about 2 tablespoons per quart, diluted with the same amount of water. Add it in three parts, and stop as soon as the curds clump and the whey runs clear and yellow-green.',
+    'Let it settle 15 minutes, then drain it in a cloth, stirring so it does not mat.',
+    'Salt it (3.5 to 5 per cent of the curd\'s weight) and press it overnight.',
+    'Soft cheeses keep only days: about 3 days cold, 5 in brine. Make them from pasteurized milk.'],
+  src: 'Milk, Butter and Cheese guide, Soft cheeses (from ILCA Rural Dairy Technology, pp. 50-52, and Practical Action, Cheese Making, pp. 1-2).',
+  g: [['DAIRY-GUIDE', 'soft-cheeses-paneer-queso-fresco-ch-vre-cottage-cheese', 'Milk, Butter and Cheese: soft cheeses']] },
+
+{ id: 'cottage-cheese', n: 'Cottage cheese with no bought culture', cat: 'dairy',
+  what: 'Skim milk left to clabber on its own, then warmed. Nothing bought at all.',
+  need: ['milk', 'salt'], opt: ['cream'],
+  time: 'about 30 hours, then an hour',
+  on: 'A pan standing in hot water',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp'], g: ['pot'] }],
+  yield: 'about 1½ pounds per gallon of skim milk',
+  steps: [
+    'Let skim milk clabber at about 75 degrees — roughly 30 hours — until it is clean and pleasantly sour.',
+    'Cut the curd into 2-inch pieces.',
+    'Stand the pan in hot water to bring the curd to 100 degrees, and hold it 30 minutes, stirring gently. Hotter makes it tough.',
+    'Drain it in a cloth bag, rinse it in cold water, and salt it.',
+    'Keep it in glass or earthenware and eat it soon: 36 hours at room temperature puts it off flavour.'],
+  src: 'Milk, Butter and Cheese guide, Soft cheeses (from USDA Farmers\' Bulletin 1451, Making and Using Cottage Cheese in the Home, 1927, pp. 6-7 and 10).',
+  g: [['DAIRY-GUIDE', 'soft-cheeses-paneer-queso-fresco-ch-vre-cottage-cheese', 'Milk, Butter and Cheese: soft cheeses']] },
+
+{ id: 'farm-cheddar', n: 'Farm cheddar (hard cheese that keeps months)', cat: 'dairy',
+  what: 'The one cheese that turns a summer of milk into winter food. Five or six hours of work, then minutes a day while it cures.',
+  need: ['milk', 'rennet', 'salt'], opt: ['sourmilk'],
+  time: '5 to 6 hours, then 6 weeks or more curing',
+  on: 'A big pot standing in a tub of warm water',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp'], g: ['pot'] }],
+  yield: 'about 3½ pounds of cheese from 4 gallons of milk',
+  steps: [
+    'Use milk under 12 hours old, kept at 60 degrees or below. Cool nights make the best cheese; hot weather breeds gas germs. Pasteurize it if you can, then add ¼ to ½ cup of clean buttermilk or clabber per gallon as starter.',
+    'Warm 4 gallons of milk to 86 degrees in a big pot set in a tub of warm water, and keep it there until you cut the curd.',
+    'Stir in about ⅔ teaspoon of liquid rennet mixed into a cup of cool water. Stir it through for 3 minutes, cover, and do not let it move for 30 to 35 minutes.',
+    'Test the set: slide a finger in at a slant, lift, and split the curd with your thumb. When it splits cleanly with nothing left on the finger, cut it.',
+    'Cut it into ⅜-inch cubes with a long knife — lengthwise, crosswise, then a quarter turn and lengthwise again. Cut, do not crush.',
+    'Stir gently 15 to 20 minutes, then heat slowly — about 2 degrees every 5 minutes — to 100 degrees, still stirring.',
+    'Hold it at 100 degrees until a squeezed handful falls apart when you open your hand, and a pinch of curd pressed on a clean hot iron draws threads ¼ to ½ inch long.',
+    'Dip the whey off, spread the curd on a cloth over a rack near 100 degrees, and stir it every 5 to 10 minutes so the pieces stay about the size of hickory nuts.',
+    'When the hot-iron threads reach ¾ to 1 inch, salt it: about 3 ounces of salt per 10 pounds of curd. Let the salt dissolve and the curd cool to 85 degrees.',
+    'Press it in a cloth-lined hoop: light weight 30 minutes, more for an hour, then take it out, dip it in warm water, smooth the cloth, and press at full weight 24 hours.',
+    'Cure at 50 to 60 degrees, turned daily for 2 weeks, then twice a week. Coat it at 2 weeks. Eat it from 6 weeks for mild, or keep it many months for sharp.'],
+  note: 'The guide has the hoop and the lever press (a long pole hinged to the wall and a pail of stones), and the smaller one-gallon version for a single goat.',
+  src: 'Milk, Butter and Cheese guide, Hard cheese step by step (from USDA Farmers\' Bulletin 1191, Making American Cheese on the Farm, 1924, pp. 4-17).',
+  g: [['DAIRY-GUIDE', 'hard-cheese-step-by-step-with-a-home-made-press', 'Milk, Butter and Cheese: hard cheese and a home-made press']] },
+
+{ id: 'feta', n: 'Feta in brine (no press)', cat: 'dairy',
+  what: 'Cheese that keeps for months under brine and needs no press at all. Cow, sheep or goat milk all work.',
+  need: ['milk', 'rennet', 'salt', 'water'], opt: [],
+  time: 'a day, then days to months in brine',
+  on: 'A pot on any heat',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp'], g: ['pot'] }],
+  yield: 'about 1 pound per gallon of milk',
+  steps: [
+    'Warm the milk to 90 degrees and let it stand 1 hour, with a little starter if it was pasteurized.',
+    'Add rennet — about ¾ teaspoon for 4 gallons. It should be firm in 40 to 50 minutes.',
+    'Cut it into 1-inch cubes, let the whey separate 15 minutes with occasional stirring, let it settle, and dip the whey off.',
+    'Ladle the curd into cloth-lined moulds with lids. Turn them every half hour for the first few hours, and drain overnight.',
+    'Cut it into blocks, sprinkle them with salt, and put them in 15 per cent brine — about 1¼ to 1½ pounds of salt per gallon of boiled water.',
+    'KEEP THE AIR OUT: a full crock with a weighted plate, or a full sealed jar. Mould grows wherever air reaches the brine.',
+    'Eat it after a few days or keep it for months. It softens and crumbles as it ripens.'],
+  src: 'Milk, Butter and Cheese guide, Feta and halloumi (from ILCA Rural Dairy Technology, pp. 52-56).',
+  g: [['DAIRY-GUIDE', 'feta-and-halloumi-cheese-that-keeps-in-brine', 'Milk, Butter and Cheese: cheese that keeps in brine']] }
+);
+})();
+
+/* ----------------------------------------- things that keep: preserves and pickles */
+(function () { var R = window.RECIPEDATA.recipes;
+R.push(
+{ id: 'sauerkraut', n: 'Sauerkraut', cat: 'keep',
+  what: 'Cabbage and salt, nothing else. The one preserve that needs no vinegar, no sugar and no canner, so it does not end when the store does.',
+  need: ['cabbage', 'salt', 'water'], opt: [],
+  time: '3 to 6 weeks',
+  on: 'No heat at all',
+  ways: [{ h: ['*'], g: ['crock'] }],
+  steps: [
+    '25 pounds of cabbage to ¾ cup of canning salt — 3 tablespoons per 5 pounds — shredded within 24 to 48 hours of harvest. Allow a 1-gallon crock per 5 pounds.',
+    'Pack it down so the brine rises over it.',
+    'Weight it with a sealed bag of brine (3 quarts water and 4½ tablespoons salt), so that if the bag leaks it cannot weaken the brine.',
+    'Keep the cabbage under the brine. Top up with 1½ tablespoons of salt per quart of water if you need to.',
+    'Ferment 3 to 4 weeks at 70 to 75 degrees, or 5 to 6 weeks at 60 to 65. Below 60 degrees it may not ferment at all; above 75 it goes soft.',
+    'Skim the scum often. Soft, slimy or bad-smelling kraut goes out.'],
+  note: 'Never cut the salt in a ferment: the salt is the safety. To CAN the finished kraut, the time depends on your elevation — the Preserving Food guide gives ours.',
+  src: 'Preserving Food guide, Pickles, sauerkraut and other ferments (from USDA Complete Guide to Home Canning 2015, Guide 6, pp. 6-8, and USDA FB 1438).',
+  g: [['PRESERVING-FOOD-GUIDE', 'pickles-sauerkraut-and-other-ferments', 'Preserving Food: pickles, kraut and ferments']] },
+
+{ id: 'dill-pickles', n: 'Fermented dill pickles', cat: 'keep',
+  what: 'Cucumbers kept by salt and their own souring, not by bought vinegar.',
+  need: ['cucumbers', 'salt', 'water'], opt: ['herbs', 'vinegar'],
+  time: '3 to 4 weeks',
+  on: 'No heat at all',
+  ways: [{ h: ['*'], g: ['crock'] }],
+  steps: [
+    'Per gallon: 4 pounds of 4-inch cucumbers, ½ cup salt, ¼ cup 5 per cent vinegar, 8 cups water, and dill.',
+    'Keep the cucumbers under the brine with a weight.',
+    'Ferment 3 to 4 weeks at 70 to 75 degrees.',
+    'Skim the scum often.',
+    'Soft, slimy or bad-smelling pickles go out — do not taste them to decide.'],
+  note: 'Use only tested amounts, and only bought 5 per cent vinegar if a recipe calls for vinegar. Homemade vinegar has an unknown strength and must never be used for canned pickles.',
+  src: 'Preserving Food guide, Pickles, sauerkraut and other ferments (from USDA Complete Guide to Home Canning 2015, Guide 6, p. 7).',
+  g: [['PRESERVING-FOOD-GUIDE', 'pickles-sauerkraut-and-other-ferments', 'Preserving Food: pickles, kraut and ferments']] },
+
+{ id: 'salt-vegetables', n: 'Any vegetable, salted or brined', cat: 'keep',
+  what: 'A rule rather than a recipe: how much salt for whatever the garden gives you all at once.',
+  need: ['salt', 'water'], any: [['cabbage', 'carrots', 'turnips', 'beets', 'peppers', 'cucumbers', 'greens', 'sweetcorn']],
+  opt: [],
+  time: 'weeks',
+  on: 'No heat at all',
+  ways: [{ h: ['*'], g: ['crock'] }],
+  steps: [
+    'Dry-salting shredded vegetables: 1 tablespoon of non-iodized salt per 2 pounds.',
+    'Brining chunks: 1 teaspoon of salt per cup of water — 2 teaspoons for cucumbers or peppers.',
+    'Keep everything weighted under the brine, at 60 to 70 degrees.',
+    'Heavy salting without fermenting, the 1918 way: a 15 to 25 per cent brine keeps beans, beets, corn, chard and cabbage until spring. Soak the vegetables in fresh water to take the salt out, then cook them.'],
+  src: 'Preserving Food guide, Pickles, sauerkraut and other ferments (from Kansas State MF3491, p. 2, and the US Food Administration\'s 1918 bulletin on preserving vegetables by salting, p. 7).',
+  g: [['PRESERVING-FOOD-GUIDE', 'pickles-sauerkraut-and-other-ferments', 'Preserving Food: pickles, kraut and ferments']] },
+
+{ id: 'berry-jam', n: 'Berry jam with no bought pectin', cat: 'keep',
+  what: 'Fruit and sugar boiled until it sets. Feral blackberries ripen by the bucketful here in July and August.',
+  need: ['berries', 'sugar'], opt: ['apples'],
+  time: '1 hour',
+  on: 'A pot on any heat',
+  ways: [{ h: ['stovetop', 'fire', 'coals', 'camp'], g: ['pot'] }],
+  yield: '3 to 4 half-pints from 4 cups of fruit',
+  steps: [
+    '4 cups crushed berries to 4 cups sugar.',
+    'Boil it hard to 217 to 218 degrees, or until two drops run together and sheet off a cool spoon.',
+    'For jelly, use ¾ ripe fruit and ¼ under-ripe. Apples, crab apples, gooseberries and some plums and grapes bring their own pectin; strawberries, cherries and blueberries do not.',
+    'Do not cut the sugar. Too little gives a weak gel, mould and yeast.'],
+  note: 'For jars that keep on a shelf, process them in a boiling-water canner for the time your elevation needs: the Preserving Food guide gives ours. Without that, treat the jam as fresh food and keep it cold.',
+  src: 'Preserving Food guide, Water-bath canning and jam without pectin (from USDA Complete Guide to Home Canning 2015, Guide 7, p. 6, Guide 1, pp. 29-30, and PNW 652, p. 26).',
+  g: [['PRESERVING-FOOD-GUIDE', 'water-bath-and-steam-canning-jam-without-pectin', 'Preserving Food: water-bath canning and jam']] },
+
+{ id: 'apple-butter', n: 'Apple butter', cat: 'keep',
+  what: 'Eight pounds of apples cooked down to a dark spread. The way to use a tree\'s worth of windfalls.',
+  need: ['apples', 'sugar', 'cider', 'vinegar', 'spices'], opt: [],
+  time: 'most of a day',
+  on: 'A pot on a stove top, or a solar oven for the long slow part',
+  ways: [{ h: ['stovetop', 'coals', 'camp', 'solar'], g: ['pot'] }],
+  yield: 'about 8 to 9 pints',
+  steps: [
+    '8 pounds apples, 2 cups cider, 2 cups vinegar, 2¼ cups white sugar, 2¼ cups packed brown sugar, 2 tablespoons ground cinnamon, 1 tablespoon ground cloves.',
+    'Wash the apples, take off the stems, quarter and core them.',
+    'Cook them slowly in the cider and vinegar until soft.',
+    'Press the fruit through a colander, food mill or strainer.',
+    'Cook the pulp with the sugar and spices, stirring often, until it is thick and holds its shape on a spoon.',
+    'Tasty varieties give the best result: Jonathan, Winesap, Stayman, Golden Delicious, McIntosh and the like.'],
+  note: 'For jars that keep on a shelf this needs a boiling-water canner, and the time depends on elevation. USDA Guide 2 (in Gardening-Food on the drive) has the table for 1,001 to 6,000 feet, which is us. Read it rather than guessing.',
+  src: 'USDA Complete Guide to Home Canning 2015, Guide 2 (Fruits), p. 6.',
+  g: [['PRESERVING-FOOD-GUIDE', 'water-bath-and-steam-canning-jam-without-pectin', 'Preserving Food: water-bath canning']] },
+
+{ id: 'dried-fruit', n: 'Dried apples, pears and plums', cat: 'keep',
+  what: 'The cheapest preserve: no jars, no sugar, no fuel if the sun does it. Our dry summers suit it.',
+  need: ['apples'], opt: ['berries', 'driedfruit'],
+  time: 'days',
+  on: 'Sun and moving air, a solar dryer, or a low oven',
+  ways: [{ h: ['dry'], g: [] }, { h: ['solar'], g: [] }, { h: ['oven'], g: [] }, { h: ['stovetop'], g: [] }],
+  steps: [
+    'Sun drying needs about 90 degrees, low humidity and clean air. Several days in a row near 95 degrees makes it dependable.',
+    'Slice the fruit evenly and lay it on trays of food-safe screen — not galvanized. Cover the trays with cheesecloth or netting against insects.',
+    'Bring the trays in at night so the dew does not re-wet the food.',
+    'Apples, pears, plums, cherries, peaches, grapes and huckleberries all dry well. Blackberries do not.',
+    'Fruit is dry when it is leathery with no moist centre: squeeze a handful and it should spring apart like rubber bands. Vegetables should be brittle.',
+    'Then CONDITION it: pack it loosely in covered jars for 2 to 4 days, shaking daily. Moisture on the lid means dry it more.',
+    'Kill insect eggs before storing: 160 degrees for 30 minutes.',
+    'Do not dry food outdoors in wildfire smoke. Bring the trays in when smoke settles.'],
+  src: 'Preserving Food guide and Root Cellar guide, Drying food (from PNW 651, Drying Project Manual, pp. 16-19, and USDA FB 984, Farm and Home Drying, pp. 13-14 and 47).',
+  g: [['ROOT-CELLAR-GUIDE', 'drying-food', 'Root Cellar guide: drying food']] },
+
+{ id: 'fruit-leather', n: 'Fruit leather', cat: 'keep',
+  what: 'Windfall fruit pureed, spread thin and dried. Children eat it, it weighs nothing, and it needs no jar.',
+  need: ['apples'], opt: ['berries', 'honey', 'sugar'],
+  time: 'a day or two',
+  on: 'A solar dryer, sun and moving air, or a low oven',
+  ways: [{ h: ['dry'], g: [] }, { h: ['solar'], g: [] }, { h: ['oven'], g: [] }],
+  steps: [
+    'Puree the fruit.',
+    'Heat the puree to 160 degrees first. This is the step people skip, and it is the one that matters.',
+    'Spread it thin on a tray lined with something smooth and dry it until it peels off in one sheet and is no longer sticky in the middle.',
+    'Roll it, wrap it and keep it dry.'],
+  src: 'Preserving Food guide, drying (from PNW 651, Drying Project Manual, p. 20).',
+  g: [['ROOT-CELLAR-GUIDE', 'drying-food', 'Root Cellar guide: drying food']] },
+
+{ id: 'dried-mushrooms', n: 'Dried mushrooms', cat: 'keep',
+  what: 'The only safe way to keep a big mushroom find for winter. Moving dry air matters more than heat.',
+  need: ['mushrooms'], opt: [],
+  time: 'a day',
+  on: 'Warm moving air: a dryer, screens in dry weather, or near a wood stove with a fan',
+  ways: [{ h: ['dry'], g: [] }, { h: ['stovetop'], g: [] }, { h: ['solar'], g: [] }],
+  steps: [
+    'Slice them about ½ inch thick.',
+    'Dry at about 120 degrees with good airflow, until crisp. Do not go over 120 degrees.',
+    'No dryer? In warm dry weather use screens, thread them on fishing line, or lay them in a single layer on a tarp and turn them. Or use the warm moving air near a wood stove with a fan.',
+    'Store them airtight. Rehydrate in hot water.',
+    'Morels lose about 90 per cent of their weight; 7 pounds of fresh shiitake makes about 1 pound dried.',
+    'Ventilate while drying: the spores can set off asthma.'],
+  note: 'NEVER CAN wild mushrooms. Only store-type button mushrooms have tested canning times, and improperly canned chanterelles gave diners botulism in Vancouver in 1987. Cook all wild mushrooms, never eat them raw, and eat a few mouthfuls the first time rather than a plateful.',
+  src: 'Mushroom guide, Cooking, drying and storing (from Oregon State SP 50-919, Preserving Mushrooms, pp. 1-2, USFS PNW-GTR-710, pp. 66-67, and USDA Agroforestry Note 13, p. 4).',
+  g: [['MUSHROOM-GUIDE', 'cooking-drying-and-storing', 'Mushroom guide: cooking, drying and storing']] },
+
+{ id: 'eggs-in-limewater', n: 'Eggs kept in limewater', cat: 'keep',
+  what: 'Spring eggs put down in a crock to eat in winter, when the hens have stopped. No power and no jars.',
+  need: ['eggs', 'water'], opt: ['lime'],
+  time: 'an afternoon, then months',
+  on: 'No heat (the water is boiled and cooled first)',
+  ways: [{ h: ['*'], g: ['crock'] }],
+  steps: [
+    'Use fresh, clean, uncracked spring eggs. Wipe them, do not wash them.',
+    'Water glass (sodium silicate): 1 quart to 9 quarts of boiled, cooled water. Or clear limewater: 2 pounds of lime in 5 gallons of boiled water.',
+    'Put the eggs in a crock and cover them with 2 inches of the liquid.',
+    'Keep the crock cool and dark.',
+    'Prick the shell before boiling one, or it cracks.'],
+  note: 'USDA says 6 to 9 months; FAO says only 1 to 6. Plan on the shorter.',
+  src: 'Preserving Food guide and Root Cellar guide, Fermenting, salting, eggs and vinegar (from USDA, Home Methods of Preserving Eggs, 1935, pp. 3-4, and FAO Small-Scale Poultry Production, p. 83).',
+  g: [['ROOT-CELLAR-GUIDE', 'fermenting-salting-eggs-and-vinegar', 'Root Cellar guide: keeping eggs']] },
+
+{ id: 'vinegar', n: 'Vinegar from fruit juice', cat: 'keep',
+  what: 'Cider or any fruit juice turned to vinegar by air. Fine for cooking, and it costs nothing but time.',
+  need: ['cider', 'vinegar'], opt: ['apples', 'berries', 'yeast'],
+  time: '3 to 6 months',
+  on: 'No heat at all, but it must stay at 70 degrees or warmer',
+  ways: [{ h: ['*'], g: ['crock'] }],
+  steps: [
+    'Yeast turns the fruit juice to alcohol in 4 to 6 days.',
+    'Then add 1 part unpasteurized vinegar to 4 parts juice.',
+    'Leave it open to the air under cheesecloth, at 70 degrees or warmer, and do not disturb the "mother" that forms.',
+    'It takes 3 to 6 months.'],
+  note: 'NEVER use homemade vinegar for canned pickles. Only a titration test proves its strength, and canning recipes need tested 5 per cent vinegar. Cooking, salad and cleaning: yes. Canning: no.',
+  src: 'Preserving Food guide, Lard, confit, eggs and vinegar (from USDA Farmers\' Bulletin 1424, Making Vinegar, 1924, pp. 9-12 and 30).',
+  g: [['PRESERVING-FOOD-GUIDE', 'lard-confit-eggs-and-vinegar', 'Preserving Food: lard, eggs and vinegar']] }
+);
+})();
+</script>
+<script>
+/* This area's own recipes, if it has any. tools/region.py puts them in from
+   regions/<id>/notes/recipes.md, the same way the app's Tools cards are filled in; with no such
+   note for this area the line below disappears and the page simply has none. */
+(function () { var R = window.RECIPEDATA.recipes, D = window.RECIPEDATA;
+D.cats.push(['native', 'Meals of this valley’s first peoples']);
+R.push(
+{ id: 'nsk-leach-acorns', n: 'Acorn meal leached in a sand basin', cat: 'native',
+  what: 'The local way to take the bitterness out of acorns, without a pot: a saucer scooped in clean sand, and hot water poured through. A family’s year’s supply was about 400 to 500 pounds of acorns.',
+  need: ['acorns', 'water'], opt: [],
+  time: 'about two hours of pouring',
+  on: 'Water heated any way — traditionally by dropping hot stones into a basket',
+  ways: [{ h: ['stones'], g: [] }, { h: ['stovetop', 'fire', 'coals', 'camp'], g: ['pot'] }],
+  steps: [
+    'Dry the acorns in the sun, store them in the shell in big baskets, then shell them and dry the meats again. Rub off the thin inner skin by hand: a step often overlooked.',
+    'Pound them to a powder on a flat stone inside a bottomless basket hopper, held down by your legs over its rim. Oily meal will not leach unless it is ground fine. Sift on a tilted shallow basket and pound the coarse bits again.',
+    'Scoop a saucer in clean sand and build up the rim. The Shasta raised theirs 6 to 12 inches off the ground on sticks and pine needles.',
+    'Spread the meal about 2 inches thick and lay a cedar sprig or a small tule mat on top so the pouring does not scour it.',
+    'Pour on nearly scalding water, gently. As fast as it soaks away, add more. It takes about a couple of hours.',
+    'Taste it. Done is sweet, with no bitterness and no pucker.',
+    'Slap your palm onto the drained dough, lift it, and wash the sand off its underside in warm water. Dried, the dough stores — the Shasta traded it to the Rogue River people.'],
+  note: 'Tanoak was most esteemed; black oak was the Shasta’s first choice, then Oregon white oak. Canyon live oak is poisonous raw and needs more washing. Acorns have little protein: eat them with salmon or meat.',
+  src: 'Skills of the Valley’s First Peoples guide, Acorns: from tree to mush and Leaching in a sand basin (from Goddard, Life and Culture of the Hupa, 1903, pp. 37-38; Dixon, The Shasta, 1907, pp. 51-54; Chesnut, Plants Used by the Indians of Mendocino County, 1902, pp. 348-350; Kroeber, Handbook, pp. 125-126, 351; Sapir, Notes on the Takelma, 1907, p. 9).',
+  g: [['NATIVE-SKILLS-GUIDE', 'leaching-in-a-sand-basin', 'First Peoples guide: leaching acorn meal'],
+      ['FOOD-FROM-SCRATCH-GUIDE', 'acorn-flour', 'Food From Scratch: the modern short method']] },
+
+{ id: 'nsk-acorn-mush', n: 'Acorn mush boiled with hot stones', cat: 'native',
+  what: 'How you boil in a basket: heat stones in the fire and drop them into the food. The everyday dish of this valley for thousands of years.',
+  need: ['acorns', 'water'], opt: ['salt'],
+  time: 'about half an hour once the stones are hot',
+  on: 'Hot stones lifted from the fire into a tight basket or a pot',
+  ways: [{ h: ['stones'], g: ['basket'] }, { h: ['stones'], g: ['pot'] }],
+  steps: [
+    'Pick stones that do not splinter or fall apart when heated and suddenly cooled. Never heat wet or porous river rocks: they can burst.',
+    'Rinse the ash off the hot stones and lift them with green-wood tongs.',
+    'Put the leached dough and a little water in a tight basket or pot, drop a hot stone in, then add more water and more stones.',
+    'Stir vigorously the whole time, so a stone cannot sit still and burn through the basket.',
+    'Eat it with salt: with salt "it is quite agreeable".'],
+  src: 'Skills of the Valley’s First Peoples guide, Stone-boiling mush and baking bread (from Goddard, 1903, p. 39; Dixon, The Shasta, 1907, p. 54; Chesnut, 1902, p. 350; Kroeber, Handbook, p. 125).',
+  g: [['NATIVE-SKILLS-GUIDE', 'stone-boiling-mush-and-baking-bread', 'First Peoples guide: stone-boiling mush']] },
+
+{ id: 'nsk-acorn-cakes', n: 'Acorn cakes and acorn bread', cat: 'native',
+  what: 'Two ways to bake acorn dough: small cakes on a rock tilted toward the fire, or a loaf buried in an earth oven overnight, which turns it sweet.',
+  need: ['acorns', 'water'], opt: ['salt'],
+  time: 'cakes, minutes; a loaf, about 12 hours',
+  on: 'A flat rock leaning toward the fire, or an earth oven',
+  ways: [{ h: ['fire', 'coals'], g: ['basket'] }, { h: ['earth'], g: [] }],
+  steps: [
+    'Leach and drain the acorn meal first (see Acorn meal leached in a sand basin).',
+    'Cakes: shape small cakes of the dough and set them on a flat rock tilted toward the fire. Eat them with salt.',
+    'Bread: lay a loaf on leaves in an earth oven and leave it about 12 hours. Long cooking turns it sweet.',
+    'Oak bark is the fuel to bank it with: it burns slowly and without flame.'],
+  src: 'Skills of the Valley’s First Peoples guide, Stone-boiling mush and baking bread (from Dixon, The Shasta, 1907, p. 54, and Chesnut, 1902, pp. 351 and 354).',
+  g: [['NATIVE-SKILLS-GUIDE', 'stone-boiling-mush-and-baking-bread', 'First Peoples guide: baking acorn bread']] },
+
+{ id: 'nsk-camas-pit', n: 'Camas baked in an earth oven', cat: 'native',
+  what: 'Raw camas is gluey and tasteless; cooked a day and a night it is very sweet, because the long heat turns its starch to sugar. A family of five needed about seven acres of camas ground.',
+  need: ['camas'], opt: ['water'],
+  time: '24 to 36 hours',
+  on: 'An earth oven: a pit of fire-heated stones, covered over',
+  ways: [{ h: ['earth'], g: [] }],
+  steps: [
+    'Lift the turf in small sections, take only the larger bulbs, break up and replant the rest, and put the turf back. Dig each patch only every few years. Replant bulblets half an inch to an inch deep and big bulbs 4 to 6 inches.',
+    'Dig a pit. Fill it with alder brush with stones on top, or line it with stones, and burn it until the stones are hot.',
+    'Lay alder bark or pine needles on the hot stones, then the bulbs, more needles, then earth over the top. Chesnut’s cooks kept a small fire going on top overnight.',
+    'The next day, if the roots are not yet well cooked, build the fire again. Camas takes 24 to 36 hours, until it is soft and sweet all the way through.',
+    'Mash the cooked bulbs into cakes and dry them for winter. Soak dried bulbs overnight before eating them.'],
+  note: 'DEADLY LOOK-ALIKE. Death camas bulbs are very nearly identical, and flower colour will not separate them — great camas can be creamy-white too. Smell will not either: death camas has no onion smell, and no book here says camas does. The safe way is the traditional one: mark the blue plants while they bloom, dig them after seed set, and pull every death camas out of your beds. Two of the three poisonings Chesnut knew of were fatal.',
+  src: 'Skills of the Valley’s First Peoples guide, Tending a camas bed and pit-roasting (from Sapir, Notes on the Takelma, 1907, p. 9; Chesnut, 1902, pp. 333 and 340; the USDA NRCS Great Camas plant guide, pp. 1-4; PNW 104).',
+  g: [['NATIVE-SKILLS-GUIDE', 'tending-a-camas-bed-and-pit-roasting', 'First Peoples guide: camas and the roasting pit'],
+      ['NATIVE-SKILLS-GUIDE', 'telling-camas-from-death-camas', 'First Peoples guide: telling camas from death camas']] },
+
+{ id: 'nsk-other-bulbs', n: 'Brodiaea and mariposa lily bulbs', cat: 'native',
+  what: 'Other small bulbs of the same meadows, roasted in the ashes or boiled in baskets.',
+  need: ['camas'], opt: ['water'],
+  time: 'minutes in ashes, longer in a basket',
+  on: 'Ashes at the edge of a fire, or hot stones in a basket',
+  ways: [{ h: ['coals', 'fire'], g: [] }, { h: ['stones'], g: ['basket'] }],
+  steps: [
+    'Roast them in the ashes at the edge of the fire, or boil them in a basket with hot stones.',
+    'The books name the foods and these two ways of cooking them, and no more than that — no times and no amounts. Go by soft and sweet.'],
+  note: 'The same death-camas rules apply to every bulb dug in these meadows. Soaproot was a famine food only: raw it holds a poison, and it was pit-cooked for about two days. Yampah is in the water-hemlock family — leave it alone.',
+  src: 'Skills of the Valley’s First Peoples guide, Other bulbs and roots (from Goddard, 1903, pp. 40-41; Dixon, The Shasta, 1907, p. 52; Chesnut, 1902, p. 331).',
+  g: [['NATIVE-SKILLS-GUIDE', 'other-bulbs-and-roots', 'First Peoples guide: other bulbs and roots']] },
+
+{ id: 'nsk-dried-salmon', n: 'Dried salmon', cat: 'native',
+  what: 'Winter food for a household from one good run. The Takelma never salted it: it was split, held open with sticks, and smoked and dried over the fire.',
+  need: ['fish'], opt: [],
+  time: 'days over a smoky fire',
+  on: 'Smoke and dry air over a low fire',
+  ways: [{ h: ['dry'], g: [] }, { h: ['fire', 'coals'], g: [] }],
+  steps: [
+    'Skin the fish, take off the head and tail, gut it, and split it at the backbone. Wipe the blood away with ferns and leaves.',
+    'Cut it into three or more layers and hold them open with sticks.',
+    'Smoke and dry it over the fire until it is brittle.',
+    'Store the slabs in baskets; or bone it, rub it to powder between the hands, and pack it in leaf-lined baskets or tule sacks.',
+    'Use all of it: heads crushed into cakes for winter hunting trips, bones pounded for soup, and the dried eggs, than which there is "no form of food more concentrated".'],
+  note: 'Dried salmon is "very hard and nearly tasteless, but rather satisfying". Dry it until brittle: smoke alone does not keep moist fish, and lightly field-smoked fish keeps only two weeks to a month. For a method that has been tested for safety, read the Preserving Food guide. Taking salmon any way but by hook and line is illegal today, and lamprey are tribal-permit only.',
+  src: 'Skills of the Valley’s First Peoples guide, Salmon, lamprey and other fish (from Sapir, 1907, pp. 10-11; Goddard, 1903, p. 36; Dixon, The Shasta, 1907, pp. 53 and 55; Kroeber, Handbook, pp. 123, 352).',
+  g: [['NATIVE-SKILLS-GUIDE', 'salmon-lamprey-and-other-fish', 'First Peoples guide: salmon and other fish'],
+      ['PRESERVING-FOOD-GUIDE', 'fish-smoking-canning-and-salting', 'Preserving Food: tested ways to keep fish']] },
+
+{ id: 'nsk-salmon-spits', n: 'Salmon roasted on hazel spits', cat: 'native',
+  what: 'Fresh fish cooked beside the fire on split hazel sticks. No pot, no pan, nothing to carry.',
+  need: ['fish'], opt: ['salt'],
+  time: 'under an hour',
+  on: 'Beside an open fire or a bed of coals',
+  ways: [{ h: ['fire', 'coals'], g: [] }],
+  steps: [
+    'Clean and split the fish.',
+    'Roast it on split-hazel spits set beside the fire.',
+    'Sapir records the spits and the roasting, and no more — no times. Turn it and go by the look: cooked fish flakes.'],
+  src: 'Skills of the Valley’s First Peoples guide, Salmon, lamprey and other fish (from Sapir, Notes on the Takelma, 1907, p. 11).',
+  g: [['NATIVE-SKILLS-GUIDE', 'salmon-lamprey-and-other-fish', 'First Peoples guide: salmon and other fish']] },
+
+{ id: 'nsk-bone-soup', n: 'Bone soup from pounded bones', cat: 'native',
+  what: 'Deer and salmon bones pounded up and boiled for winter soup. Nothing of an animal was wasted.',
+  need: ['bones', 'water'], opt: ['salt', 'camas', 'acorns'],
+  time: 'hours',
+  on: 'Hot stones in a basket, or a pot on a fire',
+  ways: [{ h: ['stones'], g: ['basket'] }, { h: ['stones'], g: ['pot'] }, { h: ['fire', 'coals', 'stovetop'], g: ['pot'] }],
+  steps: [
+    'Pound the bones up — deer bones, or the bones left after boning dried salmon.',
+    'Boil them for soup. Dixon records that bones were pounded and kept for winter soup, and that marrow bones were saved; the books give no amounts or times.',
+    'Bear meat was boiled before drying.'],
+  src: 'Skills of the Valley’s First Peoples guide, Deer, elk and small game (from Dixon, The Shasta, 1907, p. 55, and Goddard, 1903, pp. 32-33).',
+  g: [['NATIVE-SKILLS-GUIDE', 'deer-elk-and-small-game', 'First Peoples guide: deer, elk and small game']] },
+
+{ id: 'nsk-deer-fat-cakes', n: 'Deer-fat cakes', cat: 'native',
+  what: 'Winter fat, the thing hardest to come by in a lean season. The Takelma made deer fat into hard, dough-like cakes and lived on them through the winter with dried salmon, acorns and camas cakes.',
+  need: ['tallow'], opt: ['venison', 'berries', 'acorns', 'hazelnuts', 'salt'],
+  time: 'unrecorded',
+  on: 'A fire to render the fat; the cakes themselves need no cooking',
+  ways: [{ h: ['fire', 'coals', 'stovetop', 'stones'], g: ['pot'] }],
+  steps: [
+    'Sapir records the food — "hard dough-like cakes" of deer fat, kept for winter — and NOT how they were made. There is no recipe here, and this guide will not invent one.',
+    'What the sources do give: spare meat was cut in strips and cured over a fire, marrow bones were saved, and the Hupa pounded hazelnuts into cakes with berries, meat or animal fat.',
+    'For a method with amounts and temperatures that has been tested, render the fat as in Rendering lard or tallow, and make pemmican, which is the same idea written down: dried meat pounded and mixed with hot fat.'],
+  src: 'Skills of the Valley’s First Peoples guide, The year’s round and Deer, elk and small game (from Sapir, Notes on the Takelma, 1907, p. 11, and the NRCS hazelnut plant guide, p. 1). The source names the food, not a method.',
+  g: [['NATIVE-SKILLS-GUIDE', 'deer-elk-and-small-game', 'First Peoples guide: deer, elk and small game']] },
+
+{ id: 'nsk-hazelnut-cakes', n: 'Hazelnut cakes, and nut oil', cat: 'native',
+  what: 'Hazelnuts pounded into cakes with berries, meat or fat. Gather them as soon as they ripen, because the bears are very fond of them.',
+  need: ['hazelnuts'], opt: ['berries', 'venison', 'tallow', 'driedfruit', 'water'],
+  time: 'an afternoon',
+  on: 'Eaten raw or roasted in the fire; boiling for oil needs a pot',
+  ways: [{ h: ['*'], g: [] }],
+  steps: [
+    'Gather them in summer into early fall — Goddard says June and July, the NRCS early autumn — as soon as they are ripe.',
+    'Eat them raw or roasted.',
+    'Or pound them into cakes with berries, meat or animal fat.',
+    'Or boil them for oil.',
+    'The sources name these four uses and give no amounts.'],
+  src: 'Skills of the Valley’s First Peoples guide, Seeds, nuts and berries (from Goddard, 1903, p. 39, and the USDA NRCS Beaked and California Hazelnut plant guide, p. 1).',
+  g: [['NATIVE-SKILLS-GUIDE', 'seeds-nuts-and-berries', 'First Peoples guide: seeds, nuts and berries']] },
+
+{ id: 'nsk-pine-nut-cakes', n: 'Sugar-pine nuts, steamed and pounded into cakes', cat: 'native',
+  what: 'In October whole families went up to the ridge tops and camped for the pine nut harvest. Steamed and dried, the nuts kept; pounded, they became cakes or went into powdered salmon.',
+  need: ['hazelnuts', 'water'], opt: ['fish'],
+  time: 'several hours steaming, then drying',
+  on: 'A covered pit of hot stones and water',
+  ways: [{ h: ['earth'], g: [] }, { h: ['stones'], g: ['pot'] }],
+  steps: [
+    'Gather fallen cones, and pound them until the seeds loosen.',
+    'The Shasta steamed the nuts wrapped in leaves in a covered pit of hot stones and water for several hours.',
+    'Dry them.',
+    'Later, pound them into cakes, or mix them with powdered dried salmon.'],
+  note: 'Tick "Hazelnuts or pine nuts" for this one: the tool keeps the two nuts together.',
+  src: 'Skills of the Valley’s First Peoples guide, Seeds, nuts and berries (from Goddard, 1903, p. 40, and Dixon, The Shasta, 1907, pp. 54-55).',
+  g: [['NATIVE-SKILLS-GUIDE', 'seeds-nuts-and-berries', 'First Peoples guide: seeds, nuts and berries']] },
+
+{ id: 'nsk-pinole', n: 'Pinole: parched seed meal', cat: 'native',
+  what: 'Grass and wildflower seeds beaten into a basket, parched with live coals and ground. Flour from the ridge prairies, with no field and no plough.',
+  need: ['wildseed'], opt: ['salt'],
+  time: 'a day',
+  on: 'Live coals tossed with the seed in a basket tray',
+  ways: [{ h: ['coals', 'fire'], g: ['basket'] }, { h: ['coals', 'fire', 'stovetop'], g: ['pan'] }],
+  steps: [
+    'Beat the seeds into a basket with a wicker beater, then winnow and pick them clean.',
+    'Toss them in a basket tray with live tanoak coals, shaking and tossing constantly so neither the seeds nor the basket burn.',
+    'Grind the parched seed to meal.',
+    'One kind of seed at a time, with salt.',
+    'For tarweed, gathered in the fall, the Takelma first burned the stalks to take off the pitchy substance, and ate the meal dry.'],
+  note: 'What it takes besides the seed: a basket tray, live coals and a grinding stone.',
+  src: 'Skills of the Valley’s First Peoples guide, Seeds, nuts and berries (from Goddard, 1903, p. 41; Chesnut, 1902, pp. 321 and 413; Sapir, 1907, p. 10).',
+  g: [['NATIVE-SKILLS-GUIDE', 'seeds-nuts-and-berries', 'First Peoples guide: seeds, nuts and berries']] },
+
+{ id: 'nsk-berry-cakes', n: 'Dried-berry cakes', cat: 'native',
+  what: 'Berries dried in sun or smoke, mashed, pressed into cakes and wrapped in leaves or bark. Winter fruit with no jars and no sugar.',
+  need: ['berries'], opt: ['elderberries', 'hazelnuts'],
+  time: 'days of drying',
+  on: 'Sun or smoke',
+  ways: [{ h: ['dry'], g: [] }, { h: ['fire', 'coals'], g: [] }, { h: ['solar'], g: [] }],
+  steps: [
+    'Evergreen huckleberries ripen around October or November, and are even tastier after a frost.',
+    'Dry the berries in sun or smoke.',
+    'Mash them, press them into cakes, and wrap the cakes in leaves or bark.',
+    'Serviceberries were dried for winter the same way; huckleberries lasted "until Christmas". Thimbleberries, blackcaps, blackberries, currants and gooseberries were all eaten; leave some fruit on each plant.'],
+  note: 'Elderberries must be COOKED — every berry — and the stems, leaves and green berries never eaten. Manzanita berry flour was made the same way, but too much whole manzanita fruit can kill: "the bowels become stopped with great masses of seeds and pulp".',
+  src: 'Skills of the Valley’s First Peoples guide, Seeds, nuts and berries (from the USDA NRCS Evergreen Huckleberry plant guide, p. 1; Dixon, The Shasta, 1907, p. 55; Goddard, 1903, pp. 41-42; Chesnut, 1902, p. 394; and, for elderberries, OSU EM 9446, p. 4).',
+  g: [['NATIVE-SKILLS-GUIDE', 'seeds-nuts-and-berries', 'First Peoples guide: seeds, nuts and berries'],
+      ['ROOT-CELLAR-GUIDE', 'drying-food', 'Root Cellar guide: drying food']] },
+
+{ id: 'nsk-manzanita-cider', n: 'Manzanita cider', cat: 'native',
+  what: 'A drink from scalded manzanita berries, strained through pine needles. Drink it within four days.',
+  need: ['berries', 'water'], opt: [],
+  time: 'an hour, then drink it fresh',
+  on: 'A pot, or hot stones in a basket',
+  ways: [{ h: ['stones'], g: ['basket'] }, { h: ['stovetop', 'fire', 'coals', 'camp'], g: ['pot'] }],
+  steps: [
+    'Take ripe, sound berries only.',
+    'Scald them until the seeds are soft.',
+    'Crush them and add an equal amount of water.',
+    'Pour it at once over dry pine needles or straw laid in a sieve basket, and let it drain through.',
+    'Drink it within four days.'],
+  note: 'Do not eat large amounts of the whole fruit: Chesnut records deaths from it — "the bowels become stopped with great masses of seeds and pulp".',
+  src: 'Skills of the Valley’s First Peoples guide, Seeds, nuts and berries (from Chesnut, 1902, pp. 393-394, and the USDA NRCS Whiteleaf Manzanita plant guide, p. 2).',
+  g: [['NATIVE-SKILLS-GUIDE', 'seeds-nuts-and-berries', 'First Peoples guide: seeds, nuts and berries']] }
+);
+})();
+</script>
+<script>
+(function () {
+  'use strict';
+  var D = window.RECIPEDATA, K = 'ark-recipes-have';
+  var $ = function (id) { return document.getElementById(id); };
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+
+  /* names for every id, so a missing thing can be named in plain words */
+  var ING = {}, HEAT = {}, GEAR = {}, CAT = {};
+  D.groups.forEach(function (g) { g.items.forEach(function (it) { ING[it[0]] = it[1]; }); });
+  D.heats.forEach(function (h) { HEAT[h[0]] = h[1]; });
+  D.gears.forEach(function (g) { GEAR[g[0]] = g[1]; });
+  D.cats.forEach(function (c) { CAT[c[0]] = c[1]; });
+
+  /* ---- what is ticked, remembered on this device ---------------------------------- */
+  var S = { have: {}, heat: {}, gear: {} };
+  try {
+    var raw = localStorage.getItem(K);
+    if (raw) {
+      var old = JSON.parse(raw);
+      ['have', 'heat', 'gear'].forEach(function (k) {
+        if (old && old[k]) old[k].forEach(function (id) { S[k][id] = 1; });
+      });
+    }
+  } catch (e) { /* a phone with saved data switched off: the page still works, it just forgets */ }
+  function save() {
+    try {
+      localStorage.setItem(K, JSON.stringify({
+        have: Object.keys(S.have), heat: Object.keys(S.heat), gear: Object.keys(S.gear)
+      }));
+    } catch (e) {}
+  }
+
+  /* on the website the guide links point at pages/; on a drive, or through the library's own
+     program, they sit beside this page in the area's folder */
+  var onWeb = location.protocol.indexOf('http') === 0 && location.pathname.indexOf('/lib/') !== 0;
+  var GP = onWeb ? '../../pages/' : 'Southern-Oregon/';
+  function guideHref(page, anchor) {
+    return GP + encodeURIComponent(page) + '.html' + (anchor ? '#' + anchor : '');
+  }
+
+  /* ---- the ticks ------------------------------------------------------------------ */
+  function chip(kind, id, label, note) {
+    return '<button type="button" class="chip" data-kind="' + kind + '" data-id="' + esc(id) + '" aria-pressed="' +
+      (S[kind][id] ? 'true' : 'false') + '"><span class="tick">✓ </span>' + esc(label) +
+      (note ? '<small>' + esc(note) + '</small>' : '') + '</button>';
+  }
+  function drawGroups() {
+    $('groups').innerHTML = D.groups.map(function (g, i) {
+      var n = g.items.filter(function (it) { return S.have[it[0]]; }).length;
+      var open = i === 0 || n || g.id === 'basic';   // water and salt: two things almost everything needs
+      return '<details class="pick" data-g="' + esc(g.id) + '"' + (open ? ' open' : '') + '><summary>' +
+        esc(g.n) + '<span class="n">' + (n ? n + ' of ' + g.items.length + ' ticked' : g.items.length + ' things') +
+        '</span></summary><div class="chips">' +
+        g.items.map(function (it) { return chip('have', it[0], it[1]); }).join('') + '</div></details>';
+    }).join('');
+    $('heats').innerHTML = '<details class="pick" open><summary>Heat<span class="n">' +
+      (Object.keys(S.heat).length || 'none') + ' ticked</span></summary><div class="chips">' +
+      D.heats.map(function (h) { return chip('heat', h[0], h[1], h[2]); }).join('') + '</div></details>';
+    $('gears').innerHTML = '<details class="pick" open><summary>Pots and pans<span class="n">' +
+      (Object.keys(S.gear).length || 'none') + ' ticked</span></summary><div class="chips">' +
+      D.gears.map(function (g) { return chip('gear', g[0], g[1]); }).join('') + '</div></details>';
+    var n = Object.keys(S.have).length;
+    $('havecount').textContent = n ? n + (n === 1 ? ' thing' : ' things') + ' ticked.' : 'Nothing ticked yet.';
+  }
+
+  /* ---- can it be cooked, and what is missing -------------------------------------- */
+  var anyHeat = function () { return Object.keys(S.heat).length > 0; };
+  var anyGear = function () { return Object.keys(S.gear).length > 0; };
+
+  function cookable(r) {
+    /* no way is ruled out until something is ticked */
+    if (!anyHeat() && !anyGear()) return true;
+    return (r.ways || []).some(function (w) {
+      var heatOk = !anyHeat() || w.h.indexOf('*') >= 0 || w.h.some(function (h) { return S.heat[h]; });
+      var gearOk = !anyGear() || w.g.every(function (g) { return S.gear[g]; });
+      return heatOk && gearOk;
+    });
+  }
+  function anyName(gp, max) {
+    var ns = gp.map(function (i) { return ING[i] || i; });
+    if (max && ns.length > max) return ns.slice(0, max).join(', ') + ' or ' + (ns.length - max) + ' more';
+    return ns.slice(0, -1).join(', ') + ' or ' + ns[ns.length - 1];
+  }
+  function missing(r) {
+    var out = (r.need || []).filter(function (i) { return !S.have[i]; })
+      .map(function (i) { return ING[i] || i; });
+    (r.any || []).forEach(function (gp) {
+      if (!gp.some(function (i) { return S.have[i]; })) out.push('any one of: ' + anyName(gp, 3));
+    });
+    return out;
+  }
+  function cookWant(r) {
+    /* the shortest honest answer to "why not": the first way's heats and gear */
+    var w = (r.ways || [])[0];
+    if (!w) return '';
+    var hs = w.h.filter(function (h) { return h !== '*'; }).map(function (h) { return HEAT[h]; });
+    var gs = w.g.map(function (g) { return GEAR[g]; });
+    return hs.concat(gs).join(' or ');
+  }
+
+  /* ---- drawing a recipe ----------------------------------------------------------- */
+  function recipeBody(r) {
+    var h = '<div class="body"><dl>';
+    h += '<dt>What it takes</dt><dd>' + (r.need || []).map(function (i) {
+      return esc(ING[i] || i) + (S.have[i] ? '' : ' <b class="untick">(you have not ticked this)</b>');
+    }).concat((r.any || []).map(function (gp) {
+      var got = gp.some(function (i) { return S.have[i]; });
+      return esc(anyName(gp)) + ' (any one)' + (got ? '' : ' <b class="untick">(you have not ticked any)</b>');
+    })).join(', ') + (r.opt && r.opt.length ? '. <span class="muted">Better with: ' +
+      r.opt.map(function (i) { return esc(ING[i] || i); }).join(', ') + '.</span>' : '') + '</dd>';
+    h += '<dt>Cooked on</dt><dd>' + esc(r.on || '') + '</dd>';
+    h += '<dt>How long</dt><dd>' + esc(r.time || '') + '</dd>';
+    if (r.yield) h += '<dt>Makes</dt><dd>' + esc(r.yield) + '</dd>';
+    h += '</dl>';
+    h += '<ol>' + (r.steps || []).map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('') + '</ol>';
+    if (r.note) h += '<div class="warn">⚠️ ' + esc(r.note) + '</div>';
+    if (r.g && r.g.length) {
+      h += '<p class="links">' + r.g.map(function (g) {
+        return '<a href="' + esc(guideHref(g[0], g[1])) + '">' + esc(g[2]) + '</a>';
+      }).join('') + '</p>';
+    }
+    h += '<p class="src">Where it comes from: ' + esc(r.src || '') + '</p>';
+    h += '<p class="tools noprint"><a href="#r=' + esc(r.id) + '">Open this one on its own, to print it</a></p>';
+    return h + '</div>';
+  }
+  function recipeCard(r, tag) {
+    return '<details class="rec" id="rec-' + esc(r.id) + '"><summary><b>' + esc(r.n) + '</b>' +
+      (tag || '') + '<span class="what">' + esc(r.what || '') + ' · ' + esc(CAT[r.cat] || '') + '</span>' +
+      '</summary>' + recipeBody(r) + '</details>';
+  }
+
+  /* ---- the lists ------------------------------------------------------------------ */
+  function words(r) {
+    return (r.n + ' ' + (r.what || '') + ' ' + (CAT[r.cat] || '') + ' ' + (r.steps || []).join(' ') + ' ' +
+      (r.need || []).concat(r.opt || [], [].concat.apply([], r.any || []))
+        .map(function (i) { return ING[i] || i; }).join(' ')).toLowerCase();
+  }
+  function draw() {
+    var q = $('q').value.trim().toLowerCase();
+    var list = D.recipes.filter(function (r) { return !q || words(r).indexOf(q) >= 0; });
+    var ticked = Object.keys(S.have).length > 0;
+    var now = [], short = [], rest = [];
+    list.forEach(function (r) {
+      var m = missing(r), c = cookable(r);
+      if (!ticked) { rest.push([r, m, c]); return; }
+      if (c && m.length === 0) now.push([r, m, c]);
+      else if (c && m.length === 1) short.push([r, m, c]);
+      else rest.push([r, m, c]);
+    });
+    var byCat = function (a, b) {
+      var ca = D.cats.findIndex(function (c) { return c[0] === a[0].cat; });
+      var cb = D.cats.findIndex(function (c) { return c[0] === b[0].cat; });
+      return ca - cb || a[0].n.localeCompare(b[0].n);
+    };
+    now.sort(byCat); short.sort(byCat); rest.sort(byCat);
+
+    $('c-now').textContent = !ticked
+      ? 'Tick a few things above and this list fills itself in.'
+      : now.length ? now.length + (now.length === 1 ? ' recipe' : ' recipes') + ' from what you ticked.'
+        : 'Nothing yet from what you have ticked. Look at "One thing short" below.';
+    $('l-now').innerHTML = now.map(function (x) { return recipeCard(x[0]); }).join('');
+
+    $('c-short').textContent = !ticked ? '' : short.length
+      ? short.length + ' more, each needing one thing you have not ticked — worth a trade, or a trip to the garden.'
+      : 'Nothing is one thing short.';
+    $('l-short').innerHTML = short.map(function (x) {
+      return recipeCard(x[0], ' <span class="miss">Needs: ' + esc(x[1][0]) + '</span>');
+    }).join('');
+    $('h-short').hidden = !ticked; $('c-short').hidden = !ticked;
+
+    $('c-rest').textContent = rest.length + (rest.length === 1 ? ' recipe' : ' recipes') +
+      (ticked ? ', needing more than one thing you have not ticked, or a way of cooking you have not got' : ' in all');
+    $('l-rest').innerHTML = rest.map(function (x) {
+      var r = x[0], m = x[1], tag = '';
+      if (ticked && m.length) {
+        tag = ' <span class="miss">Needs: ' + m.slice(0, 3).map(esc).join(', ') +
+          (m.length > 3 ? ' and ' + (m.length - 3) + ' more' : '') + '</span>';
+      }
+      if (!x[2]) tag += ' <span class="miss">Wants: ' + esc(cookWant(r)) + '</span>';
+      return recipeCard(r, tag);
+    }).join('');
+    if (!ticked) $('d-rest').open = true;
+
+    if (q && !now.length && !short.length && !rest.length) {
+      $('l-rest').innerHTML = '<p class="empty">Nothing matches those words. Try fewer, or shorter.</p>';
+    }
+  }
+
+  /* ---- one recipe on its own, so it can be printed alone -------------------------- */
+  function single() {
+    var m = /[#&]r=([a-z0-9-]+)/.exec(location.hash);
+    var r = m && D.recipes.filter(function (x) { return x.id === m[1]; })[0];
+    $('single').hidden = !r; $('main').hidden = !!r;
+    if (!r) return;
+    $('single').innerHTML = '<h2 style="margin-top:10px">' + esc(r.n) + '</h2>' +
+      '<p class="sub">' + esc(r.what || '') + '</p>' +
+      '<div class="rec" style="border:0;background:transparent"><div class="body" style="border-top:0;padding-left:0;padding-right:0">' +
+      recipeBody(r).replace(/^<div class="body">/, '').replace(/<\/div>$/, '') + '</div></div>' +
+      '<p class="row noprint"><button class="btn" type="button" id="pr">Print this recipe</button> ' +
+      '<a class="btn alt" href="#" id="back" style="text-decoration:none;display:inline-block">Back to the list</a></p>';
+    $('pr').onclick = function () { window.print(); };
+    $('back').onclick = function (e) { e.preventDefault(); location.hash = ''; };
+    scrollTo(0, 0);
+  }
+
+  /* ---- wiring --------------------------------------------------------------------- */
+  document.addEventListener('click', function (e) {
+    var c = e.target.closest && e.target.closest('.chip');
+    if (!c) return;
+    var kind = c.getAttribute('data-kind'), id = c.getAttribute('data-id');
+    if (S[kind][id]) delete S[kind][id]; else S[kind][id] = 1;
+    c.setAttribute('aria-pressed', S[kind][id] ? 'true' : 'false');
+    var det = c.closest('details.pick'), sum = det && det.querySelector('summary .n');
+    if (sum) {
+      if (kind === 'have') {
+        var g = D.groups.filter(function (x) { return x.id === det.getAttribute('data-g'); })[0];
+        var n = g.items.filter(function (it) { return S.have[it[0]]; }).length;
+        sum.textContent = n ? n + ' of ' + g.items.length + ' ticked' : g.items.length + ' things';
+      } else {
+        sum.textContent = (Object.keys(S[kind]).length || 'none') + ' ticked';
+      }
+    }
+    var tot = Object.keys(S.have).length;
+    $('havecount').textContent = tot ? tot + (tot === 1 ? ' thing' : ' things') + ' ticked.' : 'Nothing ticked yet.';
+    save(); draw();
+  });
+  var t;
+  $('q').addEventListener('input', function () { clearTimeout(t); t = setTimeout(draw, 120); });
+  $('clear').onclick = function () {
+    S = { have: {}, heat: {}, gear: {} }; save(); drawGroups(); draw();
+  };
+  $('printall').onclick = function () { window.print(); };
+  var reopened = [];
+  function openForPrint() {
+    reopened = [];
+    document.querySelectorAll('details.pick, #l-now .rec, #l-short .rec').forEach(function (d) {
+      if (!d.open) { reopened.push(d); d.open = true; }
+    });
+  }
+  function closeAfterPrint() { reopened.forEach(function (d) { d.open = false; }); reopened = []; }
+  addEventListener('beforeprint', openForPrint);
+  addEventListener('afterprint', closeAfterPrint);
+  window.arkPrintOpen = openForPrint;   /* so a test can see what the paper would show */
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('button[data-all]');
+    if (!b) return;
+    var open = b.getAttribute('data-all') === '1';
+    document.querySelectorAll('#groups details.pick').forEach(function (d) { d.open = open; });
+  });
+  addEventListener('hashchange', single);
+
+  drawGroups(); draw(); single();
+
+  /* ---- the ARK Vault's own touch screen: a keyboard on the page -------------------
+     The same switch the library's own pages use (so-touch in this browser's storage): a screen
+     in a steel case has no keyboard of its own. */
+  (function () {
+    var on = false;
+    try {
+      var u = new URLSearchParams(location.search);
+      if (u.has('touch')) localStorage.setItem('so-touch', u.get('touch') === '0' ? '' : '1');
+      on = !!localStorage.getItem('so-touch');
+    } catch (e) {}
+    if (!on) return;
+    var el = $('q');
+    el.setAttribute('inputmode', 'none');
+    var kb = document.createElement('div');
+    kb.id = 'osk'; kb.hidden = true; kb.setAttribute('aria-label', 'On-screen keyboard');
+    var key = function (k, label, cls) {
+      return '<button type="button" data-k="' + esc(k) + '"' + (cls ? ' class="' + cls + '"' : '') + '>' + esc(label) + '</button>';
+    };
+    kb.innerHTML = ['1234567890', 'qwertyuiop', 'asdfghjkl-', 'zxcvbnm,./'].map(function (row) {
+      return '<div class="r">' + row.split('').map(function (c) { return key(c, c); }).join('') + '</div>';
+    }).join('') + '<div class="r">' + key('hide', 'Hide', 'w') + key('shift', 'ABC', 'w') +
+      key(' ', 'space', 'sp') + key('back', '⌫', 'w') + '</div>';
+    document.body.appendChild(kb);
+    var shift = false, physical = false;
+    var setShift = function (v) {
+      shift = v;
+      kb.querySelector('[data-k=shift]').classList.toggle('on', v);
+      kb.querySelectorAll('[data-k]').forEach(function (b) {
+        var k = b.dataset.k; if (/^[a-z]$/.test(k)) b.textContent = v ? k.toUpperCase() : k;
+      });
+    };
+    var hide = function () { kb.hidden = true; document.body.classList.remove('osk-open'); setShift(false); };
+    el.addEventListener('focus', function () {
+      if (physical) return;
+      kb.hidden = false; document.body.classList.add('osk-open');
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.isTrusted && !kb.contains(e.target)) { physical = true; hide(); }
+    }, true);
+    kb.addEventListener('pointerdown', function (e) { e.preventDefault(); });
+    kb.addEventListener('mousedown', function (e) { e.preventDefault(); });
+    kb.addEventListener('click', function (e) {
+      var b = e.target.closest('button[data-k]'); if (!b) return;
+      var k = b.dataset.k;
+      if (k === 'hide') { hide(); el.blur(); return; }
+      if (k === 'shift') { setShift(!shift); return; }
+      if (k === 'back') el.value = el.value.slice(0, -1);
+      else { el.value += shift ? k.toUpperCase() : k; if (shift) setShift(false); }
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+  })();
+})();
+</script>
+<script>if(location.protocol.indexOf('http')===0&&location.pathname.indexOf('/lib/')===0)document.querySelectorAll('a[data-app]').forEach(function(a){a.href=a.getAttribute('data-app')})</script>
+</body>
+</html>

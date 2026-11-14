@@ -49,7 +49,7 @@ const ICONS = {
 const ic = (n, size = 22) => `<svg class="ic" width="${size}" height="${size}" viewBox="0 0 24 24" aria-hidden="true">${ICONS[n] || ICONS.page}</svg>`;
 const noPic = t => t.replace(/^[^\w(&]+\s*/u, '');   // a title without the little picture in front of it
 const SHELF_ICON = { start: 'compass', health: 'cross', water: 'drop', food: 'bowl', wild: 'tree', animals: 'paw', shelter: 'home', power: 'bolt', making: 'wrench', travel: 'route', comms: 'wifi', disaster: 'alert', fun: 'book', library: 'usb', other: 'folder' };
-const TOOL_ICON = { map: 'pin', calc: 'calc', sci: 'calc', conv: 'ruler', morse: 'morse', pill: 'pill', plantid: 'leaf', walk: 'route', cad: 'draft' };
+const TOOL_ICON = { map: 'pin', calc: 'calc', sci: 'calc', conv: 'ruler', morse: 'morse', pill: 'pill', plantid: 'leaf', walk: 'route', cad: 'draft', recipes: 'food' };
 
 // ------------------------------------------------------------------ the screens
 // Each is a <section> of the page. nav: the button it lights up. back: the screen above it (it then gets a Back
@@ -927,6 +927,7 @@ const TOOL_CARDS = [['map', '🗺️ Map', 'A topo map with property lines and l
   ['pill', '🔍 Pill identifier', 'Identify a loose pill by the code printed on it — about 32,000 US pills.'],
   ['plantid', '📷 Identify a plant or mushroom', 'Take a photo: the offline AI names it from the plants and mushrooms of the area, marks the poisonous ones, and opens the guides about it.'],
   ['cad', '📐 CAD', 'Draw to scale: a plan, a part, a pattern to cut out. Type in sizes, add dimensions, print at true size, or save a DXF for a laser or CNC machine.'],
+  ['recipes', '🍲 What can I cook?', 'Tick what you have and what you can cook on \u2014 fire, coals, a wood stove, a solar oven, a hay box \u2014 and it shows what you can make, what you are one thing short of, and how.'],
   ['walk', '🥾 Routes: walk, bike, drive', 'From Cave Junction to 359 Oregon and N. California cities: walking days, bicycle riding hours and normal driving times, with turn-by-turn directions and GPS tracks.']];
 // the map is there when its files are: on the drive the Library Assistant says so, on the website the list of files does
 const hasMap = () => mode === 'drive' ? !!server.map : !!(manifest && manifest.offline && manifest.offline.map);
@@ -1031,12 +1032,12 @@ const PAGES = { sos: 'EMERGENCY-FINDER', az: 'SUBJECT-INDEX', iv: 'ILLINOIS-VALL
   expect: 'WHAT-TO-EXPECT-GUIDE', wildfire: 'WILDFIRE-GUIDE', floods: 'FLOODS-STORMS-HEAT-GUIDE', nuke: 'NUCLEAR-FALLOUT-GUIDE', emp: 'EMP-GUIDE',
   stories: 'STORIES-GAMES-GUIDE',
   device: 'START-ON-ANY-DEVICE', ammocan: 'AMMO-CAN-COMPUTER-GUIDE', get: 'GET-THE-LIBRARY', all: 'README',
-  calc: 'CALCULATOR', sci: 'CALCULATOR', conv: 'UNIT-CONVERTER', morse: 'MORSE-CODE', pill: 'PILL-IDENTIFIER', walk: 'WALKING-ROUTES', plantid: 'PLANT-ID', map: 'MAP', cad: 'CAD' };
+  calc: 'CALCULATOR', sci: 'CALCULATOR', conv: 'UNIT-CONVERTER', morse: 'MORSE-CODE', pill: 'PILL-IDENTIFIER', walk: 'WALKING-ROUTES', plantid: 'PLANT-ID', map: 'MAP', cad: 'CAD', recipes: 'RECIPES' };
 const DRIVE_AT = { sos: 'EMERGENCY-FINDER.html', az: 'SUBJECT-INDEX.html', med: 'Medical/READ-ME-FIRST.html', radio: 'Manuals/Radio-Communications/RADIO-GUIDE.html', mesh: 'Manuals/Radio-Communications/MESH-RADIO-GUIDE.html',
   device: 'START-ON-ANY-DEVICE.html', ammocan: 'AMMO-CAN-COMPUTER-GUIDE.html', get: null, all: 'README.html',
-  calc: 'CALCULATOR.html#basic', sci: 'CALCULATOR.html#sci', conv: 'UNIT-CONVERTER.html', morse: 'MORSE-CODE.html', plantid: 'PLANT-ID.html', map: 'Map/MAP.html', cad: 'CAD.html',
+  calc: 'CALCULATOR.html#basic', sci: 'CALCULATOR.html#sci', conv: 'UNIT-CONVERTER.html', morse: 'MORSE-CODE.html', plantid: 'PLANT-ID.html', map: 'Map/MAP.html', cad: 'CAD.html', recipes: 'RECIPES.html',
   pill: 'Medical/Pill-Identifier/PILL-IDENTIFIER.html', walk: 'Southern-Oregon/Walking-Routes/WALKING-ROUTES.html' };
-const WEB_AT = { all: null, calc: 'pages/CALCULATOR.html#basic', sci: 'pages/CALCULATOR.html#sci', map: 'tools/map/MAP.html',
+const WEB_AT = { all: null, calc: 'pages/CALCULATOR.html#basic', sci: 'pages/CALCULATOR.html#sci', map: 'tools/map/MAP.html', recipes: 'tools/recipes/RECIPES.html',
   pill: 'tools/pill-identifier/PILL-IDENTIFIER.html', walk: 'tools/walking-routes/WALKING-ROUTES.html' };
 let pathCache = null;
 function guidePaths() {

@@ -2,7 +2,7 @@
 <style>/* the top bar keeps to the page's own edge on a phone (it used to stick out 6px each side) */@media(max-width:600px){.topnav{margin:-16px -14px 6px;padding:8px 14px 7px}}</style><style>/* ark-bar: the app's buttons on every page */:root{--side-bg:#0F1511;--side-on:#2C4A39}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--side-bg:#233F32;--side-on:#315B43}}:root[data-theme=light]{--side-bg:#233F32;--side-on:#315B43}.arkbar{position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));margin:0;padding:6px 4px calc(6px + env(safe-area-inset-bottom));background:var(--card);border-top:1px solid var(--line);font:600 11.5px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}.arkbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:48px;color:var(--muted);text-decoration:none}.arkbar a i{display:flex;align-items:center;justify-content:center;width:46px;max-width:100%;height:28px;border-radius:999px}.arkbar a.on{color:var(--ink);font-weight:700}.arkbar a.on i{background:rgba(127,160,135,.28)}.arkbar svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.arkbar .l,.arkbar .wideonly,.arkbar .bn{display:none}body.has-arkbar{padding-bottom:calc(61px + env(safe-area-inset-bottom))}body.has-arkbar .totop,body.has-arkbar .sop-fab{bottom:calc(76px + env(safe-area-inset-bottom))!important}@media(min-width:760px){.arkbar{top:0;right:auto;width:232px;display:flex;flex-direction:column;gap:4px;padding:16px 12px;border-top:0;background:var(--side-bg);font-size:15px;overflow-y:auto}.arkbar a,.arkbar a.wideonly{display:flex;flex-direction:row;justify-content:flex-start;gap:12px;min-height:44px;padding:0 12px;border-radius:10px;color:#E3EBE5;order:0!important}.arkbar a i{width:auto;height:auto;border-radius:0}.arkbar a.on i{background:none}.arkbar svg{width:20px;height:20px}.arkbar a.on{background:var(--side-on);color:#fff}.arkbar .s{display:none}.arkbar .l{display:inline}.arkbar a.bn{display:flex;gap:10px;min-height:0;padding:0 6px 14px;color:#fff;font-size:18px;font-weight:700}.arkbar .bn img{width:40px;height:40px;border-radius:9px}body.has-arkbar{padding-bottom:0;padding-left:232px}body.has-arkbar .totop,body.has-arkbar .sop-fab{bottom:14px!important}}@media print{.arkbar{display:none!important}body.has-arkbar{padding:0!important}}</style><script>/* ark-bar */(function(){function add(){if(document.querySelector(".arkbar")||location.protocol.indexOf("http")!==0||window.self!==window.top)return;var p=location.pathname,root=null;if(p.indexOf("/lib/")===0)root="/";else{var a=document.querySelector('.topnav a[href*="#tools"],.topnav a[href*="#kit"],a[href$="#kit"],a[href$="#ask"]');if(a)root=a.getAttribute("href").replace(/#.*$/,"")}if(root===null)return;var on=document.body.getAttribute("data-ark")||(/walking-routes|\/map\//i.test(p)?"maps":document.querySelector('.topnav a[href*="#kit"],.topnav a[data-app="/#kit"]')?"kit":"tools");var n=document.createElement("nav");n.className="arkbar";n.setAttribute("aria-label","Main");n.innerHTML='<a class="bn" data-v="home"><img src="'+root+'icon.svg" alt="">ARK</a><a data-v="home" style="order:1"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></i><span class="s">Home</span><span class="l">Home</span></a><a data-v="ask" style="order:3"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-7l-5 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg></i><span class="s">Ask</span><span class="l">Ask ARK</span></a><a data-v="tools" style="order:2"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-13c-3-.5-6 0-8 1.5z"/><path d="M12 6v13"/></svg></i><span class="s">Library</span><span class="l">Guides</span></a><a data-v="library" class="wideonly" style="order:0"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/></svg></i><span class="s"></span><span class="l">Books</span></a><a data-v="maps" style="order:4"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg></i><span class="s">Maps</span><span class="l">Maps &amp; Routes</span></a><a data-v="kit" style="order:5"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6.5a4 4 0 0 0-5.3 5.3L3 18l3 3 6.2-6.2a4 4 0 0 0 5.3-5.3l-2.7 2.7-2.5-.5-.5-2.5z"/></svg></i><span class="s">Tools</span><span class="l">Tools</span></a><a data-v="setup" class="wideonly" style="order:0"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></svg></i><span class="s"></span><span class="l">Offline &amp; downloads</span></a><a data-v="more" style="order:6"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="19" cy="12" r="1.3"/></svg></i><span class="s">More</span><span class="l">Settings &amp; help</span></a>';var l=n.querySelectorAll("a");for(var i=0;i<l.length;i++){l[i].href=root+"#"+l[i].getAttribute("data-v");if(l[i].getAttribute("data-v")===on&&l[i].className!=="bn")l[i].className+=" on"}document.body.appendChild(n);document.body.className+=" has-arkbar"}if(document.body)add();else document.addEventListener("DOMContentLoaded",add)})();</script></head><body><div class="wrap"><p class="topnav"><a class="guide" href="../#tools">Guides</a> › <a class="guide" href="../#tools:start">Start here</a> · <a class="guide" href="EMERGENCY-FINDER.html">Emergency</a> · <a class="guide" href="SUBJECT-INDEX.html">Index A–Z</a></p>
 <h1 id="-subject-index-az"><span class="h1e"></span> Subject Index A–Z</h1>
 <p>Look things up the way you would in the index at the back of a book — no search box, AI or internet needed. Each entry jumps straight to the right section of a guide; 📖 opens a book page on this drive, 🖼️ a drawing, 📷 photos. In a hurry? Use the <a class="guide" href="EMERGENCY-FINDER.html">🆘 Emergency finder</a>. To browse by subject instead, see the <a class="guide" href="../#tools">guides by subject</a>.</p>
-<p><em>4537 subjects, 6828 links, from 74 guides.</em></p>
+<p><em>4677 subjects, 7039 links, from 74 guides.</em></p>
 <!-- az-index -->
 
 <nav class="azbar" id="letters" aria-label="Jump to a letter"><a href="#0-9">0–9</a><a href="#a">A</a><a href="#b">B</a><a href="#c">C</a><a href="#d">D</a><a href="#e">E</a><a href="#f">F</a><a href="#g">G</a><a href="#h">H</a><a href="#i">I</a><a href="#j">J</a><a href="#k">K</a><a href="#l">L</a><a href="#m">M</a><a href="#n">N</a><a href="#o">O</a><a href="#p">P</a><a href="#q">Q</a><a href="#r">R</a><a href="#s">S</a><a href="#t">T</a><a href="#u">U</a><a href="#v">V</a><a href="#w">W</a><a href="#x">X</a><a href="#y">Y</a><a href="#z">Z</a></nav>
@@ -150,10 +150,24 @@
 <ul>
 <li>baking soda — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#keeping-lead-acid-alive">Off-grid power › Keeping lead-acid alive</a></li>
 </ul></li>
+<li><span id="t-acorn-bread"></span><strong>Acorn bread</strong>
+<ul>
+<li>a dry kind that keeps a month — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#acorn-bread-and-cakes">First peoples' skills › Acorn bread and cakes</a></li>
+<li>an earth-oven loaf, 12 hours — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#acorn-bread-and-cakes">First peoples' skills › Acorn bread and cakes</a></li>
+<li>cakes on a tilted rock — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#acorn-bread-and-cakes">First peoples' skills › Acorn bread and cakes</a></li>
+</ul></li>
 <li><span id="t-acorn-flour"></span><strong>Acorn flour</strong>
 <ul>
 <li>goes rancid — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#acorn-flour">Food from scratch › Acorn flour</a></li>
 <li>in bread (¼–½ of the flour) — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#acorn-flour">Food from scratch › Acorn flour</a></li>
+</ul></li>
+<li><span id="t-acorn-mush"></span><strong>Acorn mush</strong>
+<ul>
+<li>and acorn bread that keeps — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Porridge, mush, hominy and grain dishes</a></li>
+</ul></li>
+<li><span id="t-acorn-soup"></span><strong>Acorn soup</strong>
+<ul>
+<li>hot stones in a basket, how much water — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#acorn-soup-the-everyday-meal">First peoples' skills › Acorn soup, the everyday meal</a></li>
 </ul></li>
 <li><span id="t-acorns"></span><strong>Acorns</strong>
 <ul>
@@ -548,6 +562,7 @@
 </ul></li>
 <li><span id="t-apples"></span><strong>Apples</strong>
 <ul>
+<li>steamed pudding, fritters — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Fruit, nuts and sweet dishes</a></li>
 <li>storing apart from vegetables — <a class="guide" href="ROOT-CELLAR-GUIDE.html#what-each-crop-needs">Root cellars › What each crop needs</a></li>
 </ul></li>
 <li><span id="t-aquifer"></span><strong>Aquifer</strong> — <a class="wiki" href="https://en.wikipedia.org/wiki/Aquifer" data-title="Aquifer" target="_blank" rel="noopener" title="Wikipedia: Aquifer (offline copy with photos when opened through the Library Assistant)">photos</a></li>
@@ -639,6 +654,11 @@
 <li>handles — <a class="guide" href="WOODWORKING-GUIDE.html">Woodworking › Which wood for which job</a></li>
 <li>washing hands without soap — <a class="guide" href="SANITATION-GUIDE.html#handwashing-and-water-for-hygiene">Sanitation › Handwashing and water for hygiene</a></li>
 </ul></li>
+<li><span id="t-ash-baking"></span><strong>Ash baking</strong>
+<ul>
+<li>loaves in the ashes — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#what-to-cook-it-on">Food from scratch › What to cook it on</a></li>
+</ul></li>
+<li><span id="t-ash-cake"></span><strong>Ash cake</strong> — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Pan breads, dumplings, pancakes and fritters</a></li>
 <li><span id="t-ash-fall"></span><strong>Ash fall</strong> — see <a href="#t-volcanic-ash"><strong>Volcanic ash</strong></a></li>
 <li><span id="t-ash-in-water"></span><strong>Ash in water</strong>
 <ul>
@@ -841,6 +861,14 @@
 <ul>
 <li>catching swarms by itself — <a class="guide" href="BEES-GUIDE.html#bait-hives">Bees › Bait hives</a></li>
 </ul></li>
+<li><span id="t-baked-beans"></span><strong>Baked beans</strong>
+<ul>
+<li>6–8 hours — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Beans, peas and lentils</a></li>
+</ul></li>
+<li><span id="t-baked-custard"></span><strong>Baked custard</strong>
+<ul>
+<li>keep the water below boiling — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Fish, eggs, milk and cheese</a> · <a class="guide" href="DAIRY-GUIDE.html#cooking-with-milk-whey-and-cheese">Milk, butter &amp; cheese › Cooking with milk, whey and cheese</a></li>
+</ul></li>
 <li><span id="t-baking-powder"></span><strong>Baking powder</strong>
 <ul>
 <li>homemade (soda + cream of tartar) — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#leavening-without-store-yeast-or-baking-powder">Food from scratch › Leavening without store yeast or baking powder</a></li>
@@ -864,6 +892,10 @@
 <ul>
 <li>shows the wind — <a class="guide" href="SIGNALS-MORSE-GUIDE.html#ground-to-air-symbols-print-this">Signals &amp; Morse › Ground-to-air symbols (print this)</a></li>
 </ul></li>
+<li><span id="t-bannock"></span><strong>Bannock</strong>
+<ul>
+<li>camp bread in a frying pan — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Pan breads, dumplings, pancakes and fritters</a></li>
+</ul></li>
 <li><span id="t-bantams"></span><strong>Bantams</strong>
 <ul>
 <li>small eaters, spare broodies — <a class="guide" href="CHICKENS-GUIDE.html#choosing-breeds-that-renew-themselves">Chickens › Choosing breeds that renew themselves</a></li>
@@ -875,6 +907,10 @@
 <li><span id="t-baofeng-uv-5r"></span><strong>Baofeng UV-5R</strong>
 <ul>
 <li>button by button — <a class="guide" href="USING-A-RADIO-GUIDE.html">Using a radio › 2. A cheap handheld, button by button</a></li>
+</ul></li>
+<li><span id="t-barbecue"></span><strong>Barbecue</strong>
+<ul>
+<li>basting dressing — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Making plain food good</a></li>
 </ul></li>
 <li><span id="t-barbed-wire-entanglements"></span><strong>Barbed wire entanglements</strong>
 <ul>
@@ -890,6 +926,15 @@
 <ul>
 <li>oak, hemlock, tanoak bark — <a class="guide" href="HUNTING-TRAPPING-FISHING-GUIDE.html#butchering-using-the-whole-animal-and-hides">Hunting &amp; fishing › Butchering, using the whole animal, and hides</a></li>
 <li>sole and harness leather — <a class="guide" href="CLOTHING-LEATHER-GUIDE.html#tanning-hides">Clothing &amp; leather › Tanning hides</a></li>
+</ul></li>
+<li><span id="t-barley"></span><strong>Barley</strong>
+<ul>
+<li>cooking time — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Porridge, mush, hominy and grain dishes</a></li>
+</ul></li>
+<li><span id="t-barley-bread"></span><strong>Barley bread</strong> — see <a href="#t-rieska"><strong>Rieska</strong></a></li>
+<li><span id="t-barley-water"></span><strong>Barley water</strong>
+<ul>
+<li>for the sick — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Porridge, mush, hominy and grain dishes</a></li>
 </ul></li>
 <li><span id="t-barn-doors"></span><strong>Barn doors</strong>
 <ul>
@@ -933,6 +978,10 @@
 <ul>
 <li>a twined basket step by step — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#baskets">First peoples' skills › Baskets</a></li>
 <li>materials and when to gather them — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#baskets">First peoples' skills › Baskets</a></li>
+</ul></li>
+<li><span id="t-basting-mop"></span><strong>Basting mop</strong>
+<ul>
+<li>for meat over a fire — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Making plain food good</a></li>
 </ul></li>
 <li><span id="t-batter-boards"></span><strong>Batter boards</strong> — <a class="guide" href="SHELTER-BUILDING-GUIDE.html#hand-tool-carpentry-and-drying-lumber">Shelter › Hand-tool carpentry and drying lumber</a> · <a class="guide" href="PRACTICAL-MATH-GUIDE.html#right-angles-and-layout">Practical math › Right angles and layout</a>
 <ul>
@@ -1079,6 +1128,15 @@
 <ul>
 <li>how to make — <a class="guide" href="STORIES-GAMES-GUIDE.html#group-and-outdoor-games">Stories &amp; games › Group and outdoor games</a></li>
 </ul></li>
+<li><span id="t-bean-hole"></span><strong>Bean hole</strong>
+<ul>
+<li>beans baked in a pit — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Beans, peas and lentils</a></li>
+</ul></li>
+<li><span id="t-bean-pot"></span><strong>Bean pot</strong>
+<ul>
+<li>a lard pail does as well — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Beans, peas and lentils</a></li>
+</ul></li>
+<li><span id="t-bean-soup"></span><strong>Bean soup</strong> — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Broth, soup and stew</a></li>
 <li><span id="t-bean-weevils"></span><strong>Bean weevils</strong>
 <ul>
 <li>freeze seed 3 days — <a class="guide" href="SEED-BANK-GUIDE.html#saving-seed-from-dry-crops">Seed bank › Saving seed from dry crops</a></li>
@@ -1102,6 +1160,7 @@
 </ul></li>
 <li><span id="t-bear-meat"></span><strong>Bear meat</strong>
 <ul>
+<li>boiled before drying; the hide singed — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#deer-elk-and-bear-fat-cakes-and-bone-soup">First peoples' skills › Deer, elk and bear: fat cakes and bone soup</a></li>
 <li>trichinella, cook to 165 °F — <a class="guide" href="ILLINOIS-VALLEY-START-HERE.html#hunting-and-fishing">Illinois Valley › Hunting and 🎣 Fishing</a></li>
 </ul></li>
 <li><span id="t-bearberry-uva-ursi-kinnikinnick"></span><strong>Bearberry (uva-ursi, kinnikinnick)</strong>
@@ -1189,6 +1248,19 @@
 <li>butchering a steer — <a class="guide" href="CATTLE-GUIDE.html#slaughter-and-butchering">Cattle › Slaughter and butchering</a></li>
 <li>keeping it with no freezer — <a class="guide" href="CATTLE-GUIDE.html#no-freezer-what-to-do-with-400-lb-of-beef">Cattle › No freezer: what to do with 400 lb of beef</a></li>
 </ul></li>
+<li><span id="t-beef-jelly"></span><strong>Beef jelly</strong>
+<ul>
+<li>broth for someone ill — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Broth, soup and stew</a></li>
+<li>for someone who is ill — <a class="guide" href="CATTLE-GUIDE.html#cooking-it">Cattle › Cooking it</a></li>
+</ul></li>
+<li><span id="t-beef-stew"></span><strong>Beef stew</strong>
+<ul>
+<li>with dumplings — <a class="guide" href="CATTLE-GUIDE.html#cooking-it">Cattle › Cooking it</a></li>
+</ul></li>
+<li><span id="t-beef-tea"></span><strong>Beef tea</strong>
+<ul>
+<li>custard for the weak — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Broth, soup and stew</a></li>
+</ul></li>
 <li><span id="t-beehives"></span><strong>Beehives</strong>
 <ul>
 <li>top-bar vs. Langstroth vs. log — <a class="guide" href="BEES-GUIDE.html#hives-top-bar-langstroth-or-log">Bees › Hives: top-bar, Langstroth or log</a></li>
@@ -1214,6 +1286,7 @@
 </ul></li>
 <li><span id="t-beets"></span><strong>Beets</strong>
 <ul>
+<li>1–4 hours; old ones never tender — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Vegetables, greens and roots</a> · <a class="guide" href="ROOT-CELLAR-GUIDE.html#cooking-from-the-cellar">Root cellars › Cooking from the cellar</a></li>
 <li>canning time — <a class="guide" href="PRESERVING-FOOD-GUIDE.html#settings-for-the-illinois-valley-about-1-300-ft">Preserving food › Settings for the Illinois Valley (about 1,300 ft)</a></li>
 <li>crossing with chard — <a class="guide" href="SEED-BANK-GUIDE.html#which-of-your-seeds-cross-and-what-to-do">Seed bank › Which of your seeds cross — and what to do</a></li>
 <li>saving seed — <a class="guide" href="SEED-BANK-GUIDE.html#biennials-seed-in-the-second-year">Seed bank › Biennials: seed in the second year</a></li>
@@ -1264,6 +1337,10 @@
 <li><span id="t-berms"></span><strong>Berms</strong>
 <ul>
 <li>earth banks at the boundary — <a class="guide" href="HOME-DEFENSE-GUIDE.html#one-way-in-the-driveway-and-vehicle-barriers">Home protection › One way in: the driveway and vehicle barriers</a></li>
+</ul></li>
+<li><span id="t-berry-cakes"></span><strong>Berry cakes</strong>
+<ul>
+<li>dried, mashed, wrapped in leaves — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#seed-meal-nut-cakes-and-berry-cakes">First peoples' skills › Seed meal, nut cakes and berry cakes</a></li>
 </ul></li>
 <li><span id="t-bicycle"></span><strong>Bicycle</strong>
 <ul>
@@ -1339,6 +1416,7 @@
 <li>ducks carry it — <a class="guide" href="DUCKS-GUIDE.html#duck-health-with-no-vet">Ducks › Duck health with no vet</a></li>
 <li>wild waterfowl, geese — <a class="guide" href="GEESE-GUIDE.html#health-with-no-vet">Geese › Health with no vet</a></li>
 </ul></li>
+<li><span id="t-bird-in-milk"></span><strong>Bird in milk</strong> — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Meat: roasts, pot-roasts and tough cuts</a></li>
 <li><span id="t-birds-covered-with-leaves"></span><strong>Birds covered with leaves</strong>
 <ul>
 <li>bobcat — <a class="guide" href="CHICKENS-GUIDE.html#predators-of-the-illinois-valley">Chickens › Predators of the Illinois Valley</a></li>
@@ -1611,6 +1689,15 @@
 <ul>
 <li>why — <a class="guide" href="TOWN-WATER-SEWER-GUIDE.html">Town water &amp; sewer › Backflow and boil-water notices</a></li>
 </ul></li>
+<li><span id="t-boiled-dinner"></span><strong>Boiled dinner</strong>
+<ul>
+<li>meat and vegetables in one kettle — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Vegetables, greens and roots</a></li>
+<li>one kettle, potatoes last — <a class="guide" href="ROOT-CELLAR-GUIDE.html#cooking-from-the-cellar">Root cellars › Cooking from the cellar</a> · <a class="guide" href="CATTLE-GUIDE.html#cooking-it">Cattle › Cooking it</a></li>
+</ul></li>
+<li><span id="t-boiled-fowl"></span><strong>Boiled fowl</strong> — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Meat: roasts, pot-roasts and tough cuts</a>
+<ul>
+<li>tied in a cloth, salt last hour — <a class="guide" href="CHICKENS-GUIDE.html#cooking-it">Chickens › Cooking it</a></li>
+</ul></li>
 <li><span id="t-boiled-water"></span><strong>Boiled water</strong>
 <ul>
 <li>how long it keeps — <a class="guide" href="WATER-PURIFICATION-GUIDE.html#storing-water-safely">Water purification › Storing water safely</a></li>
@@ -1630,6 +1717,10 @@
 <li><span id="t-boiling-instruments"></span><strong>Boiling instruments</strong>
 <ul>
 <li>clean, not sterile — <a class="guide" href="FIELD-CARE-GUIDE.html#wounds-and-infection-when-there-s-no-hospital">Injuries › Wounds and infection when there's no hospital</a></li>
+</ul></li>
+<li><span id="t-boiling-meat"></span><strong>Boiling meat</strong>
+<ul>
+<li>start in cold water — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#what-to-cook-it-on">Food from scratch › What to cook it on</a></li>
 </ul></li>
 <li><span id="t-boiling-milk"></span><strong>Boiling milk</strong> — see <a href="#t-pasteurizing-milk"><strong>Pasteurizing milk</strong></a></li>
 <li><span id="t-boiling-water"></span><strong>Boiling water</strong>
@@ -1658,6 +1749,14 @@
 <li><span id="t-bonding-pen"></span><strong>Bonding pen</strong>
 <ul>
 <li>raising a guardian pup — <a class="guide" href="DOGS-GUIDE.html#raising-a-guardian-pup-with-the-stock">Dogs › Raising a guardian pup with the stock</a></li>
+</ul></li>
+<li><span id="t-bone-broth"></span><strong>Bone broth</strong>
+<ul>
+<li>6 lb shin, 3 quarts water — <a class="guide" href="CATTLE-GUIDE.html#cooking-it">Cattle › Cooking it</a></li>
+</ul></li>
+<li><span id="t-bone-soup"></span><strong>Bone soup</strong>
+<ul>
+<li>pounded deer bones — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#deer-elk-and-bear-fat-cakes-and-bone-soup">First peoples' skills › Deer, elk and bear: fat cakes and bone soup</a></li>
 </ul></li>
 <li><span id="t-boning-meat"></span><strong>Boning meat</strong>
 <ul>
@@ -1779,6 +1878,14 @@
 <ul>
 <li>buckskin step by step — <a class="guide" href="HUNTING-TRAPPING-FISHING-GUIDE.html#butchering-using-the-whole-animal-and-hides">Hunting &amp; fishing › Butchering, using the whole animal, and hides</a></li>
 </ul></li>
+<li><span id="t-braised-beef"></span><strong>Braised beef</strong>
+<ul>
+<li>4 hours, very slow oven — <a class="guide" href="CATTLE-GUIDE.html#cooking-it">Cattle › Cooking it</a></li>
+</ul></li>
+<li><span id="t-braising"></span><strong>Braising</strong>
+<ul>
+<li>15 minutes to the pound — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Meat: roasts, pot-roasts and tough cuts</a> · <a class="guide" href="HUNTING-TRAPPING-FISHING-GUIDE.html#cooking-what-you-took">Hunting &amp; fishing › Cooking what you took</a> · <a class="guide" href="GOATS-GUIDE.html#cooking-it">Goats › Cooking it</a></li>
+</ul></li>
 <li><span id="t-brake-cables"></span><strong>Brake cables</strong>
 <ul>
 <li>stretch when new — <a class="guide" href="BICYCLES-CARTS-GUIDE.html#brakes-gears-and-field-fixes">Bicycles &amp; carts › Brakes, gears and field fixes</a></li>
@@ -1824,6 +1931,10 @@
 <li>basic yeast loaf — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#staples">Food from scratch › Staples</a></li>
 <li>sourdough loaf — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#staples">Food from scratch › Staples</a></li>
 <li>too heavy — too much flour — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#staples">Food from scratch › Staples</a></li>
+</ul></li>
+<li><span id="t-bread-pudding"></span><strong>Bread pudding</strong>
+<ul>
+<li>for stale bread — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Fruit, nuts and sweet dishes</a></li>
 </ul></li>
 <li><span id="t-breadbox-water-heater"></span><strong>Breadbox water heater</strong> — <a class="guide" href="STORING-ENERGY-GUIDE.html#solar-water-heaters-you-can-build">Storing energy › Solar water heaters you can build</a></li>
 <li><span id="t-break-pro-word"></span><strong>Break (pro-word)</strong>
@@ -1918,9 +2029,18 @@
 <li>too heavy to mate naturally — <a class="guide" href="TURKEYS-GUIDE.html#choosing-turkeys-that-breed-on-their-own">Turkeys › Choosing turkeys that breed on their own</a></li>
 </ul></li>
 <li><span id="t-brockman-soils"></span><strong>Brockman soils</strong> — see <a href="#t-serpentine-clay"><strong>Serpentine clay</strong></a></li>
+<li><span id="t-broiled-chicken"></span><strong>Broiled chicken</strong>
+<ul>
+<li>20 minutes — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Meat: roasts, pot-roasts and tough cuts</a></li>
+<li>20 minutes over coals — <a class="guide" href="CHICKENS-GUIDE.html#cooking-it">Chickens › Cooking it</a></li>
+</ul></li>
 <li><span id="t-broilers"></span><strong>Broilers</strong>
 <ul>
 <li>meat birds in 6–8 weeks — <a class="guide" href="CHICKENS-GUIDE.html#choosing-breeds-that-renew-themselves">Chickens › Choosing breeds that renew themselves</a></li>
+</ul></li>
+<li><span id="t-broiling"></span><strong>Broiling</strong>
+<ul>
+<li>times by thickness — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Meat: roasts, pot-roasts and tough cuts</a></li>
 </ul></li>
 <li><span id="t-broken-antenna"></span><strong>Broken antenna</strong>
 <ul>
@@ -1959,6 +2079,11 @@
 <ul>
 <li>chicken hen hatching turkey eggs — <a class="guide" href="TURKEYS-GUIDE.html#eggs-broody-hens-and-hatching">Turkeys › Eggs, broody hens and hatching</a></li>
 <li>setting a turkey hen — <a class="guide" href="TURKEYS-GUIDE.html#eggs-broody-hens-and-hatching">Turkeys › Eggs, broody hens and hatching</a></li>
+</ul></li>
+<li><span id="t-broth"></span><strong>Broth</strong>
+<ul>
+<li>from bones, 7½ hours — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Broth, soup and stew</a></li>
+<li>from the carcass and feet — <a class="guide" href="CHICKENS-GUIDE.html#cooking-it">Chickens › Cooking it</a></li>
 </ul></li>
 <li><span id="t-brown-recluse"></span><strong>Brown recluse</strong>
 <ul>
@@ -2158,6 +2283,7 @@
 </ul></li>
 <li><span id="t-buttermilk"></span><strong>Buttermilk</strong>
 <ul>
+<li>cornmeal cooked in it — <a class="guide" href="DAIRY-GUIDE.html#cooking-with-milk-whey-and-cheese">Milk, butter &amp; cheese › Cooking with milk, whey and cheese</a></li>
 <li>cultured — <a class="guide" href="DAIRY-GUIDE.html#butter-and-buttermilk">Milk, butter &amp; cheese › Butter and buttermilk</a></li>
 </ul></li>
 <li><span id="t-button-cells"></span><strong>Button cells</strong>
@@ -2282,6 +2408,10 @@
 <li>pit-roasting, Takelma way — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#tending-a-camas-bed-and-pit-roasting">First peoples' skills › Tending a camas bed and pit-roasting</a></li>
 <li>telling it from death camas — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#camas-cattail-and-other-local-starches">Food from scratch › Camas, cattail and other local starches</a> · <a class="guide" href="NATIVE-SKILLS-GUIDE.html#telling-camas-from-death-camas">First peoples' skills › Telling camas from death camas</a></li>
 <li>tending and replanting a bed — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#tending-a-camas-bed-and-pit-roasting">First peoples' skills › Tending a camas bed and pit-roasting</a></li>
+</ul></li>
+<li><span id="t-camas-cakes"></span><strong>Camas cakes</strong>
+<ul>
+<li>mashed, pan-shaped, kept for winter — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#camas-the-oven-and-the-cakes-that-got-people-through-winter">First peoples' skills › Camas: the oven, and the cakes that got people through winter</a></li>
 </ul></li>
 <li><span id="t-camp"></span><strong>Camp</strong>
 <ul>
@@ -2474,6 +2604,7 @@
 </ul></li>
 <li><span id="t-carrots"></span><strong>Carrots</strong>
 <ul>
+<li>30 minutes young, 45 old — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Vegetables, greens and roots</a> · <a class="guide" href="ROOT-CELLAR-GUIDE.html#cooking-from-the-cellar">Root cellars › Cooking from the cellar</a></li>
 <li>crossing with Queen Anne's lace — <a class="guide" href="SEED-BANK-GUIDE.html#which-of-your-seeds-cross-and-what-to-do">Seed bank › Which of your seeds cross — and what to do</a></li>
 <li>leaving in the ground — <a class="guide" href="ROOT-CELLAR-GUIDE.html#pits-clamps-buried-barrels-and-the-garden-itself">Root cellars › Pits, clamps, buried barrels — and the garden itself</a></li>
 <li>saving seed — <a class="guide" href="SEED-BANK-GUIDE.html#biennials-seed-in-the-second-year">Seed bank › Biennials: seed in the second year</a></li>
@@ -2819,6 +2950,7 @@
 <li>aging in a cellar — <a class="guide" href="DAIRY-GUIDE.html#salting-waxing-and-aging-without-a-fridge">Milk, butter &amp; cheese › Salting, waxing and aging without a fridge</a></li>
 <li>cottage cheese without bought culture — <a class="guide" href="DAIRY-GUIDE.html#soft-cheeses-paneer-queso-fresco-ch-vre-cottage-cheese">Milk, butter &amp; cheese › Soft cheeses: paneer, queso fresco, chèvre, cottage cheese</a></li>
 <li>farm Cheddar step by step — <a class="guide" href="DAIRY-GUIDE.html#hard-cheese-step-by-step-with-a-home-made-press">Milk, butter &amp; cheese › Hard cheese step by step, with a home-made press</a></li>
+<li>in mush and in a cheese roll — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Fish, eggs, milk and cheese</a></li>
 <li>lemon or vinegar (queso blanco, paneer) — <a class="guide" href="DAIRY-GUIDE.html#soft-cheeses-paneer-queso-fresco-ch-vre-cottage-cheese">Milk, butter &amp; cheese › Soft cheeses: paneer, queso fresco, chèvre, cottage cheese</a></li>
 <li>simple rennet cheese — <a class="guide" href="DAIRY-GUIDE.html#hard-cheese-step-by-step-with-a-home-made-press">Milk, butter &amp; cheese › Hard cheese step by step, with a home-made press</a></li>
 </ul></li>
@@ -3006,10 +3138,15 @@
 <ul>
 <li>height, tire on top — <a class="guide" href="FIREWOOD-GUIDE.html#splitting">Firewood › Splitting</a></li>
 </ul></li>
+<li><span id="t-chops"></span><strong>Chops</strong>
+<ul>
+<li>broiling times — <a class="guide" href="SHEEP-GUIDE.html#cooking-it">Sheep › Cooking it</a></li>
+</ul></li>
 <li><span id="t-chores"></span><strong>Chores</strong>
 <ul>
 <li>rotating unpleasant tasks — <a class="guide" href="COMMUNITY-BARTER-GUIDE.html#sharing-the-work">Community &amp; barter › Sharing the work</a></li>
 </ul></li>
+<li><span id="t-chowder"></span><strong>Chowder</strong> — see <a href="#t-fish-chowder"><strong>Fish chowder</strong></a></li>
 <li><span id="t-christmas-flood-of-1964"></span><strong>Christmas flood of 1964</strong>
 <ul>
 <li>valley cut off — <a class="guide" href="WHAT-TO-EXPECT-GUIDE.html#2-winter-storm-ice-flood-and-landslides">What to expect › 2. Winter storm, ice, flood and landslides</a></li>
@@ -3206,6 +3343,10 @@
 <li><span id="t-coal-tar-on-cob"></span><strong>Coal tar on cob</strong>
 <ul>
 <li>old advice — don't — <a class="guide" href="NATURAL-BUILDING-GUIDE.html#old-advice-in-the-library-to-ignore">Natural building › Old advice in the library to ignore</a></li>
+</ul></li>
+<li><span id="t-coals"></span><strong>Coals</strong>
+<ul>
+<li>cooking on them, not flames — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#what-to-cook-it-on">Food from scratch › What to cook it on</a></li>
 </ul></li>
 <li><span id="t-coast-refugees"></span><strong>Coast refugees</strong>
 <ul>
@@ -3541,6 +3682,30 @@
 </ul></li>
 <li><span id="t-convulsions"></span><strong>Convulsions</strong> — see <a href="#t-fits"><strong>Fits</strong></a>, <a href="#t-seizures"><strong>Seizures</strong></a></li>
 <li><span id="t-cookie-tin"></span><strong>Cookie tin</strong> — see <a href="#t-faraday-container"><strong>Faraday container</strong></a></li>
+<li><span id="t-cooking-beef"></span><strong>Cooking beef</strong>
+<ul>
+<li>mostly pot-roast and stew — <a class="guide" href="CATTLE-GUIDE.html#cooking-it">Cattle › Cooking it</a></li>
+</ul></li>
+<li><span id="t-cooking-chicken"></span><strong>Cooking chicken</strong>
+<ul>
+<li>young bird or old hen — <a class="guide" href="CHICKENS-GUIDE.html#cooking-it">Chickens › Cooking it</a></li>
+</ul></li>
+<li><span id="t-cooking-duck"></span><strong>Cooking duck</strong>
+<ul>
+<li>roast young, braise old — <a class="guide" href="DUCKS-GUIDE.html#cooking-it">Ducks › Cooking it</a></li>
+</ul></li>
+<li><span id="t-cooking-from-the-cellar"></span><strong>Cooking from the cellar</strong>
+<ul>
+<li>how long stored vegetables take — <a class="guide" href="ROOT-CELLAR-GUIDE.html#cooking-from-the-cellar">Root cellars › Cooking from the cellar</a></li>
+</ul></li>
+<li><span id="t-cooking-game"></span><strong>Cooking game</strong>
+<ul>
+<li>the rules that matter most — <a class="guide" href="HUNTING-TRAPPING-FISHING-GUIDE.html#cooking-what-you-took">Hunting &amp; fishing › Cooking what you took</a></li>
+</ul></li>
+<li><span id="t-cooking-goat"></span><strong>Cooking goat</strong>
+<ul>
+<li>kid roasts, older goat braises — <a class="guide" href="GOATS-GUIDE.html#cooking-it">Goats › Cooking it</a></li>
+</ul></li>
 <li><span id="t-cooking-measures"></span><strong>Cooking measures</strong>
 <ul>
 <li>cups, tablespoons, mL — <a class="guide" href="PRACTICAL-MATH-GUIDE.html#quick-reference-tables-print-these">Practical math › Quick-reference tables (print these)</a></li>
@@ -3548,6 +3713,13 @@
 <li><span id="t-cooking-mushrooms"></span><strong>Cooking mushrooms</strong>
 <ul>
 <li>always cook wild ones — <a class="guide" href="MUSHROOM-GUIDE.html#cooking-drying-and-storing">Mushrooms › Cooking, drying and storing</a></li>
+<li>baked on toast under a bowl — <a class="guide" href="MUSHROOM-GUIDE.html#cooking-drying-and-storing">Mushrooms › Cooking, drying and storing</a></li>
+<li>broiled caps, 2 minutes a side — <a class="guide" href="MUSHROOM-GUIDE.html#cooking-drying-and-storing">Mushrooms › Cooking, drying and storing</a></li>
+<li>how long by texture — <a class="guide" href="MUSHROOM-GUIDE.html#cooking-drying-and-storing">Mushrooms › Cooking, drying and storing</a></li>
+</ul></li>
+<li><span id="t-cooking-mutton"></span><strong>Cooking mutton</strong>
+<ul>
+<li>lamb roasts, old ewe stews — <a class="guide" href="SHEEP-GUIDE.html#cooking-it">Sheep › Cooking it</a></li>
 </ul></li>
 <li><span id="t-cooking-oil"></span><strong>Cooking oil</strong>
 <ul>
@@ -3555,7 +3727,24 @@
 </ul></li>
 <li><span id="t-cooking-over-a-fire"></span><strong>Cooking over a fire</strong>
 <ul>
+<li>flames, coals and what each suits — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#what-to-cook-it-on">Food from scratch › What to cook it on</a></li>
 <li>use coals — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#staples">Food from scratch › Staples</a></li>
+</ul></li>
+<li><span id="t-cooking-rabbit"></span><strong>Cooking rabbit</strong>
+<ul>
+<li>fryer, roaster, stewer — <a class="guide" href="RABBITS-GUIDE.html#cooking-it">Rabbits › Cooking it</a></li>
+</ul></li>
+<li><span id="t-cooking-times"></span><strong>Cooking times</strong>
+<ul>
+<li>which method takes how long — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#what-to-cook-it-on">Food from scratch › What to cook it on</a></li>
+</ul></li>
+<li><span id="t-cooking-turkey"></span><strong>Cooking turkey</strong>
+<ul>
+<li>breast and legs want different heat — <a class="guide" href="TURKEYS-GUIDE.html#cooking-it">Turkeys › Cooking it</a></li>
+</ul></li>
+<li><span id="t-cooking-with-milk"></span><strong>Cooking with milk</strong>
+<ul>
+<li>custards, puddings, sauces — <a class="guide" href="DAIRY-GUIDE.html#cooking-with-milk-whey-and-cheese">Milk, butter &amp; cheese › Cooking with milk, whey and cheese</a></li>
 </ul></li>
 <li><span id="t-cool-box"></span><strong>Cool box</strong>
 <ul>
@@ -3646,6 +3835,13 @@
 <li>treat it to prevent pellagra — <a class="guide" href="FOOD-SECURITY-GUIDE.html#hunger-diseases-spot-them-prevent-them">Food when scarce › Hunger diseases: spot them, prevent them</a></li>
 <li>when to plant — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#the-year-at-a-glance">Food from scratch › The year at a glance</a></li>
 </ul></li>
+<li><span id="t-corn-chowder"></span><strong>Corn chowder</strong> — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Broth, soup and stew</a></li>
+<li><span id="t-corn-dodgers"></span><strong>Corn dodgers</strong> — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Pan breads, dumplings, pancakes and fritters</a></li>
+<li><span id="t-corn-dumplings"></span><strong>Corn dumplings</strong>
+<ul>
+<li>boiled with meat — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Pan breads, dumplings, pancakes and fritters</a></li>
+</ul></li>
+<li><span id="t-corn-pone"></span><strong>Corn pone</strong> — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Pan breads, dumplings, pancakes and fritters</a></li>
 <li><span id="t-corn-steep-liquor"></span><strong>Corn steep liquor</strong>
 <ul>
 <li>the waste liquid that raised the yield tenfold — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html">How antibiotics came to be › 1941–1945: the farm laboratory, and the jump to a factory</a></li>
@@ -3663,7 +3859,10 @@
 <ul>
 <li>rat-proofing — <a class="guide" href="ROOT-CELLAR-GUIDE.html#keeping-rats-mice-and-bugs-out">Root cellars › Keeping rats, mice and bugs out</a></li>
 </ul></li>
-<li><span id="t-corned-beef"></span><strong>Corned beef</strong> — <a class="guide" href="CATTLE-GUIDE.html#no-freezer-what-to-do-with-400-lb-of-beef">Cattle › No freezer: what to do with 400 lb of beef</a></li>
+<li><span id="t-corned-beef"></span><strong>Corned beef</strong> — <a class="guide" href="CATTLE-GUIDE.html#no-freezer-what-to-do-with-400-lb-of-beef">Cattle › No freezer: what to do with 400 lb of beef</a>
+<ul>
+<li>boiled from cold water — <a class="guide" href="CATTLE-GUIDE.html#cooking-it">Cattle › Cooking it</a></li>
+</ul></li>
 <li><span id="t-cornish-cross"></span><strong>Cornish-cross</strong>
 <ul>
 <li>won't rebuild a flock — <a class="guide" href="CHICKENS-GUIDE.html#choosing-breeds-that-renew-themselves">Chickens › Choosing breeds that renew themselves</a></li>
@@ -3671,6 +3870,10 @@
 <li><span id="t-cornmeal"></span><strong>Cornmeal</strong>
 <ul>
 <li>stretching wheat flour — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#corn-masa-tortillas-and-hominy">Food from scratch › Corn: masa, tortillas and hominy</a></li>
+</ul></li>
+<li><span id="t-cornmeal-mush"></span><strong>Cornmeal mush</strong>
+<ul>
+<li>water and salt per cup — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Porridge, mush, hominy and grain dishes</a></li>
 </ul></li>
 <li><span id="t-corrosion"></span><strong>Corrosion</strong>
 <ul>
@@ -3685,6 +3888,11 @@
 <li><span id="t-cost-of-dry-cells"></span><strong>Cost of dry cells</strong>
 <ul>
 <li>per kilowatt-hour — <a class="guide" href="BATTERIES-GUIDE.html">Batteries › Getting the most out of what you have</a></li>
+</ul></li>
+<li><span id="t-cottage-cheese"></span><strong>Cottage cheese</strong>
+<ul>
+<li>seasoning and a cheese roll — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Fish, eggs, milk and cheese</a></li>
+<li>seasoning it; a cheese roll — <a class="guide" href="DAIRY-GUIDE.html#cooking-with-milk-whey-and-cheese">Milk, butter &amp; cheese › Cooking with milk, whey and cheese</a></li>
 </ul></li>
 <li><span id="t-cotton"></span><strong>Cotton</strong>
 <ul>
@@ -3916,6 +4124,7 @@
 <ul>
 <li>Cure #1 and Cure #2 — <a class="guide" href="PRESERVING-FOOD-GUIDE.html#curing-pork-and-venison">Preserving food › Curing pork and venison</a></li>
 </ul></li>
+<li><span id="t-custard"></span><strong>Custard</strong> — see <a href="#t-baked-custard"><strong>Baked custard</strong></a></li>
 <li><span id="t-cut-off-from-the-outside"></span><strong>Cut off from the outside</strong>
 <ul>
 <li>"one way in, one way out" — <a class="guide" href="WHAT-TO-EXPECT-GUIDE.html#2-winter-storm-ice-flood-and-landslides">What to expect › 2. Winter storm, ice, flood and landslides</a></li>
@@ -3961,6 +4170,10 @@
 <li>packing roots in it — <a class="guide" href="ROOT-CELLAR-GUIDE.html#the-illinois-valley-problem-warm-ground">Root cellars › The Illinois Valley problem: warm ground</a></li>
 </ul></li>
 <li><span id="t-damp-wall-base"></span><strong>Damp wall base</strong> — <a class="guide" href="NATURAL-BUILDING-GUIDE.html#if-this-goes-wrong">Natural building › If this goes wrong</a></li>
+<li><span id="t-damper"></span><strong>Damper</strong>
+<ul>
+<li>bread baked in ashes — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Pan breads, dumplings, pancakes and fritters</a></li>
+</ul></li>
 <li><span id="t-dams"></span><strong>Dams</strong>
 <ul>
 <li>how they fail — <a class="guide" href="DAMS-DITCHES-GUIDE.html#how-dams-fail">Dams, weirs &amp; ditches › How dams fail</a></li>
@@ -3973,6 +4186,7 @@
 <ul>
 <li>medicinal use — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Medicinal plants with real evidence</a></li>
 </ul></li>
+<li><span id="t-dandelion-greens"></span><strong>Dandelion greens</strong> — see <a href="#t-greens"><strong>Greens</strong></a></li>
 <li><span id="t-danger-zone"></span><strong>Danger zone</strong>
 <ul>
 <li>leftover cooked food — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#staples">Food from scratch › Staples</a></li>
@@ -4136,6 +4350,10 @@
 <li><span id="t-deer-mouse"></span><strong>Deer mouse</strong>
 <ul>
 <li>photos — <a class="wiki" href="https://en.wikipedia.org/wiki/Western_deer_mouse" data-title="Western_deer_mouse" target="_blank" rel="noopener" title="Wikipedia: Western deer mouse (offline copy with photos when opened through the Library Assistant)">photos</a></li>
+</ul></li>
+<li><span id="t-deer-fat-cakes"></span><strong>Deer-fat cakes</strong>
+<ul>
+<li>the winter butter — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#deer-elk-and-bear-fat-cakes-and-bone-soup">First peoples' skills › Deer, elk and bear: fat cakes and bone soup</a></li>
 </ul></li>
 <li><span id="t-defense-of-premises"></span><strong>Defense of premises</strong>
 <ul>
@@ -4639,12 +4857,26 @@
 <ul>
 <li>sterile ones baked in an oven — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#water-soap-and-salt-water">Making medicines › Water, soap and salt water</a></li>
 </ul></li>
+<li><span id="t-dried-camas"></span><strong>Dried camas</strong>
+<ul>
+<li>soak it overnight — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#camas-the-oven-and-the-cakes-that-got-people-through-winter">First peoples' skills › Camas: the oven, and the cakes that got people through winter</a></li>
+</ul></li>
 <li><span id="t-dried-fruit"></span><strong>Dried fruit</strong>
 <ul>
 <li>is it dry yet? — <a class="guide" href="PRESERVING-FOOD-GUIDE.html#drying-in-our-dry-summers">Preserving food › Drying in our dry summers</a></li>
 <li>is it dry? conditioning — <a class="guide" href="ROOT-CELLAR-GUIDE.html#drying-food">Root cellars › Drying food</a></li>
 </ul></li>
 <li><span id="t-dried-meat"></span><strong>Dried meat</strong> — see <a href="#t-jerky"><strong>Jerky</strong></a></li>
+<li><span id="t-dried-mushrooms"></span><strong>Dried mushrooms</strong>
+<ul>
+<li>powdered for flavor — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Making plain food good</a></li>
+<li>powdered, for soups and sauces — <a class="guide" href="MUSHROOM-GUIDE.html#cooking-drying-and-storing">Mushrooms › Cooking, drying and storing</a></li>
+</ul></li>
+<li><span id="t-dried-squash"></span><strong>Dried squash</strong>
+<ul>
+<li>in winter dishes — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Beans, peas and lentils</a></li>
+<li>in winter soups and stews — <a class="guide" href="ROOT-CELLAR-GUIDE.html#cooking-from-the-cellar">Root cellars › Cooking from the cellar</a></li>
+</ul></li>
 <li><span id="t-drift"></span><strong>Drift</strong> — <a class="guide" href="BLACKSMITHING-GUIDE.html#making-basic-tools">Blacksmithing › Making basic tools</a></li>
 <li><span id="t-drill"></span><strong>Drill</strong>
 <ul>
@@ -4818,6 +5050,10 @@
 <li>spoil faster than hens' eggs — <a class="guide" href="DUCKS-GUIDE.html#duck-eggs-when-and-how-many">Ducks › Duck eggs: when and how many</a></li>
 <li>when ducks lay, how many — <a class="guide" href="DUCKS-GUIDE.html#duck-eggs-when-and-how-many">Ducks › Duck eggs: when and how many</a></li>
 </ul></li>
+<li><span id="t-duck-fat"></span><strong>Duck fat</strong>
+<ul>
+<li>poured off and kept — <a class="guide" href="DUCKS-GUIDE.html#cooking-it">Ducks › Cooking it</a></li>
+</ul></li>
 <li><span id="t-duck-feed"></span><strong>Duck feed</strong>
 <ul>
 <li>home-grown mash recipes — <a class="guide" href="DUCKS-GUIDE.html#home-grown-rations">Ducks › Home-grown rations</a></li>
@@ -4826,6 +5062,10 @@
 <li><span id="t-duck-house"></span><strong>Duck house</strong>
 <ul>
 <li>dry floor, nests, vents — <a class="guide" href="DUCKS-GUIDE.html#housing-water-and-keeping-bedding-dry">Ducks › Housing, water and keeping bedding dry</a></li>
+</ul></li>
+<li><span id="t-duck-in-milk"></span><strong>Duck in milk</strong>
+<ul>
+<li>for an old bird — <a class="guide" href="DUCKS-GUIDE.html#cooking-it">Ducks › Cooking it</a></li>
 </ul></li>
 <li><span id="t-duck-plague"></span><strong>Duck plague</strong>
 <ul>
@@ -4871,6 +5111,10 @@
 <ul>
 <li>hydro — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#creek-hydro-and-why-not-wind">Off-grid power › Creek hydro, and why not wind</a></li>
 </ul></li>
+<li><span id="t-dumplings"></span><strong>Dumplings</strong>
+<ul>
+<li>steamed or dropped on a stew — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Pan breads, dumplings, pancakes and fritters</a></li>
+</ul></li>
 <li><span id="t-dung-in-plaster"></span><strong>Dung in plaster</strong> — see <a href="#t-stabilisers-for-clay"><strong>Stabilisers for clay</strong></a></li>
 <li><span id="t-durable-woods"></span><strong>Durable woods</strong>
 <ul>
@@ -4887,6 +5131,7 @@
 <li><span id="t-dutch-oven"></span><strong>Dutch oven</strong>
 <ul>
 <li>baking bread — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#staples">Food from scratch › Staples</a></li>
+<li>coals on the lid — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#what-to-cook-it-on">Food from scratch › What to cook it on</a></li>
 </ul></li>
 <li><span id="t-duty-roster"></span><strong>Duty roster</strong> — see <a href="#t-chores"><strong>Chores</strong></a></li>
 <li><span id="t-dvt"></span><strong>DVT</strong> — see <a href="#t-blood-clot"><strong>Blood clot</strong></a></li>
@@ -5046,6 +5291,7 @@
 <li>how many per hen on little feed — <a class="guide" href="CHICKENS-GUIDE.html#eggs-age-daylight-molt-and-storing">Chickens › Eggs: age, daylight, molt and storing</a></li>
 <li>keeping 6–9 months in water glass — <a class="guide" href="ROOT-CELLAR-GUIDE.html#fermenting-salting-eggs-and-vinegar">Root cellars › Fermenting, salting, eggs and vinegar</a></li>
 <li>keeping in water glass or limewater — <a class="guide" href="PRESERVING-FOOD-GUIDE.html#lard-confit-eggs-and-vinegar">Preserving food › Lard, confit, eggs and vinegar</a></li>
+<li>scrambled and omelets — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Fish, eggs, milk and cheese</a></li>
 </ul></li>
 <li><span id="t-eggshells"></span><strong>Eggshells</strong>
 <ul>
@@ -5054,6 +5300,11 @@
 <li><span id="t-elder"></span><strong>Elder</strong>
 <ul>
 <li>flowers for fever and colds — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Medicinal plants with real evidence</a></li>
+</ul></li>
+<li><span id="t-elderberries"></span><strong>Elderberries</strong>
+<ul>
+<li>which kinds can be canned — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Fruit, nuts and sweet dishes</a></li>
+<li>⚠️ never raw — cook them — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Fruit, nuts and sweet dishes</a></li>
 </ul></li>
 <li><span id="t-elderberry"></span><strong>Elderberry</strong>
 <ul>
@@ -5130,11 +5381,15 @@
 <ul>
 <li>the 93 people killed in 1937 — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#19321937-the-sulfa-drugs-and-the-price-of-skipping-the-safety-test">How antibiotics came to be › 1932–1937: the sulfa drugs, and the price of skipping the safety test</a></li>
 </ul></li>
-<li><span id="t-elk"></span><strong>Elk</strong>
+<li><span id="t-elk"></span><strong>Elk</strong> — see <a href="#t-venison"><strong>Venison</strong></a>
 <ul>
 <li>Roosevelt elk habits — <a class="guide" href="HUNTING-TRAPPING-FISHING-GUIDE.html#local-game-and-its-habits">Hunting &amp; fishing › Local game and its habits</a></li>
 <li>nearly wiped out here once — <a class="guide" href="HUNTING-TRAPPING-FISHING-GUIDE.html#take-the-surplus-never-the-seed">Hunting &amp; fishing › Take the surplus, never the seed</a></li>
 <li>where they live and gather (map) — <a class="guide" href="HOW-TO-VIEW-MAPS.html#easiest-the-map-in-the-web-browser">HOW-TO-VIEW-MAPS › Easiest: the map in the web browser</a></li>
+</ul></li>
+<li><span id="t-elk-horn-spoon"></span><strong>Elk-horn spoon</strong>
+<ul>
+<li>how mush was served and eaten — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#acorn-soup-the-everyday-meal">First peoples' skills › Acorn soup, the everyday meal</a></li>
 </ul></li>
 <li><span id="t-ellipse-oval"></span><strong>Ellipse (oval)</strong>
 <ul>
@@ -5769,7 +6024,7 @@
 <ul>
 <li>fire-clay mortar — <a class="guide" href="MASONRY-ROADS-GUIDE.html#mortar-mixes-sand-and-mixing">Mortar, concrete &amp; roads › Mortar: mixes, sand and mixing</a></li>
 </ul></li>
-<li><span id="t-fireless-cooker"></span><strong>Fireless cooker</strong> — see <a href="#t-hay-box-cooker"><strong>Hay-box cooker</strong></a>, <a href="#t-haybox"><strong>Haybox</strong></a></li>
+<li><span id="t-fireless-cooker"></span><strong>Fireless cooker</strong> — see <a href="#t-hay-box"><strong>Hay box</strong></a>, <a href="#t-hay-box-cooker"><strong>Hay-box cooker</strong></a>, <a href="#t-haybox"><strong>Haybox</strong></a></li>
 <li><span id="t-fires-after-a-blast"></span><strong>Fires after a blast</strong>
 <ul>
 <li>check the house — <a class="guide" href="NUCLEAR-FALLOUT-GUIDE.html#the-first-minutes">Nuclear fallout › The first minutes</a></li>
@@ -5824,11 +6079,15 @@
 <li><span id="t-first-hour-checklist-nuclear"></span><strong>First-hour checklist (nuclear)</strong> — <a class="guide" href="NUCLEAR-FALLOUT-GUIDE.html#the-first-minutes">Nuclear fallout › The first minutes</a></li>
 <li><span id="t-fish"></span><strong>Fish</strong>
 <ul>
+<li>broiled over coals — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Fish, eggs, milk and cheese</a></li>
+<li>broiled over coals, fried, boiled — <a class="guide" href="HUNTING-TRAPPING-FISHING-GUIDE.html#cooking-what-you-took">Hunting &amp; fishing › Cooking what you took</a></li>
 <li>canning smoked fish — <a class="guide" href="PRESERVING-FOOD-GUIDE.html#fish-smoking-canning-and-salting">Preserving food › Fish: smoking, canning and salting</a></li>
+<li>fried, and boiled whole — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Fish, eggs, milk and cheese</a></li>
 <li>salting and drying — <a class="guide" href="PRESERVING-FOOD-GUIDE.html#fish-smoking-canning-and-salting">Preserving food › Fish: smoking, canning and salting</a></li>
 <li>salting and smoking — <a class="guide" href="ROOT-CELLAR-GUIDE.html#curing-and-smoking-meat">Root cellars › Curing and smoking meat</a></li>
 <li>smoking — <a class="guide" href="PRESERVING-FOOD-GUIDE.html#fish-smoking-canning-and-salting">Preserving food › Fish: smoking, canning and salting</a></li>
 </ul></li>
+<li><span id="t-fish-chowder"></span><strong>Fish chowder</strong> — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Broth, soup and stew</a></li>
 <li><span id="t-fish-ladder"></span><strong>Fish ladder</strong> — <a class="guide" href="DAMS-DITCHES-GUIDE.html">Dams, weirs &amp; ditches › Salmon, steelhead and fish passage</a></li>
 <li><span id="t-fish-poison"></span><strong>Fish poison</strong>
 <ul>
@@ -5866,6 +6125,7 @@
 <ul>
 <li>what hand tools can do — <a class="guide" href="WILDFIRE-GUIDE.html#smoke-columns-spotting-and-flame-length">Wildfire › Smoke columns, spotting and flame length</a></li>
 </ul></li>
+<li><span id="t-flapjacks"></span><strong>Flapjacks</strong> — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Pan breads, dumplings, pancakes and fritters</a></li>
 <li><span id="t-flapper-valve"></span><strong>Flapper valve</strong> — see <a href="#t-drop-tube-and-flapper-valve"><strong>Drop tube and flapper valve</strong></a></li>
 <li><span id="t-flares"></span><strong>Flares</strong>
 <ul>
@@ -5991,6 +6251,10 @@
 <li>grinding by hand — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#flour-from-grain">Food from scratch › Flour from grain</a></li>
 <li>how long it keeps — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#flour-from-grain">Food from scratch › Flour from grain</a></li>
 </ul></li>
+<li><span id="t-flour-and-fat"></span><strong>Flour and fat</strong>
+<ul>
+<li>what they alone will make — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Flour and fat and nothing else</a></li>
+</ul></li>
 <li><span id="t-flour-sacks"></span><strong>Flour sacks</strong>
 <ul>
 <li>dish towels — <a class="guide" href="PAPER-INK-GUIDE.html#handkerchiefs-towels-and-reusing-paper">Paper &amp; ink › Handkerchiefs, towels and reusing paper</a></li>
@@ -6049,6 +6313,10 @@
 <li><span id="t-food-calendar"></span><strong>Food calendar</strong>
 <ul>
 <li>what to gather or make when — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#the-year-at-a-glance">Food from scratch › The year at a glance</a></li>
+</ul></li>
+<li><span id="t-food-for-the-sick"></span><strong>Food for the sick</strong>
+<ul>
+<li>broth, jelly, gruel — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Broth, soup and stew</a></li>
 </ul></li>
 <li><span id="t-food-forest"></span><strong>Food forest</strong>
 <ul>
@@ -6161,6 +6429,10 @@
 <li>squaring the corners — <a class="guide" href="PRACTICAL-MATH-GUIDE.html#right-angles-and-layout">Practical math › Right angles and layout</a></li>
 </ul></li>
 <li><span id="t-founder"></span><strong>Founder</strong> — see <a href="#t-laminitis"><strong>Laminitis</strong></a></li>
+<li><span id="t-four-vegetables-mixed"></span><strong>Four-vegetables-mixed</strong>
+<ul>
+<li>dried beans, squash, corn, sunflower — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Beans, peas and lentils</a></li>
+</ul></li>
 <li><span id="t-foxglove"></span><strong>Foxglove</strong>
 <ul>
 <li>heart poison — <a class="guide" href="HORSE-GUIDE.html#local-dangers">Horses › Local dangers</a></li>
@@ -6232,9 +6504,14 @@
 <li>print and fill in — <a class="guide" href="RADIO-GUIDE.html#14-print-and-keep-frequency-card">Radio › 14. Print-and-keep frequency card</a></li>
 </ul></li>
 <li><span id="t-fresno-scraper"></span><strong>Fresno scraper</strong> — <a class="guide" href="DAMS-DITCHES-GUIDE.html#building-the-bank-by-hand-or-with-animals">Dams, weirs &amp; ditches › Building the bank by hand or with animals</a></li>
+<li><span id="t-fricassee"></span><strong>Fricassee</strong> — see <a href="#t-old-hen"><strong>Old hen</strong></a></li>
 <li><span id="t-friction"></span><strong>Friction</strong>
 <ul>
 <li>about 10% per pulley — <a class="guide" href="PRACTICAL-MATH-GUIDE.html#levers-pulleys-and-loads">Practical math › Levers, pulleys and loads</a></li>
+</ul></li>
+<li><span id="t-fritters"></span><strong>Fritters</strong>
+<ul>
+<li>batter and how to fry — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Pan breads, dumplings, pancakes and fritters</a></li>
 </ul></li>
 <li><span id="t-froe"></span><strong>Froe</strong> — <a class="guide" href="WOODWORKING-GUIDE.html">Woodworking › Splitting and riving green wood</a>
 <ul>
@@ -6453,6 +6730,10 @@
 <ul>
 <li>don't wrap warm meat — <a class="guide" href="HUNTING-TRAPPING-FISHING-GUIDE.html#cooling-meat-in-our-heat">Hunting &amp; fishing › Cooling meat in our heat</a></li>
 </ul></li>
+<li><span id="t-game-birds"></span><strong>Game birds</strong>
+<ul>
+<li>old or young? check the joints — <a class="guide" href="HUNTING-TRAPPING-FISHING-GUIDE.html#cooking-what-you-took">Hunting &amp; fishing › Cooking what you took</a></li>
+</ul></li>
 <li><span id="t-game-laws"></span><strong>Game laws</strong>
 <ul>
 <li>why they exist — <a class="guide" href="HUNTING-TRAPPING-FISHING-GUIDE.html#take-the-surplus-never-the-seed">Hunting &amp; fishing › Take the surplus, never the seed</a></li>
@@ -6460,6 +6741,7 @@
 <li><span id="t-game-meat"></span><strong>Game meat</strong>
 <ul>
 <li>safe cooking temperature — <a class="guide" href="ILLINOIS-VALLEY-START-HERE.html#hunting-and-fishing">Illinois Valley › Hunting and 🎣 Fishing</a></li>
+<li>trim the fat, add fat back — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Meat: roasts, pot-roasts and tough cuts</a> · <a class="guide" href="HUNTING-TRAPPING-FISHING-GUIDE.html#cooking-what-you-took">Hunting &amp; fishing › Cooking what you took</a></li>
 </ul></li>
 <li><span id="t-gander"></span><strong>Gander</strong>
 <ul>
@@ -6736,6 +7018,10 @@
 <ul>
 <li>never let sheep eat it (copper) — <a class="guide" href="GOATS-GUIDE.html#minerals-selenium-copper-and-salt">Goats › Minerals: selenium, copper and salt</a></li>
 </ul></li>
+<li><span id="t-goat-stew"></span><strong>Goat stew</strong>
+<ul>
+<li>with dumplings — <a class="guide" href="GOATS-GUIDE.html#cooking-it">Goats › Cooking it</a></li>
+</ul></li>
 <li><span id="t-goatheads"></span><strong>Goatheads</strong> — <a class="guide" href="BICYCLES-CARTS-GUIDE.html#illinois-valley-hazards">Bicycles &amp; carts › Illinois Valley hazards</a></li>
 <li><span id="t-goats"></span><strong>Goats</strong>
 <ul>
@@ -6858,6 +7144,10 @@
 <ul>
 <li>sheep on lush grass — <a class="guide" href="SHEEP-GUIDE.html#sheep-health-with-no-vet">Sheep › Sheep health with no vet</a></li>
 </ul></li>
+<li><span id="t-grasshoppers"></span><strong>Grasshoppers</strong>
+<ul>
+<li>gathered from a burnt field — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#seed-meal-nut-cakes-and-berry-cakes">First peoples' skills › Seed meal, nut cakes and berry cakes</a></li>
+</ul></li>
 <li><span id="t-gravel"></span><strong>Gravel</strong>
 <ul>
 <li>for concrete, largest size — <a class="guide" href="MASONRY-ROADS-GUIDE.html#sand-gravel-and-water-for-concrete">Mortar, concrete &amp; roads › Sand, gravel and water for concrete</a></li>
@@ -6888,6 +7178,11 @@
 <li>from an uphill spring — <a class="guide" href="WATER-WELLS-GUIDE.html#springs">Wells &amp; pumps › Springs</a></li>
 </ul></li>
 <li><span id="t-gravity-water-supply"></span><strong>Gravity water supply</strong> — <a class="guide" href="TOWN-WATER-SEWER-GUIDE.html">Town water &amp; sewer › Let gravity do the work</a></li>
+<li><span id="t-gravy"></span><strong>Gravy</strong>
+<ul>
+<li>flour, fat and water — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Making plain food good</a></li>
+<li>from the pan — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Meat: roasts, pot-roasts and tough cuts</a></li>
+</ul></li>
 <li><span id="t-grease-trap"></span><strong>Grease trap</strong>
 <ul>
 <li>barrel — <a class="guide" href="SANITATION-GUIDE.html#septic-systems-with-no-power-and-greywater">Sanitation › Septic systems with no power, and greywater</a></li>
@@ -6917,7 +7212,12 @@
 <li><span id="t-greens"></span><strong>Greens</strong>
 <ul>
 <li>beet, turnip and radish — <a class="guide" href="SEED-BANK-GUIDE.html#using-the-harvest">Seed bank › Using the harvest</a></li>
+<li>boiled an hour, with vinegar — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Vegetables, greens and roots</a></li>
 <li>feeding rabbits safely; heated piles dangerous — <a class="guide" href="RABBITS-GUIDE.html#greens-and-forage-whats-safe">Rabbits › Greens and forage: what's safe</a></li>
+</ul></li>
+<li><span id="t-greens-and-egg-bake"></span><strong>Greens and egg bake</strong>
+<ul>
+<li>bread, eggs, milk and greens — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Fish, eggs, milk and cheese</a></li>
 </ul></li>
 <li><span id="t-greywater"></span><strong>Greywater</strong>
 <ul>
@@ -6933,6 +7233,7 @@
 <ul>
 <li>dead when the grid is down — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#salvaging-and-testing-panels">Off-grid power › Salvaging and testing panels</a></li>
 </ul></li>
+<li><span id="t-griddle-cakes"></span><strong>Griddle cakes</strong> — see <a href="#t-flapjacks"><strong>Flapjacks</strong></a></li>
 <li><span id="t-grief"></span><strong>Grief</strong>
 <ul>
 <li>what not to say — <a class="guide" href="COMMUNITY-BARTER-GUIDE.html#grief-stress-and-psychological-first-aid">Community &amp; barter › Grief, stress and psychological first aid</a></li>
@@ -6959,6 +7260,7 @@
 <ul>
 <li>for confined birds — <a class="guide" href="CHICKENS-GUIDE.html#calcium-grit-and-salt">Chickens › Calcium, grit and salt</a></li>
 </ul></li>
+<li><span id="t-grits"></span><strong>Grits</strong> — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Porridge, mush, hominy and grain dishes</a></li>
 <li><span id="t-gritty-dust-after-an-attack"></span><strong>Gritty dust after an attack</strong>
 <ul>
 <li>assume it's fallout — <a class="guide" href="NUCLEAR-FALLOUT-GUIDE.html#how-long-to-stay-in">Nuclear fallout › How long to stay in</a></li>
@@ -7025,6 +7327,10 @@
 <li><span id="t-growth"></span><strong>Growth</strong>
 <ul>
 <li>weighing and growth charts — <a class="guide" href="CHILDBIRTH-CHILDREN-GUIDE.html#growth-malnutrition-and-toddler-food">Childbirth &amp; kids › Growth, malnutrition and toddler food</a></li>
+</ul></li>
+<li><span id="t-gruel"></span><strong>Gruel</strong>
+<ul>
+<li>thin, for the sick — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Flour and fat and nothing else</a></li>
 </ul></li>
 <li><span id="t-guard-dogs"></span><strong>Guard dogs</strong> — see <a href="#t-livestock-guardian-dogs"><strong>Livestock guardian dogs</strong></a></li>
 <li><span id="t-guard-rail"></span><strong>Guard rail</strong>
@@ -7242,6 +7548,10 @@
 <li>Columbia Generating Station, 350 miles — <a class="guide" href="NUCLEAR-FALLOUT-GUIDE.html#our-area">Nuclear fallout › Our area</a></li>
 </ul></li>
 <li><span id="t-hanging-food"></span><strong>Hanging food</strong> — see <a href="#t-bear-canister"><strong>Bear canister</strong></a></li>
+<li><span id="t-hanging-game"></span><strong>Hanging game</strong>
+<ul>
+<li>at least two days — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Meat: roasts, pot-roasts and tough cuts</a> · <a class="guide" href="HUNTING-TRAPPING-FISHING-GUIDE.html#cooking-what-you-took">Hunting &amp; fishing › Cooking what you took</a></li>
+</ul></li>
 <li><span id="t-hanging-lamps"></span><strong>Hanging lamps</strong>
 <ul>
 <li>where and how — <a class="guide" href="LIGHTING-GUIDE.html#fire-fumes-burns-and-children">Candles &amp; lamps › Fire, fumes, burns and children</a></li>
@@ -7263,6 +7573,7 @@
 </ul></li>
 <li><span id="t-hardtack"></span><strong>Hardtack</strong>
 <ul>
+<li>how to eat it — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Flour and fat and nothing else</a></li>
 <li>keeps for years — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#staples">Food from scratch › Staples</a></li>
 </ul></li>
 <li><span id="t-hardware-cloth"></span><strong>Hardware cloth</strong>
@@ -7316,7 +7627,11 @@
 <li>making and stacking — <a class="guide" href="CATTLE-GUIDE.html#pasture-hay-and-winter-feed">Cattle › Pasture, hay and winter feed</a></li>
 <li>why not to build with it — <a class="guide" href="NATURAL-BUILDING-GUIDE.html#local-materials-clay-sand-straw-and-stone">Natural building › Local materials: clay, sand, straw and stone</a></li>
 </ul></li>
-<li><span id="t-hay-box"></span><strong>Hay box</strong> — see <a href="#t-haybox"><strong>Haybox</strong></a></li>
+<li><span id="t-hay-box"></span><strong>Hay box</strong> — see <a href="#t-haybox"><strong>Haybox</strong></a>
+<ul>
+<li>boil hard first, reheat before eating — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#what-to-cook-it-on">Food from scratch › What to cook it on</a></li>
+<li>timings for porridge, stock, pot roast — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#what-to-cook-it-on">Food from scratch › What to cook it on</a></li>
+</ul></li>
 <li><span id="t-hay-box-cooker"></span><strong>Hay-box cooker</strong>
 <ul>
 <li>building one — <a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html#hay-box-cooking-saves-fuel">Make-do household › Hay-box cooking (saves fuel)</a></li>
@@ -7339,6 +7654,10 @@
 <li><span id="t-hazel"></span><strong>Hazel</strong>
 <ul>
 <li>shoots for baskets after a burn — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#baskets">First peoples' skills › Baskets</a></li>
+</ul></li>
+<li><span id="t-hazelnut-cakes"></span><strong>Hazelnut cakes</strong>
+<ul>
+<li>with berries, meat or fat — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#seed-meal-nut-cakes-and-berry-cakes">First peoples' skills › Seed meal, nut cakes and berry cakes</a></li>
 </ul></li>
 <li><span id="t-hazelnuts"></span><strong>Hazelnuts</strong>
 <ul>
@@ -7712,8 +8031,10 @@
 </ul></li>
 <li><span id="t-hominy"></span><strong>Hominy</strong>
 <ul>
+<li>cooking times (hay box, double boiler, fire) — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Porridge, mush, hominy and grain dishes</a></li>
 <li>making it — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#corn-masa-tortillas-and-hominy">Food from scratch › Corn: masa, tortillas and hominy</a></li>
 </ul></li>
+<li><span id="t-hominy-and-bean-cakes"></span><strong>Hominy and bean cakes</strong> — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Beans, peas and lentils</a></li>
 <li><span id="t-honey"></span><strong>Honey</strong>
 <ul>
 <li>ferments if too wet; storing — <a class="guide" href="BEES-GUIDE.html#harvesting-honey-crush-strain-store">Bees › Harvesting honey: crush, strain, store</a></li>
@@ -7859,6 +8180,10 @@
 <li>fire safety — <a class="guide" href="GROWING-SOIL-GUIDE.html#fire-safety-in-a-dry-summer">Building soil &amp; permaculture › Fire safety in a dry summer</a></li>
 <li>what it can and can't do — <a class="guide" href="GROWING-SOIL-GUIDE.html">Building soil &amp; permaculture › Hugelkultur beds</a></li>
 <li>which wood — <a class="guide" href="GROWING-SOIL-GUIDE.html#which-wood">Building soil &amp; permaculture › Which wood</a></li>
+</ul></li>
+<li><span id="t-hulled-corn"></span><strong>Hulled corn</strong>
+<ul>
+<li>boiled 4 hours with meat — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Porridge, mush, hominy and grain dishes</a></li>
 </ul></li>
 <li><span id="t-hulless-oats-and-barley"></span><strong>Hulless oats and barley</strong> — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#flour-from-grain">Food from scratch › Flour from grain</a></li>
 <li><span id="t-human-waste"></span><strong>Human waste</strong>
@@ -8092,6 +8417,10 @@
 </ul></li>
 <li><span id="t-india-mark-ii-pump"></span><strong>India Mark II pump</strong> — see <a href="#t-deep-well-hand-pump"><strong>Deep-well hand pump</strong></a></li>
 <li><span id="t-indian-hemp"></span><strong>Indian hemp</strong> — see <a href="#t-dogbane"><strong>Dogbane</strong></a></li>
+<li><span id="t-indian-pudding"></span><strong>Indian pudding</strong>
+<ul>
+<li>cornmeal and molasses — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Fruit, nuts and sweet dishes</a></li>
+</ul></li>
 <li><span id="t-indian-runner-duck"></span><strong>Indian Runner duck</strong>
 <ul>
 <li>upright egg layer, nonsitter — <a class="guide" href="DUCKS-GUIDE.html#choosing-ducks-layers-meat-breeds-and-muscovies">Ducks › Choosing ducks: layers, meat breeds and Muscovies</a></li>
@@ -8396,6 +8725,10 @@
 </ul>
 <h2 id="k">K</h2>
 <ul>
+<li><span id="t-kabobs"></span><strong>Kabobs</strong>
+<ul>
+<li>on a stick over embers — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Meat: roasts, pot-roasts and tough cuts</a></li>
+</ul></li>
 <li><span id="t-kale"></span><strong>Kale</strong>
 <ul>
 <li>saving seed — <a class="guide" href="SEED-BANK-GUIDE.html#biennials-seed-in-the-second-year">Seed bank › Biennials: seed in the second year</a></li>
@@ -8499,12 +8832,20 @@
 <li>chainsaw — <a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html#chainsaws-crosscut-saws-and-axes">Engines › Chainsaws, crosscut saws and axes</a></li>
 <li>pull starter kicks back — <a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html#small-gas-engines-why-it-won-t-start">Engines › Small gas engines: why it won't start</a></li>
 </ul></li>
+<li><span id="t-kid"></span><strong>Kid</strong>
+<ul>
+<li>meat at 2–3 months — <a class="guide" href="GOATS-GUIDE.html#cooking-it">Goats › Cooking it</a></li>
+</ul></li>
 <li><span id="t-kid-stuck"></span><strong>Kid stuck</strong> — see <a href="#t-kidding"><strong>Kidding</strong></a></li>
 <li><span id="t-kidding"></span><strong>Kidding</strong>
 <ul>
 <li>stuck kid — birth positions — <a class="lib pic" target="_blank" rel="noopener" href="https://goats.langston.edu/LINC/AIGR/tb/TB%207%20Lambing%20and%20kidding.pdf#page=6" title="Lambing and Kidding Assistance (Langston).pdf — page 6">Birth positions, Langston p. 6</a></li>
 <li>the first hour — <a class="guide" href="GOATS-GUIDE.html#breeding-kidding-and-kids">Goats › Breeding, kidding and kids</a></li>
 <li>when to help — <a class="guide" href="GOATS-GUIDE.html#breeding-kidding-and-kids">Goats › Breeding, kidding and kids</a></li>
+</ul></li>
+<li><span id="t-kidney-beans"></span><strong>Kidney beans</strong>
+<ul>
+<li>boil hard before a hay box — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Beans, peas and lentils</a></li>
 </ul></li>
 <li><span id="t-kidney-disease"></span><strong>Kidney disease</strong>
 <ul>
@@ -8919,6 +9260,10 @@
 <ul>
 <li>strong winds — <a class="guide" href="NAVIGATION-WEATHER-GUIDE.html#reading-the-sky-clouds-wind-and-barometer">Navigation &amp; weather › Reading the sky: clouds, wind and barometer</a></li>
 </ul></li>
+<li><span id="t-lentil-soup"></span><strong>Lentil soup</strong>
+<ul>
+<li>no meat needed — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Broth, soup and stew</a></li>
+</ul></li>
 <li><span id="t-lepiota"></span><strong>Lepiota</strong> — see <a href="#t-deadly-parasol"><strong>Deadly parasol</strong></a></li>
 <li><span id="t-leptospirosis"></span><strong>Leptospirosis</strong> — <a class="guide" href="FLOODS-STORMS-HEAT-GUIDE.html#sickness-from-floodwater">Floods, storms &amp; heat › Sickness from floodwater</a></li>
 <li><span id="t-lets"></span><strong>LETS</strong>
@@ -9157,6 +9502,10 @@
 <li>don't — <a class="guide" href="GEESE-GUIDE.html#down-and-feathers-for-warmth">Geese › Down and feathers for warmth</a></li>
 </ul></li>
 <li><span id="t-live-trap"></span><strong>Live trap</strong> — see <a href="#t-box-trap"><strong>Box trap</strong></a></li>
+<li><span id="t-live-oak-acorns"></span><strong>Live-oak acorns</strong>
+<ul>
+<li>buried in mud, boiled whole — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#acorn-bread-and-cakes">First peoples' skills › Acorn bread and cakes</a></li>
+</ul></li>
 <li><span id="t-liver"></span><strong>Liver</strong>
 <ul>
 <li>spotted or odd color — throw out — <a class="guide" href="HUNTING-TRAPPING-FISHING-GUIDE.html#butchering-using-the-whole-animal-and-hides">Hunting &amp; fishing › Butchering, using the whole animal, and hides</a></li>
@@ -9482,6 +9831,11 @@
 <ul>
 <li>berries and flour — <a class="guide" href="FOOD-SECURITY-GUIDE.html#wild-food-around-the-valley">Food when scarce › Wild food around the valley</a></li>
 <li>flour and cider; eating too much — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#seeds-nuts-and-berries">First peoples' skills › Seeds, nuts and berries</a></li>
+<li>mixed into acorn soup — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#acorn-soup-the-everyday-meal">First peoples' skills › Acorn soup, the everyday meal</a></li>
+</ul></li>
+<li><span id="t-manzanita-flour"></span><strong>Manzanita flour</strong>
+<ul>
+<li>with pine nuts, taken in water — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#seed-meal-nut-cakes-and-berry-cakes">First peoples' skills › Seed meal, nut cakes and berry cakes</a></li>
 </ul></li>
 <li><span id="t-map"></span><strong>Map</strong>
 <ul>
@@ -10191,6 +10545,15 @@
 <li>hatching eggs for other birds — <a class="guide" href="DUCKS-GUIDE.html#hatching-under-hens-muscovies-or-ducks">Ducks › Hatching under hens, Muscovies or ducks</a></li>
 <li>quiet forager, flies, best mother — <a class="guide" href="DUCKS-GUIDE.html#choosing-ducks-layers-meat-breeds-and-muscovies">Ducks › Choosing ducks: layers, meat breeds and Muscovies</a></li>
 </ul></li>
+<li><span id="t-mush"></span><strong>Mush</strong>
+<ul>
+<li>fried in slices — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Porridge, mush, hominy and grain dishes</a></li>
+<li>with cheese, with buttermilk — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Porridge, mush, hominy and grain dishes</a></li>
+</ul></li>
+<li><span id="t-mush-paddle"></span><strong>Mush paddle</strong>
+<ul>
+<li>stirring so the stones don't burn through — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#acorn-soup-the-everyday-meal">First peoples' skills › Acorn soup, the everyday meal</a></li>
+</ul></li>
 <li><span id="t-mushroom-poisoning"></span><strong>Mushroom poisoning</strong>
 <ul>
 <li>false recovery — <a class="guide" href="MUSHROOM-GUIDE.html#if-someone-may-have-eaten-a-bad-mushroom">Mushrooms › If someone may have eaten a bad mushroom</a></li>
@@ -10211,6 +10574,7 @@
 <li>identifying — <a class="guide" href="MUSHROOM-GUIDE.html#how-to-identify-a-mushroom">Mushrooms › How to identify a mushroom</a></li>
 <li>parts drawing — <a class="lib pic" target="_blank" rel="noopener" href="https://www.fs.usda.gov/pnw/pubs/pnw_gtr309.pdf#page=10" title="USFS - Wild Edible Mushrooms of the Pacific Northwest (PNW-GTR-309).pdf — page 10">Mushroom parts, USFS GTR-309 p. 10</a></li>
 <li>poisonous — <a class="guide" href="ILLINOIS-VALLEY-START-HERE.html#wild-plants-the-deadly-look-alikes">Illinois Valley › Wild plants — the deadly look-alikes</a></li>
+<li>washing them without bruising — <a class="guide" href="MUSHROOM-GUIDE.html#cooking-drying-and-storing">Mushrooms › Cooking, drying and storing</a></li>
 </ul></li>
 <li><span id="t-muskrat"></span><strong>Muskrat</strong>
 <ul>
@@ -10221,6 +10585,14 @@
 <li>famine food only — <a class="guide" href="HUNTING-TRAPPING-FISHING-GUIDE.html#crawfish-mussels-and-lamprey">Hunting &amp; fishing › Crawfish, mussels and lamprey</a></li>
 </ul></li>
 <li><span id="t-musty-smell-in-a-straw-wall"></span><strong>Musty smell in a straw wall</strong> — <a class="guide" href="NATURAL-BUILDING-GUIDE.html#if-this-goes-wrong">Natural building › If this goes wrong</a></li>
+<li><span id="t-mutton-fat"></span><strong>Mutton fat</strong>
+<ul>
+<li>serve the meat hot — <a class="guide" href="SHEEP-GUIDE.html#cooking-it">Sheep › Cooking it</a></li>
+</ul></li>
+<li><span id="t-mutton-stew"></span><strong>Mutton stew</strong>
+<ul>
+<li>with dumplings — <a class="guide" href="SHEEP-GUIDE.html#cooking-it">Sheep › Cooking it</a></li>
+</ul></li>
 <li><span id="t-mutton-tallow-on-chains"></span><strong>Mutton tallow on chains</strong>
 <ul>
 <li>old advice — don't — <a class="guide" href="BICYCLES-CARTS-GUIDE.html#old-advice-in-the-library-to-ignore">Bicycles &amp; carts › Old advice in the library to ignore</a></li>
@@ -10264,6 +10636,10 @@
 <li><span id="t-narrow-and-wide"></span><strong>Narrow and wide</strong>
 <ul>
 <li>bandwidth, N and W — <a class="guide" href="USING-A-RADIO-GUIDE.html">Using a radio › 2. A cheap handheld, button by button</a></li>
+</ul></li>
+<li><span id="t-native-meals"></span><strong>Native meals</strong>
+<ul>
+<li>what people actually ate — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#the-meals-themselves">First peoples' skills › The meals themselves</a></li>
 </ul></li>
 <li><span id="t-natural-building"></span><strong>Natural building</strong>
 <ul>
@@ -10355,6 +10731,8 @@
 </ul></li>
 <li><span id="t-nettles"></span><strong>Nettles</strong>
 <ul>
+<li>blanch 1½–2 minutes — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Vegetables, greens and roots</a></li>
+<li>drying and nettle sauce — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Vegetables, greens and roots</a></li>
 <li>young tops — <a class="guide" href="FOOD-SECURITY-GUIDE.html#wild-food-around-the-valley">Food when scarce › Wild food around the valley</a></li>
 </ul></li>
 <li><span id="t-neutral-wire"></span><strong>Neutral wire</strong> — <a class="guide" href="POWER-GRID-GUIDE.html#120240-two-hot-wires-and-a-neutral">Power grid › 120/240: two hot wires and a neutral</a></li>
@@ -10543,6 +10921,10 @@
 <ul>
 <li>Mother Goose — <a class="guide" href="STORIES-GAMES-GUIDE.html#ages-26-picture-books-and-rhymes">Stories &amp; games › Ages 2–6: picture books and rhymes</a></li>
 </ul></li>
+<li><span id="t-nut-milk"></span><strong>Nut milk</strong>
+<ul>
+<li>with corn meal — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Fruit, nuts and sweet dishes</a></li>
+</ul></li>
 <li><span id="t-nut-oil"></span><strong>Nut oil</strong>
 <ul>
 <li>making it — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#salt-sweeteners-and-fat">Food from scratch › Salt, 🍯 sweeteners and 🥓 fat</a></li>
@@ -10689,6 +11071,11 @@
 <li>in small engines — <a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html#small-gas-engines-why-it-won-t-start">Engines › Small gas engines: why it won't start</a></li>
 <li>rescuing it — <a class="guide" href="FUEL-GUIDE.html#rescuing-old-fuel">Fuel › Rescuing old fuel</a></li>
 </ul></li>
+<li><span id="t-old-hen"></span><strong>Old hen</strong>
+<ul>
+<li>brown fricassee — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Meat: roasts, pot-roasts and tough cuts</a></li>
+<li>brown fricassee in a hay box — <a class="guide" href="CHICKENS-GUIDE.html#cooking-it">Chickens › Cooking it</a></li>
+</ul></li>
 <li><span id="t-old-phone"></span><strong>Old phone</strong>
 <ul>
 <li>as a library reader — <a class="guide" href="SALVAGE-GUIDE.html">Salvage &amp; repurposing › Computers, UPS boxes, phones and tablets</a></li>
@@ -10706,6 +11093,10 @@
 <li>how long it stays good — <a class="guide" href="SEED-BANK-GUIDE.html#keeping-the-seed-bank-alive">Seed bank › Keeping the seed bank alive</a></li>
 <li>will it still sprout? — <a class="guide" href="SEED-BANK-GUIDE.html#germination-test-rag-doll">Seed bank › Germination test ("rag doll")</a></li>
 </ul></li>
+<li><span id="t-old-tom"></span><strong>Old tom</strong>
+<ul>
+<li>boil, hay box, then brown — <a class="guide" href="TURKEYS-GUIDE.html#cooking-it">Turkeys › Cooking it</a></li>
+</ul></li>
 <li><span id="t-old-words-in-old-books"></span><strong>Old words in old books</strong>
 <ul>
 <li>paraffin, French chalk, spanner — <a class="guide" href="BICYCLES-CARTS-GUIDE.html#brakes-gears-and-field-fixes">Bicycles &amp; carts › Brakes, gears and field fixes</a></li>
@@ -10714,6 +11105,10 @@
 <li><span id="t-older-people"></span><strong>Older people</strong>
 <ul>
 <li>falls, balance, heat burns — <a class="guide" href="REHAB-GUIDE.html#children-and-older-people">Rehab &amp; recovery › Children and older people</a></li>
+</ul></li>
+<li><span id="t-omelet"></span><strong>Omelet</strong>
+<ul>
+<li>one egg a person — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Fish, eggs, milk and cheese</a></li>
 </ul></li>
 <li><span id="t-one-warm-room"></span><strong>One warm room</strong> — <a class="guide" href="FLOODS-STORMS-HEAT-GUIDE.html#one-warm-room">Floods, storms &amp; heat › One warm room</a></li>
 <li><span id="t-one-letter-signals"></span><strong>One-letter signals</strong>
@@ -11000,6 +11395,7 @@
 <ul>
 <li>urgent — <a class="guide" href="RADIO-GUIDE.html#9-how-to-call-for-help-procedure">Radio › 9. How to call for help (procedure)</a></li>
 </ul></li>
+<li><span id="t-pancakes"></span><strong>Pancakes</strong> — see <a href="#t-flapjacks"><strong>Flapjacks</strong></a></li>
 <li><span id="t-pandemic"></span><strong>Pandemic</strong>
 <ul>
 <li>phases chart — <a class="lib pic" target="_blank" rel="noopener" href="https://extranet.who.int/sph/sites/default/files/document-library/document/WHO-WHE-IHM-GIP-2017.1-eng.pdf#page=13" title="Pandemic Influenza Risk Management - A WHO Guide (WHO 2017).pdf — page 13">Pandemic phases, WHO p. 13</a></li>
@@ -11120,6 +11516,7 @@
 <ul>
 <li>transformer and capacitor oil — <a class="guide" href="POWER-GRID-GUIDE.html#pcb-oil-in-old-transformers-and-capacitors">Power grid › PCB oil in old transformers and capacitors</a></li>
 </ul></li>
+<li><span id="t-pea-soup"></span><strong>Pea soup</strong> — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Broth, soup and stew</a></li>
 <li><span id="t-peak-sun-hours"></span><strong>Peak sun hours</strong> — see <a href="#t-sun-hours"><strong>Sun hours</strong></a></li>
 <li><span id="t-pears"></span><strong>Pears</strong>
 <ul>
@@ -11391,6 +11788,10 @@
 <li><span id="t-pine-mushroom"></span><strong>Pine mushroom</strong> — see <a href="#t-matsutake"><strong>Matsutake</strong></a></li>
 <li><span id="t-pine-pitch-glue"></span><strong>Pine pitch glue</strong> — <a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html#glue-patching-and-waterproofing">Make-do household › Glue, patching and waterproofing</a></li>
 <li><span id="t-pine-tar"></span><strong>Pine tar</strong> — see <a href="#t-wood-tar"><strong>Wood tar</strong></a></li>
+<li><span id="t-pine-nut-cakes"></span><strong>Pine-nut cakes</strong>
+<ul>
+<li>steamed, dried, pounded, pressed — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#seed-meal-nut-cakes-and-berry-cakes">First peoples' skills › Seed meal, nut cakes and berry cakes</a></li>
+</ul></li>
 <li><span id="t-pinole"></span><strong>Pinole</strong> — see <a href="#t-parched-corn"><strong>Parched corn</strong></a>
 <ul>
 <li>parching seeds with live coals — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#seeds-nuts-and-berries">First peoples' skills › Seeds, nuts and berries</a></li>
@@ -11407,6 +11808,10 @@
 <li><span id="t-piping"></span><strong>Piping</strong>
 <ul>
 <li>seepage through a dam — <a class="guide" href="DAMS-DITCHES-GUIDE.html#how-dams-fail">Dams, weirs &amp; ditches › How dams fail</a></li>
+</ul></li>
+<li><span id="t-pit-cooking"></span><strong>Pit cooking</strong>
+<ul>
+<li>a kettle buried in coals — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#what-to-cook-it-on">Food from scratch › What to cook it on</a></li>
 </ul></li>
 <li><span id="t-pit-house"></span><strong>Pit house</strong>
 <ul>
@@ -11616,6 +12021,10 @@
 <ul>
 <li>blown, what to do — <a class="guide" href="POWER-GRID-GUIDE.html">Power grid › A blown pole fuse and other simple faults</a></li>
 </ul></li>
+<li><span id="t-polenta"></span><strong>Polenta</strong>
+<ul>
+<li>with tomato or savory sauce — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Porridge, mush, hominy and grain dishes</a></li>
+</ul></li>
 <li><span id="t-police"></span><strong>Police</strong>
 <ul>
 <li>absent for a long time — <a class="guide" href="WHAT-TO-EXPECT-GUIDE.html#8-riots-and-law-and-order-breaking-down">What to expect › 8. Riots and law and order breaking down</a></li>
@@ -11671,6 +12080,10 @@
 </ul></li>
 <li><span id="t-postpartum-depression"></span><strong>Postpartum depression</strong> — see <a href="#t-depression-after-birth"><strong>Depression after birth</strong></a></li>
 <li><span id="t-postpartum-hemorrhage"></span><strong>Postpartum hemorrhage</strong> — see <a href="#t-bleeding-after-birth"><strong>Bleeding after birth</strong></a></li>
+<li><span id="t-pot-roast"></span><strong>Pot roast</strong>
+<ul>
+<li>in a hay box — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Meat: roasts, pot-roasts and tough cuts</a> · <a class="guide" href="CATTLE-GUIDE.html#cooking-it">Cattle › Cooking it</a></li>
+</ul></li>
 <li><span id="t-potash"></span><strong>Potash</strong> — see <a href="#t-lye"><strong>Lye</strong></a></li>
 <li><span id="t-potassium-iodide"></span><strong>Potassium iodide</strong>
 <ul>
@@ -12202,6 +12615,13 @@
 </ul>
 <h2 id="r">R</h2>
 <ul>
+<li><span id="t-rabbit"></span><strong>Rabbit</strong>
+<ul>
+<li>braised until tender — <a class="guide" href="RABBITS-GUIDE.html#cooking-it">Rabbits › Cooking it</a></li>
+<li>browned and braised — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Meat: roasts, pot-roasts and tough cuts</a></li>
+<li>cut into seven pieces, no cleaver — <a class="guide" href="RABBITS-GUIDE.html#cooking-it">Rabbits › Cooking it</a></li>
+<li>very lean — cook it with fat — <a class="guide" href="RABBITS-GUIDE.html#cooking-it">Rabbits › Cooking it</a></li>
+</ul></li>
 <li><span id="t-rabbit-cages"></span><strong>Rabbit cages</strong> — see <a href="#t-hutches"><strong>Hutches</strong></a></li>
 <li><span id="t-rabbit-feed"></span><strong>Rabbit feed</strong>
 <ul>
@@ -12640,11 +13060,19 @@
 <ul>
 <li>feed slowly — <a class="guide" href="FOOD-SECURITY-GUIDE.html#starvation-and-refeeding-slowly">Food when scarce › Starvation and refeeding slowly</a></li>
 </ul></li>
+<li><span id="t-reflector-oven"></span><strong>Reflector oven</strong>
+<ul>
+<li>biscuits and roasts — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#what-to-cook-it-on">Food from scratch › What to cook it on</a></li>
+</ul></li>
 <li><span id="t-reflectors"></span><strong>Reflectors</strong>
 <ul>
 <li>foil, mirrors, white walls — <a class="guide" href="LIGHTING-GUIDE.html#getting-more-light-from-a-little-flame">Candles &amp; lamps › Getting more light from a little flame</a></li>
 </ul></li>
 <li><span id="t-refractory-mortar"></span><strong>Refractory mortar</strong> — see <a href="#t-firebrick"><strong>Firebrick</strong></a></li>
+<li><span id="t-refried-beans"></span><strong>Refried beans</strong>
+<ul>
+<li>mashed in fat — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Beans, peas and lentils</a></li>
+</ul></li>
 <li><span id="t-refrigerant"></span><strong>Refrigerant</strong>
 <ul>
 <li>never release — <a class="guide" href="SALVAGE-GUIDE.html#never-cut-burn-or-open-these">Salvage &amp; repurposing › Never cut, burn or open these</a></li>
@@ -12818,6 +13246,10 @@
 <ul>
 <li>pounds to store per year — <a class="guide" href="FOOD-SECURITY-GUIDE.html#a-year-s-food-the-list-and-a-worked-example">Food when scarce › A year's food: the list and a worked example</a></li>
 </ul></li>
+<li><span id="t-rice-pudding"></span><strong>Rice pudding</strong>
+<ul>
+<li>3 hours, very slow oven — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Fruit, nuts and sweet dishes</a> · <a class="guide" href="DAIRY-GUIDE.html#cooking-with-milk-whey-and-cheese">Milk, butter &amp; cheese › Cooking with milk, whey and cheese</a></li>
+</ul></li>
 <li><span id="t-rickets"></span><strong>Rickets</strong>
 <ul>
 <li>signs, prevention, treatment — <a class="guide" href="FOOD-SECURITY-GUIDE.html#hunger-diseases-spot-them-prevent-them">Food when scarce › Hunger diseases: spot them, prevent them</a></li>
@@ -12838,6 +13270,10 @@
 <li><span id="t-riding"></span><strong>Riding</strong>
 <ul>
 <li>mounting, seat, reins — <a class="guide" href="HORSE-GUIDE.html#handling-saddling-and-riding">Horses › Handling, saddling and riding</a></li>
+</ul></li>
+<li><span id="t-rieska"></span><strong>Rieska</strong>
+<ul>
+<li>unleavened barley bread — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Pan breads, dumplings, pancakes and fritters</a></li>
 </ul></li>
 <li><span id="t-rifle"></span><strong>Rifle</strong>
 <ul>
@@ -12897,6 +13333,10 @@
 <li>US-199 closed by trees or water — <a class="guide" href="WHAT-TO-EXPECT-GUIDE.html#2-winter-storm-ice-flood-and-landslides">What to expect › 2. Winter storm, ice, flood and landslides</a></li>
 </ul></li>
 <li><span id="t-roaring-sound-in-the-chimney"></span><strong>Roaring sound in the chimney</strong> — see <a href="#t-chimney-fire"><strong>Chimney fire</strong></a></li>
+<li><span id="t-roast-duck"></span><strong>Roast duck</strong>
+<ul>
+<li>325 °F, 1–1½ hours — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Meat: roasts, pot-roasts and tough cuts</a> · <a class="guide" href="HUNTING-TRAPPING-FISHING-GUIDE.html#cooking-what-you-took">Hunting &amp; fishing › Cooking what you took</a> · <a class="guide" href="DUCKS-GUIDE.html#cooking-it">Ducks › Cooking it</a></li>
+</ul></li>
 <li><span id="t-robbing"></span><strong>Robbing</strong>
 <ul>
 <li>narrow the entrance — <a class="guide" href="BEES-GUIDE.html#if-this-goes-wrong">Bees › If this goes wrong</a></li>
@@ -13230,9 +13670,23 @@
 <li>dams, diversions and fish passage — <a class="guide" href="DAMS-DITCHES-GUIDE.html">Dams, weirs &amp; ditches › Salmon, steelhead and fish passage</a></li>
 <li>dip nets and weirs (illegal today) — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#salmon-lamprey-and-other-fish">First peoples' skills › Salmon, lamprey and other fish</a></li>
 <li>drying, powdering and storing — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#salmon-lamprey-and-other-fish">First peoples' skills › Salmon, lamprey and other fish</a></li>
+<li>powdered, eaten dry with a spoon — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#salmon-fresh-on-spits-and-the-winter-stores">First peoples' skills › Salmon: fresh on spits, and the winter stores</a></li>
+<li>roasted on split-hazel spits — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#salmon-fresh-on-spits-and-the-winter-stores">First peoples' skills › Salmon: fresh on spits, and the winter stores</a></li>
 <li>sharing the catch — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#community-ways-that-worked">First peoples' skills › Community ways that worked</a></li>
 <li>smoking, salting and canning — <a class="guide" href="PRESERVING-FOOD-GUIDE.html#fish-smoking-canning-and-salting">Preserving food › Fish: smoking, canning and salting</a></li>
 <li>streams on the map — <a class="guide" href="HOW-TO-VIEW-MAPS.html#easiest-the-map-in-the-web-browser">HOW-TO-VIEW-MAPS › Easiest: the map in the web browser</a></li>
+</ul></li>
+<li><span id="t-salmon-bones"></span><strong>Salmon bones</strong>
+<ul>
+<li>pounded for winter soup — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#salmon-fresh-on-spits-and-the-winter-stores">First peoples' skills › Salmon: fresh on spits, and the winter stores</a></li>
+</ul></li>
+<li><span id="t-salmon-eggs"></span><strong>Salmon eggs</strong>
+<ul>
+<li>dried, the most concentrated food — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#salmon-fresh-on-spits-and-the-winter-stores">First peoples' skills › Salmon: fresh on spits, and the winter stores</a></li>
+</ul></li>
+<li><span id="t-salmon-heads"></span><strong>Salmon heads</strong>
+<ul>
+<li>crushed into travel cakes — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#salmon-fresh-on-spits-and-the-winter-stores">First peoples' skills › Salmon: fresh on spits, and the winter stores</a></li>
 </ul></li>
 <li><span id="t-salmon-poisoning"></span><strong>Salmon poisoning</strong>
 <ul>
@@ -13245,6 +13699,8 @@
 <li>hot-weather walking — <a class="guide" href="ON-FOOT-GUIDE.html#water-on-the-move">On foot › Water on the move</a></li>
 <li>how much for sauerkraut and ferments — <a class="guide" href="PRESERVING-FOOD-GUIDE.html#pickles-sauerkraut-and-other-ferments">Preserving food › Pickles, sauerkraut and other ferments</a></li>
 <li>how much to store — <a class="guide" href="FOOD-SECURITY-GUIDE.html#a-year-s-food-the-list-and-a-worked-example">Food when scarce › A year's food: the list and a worked example</a></li>
+<li>when to add it — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Making plain food good</a></li>
+<li>where it came from; never on dried salmon — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#salmon-fresh-on-spits-and-the-winter-stores">First peoples' skills › Salmon: fresh on spits, and the winter stores</a></li>
 </ul></li>
 <li><span id="t-salt-and-minerals"></span><strong>Salt and minerals</strong>
 <ul>
@@ -13307,6 +13763,7 @@
 <li>Josephine County 041033 — <a class="guide" href="ILLINOIS-VALLEY-START-HERE.html#noaa-weather-radio">Illinois Valley › NOAA Weather Radio</a> · <a class="guide" href="RADIO-GUIDE.html#2-in-the-illinois-valley">Radio › 2. In the Illinois Valley 🏔️</a> · <a class="guide" href="SIGNALS-MORSE-GUIDE.html#listening-when-you-can-t-transmit">Signals &amp; Morse › Listening when you can't transmit</a></li>
 <li>programming your county — <a class="guide" href="USING-A-RADIO-GUIDE.html#a-noaa-weather-radio">Using a radio › A NOAA weather radio</a></li>
 </ul></li>
+<li><span id="t-samp"></span><strong>Samp</strong> — see <a href="#t-hominy"><strong>Hominy</strong></a></li>
 <li><span id="t-sand"></span><strong>Sand</strong>
 <ul>
 <li>bulking, squeeze test for water — <a class="guide" href="MASONRY-ROADS-GUIDE.html#sand-gravel-and-water-for-concrete">Mortar, concrete &amp; roads › Sand, gravel and water for concrete</a></li>
@@ -13352,6 +13809,7 @@
 <ul>
 <li>heating water in the sun — <a class="guide" href="SALVAGE-GUIDE.html">Salvage &amp; repurposing › Satellite dishes</a></li>
 </ul></li>
+<li><span id="t-sauce"></span><strong>Sauce</strong> — see <a href="#t-white-sauce"><strong>White sauce</strong></a></li>
 <li><span id="t-sauerkraut"></span><strong>Sauerkraut</strong>
 <ul>
 <li>salt and fermenting time — <a class="guide" href="ROOT-CELLAR-GUIDE.html#fermenting-salting-eggs-and-vinegar">Root cellars › Fermenting, salting, eggs and vinegar</a></li>
@@ -13360,6 +13818,8 @@
 <li><span id="t-sausage"></span><strong>Sausage</strong>
 <ul>
 <li>fresh pork sausage recipe — <a class="guide" href="PIGS-GUIDE.html#gutting-chilling-and-cutting">Pigs › Gutting, chilling and cutting</a></li>
+<li>seasoning per 4 lb — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Meat: roasts, pot-roasts and tough cuts</a></li>
+<li>seasoning per 4 lb of trimmings — <a class="guide" href="HUNTING-TRAPPING-FISHING-GUIDE.html#cooking-what-you-took">Hunting &amp; fishing › Cooking what you took</a></li>
 </ul></li>
 <li><span id="t-saw"></span><strong>Saw</strong> — see <a href="#t-hand-saw"><strong>Hand saw</strong></a></li>
 <li><span id="t-saw-chain"></span><strong>Saw chain</strong>
@@ -13416,6 +13876,7 @@
 <li>thin fire, too much air — <a class="guide" href="BLACKSMITHING-GUIDE.html#a-simple-forge-and-anvil">Blacksmithing › A simple forge and anvil</a></li>
 </ul></li>
 <li><span id="t-scaling-a-recipe"></span><strong>Scaling a recipe</strong> — see <a href="#t-recipes"><strong>Recipes</strong></a></li>
+<li><span id="t-scalloped-apples"></span><strong>Scalloped apples</strong> — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Fruit, nuts and sweet dishes</a></li>
 <li><span id="t-scaly-leg"></span><strong>Scaly leg</strong>
 <ul>
 <li>mites — <a class="guide" href="CHICKENS-GUIDE.html#health-with-no-vet">Chickens › Health with no vet</a></li>
@@ -13509,9 +13970,17 @@
 <ul>
 <li>AI turned off — <a class="guide" href="START-ON-ANY-DEVICE.html#which-ai-will-i-get">Start on any device › Which AI will I get?</a></li>
 </ul></li>
+<li><span id="t-searing"></span><strong>Searing</strong>
+<ul>
+<li>sear, then cook slowly — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#what-to-cook-it-on">Food from scratch › What to cook it on</a></li>
+</ul></li>
 <li><span id="t-seasonal-calendar"></span><strong>Seasonal calendar</strong>
 <ul>
 <li>hungry season, work peaks — <a class="guide" href="COMMUNITY-BARTER-GUIDE.html#skills-tools-and-the-neighborhood-map">Community &amp; barter › Skills, tools and the neighborhood map</a></li>
+</ul></li>
+<li><span id="t-seasoning"></span><strong>Seasoning</strong>
+<ul>
+<li>making plain food good — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Making plain food good</a></li>
 </ul></li>
 <li><span id="t-seasoning-firewood"></span><strong>Seasoning firewood</strong>
 <ul>
@@ -13552,6 +14021,10 @@
 <li><span id="t-seed-life"></span><strong>Seed life</strong>
 <ul>
 <li>how many years each crop keeps — <a class="guide" href="SEED-BANK-GUIDE.html#keeping-the-seed-bank-alive">Seed bank › Keeping the seed bank alive</a></li>
+</ul></li>
+<li><span id="t-seed-meal"></span><strong>Seed meal</strong>
+<ul>
+<li>eaten dry, no water — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#seed-meal-nut-cakes-and-berry-cakes">First peoples' skills › Seed meal, nut cakes and berry cakes</a></li>
 </ul></li>
 <li><span id="t-seed-saving"></span><strong>Seed saving</strong>
 <ul>
@@ -14368,6 +14841,10 @@
 <li>when it works here — <a class="guide" href="PRESERVING-FOOD-GUIDE.html#drying-in-our-dry-summers">Preserving food › Drying in our dry summers</a></li>
 </ul></li>
 <li><span id="t-solar-garden-lights"></span><strong>Solar garden lights</strong> — <a class="guide" href="SALVAGE-GUIDE.html">Salvage &amp; repurposing › Solar garden lights and spent batteries</a></li>
+<li><span id="t-solar-oven"></span><strong>Solar oven</strong>
+<ul>
+<li>what heat it reaches — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#what-to-cook-it-on">Food from scratch › What to cook it on</a></li>
+</ul></li>
 <li><span id="t-solar-panels"></span><strong>Solar panels</strong>
 <ul>
 <li>cell count and voltage — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#salvaging-and-testing-panels">Off-grid power › Salvaging and testing panels</a></li>
@@ -14481,6 +14958,15 @@
 <li><span id="t-soundness"></span><strong>Soundness</strong>
 <ul>
 <li>walk and trot on hard ground — <a class="guide" href="HORSE-GUIDE.html#choosing-an-animal">Horses › Choosing an animal</a></li>
+</ul></li>
+<li><span id="t-soup"></span><strong>Soup</strong>
+<ul>
+<li>from a bone and cellar roots — <a class="guide" href="ROOT-CELLAR-GUIDE.html#cooking-from-the-cellar">Root cellars › Cooking from the cellar</a></li>
+</ul></li>
+<li><span id="t-soup-stock"></span><strong>Soup stock</strong> — see <a href="#t-broth"><strong>Broth</strong></a></li>
+<li><span id="t-sour-milk"></span><strong>Sour milk</strong>
+<ul>
+<li>with soda, in place of baking powder — <a class="guide" href="DAIRY-GUIDE.html#cooking-with-milk-whey-and-cheese">Milk, butter &amp; cheese › Cooking with milk, whey and cheese</a></li>
 </ul></li>
 <li><span id="t-sour-or-varnish-smell-fuel"></span><strong>Sour or varnish smell (fuel)</strong> — <a class="guide" href="FUEL-GUIDE.html#is-this-fuel-still-good">Fuel › Is this fuel still good?</a></li>
 <li><span id="t-sourdough"></span><strong>Sourdough</strong>
@@ -14694,6 +15180,10 @@
 <li>winter greens for hens — <a class="guide" href="CHICKENS-GUIDE.html#scraps-milk-sprouts-and-greens">Chickens › Scraps, milk, sprouts and greens</a></li>
 </ul></li>
 <li><span id="t-sprouting"></span><strong>Sprouting</strong> — see <a href="#t-germination-test"><strong>Germination test</strong></a></li>
+<li><span id="t-sprouting-potatoes"></span><strong>Sprouting potatoes</strong>
+<ul>
+<li>still food — cut the green away — <a class="guide" href="ROOT-CELLAR-GUIDE.html#cooking-from-the-cellar">Root cellars › Cooking from the cellar</a></li>
+</ul></li>
 <li><span id="t-sprouting-seeds"></span><strong>Sprouting seeds</strong>
 <ul>
 <li>for vitamin C — <a class="guide" href="FOOD-SECURITY-GUIDE.html#hunger-diseases-spot-them-prevent-them">Food when scarce › Hunger diseases: spot them, prevent them</a></li>
@@ -14839,6 +15329,14 @@
 <li>fuel and water it uses — <a class="guide" href="HEAT-INTO-POWER-GUIDE.html#the-honest-numbers-what-a-pound-of-wood-can-do">Heat into power › The honest numbers: what a pound of wood can do</a></li>
 <li>what a small one can do — <a class="guide" href="HEAT-INTO-POWER-GUIDE.html#steam-what-a-small-engine-can-do">Heat into power › Steam: what a small engine can do</a></li>
 </ul></li>
+<li><span id="t-steamed-bread"></span><strong>Steamed bread</strong>
+<ul>
+<li>3½ hours, no oven — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Pan breads, dumplings, pancakes and fritters</a></li>
+</ul></li>
+<li><span id="t-steamed-pudding"></span><strong>Steamed pudding</strong>
+<ul>
+<li>in a lard pail — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Fruit, nuts and sweet dishes</a></li>
+</ul></li>
 <li><span id="t-stearine"></span><strong>Stearine</strong>
 <ul>
 <li>in salvaged paraffin — <a class="guide" href="LIGHTING-GUIDE.html#cleaning-and-hardening-tallow">Candles &amp; lamps › Cleaning and hardening tallow</a></li>
@@ -14882,6 +15380,10 @@
 <ul>
 <li>stopping, prednisolone taper — <a class="guide" href="CHRONIC-ILLNESS-GUIDE.html#medicines-you-must-never-stop-suddenly">Chronic illness › Medicines you must never stop suddenly</a></li>
 </ul></li>
+<li><span id="t-stew"></span><strong>Stew</strong>
+<ul>
+<li>with dumplings — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Broth, soup and stew</a></li>
+</ul></li>
 <li><span id="t-sticking-a-tank"></span><strong>Sticking a tank</strong>
 <ul>
 <li>measuring fuel with a stick — <a class="guide" href="FUEL-GUIDE.html#getting-fuel-out-of-gas-station-tanks">Fuel › Getting fuel out of gas-station tanks</a></li>
@@ -14913,6 +15415,11 @@
 <ul>
 <li>drawing — <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/harnessmaking00hasl/harnessmaking00hasl.pdf#page=29" title="Harness Making (Hasluck 1904).pdf — page 29">Home-made clamp, Hasluck p. 29</a></li>
 <li>making one — <a class="guide" href="CLOTHING-LEATHER-GUIDE.html">Clothing &amp; leather › Tools and thread</a></li>
+</ul></li>
+<li><span id="t-stock"></span><strong>Stock</strong>
+<ul>
+<li>don't salt until half cooked — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Broth, soup and stew</a></li>
+<li>in a hay box overnight — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Broth, soup and stew</a></li>
 </ul></li>
 <li><span id="t-stocking-batteries"></span><strong>Stocking batteries</strong>
 <ul>
@@ -15189,6 +15696,10 @@
 <ul>
 <li>Medford, month by month — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#our-sun-month-by-month">Off-grid power › Our sun, month by month</a></li>
 </ul></li>
+<li><span id="t-sunflower-seed"></span><strong>Sunflower seed</strong>
+<ul>
+<li>parched, as the fat in a dish — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Beans, peas and lentils</a></li>
+</ul></li>
 <li><span id="t-sunken-cappings"></span><strong>Sunken cappings</strong>
 <ul>
 <li>foulbrood sign — <a class="guide" href="BEES-GUIDE.html#foulbrood-and-other-brood-diseases">Bees › Foulbrood and other brood diseases</a></li>
@@ -15441,6 +15952,7 @@
 <li><span id="t-tarweed"></span><strong>Tarweed</strong>
 <ul>
 <li>burn the stalks, parch the seed — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#seeds-nuts-and-berries">First peoples' skills › Seeds, nuts and berries</a></li>
+<li>parched and ground, eaten dry — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#seed-meal-nut-cakes-and-berry-cakes">First peoples' skills › Seed meal, nut cakes and berry cakes</a></li>
 </ul></li>
 <li><span id="t-taste-and-odor"></span><strong>Taste and odor</strong>
 <ul>
@@ -15753,6 +16265,7 @@
 <ul>
 <li>keeps running — <a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html#simple-plumbing">Make-do household › Simple plumbing</a></li>
 </ul></li>
+<li><span id="t-tomato-sauce"></span><strong>Tomato sauce</strong> — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Making plain food good</a></li>
 <li><span id="t-tomatoes"></span><strong>Tomatoes</strong>
 <ul>
 <li>adding lemon juice or citric acid — <a class="guide" href="PRESERVING-FOOD-GUIDE.html#settings-for-the-illinois-valley-about-1-300-ft">Preserving food › Settings for the Illinois Valley (about 1,300 ft)</a></li>
@@ -15845,6 +16358,10 @@
 <li><span id="t-touchscreen"></span><strong>Touchscreen</strong>
 <ul>
 <li>on a Raspberry Pi library box — <a class="guide" href="AMMO-CAN-COMPUTER-GUIDE.html">ARK Vault (ammo-can computer) › Other ways to build it</a></li>
+</ul></li>
+<li><span id="t-tough-meat"></span><strong>Tough meat</strong>
+<ul>
+<li>boil or braise it — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Meat: roasts, pot-roasts and tough cuts</a></li>
 </ul></li>
 <li><span id="t-toulouse-goose"></span><strong>Toulouse goose</strong>
 <ul>
@@ -16142,6 +16659,10 @@
 <li>parts drawing — <a class="lib pic" target="_blank" rel="noopener" href="https://manoa.hawaii.edu/exploringourfluidearth/sites/default/files/pd-forum-attachments/Turbidity%20Tube.pdf#page=7" title="The Turbidity Tube - Simple and Accurate Measurement of Turbidity in the Field (Myre &amp; Shaw 2006).pdf — page 7">Turbidity tube parts, Myre &amp; Shaw p. 7</a></li>
 <li>reading it — <a class="guide" href="WATER-PURIFICATION-GUIDE.html#simple-tests">Water purification › Simple tests</a></li>
 </ul></li>
+<li><span id="t-turkey-broth"></span><strong>Turkey broth</strong>
+<ul>
+<li>from the carcass — <a class="guide" href="TURKEYS-GUIDE.html#cooking-it">Turkeys › Cooking it</a></li>
+</ul></li>
 <li><span id="t-turkey-eggs"></span><strong>Turkey eggs</strong>
 <ul>
 <li>storing for hatching, eating — <a class="guide" href="TURKEYS-GUIDE.html#eggs-broody-hens-and-hatching">Turkeys › Eggs, broody hens and hatching</a></li>
@@ -16149,6 +16670,10 @@
 <li><span id="t-turkey-feathers"></span><strong>Turkey feathers</strong>
 <ul>
 <li>quills, calls — <a class="guide" href="TURKEYS-GUIDE.html#butchering-and-plucking">Turkeys › Butchering and plucking</a></li>
+</ul></li>
+<li><span id="t-turkey-legs"></span><strong>Turkey legs</strong>
+<ul>
+<li>braised slowly — <a class="guide" href="TURKEYS-GUIDE.html#cooking-it">Turkeys › Cooking it</a></li>
 </ul></li>
 <li><span id="t-turkey-tail"></span><strong>Turkey tail</strong> — <a class="guide" href="MUSHROOM-GUIDE.html#medicinal-mushrooms">Mushrooms › Medicinal mushrooms</a></li>
 <li><span id="t-turkeys"></span><strong>Turkeys</strong>
@@ -16193,6 +16718,10 @@
 <li><span id="t-twitch"></span><strong>Twitch</strong>
 <ul>
 <li>holding a horse for treatment — <a class="guide" href="HORSE-GUIDE.html#handling-saddling-and-riding">Horses › Handling, saddling and riding</a></li>
+</ul></li>
+<li><span id="t-two-meals-a-day"></span><strong>Two meals a day</strong>
+<ul>
+<li>work before a late breakfast — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#a-winter-day-as-far-as-the-books-tell-us">First peoples' skills › A winter day, as far as the books tell us</a></li>
 </ul></li>
 <li><span id="t-two-pounds-of-cooked-grain"></span><strong>Two pounds of cooked grain</strong>
 <ul>
@@ -16369,7 +16898,10 @@
 <ul>
 <li>ARK Vault, the ammo-can library computer — <a class="guide" href="AMMO-CAN-COMPUTER-GUIDE.html">ARK Vault (ammo-can computer) › The idea</a></li>
 </ul></li>
-<li><span id="t-vegetables"></span><strong>Vegetables</strong> — see <a href="#t-garden-produce"><strong>Garden produce</strong></a></li>
+<li><span id="t-vegetables"></span><strong>Vegetables</strong> — see <a href="#t-garden-produce"><strong>Garden produce</strong></a>
+<ul>
+<li>how long each needs — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Vegetables, greens and roots</a></li>
+</ul></li>
 <li><span id="t-vehicle-barriers"></span><strong>Vehicle barriers</strong>
 <ul>
 <li>boulders, posts, berms, ditches — <a class="guide" href="HOME-DEFENSE-GUIDE.html#one-way-in-the-driveway-and-vehicle-barriers">Home protection › One way in: the driveway and vehicle barriers</a></li>
@@ -16386,6 +16918,8 @@
 <li><span id="t-vehicles-after-an-emp"></span><strong>Vehicles after an EMP</strong> — see <a href="#t-cars-and-trucks"><strong>Cars and trucks</strong></a></li>
 <li><span id="t-venison"></span><strong>Venison</strong>
 <ul>
+<li>broiling and braising — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Meat: roasts, pot-roasts and tough cuts</a></li>
+<li>broiling times by thickness — <a class="guide" href="HUNTING-TRAPPING-FISHING-GUIDE.html#cooking-what-you-took">Hunting &amp; fishing › Cooking what you took</a></li>
 <li>canning time — <a class="guide" href="PRESERVING-FOOD-GUIDE.html#settings-for-the-illinois-valley-about-1-300-ft">Preserving food › Settings for the Illinois Valley (about 1,300 ft)</a></li>
 <li>curing — <a class="guide" href="PRESERVING-FOOD-GUIDE.html#curing-pork-and-venison">Preserving food › Curing pork and venison</a></li>
 </ul></li>
@@ -17163,6 +17697,10 @@
 <ul>
 <li>where to find it — <a class="guide" href="Medical-READ-ME-FIRST.html#what-s-here">Medicines › What's here</a></li>
 </ul></li>
+<li><span id="t-where-this-comes-from"></span><strong>Where this comes from</strong>
+<ul>
+<li>outsiders' notes, decades later — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#the-meals-themselves">First peoples' skills › The meals themselves</a></li>
+</ul></li>
 <li><span id="t-whetstone"></span><strong>Whetstone</strong> — see <a href="#t-oilstone"><strong>Oilstone</strong></a>
 <ul>
 <li>photos — <a class="wiki" href="https://en.wikipedia.org/wiki/Whetstone" data-title="Whetstone" target="_blank" rel="noopener" title="Wikipedia: Whetstone (offline copy with photos when opened through the Library Assistant)">photos</a></li>
@@ -17202,6 +17740,10 @@
 <ul>
 <li>stiff lambs 3–8 weeks — <a class="guide" href="SHEEP-GUIDE.html#minerals-selenium-copper-and-salt">Sheep › Minerals: selenium, copper and salt</a></li>
 <li>stiff, trembling kids 3–8 weeks — <a class="guide" href="GOATS-GUIDE.html#minerals-selenium-copper-and-salt">Goats › Minerals: selenium, copper and salt</a></li>
+</ul></li>
+<li><span id="t-white-sauce"></span><strong>White sauce</strong>
+<ul>
+<li>three thicknesses — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Making plain food good</a> · <a class="guide" href="DAIRY-GUIDE.html#cooking-with-milk-whey-and-cheese">Milk, butter &amp; cheese › Cooking with milk, whey and cheese</a></li>
 </ul></li>
 <li><span id="t-white-spots-on-liver"></span><strong>White spots on liver</strong>
 <ul>
@@ -17402,9 +17944,14 @@
 <ul>
 <li>roots, mangels, Jerusalem artichokes — <a class="guide" href="CATTLE-GUIDE.html#pasture-hay-and-winter-feed">Cattle › Pasture, hay and winter feed</a></li>
 </ul></li>
+<li><span id="t-winter-food"></span><strong>Winter food</strong>
+<ul>
+<li>the five stored foods — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#a-winter-day-as-far-as-the-books-tell-us">First peoples' skills › A winter day, as far as the books tell us</a></li>
+</ul></li>
 <li><span id="t-winter-squash"></span><strong>Winter squash</strong>
 <ul>
 <li>curing and storing — <a class="guide" href="ROOT-CELLAR-GUIDE.html#what-each-crop-needs">Root cellars › What each crop needs</a></li>
+<li>steamed 30 minutes — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html">Food from scratch › Vegetables, greens and roots</a> · <a class="guide" href="ROOT-CELLAR-GUIDE.html#cooking-from-the-cellar">Root cellars › Cooking from the cellar</a></li>
 </ul></li>
 <li><span id="t-winter-storage"></span><strong>Winter storage</strong>
 <ul>
@@ -17635,6 +18182,10 @@
 <li><span id="t-yellow-starthistle"></span><strong>Yellow starthistle</strong>
 <ul>
 <li>can't eat or drink — <a class="guide" href="HORSE-GUIDE.html#local-dangers">Horses › Local dangers</a></li>
+</ul></li>
+<li><span id="t-yellowjacket-larvae"></span><strong>Yellowjacket larvae</strong>
+<ul>
+<li>smoked out and eaten — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#seed-meal-nut-cakes-and-berry-cakes">First peoples' skills › Seed meal, nut cakes and berry cakes</a></li>
 </ul></li>
 <li><span id="t-yew"></span><strong>Yew</strong>
 <ul>
