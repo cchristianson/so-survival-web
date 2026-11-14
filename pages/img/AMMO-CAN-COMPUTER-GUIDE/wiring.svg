@@ -1,132 +1,551 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="840" height="700" viewBox="0 0 840 700" font-family="Arial, Helvetica, sans-serif">
-  <title>The ARK Vault wiring, with each wire's size. Run 1: battery plus to the 7.5 amp fuse, 16 AWG red. Run 2: fuse to the power switch's input, 16 AWG red. Run 3: the switch's output to a splice, 16 AWG red, and from the splice run 4 to the 5 volt converter's input plus and run 5 to the printer's plus, both 16 AWG red. Run 6: battery minus to the volt/amp meter's thick black wire, 16 AWG black. Run 7: the meter's thick red wire to a splice, and from it run 8 to the converter's input minus and run 9 to the printer's minus, 16 AWG black. The meter's thin wires, 22 AWG: run 10, thin black to the battery minus side of the meter; run 11, thin yellow to the switch's input; run 12, thin red to the meter button's COM; run 13, the button's NO to the switch's input, so the meter lights only while the button is held. Runs 14 and 15: the converter's 5 volt output to the Pi's pin 2 (plus) and pin 14 (ground), 18 AWG red and black, ending in female jumper leads. The fan is on pins 4, 6 and 8; the printer's USB lead goes to a Pi USB port. The solar controller is stored in the can, not wired.</title>
-  <rect width="840" height="700" fill="#ffffff"/>
-  <polyline points="140,165 180,165" fill="none" stroke="#d03b2f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
-  <polyline points="260,165 340,165" fill="none" stroke="#d03b2f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
-  <polyline points="440,165 560,165" fill="none" stroke="#d03b2f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
-  <polyline points="560,85 560,245" fill="none" stroke="#d03b2f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
-  <polyline points="560,85 600,85" fill="none" stroke="#d03b2f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
-  <polyline points="560,245 573,245" fill="none" stroke="#d03b2f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
-  <path d="M573 245 A7 7 0 0 1 587 245" fill="none" stroke="#d03b2f" stroke-width="4"/>
-  <polyline points="587,245 600,245" fill="none" stroke="#d03b2f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
-  <circle cx="560" cy="165" r="5" fill="#d03b2f"/>
-  <circle cx="300" cy="165" r="5" fill="#d03b2f"/>
-  <circle cx="320" cy="165" r="5" fill="#d03b2f"/>
-  <polyline points="140,275 200,275 200,445 330,445" fill="none" stroke="#222222" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
-  <polyline points="480,445 580,445 580,130 600,130" fill="none" stroke="#222222" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
-  <polyline points="580,310 600,310" fill="none" stroke="#222222" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
-  <circle cx="580" cy="310" r="5" fill="#222222"/>
-  <circle cx="200" cy="370" r="5" fill="#222222"/>
-  <text x="212" y="462" font-size="10.5" fill="#222222" text-anchor="start">thick black</text>
-  <text x="486" y="438" font-size="10.5" fill="#222222" text-anchor="start">thick red</text>
-  <text x="505" y="462" font-size="10.5" fill="#555" text-anchor="start">− to the loads</text>
-  <polyline points="350,400 350,370 200,370" fill="none" stroke="#222222" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-  <polyline points="390,400 390,330 300,330 300,165" fill="none" stroke="#d9a400" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-  <polyline points="430,400 430,340" fill="none" stroke="#d03b2f" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-  <polyline points="450,300 450,230 320,230 320,165" fill="none" stroke="#d03b2f" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-  <text x="212" y="362" font-size="10.5" fill="#222222" text-anchor="start">thin black</text>
-  <text x="294" y="252" font-size="10.5" fill="#9a7400" text-anchor="end">thin yellow</text>
-  <text x="294" y="266" font-size="10.5" fill="#9a7400" text-anchor="end">(reads the volts)</text>
-  <text x="326" y="222" font-size="10.5" fill="#d03b2f" text-anchor="start">thin red (powers the meter)</text>
-  <rect x="30" y="140" width="110" height="160" rx="7" fill="#fde8d4" stroke="#333" stroke-width="1.5"/>
-  <text x="85.0" y="220.0" font-size="14" fill="#222" text-anchor="middle" font-weight="bold">Battery</text>
-  <text x="85.0" y="237.0" font-size="11.5" fill="#444" text-anchor="middle">12.8 V LiFePO4</text>
-  <text x="146" y="158" font-size="14" fill="#d03b2f" text-anchor="start" font-weight="bold">+</text>
-  <text x="146" y="292" font-size="16" fill="#222222" text-anchor="start" font-weight="bold">−</text>
-  <rect x="180" y="150" width="80" height="30" rx="7" fill="#fff" stroke="#333" stroke-width="1.5"/>
-  <text x="220.0" y="170.0" font-size="14" fill="#222" text-anchor="middle" font-weight="bold">Fuse</text>
-  <text x="220" y="198" font-size="11.5" fill="#555" text-anchor="middle">7.5 A, inline</text>
-  <rect x="340" y="145" width="100" height="40" rx="7" fill="#ffe1dc" stroke="#333" stroke-width="1.5"/>
-  <text x="390.0" y="170.0" font-size="14" fill="#222" text-anchor="middle" font-weight="bold">Power switch</text>
-  <text x="390" y="201" font-size="11.5" fill="#555" text-anchor="middle">red rocker, on the riser</text>
-  <text x="342" y="140" font-size="10" fill="#555" text-anchor="start">input</text>
-  <text x="438" y="140" font-size="10" fill="#555" text-anchor="end">output</text>
-  <rect x="405" y="300" width="90" height="40" rx="7" fill="#fff" stroke="#333" stroke-width="1.5"/>
-  <text x="450.0" y="325.0" font-size="14" fill="#222" text-anchor="middle" font-weight="bold">Meter button</text>
-  <text x="500" y="316" font-size="11.5" fill="#555" text-anchor="start">microswitch:</text>
-  <text x="500" y="330" font-size="11.5" fill="#555" text-anchor="start">COM and NO</text>
-  <rect x="330" y="400" width="150" height="90" rx="7" fill="#e3eefb" stroke="#333" stroke-width="1.5"/>
-  <text x="405.0" y="445.0" font-size="14" fill="#222" text-anchor="middle" font-weight="bold">Volt/amp meter</text>
-  <text x="405.0" y="462.0" font-size="11.5" fill="#444" text-anchor="middle">hold the button to read it</text>
-  <rect x="600" y="60" width="170" height="90" rx="7" fill="#efefef" stroke="#333" stroke-width="1.5"/>
-  <text x="685.0" y="105.0" font-size="14" fill="#222" text-anchor="middle" font-weight="bold">Printer</text>
-  <text x="685.0" y="122.0" font-size="11.5" fill="#444" text-anchor="middle">DFR0503 V2.0 (9–24 V)</text>
-  <rect x="600" y="220" width="170" height="110" rx="7" fill="#efefef" stroke="#333" stroke-width="1.5"/>
-  <text x="685.0" y="275.0" font-size="14" fill="#222" text-anchor="middle" font-weight="bold">5 V converter</text>
-  <text x="685.0" y="292.0" font-size="11.5" fill="#444" text-anchor="middle">TOBSUN EA25-5V, 5 A</text>
-  <text x="606" y="241" font-size="10.5" fill="#d03b2f" text-anchor="start">IN +</text>
-  <text x="606" y="323" font-size="10.5" fill="#222222" text-anchor="start">IN −</text>
-  <text x="606" y="82" font-size="12" fill="#d03b2f" text-anchor="start" font-weight="bold">+</text>
-  <text x="606" y="127" font-size="13" fill="#222222" text-anchor="start" font-weight="bold">−</text>
-  <polyline points="650,330 650,400" fill="none" stroke="#d03b2f" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
-  <polyline points="720,330 720,400" fill="none" stroke="#222222" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
-  <rect x="600" y="400" width="170" height="120" rx="7" fill="#e2f3e5" stroke="#333" stroke-width="1.5"/>
-  <text x="685.0" y="460.0" font-size="14" fill="#222" text-anchor="middle" font-weight="bold">Raspberry Pi</text>
-  <text x="685.0" y="477.0" font-size="11.5" fill="#444" text-anchor="middle">on the lid</text>
-  <text x="650" y="418" font-size="11" fill="#d03b2f" text-anchor="middle" font-weight="bold">pin 2</text>
-  <text x="720" y="418" font-size="11" fill="#222222" text-anchor="middle" font-weight="bold">pin 14</text>
-  <text x="685" y="498" font-size="11.5" fill="#2b6cb0" text-anchor="middle">fan: pins 4, 6, 8 (run 16)</text>
-  <polyline points="770,105 795,105 795,470 770,470" fill="none" stroke="#777" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
-  <text x="801" y="312" font-size="11" fill="#777" text-anchor="start" font-weight="bold">USB</text>
-  <circle cx="160" cy="165" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
-  <text x="160" y="168.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">1</text>
-  <text x="160" y="190" font-size="10" fill="#555" text-anchor="middle">16 AWG</text>
-  <circle cx="280" cy="165" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
-  <text x="280" y="168.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">2</text>
-  <text x="280" y="152" font-size="10" fill="#555" text-anchor="middle">16 AWG</text>
-  <circle cx="505" cy="165" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
-  <text x="505" y="168.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">3</text>
-  <text x="505" y="152" font-size="10" fill="#555" text-anchor="middle">16 AWG</text>
-  <circle cx="560" cy="205" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
-  <text x="560" y="208.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">4</text>
-  <text x="548" y="209" font-size="10" fill="#555" text-anchor="end">16 AWG</text>
-  <circle cx="560" cy="115" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
-  <text x="560" y="118.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">5</text>
-  <text x="548" y="119" font-size="10" fill="#555" text-anchor="end">16 AWG</text>
-  <circle cx="200" cy="410" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
-  <text x="200" y="413.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">6</text>
-  <text x="212" y="414" font-size="10" fill="#555" text-anchor="start">16 AWG</text>
-  <circle cx="535" cy="445" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
-  <text x="535" y="448.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">7</text>
-  <circle cx="590" cy="296" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
-  <text x="590" y="299.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">8</text>
-  <circle cx="580" cy="180" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
-  <text x="580" y="183.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">9</text>
-  <circle cx="270" cy="370" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
-  <text x="270" y="373.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">10</text>
-  <text x="270" y="391" font-size="10" fill="#555" text-anchor="middle">22 AWG</text>
-  <circle cx="345" cy="330" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
-  <text x="345" y="333.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">11</text>
-  <text x="345" y="351" font-size="10" fill="#555" text-anchor="middle">22 AWG</text>
-  <circle cx="430" cy="375" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
-  <text x="430" y="378.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">12</text>
-  <text x="442" y="379" font-size="10" fill="#555" text-anchor="start">22 AWG</text>
-  <circle cx="450" cy="266" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
-  <text x="450" y="269.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">13</text>
-  <text x="462" y="270" font-size="10" fill="#555" text-anchor="start">22 AWG</text>
-  <circle cx="650" cy="372" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
-  <text x="650" y="375.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">14</text>
-  <text x="638" y="376" font-size="10" fill="#555" text-anchor="end">18 AWG</text>
-  <circle cx="720" cy="372" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
-  <text x="720" y="375.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">15</text>
-  <text x="732" y="376" font-size="10" fill="#555" text-anchor="start">18 AWG</text>
-  <circle cx="795" cy="280" r="8.5" fill="#fff" stroke="#333" stroke-width="1.5"/>
-  <text x="795" y="283.8" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">17</text>
-  <text x="20" y="555" font-size="12" fill="#d03b2f" text-anchor="start" font-weight="bold">Runs 1–5</text>
-  <text x="98" y="555" font-size="12" fill="#333" text-anchor="start">16 AWG red: the 12 V plus</text>
-  <text x="20" y="575" font-size="12" fill="#222222" text-anchor="start" font-weight="bold">Runs 6, 8, 9</text>
-  <text x="98" y="575" font-size="12" fill="#333" text-anchor="start">16 AWG black: the 12 V minus</text>
-  <text x="20" y="595" font-size="12" fill="#222222" text-anchor="start" font-weight="bold">Run 7</text>
-  <text x="98" y="595" font-size="12" fill="#333" text-anchor="start">the meter’s own thick red wire</text>
-  <text x="430" y="555" font-size="12" fill="#9a7400" text-anchor="start" font-weight="bold">Runs 10–13</text>
-  <text x="508" y="555" font-size="12" fill="#333" text-anchor="start">22 AWG: the meter’s thin wires and its button</text>
-  <text x="430" y="575" font-size="12" fill="#d03b2f" text-anchor="start" font-weight="bold">Runs 14, 15</text>
-  <text x="508" y="575" font-size="12" fill="#333" text-anchor="start">18 AWG red and black: the Pi’s 5 V</text>
-  <text x="430" y="595" font-size="12" fill="#2b6cb0" text-anchor="start" font-weight="bold">Runs 16, 17</text>
-  <text x="508" y="595" font-size="12" fill="#333" text-anchor="start">the fan’s own lead; the printer’s USB cable</text>
-  <text x="20" y="28" font-size="16" fill="#222" text-anchor="start" font-weight="bold">The ARK Vault wiring</text>
-  <text x="20" y="48" font-size="12" fill="#555" text-anchor="start">Each number is a run in the guide’s table. Thick lines: 16 AWG (12 V). Medium: 18 AWG (the Pi’s 5 V). Thin: 22 AWG.</text>
-  <text x="20" y="636" font-size="12.5" fill="#444" text-anchor="start">The Pi’s pair: 18 AWG most of the way, soldered to two female jumper leads about 5 cm from the pins.</text>
-  <text x="20" y="656" font-size="12.5" fill="#444" text-anchor="start">Check your meter’s own wiring sheet: some put the thick wires the other way round.</text>
-  <text x="20" y="676" font-size="12.5" fill="#444" text-anchor="start">Check the converter’s 5 V output with a meter (5.0 to 5.25 V, + and − the right way round) before plugging it onto the Pi.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1530" viewBox="0 0 1000 1530" font-family="Arial, Helvetica, sans-serif">
+  <title>The ARK Vault wiring, with every part drawn as it looks and all of its terminals. The battery, seen from above, has two bolts: plus near one end and minus near the other, each also taking the wall charger's lead. Run 1, 16 AWG red: battery plus to the inline blade fuse holder (7.5 amp fuse). Run 2, 16 AWG red: the fuse holder to the rocker switch's input pin, seen from behind; the input pin's one spade also takes run 11 (the meter's thin yellow wire, 22 AWG) and run 13 (from the microswitch's NO tab, 22 AWG). Run 3, 16 AWG red: the switch's output pin to a splice; from it run 4 goes to the converter's Input plus and run 5 to the printer's power plug, plus. Run 6, 16 AWG black: battery minus to the meter's thick black wire; the meter's thin black wire (run 10) joins it there. The meter's thick red wire (run 7) goes to a splice; from it run 8 to the converter's Input minus and run 9 to the printer's power plug, minus. The meter's thin red wire (run 12) goes to the microswitch's C tab; its NC tab is not used. The converter's four screw terminals, left to right as printed: Input plus, Input minus, Output minus, Output plus. Runs 14 and 15, 18 AWG red and black: Output plus to the Pi's pin 2 and Output minus to pin 14. The printer's other sockets: USB (its USB lead, run 17, to a black USB port on the Pi), TTL serial and 485, not used. The Raspberry Pi 4 from above: the 40-pin row along one long edge, pin 1 at the end away from the USB ports; Ethernet, two blue USB 3 ports (lower: the library drive; upper: the mesh radio's USB-C cable, run 18) and two black USB 2 ports (one for the printer, one free) along the short edge; USB-C power, two micro HDMI and the audio socket not used; the microSD card underneath. The cooler's fan, run 16, on pins 4 (red), 6 (black) and 8 (blue). The 40 pins enlarged, with every pin's name. Later, for the sun: the solar controller's battery terminals to the battery in 12 AWG through a 20 amp fuse, its panel terminals to the panel, its load terminals not used.</title>
+  <rect width="1000" height="1530" fill="#ffffff"/>
+  <text x="30" y="128" font-size="15" fill="#222222" text-anchor="start" font-weight="bold">Battery</text>
+  <text x="30" y="144" font-size="11.5" fill="#555555" text-anchor="start">12.8 V LiFePO4, 20 Ah, from above</text>
+  <rect x="40" y="150" width="110" height="260" rx="8" fill="#3d4650" stroke="#1d232a" stroke-width="2"/>
+  <rect x="48" y="158" width="94" height="244" rx="5" fill="#4b5560" stroke="#4b5560" stroke-width="0"/>
+  <text x="110" y="262" font-size="12" fill="#e8ecf0" text-anchor="middle">12.8 V</text>
+  <text x="110" y="279" font-size="12" fill="#e8ecf0" text-anchor="middle" font-weight="bold">LiFePO4</text>
+  <text x="110" y="296" font-size="12" fill="#e8ecf0" text-anchor="middle">20 Ah</text>
+  <circle cx="122" cy="191" r="16" fill="#d03b2f" stroke="#111" stroke-width="1.5"/>
+  <polygon points="129.0,191.0 125.5,197.1 118.5,197.1 115.0,191.0 118.5,184.9 125.5,184.9" fill="#c9ccd1" stroke="#666" stroke-width="1"/>
+  <text x="122" y="169" font-size="17" fill="#d03b2f" text-anchor="middle" font-weight="bold">+</text>
+  <circle cx="122" cy="369" r="16" fill="#222222" stroke="#111" stroke-width="1.5"/>
+  <polygon points="129.0,369.0 125.5,375.1 118.5,375.1 115.0,369.0 118.5,362.9 125.5,362.9" fill="#c9ccd1" stroke="#666" stroke-width="1"/>
+  <text x="122" y="347" font-size="17" fill="#e8ecf0" text-anchor="middle" font-weight="bold">−</text>
+  <text x="95" y="230" font-size="10.5" fill="#cfd5db" text-anchor="middle">bolt</text>
+  <text x="95" y="352" font-size="10.5" fill="#cfd5db" text-anchor="middle">bolt</text>
+  <rect x="28" y="440" width="140" height="58" rx="6" fill="#f4f4f2" stroke="#555" stroke-width="1.4"/>
+  <text x="98" y="462" font-size="13" fill="#222222" text-anchor="middle" font-weight="bold">Wall charger</text>
+  <text x="98" y="479" font-size="11" fill="#555555" text-anchor="middle">MOTOPOWER</text>
+  <text x="98" y="492" font-size="11" fill="#555555" text-anchor="middle">set to lithium</text>
+  <polyline points="55,440 55,191 106,191" fill="none" stroke="#d03b2f" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="75,440 75,369 106,369" fill="none" stroke="#222222" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="30" y="516" font-size="11" fill="#555555" text-anchor="start">Its own leads, with ring terminals,</text>
+  <text x="30" y="530" font-size="11" fill="#555555" text-anchor="start">on the same bolts (rubber boots over)</text>
+  <text x="200" y="160" font-size="15" fill="#222222" text-anchor="start" font-weight="bold">Fuse holder</text>
+  <rect x="200" y="178" width="100" height="28" rx="13" fill="#1f2328" stroke="#111" stroke-width="1.5"/>
+  <rect x="232" y="172" width="36" height="14" rx="2" fill="#a0522d" stroke="#5a2e17" stroke-width="1.2"/>
+  <text x="250" y="183" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">7.5</text>
+  <text x="205" y="224" font-size="11" fill="#555555" text-anchor="start">inline, blade</text>
+  <text x="205" y="237" font-size="11" fill="#555555" text-anchor="start">7.5 A (brown)</text>
+  <text x="350" y="112" font-size="15" fill="#222222" text-anchor="start" font-weight="bold">Power switch</text>
+  <text x="350" y="128" font-size="11.5" fill="#555555" text-anchor="start">rocker, from behind</text>
+  <rect x="358" y="140" width="88" height="60" rx="5" fill="#2a2d31" stroke="#111" stroke-width="1.5"/>
+  <rect x="364" y="146" width="76" height="48" rx="4" fill="#33373c" stroke="#33373c" stroke-width="0"/>
+  <text x="402" y="175" font-size="10.5" fill="#cfd5db" text-anchor="middle">2 pins</text>
+  <rect x="378" y="200" width="8" height="24" rx="1" fill="#c9a227" stroke="#7a6312" stroke-width="1"/>
+  <rect x="418" y="200" width="8" height="24" rx="1" fill="#c9a227" stroke="#7a6312" stroke-width="1"/>
+  <text x="452" y="210" font-size="11" fill="#555555" text-anchor="start">output</text>
+  <text x="374" y="214" font-size="11" fill="#555555" text-anchor="end">input</text>
+  <text x="455" y="259" font-size="15" fill="#222222" text-anchor="start" font-weight="bold">Meter button</text>
+  <text x="455" y="274" font-size="11.5" fill="#555555" text-anchor="start">microswitch, 20 × 10 mm</text>
+  <rect x="420" y="290" width="100" height="51" rx="4" fill="#1f2328" stroke="#111" stroke-width="1.5"/>
+  <rect x="431" y="281" width="14" height="10" rx="2" fill="#d03b2f" stroke="#7a1f17" stroke-width="1"/>
+  <circle cx="452" cy="315" r="4" fill="#555" stroke="#777" stroke-width="1"/>
+  <circle cx="500" cy="315" r="4" fill="#555" stroke="#777" stroke-width="1"/>
+  <rect x="436.5" y="341" width="7" height="19" rx="1" fill="#c9a227" stroke="#7a6312" stroke-width="1"/>
+  <text x="440" y="336" font-size="10.5" fill="#e8ecf0" text-anchor="middle" font-weight="bold">NO</text>
+  <rect x="466.5" y="341" width="7" height="19" rx="1" fill="#c9a227" stroke="#7a6312" stroke-width="1"/>
+  <text x="470" y="336" font-size="10.5" fill="#e8ecf0" text-anchor="middle" font-weight="bold">C</text>
+  <rect x="496.5" y="341" width="7" height="19" rx="1" fill="#c9a227" stroke="#7a6312" stroke-width="1"/>
+  <text x="500" y="336" font-size="10.5" fill="#e8ecf0" text-anchor="middle" font-weight="bold">NC</text>
+  <text x="509" y="376" font-size="10.5" fill="#555555" text-anchor="start">NC: not used</text>
+  <text x="350" y="428" font-size="15" fill="#222222" text-anchor="start" font-weight="bold">Volt/amp meter</text>
+  <rect x="350" y="440" width="160" height="97" rx="5" fill="#1b1d20" stroke="#000" stroke-width="1.8"/>
+  <rect x="362" y="450" width="136" height="77" rx="3" fill="#0b0d10" stroke="#0b0d10" stroke-width="0"/>
+  <text x="452" y="481" font-size="25" fill="#ff4d3d" text-anchor="end" font-weight="bold">13.2</text>
+  <text x="460" y="481" font-size="15" fill="#ff4d3d" text-anchor="start">V</text>
+  <text x="452" y="515" font-size="25" fill="#3fa9ff" text-anchor="end" font-weight="bold">0.85</text>
+  <text x="460" y="515" font-size="15" fill="#3fa9ff" text-anchor="start">A</text>
+  <polyline points="262,552 280,552" fill="none" stroke="#111" stroke-width="4.2" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="286" y="556" font-size="11" fill="#555555" text-anchor="start">thick black: current in, from battery −</text>
+  <polyline points="262,567 280,567" fill="none" stroke="#d03b2f" stroke-width="4.2" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="286" y="571" font-size="11" fill="#555555" text-anchor="start">thick red: current out, to the loads’ −</text>
+  <polyline points="262,582 280,582" fill="none" stroke="#111" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="286" y="586" font-size="11" fill="#555555" text-anchor="start">thin black: the meter’s own −</text>
+  <polyline points="262,597 280,597" fill="none" stroke="#d03b2f" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="286" y="601" font-size="11" fill="#555555" text-anchor="start">thin red: powers it (only while the button is held)</text>
+  <polyline points="262,612 280,612" fill="none" stroke="#d9a400" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="286" y="616" font-size="11" fill="#555555" text-anchor="start">thin yellow: reads the volts</text>
+  <text x="674" y="262" font-size="15" fill="#222222" text-anchor="start" font-weight="bold">5 V converter</text>
+  <text x="674" y="278" font-size="11.5" fill="#555555" text-anchor="start">TOBSUN EA25-5V, as printed on it</text>
+  <path d="M674 345 h252 v38 h-252 z" fill="#1b1d20" stroke="#000" stroke-width="1.5"/>
+  <circle cx="687" cy="364" r="7" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
+  <circle cx="913" cy="364" r="7" fill="#ffffff" stroke="#000" stroke-width="1.2"/>
+  <rect x="702" y="290" width="196" height="157" rx="6" fill="#1b1d20" stroke="#000" stroke-width="1.8"/>
+  <text x="720" y="316" font-size="15" fill="#e8ecf0" text-anchor="start" font-weight="bold">TOBSUN</text>
+  <text x="880" y="316" font-size="10.5" fill="#cfd5db" text-anchor="end">EA25-5V</text>
+  <text x="800" y="338" font-size="12" fill="#e8ecf0" text-anchor="middle" font-weight="bold">25W DC-DC CONVERTER</text>
+  <text x="749" y="392" font-size="11.5" fill="#e8ecf0" text-anchor="middle">Input</text>
+  <text x="749" y="406" font-size="10.5" fill="#cfd5db" text-anchor="middle">12V/24V</text>
+  <text x="851" y="392" font-size="11.5" fill="#e8ecf0" text-anchor="middle">Output</text>
+  <text x="851" y="406" font-size="10.5" fill="#cfd5db" text-anchor="middle">5V  5A max</text>
+  <circle cx="749" cy="424" r="9" fill="#1b1d20" stroke="#e8ecf0" stroke-width="1.4"/>
+  <text x="749" y="429" font-size="14" fill="#e8ecf0" text-anchor="middle" font-weight="bold">+</text>
+  <circle cx="783" cy="424" r="9" fill="#1b1d20" stroke="#e8ecf0" stroke-width="1.4"/>
+  <text x="783" y="429" font-size="14" fill="#e8ecf0" text-anchor="middle" font-weight="bold">−</text>
+  <circle cx="817" cy="424" r="9" fill="#1b1d20" stroke="#e8ecf0" stroke-width="1.4"/>
+  <text x="817" y="429" font-size="14" fill="#e8ecf0" text-anchor="middle" font-weight="bold">−</text>
+  <circle cx="851" cy="424" r="9" fill="#1b1d20" stroke="#e8ecf0" stroke-width="1.4"/>
+  <text x="851" y="429" font-size="14" fill="#e8ecf0" text-anchor="middle" font-weight="bold">+</text>
+  <rect x="728" y="445" width="144" height="52" rx="3" fill="#15171a" stroke="#000" stroke-width="1.5"/>
+  <circle cx="749" cy="463" r="9" fill="#c9ccd1" stroke="#666" stroke-width="1"/>
+  <polyline points="744,463 754,463" fill="none" stroke="#666" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="742" y="483" width="14" height="10" rx="1" fill="#000" stroke="#444" stroke-width="1"/>
+  <circle cx="783" cy="463" r="9" fill="#c9ccd1" stroke="#666" stroke-width="1"/>
+  <polyline points="778,463 788,463" fill="none" stroke="#666" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="776" y="483" width="14" height="10" rx="1" fill="#000" stroke="#444" stroke-width="1"/>
+  <circle cx="817" cy="463" r="9" fill="#c9ccd1" stroke="#666" stroke-width="1"/>
+  <polyline points="812,463 822,463" fill="none" stroke="#666" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="810" y="483" width="14" height="10" rx="1" fill="#000" stroke="#444" stroke-width="1"/>
+  <circle cx="851" cy="463" r="9" fill="#c9ccd1" stroke="#666" stroke-width="1"/>
+  <polyline points="846,463 856,463" fill="none" stroke="#666" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="844" y="483" width="14" height="10" rx="1" fill="#000" stroke="#444" stroke-width="1"/>
+  <text x="758" y="502" font-size="10" fill="#222222" text-anchor="end" font-weight="bold" transform="rotate(-90 758 502)">IN +</text>
+  <text x="792" y="502" font-size="10" fill="#222222" text-anchor="end" font-weight="bold" transform="rotate(-90 792 502)">IN −</text>
+  <text x="826" y="502" font-size="10" fill="#222222" text-anchor="end" font-weight="bold" transform="rotate(-90 826 502)">OUT −</text>
+  <text x="860" y="502" font-size="10" fill="#222222" text-anchor="end" font-weight="bold" transform="rotate(-90 860 502)">OUT +</text>
+  <text x="878" y="465" font-size="10.5" fill="#555555" text-anchor="start">screw</text>
+  <text x="878" y="478" font-size="10.5" fill="#555555" text-anchor="start">terminals</text>
+  <text x="650" y="88" font-size="15" fill="#222222" text-anchor="start" font-weight="bold">Printer</text>
+  <text x="650" y="104" font-size="11.5" fill="#555555" text-anchor="start">DFRobot DFR0503 V2.0 (USB), from behind</text>
+  <rect x="650" y="108" width="300" height="128" rx="8" fill="#e9eaec" stroke="#555" stroke-width="1.6"/>
+  <rect x="664" y="148" width="24" height="42" rx="2" fill="#f7f7f5" stroke="#333" stroke-width="1.2"/>
+  <circle cx="676" cy="160" r="4" fill="#c9a227" stroke="#7a6312" stroke-width="1"/>
+  <circle cx="676" cy="180" r="4" fill="#c9a227" stroke="#7a6312" stroke-width="1"/>
+  <text x="694" y="152" font-size="11.5" fill="#222222" text-anchor="start" font-weight="bold">POWER  9–24 V</text>
+  <text x="694" y="166" font-size="10.5" fill="#555555" text-anchor="start">2-pin plug: + red, − black</text>
+  <rect x="898" y="185" width="36" height="14" rx="2" fill="#f7f7f5" stroke="#333" stroke-width="1.2"/>
+  <circle cx="904" cy="192" r="2.2" fill="#c9a227" stroke="#7a6312" stroke-width="0.8"/>
+  <circle cx="912" cy="192" r="2.2" fill="#c9a227" stroke="#7a6312" stroke-width="0.8"/>
+  <circle cx="920" cy="192" r="2.2" fill="#c9a227" stroke="#7a6312" stroke-width="0.8"/>
+  <circle cx="928" cy="192" r="2.2" fill="#c9a227" stroke="#7a6312" stroke-width="0.8"/>
+  <text x="892" y="196" font-size="11.5" fill="#222222" text-anchor="end" font-weight="bold">USB  (4-pin)</text>
+  <rect x="694" y="206" width="36" height="14" rx="2" fill="#f7f7f5" stroke="#999" stroke-width="1"/>
+  <circle cx="700" cy="213" r="2.2" fill="#bbb" stroke="#999" stroke-width="0.8"/>
+  <circle cx="708" cy="213" r="2.2" fill="#bbb" stroke="#999" stroke-width="0.8"/>
+  <circle cx="716" cy="213" r="2.2" fill="#bbb" stroke="#999" stroke-width="0.8"/>
+  <circle cx="724" cy="213" r="2.2" fill="#bbb" stroke="#999" stroke-width="0.8"/>
+  <text x="736" y="217" font-size="10.5" fill="#555555" text-anchor="start">TTL serial: not used</text>
+  <rect x="694" y="184" width="20" height="14" rx="2" fill="#f7f7f5" stroke="#999" stroke-width="1"/>
+  <circle cx="700" cy="191" r="2.2" fill="#bbb" stroke="#999" stroke-width="0.8"/>
+  <circle cx="708" cy="191" r="2.2" fill="#bbb" stroke="#999" stroke-width="0.8"/>
+  <text x="720" y="195" font-size="10.5" fill="#555555" text-anchor="start">485: not used</text>
+  <polyline points="664,160 650,160" fill="none" stroke="#d03b2f" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="664,180 650,180" fill="none" stroke="#222222" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="934,192 950,192" fill="none" stroke="#6b7280" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="30" y="735" font-size="15" fill="#222222" text-anchor="start" font-weight="bold">Raspberry Pi 4</text>
+  <text x="30" y="751" font-size="11.5" fill="#555555" text-anchor="start">from above, on the lid</text>
+  <rect x="300" y="720" width="425" height="280" rx="14" fill="#2f7d4f" stroke="#1d5233" stroke-width="1.8"/>
+  <circle cx="317.5" cy="737.5" r="7" fill="#e8d48a" stroke="#a08a3a" stroke-width="1"/>
+  <circle cx="317.5" cy="737.5" r="3.5" fill="#2f7d4f" stroke="#2f7d4f" stroke-width="0"/>
+  <circle cx="607.5" cy="737.5" r="7" fill="#e8d48a" stroke="#a08a3a" stroke-width="1"/>
+  <circle cx="607.5" cy="737.5" r="3.5" fill="#2f7d4f" stroke="#2f7d4f" stroke-width="0"/>
+  <circle cx="317.5" cy="982.5" r="7" fill="#e8d48a" stroke="#a08a3a" stroke-width="1"/>
+  <circle cx="317.5" cy="982.5" r="3.5" fill="#2f7d4f" stroke="#2f7d4f" stroke-width="0"/>
+  <circle cx="607.5" cy="982.5" r="7" fill="#e8d48a" stroke="#a08a3a" stroke-width="1"/>
+  <circle cx="607.5" cy="982.5" r="3.5" fill="#2f7d4f" stroke="#2f7d4f" stroke-width="0"/>
+  <rect x="332" y="723.75" width="257.3" height="27.5" rx="2" fill="#1b1d20" stroke="#000" stroke-width="1"/>
+  <rect x="337" y="740.85" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="337" y="728.15" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="349.7" y="740.85" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="349.7" y="728.15" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="362.4" y="740.85" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="362.4" y="728.15" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="375.1" y="740.85" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="375.1" y="728.15" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="387.8" y="740.85" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="387.8" y="728.15" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="400.5" y="740.85" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="400.5" y="728.15" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="413.2" y="740.85" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="413.2" y="728.15" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="425.9" y="740.85" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="425.9" y="728.15" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="438.6" y="740.85" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="438.6" y="728.15" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="451.3" y="740.85" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="451.3" y="728.15" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="464" y="740.85" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="464" y="728.15" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="476.7" y="740.85" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="476.7" y="728.15" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="489.4" y="740.85" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="489.4" y="728.15" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="502.1" y="740.85" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="502.1" y="728.15" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="514.8" y="740.85" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="514.8" y="728.15" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="527.5" y="740.85" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="527.5" y="728.15" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="540.2" y="740.85" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="540.2" y="728.15" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="552.9" y="740.85" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="552.9" y="728.15" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="565.6" y="740.85" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="565.6" y="728.15" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="578.3" y="740.85" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <rect x="578.3" y="728.15" width="6" height="6" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.6"/>
+  <text x="330" y="742.5" font-size="10" fill="#fff" text-anchor="end" font-weight="bold">1</text>
+  <text x="595.3" y="742.5" font-size="10" fill="#fff" text-anchor="start" font-weight="bold">39</text>
+  <rect x="612.5" y="728.65" width="5" height="5" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.5"/>
+  <rect x="612.5" y="741.35" width="5" height="5" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.5"/>
+  <rect x="625.2" y="728.65" width="5" height="5" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.5"/>
+  <rect x="625.2" y="741.35" width="5" height="5" rx="1" fill="#d6b44a" stroke="#8a6d18" stroke-width="0.5"/>
+  <text x="608" y="767" font-size="9.5" fill="#e8f1ea" text-anchor="end">PoE: not used</text>
+  <rect x="385" y="775" width="210" height="190" rx="4" fill="#26292d" stroke="#000" stroke-width="1.2"/>
+  <polyline points="389,796 591,796" fill="none" stroke="#3a3e44" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="389,817 591,817" fill="none" stroke="#3a3e44" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="389,838 591,838" fill="none" stroke="#3a3e44" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="389,859 591,859" fill="none" stroke="#3a3e44" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="389,880 591,880" fill="none" stroke="#3a3e44" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="389,901 591,901" fill="none" stroke="#3a3e44" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="389,922 591,922" fill="none" stroke="#3a3e44" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="389,943 591,943" fill="none" stroke="#3a3e44" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="490" cy="870" r="58" fill="#202326" stroke="#000" stroke-width="1.2"/>
+  <circle cx="490" cy="870" r="12" fill="#2c3034" stroke="#000" stroke-width="1"/>
+  <text x="490" y="945" font-size="10.5" fill="#e8f1ea" text-anchor="middle">cooler and fan (run 16: its own lead)</text>
+  <polyline points="404,790 404,761 352.7,753 352.7,733.15" fill="none" stroke="#d03b2f" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="410,790 410,761 365.4,753 365.4,733.15" fill="none" stroke="#222222" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="416,790 416,761 378.1,753 378.1,733.15" fill="none" stroke="#2b6cb0" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="620" y="731.25" width="120" height="80" rx="2" fill="#c9ccd1" stroke="#777" stroke-width="1.4"/>
+  <rect x="715" y="742.5" width="22" height="57.5" rx="2" fill="#5d6168" stroke="#444" stroke-width="1"/>
+  <text x="675" y="772.5" font-size="11" fill="#333" text-anchor="middle" font-weight="bold">Ethernet</text>
+  <text x="675" y="786.5" font-size="10" fill="#333" text-anchor="middle">not used</text>
+  <rect x="637" y="832" width="103" height="66" rx="2" fill="#c9ccd1" stroke="#777" stroke-width="1.4"/>
+  <rect x="721" y="844" width="18" height="42" rx="1.5" fill="#2b6cb0" stroke="#333" stroke-width="1"/>
+  <text x="683" y="869.5" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">USB 3 ×2 (blue)</text>
+  <rect x="637" y="922" width="103" height="66" rx="2" fill="#c9ccd1" stroke="#777" stroke-width="1.4"/>
+  <rect x="721" y="934" width="18" height="42" rx="1.5" fill="#1b1d20" stroke="#333" stroke-width="1"/>
+  <text x="683" y="959.5" font-size="10.5" fill="#333" text-anchor="middle" font-weight="bold">USB 2 ×2 (black)</text>
+  <rect x="333.5" y="982" width="45" height="22" rx="3" fill="#c9ccd1" stroke="#777" stroke-width="1.2"/>
+  <text x="356" y="1018" font-size="10.5" fill="#222222" text-anchor="middle" font-weight="bold">USB-C</text>
+  <rect x="412.5" y="982" width="35" height="22" rx="3" fill="#c9ccd1" stroke="#777" stroke-width="1.2"/>
+  <text x="430" y="1018" font-size="10.5" fill="#222222" text-anchor="middle" font-weight="bold">HDMI 0</text>
+  <rect x="480" y="982" width="35" height="22" rx="3" fill="#c9ccd1" stroke="#777" stroke-width="1.2"/>
+  <text x="497.5" y="1018" font-size="10.5" fill="#222222" text-anchor="middle" font-weight="bold">HDMI 1</text>
+  <circle cx="567.5" cy="994" r="10" fill="#1b1d20" stroke="#000" stroke-width="1"/>
+  <text x="567.5" y="1018" font-size="10.5" fill="#222222" text-anchor="middle" font-weight="bold">audio</text>
+  <text x="300" y="1034" font-size="11" fill="#555555" text-anchor="start">None of these four is used: the Pi’s power comes in on pins 2 and 14.</text>
+  <rect x="288" y="830" width="20" height="60" rx="2" fill="none" stroke="#1d5233" stroke-width="1.4" stroke-dasharray="4 3"/>
+  <text x="282" y="852.5" font-size="11" fill="#555555" text-anchor="end">microSD card,</text>
+  <text x="282" y="866.5" font-size="11" fill="#555555" text-anchor="end">underneath:</text>
+  <text x="282" y="880.5" font-size="11" fill="#555555" text-anchor="end">the Pi’s own system</text>
+  <text x="30" y="770" font-size="11" fill="#555555" text-anchor="start">Pi 5: the cooler plugs into its own</text>
+  <text x="30" y="784" font-size="11" fill="#555555" text-anchor="start">fan socket; the power still goes on</text>
+  <text x="30" y="798" font-size="11" fill="#555555" text-anchor="start">pins 2 and 14.</text>
+  <text x="795" y="678" font-size="15" fill="#222222" text-anchor="start" font-weight="bold">Mesh radio</text>
+  <text x="795" y="694" font-size="11.5" fill="#555555" text-anchor="start">Heltec V4 (if fitted)</text>
+  <rect x="795" y="704" width="168" height="84" rx="6" fill="#1f5fa8" stroke="#123a68" stroke-width="1.6"/>
+  <rect x="840" y="720" width="74" height="40" rx="2" fill="#0b0d10" stroke="#000" stroke-width="1"/>
+  <rect x="789" y="734" width="16" height="18" rx="4" fill="#c9ccd1" stroke="#666" stroke-width="1.2"/>
+  <circle cx="948" cy="716" r="4.5" fill="#d6b44a" stroke="#8a6d18" stroke-width="1"/>
+  <polyline points="948,716 948,694 975,694" fill="none" stroke="#999" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="800" y="805" font-size="10.5" fill="#555555" text-anchor="start">USB-C → run 18. The aerial’s lead</text>
+  <text x="800" y="818" font-size="10.5" fill="#555555" text-anchor="start">snaps on its tiny socket. Not used:</text>
+  <text x="800" y="831" font-size="10.5" fill="#555555" text-anchor="start">pin rows, battery, solar, GNSS.</text>
+  <polyline points="138,191 200,191" fill="none" stroke="#d03b2f" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="300,191 330,191 330,236 382,236" fill="none" stroke="#d03b2f" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="382,224 382,236" fill="none" stroke="#d03b2f" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="422,224 600,224" fill="none" stroke="#d03b2f" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="600,224 600,160 650,160" fill="none" stroke="#d03b2f" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="600,224 600,560 749,560 749,487" fill="none" stroke="#d03b2f" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="382,440 382,236" fill="none" stroke="#d9a400" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="470,440 470,360" fill="none" stroke="#d03b2f" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="440,360 440,378 400,378 400,236 382,236" fill="none" stroke="#d03b2f" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="138,369 240,369 240,505 350,505" fill="none" stroke="#222222" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="350,470 300,470 300,505" fill="none" stroke="#222222" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="510,505 620,505" fill="none" stroke="#222222" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="620,505 620,600 783,600 783,487" fill="none" stroke="#222222" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="620,505 620,180 650,180" fill="none" stroke="#222222" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="596.0" y="497" width="8" height="16" fill="#ffffff"/>
+  <line x1="591" y1="505" x2="609" y2="505" stroke="#222222" stroke-width="5"/>
+  <path d="M600 497 A8 8 0 0 1 600 513" fill="none" stroke="#d03b2f" stroke-width="5"/>
+  <rect x="616.0" y="552" width="8" height="16" fill="#ffffff"/>
+  <line x1="611" y1="560" x2="629" y2="560" stroke="#d03b2f" stroke-width="5"/>
+  <path d="M620 552 A8 8 0 0 1 620 568" fill="none" stroke="#222222" stroke-width="5"/>
+  <polyline points="851,487 851,640 340,640 340,727.15" fill="none" stroke="#d03b2f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="817,487 817,660 416.2,660 416.2,727.15" fill="none" stroke="#222222" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="813.5" y="632" width="7" height="16" fill="#ffffff"/>
+  <line x1="808" y1="640" x2="826" y2="640" stroke="#d03b2f" stroke-width="4"/>
+  <path d="M817 632 A8 8 0 0 1 817 648" fill="none" stroke="#222222" stroke-width="4"/>
+  <rect x="335" y="718.15" width="10" height="16" rx="1.5" fill="#111" stroke="#000" stroke-width="1"/>
+  <polyline points="340,718.15 340,709.15" fill="none" stroke="#d03b2f" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="411.2" y="718.15" width="10" height="16" rx="1.5" fill="#111" stroke="#000" stroke-width="1"/>
+  <polyline points="416.2,718.15 416.2,709.15" fill="none" stroke="#222222" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="438.2" y="707" font-size="11" fill="#555555" text-anchor="start">18 AWG, soldered to a female jumper lead about 5 cm from the pins</text>
+  <polyline points="950,192 990,192 990,952 742,952" fill="none" stroke="#6b7280" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="789,743 768,743 768,851 742,851" fill="none" stroke="#6b7280" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="742" y="868" width="60" height="22" rx="4" fill="#3a3e44" stroke="#111" stroke-width="1.2"/>
+  <rect x="802" y="872" width="10" height="14" rx="2" fill="#c9a227" stroke="#7a6312" stroke-width="1"/>
+  <text x="820" y="878" font-size="11.5" fill="#222222" text-anchor="start" font-weight="bold">library drive</text>
+  <text x="820" y="892" font-size="10.5" fill="#555555" text-anchor="start">(lower blue port)</text>
+  <text x="748" y="843" font-size="10" fill="#555555" text-anchor="start">upper blue</text>
+  <text x="750" y="970" font-size="10.5" fill="#555555" text-anchor="start">printer, in a black port; the other</text>
+  <text x="750" y="983" font-size="10.5" fill="#555555" text-anchor="start">black port is free (charge the phone</text>
+  <text x="750" y="996" font-size="10.5" fill="#555555" text-anchor="start">there if you like)</text>
+  <circle cx="382" cy="236" r="5.5" fill="#d03b2f" stroke="#fff" stroke-width="1.2"/>
+  <circle cx="600" cy="224" r="5.5" fill="#d03b2f" stroke="#fff" stroke-width="1.2"/>
+  <circle cx="620" cy="505" r="5.5" fill="#222222" stroke="#fff" stroke-width="1.2"/>
+  <circle cx="300" cy="505" r="5.5" fill="#222222" stroke="#fff" stroke-width="1.2"/>
+  <text x="264" y="254" font-size="10.5" fill="#555555" text-anchor="start">one spade: 2, 11, 13</text>
+  <text x="604" y="240" font-size="10.5" fill="#555555" text-anchor="start">splice</text>
+  <text x="626" y="521" font-size="10.5" fill="#555555" text-anchor="start">splice</text>
+  <text x="256" y="523" font-size="10.5" fill="#555555" text-anchor="start">joint</text>
+  <circle cx="168" cy="191" r="9.5" fill="#fff" stroke="#333" stroke-width="1.6"/>
+  <text x="168" y="195" font-size="11" fill="#333" text-anchor="middle" font-weight="bold">1</text>
+  <text x="168" y="176" font-size="11" fill="#555555" text-anchor="middle">16 AWG</text>
+  <circle cx="330" cy="212" r="9.5" fill="#fff" stroke="#333" stroke-width="1.6"/>
+  <text x="330" y="216" font-size="11" fill="#333" text-anchor="middle" font-weight="bold">2</text>
+  <text x="316" y="216" font-size="11" fill="#555555" text-anchor="end">16 AWG</text>
+  <circle cx="520" cy="224" r="9.5" fill="#fff" stroke="#333" stroke-width="1.6"/>
+  <text x="520" y="228" font-size="11" fill="#333" text-anchor="middle" font-weight="bold">3</text>
+  <text x="520" y="209" font-size="11" fill="#555555" text-anchor="middle">16 AWG</text>
+  <circle cx="625" cy="160" r="9.5" fill="#fff" stroke="#333" stroke-width="1.6"/>
+  <text x="625" y="164" font-size="11" fill="#333" text-anchor="middle" font-weight="bold">5</text>
+  <text x="625" y="145" font-size="11" fill="#555555" text-anchor="middle">16 AWG</text>
+  <circle cx="600" cy="420" r="9.5" fill="#fff" stroke="#333" stroke-width="1.6"/>
+  <text x="600" y="424" font-size="11" fill="#333" text-anchor="middle" font-weight="bold">4</text>
+  <text x="586" y="424" font-size="11" fill="#555555" text-anchor="end">16 AWG</text>
+  <circle cx="190" cy="369" r="9.5" fill="#fff" stroke="#333" stroke-width="1.6"/>
+  <text x="190" y="373" font-size="11" fill="#333" text-anchor="middle" font-weight="bold">6</text>
+  <text x="190" y="354" font-size="11" fill="#555555" text-anchor="middle">16 AWG</text>
+  <circle cx="325" cy="470" r="9.5" fill="#fff" stroke="#333" stroke-width="1.6"/>
+  <text x="325" y="474" font-size="11" fill="#333" text-anchor="middle" font-weight="bold">10</text>
+  <text x="325" y="455" font-size="11" fill="#555555" text-anchor="middle">22 AWG</text>
+  <circle cx="560" cy="505" r="9.5" fill="#fff" stroke="#333" stroke-width="1.6"/>
+  <text x="560" y="509" font-size="11" fill="#333" text-anchor="middle" font-weight="bold">7</text>
+  <text x="560" y="530" font-size="11" fill="#555555" text-anchor="middle">meter’s own</text>
+  <circle cx="700" cy="600" r="9.5" fill="#fff" stroke="#333" stroke-width="1.6"/>
+  <text x="700" y="604" font-size="11" fill="#333" text-anchor="middle" font-weight="bold">8</text>
+  <text x="700" y="625" font-size="11" fill="#555555" text-anchor="middle">16 AWG</text>
+  <circle cx="620" cy="330" r="9.5" fill="#fff" stroke="#333" stroke-width="1.6"/>
+  <text x="620" y="334" font-size="11" fill="#333" text-anchor="middle" font-weight="bold">9</text>
+  <text x="634" y="334" font-size="11" fill="#555555" text-anchor="start">16 AWG</text>
+  <circle cx="382" cy="300" r="9.5" fill="#fff" stroke="#333" stroke-width="1.6"/>
+  <text x="382" y="304" font-size="11" fill="#333" text-anchor="middle" font-weight="bold">11</text>
+  <text x="368" y="304" font-size="11" fill="#555555" text-anchor="end">22 AWG</text>
+  <circle cx="420" cy="378" r="9.5" fill="#fff" stroke="#333" stroke-width="1.6"/>
+  <text x="420" y="382" font-size="11" fill="#333" text-anchor="middle" font-weight="bold">13</text>
+  <text x="420" y="403" font-size="11" fill="#555555" text-anchor="middle">22 AWG</text>
+  <circle cx="470" cy="405" r="9.5" fill="#fff" stroke="#333" stroke-width="1.6"/>
+  <text x="470" y="409" font-size="11" fill="#333" text-anchor="middle" font-weight="bold">12</text>
+  <text x="484" y="409" font-size="11" fill="#555555" text-anchor="start">22 AWG</text>
+  <circle cx="560" cy="640" r="9.5" fill="#fff" stroke="#333" stroke-width="1.6"/>
+  <text x="560" y="644" font-size="11" fill="#333" text-anchor="middle" font-weight="bold">14</text>
+  <text x="560" y="625" font-size="11" fill="#555555" text-anchor="middle">18 AWG</text>
+  <circle cx="480" cy="660" r="9.5" fill="#fff" stroke="#333" stroke-width="1.6"/>
+  <text x="480" y="664" font-size="11" fill="#333" text-anchor="middle" font-weight="bold">15</text>
+  <text x="480" y="685" font-size="11" fill="#555555" text-anchor="middle">18 AWG</text>
+  <circle cx="990" cy="560" r="9.5" fill="#fff" stroke="#333" stroke-width="1.6"/>
+  <text x="990" y="564" font-size="11" fill="#333" text-anchor="middle" font-weight="bold">17</text>
+  <text x="976" y="564" font-size="11" fill="#555555" text-anchor="end">USB</text>
+  <circle cx="768" cy="800" r="9.5" fill="#fff" stroke="#333" stroke-width="1.6"/>
+  <text x="768" y="804" font-size="11" fill="#333" text-anchor="middle" font-weight="bold">18</text>
+  <circle cx="404" cy="790" r="9.5" fill="#fff" stroke="#e8f1ea" stroke-width="1.6"/>
+  <text x="404" y="794" font-size="11" fill="#e8f1ea" text-anchor="middle" font-weight="bold">16</text>
+  <text x="30" y="1060" font-size="15" fill="#222222" text-anchor="start" font-weight="bold">The Pi’s 40 pins, enlarged</text>
+  <text x="30" y="1077" font-size="11.5" fill="#555555" text-anchor="start">Seen from above, as in the drawing: the top row (even pins) runs along the board’s edge, and pin 1 is the end farthest from the USB ports. Fit the wires with the power off.</text>
+  <rect x="46" y="1157" width="884" height="80" rx="6" fill="#1b1d20" stroke="#000" stroke-width="1.2"/>
+  <text x="936" y="1182" font-size="11" fill="#555555" text-anchor="start">USB</text>
+  <text x="936" y="1196" font-size="11" fill="#555555" text-anchor="start">end →</text>
+  <rect x="64" y="1163" width="32" height="30" rx="4" fill="#f6c4bd" stroke="#d03b2f" stroke-width="3.5"/>
+  <text x="80" y="1183" font-size="12.5" fill="#7a1f17" text-anchor="middle" font-weight="bold">2</text>
+  <text x="80" y="1150" font-size="10" fill="#d03b2f" text-anchor="middle" font-weight="bold">5V</text>
+  <rect x="64" y="1201" width="32" height="30" rx="4" fill="#fde1bd" stroke="#000" stroke-width="1"/>
+  <text x="80" y="1221" font-size="12.5" fill="#7a4a12" text-anchor="middle" font-weight="bold">1</text>
+  <text x="80" y="1250" font-size="10" fill="#b06a12" text-anchor="middle" font-weight="bold">3V3</text>
+  <rect x="107" y="1163" width="32" height="30" rx="4" fill="#f6c4bd" stroke="#d03b2f" stroke-width="3.5"/>
+  <text x="123" y="1183" font-size="12.5" fill="#7a1f17" text-anchor="middle" font-weight="bold">4</text>
+  <text x="123" y="1150" font-size="10" fill="#d03b2f" text-anchor="middle" font-weight="bold">5V</text>
+  <rect x="107" y="1201" width="32" height="30" rx="4" fill="#ffffff" stroke="#000" stroke-width="1"/>
+  <text x="123" y="1221" font-size="12.5" fill="#333333" text-anchor="middle" font-weight="bold">3</text>
+  <text x="123" y="1250" font-size="10" fill="#333" text-anchor="middle">GPIO2</text>
+  <rect x="150" y="1163" width="32" height="30" rx="4" fill="#3a3e44" stroke="#222222" stroke-width="3.5"/>
+  <text x="166" y="1183" font-size="12.5" fill="#ffffff" text-anchor="middle" font-weight="bold">6</text>
+  <text x="166" y="1150" font-size="10" fill="#111" text-anchor="middle" font-weight="bold">GND</text>
+  <rect x="150" y="1201" width="32" height="30" rx="4" fill="#ffffff" stroke="#000" stroke-width="1"/>
+  <text x="166" y="1221" font-size="12.5" fill="#333333" text-anchor="middle" font-weight="bold">5</text>
+  <text x="166" y="1250" font-size="10" fill="#333" text-anchor="middle">GPIO3</text>
+  <rect x="193" y="1163" width="32" height="30" rx="4" fill="#ffffff" stroke="#2b6cb0" stroke-width="3.5"/>
+  <text x="209" y="1183" font-size="12.5" fill="#333333" text-anchor="middle" font-weight="bold">8</text>
+  <text x="209" y="1150" font-size="10" fill="#333" text-anchor="middle">GPIO14</text>
+  <rect x="193" y="1201" width="32" height="30" rx="4" fill="#ffffff" stroke="#000" stroke-width="1"/>
+  <text x="209" y="1221" font-size="12.5" fill="#333333" text-anchor="middle" font-weight="bold">7</text>
+  <text x="209" y="1250" font-size="10" fill="#333" text-anchor="middle">GPIO4</text>
+  <rect x="236" y="1163" width="32" height="30" rx="4" fill="#ffffff" stroke="#000" stroke-width="1"/>
+  <text x="252" y="1183" font-size="12.5" fill="#333333" text-anchor="middle" font-weight="bold">10</text>
+  <text x="252" y="1150" font-size="10" fill="#333" text-anchor="middle">GPIO15</text>
+  <rect x="236" y="1201" width="32" height="30" rx="4" fill="#3a3e44" stroke="#000" stroke-width="1"/>
+  <text x="252" y="1221" font-size="12.5" fill="#ffffff" text-anchor="middle" font-weight="bold">9</text>
+  <text x="252" y="1250" font-size="10" fill="#111" text-anchor="middle" font-weight="bold">GND</text>
+  <rect x="279" y="1163" width="32" height="30" rx="4" fill="#ffffff" stroke="#000" stroke-width="1"/>
+  <text x="295" y="1183" font-size="12.5" fill="#333333" text-anchor="middle" font-weight="bold">12</text>
+  <text x="295" y="1150" font-size="10" fill="#333" text-anchor="middle">GPIO18</text>
+  <rect x="279" y="1201" width="32" height="30" rx="4" fill="#ffffff" stroke="#000" stroke-width="1"/>
+  <text x="295" y="1221" font-size="12.5" fill="#333333" text-anchor="middle" font-weight="bold">11</text>
+  <text x="295" y="1250" font-size="10" fill="#333" text-anchor="middle">GPIO17</text>
+  <rect x="322" y="1163" width="32" height="30" rx="4" fill="#3a3e44" stroke="#222222" stroke-width="3.5"/>
+  <text x="338" y="1183" font-size="12.5" fill="#ffffff" text-anchor="middle" font-weight="bold">14</text>
+  <text x="338" y="1150" font-size="10" fill="#111" text-anchor="middle" font-weight="bold">GND</text>
+  <rect x="322" y="1201" width="32" height="30" rx="4" fill="#ffffff" stroke="#000" stroke-width="1"/>
+  <text x="338" y="1221" font-size="12.5" fill="#333333" text-anchor="middle" font-weight="bold">13</text>
+  <text x="338" y="1250" font-size="10" fill="#333" text-anchor="middle">GPIO27</text>
+  <rect x="365" y="1163" width="32" height="30" rx="4" fill="#ffffff" stroke="#000" stroke-width="1"/>
+  <text x="381" y="1183" font-size="12.5" fill="#333333" text-anchor="middle" font-weight="bold">16</text>
+  <text x="381" y="1150" font-size="10" fill="#333" text-anchor="middle">GPIO23</text>
+  <rect x="365" y="1201" width="32" height="30" rx="4" fill="#ffffff" stroke="#000" stroke-width="1"/>
+  <text x="381" y="1221" font-size="12.5" fill="#333333" text-anchor="middle" font-weight="bold">15</text>
+  <text x="381" y="1250" font-size="10" fill="#333" text-anchor="middle">GPIO22</text>
+  <rect x="408" y="1163" width="32" height="30" rx="4" fill="#ffffff" stroke="#000" stroke-width="1"/>
+  <text x="424" y="1183" font-size="12.5" fill="#333333" text-anchor="middle" font-weight="bold">18</text>
+  <text x="424" y="1150" font-size="10" fill="#333" text-anchor="middle">GPIO24</text>
+  <rect x="408" y="1201" width="32" height="30" rx="4" fill="#fde1bd" stroke="#000" stroke-width="1"/>
+  <text x="424" y="1221" font-size="12.5" fill="#7a4a12" text-anchor="middle" font-weight="bold">17</text>
+  <text x="424" y="1250" font-size="10" fill="#b06a12" text-anchor="middle" font-weight="bold">3V3</text>
+  <rect x="451" y="1163" width="32" height="30" rx="4" fill="#3a3e44" stroke="#000" stroke-width="1"/>
+  <text x="467" y="1183" font-size="12.5" fill="#ffffff" text-anchor="middle" font-weight="bold">20</text>
+  <text x="467" y="1150" font-size="10" fill="#111" text-anchor="middle" font-weight="bold">GND</text>
+  <rect x="451" y="1201" width="32" height="30" rx="4" fill="#ffffff" stroke="#000" stroke-width="1"/>
+  <text x="467" y="1221" font-size="12.5" fill="#333333" text-anchor="middle" font-weight="bold">19</text>
+  <text x="467" y="1250" font-size="10" fill="#333" text-anchor="middle">GPIO10</text>
+  <rect x="494" y="1163" width="32" height="30" rx="4" fill="#ffffff" stroke="#000" stroke-width="1"/>
+  <text x="510" y="1183" font-size="12.5" fill="#333333" text-anchor="middle" font-weight="bold">22</text>
+  <text x="510" y="1150" font-size="10" fill="#333" text-anchor="middle">GPIO25</text>
+  <rect x="494" y="1201" width="32" height="30" rx="4" fill="#ffffff" stroke="#000" stroke-width="1"/>
+  <text x="510" y="1221" font-size="12.5" fill="#333333" text-anchor="middle" font-weight="bold">21</text>
+  <text x="510" y="1250" font-size="10" fill="#333" text-anchor="middle">GPIO9</text>
+  <rect x="537" y="1163" width="32" height="30" rx="4" fill="#ffffff" stroke="#000" stroke-width="1"/>
+  <text x="553" y="1183" font-size="12.5" fill="#333333" text-anchor="middle" font-weight="bold">24</text>
+  <text x="553" y="1150" font-size="10" fill="#333" text-anchor="middle">GPIO8</text>
+  <rect x="537" y="1201" width="32" height="30" rx="4" fill="#ffffff" stroke="#000" stroke-width="1"/>
+  <text x="553" y="1221" font-size="12.5" fill="#333333" text-anchor="middle" font-weight="bold">23</text>
+  <text x="553" y="1250" font-size="10" fill="#333" text-anchor="middle">GPIO11</text>
+  <rect x="580" y="1163" width="32" height="30" rx="4" fill="#ffffff" stroke="#000" stroke-width="1"/>
+  <text x="596" y="1183" font-size="12.5" fill="#333333" text-anchor="middle" font-weight="bold">26</text>
+  <text x="596" y="1150" font-size="10" fill="#333" text-anchor="middle">GPIO7</text>
+  <rect x="580" y="1201" width="32" height="30" rx="4" fill="#3a3e44" stroke="#000" stroke-width="1"/>
+  <text x="596" y="1221" font-size="12.5" fill="#ffffff" text-anchor="middle" font-weight="bold">25</text>
+  <text x="596" y="1250" font-size="10" fill="#111" text-anchor="middle" font-weight="bold">GND</text>
+  <rect x="623" y="1163" width="32" height="30" rx="4" fill="#ffffff" stroke="#000" stroke-width="1"/>
+  <text x="639" y="1183" font-size="12.5" fill="#333333" text-anchor="middle" font-weight="bold">28</text>
+  <text x="639" y="1150" font-size="10" fill="#333" text-anchor="middle">ID_SC</text>
+  <rect x="623" y="1201" width="32" height="30" rx="4" fill="#ffffff" stroke="#000" stroke-width="1"/>
+  <text x="639" y="1221" font-size="12.5" fill="#333333" text-anchor="middle" font-weight="bold">27</text>
+  <text x="639" y="1250" font-size="10" fill="#333" text-anchor="middle">ID_SD</text>
+  <rect x="666" y="1163" width="32" height="30" rx="4" fill="#3a3e44" stroke="#000" stroke-width="1"/>
+  <text x="682" y="1183" font-size="12.5" fill="#ffffff" text-anchor="middle" font-weight="bold">30</text>
+  <text x="682" y="1150" font-size="10" fill="#111" text-anchor="middle" font-weight="bold">GND</text>
+  <rect x="666" y="1201" width="32" height="30" rx="4" fill="#ffffff" stroke="#000" stroke-width="1"/>
+  <text x="682" y="1221" font-size="12.5" fill="#333333" text-anchor="middle" font-weight="bold">29</text>
+  <text x="682" y="1250" font-size="10" fill="#333" text-anchor="middle">GPIO5</text>
+  <rect x="709" y="1163" width="32" height="30" rx="4" fill="#ffffff" stroke="#000" stroke-width="1"/>
+  <text x="725" y="1183" font-size="12.5" fill="#333333" text-anchor="middle" font-weight="bold">32</text>
+  <text x="725" y="1150" font-size="10" fill="#333" text-anchor="middle">GPIO12</text>
+  <rect x="709" y="1201" width="32" height="30" rx="4" fill="#ffffff" stroke="#000" stroke-width="1"/>
+  <text x="725" y="1221" font-size="12.5" fill="#333333" text-anchor="middle" font-weight="bold">31</text>
+  <text x="725" y="1250" font-size="10" fill="#333" text-anchor="middle">GPIO6</text>
+  <rect x="752" y="1163" width="32" height="30" rx="4" fill="#3a3e44" stroke="#000" stroke-width="1"/>
+  <text x="768" y="1183" font-size="12.5" fill="#ffffff" text-anchor="middle" font-weight="bold">34</text>
+  <text x="768" y="1150" font-size="10" fill="#111" text-anchor="middle" font-weight="bold">GND</text>
+  <rect x="752" y="1201" width="32" height="30" rx="4" fill="#ffffff" stroke="#000" stroke-width="1"/>
+  <text x="768" y="1221" font-size="12.5" fill="#333333" text-anchor="middle" font-weight="bold">33</text>
+  <text x="768" y="1250" font-size="10" fill="#333" text-anchor="middle">GPIO13</text>
+  <rect x="795" y="1163" width="32" height="30" rx="4" fill="#ffffff" stroke="#000" stroke-width="1"/>
+  <text x="811" y="1183" font-size="12.5" fill="#333333" text-anchor="middle" font-weight="bold">36</text>
+  <text x="811" y="1150" font-size="10" fill="#333" text-anchor="middle">GPIO16</text>
+  <rect x="795" y="1201" width="32" height="30" rx="4" fill="#ffffff" stroke="#000" stroke-width="1"/>
+  <text x="811" y="1221" font-size="12.5" fill="#333333" text-anchor="middle" font-weight="bold">35</text>
+  <text x="811" y="1250" font-size="10" fill="#333" text-anchor="middle">GPIO19</text>
+  <rect x="838" y="1163" width="32" height="30" rx="4" fill="#ffffff" stroke="#000" stroke-width="1"/>
+  <text x="854" y="1183" font-size="12.5" fill="#333333" text-anchor="middle" font-weight="bold">38</text>
+  <text x="854" y="1150" font-size="10" fill="#333" text-anchor="middle">GPIO20</text>
+  <rect x="838" y="1201" width="32" height="30" rx="4" fill="#ffffff" stroke="#000" stroke-width="1"/>
+  <text x="854" y="1221" font-size="12.5" fill="#333333" text-anchor="middle" font-weight="bold">37</text>
+  <text x="854" y="1250" font-size="10" fill="#333" text-anchor="middle">GPIO26</text>
+  <rect x="881" y="1163" width="32" height="30" rx="4" fill="#ffffff" stroke="#000" stroke-width="1"/>
+  <text x="897" y="1183" font-size="12.5" fill="#333333" text-anchor="middle" font-weight="bold">40</text>
+  <text x="897" y="1150" font-size="10" fill="#333" text-anchor="middle">GPIO21</text>
+  <rect x="881" y="1201" width="32" height="30" rx="4" fill="#3a3e44" stroke="#000" stroke-width="1"/>
+  <text x="897" y="1221" font-size="12.5" fill="#ffffff" text-anchor="middle" font-weight="bold">39</text>
+  <text x="897" y="1250" font-size="10" fill="#111" text-anchor="middle" font-weight="bold">GND</text>
+  <polyline points="80,1138 80,1118" fill="none" stroke="#d03b2f" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="123,1138 123,1118" fill="none" stroke="#d03b2f" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="166,1138 166,1118" fill="none" stroke="#222222" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="209,1138 209,1118" fill="none" stroke="#2b6cb0" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="338,1138 338,1118" fill="none" stroke="#222222" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="80" cy="1108" r="9.5" fill="#fff" stroke="#d03b2f" stroke-width="1.6"/>
+  <text x="80" y="1112" font-size="11" fill="#d03b2f" text-anchor="middle" font-weight="bold">14</text>
+  <text x="94" y="1112" font-size="11" fill="#d03b2f" text-anchor="start" font-weight="bold">converter OUT + (5 V)</text>
+  <circle cx="166" cy="1134" r="9.5" fill="#fff" stroke="#333" stroke-width="1.6"/>
+  <text x="166" y="1138" font-size="11" fill="#333" text-anchor="middle" font-weight="bold">16</text>
+  <circle cx="338" cy="1108" r="9.5" fill="#fff" stroke="#222222" stroke-width="1.6"/>
+  <text x="338" y="1112" font-size="11" fill="#222222" text-anchor="middle" font-weight="bold">15</text>
+  <text x="352" y="1112" font-size="11" fill="#222222" text-anchor="start" font-weight="bold">converter OUT − (ground)</text>
+  <text x="348" y="1134" font-size="11" fill="#555555" text-anchor="start">← the fan: red on 4 (5 V), black on 6 (ground), blue on 8 (GPIO 14)</text>
+  <rect x="70" y="1266" width="18" height="16" rx="3" fill="#f6c4bd" stroke="#333" stroke-width="1"/>
+  <text x="95" y="1279" font-size="11.5" fill="#555555" text-anchor="start">5 V</text>
+  <rect x="220" y="1266" width="18" height="16" rx="3" fill="#fde1bd" stroke="#333" stroke-width="1"/>
+  <text x="245" y="1279" font-size="11.5" fill="#555555" text-anchor="start">3.3 V</text>
+  <rect x="370" y="1266" width="18" height="16" rx="3" fill="#3a3e44" stroke="#333" stroke-width="1"/>
+  <text x="395" y="1279" font-size="11.5" fill="#555555" text-anchor="start">ground</text>
+  <rect x="520" y="1266" width="18" height="16" rx="3" fill="#ffffff" stroke="#333" stroke-width="1"/>
+  <text x="545" y="1279" font-size="11.5" fill="#555555" text-anchor="start">GPIO (signals)</text>
+  <text x="670" y="1279" font-size="11.5" fill="#555555" text-anchor="start">Coloured border: a wire goes on it in the Vault.</text>
+  <rect x="20" y="1318" width="600" height="178" rx="8" fill="none" stroke="#888" stroke-width="1.4" stroke-dasharray="7 5"/>
+  <text x="34" y="1340" font-size="13.5" fill="#222222" text-anchor="start" font-weight="bold">Later, for the sun (stored in the can, not wired)</text>
+  <text x="34" y="1356" font-size="11.5" fill="#555555" text-anchor="start">Victron BlueSolar MPPT 75/15, its terminals:</text>
+  <rect x="40" y="1368" width="300" height="44" rx="5" fill="#2b6cb0" stroke="#1a3f6b" stroke-width="1.4"/>
+  <circle cx="62" cy="1384" r="8" fill="#c9ccd1" stroke="#666" stroke-width="1"/>
+  <text x="62" y="1406" font-size="9.5" fill="#ffffff" text-anchor="middle" font-weight="bold">BATT +</text>
+  <circle cx="108" cy="1384" r="8" fill="#c9ccd1" stroke="#666" stroke-width="1"/>
+  <text x="108" y="1406" font-size="9.5" fill="#ffffff" text-anchor="middle" font-weight="bold">BATT −</text>
+  <circle cx="154" cy="1384" r="8" fill="#c9ccd1" stroke="#666" stroke-width="1"/>
+  <text x="154" y="1406" font-size="9.5" fill="#ffffff" text-anchor="middle" font-weight="bold">PV −</text>
+  <circle cx="200" cy="1384" r="8" fill="#c9ccd1" stroke="#666" stroke-width="1"/>
+  <text x="200" y="1406" font-size="9.5" fill="#ffffff" text-anchor="middle" font-weight="bold">PV +</text>
+  <circle cx="246" cy="1384" r="8" fill="#c9ccd1" stroke="#666" stroke-width="1"/>
+  <text x="246" y="1406" font-size="9.5" fill="#ffffff" text-anchor="middle" font-weight="bold">LOAD −</text>
+  <circle cx="292" cy="1384" r="8" fill="#c9ccd1" stroke="#666" stroke-width="1"/>
+  <text x="292" y="1406" font-size="9.5" fill="#ffffff" text-anchor="middle" font-weight="bold">LOAD +</text>
+  <polyline points="62,1412 62,1478 380,1478" fill="none" stroke="#d03b2f" stroke-width="6" stroke-linejoin="round" stroke-linecap="butt" stroke-dasharray="10 6"/>
+  <rect x="380" y="1468" width="46" height="20" rx="9" fill="#1f2328" stroke="#111" stroke-width="1.2"/>
+  <text x="403" y="1482" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">20 A</text>
+  <polyline points="426,1478 440,1478" fill="none" stroke="#d03b2f" stroke-width="6" stroke-linejoin="round" stroke-linecap="butt" stroke-dasharray="10 6"/>
+  <text x="446" y="1482" font-size="11.5" fill="#222222" text-anchor="start" font-weight="bold">battery +</text>
+  <polyline points="108,1412 108,1460 440,1460" fill="none" stroke="#222222" stroke-width="6" stroke-linejoin="round" stroke-linecap="butt" stroke-dasharray="10 6"/>
+  <text x="446" y="1464" font-size="11.5" fill="#222222" text-anchor="start" font-weight="bold">battery −</text>
+  <text x="350" y="1384" font-size="11" fill="#555555" text-anchor="start">12 AWG, the 20 A fuse close</text>
+  <text x="350" y="1398" font-size="11" fill="#555555" text-anchor="start">to the battery. Battery first.</text>
+  <text x="144" y="1430" font-size="10.5" fill="#555555" text-anchor="start">PV: the panel’s</text>
+  <text x="144" y="1443" font-size="10.5" fill="#555555" text-anchor="start">own leads</text>
+  <text x="234" y="1430" font-size="10.5" fill="#555555" text-anchor="start">LOAD:</text>
+  <text x="234" y="1443" font-size="10.5" fill="#555555" text-anchor="start">not used</text>
+  <polyline points="30,60 70,60" fill="none" stroke="#d03b2f" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="80" y="64" font-size="12" fill="#222222" text-anchor="start">16 AWG: 12 V</text>
+  <polyline points="245,60 285,60" fill="none" stroke="#d03b2f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="295" y="64" font-size="12" fill="#222222" text-anchor="start">18 AWG: the Pi’s 5 V</text>
+  <polyline points="460,60 500,60" fill="none" stroke="#d03b2f" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="510" y="64" font-size="12" fill="#222222" text-anchor="start">22 AWG: the meter</text>
+  <polyline points="675,60 715,60" fill="none" stroke="#6b7280" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="725" y="64" font-size="12" fill="#222222" text-anchor="start">USB cable</text>
+  <circle cx="890" cy="60" r="5" fill="#222222" stroke="#fff" stroke-width="1.2"/>
+  <text x="900" y="64" font-size="12" fill="#222222" text-anchor="start">joined</text>
+  <polyline points="30,86 70,86" fill="none" stroke="#6b7280" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="50,74 50,98" fill="none" stroke="#222222" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="47.25" y="78" width="5.5" height="16" fill="#ffffff"/>
+  <line x1="41" y1="86" x2="59" y2="86" stroke="#6b7280" stroke-width="3"/>
+  <path d="M50 78 A8 8 0 0 1 50 94" fill="none" stroke="#222222" stroke-width="2.5"/>
+  <text x="80" y="90" font-size="11.5" fill="#555555" text-anchor="start">a wire hopping over another is not joined to it</text>
+  <text x="645" y="1340" font-size="11.5" fill="#444" text-anchor="start">Check the converter’s output with a multimeter before</text>
+  <text x="645" y="1356" font-size="11.5" fill="#444" text-anchor="start">plugging it onto the Pi: 5.0 to 5.25 V, + and − right.</text>
+  <text x="645" y="1372" font-size="11.5" fill="#444" text-anchor="start">Meter: some put the thick wires the other way round;</text>
+  <text x="645" y="1388" font-size="11.5" fill="#444" text-anchor="start">check its own sheet. Microswitch: C, NO and NC are</text>
+  <text x="645" y="1404" font-size="11.5" fill="#444" text-anchor="start">printed on its side. Power switch: a lit one has a</text>
+  <text x="645" y="1420" font-size="11.5" fill="#444" text-anchor="start">third pin (the light’s −): a thin wire to battery −,</text>
+  <text x="645" y="1436" font-size="11.5" fill="#444" text-anchor="start">or leave it off and it just won’t light.</text>
+  <text x="30" y="28" font-size="18" fill="#222222" text-anchor="start" font-weight="bold">The ARK Vault wiring: every part and its terminals</text>
+  <text x="30" y="44" font-size="12" fill="#555555" text-anchor="start">Each number in a circle is a run in the guide’s table, with its wire size.</text>
 </svg>
