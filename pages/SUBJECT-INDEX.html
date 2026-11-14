@@ -2,7 +2,7 @@
 <style>/* the top bar keeps to the page's own edge on a phone (it used to stick out 6px each side) */@media(max-width:600px){.topnav{margin:-16px -14px 6px;padding:8px 14px 7px}}</style><style>/* ark-bar: the app's buttons on every page */:root{--side-bg:#0F1511;--side-on:#2C4A39}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--side-bg:#233F32;--side-on:#315B43}}:root[data-theme=light]{--side-bg:#233F32;--side-on:#315B43}.arkbar{position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));margin:0;padding:6px 4px calc(6px + env(safe-area-inset-bottom));background:var(--card);border-top:1px solid var(--line);font:600 11.5px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}.arkbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:48px;color:var(--muted);text-decoration:none}.arkbar a i{display:flex;align-items:center;justify-content:center;width:46px;max-width:100%;height:28px;border-radius:999px}.arkbar a.on{color:var(--ink);font-weight:700}.arkbar a.on i{background:rgba(127,160,135,.28)}.arkbar svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.arkbar .l,.arkbar .wideonly,.arkbar .bn{display:none}body.has-arkbar{padding-bottom:calc(61px + env(safe-area-inset-bottom))}body.has-arkbar .totop,body.has-arkbar .sop-fab{bottom:calc(76px + env(safe-area-inset-bottom))!important}@media(min-width:760px){.arkbar{top:0;right:auto;width:232px;display:flex;flex-direction:column;gap:4px;padding:16px 12px;border-top:0;background:var(--side-bg);font-size:15px;overflow-y:auto}.arkbar a,.arkbar a.wideonly{display:flex;flex-direction:row;justify-content:flex-start;gap:12px;min-height:44px;padding:0 12px;border-radius:10px;color:#E3EBE5;order:0!important}.arkbar a i{width:auto;height:auto;border-radius:0}.arkbar a.on i{background:none}.arkbar svg{width:20px;height:20px}.arkbar a.on{background:var(--side-on);color:#fff}.arkbar .s{display:none}.arkbar .l{display:inline}.arkbar a.bn{display:flex;gap:10px;min-height:0;padding:0 6px 14px;color:#fff;font-size:18px;font-weight:700}.arkbar .bn img{width:40px;height:40px;border-radius:9px}body.has-arkbar{padding-bottom:0;padding-left:232px}body.has-arkbar .totop,body.has-arkbar .sop-fab{bottom:14px!important}}@media print{.arkbar{display:none!important}body.has-arkbar{padding:0!important}}</style><script>/* ark-bar */(function(){function add(){if(document.querySelector(".arkbar")||location.protocol.indexOf("http")!==0||window.self!==window.top)return;var p=location.pathname,root=null;if(p.indexOf("/lib/")===0)root="/";else{var a=document.querySelector('.topnav a[href*="#tools"],.topnav a[href*="#kit"],a[href$="#kit"],a[href$="#ask"]');if(a)root=a.getAttribute("href").replace(/#.*$/,"")}if(root===null)return;var on=document.body.getAttribute("data-ark")||(/walking-routes|\/map\//i.test(p)?"maps":document.querySelector('.topnav a[href*="#kit"],.topnav a[data-app="/#kit"]')?"kit":"tools");var n=document.createElement("nav");n.className="arkbar";n.setAttribute("aria-label","Main");n.innerHTML='<a class="bn" data-v="home"><img src="'+root+'icon.svg" alt="">ARK</a><a data-v="home" style="order:1"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></i><span class="s">Home</span><span class="l">Home</span></a><a data-v="ask" style="order:3"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-7l-5 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg></i><span class="s">Ask</span><span class="l">Ask ARK</span></a><a data-v="tools" style="order:2"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-13c-3-.5-6 0-8 1.5z"/><path d="M12 6v13"/></svg></i><span class="s">Library</span><span class="l">Guides</span></a><a data-v="library" class="wideonly" style="order:0"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/></svg></i><span class="s"></span><span class="l">Books</span></a><a data-v="maps" style="order:4"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg></i><span class="s">Maps</span><span class="l">Maps &amp; Routes</span></a><a data-v="kit" style="order:5"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6.5a4 4 0 0 0-5.3 5.3L3 18l3 3 6.2-6.2a4 4 0 0 0 5.3-5.3l-2.7 2.7-2.5-.5-.5-2.5z"/></svg></i><span class="s">Tools</span><span class="l">Tools</span></a><a data-v="setup" class="wideonly" style="order:0"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></svg></i><span class="s"></span><span class="l">Offline &amp; downloads</span></a><a data-v="more" style="order:6"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="19" cy="12" r="1.3"/></svg></i><span class="s">More</span><span class="l">Settings &amp; help</span></a>';var l=n.querySelectorAll("a");for(var i=0;i<l.length;i++){l[i].href=root+"#"+l[i].getAttribute("data-v");if(l[i].getAttribute("data-v")===on&&l[i].className!=="bn")l[i].className+=" on"}document.body.appendChild(n);document.body.className+=" has-arkbar"}if(document.body)add();else document.addEventListener("DOMContentLoaded",add)})();</script></head><body><div class="wrap"><p class="topnav"><a class="guide" href="../#tools">Guides</a> › <a class="guide" href="../#tools:start">Start here</a> · <a class="guide" href="EMERGENCY-FINDER.html">Emergency</a> · <a class="guide" href="SUBJECT-INDEX.html">Index A–Z</a></p>
 <h1 id="-subject-index-az"><span class="h1e"></span> Subject Index A–Z</h1>
 <p>Look things up the way you would in the index at the back of a book — no search box, AI or internet needed. Each entry jumps straight to the right section of a guide; 📖 opens a book page on this drive, 🖼️ a drawing, 📷 photos. In a hurry? Use the <a class="guide" href="EMERGENCY-FINDER.html">🆘 Emergency finder</a>. To browse by subject instead, see the <a class="guide" href="../#tools">guides by subject</a>.</p>
-<p><em>4389 subjects, 6638 links, from 72 guides.</em></p>
+<p><em>4532 subjects, 6823 links, from 74 guides.</em></p>
 <!-- az-index -->
 
 <nav class="azbar" id="letters" aria-label="Jump to a letter"><a href="#0-9">0–9</a><a href="#a">A</a><a href="#b">B</a><a href="#c">C</a><a href="#d">D</a><a href="#e">E</a><a href="#f">F</a><a href="#g">G</a><a href="#h">H</a><a href="#i">I</a><a href="#j">J</a><a href="#k">K</a><a href="#l">L</a><a href="#m">M</a><a href="#n">N</a><a href="#o">O</a><a href="#p">P</a><a href="#q">Q</a><a href="#r">R</a><a href="#s">S</a><a href="#t">T</a><a href="#u">U</a><a href="#v">V</a><a href="#w">W</a><a href="#x">X</a><a href="#y">Y</a><a href="#z">Z</a></nav>
@@ -35,6 +35,10 @@
 <li><span id="t-2-meters"></span><strong>2 meters</strong>
 <ul>
 <li>local and repeaters — <a class="guide" href="RADIO-GUIDE.html#the-main-ham-bands-and-what-they-do">Radio › The main ham bands and what they do</a></li>
+</ul></li>
+<li><span id="t-20-hour-rate"></span><strong>20-hour rate</strong>
+<ul>
+<li>how batteries are rated — <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/NEETSModules/NEETS%20Module%2001%20-%20Introduction%20to%20Matter%20Energy%20and%20Direct%20Current.pdf#page=96" title="NEETS Module 01 - Matter Energy and Direct Current.pdf — page 96">📖 NEETS 1, p. 96</a></li>
 </ul></li>
 <li><span id="t-20-inch-rear-wheel"></span><strong>20-inch rear wheel</strong>
 <ul>
@@ -77,6 +81,10 @@
 <ul>
 <li>old advice — too short here — <a class="guide" href="WHAT-TO-EXPECT-GUIDE.html#what-every-scenario-has-in-common">What to expect › What every scenario has in common</a></li>
 </ul></li>
+<li><span id="t-9-volt-batteries"></span><strong>9-volt batteries</strong>
+<ul>
+<li>tape the terminals — <a class="guide" href="BATTERIES-GUIDE.html#small-batteries-aa-to-9-v-and-button-cells">Batteries › Small batteries: AA to 9 V, and button cells</a></li>
+</ul></li>
 <li><span id="t-911"></span><strong>911</strong>
 <ul>
 <li>old books assume it — <a class="guide" href="HOME-DEFENSE-GUIDE.html#old-advice-in-the-library-to-ignore">Home protection › Old advice in the library to ignore</a></li>
@@ -92,6 +100,15 @@
 <ul>
 <li>staking contour lines — <a class="guide" href="PRACTICAL-MATH-GUIDE.html#slope-grade-pitch-and-stairs">Practical math › Slope, grade, pitch and stairs</a></li>
 </ul></li>
+<li><span id="t-aa-batteries"></span><strong>AA batteries</strong>
+<ul>
+<li>storing, testing, using up — <a class="guide" href="BATTERIES-GUIDE.html#small-batteries-aa-to-9-v-and-button-cells">Batteries › Small batteries: AA to 9 V, and button cells</a></li>
+</ul></li>
+<li><span id="t-aa-battery-tray"></span><strong>AA battery tray</strong>
+<ul>
+<li>for a handheld — <a class="guide" href="USING-A-RADIO-GUIDE.html">Using a radio › 2. A cheap handheld, button by button</a></li>
+</ul></li>
+<li><span id="t-aaa-batteries"></span><strong>AAA batteries</strong> — see <a href="#t-aa-batteries"><strong>AA batteries</strong></a></li>
 <li><span id="t-abcde"></span><strong>ABCDE</strong> — see <a href="#t-march"><strong>MARCH</strong></a></li>
 <li><span id="t-able-boy-phonetic-alphabet"></span><strong>Able, Boy phonetic alphabet</strong>
 <ul>
@@ -313,6 +330,10 @@
 <ul>
 <li>brown dye — <a class="guide" href="CLOTHING-LEATHER-GUIDE.html#natural-dyes-with-safe-mordants">Clothing &amp; leather › Natural dyes with safe mordants</a></li>
 </ul></li>
+<li><span id="t-alkaline-batteries"></span><strong>Alkaline batteries</strong>
+<ul>
+<li>what they are good for — <a class="guide" href="BATTERIES-GUIDE.html#every-kind-of-battery-compared">Batteries › Every kind of battery, compared</a></li>
+</ul></li>
 <li><span id="t-allergic-reaction"></span><strong>Allergic reaction</strong>
 <ul>
 <li>rash, itching, wheezing after a medicine — <a class="guide" href="Medical-READ-ME-FIRST.html#if-this-goes-wrong">Medicines › If this goes wrong</a></li>
@@ -391,6 +412,10 @@
 <ul>
 <li>children's dose — <a class="guide" href="CHILDBIRTH-CHILDREN-GUIDE.html#sick-children-under-5-fever-breathing-diarrhea-measles-worms">Childbirth &amp; kids › Sick children under 5: fever, breathing, diarrhea, measles, worms</a></li>
 </ul></li>
+<li><span id="t-amp-hours"></span><strong>Amp-hours</strong>
+<ul>
+<li>why the rating depends on the drain — <a class="guide" href="BATTERIES-GUIDE.html#every-kind-of-battery-compared">Batteries › Every kind of battery, compared</a></li>
+</ul></li>
 <li><span id="t-anaphylaxis"></span><strong>Anaphylaxis</strong> — see <a href="#t-allergic-reaction"><strong>Allergic reaction</strong></a></li>
 <li><span id="t-anatolian-shepherd"></span><strong>Anatolian Shepherd</strong>
 <ul>
@@ -445,6 +470,8 @@
 <li><span id="t-annulus"></span><strong>Annulus</strong> — see <a href="#t-ring-on-the-stem"><strong>Ring on the stem</strong></a></li>
 <li><span id="t-antenna"></span><strong>Antenna</strong>
 <ul>
+<li>holding it upright — <a class="guide" href="USING-A-RADIO-GUIDE.html#the-antenna">Using a radio › The antenna</a></li>
+<li>never transmit without one — <a class="guide" href="USING-A-RADIO-GUIDE.html#the-antenna">Using a radio › The antenna</a></li>
 <li>screw it on before switching on (mesh radio) — <a class="guide" href="AMMO-CAN-COMPUTER-GUIDE.html">ARK Vault (ammo-can computer) › The mesh radio (optional)</a></li>
 </ul></li>
 <li><span id="t-antenna-height"></span><strong>Antenna height</strong>
@@ -832,6 +859,7 @@
 <ul>
 <li>dump load — <a class="guide" href="POWER-GRID-GUIDE.html#keeping-frequency-and-voltage-steady">Power grid › Keeping frequency and voltage steady</a></li>
 </ul></li>
+<li><span id="t-bandwidth"></span><strong>Bandwidth</strong> — see <a href="#t-narrow-and-wide"><strong>Narrow and wide</strong></a></li>
 <li><span id="t-banner-on-a-pole"></span><strong>Banner on a pole</strong>
 <ul>
 <li>shows the wind — <a class="guide" href="SIGNALS-MORSE-GUIDE.html#ground-to-air-symbols-print-this">Signals &amp; Morse › Ground-to-air symbols (print this)</a></li>
@@ -843,6 +871,10 @@
 <li><span id="t-banting"></span><strong>Banting</strong>
 <ul>
 <li>the Toronto insulin work — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#19211923-insulin-the-fastest-of-them-all">How antibiotics came to be › 1921–1923: insulin, the fastest of them all</a></li>
+</ul></li>
+<li><span id="t-baofeng-uv-5r"></span><strong>Baofeng UV-5R</strong>
+<ul>
+<li>button by button — <a class="guide" href="USING-A-RADIO-GUIDE.html">Using a radio › 2. A cheap handheld, button by button</a></li>
 </ul></li>
 <li><span id="t-barbed-wire-entanglements"></span><strong>Barbed wire entanglements</strong>
 <ul>
@@ -913,6 +945,7 @@
 <li>car vs deep-cycle, recharging — <a class="guide" href="RADIO-GUIDE.html#8-antennas-power-range-the-practical-stuff">Radio › 8. Antennas, power &amp; range (the practical stuff)</a></li>
 <li>cold, heat and freezing — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#choosing-batteries-and-reading-their-charge">Off-grid power › Choosing batteries and reading their charge</a></li>
 <li>dead lead-acid, lithium — <a class="guide" href="SANITATION-GUIDE.html#hazardous-waste-batteries-oil-fuel-chemicals-medicines">Sanitation › Hazardous waste: batteries, oil, fuel, chemicals, medicines</a></li>
+<li>every type compared — <a class="guide" href="BATTERIES-GUIDE.html#every-kind-of-battery-compared">Batteries › Every kind of battery, compared</a></li>
 <li>how full? (voltage) — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#choosing-batteries-and-reading-their-charge">Off-grid power › Choosing batteries and reading their charge</a></li>
 <li>how long they last (cycles) — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#choosing-batteries-and-reading-their-charge">Off-grid power › Choosing batteries and reading their charge</a></li>
 <li>mesh radio — <a class="guide" href="MESH-RADIO-GUIDE.html#10-power">Mesh radio (Meshtastic) › 10. Power</a></li>
@@ -922,6 +955,10 @@
 <li>storing — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#choosing-batteries-and-reading-their-charge">Off-grid power › Choosing batteries and reading their charge</a></li>
 <li>what to do with dead ones — <a class="guide" href="SALVAGE-GUIDE.html">Salvage &amp; repurposing › Solar garden lights and spent batteries</a></li>
 <li>which kind for solar — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#choosing-batteries-and-reading-their-charge">Off-grid power › Choosing batteries and reading their charge</a></li>
+</ul></li>
+<li><span id="t-batteries-in-the-fridge"></span><strong>Batteries in the fridge</strong>
+<ul>
+<li>does it help? — <a class="guide" href="BATTERIES-GUIDE.html#small-batteries-aa-to-9-v-and-button-cells">Batteries › Small batteries: AA to 9 V, and button cells</a></li>
 </ul></li>
 <li><span id="t-battery"></span><strong>Battery</strong>
 <ul>
@@ -936,8 +973,13 @@
 <li>charging voltage 13.2–14.5 V — <a class="guide" href="VEHICLES-EQUIPMENT-GUIDE.html#the-12-volt-battery-and-charging">Vehicles, tractors &amp; equipment › The 12-volt battery and charging</a></li>
 <li>freezes when flat — <a class="guide" href="VEHICLES-EQUIPMENT-GUIDE.html#the-12-volt-battery-and-charging">Vehicles, tractors &amp; equipment › The 12-volt battery and charging</a></li>
 </ul></li>
+<li><span id="t-battery-radio"></span><strong>Battery (radio)</strong>
+<ul>
+<li>charging, cold and heat, a spare — <a class="guide" href="USING-A-RADIO-GUIDE.html">Using a radio › 2. A cheap handheld, button by button</a></li>
+</ul></li>
 <li><span id="t-battery-acid"></span><strong>Battery acid</strong>
 <ul>
+<li>burns, and what to wash with — <a class="guide" href="BATTERIES-GUIDE.html#dangers">Batteries › Dangers</a></li>
 <li>in eyes or on skin — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#battery-safety">Off-grid power › Battery safety</a></li>
 </ul></li>
 <li><span id="t-battery-bank"></span><strong>Battery bank</strong>
@@ -948,28 +990,66 @@
 <ul>
 <li>venting, where to put it — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#battery-safety">Off-grid power › Battery safety</a></li>
 </ul></li>
+<li><span id="t-battery-capacity"></span><strong>Battery capacity</strong> — see <a href="#t-amp-hours"><strong>Amp-hours</strong></a></li>
+<li><span id="t-battery-charger"></span><strong>Battery charger</strong>
+<ul>
+<li>what to look for in one — <a class="guide" href="BATTERIES-GUIDE.html">Batteries › Rechargeable AAs, and what they are not</a></li>
+</ul></li>
 <li><span id="t-battery-charging"></span><strong>Battery charging</strong>
 <ul>
 <li>12 V, over 14 V is too hard — <a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html#motors-as-generators">Engines › Motors as generators</a></li>
 </ul></li>
+<li><span id="t-battery-corrosion"></span><strong>Battery corrosion</strong>
+<ul>
+<li>in a flashlight or radio — see <a href="#t-leaking-batteries"><strong>Leaking batteries</strong></a></li>
+</ul></li>
+<li><span id="t-battery-dangers"></span><strong>Battery dangers</strong>
+<ul>
+<li>the whole list — <a class="guide" href="BATTERIES-GUIDE.html#dangers">Batteries › Dangers</a></li>
+</ul></li>
 <li><span id="t-battery-dies-fast"></span><strong>Battery dies fast</strong> — <a class="guide" href="RADIO-GUIDE.html#12-if-this-goes-wrong">Radio › 12. If this goes wrong</a></li>
+<li><span id="t-battery-disposal"></span><strong>Battery disposal</strong>
+<ul>
+<li>never burn one — <a class="guide" href="BATTERIES-GUIDE.html#dangers">Batteries › Dangers</a></li>
+</ul></li>
 <li><span id="t-battery-explosion"></span><strong>Battery explosion</strong>
 <ul>
 <li>hydrogen and sparks — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#battery-safety">Off-grid power › Battery safety</a></li>
 </ul></li>
+<li><span id="t-battery-faults"></span><strong>Battery faults</strong>
+<ul>
+<li>what happened and what to do — <a class="guide" href="BATTERIES-GUIDE.html#if-this-goes-wrong">Batteries › If this goes wrong</a></li>
+</ul></li>
 <li><span id="t-battery-fire"></span><strong>Battery fire</strong>
 <ul>
 <li>lithium — soak with water — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#lithium-lifepo4-and-salvaged-packs">Off-grid power › Lithium, LiFePO4 and salvaged packs</a></li>
+</ul></li>
+<li><span id="t-battery-life-radio"></span><strong>Battery life (radio)</strong>
+<ul>
+<li>why it is short — <a class="guide" href="USING-A-RADIO-GUIDE.html#11-if-this-goes-wrong">Using a radio › 11. If this goes wrong</a></li>
+</ul></li>
+<li><span id="t-battery-management-system"></span><strong>Battery management system</strong> — see <a href="#t-bms"><strong>BMS</strong></a></li>
+<li><span id="t-battery-packs"></span><strong>Battery packs</strong>
+<ul>
+<li>what is inside one — <a class="guide" href="BATTERIES-GUIDE.html#laptop-tool-and-e-bike-packs-what-is-inside-and-where-the-li">Batteries › Laptop, tool and e-bike packs: what is inside, and where the line is</a></li>
 </ul></li>
 <li><span id="t-battery-radios"></span><strong>Battery radios</strong>
 <ul>
 <li>keep them in the shelter — <a class="guide" href="SIGNALS-MORSE-GUIDE.html#listening-when-you-can-t-transmit">Signals &amp; Morse › Listening when you can't transmit</a></li>
 <li>small sets survive — <a class="guide" href="EMP-GUIDE.html#what-the-tests-actually-found">EMP › What the tests actually found</a></li>
 </ul></li>
+<li><span id="t-battery-recycling"></span><strong>Battery recycling</strong> — see <a href="#t-battery-disposal"><strong>Battery disposal</strong></a></li>
+<li><span id="t-battery-storage"></span><strong>Battery storage</strong>
+<ul>
+<li>cool and dry, and how much heat costs — <a class="guide" href="BATTERIES-GUIDE.html#small-batteries-aa-to-9-v-and-button-cells">Batteries › Small batteries: AA to 9 V, and button cells</a></li>
+<li>lithium at 20 to 40 per cent — <a class="guide" href="USING-A-RADIO-GUIDE.html#9-looking-after-radios">Using a radio › 9. Looking after radios</a></li>
+</ul></li>
 <li><span id="t-battery-terminals"></span><strong>Battery terminals</strong>
 <ul>
 <li>cleaning and grease — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#keeping-lead-acid-alive">Off-grid power › Keeping lead-acid alive</a></li>
+<li>corrosion and cleaning — <a class="guide" href="BATTERIES-GUIDE.html">Batteries › Lead-acid away from the solar bank</a></li>
 </ul></li>
+<li><span id="t-battery-types"></span><strong>Battery types</strong> — see <a href="#t-batteries"><strong>Batteries</strong></a></li>
 <li><span id="t-battery-voltage"></span><strong>Battery voltage</strong>
 <ul>
 <li>12.0 V empty, 12.9 V full — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#choosing-batteries-and-reading-their-charge">Off-grid power › Choosing batteries and reading their charge</a></li>
@@ -1484,6 +1564,10 @@
 <ul>
 <li>in pregnancy — <a class="guide" href="CHILDBIRTH-CHILDREN-GUIDE.html#pregnancy-checkups-and-danger-signs">Childbirth &amp; kids › Pregnancy: checkups and danger signs</a></li>
 </ul></li>
+<li><span id="t-bms"></span><strong>BMS</strong>
+<ul>
+<li>the management board — <a class="guide" href="BATTERIES-GUIDE.html#laptop-tool-and-e-bike-packs-what-is-inside-and-where-the-li">Batteries › Laptop, tool and e-bike packs: what is inside, and where the line is</a></li>
+</ul></li>
 <li><span id="t-bms-battery-management-system"></span><strong>BMS (battery management system)</strong> — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#lithium-lifepo4-and-salvaged-packs">Off-grid power › Lithium, LiFePO4 and salvaged packs</a></li>
 <li><span id="t-boar-taint"></span><strong>Boar taint</strong> — see <a href="#t-castration"><strong>Castration</strong></a></li>
 <li><span id="t-board-feet"></span><strong>Board feet</strong>
@@ -1742,6 +1826,10 @@
 <li>too heavy — too much flour — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#staples">Food from scratch › Staples</a></li>
 </ul></li>
 <li><span id="t-breadbox-water-heater"></span><strong>Breadbox water heater</strong> — <a class="guide" href="STORING-ENERGY-GUIDE.html#solar-water-heaters-you-can-build">Storing energy › Solar water heaters you can build</a></li>
+<li><span id="t-break-pro-word"></span><strong>Break (pro-word)</strong>
+<ul>
+<li>unkey every minute or two — <a class="guide" href="USING-A-RADIO-GUIDE.html#the-transmit-button-the-ptt">Using a radio › The transmit button (the PTT)</a></li>
+</ul></li>
 <li><span id="t-break-in"></span><strong>Break-in</strong>
 <ul>
 <li>what to do — see <a href="#t-home-invasion"><strong>Home invasion</strong></a></li>
@@ -1911,6 +1999,7 @@
 <li>worn, seating new ones — <a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html#electric-motors-testing-and-repair">Engines › Electric motors: testing and repair</a></li>
 </ul></li>
 <li><span id="t-btu-per-cord"></span><strong>BTU per cord</strong> — see <a href="#t-firewood"><strong>Firewood</strong></a></li>
+<li><span id="t-bubble-pack-radios"></span><strong>Bubble-pack radios</strong> — see <a href="#t-frs-and-gmrs-radios"><strong>FRS and GMRS radios</strong></a></li>
 <li><span id="t-buck"></span><strong>Buck</strong>
 <ul>
 <li>keep away from milking does — <a class="guide" href="GOATS-GUIDE.html#breeding-kidding-and-kids">Goats › Breeding, kidding and kids</a></li>
@@ -2071,6 +2160,10 @@
 <ul>
 <li>cultured — <a class="guide" href="DAIRY-GUIDE.html#butter-and-buttermilk">Milk, butter &amp; cheese › Butter and buttermilk</a></li>
 </ul></li>
+<li><span id="t-button-cells"></span><strong>Button cells</strong>
+<ul>
+<li>keeping them away from children — <a class="guide" href="BATTERIES-GUIDE.html#small-batteries-aa-to-9-v-and-button-cells">Batteries › Small batteries: AA to 9 V, and button cells</a></li>
+</ul></li>
 <li><span id="t-buttonholes"></span><strong>Buttonholes</strong>
 <ul>
 <li>reworking — <a class="guide" href="CLOTHING-LEATHER-GUIDE.html#mending-and-hand-sewing">Clothing &amp; leather › Mending and hand sewing</a></li>
@@ -2087,6 +2180,7 @@
 </ul>
 <h2 id="c">C</h2>
 <ul>
+<li><span id="t-c-and-d-cells"></span><strong>C and D cells</strong> — see <a href="#t-aa-batteries"><strong>AA batteries</strong></a></li>
 <li><span id="t-cabbage"></span><strong>Cabbage</strong>
 <ul>
 <li>sauerkraut — <a class="guide" href="PRESERVING-FOOD-GUIDE.html#pickles-sauerkraut-and-other-ferments">Preserving food › Pickles, sauerkraut and other ferments</a></li>
@@ -2142,6 +2236,10 @@
 <li><span id="t-californian-rabbit"></span><strong>Californian rabbit</strong>
 <ul>
 <li>photos — <a class="wiki" href="https://en.wikipedia.org/wiki/Californian_rabbit" data-title="Californian_rabbit" target="_blank" rel="noopener" title="Wikipedia: Californian rabbit (offline copy with photos when opened through the Library Assistant)">photos</a></li>
+</ul></li>
+<li><span id="t-call-sign"></span><strong>Call sign</strong>
+<ul>
+<li>when you must say it — <a class="guide" href="USING-A-RADIO-GUIDE.html#10-the-law-plainly">Using a radio › 10. The law, plainly</a></li>
 </ul></li>
 <li><span id="t-call-signs"></span><strong>Call signs</strong>
 <ul>
@@ -2294,6 +2392,7 @@
 <ul>
 <li>as solar storage — see <a href="#t-batteries"><strong>Batteries</strong></a></li>
 <li>hydrometer readings, freezing, cold weather — <a class="guide" href="VEHICLES-EQUIPMENT-GUIDE.html#the-12-volt-battery-and-charging">Vehicles, tractors &amp; equipment › The 12-volt battery and charging</a></li>
+<li>one that sits unused — <a class="guide" href="BATTERIES-GUIDE.html">Batteries › Lead-acid away from the solar bank</a></li>
 <li>salvaging — <a class="guide" href="SALVAGE-GUIDE.html#battery-wire-lights-and-horn">Salvage &amp; repurposing › Battery, wire, lights and horn</a></li>
 </ul></li>
 <li><span id="t-car-kit"></span><strong>Car kit</strong>
@@ -2477,6 +2576,7 @@
 <ul>
 <li>channels, range, power — <a class="guide" href="RADIO-GUIDE.html#4-cb-radio-citizens-band-no-license-simple-vehicle-friendly">Radio › 4. CB Radio (Citizens Band) — no license, simple, vehicle-friendly</a></li>
 <li>photos — <a class="wiki" href="https://en.wikipedia.org/wiki/Citizens_band_radio" data-title="Citizens_band_radio" target="_blank" rel="noopener" title="Wikipedia: Citizens band radio (offline copy with photos when opened through the Library Assistant)">photos</a></li>
+<li>working one, channel 9 and 19 — <a class="guide" href="USING-A-RADIO-GUIDE.html#a-cb">Using a radio › A CB</a></li>
 </ul></li>
 <li><span id="t-cd-v-700"></span><strong>CD V-700</strong>
 <ul>
@@ -2502,6 +2602,14 @@
 <li><span id="t-cell-phones"></span><strong>Cell phones</strong>
 <ul>
 <li>towers run hours to days on backup — <a class="guide" href="WHAT-TO-EXPECT-GUIDE.html#4-long-power-outage-including-fire-season-shutoffs">What to expect › 4. Long power outage, including fire-season shutoffs</a></li>
+</ul></li>
+<li><span id="t-cell-spacers"></span><strong>Cell spacers</strong>
+<ul>
+<li>AA in a C or D holder — <a class="guide" href="BATTERIES-GUIDE.html">Batteries › Rechargeable AAs, and what they are not</a></li>
+</ul></li>
+<li><span id="t-cell-types-pictured"></span><strong>Cell types pictured</strong>
+<ul>
+<li>cylindrical, prismatic, pouch — <a class="lib pic" target="_blank" rel="noopener" href="https://www.lightingglobal.org/wp-content/uploads/2019/06/Lithium-Ion_TechNote-2019_update-1.pdf#page=4" title="Lighting Global - Lithium-ion Batteries Part I Overview (World Bank 2019).pdf — page 4">Lighting Global, p. 4</a></li>
 </ul></li>
 <li><span id="t-cellar"></span><strong>Cellar</strong> — see <a href="#t-root-cellar"><strong>Root cellar</strong></a></li>
 <li><span id="t-celsius"></span><strong>Celsius</strong> — see <a href="#t-temperature"><strong>Temperature</strong></a></li>
@@ -2537,6 +2645,10 @@
 <li>classes in Cave Junction — <a class="guide" href="COMMUNITY-BARTER-GUIDE.html#illinois-valley-notes">Community &amp; barter › Illinois Valley notes</a></li>
 <li>organization chart — <a class="lib pic" target="_blank" rel="noopener" href="https://em.uci.edu/training/_pdf/cert-participant-manual-english.pdf#page=37" title="CERT Basic Training Participant Manual (FEMA 2019).pdf — page 37">CERT organization, CERT p. 37</a></li>
 <li>team organization — <a class="guide" href="COMMUNITY-BARTER-GUIDE.html#forming-a-neighborhood-group">Community &amp; barter › Forming a neighborhood group</a></li>
+</ul></li>
+<li><span id="t-certified-radio"></span><strong>Certified radio</strong>
+<ul>
+<li>why a cheap handheld may not be legal — <a class="guide" href="USING-A-RADIO-GUIDE.html#10-the-law-plainly">Using a radio › 10. The law, plainly</a></li>
 </ul></li>
 <li><span id="t-chain"></span><strong>Chain</strong>
 <ul>
@@ -2575,6 +2687,10 @@
 <ul>
 <li>stomach and sleep — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Medicinal plants with real evidence</a></li>
 </ul></li>
+<li><span id="t-channel"></span><strong>Channel</strong>
+<ul>
+<li>what it is, and channel mode — <a class="guide" href="USING-A-RADIO-GUIDE.html#channel-or-frequency">Using a radio › Channel or frequency</a></li>
+</ul></li>
 <li><span id="t-channel-19-cb"></span><strong>Channel 19 (CB)</strong>
 <ul>
 <li>highway and truckers — <a class="guide" href="RADIO-GUIDE.html#4-cb-radio-citizens-band-no-license-simple-vehicle-friendly">Radio › 4. CB Radio (Citizens Band) — no license, simple, vehicle-friendly</a></li>
@@ -2583,6 +2699,11 @@
 <ul>
 <li>emergency channel — <a class="guide" href="RADIO-GUIDE.html#4-cb-radio-citizens-band-no-license-simple-vehicle-friendly">Radio › 4. CB Radio (Citizens Band) — no license, simple, vehicle-friendly</a></li>
 </ul></li>
+<li><span id="t-channel-card"></span><strong>Channel card</strong>
+<ul>
+<li>print and fill in — <a class="guide" href="USING-A-RADIO-GUIDE.html#7-a-printed-channel-card">Using a radio › 7. A printed channel card</a></li>
+</ul></li>
+<li><span id="t-channel-guard"></span><strong>Channel guard</strong> — see <a href="#t-tones-ctcss-dcs"><strong>Tones (CTCSS, DCS)</strong></a></li>
 <li><span id="t-channels"></span><strong>Channels</strong> — see <a href="#t-emergency-frequencies"><strong>Emergency frequencies</strong></a>
 <ul>
 <li>private, public, sharing by QR code — <a class="guide" href="MESH-RADIO-GUIDE.html#5-channels-who-can-read-what">Mesh radio (Meshtastic) › 5. Channels: who can read what</a></li>
@@ -2636,8 +2757,21 @@
 <li><span id="t-charging-batteries"></span><strong>Charging batteries</strong>
 <ul>
 <li>before a storm — <a class="guide" href="EMP-GUIDE.html#when-a-solar-storm-warning-comes">EMP › When a solar-storm warning comes</a></li>
+<li>with no proper charger — <a class="guide" href="BATTERIES-GUIDE.html">Batteries › Charging with no proper charger</a></li>
 </ul></li>
-<li><span id="t-charging-from-a-car"></span><strong>Charging from a car</strong> — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#generators-cars-and-backfeed">Off-grid power › Generators, cars and backfeed</a></li>
+<li><span id="t-charging-from-a-car"></span><strong>Charging from a car</strong> — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#generators-cars-and-backfeed">Off-grid power › Generators, cars and backfeed</a> · <a class="guide" href="BATTERIES-GUIDE.html">Batteries › Charging with no proper charger</a></li>
+<li><span id="t-charging-from-a-solar-panel"></span><strong>Charging from a solar panel</strong>
+<ul>
+<li>use a controller — <a class="guide" href="BATTERIES-GUIDE.html">Batteries › Charging with no proper charger</a></li>
+</ul></li>
+<li><span id="t-charging-in-the-cold"></span><strong>Charging in the cold</strong>
+<ul>
+<li>never below freezing — <a class="guide" href="BATTERIES-GUIDE.html">Batteries › Tool batteries: keeping a drill alive for years</a></li>
+</ul></li>
+<li><span id="t-charging-radios"></span><strong>Charging radios</strong>
+<ul>
+<li>from solar or a vehicle — <a class="guide" href="USING-A-RADIO-GUIDE.html#9-looking-after-radios">Using a radio › 9. Looking after radios</a></li>
+</ul></li>
 <li><span id="t-charring-wood"></span><strong>Charring wood</strong>
 <ul>
 <li>posts — <a class="guide" href="WOODWORKING-GUIDE.html">Woodworking › Finishes, outdoor wood and rot</a></li>
@@ -2820,6 +2954,10 @@
 <ul>
 <li>three layers — <a class="guide" href="SHELTER-BUILDING-GUIDE.html#log-buildings">Shelter › Log buildings</a></li>
 </ul></li>
+<li><span id="t-chirp"></span><strong>CHIRP</strong>
+<ul>
+<li>the free programming program — <a class="guide" href="USING-A-RADIO-GUIDE.html">Using a radio › 5. Programming with a computer, while there is internet</a></li>
+</ul></li>
 <li><span id="t-chisel"></span><strong>Chisel</strong>
 <ul>
 <li>hot vs cold — <a class="guide" href="BLACKSMITHING-GUIDE.html#making-basic-tools">Blacksmithing › Making basic tools</a></li>
@@ -2838,6 +2976,7 @@
 <li><span id="t-chlorine-gas"></span><strong>Chlorine gas</strong>
 <ul>
 <li>from mixing cleaners — <a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html#cleaning-and-disinfecting">Make-do household › Cleaning and disinfecting</a></li>
+<li>salt water in a lead-acid battery — <a class="guide" href="BATTERIES-GUIDE.html#dangers">Batteries › Dangers</a></li>
 </ul></li>
 <li><span id="t-chlorine-residual"></span><strong>Chlorine residual</strong>
 <ul>
@@ -3018,6 +3157,10 @@
 <ul>
 <li>raking out — <a class="guide" href="BLACKSMITHING-GUIDE.html#a-simple-forge-and-anvil">Blacksmithing › A simple forge and anvil</a></li>
 </ul></li>
+<li><span id="t-cloning-a-radio"></span><strong>Cloning a radio</strong>
+<ul>
+<li>copying one already set up — <a class="guide" href="USING-A-RADIO-GUIDE.html">Using a radio › 2. A cheap handheld, button by button</a></li>
+</ul></li>
 <li><span id="t-clostridium-botulinum"></span><strong>Clostridium botulinum</strong> — see <a href="#t-botulism"><strong>Botulism</strong></a></li>
 <li><span id="t-cloth-straining"></span><strong>Cloth straining</strong>
 <ul>
@@ -3122,6 +3265,7 @@
 <li>tool steel — <a class="guide" href="BLACKSMITHING-GUIDE.html#which-scrap-steel-to-use">Blacksmithing › Which scrap steel to use</a></li>
 </ul></li>
 <li><span id="t-coiling-rope"></span><strong>Coiling rope</strong> — <a class="guide" href="KNOTS-ROPE-GUIDE.html">Knots &amp; rope › Caring for rope</a></li>
+<li><span id="t-coin-cells"></span><strong>Coin cells</strong> — see <a href="#t-button-cells"><strong>Button cells</strong></a></li>
 <li><span id="t-coke"></span><strong>Coke</strong>
 <ul>
 <li>forge fuel — <a class="guide" href="BLACKSMITHING-GUIDE.html#a-simple-forge-and-anvil">Blacksmithing › A simple forge and anvil</a></li>
@@ -3336,6 +3480,14 @@
 <ul>
 <li>principled negotiation — <a class="guide" href="COMMUNITY-BARTER-GUIDE.html#settling-disputes-and-dealing-with-theft">Community &amp; barter › Settling disputes and dealing with theft</a></li>
 </ul></li>
+<li><span id="t-constant-current"></span><strong>Constant current</strong>
+<ul>
+<li>in plain words — <a class="guide" href="BATTERIES-GUIDE.html">Batteries › Charging with no proper charger</a></li>
+</ul></li>
+<li><span id="t-constant-voltage"></span><strong>Constant voltage</strong>
+<ul>
+<li>in plain words — <a class="guide" href="BATTERIES-GUIDE.html">Batteries › Charging with no proper charger</a></li>
+</ul></li>
 <li><span id="t-constipation"></span><strong>Constipation</strong>
 <ul>
 <li>cascara — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Medicinal plants with real evidence</a></li>
@@ -3480,6 +3632,10 @@
 <li>from plants and hide — <a class="guide" href="KNOTS-ROPE-GUIDE.html">Knots &amp; rope › Making cordage from plants and hide</a></li>
 <li>iris, dogbane, willow bark — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#fibers-cordage-and-nets">First peoples' skills › Fibers, cordage and nets</a></li>
 </ul></li>
+<li><span id="t-cordless-tools"></span><strong>Cordless tools</strong>
+<ul>
+<li>when the packs are gone — <a class="guide" href="BATTERIES-GUIDE.html">Batteries › Tool batteries: keeping a drill alive for years</a></li>
+</ul></li>
 <li><span id="t-corduroy-road"></span><strong>Corduroy road</strong> — <a class="guide" href="MASONRY-ROADS-GUIDE.html#corduroy-log-roads-and-stone-roads">Mortar, concrete &amp; roads › Corduroy, log roads and stone roads</a></li>
 <li><span id="t-cordwood"></span><strong>Cordwood</strong> — <a class="guide" href="NATURAL-BUILDING-GUIDE.html#lighter-systems-straw-clay-hempcrete-wattle-bags-blocks-cord">Natural building › Lighter systems: straw-clay, hempcrete, wattle, bags, blocks, cordwood</a></li>
 <li><span id="t-corn"></span><strong>Corn</strong>
@@ -3525,6 +3681,10 @@
 <li>in old ink and paste recipes — <a class="guide" href="PAPER-INK-GUIDE.html#old-advice-in-the-library-to-ignore">Paper &amp; ink › Old advice in the library to ignore</a></li>
 </ul></li>
 <li><span id="t-cortinarius"></span><strong>Cortinarius</strong> — see <a href="#t-webcaps"><strong>Webcaps</strong></a></li>
+<li><span id="t-cost-of-dry-cells"></span><strong>Cost of dry cells</strong>
+<ul>
+<li>per kilowatt-hour — <a class="guide" href="BATTERIES-GUIDE.html">Batteries › Getting the most out of what you have</a></li>
+</ul></li>
 <li><span id="t-cotton"></span><strong>Cotton</strong>
 <ul>
 <li>why not in winter rain — <a class="guide" href="CLOTHING-LEATHER-GUIDE.html#dressing-for-our-cold-wet-winters">Clothing &amp; leather › Dressing for our cold-wet winters</a></li>
@@ -3707,6 +3867,7 @@
 <li>no batteries needed — <a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html#electronics-repair-and-salvage">Make-do household › Electronics: repair and salvage</a></li>
 <li>wiring diagram — <a class="lib pic" target="_blank" rel="noopener" href="https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular120.pdf#page=12" title="NBS Circular 120 - Simple Homemade Radio Receiving Outfit (1922).pdf — page 12">Crystal set wiring, NBS Circular 120 p. 12</a></li>
 </ul></li>
+<li><span id="t-ctcss"></span><strong>CTCSS</strong> — see <a href="#t-tones-ctcss-dcs"><strong>Tones (CTCSS, DCS)</strong></a></li>
 <li><span id="t-cucumbers"></span><strong>Cucumbers</strong>
 <ul>
 <li>saving seed — <a class="guide" href="SEED-BANK-GUIDE.html#saving-seed-from-the-fruits">Seed bank › Saving seed from the fruits</a></li>
@@ -3833,6 +3994,7 @@
 <ul>
 <li>by crop — <a class="guide" href="SEED-BANK-GUIDE.html#planting-calendar-for-the-illinois-valley">Seed bank › Planting calendar for the Illinois Valley</a></li>
 </ul></li>
+<li><span id="t-dcs"></span><strong>DCS</strong> — see <a href="#t-tones-ctcss-dcs"><strong>Tones (CTCSS, DCS)</strong></a></li>
 <li><span id="t-ddt-and-arsenic-for-termites"></span><strong>DDT and arsenic for termites</strong>
 <ul>
 <li>old advice — don't — <a class="guide" href="SHELTER-BUILDING-GUIDE.html#old-advice-in-the-library-to-ignore">Shelter › Old advice in the library to ignore</a></li>
@@ -3851,6 +4013,10 @@
 <li>Oregon rules: 15 hours, no burning — <a class="guide" href="SANITATION-GUIDE.html#dead-animals-and-gut-piles">Sanitation › Dead animals and gut piles</a></li>
 <li>burial depth and distance from water — <a class="guide" href="SANITATION-GUIDE.html#dead-animals-and-gut-piles">Sanitation › Dead animals and gut piles</a></li>
 <li>composting — <a class="guide" href="SANITATION-GUIDE.html#dead-animals-and-gut-piles">Sanitation › Dead animals and gut piles</a></li>
+</ul></li>
+<li><span id="t-dead-batteries"></span><strong>Dead batteries</strong>
+<ul>
+<li>often only dead for that job — <a class="guide" href="BATTERIES-GUIDE.html#small-batteries-aa-to-9-v-and-button-cells">Batteries › Small batteries: AA to 9 V, and button cells</a></li>
 </ul></li>
 <li><span id="t-dead-birds"></span><strong>Dead birds</strong>
 <ul>
@@ -4029,6 +4195,10 @@
 <li><span id="t-describing-a-person-or-vehicle"></span><strong>Describing a person or vehicle</strong> — <a class="guide" href="HOME-DEFENSE-GUIDE.html#someone-at-the-gate-strangers-or-a-break-in">Home protection › Someone at the gate, strangers, or a break-in</a></li>
 <li><span id="t-desiccant"></span><strong>Desiccant</strong> — see <a href="#t-silica-gel"><strong>Silica gel</strong></a></li>
 <li><span id="t-destroying-angel"></span><strong>Destroying angel</strong> — <a class="guide" href="MUSHROOM-GUIDE.html#the-killers-that-grow-around-here">Mushrooms › The killers that grow around here</a></li>
+<li><span id="t-desulfating"></span><strong>Desulfating</strong>
+<ul>
+<li>what works and what is wishful — <a class="guide" href="BATTERIES-GUIDE.html">Batteries › Lead-acid away from the solar bank</a></li>
+</ul></li>
 <li><span id="t-desulfators"></span><strong>Desulfators</strong>
 <ul>
 <li>unproven — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#keeping-lead-acid-alive">Off-grid power › Keeping lead-acid alive</a></li>
@@ -4143,6 +4313,10 @@
 <ul>
 <li>without a compass — <a class="guide" href="NAVIGATION-WEATHER-GUIDE.html#direction-without-a-compass-and-how-wrong-each-can-be">Navigation &amp; weather › Direction without a compass — and how wrong each can be</a></li>
 </ul></li>
+<li><span id="t-direction-or"></span><strong>Direction (+ or −)</strong>
+<ul>
+<li>repeater setting — <a class="guide" href="USING-A-RADIO-GUIDE.html#4-working-through-a-repeater">Using a radio › 4. Working through a repeater</a></li>
+</ul></li>
 <li><span id="t-disabled-neighbors"></span><strong>Disabled neighbors</strong> — <a class="guide" href="COMMUNITY-BARTER-GUIDE.html#children-elders-and-neighbors-who-need-help">Community &amp; barter › Children, elders and neighbors who need help</a></li>
 <li><span id="t-disaster"></span><strong>Disaster</strong>
 <ul>
@@ -4213,6 +4387,10 @@
 <ul>
 <li>dogs — <a class="guide" href="DOGS-GUIDE.html#vaccinate-now-parvo-distemper-and-rabies">Dogs › Vaccinate now: parvo, distemper and rabies</a></li>
 </ul></li>
+<li><span id="t-distilled-water"></span><strong>Distilled water</strong>
+<ul>
+<li>topping up a battery — <a class="guide" href="BATTERIES-GUIDE.html">Batteries › Lead-acid away from the solar bank</a></li>
+</ul></li>
 <li><span id="t-distilling"></span><strong>Distilling</strong>
 <ul>
 <li>federal permit, proof — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#alcohol-the-strength-that-works">Making medicines › Alcohol: the strength that works</a></li>
@@ -4245,6 +4423,10 @@
 <ul>
 <li>falls in older people — <a class="guide" href="CHRONIC-ILLNESS-GUIDE.html">Chronic illness › Older people and the frail</a></li>
 <li>getting up in stages — <a class="guide" href="REHAB-GUIDE.html#getting-up-in-stages">Rehab &amp; recovery › Getting up in stages</a></li>
+</ul></li>
+<li><span id="t-do-this-now"></span><strong>Do this now</strong>
+<ul>
+<li>save CHIRP and your channel file — <a class="guide" href="USING-A-RADIO-GUIDE.html">Using a radio › 5. Programming with a computer, while there is internet</a></li>
 </ul></li>
 <li><span id="t-docking"></span><strong>Docking</strong>
 <ul>
@@ -4467,6 +4649,7 @@
 <ul>
 <li>motor, gearbox, battery — <a class="guide" href="SALVAGE-GUIDE.html">Salvage &amp; repurposing › Ceiling fans, drills and power tools</a></li>
 </ul></li>
+<li><span id="t-drill-battery"></span><strong>Drill battery</strong> — see <a href="#t-tool-batteries"><strong>Tool batteries</strong></a></li>
 <li><span id="t-drilled-well"></span><strong>Drilled well</strong>
 <ul>
 <li>casing and submersible pump — <a class="guide" href="WATER-WELLS-GUIDE.html#know-your-well">Wells &amp; pumps › Know your well</a></li>
@@ -4611,6 +4794,10 @@
 <ul>
 <li>temperature, snap test — <a class="guide" href="SEED-BANK-GUIDE.html#saving-seed-from-the-fruits">Seed bank › Saving seed from the fruits</a></li>
 </ul></li>
+<li><span id="t-dual-watch"></span><strong>Dual watch</strong>
+<ul>
+<li>and why it drains the battery — <a class="guide" href="USING-A-RADIO-GUIDE.html">Using a radio › 2. A cheap handheld, button by button</a></li>
+</ul></li>
 <li><span id="t-dual-purpose-cattle"></span><strong>Dual-purpose cattle</strong>
 <ul>
 <li>Milking Shorthorn, Devon, Red Poll, Dexter — <a class="guide" href="CATTLE-GUIDE.html#breeds-dairy-beef-and-dual-purpose">Cattle › Breeds: dairy, beef and dual-purpose</a></li>
@@ -4716,6 +4903,7 @@
 <h2 id="e">E</h2>
 <ul>
 <li><span id="t-e-bike-batteries"></span><strong>E-bike batteries</strong> — see <a href="#t-lithium-batteries"><strong>Lithium batteries</strong></a></li>
+<li><span id="t-e-bike-battery"></span><strong>E-bike battery</strong> — see <a href="#t-battery-packs"><strong>Battery packs</strong></a></li>
 <li><span id="t-e-books"></span><strong>E-books</strong>
 <ul>
 <li>continue where you left off — <a class="guide" href="STORIES-GAMES-GUIDE.html#opening-the-books-on-the-library-computer-or-a-phone">Stories &amp; games › Opening the books on the library computer or a phone</a></li>
@@ -4751,6 +4939,10 @@
 <li><span id="t-early-warning"></span><strong>Early warning</strong>
 <ul>
 <li>with no power — <a class="guide" href="HOME-DEFENSE-GUIDE.html#early-warning-with-no-grid">Home protection › Early warning with no grid</a></li>
+</ul></li>
+<li><span id="t-earphone"></span><strong>Earphone</strong>
+<ul>
+<li>for a weak signal — <a class="guide" href="USING-A-RADIO-GUIDE.html#onoff-and-volume">Using a radio › On/off and volume</a></li>
 </ul></li>
 <li><span id="t-earth"></span><strong>Earth</strong>
 <ul>
@@ -4986,6 +5178,10 @@
 <ul>
 <li>hams relay welfare traffic — <a class="guide" href="RADIO-GUIDE.html#6-ham-amateur-radio-the-serious-emergency-option">Radio › 6. Ham (Amateur) Radio — the serious emergency option</a></li>
 </ul></li>
+<li><span id="t-emergency-exception"></span><strong>Emergency exception</strong>
+<ul>
+<li>using any radio to save life — <a class="guide" href="USING-A-RADIO-GUIDE.html#10-the-law-plainly">Using a radio › 10. The law, plainly</a></li>
+</ul></li>
 <li><span id="t-emergency-frequencies"></span><strong>Emergency frequencies</strong>
 <ul>
 <li>CB 9, 146.520, NOAA — <a class="guide" href="RADIO-GUIDE.html#14-print-and-keep-frequency-card">Radio › 14. Print-and-keep frequency card</a></li>
@@ -5179,6 +5375,10 @@
 <li>which still work — <a class="guide" href="Medical-READ-ME-FIRST.html#using-found-or-expired-medicines">Medicines › Using found or expired medicines</a></li>
 <li>which to throw out — <a class="guide" href="Medical-READ-ME-FIRST.html#using-found-or-expired-medicines">Medicines › Using found or expired medicines</a></li>
 </ul></li>
+<li><span id="t-exploding-batteries"></span><strong>Exploding batteries</strong>
+<ul>
+<li>charging a lithium cell — <a class="guide" href="BATTERIES-GUIDE.html#never-recharge-a-non-rechargeable">Batteries › Never recharge a non-rechargeable</a></li>
+</ul></li>
 <li><span id="t-extended-release-tablets"></span><strong>Extended-release tablets</strong>
 <ul>
 <li>never split or crush — <a class="guide" href="CHRONIC-ILLNESS-GUIDE.html#making-a-supply-last">Chronic illness › Making a supply last</a></li>
@@ -5236,6 +5436,10 @@
 <li>best to worst places — <a class="guide" href="NUCLEAR-FALLOUT-GUIDE.html#where-to-shelter">Nuclear fallout › Where to shelter</a></li>
 </ul></li>
 <li><span id="t-false-chanterelle"></span><strong>False chanterelle</strong> — <a class="guide" href="MUSHROOM-GUIDE.html#good-edibles-and-their-look-alikes">Mushrooms › Good edibles and their look-alikes</a></li>
+<li><span id="t-false-distress-call"></span><strong>False distress call</strong>
+<ul>
+<li>never — <a class="guide" href="USING-A-RADIO-GUIDE.html#10-the-law-plainly">Using a radio › 10. The law, plainly</a></li>
+</ul></li>
 <li><span id="t-false-morels"></span><strong>False morels</strong> — <a class="guide" href="MUSHROOM-GUIDE.html#the-killers-that-grow-around-here">Mushrooms › The killers that grow around here</a>
 <ul>
 <li>telling them from true morels — <a class="guide" href="MUSHROOM-GUIDE.html#good-edibles-and-their-look-alikes">Mushrooms › Good edibles and their look-alikes</a></li>
@@ -5320,6 +5524,10 @@
 <li><span id="t-fava-beans"></span><strong>Fava beans</strong>
 <ul>
 <li>cover crop — <a class="guide" href="GROWING-SOIL-GUIDE.html">Building soil &amp; permaculture › Cover crops and green manures</a></li>
+</ul></li>
+<li><span id="t-fcc-rules"></span><strong>FCC rules</strong>
+<ul>
+<li>Part 95 and Part 97 on the drive — <a class="guide" href="USING-A-RADIO-GUIDE.html#10-the-law-plainly">Using a radio › 10. The law, plainly</a></li>
 </ul></li>
 <li><span id="t-feather-pecking"></span><strong>Feather pecking</strong>
 <ul>
@@ -6015,6 +6223,7 @@
 <li>60 hertz, what it tells you — <a class="guide" href="POWER-GRID-GUIDE.html">Power grid › AC, 60 cycles and staying in step</a></li>
 <li>kHz and MHz — <a class="guide" href="RADIO-GUIDE.html#3-how-radio-actually-works-the-60-second-version">Radio › 3. How radio actually works (the 60-second version)</a></li>
 <li>rpm from Hz — <a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html#testing-what-you-salvaged">Engines › Testing what you salvaged</a></li>
+<li>typing one in — <a class="guide" href="USING-A-RADIO-GUIDE.html#channel-or-frequency">Using a radio › Channel or frequency</a></li>
 <li>what fluctuating frequency harms — <a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html#hooking-it-up">Engines › Hooking it up</a></li>
 </ul></li>
 <li><span id="t-frequency-card"></span><strong>Frequency card</strong>
@@ -6059,6 +6268,10 @@
 <li>feet on the trail — <a class="guide" href="ON-FOOT-GUIDE.html#trench-foot-and-frostbite">On foot › Trench foot and frostbite</a></li>
 <li>signs, warming — <a class="guide" href="FLOODS-STORMS-HEAT-GUIDE.html#cold-injuries">Floods, storms &amp; heat › Cold injuries</a></li>
 </ul></li>
+<li><span id="t-frozen-battery"></span><strong>Frozen battery</strong>
+<ul>
+<li>a flat one cracks — <a class="guide" href="BATTERIES-GUIDE.html">Batteries › Lead-acid away from the solar bank</a></li>
+</ul></li>
 <li><span id="t-frozen-pipe"></span><strong>Frozen pipe</strong>
 <ul>
 <li>thawing — <a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html#simple-plumbing">Make-do household › Simple plumbing</a></li>
@@ -6082,6 +6295,10 @@
 <li><span id="t-frs-family-radio-service"></span><strong>FRS (Family Radio Service)</strong>
 <ul>
 <li>22 channels, no license — <a class="guide" href="RADIO-GUIDE.html#frs-family-radio-service--no-license">Radio › FRS (Family Radio Service) — no license</a></li>
+</ul></li>
+<li><span id="t-frs-and-gmrs-radios"></span><strong>FRS and GMRS radios</strong>
+<ul>
+<li>channel numbers and the code trap — <a class="guide" href="USING-A-RADIO-GUIDE.html#frs-and-gmrs-bubble-pack-radios">Using a radio › FRS and GMRS bubble-pack radios</a></li>
 </ul></li>
 <li><span id="t-frs-channel-3"></span><strong>FRS channel 3</strong>
 <ul>
@@ -6487,7 +6704,12 @@
 </ul></li>
 <li><span id="t-gmrs-license"></span><strong>GMRS license</strong>
 <ul>
+<li>18, ten years, the whole family — <a class="guide" href="USING-A-RADIO-GUIDE.html#10-the-law-plainly">Using a radio › 10. The law, plainly</a></li>
 <li>about $35, whole family, 10 years — <a class="guide" href="RADIO-GUIDE.html#gmrs-general-mobile-radio-service--cheap-license-no-test">Radio › GMRS (General Mobile Radio Service) — cheap license, no test</a></li>
+</ul></li>
+<li><span id="t-gmrs-repeater"></span><strong>GMRS repeater</strong>
+<ul>
+<li>input is 5 MHz above the output — <a class="guide" href="USING-A-RADIO-GUIDE.html#4-working-through-a-repeater">Using a radio › 4. Working through a repeater</a></li>
 </ul></li>
 <li><span id="t-go-now"></span><strong>Go Now</strong>
 <ul>
@@ -6904,6 +7126,7 @@
 </ul></li>
 <li><span id="t-ham-license"></span><strong>Ham license</strong>
 <ul>
+<li>Technician, 35 questions — <a class="guide" href="USING-A-RADIO-GUIDE.html#10-the-law-plainly">Using a radio › 10. The law, plainly</a></li>
 <li>Technician, General, Extra — <a class="guide" href="RADIO-GUIDE.html#licensing-usa--easier-than-you-think">Radio › Licensing (USA) — easier than you think</a></li>
 </ul></li>
 <li><span id="t-ham-license-question-pools"></span><strong>Ham license question pools</strong> — <a class="guide" href="RADIO-GUIDE.html#15-where-to-learn-more-offline-already-in-this-kit">Radio › 15. Where to learn more offline (already in this kit)</a></li>
@@ -6930,6 +7153,10 @@
 <li><span id="t-hand"></span><strong>Hand</strong>
 <ul>
 <li>exercises after an injury — <a class="guide" href="REHAB-GUIDE.html#elbow-wrist-hand-and-fingers">Rehab &amp; recovery › Elbow, wrist, hand and fingers</a></li>
+</ul></li>
+<li><span id="t-hand-crank-charger"></span><strong>Hand crank charger</strong>
+<ul>
+<li>what it can really do — <a class="guide" href="BATTERIES-GUIDE.html">Batteries › Charging with no proper charger</a></li>
 </ul></li>
 <li><span id="t-hand-drill"></span><strong>Hand drill</strong>
 <ul>
@@ -6982,6 +7209,14 @@
 <ul>
 <li>good design — <a class="guide" href="BICYCLES-CARTS-GUIDE.html#wheelbarrows-handcarts-sledges-and-travois">Bicycles &amp; carts › Wheelbarrows, handcarts, sledges and travois</a></li>
 <li>load and speed — <a class="guide" href="BICYCLES-CARTS-GUIDE.html#how-much-one-person-can-move">Bicycles &amp; carts › How much one person can move</a></li>
+</ul></li>
+<li><span id="t-handheld-in-a-vehicle"></span><strong>Handheld in a vehicle</strong>
+<ul>
+<li>signal blocked by the body — <a class="guide" href="USING-A-RADIO-GUIDE.html#the-antenna">Using a radio › The antenna</a></li>
+</ul></li>
+<li><span id="t-handheld-radio"></span><strong>Handheld radio</strong>
+<ul>
+<li>the cheap dual-band kind — <a class="guide" href="USING-A-RADIO-GUIDE.html">Using a radio › 2. A cheap handheld, button by button</a></li>
 </ul></li>
 <li><span id="t-handheld-radios"></span><strong>Handheld radios</strong> — see <a href="#t-walkie-talkies"><strong>Walkie-talkies</strong></a>
 <ul>
@@ -7244,6 +7479,7 @@
 <ul>
 <li>Oxford, 1939 to 1941 — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html">How antibiotics came to be › 1939–1941: Oxford, and the first patient</a></li>
 </ul></li>
+<li><span id="t-heavy-duty-batteries"></span><strong>Heavy duty batteries</strong> — see <a href="#t-zinc-carbon-batteries"><strong>Zinc-carbon batteries</strong></a></li>
 <li><span id="t-hedge-trimmings"></span><strong>Hedge trimmings</strong>
 <ul>
 <li>never feed them — <a class="guide" href="GOATS-GUIDE.html#plants-that-poison-goats-here">Goats › Plants that poison goats here</a></li>
@@ -7395,6 +7631,7 @@
 <li>instead of earth gables — <a class="guide" href="NATURAL-BUILDING-GUIDE.html#a-good-hat-and-good-boots-keeping-walls-dry">Natural building › A good hat and good boots": keeping walls dry</a></li>
 </ul></li>
 <li><span id="t-hip-belt-cart"></span><strong>Hip-belt cart</strong> — <a class="guide" href="BICYCLES-CARTS-GUIDE.html#wheelbarrows-handcarts-sledges-and-travois">Bicycles &amp; carts › Wheelbarrows, handcarts, sledges and travois</a></li>
+<li><span id="t-hiss"></span><strong>Hiss</strong> — see <a href="#t-squelch"><strong>Squelch</strong></a></li>
 <li><span id="t-hissing-firewood"></span><strong>Hissing firewood</strong> — see <a href="#t-is-my-firewood-dry"><strong>Is my firewood dry?</strong></a></li>
 <li><span id="t-histomoniasis"></span><strong>Histomoniasis</strong> — see <a href="#t-blackhead"><strong>Blackhead</strong></a></li>
 <li><span id="t-history-of-medicine"></span><strong>History of medicine</strong>
@@ -7726,12 +7963,17 @@
 <li>from charging batteries — <a class="guide" href="RADIO-GUIDE.html#8-antennas-power-range-the-practical-stuff">Radio › 8. Antennas, power &amp; range (the practical stuff)</a></li>
 <li>from charging, venting — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#battery-safety">Off-grid power › Battery safety</a></li>
 </ul></li>
+<li><span id="t-hydrogen-gas"></span><strong>Hydrogen gas</strong>
+<ul>
+<li>from charging — <a class="guide" href="BATTERIES-GUIDE.html#dangers">Batteries › Dangers</a></li>
+</ul></li>
 <li><span id="t-hydrogen-sulfide"></span><strong>Hydrogen sulfide</strong>
 <ul>
 <li>sewer gas — <a class="guide" href="TOWN-WATER-SEWER-GUIDE.html#manholes-wet-wells-vaults-and-tanks-never-go-in">Town water &amp; sewer › Manholes, wet wells, vaults and tanks: never go in</a></li>
 </ul></li>
 <li><span id="t-hydrometer"></span><strong>Hydrometer</strong>
 <ul>
+<li>a quicker test on a flooded battery — <a class="guide" href="BATTERIES-GUIDE.html#testing-with-no-tester">Batteries › Testing with no tester</a></li>
 <li>how to read one — <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/NEETSModules/NEETS%20Module%2001%20-%20Introduction%20to%20Matter%20Energy%20and%20Direct%20Current.pdf#page=95" title="NEETS Module 01 - Matter Energy and Direct Current.pdf — page 95">Hydrometer, NEETS 1 p. 95</a></li>
 <li>readings (1.280 full) — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#choosing-batteries-and-reading-their-charge">Off-grid power › Choosing batteries and reading their charge</a></li>
 </ul></li>
@@ -7775,6 +8017,11 @@
 <li>ice on lines and trees — <a class="guide" href="WHAT-TO-EXPECT-GUIDE.html#2-winter-storm-ice-flood-and-landslides">What to expect › 2. Winter storm, ice, flood and landslides</a></li>
 </ul></li>
 <li><span id="t-iceless-refrigerator"></span><strong>Iceless refrigerator</strong> — see <a href="#t-evaporative-cooler"><strong>Evaporative cooler</strong></a></li>
+<li><span id="t-ics-205"></span><strong>ICS 205</strong>
+<ul>
+<li>the blank form — <a class="lib pic" target="_blank" rel="noopener" href="https://training.fema.gov/emiweb/is/icsresource/assets/nims%20ics%20forms%20booklet.v3.pdf#page=21" title="NIMS ICS Forms Booklet - ICS 213 General Message and ICS 214 Log (FEMA 502-2 2010).pdf — page 21">ICS Forms Booklet, p. 21</a></li>
+<li>the standard radio plan form — <a class="guide" href="USING-A-RADIO-GUIDE.html#7-a-printed-channel-card">Using a radio › 7. A printed channel card</a></li>
+</ul></li>
 <li><span id="t-ics-213"></span><strong>ICS 213</strong>
 <ul>
 <li>general message form — <a class="guide" href="SIGNALS-MORSE-GUIDE.html#runners-relays-and-written-messages">Signals &amp; Morse › Runners, relays and written messages</a></li>
@@ -7956,7 +8203,10 @@
 <ul>
 <li>Eastern, Western, Texas — <a class="guide" href="POWER-GRID-GUIDE.html">Power grid › AC, 60 cycles and staying in step</a></li>
 </ul></li>
-<li><span id="t-interference"></span><strong>Interference</strong> — see <a href="#t-buzz-or-hum"><strong>Buzz or hum</strong></a></li>
+<li><span id="t-interference"></span><strong>Interference</strong> — see <a href="#t-buzz-or-hum"><strong>Buzz or hum</strong></a>
+<ul>
+<li>buzz and hum near power lines — <a class="guide" href="USING-A-RADIO-GUIDE.html#11-if-this-goes-wrong">Using a radio › 11. If this goes wrong</a></li>
+</ul></li>
 <li><span id="t-international-code-of-signals"></span><strong>International Code of Signals</strong> — <a class="guide" href="SIGNALS-MORSE-GUIDE.html#runners-relays-and-written-messages">Signals &amp; Morse › Runners, relays and written messages</a></li>
 <li><span id="t-intruder"></span><strong>Intruder</strong>
 <ul>
@@ -8220,6 +8470,10 @@
 <li>after kidding — <a class="guide" href="GOATS-GUIDE.html#goat-health-with-no-vet">Goats › Goat health with no vet</a></li>
 </ul></li>
 <li><span id="t-keyline"></span><strong>Keyline</strong> — <a class="guide" href="GROWING-SOIL-GUIDE.html#keyline">Building soil &amp; permaculture › Keyline</a></li>
+<li><span id="t-keypad-lock"></span><strong>Keypad lock</strong>
+<ul>
+<li>press and hold — <a class="guide" href="USING-A-RADIO-GUIDE.html">Using a radio › 2. A cheap handheld, button by button</a></li>
+</ul></li>
 <li><span id="t-kfm-kearny-fallout-meter"></span><strong>KFM (Kearny fallout meter)</strong>
 <ul>
 <li>build and use — <a class="guide" href="NUCLEAR-FALLOUT-GUIDE.html#measuring-radiation">Nuclear fallout › Measuring radiation</a></li>
@@ -8456,6 +8710,10 @@
 <li>from tin cans and jars — <a class="guide" href="LIGHTING-GUIDE.html#can-lanterns-and-candle-holders">Candles &amp; lamps › Can lanterns and candle holders</a></li>
 </ul></li>
 <li><span id="t-laptop"></span><strong>Laptop</strong> — see <a href="#t-windows"><strong>Windows</strong></a></li>
+<li><span id="t-laptop-battery"></span><strong>Laptop battery</strong>
+<ul>
+<li>why a pack dies — <a class="guide" href="BATTERIES-GUIDE.html#laptop-tool-and-e-bike-packs-what-is-inside-and-where-the-li">Batteries › Laptop, tool and e-bike packs: what is inside, and where the line is</a></li>
+</ul></li>
 <li><span id="t-laptop-or-tablet"></span><strong>Laptop or tablet</strong>
 <ul>
 <li>to read the library — <a class="guide" href="EMP-GUIDE.html#what-to-keep-in-it">EMP › What to keep in it</a></li>
@@ -8578,6 +8836,10 @@
 <ul>
 <li>don't make them — <a class="guide" href="PAPER-INK-GUIDE.html#pencils-charcoal-chalk-and-slates">Paper &amp; ink › Pencils, charcoal, chalk and slates</a></li>
 </ul></li>
+<li><span id="t-lead-acid-batteries"></span><strong>Lead-acid batteries</strong>
+<ul>
+<li>care away from the solar bank — <a class="guide" href="BATTERIES-GUIDE.html">Batteries › Lead-acid away from the solar bank</a></li>
+</ul></li>
 <li><span id="t-leading-a-horse"></span><strong>Leading a horse</strong>
 <ul>
 <li>which side, never wrap the rope — <a class="guide" href="HORSE-GUIDE.html#handling-saddling-and-riding">Horses › Handling, saddling and riding</a></li>
@@ -8589,6 +8851,10 @@
 <li><span id="t-leaf-springs"></span><strong>Leaf springs</strong>
 <ul>
 <li>tool steel — <a class="guide" href="BLACKSMITHING-GUIDE.html#which-scrap-steel-to-use">Blacksmithing › Which scrap steel to use</a></li>
+</ul></li>
+<li><span id="t-leaking-batteries"></span><strong>Leaking batteries</strong>
+<ul>
+<li>cleaning up the white crust — <a class="guide" href="BATTERIES-GUIDE.html#small-batteries-aa-to-9-v-and-button-cells">Batteries › Small batteries: AA to 9 V, and button cells</a></li>
 </ul></li>
 <li><span id="t-leaking-roof"></span><strong>Leaking roof</strong> — see <a href="#t-roof-leak"><strong>Roof leak</strong></a></li>
 <li><span id="t-leaks"></span><strong>Leaks</strong>
@@ -8703,7 +8969,7 @@
 <li><span id="t-license"></span><strong>License</strong>
 <ul>
 <li>mesh radio, none needed — <a class="guide" href="MESH-RADIO-GUIDE.html#12-the-law-privacy-and-safety">Mesh radio (Meshtastic) › 12. The law, privacy and safety</a></li>
-<li>which radios need one — <a class="guide" href="RADIO-GUIDE.html#1-the-quick-version-what-to-grab-and-what-to-know">Radio › 1. The quick version — what to grab and what to know</a></li>
+<li>which radios need one — <a class="guide" href="RADIO-GUIDE.html#1-the-quick-version-what-to-grab-and-what-to-know">Radio › 1. The quick version — what to grab and what to know</a> · <a class="guide" href="USING-A-RADIO-GUIDE.html#10-the-law-plainly">Using a radio › 10. The law, plainly</a></li>
 </ul></li>
 <li><span id="t-lids"></span><strong>Lids</strong>
 <ul>
@@ -8711,7 +8977,7 @@
 <li>reusable plastic (Tattler) — <a class="guide" href="PRESERVING-FOOD-GUIDE.html#jars-lids-storage-and-spoilage">Preserving food › Jars, lids, storage and spoilage</a></li>
 <li>reusing one-time lids — <a class="guide" href="PRESERVING-FOOD-GUIDE.html#jars-lids-storage-and-spoilage">Preserving food › Jars, lids, storage and spoilage</a></li>
 </ul></li>
-<li><span id="t-lifepo4"></span><strong>LiFePO4</strong> — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#lithium-lifepo4-and-salvaged-packs">Off-grid power › Lithium, LiFePO4 and salvaged packs</a>
+<li><span id="t-lifepo4"></span><strong>LiFePO4</strong> — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#lithium-lifepo4-and-salvaged-packs">Off-grid power › Lithium, LiFePO4 and salvaged packs</a> · <a class="guide" href="BATTERIES-GUIDE.html#every-kind-of-battery-compared">Batteries › Every kind of battery, compared</a>
 <ul>
 <li>charging from solar or the wall — <a class="guide" href="AMMO-CAN-COMPUTER-GUIDE.html">ARK Vault (ammo-can computer) › Power and charging</a></li>
 </ul></li>
@@ -8821,6 +9087,10 @@
 <li>between two points, for radio — <a class="guide" href="HOW-TO-VIEW-MAPS.html#easiest-the-map-in-the-web-browser">HOW-TO-VIEW-MAPS › Easiest: the map in the web browser</a></li>
 <li>checking it on the map — <a class="guide" href="MESH-RADIO-GUIDE.html#7-range-getting-a-message-across">Mesh radio (Meshtastic) › 7. Range: getting a message across</a></li>
 </ul></li>
+<li><span id="t-linear-amplifier"></span><strong>Linear amplifier</strong>
+<ul>
+<li>never on CB — <a class="guide" href="USING-A-RADIO-GUIDE.html#a-cb">Using a radio › A CB</a></li>
+</ul></li>
 <li><span id="t-linen"></span><strong>Linen</strong> — see <a href="#t-flax"><strong>Flax</strong></a></li>
 <li><span id="t-liniments"></span><strong>Liniments</strong>
 <ul>
@@ -8859,16 +9129,26 @@
 </ul></li>
 <li><span id="t-lithium-batteries"></span><strong>Lithium batteries</strong>
 <ul>
+<li>20-year shelf life — <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/NEETSModules/NEETS%20Module%2001%20-%20Introduction%20to%20Matter%20Energy%20and%20Direct%20Current.pdf#page=88" title="NEETS Module 01 - Matter Energy and Direct Current.pdf — page 88">📖 NEETS 1, p. 88</a></li>
 <li>charging rules — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#lithium-lifepo4-and-salvaged-packs">Off-grid power › Lithium, LiFePO4 and salvaged packs</a></li>
 <li>fire — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#lithium-lifepo4-and-salvaged-packs">Off-grid power › Lithium, LiFePO4 and salvaged packs</a></li>
 <li>never charge below freezing — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#lithium-lifepo4-and-salvaged-packs">Off-grid power › Lithium, LiFePO4 and salvaged packs</a></li>
 <li>salvaged e-bike and tool packs — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#lithium-lifepo4-and-salvaged-packs">Off-grid power › Lithium, LiFePO4 and salvaged packs</a></li>
 <li>swollen, fire danger — <a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html#electronics-repair-and-salvage">Make-do household › Electronics: repair and salvage</a></li>
+<li>throw-away AA and coin cells — <a class="guide" href="BATTERIES-GUIDE.html#every-kind-of-battery-compared">Batteries › Every kind of battery, compared</a></li>
 <li>types — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#lithium-lifepo4-and-salvaged-packs">Off-grid power › Lithium, LiFePO4 and salvaged packs</a></li>
 </ul></li>
 <li><span id="t-lithium-battery"></span><strong>Lithium battery</strong>
 <ul>
 <li>electric car packs — <a class="guide" href="VEHICLES-EQUIPMENT-GUIDE.html#electric-cars-and-hybrids">Vehicles, tractors &amp; equipment › Electric cars and hybrids</a></li>
+</ul></li>
+<li><span id="t-lithium-fires"></span><strong>Lithium fires</strong>
+<ul>
+<li>putting one out, and reignition — <a class="guide" href="BATTERIES-GUIDE.html#dangers">Batteries › Dangers</a></li>
+</ul></li>
+<li><span id="t-lithium-ion-batteries"></span><strong>Lithium-ion batteries</strong>
+<ul>
+<li>phone, laptop, tool, e-bike — <a class="guide" href="BATTERIES-GUIDE.html#every-kind-of-battery-compared">Batteries › Every kind of battery, compared</a></li>
 </ul></li>
 <li><span id="t-little-brown-mushrooms"></span><strong>Little brown mushrooms</strong> — see <a href="#t-galerina"><strong>Galerina</strong></a></li>
 <li><span id="t-live-plucking"></span><strong>Live plucking</strong>
@@ -8943,6 +9223,10 @@
 <li><span id="t-load-shedding"></span><strong>Load shedding</strong>
 <ul>
 <li>priorities — <a class="guide" href="POWER-GRID-GUIDE.html#which-loads-come-first">Power grid › Which loads come first</a></li>
+</ul></li>
+<li><span id="t-load-test"></span><strong>Load test</strong>
+<ul>
+<li>the only honest test — <a class="guide" href="BATTERIES-GUIDE.html#testing-with-no-tester">Batteries › Testing with no tester</a></li>
 </ul></li>
 <li><span id="t-loader"></span><strong>Loader</strong>
 <ul>
@@ -9059,6 +9343,10 @@
 <li><span id="t-low-pressure-steam"></span><strong>Low-pressure steam</strong>
 <ul>
 <li>and no-pressure choices — <a class="guide" href="HEAT-INTO-POWER-GUIDE.html#low-pressure-and-no-pressure-choices">Heat into power › Low-pressure and no-pressure choices</a></li>
+</ul></li>
+<li><span id="t-low-self-discharge-cells"></span><strong>Low-self-discharge cells</strong>
+<ul>
+<li>which rechargeables to buy — <a class="guide" href="BATTERIES-GUIDE.html">Batteries › Rechargeable AAs, and what they are not</a></li>
 </ul></li>
 <li><span id="t-lpg"></span><strong>LPG</strong> — see <a href="#t-propane"><strong>Propane</strong></a></li>
 <li><span id="t-lullabies"></span><strong>Lullabies</strong> — <a class="guide" href="STORIES-GAMES-GUIDE.html#songs">Stories &amp; games › Songs</a></li>
@@ -9273,6 +9561,10 @@
 <ul>
 <li>none — other ways to light a fire — <a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html#fire-and-light-without-stores">Make-do household › Fire and light without stores</a></li>
 </ul></li>
+<li><span id="t-matching-cells"></span><strong>Matching cells</strong>
+<ul>
+<li>charge retention, resistance, capacity — <a class="lib" target="_blank" rel="noopener" href="https://ntrs.nasa.gov/api/citations/20170009182/downloads/20170009182.pdf#page=32" title="NASA JSC-20793 Crewed Space Vehicle Battery Safety Requirements Rev D (NASA 2017).pdf — page 32">📖 NASA JSC-20793, p. 32</a></li>
+</ul></li>
 <li><span id="t-matchstick-test"></span><strong>Matchstick test</strong>
 <ul>
 <li>ropy brown goo — <a class="guide" href="BEES-GUIDE.html#foulbrood-and-other-brood-diseases">Bees › Foulbrood and other brood diseases</a></li>
@@ -9403,6 +9695,14 @@
 <li>finishing it with the library installer — <a class="guide" href="AMMO-CAN-COMPUTER-GUIDE.html">ARK Vault (ammo-can computer) › Set up the Pi (no TV or keyboard)</a></li>
 <li>the Pi's own card vs. the library drive — <a class="guide" href="AMMO-CAN-COMPUTER-GUIDE.html#two-separate-pieces-the-pis-card-and-the-library-drive">ARK Vault (ammo-can computer) › Two separate pieces: the Pi's card and the library drive</a></li>
 </ul></li>
+<li><span id="t-memory-channels"></span><strong>Memory channels</strong>
+<ul>
+<li>saving and naming them — <a class="guide" href="USING-A-RADIO-GUIDE.html">Using a radio › 2. A cheap handheld, button by button</a></li>
+</ul></li>
+<li><span id="t-memory-effect"></span><strong>Memory effect</strong>
+<ul>
+<li>NiMH and NiCd — <a class="guide" href="BATTERIES-GUIDE.html">Batteries › Rechargeable AAs, and what they are not</a></li>
+</ul></li>
 <li><span id="t-menacing"></span><strong>Menacing</strong>
 <ul>
 <li>threats — <a class="guide" href="HOME-DEFENSE-GUIDE.html#oregon-law-on-force-in-defense-of-people-and-property">Home protection › Oregon law on force in defense of people and property</a></li>
@@ -9425,6 +9725,10 @@
 <li><span id="t-mental-illness"></span><strong>Mental illness</strong>
 <ul>
 <li>depression, psychosis, medicines — <a class="guide" href="CHRONIC-ILLNESS-GUIDE.html">Chronic illness › Mental illness and psychiatric medicines</a></li>
+</ul></li>
+<li><span id="t-menu-handheld"></span><strong>Menu (handheld)</strong>
+<ul>
+<li>what each item is — <a class="guide" href="USING-A-RADIO-GUIDE.html">Using a radio › 2. A cheap handheld, button by button</a></li>
 </ul></li>
 <li><span id="t-mercury"></span><strong>Mercury</strong>
 <ul>
@@ -9633,6 +9937,10 @@
 <li>pattern drawings — <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/homemanufactureo00farn/homemanufactureo00farn.pdf#page=249" title="Home Manufacture of Furs and Skins - Buckskin and Brain Tanning (Farnham 1916).pdf — page 249">Mitten patterns, Farnham pp. 249–251</a></li>
 </ul></li>
 <li><span id="t-mix-ratio"></span><strong>Mix ratio</strong> — see <a href="#t-two-stroke-fuel-mix"><strong>Two-stroke fuel mix</strong></a></li>
+<li><span id="t-mixing-batteries"></span><strong>Mixing batteries</strong>
+<ul>
+<li>old with new, type with type — <a class="guide" href="BATTERIES-GUIDE.html#small-batteries-aa-to-9-v-and-button-cells">Batteries › Small batteries: AA to 9 V, and button cells</a></li>
+</ul></li>
 <li><span id="t-moccasins"></span><strong>Moccasins</strong>
 <ul>
 <li>from a handbag — <a class="guide" href="CLOTHING-LEATHER-GUIDE.html">Clothing &amp; leather › Remaking old furs and leather</a></li>
@@ -9676,6 +9984,10 @@
 <li><span id="t-money"></span><strong>Money</strong>
 <ul>
 <li>how goods become money — <a class="guide" href="COMMUNITY-BARTER-GUIDE.html#barter-and-fair-trade">Community &amp; barter › Barter and fair trade</a></li>
+</ul></li>
+<li><span id="t-monitor-button"></span><strong>Monitor button</strong>
+<ul>
+<li>opens the squelch — <a class="guide" href="USING-A-RADIO-GUIDE.html#squelch-the-control-nobody-explains">Using a radio › Squelch: the control nobody explains</a></li>
 </ul></li>
 <li><span id="t-moon"></span><strong>Moon</strong>
 <ul>
@@ -9857,6 +10169,7 @@
 </ul></li>
 <li><span id="t-multimeter"></span><strong>Multimeter</strong> — <a class="guide" href="EMP-GUIDE.html#what-to-keep-in-it">EMP › What to keep in it</a>
 <ul>
+<li>measuring a battery — <a class="guide" href="BATTERIES-GUIDE.html#testing-with-no-tester">Batteries › Testing with no tester</a></li>
 <li>quick tests — <a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html#electronics-repair-and-salvage">Make-do household › Electronics: repair and salvage</a></li>
 </ul></li>
 <li><span id="t-murs"></span><strong>MURS</strong>
@@ -9945,6 +10258,10 @@
 <li><span id="t-narragansett-turkey"></span><strong>Narragansett turkey</strong>
 <ul>
 <li>photo — <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/CAT88204739/farmbul1409rev1952.pdf#page=10" title="Turkey Raising (USDA Farmers Bulletin 1409 1952).pdf — page 10">Narragansett tom, FB 1409 p. 10</a></li>
+</ul></li>
+<li><span id="t-narrow-and-wide"></span><strong>Narrow and wide</strong>
+<ul>
+<li>bandwidth, N and W — <a class="guide" href="USING-A-RADIO-GUIDE.html">Using a radio › 2. A cheap handheld, button by button</a></li>
 </ul></li>
 <li><span id="t-natural-building"></span><strong>Natural building</strong>
 <ul>
@@ -10066,10 +10383,11 @@
 <ul>
 <li>ducklings, leg trouble — <a class="guide" href="DUCKS-GUIDE.html#niacin-and-leg-trouble-in-ducklings">Ducks › Niacin and leg trouble in ducklings</a></li>
 </ul></li>
-<li><span id="t-nicd-batteries"></span><strong>NiCd batteries</strong>
+<li><span id="t-nicd-batteries"></span><strong>NiCd batteries</strong> — <a class="guide" href="BATTERIES-GUIDE.html#every-kind-of-battery-compared">Batteries › Every kind of battery, compared</a>
 <ul>
 <li>"waking up" — old advice — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#old-advice-in-the-library-to-ignore">Off-grid power › Old advice in the library to ignore</a></li>
 </ul></li>
+<li><span id="t-nickel-cadmium"></span><strong>Nickel-cadmium</strong> — see <a href="#t-nicd-batteries"><strong>NiCd batteries</strong></a></li>
 <li><span id="t-night-out"></span><strong>Night out</strong>
 <ul>
 <li>can't get back before dark — <a class="guide" href="NAVIGATION-WEATHER-GUIDE.html#getting-un-lost">Navigation &amp; weather › Getting un-lost</a></li>
@@ -10085,6 +10403,10 @@
 <li><span id="t-night-watch"></span><strong>Night watch</strong>
 <ul>
 <li>shifts and sleep — <a class="guide" href="COMMUNITY-BARTER-GUIDE.html#keeping-watch">Community &amp; barter › Keeping watch</a></li>
+</ul></li>
+<li><span id="t-nimh-batteries"></span><strong>NiMH batteries</strong>
+<ul>
+<li>compared with alkaline — <a class="guide" href="BATTERIES-GUIDE.html#every-kind-of-battery-compared">Batteries › Every kind of battery, compared</a></li>
 </ul></li>
 <li><span id="t-nine-men-s-morris"></span><strong>Nine men's morris</strong>
 <ul>
@@ -10126,6 +10448,7 @@
 <li>all seven frequencies — <a class="guide" href="RADIO-GUIDE.html#14-print-and-keep-frequency-card">Radio › 14. Print-and-keep frequency card</a></li>
 <li>frequencies 162.400, 162.475, 162.550 — <a class="guide" href="ILLINOIS-VALLEY-START-HERE.html#noaa-weather-radio">Illinois Valley › NOAA Weather Radio</a></li>
 <li>poor coverage in the valley — <a class="guide" href="ILLINOIS-VALLEY-START-HERE.html#noaa-weather-radio">Illinois Valley › NOAA Weather Radio</a></li>
+<li>setting the alert and the county code — <a class="guide" href="USING-A-RADIO-GUIDE.html#a-noaa-weather-radio">Using a radio › A NOAA weather radio</a></li>
 </ul></li>
 <li><span id="t-nobel-prize"></span><strong>Nobel Prize</strong>
 <ul>
@@ -10277,6 +10600,10 @@
 <li><span id="t-offline-ai"></span><strong>Offline AI</strong>
 <ul>
 <li>asking about the medical PDFs — <a class="guide" href="Medical-READ-ME-FIRST.html#ask-an-ai-about-the-pdfs">Medicines › Ask an AI about the PDFs</a></li>
+</ul></li>
+<li><span id="t-offset"></span><strong>Offset</strong>
+<ul>
+<li>repeater setting — <a class="guide" href="USING-A-RADIO-GUIDE.html#4-working-through-a-repeater">Using a radio › 4. Working through a repeater</a></li>
 </ul></li>
 <li><span id="t-offset-and-tone-ctcss"></span><strong>Offset and tone (CTCSS)</strong> — <a class="guide" href="RADIO-GUIDE.html#repeaters--how-hams-get-range-from-a-handheld">Radio › Repeaters — how hams get range from a handheld</a></li>
 <li><span id="t-ohm-s-law"></span><strong>Ohm's law</strong> — <a class="guide" href="PRACTICAL-MATH-GUIDE.html#electricity-by-the-numbers">Practical math › Electricity by the numbers</a></li>
@@ -10496,6 +10823,10 @@
 <li>maps on an Android phone — <a class="guide" href="HOW-TO-VIEW-MAPS.html#android-phone-or-tablet">HOW-TO-VIEW-MAPS › Android phone or tablet</a></li>
 <li>maps on an iPhone — <a class="guide" href="HOW-TO-VIEW-MAPS.html#iphone-or-ipad">HOW-TO-VIEW-MAPS › iPhone or iPad</a></li>
 <li>offline maps on iPhone — <a class="guide" href="START-ON-ANY-DEVICE.html#iphone-and-ipad">Start on any device › iPhone and iPad</a></li>
+</ul></li>
+<li><span id="t-other-radio-gear"></span><strong>Other radio gear</strong>
+<ul>
+<li>weather, shortwave, CB, scanner, walkie-talkies — <a class="guide" href="USING-A-RADIO-GUIDE.html">Using a radio › 8. Other gear, briefly</a></li>
 </ul></li>
 <li><span id="t-out-of-area-contact"></span><strong>Out-of-area contact</strong> — <a class="guide" href="SIGNALS-MORSE-GUIDE.html#the-neighborhood-ok-help-plan">Signals &amp; Morse › The neighborhood OK/HELP plan</a></li>
 <li><span id="t-outbreak"></span><strong>Outbreak</strong>
@@ -11093,6 +11424,7 @@
 <li>drawing — <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/CAT87204740/farmbul1448rev1933.pdf#page=31" title="Farmstead Water Supply - Farmers Bulletin 1448 (USDA 1933).pdf — page 31">Pitcher pump, USDA FB 1448 p. 31</a></li>
 <li>only to about 20 ft — <a class="guide" href="WATER-WELLS-GUIDE.html#getting-water-up-by-hand">Wells &amp; pumps › Getting water up by hand</a></li>
 </ul></li>
+<li><span id="t-pl-tone"></span><strong>PL tone</strong> — see <a href="#t-tones-ctcss-dcs"><strong>Tones (CTCSS, DCS)</strong></a></li>
 <li><span id="t-placenta"></span><strong>Placenta</strong>
 <ul>
 <li>disposal — <a class="guide" href="SANITATION-GUIDE.html#sickroom-and-birth-waste">Sanitation › Sickroom and birth waste</a></li>
@@ -11534,6 +11866,10 @@
 <ul>
 <li>the lever you actually have — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#prevention-is-the-lever-you-actually-have">How antibiotics came to be › Prevention is the lever you actually have</a></li>
 </ul></li>
+<li><span id="t-primary-cells"></span><strong>Primary cells</strong>
+<ul>
+<li>cannot be recharged — <a class="guide" href="BATTERIES-GUIDE.html#never-recharge-a-non-rechargeable">Batteries › Never recharge a non-rechargeable</a></li>
+</ul></li>
 <li><span id="t-primary-sources"></span><strong>Primary sources</strong>
 <ul>
 <li>the original papers in this library — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#what-this-library-already-holds">How antibiotics came to be › What this library already holds</a></li>
@@ -11559,6 +11895,10 @@
 <ul>
 <li>choosing what to do first — <a class="guide" href="COMMUNITY-BARTER-GUIDE.html#meetings-and-fair-decisions">Community &amp; barter › Meetings and fair decisions</a></li>
 </ul></li>
+<li><span id="t-privacy-code"></span><strong>Privacy code</strong>
+<ul>
+<li>it is not privacy — <a class="guide" href="USING-A-RADIO-GUIDE.html#3-tones-ctcss-dcs-and-the-privacy-code-lie">Using a radio › 3. Tones: CTCSS, DCS and the "privacy code" lie</a></li>
+</ul></li>
 <li><span id="t-privy"></span><strong>Privy</strong> — see <a href="#t-latrines"><strong>Latrines</strong></a></li>
 <li><span id="t-pro-words"></span><strong>Pro-words</strong>
 <ul>
@@ -11569,6 +11909,15 @@
 <li>AR, K, BT, SK, AS — <a class="guide" href="SIGNALS-MORSE-GUIDE.html#morse-quick-reference-print-this">Signals &amp; Morse › Morse quick reference (print this)</a></li>
 </ul></li>
 <li><span id="t-producer-gas"></span><strong>Producer gas</strong> — see <a href="#t-wood-gas"><strong>Wood gas</strong></a></li>
+<li><span id="t-programming-a-radio"></span><strong>Programming a radio</strong>
+<ul>
+<li>from the keypad, no computer — <a class="guide" href="USING-A-RADIO-GUIDE.html#6-programming-with-no-computer">Using a radio › 6. Programming with no computer</a></li>
+<li>with a computer — <a class="guide" href="USING-A-RADIO-GUIDE.html">Using a radio › 5. Programming with a computer, while there is internet</a></li>
+</ul></li>
+<li><span id="t-programming-cable"></span><strong>Programming cable</strong>
+<ul>
+<li>and the counterfeit-cable problem — <a class="guide" href="USING-A-RADIO-GUIDE.html">Using a radio › 5. Programming with a computer, while there is internet</a></li>
+</ul></li>
 <li><span id="t-prolapse"></span><strong>Prolapse</strong>
 <ul>
 <li>hen — see <a href="#t-egg-bound-hen"><strong>Egg-bound hen</strong></a></li>
@@ -11763,7 +12112,10 @@
 <ul>
 <li>safe shutdown for a Raspberry Pi 4 — <a class="guide" href="AMMO-CAN-COMPUTER-GUIDE.html">ARK Vault (ammo-can computer) › Other ways to build it</a></li>
 </ul></li>
-<li><span id="t-push-to-talk-ptt"></span><strong>Push-to-talk (PTT)</strong> — <a class="guide" href="RADIO-GUIDE.html#3-how-radio-actually-works-the-60-second-version">Radio › 3. How radio actually works (the 60-second version)</a></li>
+<li><span id="t-push-to-talk-ptt"></span><strong>Push-to-talk (PTT)</strong> — <a class="guide" href="RADIO-GUIDE.html#3-how-radio-actually-works-the-60-second-version">Radio › 3. How radio actually works (the 60-second version)</a>
+<ul>
+<li>how to use it — <a class="guide" href="USING-A-RADIO-GUIDE.html#the-transmit-button-the-ptt">Using a radio › The transmit button (the PTT)</a></li>
+</ul></li>
 <li><span id="t-pushing"></span><strong>Pushing</strong>
 <ul>
 <li>only when she must — <a class="guide" href="CHILDBIRTH-CHILDREN-GUIDE.html#labor-and-birth-what-helpers-do">Childbirth &amp; kids › Labor and birth: what helpers do</a></li>
@@ -11919,22 +12271,46 @@
 <li>what to listen to locally — <a class="guide" href="ILLINOIS-VALLEY-START-HERE.html#radio-weather">Illinois Valley › Radio &amp; weather</a></li>
 </ul></li>
 <li><span id="t-radio-books-on-the-drive"></span><strong>Radio books on the drive</strong> — <a class="guide" href="RADIO-GUIDE.html#15-where-to-learn-more-offline-already-in-this-kit">Radio › 15. Where to learn more offline (already in this kit)</a></li>
+<li><span id="t-radio-care"></span><strong>Radio care</strong>
+<ul>
+<li>batteries, water, heat, connectors — <a class="guide" href="USING-A-RADIO-GUIDE.html#9-looking-after-radios">Using a radio › 9. Looking after radios</a></li>
+</ul></li>
+<li><span id="t-radio-check"></span><strong>Radio check</strong>
+<ul>
+<li>a permitted test call — <a class="guide" href="USING-A-RADIO-GUIDE.html#6-programming-with-no-computer">Using a radio › 6. Programming with no computer</a></li>
+</ul></li>
 <li><span id="t-radio-check-ins"></span><strong>Radio check-ins</strong>
 <ul>
 <li>FRS channel 3 — <a class="guide" href="HOME-DEFENSE-GUIDE.html#early-warning-with-no-grid">Home protection › Early warning with no grid</a></li>
 </ul></li>
+<li><span id="t-radio-controls"></span><strong>Radio controls</strong>
+<ul>
+<li>the six every radio has — <a class="guide" href="USING-A-RADIO-GUIDE.html#1-every-radio-has-the-same-six-controls">Using a radio › 1. Every radio has the same six controls</a></li>
+</ul></li>
 <li><span id="t-radio-dead-after-emp"></span><strong>Radio dead after EMP</strong>
 <ul>
 <li>check antenna input and power supply — <a class="guide" href="EMP-GUIDE.html#after-an-event-check-and-repair">EMP › After an event: check and repair</a></li>
+</ul></li>
+<li><span id="t-radio-etiquette"></span><strong>Radio etiquette</strong>
+<ul>
+<li>listen first, press, pause, speak — <a class="guide" href="USING-A-RADIO-GUIDE.html#the-transmit-button-the-ptt">Using a radio › The transmit button (the PTT)</a></li>
 </ul></li>
 <li><span id="t-radio-is-silent"></span><strong>Radio is silent</strong> — <a class="guide" href="NUCLEAR-FALLOUT-GUIDE.html#if-this-goes-wrong-in-the-shelter">Nuclear fallout › If this goes wrong in the shelter</a></li>
 <li><span id="t-radio-kit"></span><strong>Radio kit</strong>
 <ul>
 <li>shopping checklist — <a class="guide" href="RADIO-GUIDE.html#13-a-sensible-emergency-radio-kit-shopping-checklist">Radio › 13. A sensible emergency radio kit (shopping / checklist)</a></li>
 </ul></li>
+<li><span id="t-radio-manual"></span><strong>Radio manual</strong>
+<ul>
+<li>keep your own model's on the drive — <a class="guide" href="USING-A-RADIO-GUIDE.html">Using a radio › 2. A cheap handheld, button by button</a></li>
+</ul></li>
 <li><span id="t-radio-nets"></span><strong>Radio nets</strong>
 <ul>
 <li>weekly nets to listen to — <a class="guide" href="ILLINOIS-VALLEY-START-HERE.html#ham-radio-gmrs-frs--murs-club-websites-nov-2026--verify">Illinois Valley › Ham radio, GMRS, FRS / MURS (club websites, Nov 2026 — verify)</a></li>
+</ul></li>
+<li><span id="t-radio-problems"></span><strong>Radio problems</strong>
+<ul>
+<li>nothing heard, nobody hears me — <a class="guide" href="USING-A-RADIO-GUIDE.html#11-if-this-goes-wrong">Using a radio › 11. If this goes wrong</a></li>
 </ul></li>
 <li><span id="t-radio-range"></span><strong>Radio range</strong>
 <ul>
@@ -12170,6 +12546,26 @@
 <ul>
 <li>above the flood line — <a class="guide" href="FLOODS-STORMS-HEAT-GUIDE.html#rebuilding-higher">Floods, storms &amp; heat › Rebuilding higher</a></li>
 </ul></li>
+<li><span id="t-rebuilding-a-pack"></span><strong>Rebuilding a pack</strong>
+<ul>
+<li>where the line is — <a class="guide" href="BATTERIES-GUIDE.html#laptop-tool-and-e-bike-packs-what-is-inside-and-where-the-li">Batteries › Laptop, tool and e-bike packs: what is inside, and where the line is</a></li>
+</ul></li>
+<li><span id="t-receive-tone"></span><strong>Receive tone</strong>
+<ul>
+<li>leave it off on a shared channel — <a class="guide" href="USING-A-RADIO-GUIDE.html#3-tones-ctcss-dcs-and-the-privacy-code-lie">Using a radio › 3. Tones: CTCSS, DCS and the "privacy code" lie</a></li>
+</ul></li>
+<li><span id="t-rechargeable-alkaline"></span><strong>Rechargeable alkaline</strong>
+<ul>
+<li>only if it is marked — <a class="guide" href="BATTERIES-GUIDE.html#never-recharge-a-non-rechargeable">Batteries › Never recharge a non-rechargeable</a></li>
+</ul></li>
+<li><span id="t-rechargeable-batteries"></span><strong>Rechargeable batteries</strong>
+<ul>
+<li>AA and AAA (NiMH) — <a class="guide" href="BATTERIES-GUIDE.html">Batteries › Rechargeable AAs, and what they are not</a></li>
+</ul></li>
+<li><span id="t-recharging-throw-away-cells"></span><strong>Recharging throw-away cells</strong>
+<ul>
+<li>don't — <a class="guide" href="BATTERIES-GUIDE.html#never-recharge-a-non-rechargeable">Batteries › Never recharge a non-rechargeable</a></li>
+</ul></li>
 <li><span id="t-recipes"></span><strong>Recipes</strong>
 <ul>
 <li>mushrooms, old books — <a class="guide" href="MUSHROOM-GUIDE.html#cooking-drying-and-storing">Mushrooms › Cooking, drying and storing</a></li>
@@ -12317,6 +12713,7 @@
 <ul>
 <li>JCEC 145.490, Eight Dollar Mountain — <a class="guide" href="RADIO-GUIDE.html#2-in-the-illinois-valley">Radio › 2. In the Illinois Valley 🏔️</a></li>
 <li>how to set offset and tone — <a class="guide" href="RADIO-GUIDE.html#repeaters--how-hams-get-range-from-a-handheld">Radio › Repeaters — how hams get range from a handheld</a></li>
+<li>setting one up on your radio — <a class="guide" href="USING-A-RADIO-GUIDE.html#4-working-through-a-repeater">Using a radio › 4. Working through a repeater</a></li>
 </ul></li>
 <li><span id="t-repeater-ignores-you"></span><strong>Repeater ignores you</strong>
 <ul>
@@ -12325,6 +12722,10 @@
 <li><span id="t-repeaters"></span><strong>Repeaters</strong>
 <ul>
 <li>Eight Dollar Mtn 145.490 and others — <a class="guide" href="ILLINOIS-VALLEY-START-HERE.html#ham-radio-gmrs-frs--murs-club-websites-nov-2026--verify">Illinois Valley › Ham radio, GMRS, FRS / MURS (club websites, Nov 2026 — verify)</a></li>
+</ul></li>
+<li><span id="t-replacing-cells"></span><strong>Replacing cells</strong>
+<ul>
+<li>in a pack, and when not to — <a class="guide" href="BATTERIES-GUIDE.html#laptop-tool-and-e-bike-packs-what-is-inside-and-where-the-li">Batteries › Laptop, tool and e-bike packs: what is inside, and where the line is</a></li>
 </ul></li>
 <li><span id="t-replanting"></span><strong>Replanting</strong>
 <ul>
@@ -12359,6 +12760,10 @@
 <li><span id="t-reset-button"></span><strong>Reset button</strong> — see <a href="#t-thermal-protector"><strong>Thermal protector</strong></a></li>
 <li><span id="t-residual-magnetism"></span><strong>Residual magnetism</strong> — see <a href="#t-flashing-the-field"><strong>Flashing the field</strong></a></li>
 <li><span id="t-resistance"></span><strong>Resistance</strong> — see <a href="#t-antibiotic-resistance"><strong>Antibiotic resistance</strong></a></li>
+<li><span id="t-resistor-charger"></span><strong>Resistor charger</strong>
+<ul>
+<li>amps from Ohm's law — <a class="guide" href="BATTERIES-GUIDE.html">Batteries › Charging with no proper charger</a></li>
+</ul></li>
 <li><span id="t-resistor-color-code"></span><strong>Resistor color code</strong> — <a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html#electronics-repair-and-salvage">Make-do household › Electronics: repair and salvage</a>
 <ul>
 <li>chart — <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/NEETSModules/NEETS%20Module%2001%20-%20Introduction%20to%20Matter%20Energy%20and%20Direct%20Current.pdf#page=55" title="NEETS Module 01 - Matter Energy and Direct Current.pdf — page 55">Resistor color codes, NEETS 1 p. 55</a></li>
@@ -12383,10 +12788,19 @@
 <ul>
 <li>on a march — <a class="guide" href="BICYCLES-CARTS-GUIDE.html#travel-times-from-cave-junction">Bicycles &amp; carts › Travel times from Cave Junction</a></li>
 </ul></li>
+<li><span id="t-resting-voltage"></span><strong>Resting voltage</strong>
+<ul>
+<li>what good looks like, by type — <a class="guide" href="BATTERIES-GUIDE.html#testing-with-no-tester">Batteries › Testing with no tester</a></li>
+</ul></li>
 <li><span id="t-retting"></span><strong>Retting</strong>
 <ul>
 <li>flax and nettle — <a class="guide" href="CLOTHING-LEATHER-GUIDE.html#linen-nettle-and-native-fibers">Clothing &amp; leather › Linen, nettle and native fibers</a></li>
 </ul></li>
+<li><span id="t-reverse-charging"></span><strong>Reverse charging</strong>
+<ul>
+<li>a weak cell in a series pack — <a class="lib" target="_blank" rel="noopener" href="https://infohub.practicalaction.org/server/api/core/bitstreams/28e3aa71-19ea-4417-988f-c3450a884410/content#page=4" title="Practical Action - Batteries Technical Brief.pdf — page 4">📖 Practical Action, p. 4</a></li>
+</ul></li>
+<li><span id="t-reviving-a-battery"></span><strong>Reviving a battery</strong> — see <a href="#t-desulfating"><strong>Desulfating</strong></a></li>
 <li><span id="t-rewinding-a-motor"></span><strong>Rewinding a motor</strong> — <a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html#electric-motors-testing-and-repair">Engines › Electric motors: testing and repair</a></li>
 <li><span id="t-rhode-island-red"></span><strong>Rhode Island Red</strong>
 <ul>
@@ -12514,6 +12928,10 @@
 </ul></li>
 <li><span id="t-rodents"></span><strong>Rodents</strong> — see <a href="#t-rats"><strong>Rats</strong></a></li>
 <li><span id="t-roger"></span><strong>Roger</strong> — see <a href="#t-pro-words"><strong>Pro-words</strong></a></li>
+<li><span id="t-roger-beep"></span><strong>Roger beep</strong>
+<ul>
+<li>turning it off — <a class="guide" href="USING-A-RADIO-GUIDE.html">Using a radio › 2. A cheap handheld, button by button</a></li>
+</ul></li>
 <li><span id="t-roguing"></span><strong>Roguing</strong>
 <ul>
 <li>pulling odd plants — <a class="guide" href="SEED-BANK-GUIDE.html#which-of-your-seeds-cross-and-what-to-do">Seed bank › Which of your seeds cross — and what to do</a></li>
@@ -12883,6 +13301,7 @@
 <li><span id="t-same-code"></span><strong>SAME code</strong>
 <ul>
 <li>Josephine County 041033 — <a class="guide" href="ILLINOIS-VALLEY-START-HERE.html#noaa-weather-radio">Illinois Valley › NOAA Weather Radio</a> · <a class="guide" href="RADIO-GUIDE.html#2-in-the-illinois-valley">Radio › 2. In the Illinois Valley 🏔️</a> · <a class="guide" href="SIGNALS-MORSE-GUIDE.html#listening-when-you-can-t-transmit">Signals &amp; Morse › Listening when you can't transmit</a></li>
+<li>programming your county — <a class="guide" href="USING-A-RADIO-GUIDE.html#a-noaa-weather-radio">Using a radio › A NOAA weather radio</a></li>
 </ul></li>
 <li><span id="t-sand"></span><strong>Sand</strong>
 <ul>
@@ -12996,6 +13415,10 @@
 <li><span id="t-scaly-leg"></span><strong>Scaly leg</strong>
 <ul>
 <li>mites — <a class="guide" href="CHICKENS-GUIDE.html#health-with-no-vet">Chickens › Health with no vet</a></li>
+</ul></li>
+<li><span id="t-scanner"></span><strong>Scanner</strong>
+<ul>
+<li>what it can and cannot hear — <a class="guide" href="USING-A-RADIO-GUIDE.html#a-scanner">Using a radio › A scanner</a></li>
 </ul></li>
 <li><span id="t-scarf-welding"></span><strong>Scarf (welding)</strong>
 <ul>
@@ -13161,6 +13584,10 @@
 <ul>
 <li>Oregon law — <a class="guide" href="HOME-DEFENSE-GUIDE.html#oregon-law-on-force-in-defense-of-people-and-property">Home protection › Oregon law on force in defense of people and property</a></li>
 </ul></li>
+<li><span id="t-self-discharge"></span><strong>Self-discharge</strong>
+<ul>
+<li>how fast each type goes flat — <a class="guide" href="BATTERIES-GUIDE.html">Batteries › Rechargeable AAs, and what they are not</a></li>
+</ul></li>
 <li><span id="t-semaphore"></span><strong>Semaphore</strong>
 <ul>
 <li>alphabet chart — <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/bluejacketsmanua0000norm/bluejacketsmanua0000norm.pdf#page=445" title="The Bluejackets Manual 5th Edition - Navy Signals and Semaphore (US Naval Institute 1917).pdf — page 445">Semaphore alphabet, Bluejackets p. 445</a></li>
@@ -13196,6 +13623,10 @@
 <li><span id="t-serial-numbers"></span><strong>Serial numbers</strong>
 <ul>
 <li>property list — <a class="guide" href="HOME-DEFENSE-GUIDE.html#protecting-food-water-fuel-tools-and-livestock">Home protection › Protecting food, water, fuel, tools and livestock</a></li>
+</ul></li>
+<li><span id="t-series-and-parallel"></span><strong>Series and parallel</strong>
+<ul>
+<li>volts and amp-hours — <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/NEETSModules/NEETS%20Module%2001%20-%20Introduction%20to%20Matter%20Energy%20and%20Direct%20Current.pdf#page=90" title="NEETS Module 01 - Matter Energy and Direct Current.pdf — page 90">NEETS 1, p. 90</a></li>
 </ul></li>
 <li><span id="t-serpentine"></span><strong>Serpentine</strong>
 <ul>
@@ -13379,6 +13810,7 @@
 </ul></li>
 <li><span id="t-shelf-life"></span><strong>Shelf life</strong>
 <ul>
+<li>by type — <a class="guide" href="BATTERIES-GUIDE.html#small-batteries-aa-to-9-v-and-button-cells">Batteries › Small batteries: AA to 9 V, and button cells</a></li>
 <li>sealed wheat, rice, beans, oats, milk — <a class="guide" href="FOOD-SECURITY-GUIDE.html#storing-it-for-years">Food when scarce › Storing it for years</a></li>
 </ul></li>
 <li><span id="t-shelf-life-of-fuel"></span><strong>Shelf life of fuel</strong> — see <a href="#t-storing-fuel"><strong>Storing fuel</strong></a></li>
@@ -13457,11 +13889,16 @@
 </ul></li>
 <li><span id="t-short-circuit"></span><strong>Short circuit</strong>
 <ul>
+<li>a wrench across the posts — <a class="guide" href="BATTERIES-GUIDE.html#dangers">Batteries › Dangers</a></li>
 <li>battery — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#battery-safety">Off-grid power › Battery safety</a></li>
 </ul></li>
 <li><span id="t-short-splice"></span><strong>Short splice</strong> — <a class="guide" href="KNOTS-ROPE-GUIDE.html">Knots &amp; rope › Short splice</a></li>
 <li><span id="t-short-circuit-current"></span><strong>Short-circuit current</strong> — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#salvaging-and-testing-panels">Off-grid power › Salvaging and testing panels</a></li>
 <li><span id="t-short-cycling-pump"></span><strong>Short-cycling pump</strong> — see <a href="#t-pump-cycling-on-and-off"><strong>Pump cycling on and off</strong></a></li>
+<li><span id="t-shortwave"></span><strong>Shortwave</strong>
+<ul>
+<li>tuning, listening times, a long wire — <a class="guide" href="USING-A-RADIO-GUIDE.html#a-shortwave-receiver">Using a radio › A shortwave receiver</a></li>
+</ul></li>
 <li><span id="t-shortwave-radio"></span><strong>Shortwave radio</strong>
 <ul>
 <li>hearing outside news — <a class="guide" href="RADIO-GUIDE.html#7-shortwave-swl-hearing-the-outside-world">Radio › 7. Shortwave (SWL) — hearing the outside world</a></li>
@@ -13564,6 +14001,7 @@
 <li><span id="t-simplex"></span><strong>Simplex</strong>
 <ul>
 <li>radio to radio — <a class="guide" href="RADIO-GUIDE.html#simplex-radio-to-radio-no-repeater">Radio › Simplex (radio-to-radio, no repeater)</a></li>
+<li>radio to radio, same frequency — <a class="guide" href="USING-A-RADIO-GUIDE.html#4-working-through-a-repeater">Using a radio › 4. Working through a repeater</a></li>
 </ul></li>
 <li><span id="t-sinew"></span><strong>Sinew</strong>
 <ul>
@@ -13637,6 +14075,7 @@
 <li><span id="t-skip"></span><strong>Skip</strong> — <a class="guide" href="RADIO-GUIDE.html#3-how-radio-actually-works-the-60-second-version">Radio › 3. How radio actually works (the 60-second version)</a></li>
 <li><span id="t-skip-zone"></span><strong>Skip zone</strong>
 <ul>
+<li>a near station silent, a far one loud — <a class="guide" href="USING-A-RADIO-GUIDE.html#a-shortwave-receiver">Using a radio › A shortwave receiver</a></li>
 <li>nearby station silent — <a class="guide" href="RADIO-GUIDE.html#3-how-radio-actually-works-the-60-second-version">Radio › 3. How radio actually works (the 60-second version)</a></li>
 </ul></li>
 <li><span id="t-skipper-flies"></span><strong>Skipper flies</strong>
@@ -13988,6 +14427,10 @@
 <ul>
 <li>how to — <a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html#electronics-repair-and-salvage">Make-do household › Electronics: repair and salvage</a></li>
 </ul></li>
+<li><span id="t-soldering-a-battery"></span><strong>Soldering a battery</strong>
+<ul>
+<li>never onto a lithium cell — <a class="guide" href="BATTERIES-GUIDE.html#laptop-tool-and-e-bike-packs-what-is-inside-and-where-the-li">Batteries › Laptop, tool and e-bike packs: what is inside, and where the line is</a></li>
+</ul></li>
 <li><span id="t-soles"></span><strong>Soles</strong>
 <ul>
 <li>half-soling, pegged soles — <a class="guide" href="CLOTHING-LEATHER-GUIDE.html#boots-shoes-and-moccasins">Clothing &amp; leather › Boots, shoes and moccasins</a></li>
@@ -14073,6 +14516,10 @@
 <li><span id="t-spare-motors"></span><strong>Spare motors</strong>
 <ul>
 <li>storing — <a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html#electric-motors-testing-and-repair">Engines › Electric motors: testing and repair</a></li>
+</ul></li>
+<li><span id="t-spare-radio"></span><strong>Spare radio</strong>
+<ul>
+<li>in a shielded box — <a class="guide" href="USING-A-RADIO-GUIDE.html#9-looking-after-radios">Using a radio › 9. Looking after radios</a></li>
 </ul></li>
 <li><span id="t-spares"></span><strong>Spares</strong>
 <ul>
@@ -14189,6 +14636,10 @@
 <ul>
 <li>putting out small fires — <a class="guide" href="WILDFIRE-GUIDE.html#small-fires-spot-fires-and-wet-sacks">Wildfire › Small fires, spot fires and wet sacks</a></li>
 </ul></li>
+<li><span id="t-spot-welding"></span><strong>Spot welding</strong>
+<ul>
+<li>why pack tabs are welded — see <a href="#t-soldering-a-battery"><strong>Soldering a battery</strong></a></li>
+</ul></li>
 <li><span id="t-spotting"></span><strong>Spotting</strong>
 <ul>
 <li>how far embers fly — <a class="guide" href="WILDFIRE-GUIDE.html#smoke-columns-spotting-and-flame-length">Wildfire › Smoke columns, spotting and flame length</a></li>
@@ -14265,6 +14716,12 @@
 <li><span id="t-squash-family"></span><strong>Squash family</strong>
 <ul>
 <li>which crops belong — <a class="guide" href="SEED-BANK-GUIDE.html#what-s-in-the-kit-by-family">Seed bank › What's in the kit, by family</a></li>
+</ul></li>
+<li><span id="t-squelch"></span><strong>Squelch</strong>
+<ul>
+<li>how the circuit works — <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/neetsmodules_202003/NEETS%20MOD%2017%20NAVEDTRA%2014189A.pdf#page=72" title="NEETS Module 17 - Radio-Frequency Communications Principles.pdf — page 72">NEETS 17, p. 72</a></li>
+<li>too tight: calls go unheard — <a class="guide" href="USING-A-RADIO-GUIDE.html#squelch-the-control-nobody-explains">Using a radio › Squelch: the control nobody explains</a></li>
+<li>what it does and how to set it — <a class="guide" href="USING-A-RADIO-GUIDE.html#squelch-the-control-nobody-explains">Using a radio › Squelch: the control nobody explains</a></li>
 </ul></li>
 <li><span id="t-squirrel-pole"></span><strong>Squirrel pole</strong>
 <ul>
@@ -14453,6 +14910,10 @@
 <li>drawing — <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/harnessmaking00hasl/harnessmaking00hasl.pdf#page=29" title="Harness Making (Hasluck 1904).pdf — page 29">Home-made clamp, Hasluck p. 29</a></li>
 <li>making one — <a class="guide" href="CLOTHING-LEATHER-GUIDE.html">Clothing &amp; leather › Tools and thread</a></li>
 </ul></li>
+<li><span id="t-stocking-batteries"></span><strong>Stocking batteries</strong>
+<ul>
+<li>what to buy now — <a class="guide" href="BATTERIES-GUIDE.html">Batteries › Getting the most out of what you have</a></li>
+</ul></li>
 <li><span id="t-stockpile"></span><strong>Stockpile</strong>
 <ul>
 <li>what to keep for making medicines — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Making a supply last and storing medicines</a></li>
@@ -14486,6 +14947,10 @@
 <li><span id="t-storage-times"></span><strong>Storage times</strong>
 <ul>
 <li>how long crops keep — <a class="guide" href="ROOT-CELLAR-GUIDE.html#what-each-crop-needs">Root cellars › What each crop needs</a></li>
+</ul></li>
+<li><span id="t-storing-a-lithium-pack"></span><strong>Storing a lithium pack</strong>
+<ul>
+<li>part charged, not full — <a class="guide" href="BATTERIES-GUIDE.html">Batteries › Tool batteries: keeping a drill alive for years</a></li>
 </ul></li>
 <li><span id="t-storing-a-vehicle"></span><strong>Storing a vehicle</strong>
 <ul>
@@ -14704,7 +15169,10 @@
 <ul>
 <li>Domagk and Prontosil, 1932 to 1935 — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#19321937-the-sulfa-drugs-and-the-price-of-skipping-the-safety-test">How antibiotics came to be › 1932–1937: the sulfa drugs, and the price of skipping the safety test</a></li>
 </ul></li>
-<li><span id="t-sulfation"></span><strong>Sulfation</strong> — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#keeping-lead-acid-alive">Off-grid power › Keeping lead-acid alive</a></li>
+<li><span id="t-sulfation"></span><strong>Sulfation</strong> — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#keeping-lead-acid-alive">Off-grid power › Keeping lead-acid alive</a>
+<ul>
+<li>what causes it — <a class="guide" href="BATTERIES-GUIDE.html">Batteries › Lead-acid away from the solar bank</a></li>
+</ul></li>
 <li><span id="t-sulfite-dips"></span><strong>Sulfite dips</strong>
 <ul>
 <li>asthma — <a class="guide" href="PRESERVING-FOOD-GUIDE.html#drying-in-our-dry-summers">Preserving food › Drying in our dry summers</a></li>
@@ -14761,6 +15229,10 @@
 <ul>
 <li>on contour — <a class="guide" href="GROWING-SOIL-GUIDE.html#swales-on-contour">Building soil &amp; permaculture › Swales on contour</a></li>
 </ul></li>
+<li><span id="t-swallowed-battery"></span><strong>Swallowed battery</strong>
+<ul>
+<li>a two-hour emergency — <a class="guide" href="BATTERIES-GUIDE.html#dangers">Batteries › Dangers</a></li>
+</ul></li>
 <li><span id="t-swallowed-poison"></span><strong>Swallowed poison</strong> — see <a href="#t-poisoning"><strong>Poisoning</strong></a></li>
 <li><span id="t-swarm-cells"></span><strong>Swarm cells</strong>
 <ul>
@@ -14806,6 +15278,7 @@
 </ul></li>
 <li><span id="t-swollen-battery"></span><strong>Swollen battery</strong>
 <ul>
+<li>never charge it — <a class="guide" href="BATTERIES-GUIDE.html#laptop-tool-and-e-bike-packs-what-is-inside-and-where-the-li">Batteries › Laptop, tool and e-bike packs: what is inside, and where the line is</a></li>
 <li>stop using it — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#lithium-lifepo4-and-salvaged-packs">Off-grid power › Lithium, LiFePO4 and salvaged packs</a></li>
 </ul></li>
 <li><span id="t-swollen-face"></span><strong>Swollen face</strong>
@@ -14830,6 +15303,10 @@
 <li>goats (bloat) — <a class="guide" href="GOATS-GUIDE.html#goat-health-with-no-vet">Goats › Goat health with no vet</a></li>
 </ul></li>
 <li><span id="t-swollen-neck"></span><strong>Swollen neck</strong> — see <a href="#t-goitre"><strong>Goitre</strong></a></li>
+<li><span id="t-swr"></span><strong>SWR</strong>
+<ul>
+<li>checking a CB antenna — <a class="guide" href="USING-A-RADIO-GUIDE.html#a-cb">Using a radio › A CB</a></li>
+</ul></li>
 <li><span id="t-synchronizing"></span><strong>Synchronizing</strong>
 <ul>
 <li>generators in step — <a class="guide" href="POWER-GRID-GUIDE.html">Power grid › AC, 60 cycles and staying in step</a></li>
@@ -14874,6 +15351,10 @@
 <li><span id="t-takilma-soils"></span><strong>Takilma soils</strong>
 <ul>
 <li>droughty terraces — <a class="guide" href="GROWING-SOIL-GUIDE.html">Building soil &amp; permaculture › Fitting it to your land</a></li>
+</ul></li>
+<li><span id="t-talk-around"></span><strong>Talk-around</strong>
+<ul>
+<li>and why it hides itself — <a class="guide" href="USING-A-RADIO-GUIDE.html#4-working-through-a-repeater">Using a radio › 4. Working through a repeater</a></li>
 </ul></li>
 <li><span id="t-tallow"></span><strong>Tallow</strong> — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#salt-sweeteners-and-fat">Food from scratch › Salt, 🍯 sweeteners and 🥓 fat</a>
 <ul>
@@ -15040,6 +15521,10 @@
 <ul>
 <li>phone call and AM radio — <a class="guide" href="EMP-GUIDE.html#faraday-containers-building-one-that-works">EMP › Faraday containers: building one that works</a></li>
 </ul></li>
+<li><span id="t-testing-batteries"></span><strong>Testing batteries</strong>
+<ul>
+<li>with a cheap meter — <a class="guide" href="BATTERIES-GUIDE.html#testing-with-no-tester">Batteries › Testing with no tester</a></li>
+</ul></li>
 <li><span id="t-testing-fuel"></span><strong>Testing fuel</strong>
 <ul>
 <li>jar test — <a class="guide" href="FUEL-GUIDE.html#is-this-fuel-still-good">Fuel › Is this fuel still good?</a></li>
@@ -15090,7 +15575,10 @@
 <ul>
 <li>reset button — <a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html#electric-motors-testing-and-repair">Engines › Electric motors: testing and repair</a></li>
 </ul></li>
-<li><span id="t-thermal-runaway"></span><strong>Thermal runaway</strong> — see <a href="#t-battery-fire"><strong>Battery fire</strong></a></li>
+<li><span id="t-thermal-runaway"></span><strong>Thermal runaway</strong> — see <a href="#t-battery-fire"><strong>Battery fire</strong></a>
+<ul>
+<li>one cell sets off the next — <a class="guide" href="BATTERIES-GUIDE.html#dangers">Batteries › Dangers</a></li>
+</ul></li>
 <li><span id="t-thermoelectric-generator"></span><strong>Thermoelectric generator</strong>
 <ul>
 <li>5 V USB and 12 V charging — <a class="guide" href="HEAT-INTO-POWER-GUIDE.html#getting-usable-5-v-and-12-v-out-of-it">Heat into power › Getting usable 5 V and 12 V out of it</a></li>
@@ -15153,6 +15641,7 @@
 <ul>
 <li>stomping on a tarp — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#flour-from-grain">Food from scratch › Flour from grain</a></li>
 </ul></li>
+<li><span id="t-threshold-squelch"></span><strong>Threshold squelch</strong> — <a class="guide" href="USING-A-RADIO-GUIDE.html#squelch-the-control-nobody-explains">Using a radio › Squelch: the control nobody explains</a></li>
 <li><span id="t-thrush"></span><strong>Thrush</strong>
 <ul>
 <li>black, stinking frog — <a class="guide" href="HORSE-GUIDE.html#hoof-care-and-shoeing">Horses › Hoof care and shoeing</a></li>
@@ -15271,6 +15760,15 @@
 <ul>
 <li>hens per tom, saddles, toenails — <a class="guide" href="TURKEYS-GUIDE.html#toms-mating-and-keeping-the-line-going">Turkeys › Toms, mating and keeping the line going</a></li>
 </ul></li>
+<li><span id="t-tone-tables"></span><strong>Tone tables</strong>
+<ul>
+<li>all 32 CTCSS tones and the DCS codes — <a class="lib pic" target="_blank" rel="noopener" href="https://portal.ct.gov/-/media/demhs/_docs/_committees-and-working-groups/communications/plans/nationalinteropopsguidepdf.pdf#page=68" title="DHS National Interoperability Field Operations Guide v1-6-1 (2016).pdf — page 68">DHS field guide, p. 68</a></li>
+</ul></li>
+<li><span id="t-tones-ctcss-dcs"></span><strong>Tones (CTCSS, DCS)</strong>
+<ul>
+<li>photos and detail — <a class="wiki" href="https://en.wikipedia.org/wiki/Continuous_Tone-Coded_Squelch_System" data-title="Continuous_Tone-Coded_Squelch_System" target="_blank" rel="noopener" title="Wikipedia: Continuous Tone-Coded Squelch System (offline copy with photos when opened through the Library Assistant)">photos</a></li>
+<li>what they really do — <a class="guide" href="USING-A-RADIO-GUIDE.html#3-tones-ctcss-dcs-and-the-privacy-code-lie">Using a radio › 3. Tones: CTCSS, DCS and the "privacy code" lie</a></li>
+</ul></li>
 <li><span id="t-tongs"></span><strong>Tongs</strong>
 <ul>
 <li>first tools — <a class="guide" href="BLACKSMITHING-GUIDE.html#a-simple-forge-and-anvil">Blacksmithing › A simple forge and anvil</a></li>
@@ -15288,6 +15786,10 @@
 <ul>
 <li>answers take minutes — <a class="guide" href="START-ON-ANY-DEVICE.html#if-something-goes-wrong">Start on any device › If something goes wrong</a></li>
 <li>pick a smaller AI — <a class="guide" href="START-ON-ANY-DEVICE.html#which-ai-will-i-get">Start on any device › Which AI will I get?</a></li>
+</ul></li>
+<li><span id="t-tool-batteries"></span><strong>Tool batteries</strong>
+<ul>
+<li>keeping a drill alive — <a class="guide" href="BATTERIES-GUIDE.html">Batteries › Tool batteries: keeping a drill alive for years</a></li>
 </ul></li>
 <li><span id="t-tool-handles"></span><strong>Tool handles</strong>
 <ul>
@@ -15394,6 +15896,7 @@
 <li>deadliest farm machine — <a class="lib" target="_blank" rel="noopener" href="https://stacks.cdc.gov/view/cdc/11121/cdc_11121_DS1.pdf#page=18" title="TRAC-SAFE Reducing Injuries and Deaths from Tractor Overturns (NIOSH 96-108 1996).pdf — page 18">📖 NIOSH TRAC-SAFE, p. 18</a></li>
 <li>rollovers — <a class="guide" href="VEHICLES-EQUIPMENT-GUIDE.html#tractor-safety-rollovers-pto-runovers-and-riders">Vehicles, tractors &amp; equipment › Tractor safety: rollovers, PTO, runovers and riders</a></li>
 </ul></li>
+<li><span id="t-tractor-battery"></span><strong>Tractor battery</strong> — see <a href="#t-car-battery"><strong>Car battery</strong></a></li>
 <li><span id="t-trade-disputes"></span><strong>Trade disputes</strong>
 <ul>
 <li>avoiding them — <a class="guide" href="COMMUNITY-BARTER-GUIDE.html#barter-and-fair-trade">Community &amp; barter › Barter and fair trade</a></li>
@@ -15451,6 +15954,14 @@
 <li><span id="t-transmission-lines"></span><strong>Transmission lines</strong>
 <ul>
 <li>why such high voltage — <a class="guide" href="POWER-GRID-GUIDE.html">Power grid › From power plant to plug</a></li>
+</ul></li>
+<li><span id="t-transmit-power"></span><strong>Transmit power</strong>
+<ul>
+<li>high and low, and emergencies — <a class="guide" href="USING-A-RADIO-GUIDE.html#power-high-or-low">Using a radio › Power: high or low</a></li>
+</ul></li>
+<li><span id="t-transmit-tone"></span><strong>Transmit tone</strong>
+<ul>
+<li>setting it for a repeater — <a class="guide" href="USING-A-RADIO-GUIDE.html#3-tones-ctcss-dcs-and-the-privacy-code-lie">Using a radio › 3. Tones: CTCSS, DCS and the "privacy code" lie</a></li>
 </ul></li>
 <li><span id="t-transplants"></span><strong>Transplants</strong> — see <a href="#t-starting-seeds-indoors"><strong>Starting seeds indoors</strong></a></li>
 <li><span id="t-trap-boards"></span><strong>Trap boards</strong>
@@ -15561,6 +16072,10 @@
 <li>bear and cougar jerky — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#jerky">Food from scratch › Jerky</a></li>
 <li>bear and cougar meat — <a class="guide" href="PRESERVING-FOOD-GUIDE.html#jerky-and-pemmican">Preserving food › Jerky and pemmican</a></li>
 <li>cook pork to 170 °F; never taste raw sausage — <a class="guide" href="PIGS-GUIDE.html#keeping-pigs-and-people-safe">Pigs › Keeping pigs and people safe</a></li>
+</ul></li>
+<li><span id="t-trickle-charging"></span><strong>Trickle charging</strong>
+<ul>
+<li>a small panel on a parked vehicle — <a class="guide" href="BATTERIES-GUIDE.html">Batteries › Charging with no proper charger</a></li>
 </ul></li>
 <li><span id="t-trickling-filter"></span><strong>Trickling filter</strong> — <a class="guide" href="TOWN-WATER-SEWER-GUIDE.html">Town water &amp; sewer › The treatment plant</a></li>
 <li><span id="t-trip-plan"></span><strong>Trip plan</strong>
@@ -15682,6 +16197,7 @@
 <ul>
 <li>channel, mode, privacy code — <a class="guide" href="RADIO-GUIDE.html#12-if-this-goes-wrong">Radio › 12. If this goes wrong</a></li>
 </ul></li>
+<li><span id="t-two-real-handhelds-every-control-named"></span><strong>Two real handhelds, every control named</strong> — <a class="lib pic" target="_blank" rel="noopener" href="https://nifc.gov/sites/default/files/NIICD/docs/Printable%20NIRSC%20Basic%20Wildland%20Fire%20Radio%20Training.pdf#page=13" title="NIFC NIRSC Basic Radio Operation Training (2021).pdf — page 13">NIRSC, p. 13</a></li>
 <li><span id="t-two-weeks-ready"></span><strong>Two weeks ready</strong>
 <ul>
 <li>why two weeks — <a class="guide" href="WHAT-TO-EXPECT-GUIDE.html#what-every-scenario-has-in-common">What to expect › What every scenario has in common</a></li>
@@ -15952,6 +16468,10 @@
 <ul>
 <li>winter sun too weak — <a class="guide" href="FOOD-SECURITY-GUIDE.html#hunger-diseases-spot-them-prevent-them">Food when scarce › Hunger diseases: spot them, prevent them</a></li>
 </ul></li>
+<li><span id="t-voice-prompts"></span><strong>Voice prompts</strong>
+<ul>
+<li>turning them off — <a class="guide" href="USING-A-RADIO-GUIDE.html">Using a radio › 2. A cheap handheld, button by button</a></li>
+</ul></li>
 <li><span id="t-volcanic-ash"></span><strong>Volcanic ash</strong>
 <ul>
 <li>photos — <a class="wiki" href="https://en.wikipedia.org/wiki/Volcanic_ash" data-title="Volcanic_ash" target="_blank" rel="noopener" title="Wikipedia: Volcanic ash (offline copy with photos when opened through the Library Assistant)">photos</a></li>
@@ -15974,9 +16494,18 @@
 <ul>
 <li>formula — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#wiring-fuses-and-grounding">Off-grid power › Wiring, fuses and grounding</a></li>
 </ul></li>
+<li><span id="t-voltage-under-load"></span><strong>Voltage under load</strong>
+<ul>
+<li>why resting volts lie — <a class="guide" href="BATTERIES-GUIDE.html#testing-with-no-tester">Batteries › Testing with no tester</a></li>
+</ul></li>
+<li><span id="t-volts-per-cell"></span><strong>Volts per cell</strong>
+<ul>
+<li>every chemistry — <a class="guide" href="BATTERIES-GUIDE.html#every-kind-of-battery-compared">Batteries › Every kind of battery, compared</a></li>
+</ul></li>
 <li><span id="t-volume"></span><strong>Volume</strong>
 <ul>
 <li>box, cylinder, cone — <a class="guide" href="PRACTICAL-MATH-GUIDE.html#volume-tanks-wells-piles-bins-and-woodpiles">Practical math › Volume: tanks, wells, piles, bins and woodpiles</a></li>
+<li>setting it against the hiss — <a class="guide" href="USING-A-RADIO-GUIDE.html#onoff-and-volume">Using a radio › On/off and volume</a></li>
 </ul></li>
 <li><span id="t-volva"></span><strong>Volva</strong>
 <ul>
@@ -16268,7 +16797,10 @@
 <ul>
 <li>why height gives pressure — <a class="guide" href="TOWN-WATER-SEWER-GUIDE.html">Town water &amp; sewer › Tanks on the hill, pumps and pressure</a></li>
 </ul></li>
-<li><span id="t-water-treatment"></span><strong>Water treatment</strong> — see <a href="#t-water-purification"><strong>Water purification</strong></a></li>
+<li><span id="t-water-treatment"></span><strong>Water treatment</strong> — see <a href="#t-water-purification"><strong>Water purification</strong></a>
+<ul>
+<li>the 1920 method for a sulfated battery — <a class="lib" target="_blank" rel="noopener" href="https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular92.pdf#page=54" title="Operation and Care of Vehicle-Type Storage Batteries (Bureau of Standards Circular 92 1920).pdf — page 54">📖 Circular 92, p. 54</a></li>
+</ul></li>
 <li><span id="t-water-treatment-plant"></span><strong>Water treatment plant</strong>
 <ul>
 <li>the steps — <a class="guide" href="TOWN-WATER-SEWER-GUIDE.html">Town water &amp; sewer › Treatment, step by step</a></li>
@@ -16359,6 +16891,10 @@
 <li><span id="t-waypoints"></span><strong>Waypoints</strong>
 <ul>
 <li>mesh radio — <a class="guide" href="MESH-RADIO-GUIDE.html#6-sending-messages-and-positions">Mesh radio (Meshtastic) › 6. Sending messages and positions</a></li>
+</ul></li>
+<li><span id="t-weak-cells"></span><strong>Weak cells</strong>
+<ul>
+<li>moving them to lighter work — <a class="guide" href="BATTERIES-GUIDE.html#small-batteries-aa-to-9-v-and-button-cells">Batteries › Small batteries: AA to 9 V, and button cells</a></li>
 </ul></li>
 <li><span id="t-weaning"></span><strong>Weaning</strong>
 <ul>
@@ -16632,6 +17168,7 @@
 <li>feeding pigs (boil it) — <a class="guide" href="PIGS-GUIDE.html#garbage-skim-milk-and-whey-cook-it-first">Pigs › Garbage, skim milk and whey: cook it first</a></li>
 <li>ricotta and brown cheese — <a class="guide" href="DAIRY-GUIDE.html#whey-and-buttermilk-using-everything">Milk, butter &amp; cheese › Whey and buttermilk: using everything</a></li>
 </ul></li>
+<li><span id="t-which-battery-for-which-job"></span><strong>Which battery for which job</strong> — <a class="guide" href="BATTERIES-GUIDE.html">Batteries › Getting the most out of what you have</a></li>
 <li><span id="t-which-radio-to-use"></span><strong>Which radio to use</strong>
 <ul>
 <li>family, town, long distance, news — <a class="guide" href="RADIO-GUIDE.html#1-the-quick-version-what-to-grab-and-what-to-know">Radio › 1. The quick version — what to grab and what to know</a></li>
@@ -16864,6 +17401,10 @@
 <ul>
 <li>curing and storing — <a class="guide" href="ROOT-CELLAR-GUIDE.html#what-each-crop-needs">Root cellars › What each crop needs</a></li>
 </ul></li>
+<li><span id="t-winter-storage"></span><strong>Winter storage</strong>
+<ul>
+<li>a battery that overwinters — <a class="guide" href="BATTERIES-GUIDE.html">Batteries › Lead-acid away from the solar bank</a></li>
+</ul></li>
 <li><span id="t-winter-stores"></span><strong>Winter stores</strong>
 <ul>
 <li>how much honey to leave — <a class="guide" href="BEES-GUIDE.html#wintering-through-wet-winters">Bees › Wintering through wet winters</a></li>
@@ -17012,6 +17553,7 @@
 <li>sharing it out — <a class="guide" href="COMMUNITY-BARTER-GUIDE.html#sharing-the-work">Community &amp; barter › Sharing the work</a></li>
 </ul></li>
 <li><span id="t-workbench"></span><strong>Workbench</strong> — <a class="guide" href="WOODWORKING-GUIDE.html">Woodworking › Things worth making</a></li>
+<li><span id="t-working-a-radio"></span><strong>Working a radio</strong> — see <a href="#t-radio-controls"><strong>Radio controls</strong></a></li>
 <li><span id="t-worm-bin"></span><strong>Worm bin</strong> — <a class="guide" href="SANITATION-GUIDE.html#composting-food-yard-waste-and-manure">Sanitation › Composting food, yard waste and manure</a></li>
 <li><span id="t-worm-eggs"></span><strong>Worm eggs</strong>
 <ul>
@@ -17109,6 +17651,10 @@
 <li><span id="t-zinc"></span><strong>Zinc</strong>
 <ul>
 <li>for diarrhea — <a class="guide" href="CHILDBIRTH-CHILDREN-GUIDE.html#sick-children-under-5-fever-breathing-diarrhea-measles-worms">Childbirth &amp; kids › Sick children under 5: fever, breathing, diarrhea, measles, worms</a></li>
+</ul></li>
+<li><span id="t-zinc-carbon-batteries"></span><strong>Zinc-carbon batteries</strong>
+<ul>
+<li>"heavy duty" cells — <a class="guide" href="BATTERIES-GUIDE.html#every-kind-of-battery-compared">Batteries › Every kind of battery, compared</a></li>
 </ul></li>
 </ul>
 <nav class="guidenav"><div class="prev"><a class="guide" href="EMERGENCY-FINDER.html"><small>← Previous</small>🆘 Emergency finder</a></div><div class="up"><a class="guide" href="../#tools:start"><small>All guides in</small>🧭 Start here</a></div><div class="next"><a class="guide" href="ILLINOIS-VALLEY-START-HERE.html"><small>Next →</small>Illinois Valley quick reference</a></div></nav></div><a class="totop" href="#letters" aria-label="Back to the letters">↑ A–Z</a></body></html>

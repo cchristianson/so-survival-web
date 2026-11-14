@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="500" viewBox="0 0 600 500" font-family="Arial, Helvetica, sans-serif">
+  <title>What squelch does: the same three signals with the squelch line set too loose, set right, and set too tight</title>
+  <rect width="600" height="500" fill="#ffffff"/>
+
+  <text x="300" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1d2326">Squelch is a gate set by HEIGHT</text>
+  <text x="300" y="48" text-anchor="middle" font-size="13" fill="#444">Anything quieter than the line is silenced. The same three signals, three settings:</text>
+
+  <!-- ============ panel 1: too loose ============ -->
+  <g>
+    <text x="24" y="86" font-size="14" font-weight="bold" fill="#1d2326">Squelch TOO LOOSE (turned down)</text>
+    <rect x="24" y="94" width="330" height="96" fill="#f6f8f9" stroke="#9aa4a9" stroke-width="1.2"/>
+    <!-- hiss + weak + strong -->
+    <path d="M26,170 l6,-7 6,7 6,-6 6,6 6,-8 6,8 6,-6 6,6 6,-7 6,7
+             l4,-2 6,-26 8,-6 8,6 6,26 4,2
+             l6,-7 6,7 6,-6 6,6 6,-8 6,8 6,-6 6,6
+             l4,-2 6,-62 10,-10 10,10 6,62 4,2
+             l6,-7 6,7 6,-6 6,6 6,-8 6,8 6,-6 6,6 6,-7 6,7 6,-6 6,6 6,-8 6,8 6,-6 6,6"
+          fill="none" stroke="#2a6fa8" stroke-width="2"/>
+    <line x1="24" y1="180" x2="354" y2="180" stroke="#1d2326" stroke-width="2" stroke-dasharray="7 5"/>
+    <text x="358" y="110" font-size="13" font-weight="bold" fill="#1d2326">You hear:</text>
+    <text x="358" y="129" font-size="13" fill="#1d2326">hiss all day,</text>
+    <text x="358" y="147" font-size="13" fill="#1d2326">and both calls</text>
+    <text x="358" y="170" font-size="12" fill="#555">Tiring. You stop</text>
+    <text x="358" y="185" font-size="12" fill="#555">listening to it.</text>
+  </g>
+
+  <!-- ============ panel 2: just right ============ -->
+  <g>
+    <text x="24" y="234" font-size="14" font-weight="bold" fill="#1d2326">Squelch SET RIGHT (just above the hiss)</text>
+    <rect x="24" y="242" width="330" height="86" fill="#f6f8f9" stroke="#9aa4a9" stroke-width="1.2"/>
+    <path d="M26,318 l6,-7 6,7 6,-6 6,6 6,-8 6,8 6,-6 6,6 6,-7 6,7
+             l4,-2 6,-26 8,-6 8,6 6,26 4,2
+             l6,-7 6,7 6,-6 6,6 6,-8 6,8 6,-6 6,6
+             l4,-2 6,-62 10,-10 10,10 6,62 4,2
+             l6,-7 6,7 6,-6 6,6 6,-8 6,8 6,-6 6,6 6,-7 6,7 6,-6 6,6 6,-8 6,8 6,-6 6,6"
+          fill="none" stroke="#2a6fa8" stroke-width="2"/>
+    <line x1="24" y1="300" x2="354" y2="300" stroke="#1d2326" stroke-width="2.5" stroke-dasharray="7 5"/>
+    <text x="358" y="258" font-size="13" font-weight="bold" fill="#1d2326">You hear:</text>
+    <text x="358" y="277" font-size="13" fill="#1d2326">silence, then</text>
+    <text x="358" y="295" font-size="13" fill="#1d2326">both calls</text>
+    <text x="358" y="318" font-size="12" font-weight="bold" fill="#2f6b2a">This is the setting</text>
+    <text x="358" y="333" font-size="12" font-weight="bold" fill="#2f6b2a">you want.</text>
+  </g>
+
+  <!-- ============ panel 3: too tight ============ -->
+  <g>
+    <text x="24" y="382" font-size="14" font-weight="bold" fill="#1d2326">Squelch TOO TIGHT (turned up)</text>
+    <rect x="24" y="390" width="330" height="86" fill="#f6f8f9" stroke="#9aa4a9" stroke-width="1.2"/>
+    <path d="M26,466 l6,-7 6,7 6,-6 6,6 6,-8 6,8 6,-6 6,6 6,-7 6,7
+             l4,-2 6,-26 8,-6 8,6 6,26 4,2
+             l6,-7 6,7 6,-6 6,6 6,-8 6,8 6,-6 6,6
+             l4,-2 6,-62 10,-10 10,10 6,62 4,2
+             l6,-7 6,7 6,-6 6,6 6,-8 6,8 6,-6 6,6 6,-7 6,7 6,-6 6,6 6,-8 6,8 6,-6 6,6"
+          fill="none" stroke="#2a6fa8" stroke-width="2"/>
+    <line x1="24" y1="420" x2="354" y2="420" stroke="#1d2326" stroke-width="2" stroke-dasharray="7 5"/>
+    <!-- mark the lost weak call -->
+    <g stroke="#c8431a" stroke-width="3"><line x1="112" y1="424" x2="134" y2="446"/><line x1="134" y1="424" x2="112" y2="446"/></g>
+    <text x="358" y="406" font-size="13" font-weight="bold" fill="#1d2326">You hear:</text>
+    <text x="358" y="425" font-size="13" fill="#1d2326">the strong call</text>
+    <text x="358" y="443" font-size="13" font-weight="bold" fill="#c8431a">only. The weak</text>
+    <text x="358" y="459" font-size="13" font-weight="bold" fill="#c8431a">call is lost and</text>
+    <text x="358" y="475" font-size="13" font-weight="bold" fill="#c8431a">you never know.</text>
+  </g>
+
+  <!-- key -->
+  <g font-size="12" fill="#444">
+    <text x="30" y="110">hiss</text>
+    <text x="118" y="110">weak call</text>
+    <text x="218" y="110">strong call</text>
+  </g>
+</svg>

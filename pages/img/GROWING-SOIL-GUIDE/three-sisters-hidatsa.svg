@@ -1,0 +1,204 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="546" viewBox="0 0 680 546" font-family="Arial, Helvetica, sans-serif">
+  <title>The Hidatsa three-sisters field seen from above, as Buffalo Bird Woman described her family's garden: corn in hills about four feet apart in rows about four feet apart, beans in their own hills between the corn rows, a row of squash hills about four feet apart between each block of eight to ten corn rows, and sunflowers round the edge of the field, eight or nine paces apart</title>
+  <rect width="680" height="546" fill="#ffffff"/>
+  <defs>
+    <marker id="d5" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+  </defs>
+
+  <text x="340" y="24" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">The three sisters, as one Hidatsa family really grew them</text>
+  <text x="340" y="44" text-anchor="middle" font-size="13" fill="#222">Seen from above. Corn and beans in their own hills; squash in rows of its own.</text>
+
+  <!-- field -->
+  <rect x="64" y="84" width="516" height="300" fill="#f3efe4" stroke="#c8bda4" stroke-width="1.5"/>
+
+  <!-- sunflower spacing -->
+  <line x1="120" y1="68" x2="320" y2="68" stroke="#333" stroke-width="1.4" marker-start="url(#d5)" marker-end="url(#d5)"/>
+  <text x="220" y="62" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#222">eight or nine paces</text>
+
+  <!-- corn -->
+  <g>
+    <circle cx="120" cy="120" r="5.5" fill="#2f5e16"/>
+    <circle cx="120" cy="160" r="5.5" fill="#2f5e16"/>
+    <circle cx="120" cy="200" r="5.5" fill="#2f5e16"/>
+    <circle cx="120" cy="240" r="5.5" fill="#2f5e16"/>
+    <circle cx="120" cy="280" r="5.5" fill="#2f5e16"/>
+    <circle cx="120" cy="320" r="5.5" fill="#2f5e16"/>
+    <circle cx="120" cy="360" r="5.5" fill="#2f5e16"/>
+    <circle cx="160" cy="120" r="5.5" fill="#2f5e16"/>
+    <circle cx="160" cy="160" r="5.5" fill="#2f5e16"/>
+    <circle cx="160" cy="200" r="5.5" fill="#2f5e16"/>
+    <circle cx="160" cy="240" r="5.5" fill="#2f5e16"/>
+    <circle cx="160" cy="280" r="5.5" fill="#2f5e16"/>
+    <circle cx="160" cy="320" r="5.5" fill="#2f5e16"/>
+    <circle cx="160" cy="360" r="5.5" fill="#2f5e16"/>
+    <circle cx="200" cy="120" r="5.5" fill="#2f5e16"/>
+    <circle cx="200" cy="160" r="5.5" fill="#2f5e16"/>
+    <circle cx="200" cy="200" r="5.5" fill="#2f5e16"/>
+    <circle cx="200" cy="240" r="5.5" fill="#2f5e16"/>
+    <circle cx="200" cy="280" r="5.5" fill="#2f5e16"/>
+    <circle cx="200" cy="320" r="5.5" fill="#2f5e16"/>
+    <circle cx="200" cy="360" r="5.5" fill="#2f5e16"/>
+    <circle cx="240" cy="120" r="5.5" fill="#2f5e16"/>
+    <circle cx="240" cy="160" r="5.5" fill="#2f5e16"/>
+    <circle cx="240" cy="200" r="5.5" fill="#2f5e16"/>
+    <circle cx="240" cy="240" r="5.5" fill="#2f5e16"/>
+    <circle cx="240" cy="280" r="5.5" fill="#2f5e16"/>
+    <circle cx="240" cy="320" r="5.5" fill="#2f5e16"/>
+    <circle cx="240" cy="360" r="5.5" fill="#2f5e16"/>
+    <circle cx="280" cy="120" r="5.5" fill="#2f5e16"/>
+    <circle cx="280" cy="160" r="5.5" fill="#2f5e16"/>
+    <circle cx="280" cy="200" r="5.5" fill="#2f5e16"/>
+    <circle cx="280" cy="240" r="5.5" fill="#2f5e16"/>
+    <circle cx="280" cy="280" r="5.5" fill="#2f5e16"/>
+    <circle cx="280" cy="320" r="5.5" fill="#2f5e16"/>
+    <circle cx="280" cy="360" r="5.5" fill="#2f5e16"/>
+    <circle cx="320" cy="120" r="5.5" fill="#2f5e16"/>
+    <circle cx="320" cy="160" r="5.5" fill="#2f5e16"/>
+    <circle cx="320" cy="200" r="5.5" fill="#2f5e16"/>
+    <circle cx="320" cy="240" r="5.5" fill="#2f5e16"/>
+    <circle cx="320" cy="280" r="5.5" fill="#2f5e16"/>
+    <circle cx="320" cy="320" r="5.5" fill="#2f5e16"/>
+    <circle cx="320" cy="360" r="5.5" fill="#2f5e16"/>
+    <circle cx="360" cy="120" r="5.5" fill="#2f5e16"/>
+    <circle cx="360" cy="160" r="5.5" fill="#2f5e16"/>
+    <circle cx="360" cy="200" r="5.5" fill="#2f5e16"/>
+    <circle cx="360" cy="240" r="5.5" fill="#2f5e16"/>
+    <circle cx="360" cy="280" r="5.5" fill="#2f5e16"/>
+    <circle cx="360" cy="320" r="5.5" fill="#2f5e16"/>
+    <circle cx="360" cy="360" r="5.5" fill="#2f5e16"/>
+    <circle cx="400" cy="120" r="5.5" fill="#2f5e16"/>
+    <circle cx="400" cy="160" r="5.5" fill="#2f5e16"/>
+    <circle cx="400" cy="200" r="5.5" fill="#2f5e16"/>
+    <circle cx="400" cy="240" r="5.5" fill="#2f5e16"/>
+    <circle cx="400" cy="280" r="5.5" fill="#2f5e16"/>
+    <circle cx="400" cy="320" r="5.5" fill="#2f5e16"/>
+    <circle cx="400" cy="360" r="5.5" fill="#2f5e16"/>
+    <circle cx="480" cy="120" r="5.5" fill="#2f5e16"/>
+    <circle cx="480" cy="160" r="5.5" fill="#2f5e16"/>
+    <circle cx="480" cy="200" r="5.5" fill="#2f5e16"/>
+    <circle cx="480" cy="240" r="5.5" fill="#2f5e16"/>
+    <circle cx="480" cy="280" r="5.5" fill="#2f5e16"/>
+    <circle cx="480" cy="320" r="5.5" fill="#2f5e16"/>
+    <circle cx="480" cy="360" r="5.5" fill="#2f5e16"/>
+    <circle cx="520" cy="120" r="5.5" fill="#2f5e16"/>
+    <circle cx="520" cy="160" r="5.5" fill="#2f5e16"/>
+    <circle cx="520" cy="200" r="5.5" fill="#2f5e16"/>
+    <circle cx="520" cy="240" r="5.5" fill="#2f5e16"/>
+    <circle cx="520" cy="280" r="5.5" fill="#2f5e16"/>
+    <circle cx="520" cy="320" r="5.5" fill="#2f5e16"/>
+    <circle cx="520" cy="360" r="5.5" fill="#2f5e16"/>
+  </g>
+  <!-- beans -->
+  <g>
+    <circle cx="140" cy="140" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="140" cy="180" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="140" cy="220" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="140" cy="260" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="140" cy="300" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="140" cy="340" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="180" cy="140" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="180" cy="180" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="180" cy="220" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="180" cy="260" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="180" cy="300" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="180" cy="340" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="220" cy="140" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="220" cy="180" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="220" cy="220" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="220" cy="260" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="220" cy="300" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="220" cy="340" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="260" cy="140" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="260" cy="180" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="260" cy="220" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="260" cy="260" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="260" cy="300" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="260" cy="340" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="300" cy="140" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="300" cy="180" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="300" cy="220" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="300" cy="260" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="300" cy="300" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="300" cy="340" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="340" cy="140" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="340" cy="180" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="340" cy="220" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="340" cy="260" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="340" cy="300" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="340" cy="340" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="380" cy="140" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="380" cy="180" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="380" cy="220" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="380" cy="260" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="380" cy="300" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="380" cy="340" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="500" cy="140" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="500" cy="180" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="500" cy="220" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="500" cy="260" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="500" cy="300" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <circle cx="500" cy="340" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+  </g>
+  <!-- squash -->
+  <g>
+    <circle cx="440" cy="120" r="8" fill="#e0a23c" stroke="#9a6a10" stroke-width="1.6"/>
+    <circle cx="440" cy="160" r="8" fill="#e0a23c" stroke="#9a6a10" stroke-width="1.6"/>
+    <circle cx="440" cy="200" r="8" fill="#e0a23c" stroke="#9a6a10" stroke-width="1.6"/>
+    <circle cx="440" cy="240" r="8" fill="#e0a23c" stroke="#9a6a10" stroke-width="1.6"/>
+    <circle cx="440" cy="280" r="8" fill="#e0a23c" stroke="#9a6a10" stroke-width="1.6"/>
+    <circle cx="440" cy="320" r="8" fill="#e0a23c" stroke="#9a6a10" stroke-width="1.6"/>
+    <circle cx="440" cy="360" r="8" fill="#e0a23c" stroke="#9a6a10" stroke-width="1.6"/>
+  </g>
+  <!-- sunflowers -->
+  <g>
+    <g transform="translate(120,96)"><circle r="7.5" fill="#f0c845" stroke="#8a6a10" stroke-width="1.6"/><circle r="3" fill="#6b4a10"/></g>
+    <g transform="translate(320,96)"><circle r="7.5" fill="#f0c845" stroke="#8a6a10" stroke-width="1.6"/><circle r="3" fill="#6b4a10"/></g>
+    <g transform="translate(520,96)"><circle r="7.5" fill="#f0c845" stroke="#8a6a10" stroke-width="1.6"/><circle r="3" fill="#6b4a10"/></g>
+    <g transform="translate(120,376)"><circle r="7.5" fill="#f0c845" stroke="#8a6a10" stroke-width="1.6"/><circle r="3" fill="#6b4a10"/></g>
+    <g transform="translate(320,376)"><circle r="7.5" fill="#f0c845" stroke="#8a6a10" stroke-width="1.6"/><circle r="3" fill="#6b4a10"/></g>
+    <g transform="translate(520,376)"><circle r="7.5" fill="#f0c845" stroke="#8a6a10" stroke-width="1.6"/><circle r="3" fill="#6b4a10"/></g>
+    <g transform="translate(84,180)"><circle r="7.5" fill="#f0c845" stroke="#8a6a10" stroke-width="1.6"/><circle r="3" fill="#6b4a10"/></g>
+    <g transform="translate(84,300)"><circle r="7.5" fill="#f0c845" stroke="#8a6a10" stroke-width="1.6"/><circle r="3" fill="#6b4a10"/></g>
+  </g>
+
+  <!-- the squash row, marked -->
+  <rect x="424" y="104" width="32" height="272" fill="none" stroke="#9a6a10" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <text x="440" y="100" text-anchor="middle" font-size="12" font-weight="bold" fill="#9a6a10">squash</text>
+
+  <!-- spacings -->
+  <line x1="548" y1="120" x2="548" y2="160" stroke="#333" stroke-width="1.4" marker-start="url(#d5)" marker-end="url(#d5)"/>
+  <line x1="524" y1="120" x2="550" y2="120" stroke="#333" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="524" y1="160" x2="550" y2="160" stroke="#333" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="556" y="138" font-size="12.5" font-weight="bold" fill="#222">about 4 ft</text>
+  <text x="556" y="154" font-size="12.5" fill="#222">between hills</text>
+
+  <line x1="120" y1="400" x2="160" y2="400" stroke="#333" stroke-width="1.4" marker-start="url(#d5)" marker-end="url(#d5)"/>
+  <line x1="120" y1="366" x2="120" y2="402" stroke="#333" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="160" y1="366" x2="160" y2="402" stroke="#333" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="176" y="404" font-size="12.5" font-weight="bold" fill="#222">about 4 ft between rows, a little wider where the beans go between</text>
+
+  <!-- legend -->
+  <line x1="16" y1="428" x2="664" y2="428" stroke="#ccc" stroke-width="1"/>
+  <g font-size="12.5" fill="#222">
+    <circle cx="26" cy="452" r="5.5" fill="#2f5e16"/>
+    <text x="40" y="450" font-weight="bold">CORN</text>
+    <text x="40" y="466">hills about 4 ft apart,</text>
+    <text x="40" y="482">in rows about 4 ft apart</text>
+
+    <circle cx="196" cy="452" r="3.6" fill="#ffffff" stroke="#6b8a2a" stroke-width="2"/>
+    <text x="210" y="450" font-weight="bold">BEANS</text>
+    <text x="210" y="466">in their own hills,</text>
+    <text x="210" y="482">between the corn rows</text>
+
+    <circle cx="372" cy="452" r="8" fill="#e0a23c" stroke="#9a6a10" stroke-width="1.6"/>
+    <text x="390" y="450" font-weight="bold">SQUASH</text>
+    <text x="390" y="466">a row of its own between each</text>
+    <text x="390" y="482">block of 8 to 10 corn rows</text>
+  </g>
+  <g font-size="12.5" fill="#222">
+    <g transform="translate(26,510)"><circle r="7.5" fill="#f0c845" stroke="#8a6a10" stroke-width="1.6"/><circle r="3" fill="#6b4a10"/></g>
+    <text x="40" y="506" font-weight="bold">SUNFLOWERS</text>
+    <text x="40" y="522">planted first, in early spring, round the edge of the field, eight or nine paces apart</text>
+  </g>
+  <text x="16" y="542" font-size="13" fill="#222">Grow a flour or flint corn, and beans to eat dry: calories and protein that keep.</text>
+</svg>

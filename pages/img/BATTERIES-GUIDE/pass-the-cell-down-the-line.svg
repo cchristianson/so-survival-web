@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="330" viewBox="0 0 620 330" font-family="Arial, Helvetica, sans-serif">
+  <title>The same cell passed from a flashlight to a remote control to a clock: the lighter the load, the longer it lasts</title>
+  <rect width="620" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#2a6fa8"/></marker>
+  </defs>
+
+  <text x="18" y="26" font-size="17" font-weight="bold" fill="#222">The same cell, three jobs</text>
+  <text x="18" y="46" font-size="14" fill="#444">The lighter the work you give a tired cell, the longer it keeps going.</text>
+
+  <!-- ===== device band, y 62..142 ===== -->
+  <!-- 1. flashlight, centred near x=90 -->
+  <g transform="translate(30,66)">
+    <rect x="0" y="22" width="72" height="28" rx="5" fill="#9aa3a8" stroke="#333" stroke-width="2"/>
+    <rect x="8" y="29" width="46" height="15" rx="3" fill="#e6e1d6" stroke="#333" stroke-width="1.5"/>
+    <text x="31" y="41" text-anchor="middle" font-size="11" fill="#333">AA</text>
+    <path d="M72,14 L96,4 L96,68 L72,58 z" fill="#c9ced1" stroke="#333" stroke-width="2"/>
+    <circle cx="89" cy="36" r="10" fill="#fff6d6" stroke="#333" stroke-width="1.5"/>
+    <g stroke="#e8a33a" stroke-width="3"><line x1="104" y1="36" x2="122" y2="36"/><line x1="101" y1="24" x2="116" y2="14"/><line x1="101" y1="48" x2="116" y2="58"/></g>
+  </g>
+
+  <!-- 2. remote, centred near x=285 -->
+  <g transform="translate(258,66)">
+    <rect x="0" y="2" width="50" height="68" rx="8" fill="#55606a" stroke="#333" stroke-width="2"/>
+    <rect x="8" y="10" width="34" height="13" rx="3" fill="#b9c6cf" stroke="#333" stroke-width="1"/>
+    <g fill="#c9ced1"><circle cx="16" cy="34" r="5"/><circle cx="34" cy="34" r="5"/><circle cx="16" cy="49" r="5"/><circle cx="34" cy="49" r="5"/><circle cx="16" cy="62" r="4"/><circle cx="34" cy="62" r="4"/></g>
+  </g>
+
+  <!-- 3. clock, centred near x=490 -->
+  <g transform="translate(456,66)">
+    <circle cx="34" cy="36" r="33" fill="#f4f1e9" stroke="#333" stroke-width="2.5"/>
+    <g stroke="#333" stroke-width="2.5"><line x1="34" y1="36" x2="34" y2="17"/><line x1="34" y1="36" x2="49" y2="43"/></g>
+    <circle cx="34" cy="36" r="3" fill="#333"/>
+    <g stroke="#555" stroke-width="2"><line x1="34" y1="6" x2="34" y2="12"/><line x1="64" y1="36" x2="58" y2="36"/><line x1="34" y1="66" x2="34" y2="60"/><line x1="4" y1="36" x2="10" y2="36"/></g>
+  </g>
+
+  <!-- arrows between the devices, in the gaps -->
+  <g stroke="#2a6fa8" stroke-width="3" fill="none" marker-end="url(#ar)">
+    <path d="M172,102 H246"/>
+    <path d="M322,102 H442"/>
+  </g>
+  <g font-size="12" font-weight="bold" fill="#2a6fa8" text-anchor="middle">
+    <text x="209" y="94">pass it on</text>
+    <text x="382" y="94">pass it on</text>
+  </g>
+
+  <!-- ===== three text columns ===== -->
+  <g font-size="15" font-weight="bold" fill="#222">
+    <text x="24" y="172">Flashlight</text>
+    <text x="246" y="172">Remote control</text>
+    <text x="444" y="172">Wall clock</text>
+  </g>
+  <g font-size="14" fill="#444">
+    <text x="24" y="192">a heavy pull</text>
+    <text x="246" y="192">a light pull</text>
+    <text x="444" y="192">barely a pull</text>
+  </g>
+  <g font-size="16" font-weight="bold" fill="#2a6fa8">
+    <text x="24" y="218">2.2 hours</text>
+    <text x="246" y="218">20 times longer</text>
+    <text x="444" y="218">480 times longer</text>
+  </g>
+  <g font-size="13" fill="#666">
+    <text x="24" y="236">through 2 ohms</text>
+    <text x="246" y="236">through 8 ohms</text>
+    <text x="444" y="236">through 64 ohms</text>
+  </g>
+  <g font-size="13" fill="#222">
+    <text x="24" y="260">Calls the cell dead</text>
+    <text x="246" y="260">Works for months</text>
+    <text x="444" y="260">Runs on the rest</text>
+  </g>
+
+  <line x1="18" y1="280" x2="602" y2="280" stroke="#bbb" stroke-width="1.5"/>
+  <text x="18" y="302" font-size="14" fill="#222">Keep a marked box for cells the flashlight rejects: half their energy is still in them.</text>
+  <text x="18" y="322" font-size="12" fill="#666">Hours measured on identical cells to the same cut-off voltage: Circular 79, p. 39.</text>
+</svg>

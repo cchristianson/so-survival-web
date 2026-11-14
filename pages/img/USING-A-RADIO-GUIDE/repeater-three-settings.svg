@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="556" viewBox="0 0 600 556" font-family="Arial, Helvetica, sans-serif">
+  <title>A repeater on a hilltop needs three settings right on your radio: the offset, the plus or minus direction, and the tone; any one wrong and nothing happens</title>
+  <rect width="600" height="556" fill="#ffffff"/>
+  <defs>
+    <marker id="up" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#2a6fa8"/></marker>
+    <marker id="dn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#2f6b2a"/></marker>
+  </defs>
+
+  <!-- ground and hill -->
+  <path d="M20,420 L190,420 L300,250 L410,420 L580,420" fill="#eef0ea" stroke="#6b5a45" stroke-width="2.5"/>
+
+  <!-- repeater mast -->
+  <line x1="300" y1="250" x2="300" y2="150" stroke="#3b4347" stroke-width="4"/>
+  <g stroke="#3b4347" stroke-width="2.5" fill="none">
+    <path d="M290,166 h20 M290,184 h20 M290,202 h20"/>
+  </g>
+  <rect x="306" y="214" width="32" height="26" rx="4" fill="#e9edef" stroke="#3b4347" stroke-width="2"/>
+  <text x="322" y="232" font-size="11" text-anchor="middle" fill="#1d2326">RPT</text>
+  <text x="300" y="138" font-size="14" font-weight="bold" text-anchor="middle" fill="#1d2326">REPEATER</text>
+  <text x="232" y="104" font-size="12" text-anchor="middle" fill="#444">hears on one frequency,</text>
+  <text x="232" y="120" font-size="12" text-anchor="middle" fill="#444">talks on another</text>
+
+  <!-- your radio, left -->
+  <g>
+    <rect x="60" y="356" width="36" height="64" rx="6" fill="#e9edef" stroke="#3b4347" stroke-width="2"/>
+    <line x1="70" y1="356" x2="70" y2="326" stroke="#4a5257" stroke-width="4"/>
+    <rect x="66" y="366" width="24" height="16" rx="2" fill="#f4f8fa" stroke="#3b4347" stroke-width="1.4"/>
+    <text x="78" y="440" font-size="13" font-weight="bold" text-anchor="middle" fill="#1d2326">your radio</text>
+  </g>
+  <!-- far radio, right -->
+  <g>
+    <rect x="504" y="356" width="36" height="64" rx="6" fill="#e9edef" stroke="#3b4347" stroke-width="2"/>
+    <line x1="514" y1="356" x2="514" y2="326" stroke="#4a5257" stroke-width="4"/>
+    <rect x="510" y="366" width="24" height="16" rx="2" fill="#f4f8fa" stroke="#3b4347" stroke-width="1.4"/>
+    <text x="522" y="440" font-size="13" font-weight="bold" text-anchor="middle" fill="#1d2326">their radio</text>
+  </g>
+
+  <!-- up path with three gates -->
+  <path d="M92,350 L286,228" fill="none" stroke="#2a6fa8" stroke-width="3" marker-end="url(#up)"/>
+  <!-- down path -->
+  <path d="M322,236 L500,352" fill="none" stroke="#2f6b2a" stroke-width="3" marker-end="url(#dn)"/>
+  <text x="118" y="372" font-size="12" font-weight="bold" fill="#2a6fa8" transform="rotate(-32 118 372)">you transmit (its input)</text>
+  <text x="400" y="272" font-size="12" font-weight="bold" fill="#2f6b2a" transform="rotate(33 400 272)">everyone hears (its output)</text>
+
+  <!-- the three gates across the up path -->
+  <g>
+    <!-- gate 1 -->
+    <g transform="translate(130,328) rotate(-32)">
+      <rect x="-7" y="-26" width="14" height="52" rx="3" fill="#fff" stroke="#1d2326" stroke-width="2.5"/>
+    </g>
+    <circle cx="130" cy="328" r="12" fill="#2c3337"/><text x="130" y="333" font-size="13" font-weight="bold" fill="#fff" text-anchor="middle">1</text>
+    <!-- gate 2 -->
+    <g transform="translate(189,291) rotate(-32)">
+      <rect x="-7" y="-26" width="14" height="52" rx="3" fill="#fff" stroke="#1d2326" stroke-width="2.5"/>
+    </g>
+    <circle cx="189" cy="291" r="12" fill="#2c3337"/><text x="189" y="296" font-size="13" font-weight="bold" fill="#fff" text-anchor="middle">2</text>
+    <!-- gate 3 -->
+    <g transform="translate(248,254) rotate(-32)">
+      <rect x="-7" y="-26" width="14" height="52" rx="3" fill="#fff" stroke="#1d2326" stroke-width="2.5"/>
+    </g>
+    <circle cx="248" cy="254" r="12" fill="#2c3337"/><text x="248" y="259" font-size="13" font-weight="bold" fill="#fff" text-anchor="middle">3</text>
+  </g>
+
+  <!-- labels for the three -->
+  <g font-size="13" fill="#1d2326">
+    <text x="24" y="32" font-size="15" font-weight="bold">Three settings, all three right,</text>
+    <text x="24" y="52" font-size="15" font-weight="bold">or nothing happens</text>
+    <circle cx="36" cy="470" r="12" fill="#2c3337"/><text x="36" y="475" font-size="13" font-weight="bold" fill="#fff" text-anchor="middle">1</text>
+    <text x="56" y="467" font-weight="bold">OFFSET</text><text x="128" y="467">— how far apart its two frequencies are</text>
+    <circle cx="36" cy="498" r="12" fill="#2c3337"/><text x="36" y="503" font-size="13" font-weight="bold" fill="#fff" text-anchor="middle">2</text>
+    <text x="56" y="495" font-weight="bold">DIRECTION</text><text x="150" y="495">— you transmit above (+) or below (−)</text>
+    <circle cx="36" cy="526" r="12" fill="#2c3337"/><text x="36" y="531" font-size="13" font-weight="bold" fill="#fff" text-anchor="middle">3</text>
+    <text x="56" y="523" font-weight="bold">TONE</text><text x="110" y="523">— the hum it needs before it repeats</text>
+  </g>
+
+  <!-- the failure note -->
+  <g>
+    <rect x="352" y="24" width="230" height="80" rx="6" fill="#fdf1ed" stroke="#c8431a" stroke-width="2"/>
+    <g stroke="#c8431a" stroke-width="3.5"><line x1="366" y1="42" x2="384" y2="60"/><line x1="384" y1="42" x2="366" y2="60"/></g>
+    <text x="396" y="48" font-size="13" font-weight="bold" fill="#c8431a">One of the three wrong</text>
+    <text x="396" y="66" font-size="13" font-weight="bold" fill="#c8431a">= total silence.</text>
+    <text x="396" y="86" font-size="12" fill="#8a3516">No partial credit, and no</text>
+    <text x="396" y="100" font-size="12" fill="#8a3516">clue on the screen.</text>
+  </g>
+
+  <text x="300" y="548" text-anchor="middle" font-size="13" fill="#1d2326">If the repeater is down, switch to the direct channel: same frequency both ways.</text>
+</svg>

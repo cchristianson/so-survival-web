@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="470" viewBox="0 0 600 470" font-family="Arial, Helvetica, sans-serif">
+  <title>A blank channel card to print and fill in by hand, with columns for the channel number, what it is, the receive frequency, the transmit frequency or offset, the tone in hertz and narrow or wide</title>
+  <rect width="600" height="470" fill="#ffffff"/>
+
+  <text x="300" y="30" text-anchor="middle" font-size="17" font-weight="bold" fill="#1d2326">RADIO CHANNEL CARD</text>
+  <text x="300" y="49" text-anchor="middle" font-size="12" fill="#444">Radio: ____________________   Kept by: ____________________   Date: __________</text>
+
+  <!-- table -->
+  <g stroke="#1d2326" fill="none">
+    <!-- outer -->
+    <rect x="24" y="62" width="552" height="286" stroke-width="2"/>
+    <!-- header rule -->
+    <line x1="24" y1="90" x2="576" y2="90" stroke-width="2"/>
+    <!-- row rules -->
+    <g stroke-width="1">
+      <line x1="24" y1="122" x2="576" y2="122"/>
+      <line x1="24" y1="154" x2="576" y2="154"/>
+      <line x1="24" y1="186" x2="576" y2="186"/>
+      <line x1="24" y1="218" x2="576" y2="218"/>
+      <line x1="24" y1="250" x2="576" y2="250"/>
+      <line x1="24" y1="282" x2="576" y2="282"/>
+      <line x1="24" y1="314" x2="576" y2="314"/>
+    </g>
+    <!-- column rules -->
+    <g stroke-width="1">
+      <line x1="62" y1="62" x2="62" y2="348"/>
+      <line x1="222" y1="62" x2="222" y2="348"/>
+      <line x1="326" y1="62" x2="326" y2="348"/>
+      <line x1="434" y1="62" x2="434" y2="348"/>
+      <line x1="508" y1="62" x2="508" y2="348"/>
+    </g>
+  </g>
+  <!-- header text -->
+  <g font-size="12" font-weight="bold" fill="#1d2326" text-anchor="middle">
+    <text x="43" y="80">Ch</text>
+    <text x="142" y="80">What it is</text>
+    <text x="274" y="80">Receive (MHz)</text>
+    <text x="380" y="80">Transmit / offset</text>
+    <text x="471" y="80">Tone (Hz)</text>
+    <text x="542" y="80">N / W</text>
+  </g>
+  <!-- row numbers -->
+  <g font-size="13" fill="#1d2326" text-anchor="middle">
+    <text x="43" y="112">1</text><text x="43" y="144">2</text><text x="43" y="176">3</text><text x="43" y="208">4</text>
+    <text x="43" y="240">5</text><text x="43" y="272">6</text><text x="43" y="304">7</text><text x="43" y="336">8</text>
+  </g>
+
+  <!-- below the table -->
+  <text x="24" y="374" font-size="13" fill="#1d2326">Check-in times: ______________   ______________   ______________</text>
+  <text x="24" y="396" font-size="13" fill="#1d2326">If radios fail, meet at: ______________________________________</text>
+
+  <g>
+    <rect x="24" y="410" width="552" height="46" rx="5" fill="#f6f8f9" stroke="#9aa4a9" stroke-width="1.2"/>
+    <text x="36" y="428" font-size="12" fill="#1d2326">• Write the tone in HERTZ (e.g. 136.5), never as a brand's "privacy code" number.</text>
+    <text x="36" y="446" font-size="12" fill="#1d2326">• Send the tone, but listen with the RECEIVE tone OFF, or you miss everyone without it.</text>
+  </g>
+</svg>
