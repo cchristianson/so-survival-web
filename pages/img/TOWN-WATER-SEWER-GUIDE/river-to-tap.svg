@@ -32,7 +32,7 @@
     <text x="221" y="290">settling</text><text x="267" y="290">filters</text>
   </g>
   <text x="198" y="378" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">TREATMENT PLANT</text>
-  <text x="198" y="394" text-anchor="middle" font-size="12" fill="#222">chlorine goes in last, with 30 minutes before the first tap</text>
+  <text x="104" y="394" text-anchor="start" font-size="12" fill="#222">chlorine goes in last, with 30 minutes before the first tap</text>
   <path d="M72,336 H100" stroke="#1d6fa8" stroke-width="3.5" marker-end="url(#bl)"/>
 
   <!-- high-lift pump and rising main -->
@@ -52,7 +52,7 @@
 
   <!-- main down to the houses -->
   <path d="M484,152 C520,160 528,250 540,300 C548,336 556,356 572,356 H664" fill="none" stroke="#1d6fa8" stroke-width="4"/>
-  <text x="620" y="376" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#1d6fa8">main under the street</text>
+  <text x="586" y="376" text-anchor="end" font-size="12.5" font-weight="bold" fill="#1d6fa8">main under the street</text>
 
   <!-- house -->
   <polygon points="582,318 614,294 646,318" fill="#c8a07a" stroke="#333" stroke-width="2"/>

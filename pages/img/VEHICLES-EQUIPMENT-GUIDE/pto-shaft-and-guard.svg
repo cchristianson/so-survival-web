@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="490" viewBox="0 0 680 490" font-family="Arial, Helvetica, sans-serif">
+  <title>A power take-off shaft between a tractor and an implement, with the tractor's master shield and the shaft's own spinning guard in place over most of it, a bare length where the guard is missing and a sleeve is winding round the shaft, and a cross-section of a guard worn open underneath</title>
+  <rect width="680" height="490" fill="#ffffff"/>
+
+  <text x="340" y="24" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">The PTO: the spinning shaft at the back that drives mowers, balers and pumps</text>
+
+  <g transform="translate(0,-74)">
+    <line x1="16" y1="320" x2="664" y2="320" stroke="#6b5a45" stroke-width="2.5"/>
+
+    <!-- tractor rear -->
+    <rect x="30" y="196" width="96" height="98" fill="#3a7a30" stroke="#222" stroke-width="2.5"/>
+    <rect x="44" y="176" width="40" height="20" fill="#222"/>
+    <circle cx="64" cy="286" r="34" fill="#2a2a2a"/><circle cx="64" cy="286" r="12" fill="#9a9a9a"/>
+    <text x="78" y="166" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#222">the tractor</text>
+
+    <rect x="126" y="236" width="22" height="16" fill="#8a8a85" stroke="#222" stroke-width="2"/>
+    <path d="M124,230 C144,224 158,230 160,244" fill="none" stroke="#c87a1a" stroke-width="7" stroke-linecap="round"/>
+    <text x="150" y="196" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#c87a1a">master shield</text>
+    <line x1="150" y1="202" x2="146" y2="226" stroke="#c87a1a" stroke-width="1.4"/>
+
+    <!-- the driveline -->
+    <rect x="148" y="238" width="300" height="12" rx="4" fill="#8a8a85" stroke="#222" stroke-width="2"/>
+    <rect x="166" y="228" width="164" height="32" rx="14" fill="#e6b06a" fill-opacity="0.55" stroke="#c87a1a" stroke-width="2.5"/>
+    <text x="248" y="212" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#c87a1a">the shaft's own guard —</text>
+    <text x="248" y="228" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#c87a1a">it must turn freely</text>
+    <line x1="248" y1="234" x2="248" y2="226" stroke="#c87a1a" stroke-width="1.4"/>
+
+    <!-- the bare length, and the sleeve winding on -->
+    <text x="380" y="196" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#c8431a">guard missing</text>
+    <path d="M380,202 V222" stroke="#c8431a" stroke-width="1.4"/>
+    <g fill="none" stroke="#2a4458" stroke-width="4">
+      <ellipse cx="358" cy="244" rx="9" ry="19"/>
+      <ellipse cx="380" cy="244" rx="9" ry="19"/>
+      <ellipse cx="402" cy="244" rx="9" ry="19"/>
+    </g>
+    <path d="M410,236 C428,224 450,212 470,206" fill="none" stroke="#5b7a92" stroke-width="11" stroke-linecap="round"/>
+    <path d="M470,206 C486,202 496,198 504,192" fill="none" stroke="#e6c6a6" stroke-width="11" stroke-linecap="round"/>
+    <text x="520" y="186" font-size="12.5" font-weight="bold" fill="#c8431a">a sleeve, a trouser leg,</text>
+    <text x="520" y="202" font-size="12.5" font-weight="bold" fill="#c8431a">a bootlace or long hair</text>
+    <text x="520" y="218" font-size="12.5" font-weight="bold" fill="#c8431a">is wound on in an instant</text>
+
+    <!-- implement -->
+    <rect x="448" y="222" width="70" height="60" fill="#8a8a85" stroke="#222" stroke-width="2.5"/>
+    <circle cx="483" cy="296" r="18" fill="#2a2a2a"/>
+    <text x="483" y="316" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#222">the implement</text>
+
+    <!-- never step over -->
+    <g stroke="#c8431a" stroke-width="4" stroke-linecap="round"><path d="M296,288 L332,324 M332,288 L296,324"/></g>
+    <text x="314" y="346" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#c8431a">never step over a turning shaft</text>
+
+    <!-- cross-section detail -->
+    <circle cx="600" cy="296" r="24" fill="none" stroke="#c87a1a" stroke-width="6" stroke-dasharray="105 32" transform="rotate(70,600,296)"/>
+    <circle cx="600" cy="296" r="9" fill="#8a8a85" stroke="#222" stroke-width="2"/>
+    <path d="M588,318 L612,318" stroke="#c8431a" stroke-width="3.5"/>
+    <text x="600" y="246" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#c8431a">a guard worn</text>
+    <text x="600" y="262" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#c8431a">open underneath</text>
+    <text x="600" y="340" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#c8431a">is no guard:</text>
+    <text x="600" y="356" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#c8431a">replace it</text>
+  </g>
+
+  <line x1="16" y1="300" x2="664" y2="300" stroke="#ccc" stroke-width="1"/>
+  <g font-size="13.5" fill="#222">
+    <text x="16" y="326" font-weight="bold">Disengage the PTO and switch the engine off before you leave the seat or go near the shaft.</text>
+    <text x="16" y="350">Wait until the shaft and the machine have completely stopped before any adjustment.</text>
+    <text x="16" y="372">No loose clothes or jewelry; tie back hair — but know that even short or tied hair can be caught.</text>
+    <text x="16" y="394">Keep every shield and guard on it. Children never near a running PTO, and never working one.</text>
+  </g>
+  <text x="16" y="428" font-size="13" font-weight="bold" fill="#c8431a">At least 112 farm workers died in PTO drivelines in the 1980s, and in five years nearly 10,000</text>
+  <text x="16" y="446" font-size="13" font-weight="bold" fill="#c8431a">more were hurt in farm entanglements — 864 of them losing a body part.</text>
+</svg>

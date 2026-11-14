@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="360" viewBox="0 0 620 360" font-family="Arial, Helvetica, sans-serif">
+  <title>Load-testing a cell with a meter and a bulb: with no load both cells read fine, but with a bulb across them the worn cell collapses</title>
+  <rect width="620" height="360" fill="#ffffff"/>
+  <defs>
+    <g id="aa">
+      <rect x="0" y="0" width="86" height="30" rx="5" fill="#e6e1d6" stroke="#333" stroke-width="2"/>
+      <rect x="-9" y="9" width="9" height="12" rx="2" fill="#555" stroke="#333" stroke-width="1.5"/>
+      <text x="8" y="21" font-size="15" font-weight="bold" fill="#c0392b">+</text>
+      <text x="72" y="22" font-size="17" font-weight="bold" fill="#222">−</text>
+    </g>
+    <g id="meter">
+      <rect x="0" y="0" width="92" height="62" rx="7" fill="#f4f4ef" stroke="#333" stroke-width="2.5"/>
+      <rect x="8" y="8" width="76" height="26" rx="3" fill="#2b332b"/>
+      <circle cx="30" cy="48" r="7" fill="#222"/><circle cx="62" cy="48" r="7" fill="#c0392b"/>
+    </g>
+  </defs>
+
+  <text x="18" y="28" font-size="17" font-weight="bold" fill="#222">A meter alone cannot tell a good cell from a worn one</text>
+
+  <!-- ===== scene 1: no load ===== -->
+  <g transform="translate(18,52)">
+    <text x="0" y="16" font-size="15" font-weight="bold" fill="#222">1. Nothing connected</text>
+    <use href="#aa" x="0" y="34"/>
+    <use href="#meter" x="150" y="18"/>
+    <text x="196" y="42" text-anchor="middle" font-size="17" font-weight="bold" fill="#8ad68a">1.52 V</text>
+    <polyline points="4,34 4,20 158,20 158,34" fill="none" stroke="#c0392b" stroke-width="2.5"/>
+    <polyline points="95,64 95,86 234,86 234,80" fill="none" stroke="#222" stroke-width="2.5"/>
+    <text x="0" y="112" font-size="14" fill="#444">Both the good cell and the</text>
+    <text x="0" y="130" font-size="14" fill="#444">worn one read about this.</text>
+    <text x="0" y="152" font-size="14" font-weight="bold" fill="#222">This test proves nothing.</text>
+  </g>
+
+  <line x1="282" y1="52" x2="282" y2="248" stroke="#bbb" stroke-width="1.5"/>
+
+  <!-- ===== scene 2: good cell with bulb ===== -->
+  <g transform="translate(300,52)">
+    <text x="0" y="16" font-size="15" font-weight="bold" fill="#222">2. Same cells, bulb across them</text>
+
+    <!-- good cell row -->
+    <use href="#aa" x="0" y="42"/>
+    <circle cx="140" cy="57" r="15" fill="#ffe9a8" stroke="#333" stroke-width="2"/>
+    <g stroke="#e8a33a" stroke-width="2.5"><line x1="140" y1="34" x2="140" y2="26"/><line x1="159" y1="43" x2="166" y2="37"/><line x1="159" y1="71" x2="166" y2="77"/></g>
+    <polyline points="4,42 4,30 140,30 140,42" fill="none" stroke="#c0392b" stroke-width="2.5"/>
+    <polyline points="95,72 95,84 140,84 140,72" fill="none" stroke="#222" stroke-width="2.5"/>
+    <rect x="176" y="40" width="76" height="34" rx="4" fill="#2b332b"/>
+    <text x="214" y="64" text-anchor="middle" font-size="17" font-weight="bold" fill="#8ad68a">1.28 V</text>
+    <text x="258" y="64" font-size="14" font-weight="bold" fill="#222">good</text>
+
+    <!-- worn cell row -->
+    <use href="#aa" x="0" y="150"/>
+    <circle cx="140" cy="165" r="15" fill="#efefe6" stroke="#333" stroke-width="2"/>
+    <polyline points="4,150 4,138 140,138 140,150" fill="none" stroke="#c0392b" stroke-width="2.5"/>
+    <polyline points="95,180 95,192 140,192 140,180" fill="none" stroke="#222" stroke-width="2.5"/>
+    <rect x="176" y="148" width="76" height="34" rx="4" fill="#2b332b"/>
+    <text x="214" y="172" text-anchor="middle" font-size="17" font-weight="bold" fill="#e8742a">0.70 V</text>
+    <text x="258" y="172" font-size="14" font-weight="bold" fill="#c0392b">worn</text>
+    <text x="0" y="204" font-size="13" fill="#444">the bulb barely glows</text>
+  </g>
+
+  <line x1="18" y1="268" x2="602" y2="268" stroke="#bbb" stroke-width="1.5"/>
+  <g font-size="14" fill="#222">
+    <text x="18" y="292">Keep the meter on the cell and switch on a small bulb, a 2.2 ohm resistor, or the device itself.</text>
+    <text x="18" y="312">A sound AA holds above about 1.2 V. A worn one falls away within seconds.</text>
+  </g>
+  <text x="18" y="340" font-size="13" fill="#666">Never test a cell by shorting it: use a bulb or a resistor as the load.</text>
+</svg>

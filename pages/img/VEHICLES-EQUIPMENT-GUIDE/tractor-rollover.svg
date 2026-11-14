@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="560" viewBox="0 0 680 560" font-family="Arial, Helvetica, sans-serif">
+  <title>Three ways a tractor tips, and what saves you: a load hitched higher than the drawbar rears it over backwards; a steep slope is backed up and driven down, never the other way; and a roll bar with the seat belt keeps a space round the driver when it goes over</title>
+  <rect width="680" height="560" fill="#ffffff"/>
+  <defs>
+    <marker id="rt" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#c8431a"/></marker>
+    <marker id="gt" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#2f5e16"/></marker>
+    <g id="tr">
+      <polygon points="-30,-30 -30,-58 -2,-58 -2,-72 22,-72 22,-58 46,-58 46,-44 96,-44 96,-24 46,-24 46,-30" fill="#3a7a30" stroke="#222" stroke-width="2.5" stroke-linejoin="round"/>
+      <rect x="-2" y="-70" width="20" height="9" fill="#222"/>
+      <path d="M34,-46 L42,-66" stroke="#222" stroke-width="3"/>
+      <ellipse cx="44" cy="-68" rx="9" ry="3" fill="#222"/>
+      <path d="M66,-44 V-68" stroke="#555" stroke-width="5"/>
+      <rect x="-54" y="-26" width="26" height="7" fill="#555" stroke="#222" stroke-width="1.6"/>
+      <circle cx="0" cy="-30" r="30" fill="#2a2a2a"/><circle cx="0" cy="-30" r="11" fill="#9a9a9a"/>
+      <circle cx="82" cy="-16" r="16" fill="#2a2a2a"/><circle cx="82" cy="-16" r="5.5" fill="#9a9a9a"/>
+    </g>
+    <g id="trrear">
+      <ellipse cx="-46" cy="-32" rx="13" ry="32" fill="#2a2a2a"/>
+      <ellipse cx="46" cy="-32" rx="13" ry="32" fill="#2a2a2a"/>
+      <rect x="-28" y="-66" width="56" height="44" fill="#3a7a30" stroke="#222" stroke-width="2.5"/>
+      <rect x="-12" y="-78" width="24" height="12" fill="#222"/>
+      <circle cx="0" cy="-92" r="9" fill="#e6c6a6" stroke="#222" stroke-width="2"/>
+      <path d="M0,-83 V-70" stroke="#222" stroke-width="5"/>
+      <path d="M-24,-66 V-122 H24 V-66" fill="none" stroke="#c87a1a" stroke-width="9" stroke-linejoin="round"/>
+      <path d="M-11,-76 L11,-70" stroke="#c8431a" stroke-width="3.5"/>
+    </g>
+  </defs>
+
+  <text x="340" y="24" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">A tractor rolls over, and that kills: overturns are 50 to 60 per cent of tractor deaths.</text>
+
+  <!-- ===== PANEL A: the high hitch ===== -->
+  <text x="20" y="58" font-size="13.5" font-weight="bold" fill="#c8431a">1. A HIGH HITCH REARS IT OVER</text>
+  <text x="20" y="86" font-size="12.5" font-weight="bold" fill="#c8431a">Hitched higher than the</text>
+  <text x="20" y="102" font-size="12.5" font-weight="bold" fill="#c8431a">drawbar, the front comes up.</text>
+  <line x1="20" y1="236" x2="226" y2="236" stroke="#6b5a45" stroke-width="2.5"/>
+  <g transform="translate(118,236) scale(0.66)">
+    <use href="#tr"/>
+  </g>
+  <path d="M100,198 C78,206 62,214 46,222" stroke="#c8431a" stroke-width="4" fill="none"/>
+  <rect x="24" y="218" width="24" height="18" fill="#8a7a62" stroke="#333" stroke-width="2"/>
+  <g stroke="#c8431a" stroke-width="4" stroke-linecap="round"><path d="M64,198 L82,216 M82,198 L64,216"/></g>
+  <path d="M196,142 C170,124 130,124 106,140" fill="none" stroke="#c8431a" stroke-width="3.5" marker-end="url(#rt)"/>
+  <text x="226" y="166" text-anchor="end" font-size="12.5" font-weight="bold" fill="#c8431a">it tips backwards</text>
+  <g stroke="#2f5e16" stroke-width="3" fill="none" marker-end="url(#gt)"><path d="M150,268 L96,240"/></g>
+  <text x="226" y="266" text-anchor="end" font-size="12.5" font-weight="bold" fill="#2f5e16">pull only from</text>
+  <text x="226" y="282" text-anchor="end" font-size="12.5" font-weight="bold" fill="#2f5e16">the drawbar</text>
+  <text x="20" y="306" font-size="12.5" fill="#222">Never hitch to the axle housing</text>
+  <text x="20" y="322" font-size="12.5" fill="#222">or anywhere higher. Front-end</text>
+  <text x="20" y="338" font-size="12.5" fill="#222">weights keep the front down.</text>
+
+  <!-- ===== PANEL B: slopes ===== -->
+  <line x1="240" y1="46" x2="240" y2="348" stroke="#ccc" stroke-width="1"/>
+  <text x="256" y="58" font-size="13.5" font-weight="bold" fill="#c8431a">2. SLOPES</text>
+  <text x="256" y="86" font-size="12.5" font-weight="bold" fill="#2f5e16">Back UP a steep slope,</text>
+  <text x="256" y="102" font-size="12.5" font-weight="bold" fill="#2f5e16">and drive forward DOWN it.</text>
+  <path d="M254,160 L444,240 L444,258 L254,258 z" fill="#efe8dc" stroke="#6b5a45" stroke-width="2.5"/>
+  <g transform="translate(372,210) rotate(23) scale(0.56)">
+    <use href="#tr"/>
+  </g>
+  <g stroke="#2f5e16" stroke-width="3.5" fill="none" marker-end="url(#gt)"><path d="M322,176 L276,156"/></g>
+  <text x="256" y="286" font-size="12.5" fill="#222">Driving forward up a steep slope,</text>
+  <text x="256" y="302" font-size="12.5" fill="#222">"popping" the clutch, or rear wheels</text>
+  <text x="256" y="318" font-size="12.5" fill="#222">stuck fast, all tip it backwards.</text>
+  <text x="256" y="340" font-size="12.5" font-weight="bold" fill="#c8431a">Crossing a slope, a ditch bank,</text>
+  <text x="256" y="356" font-size="12.5" font-weight="bold" fill="#c8431a">a hole or a stump tips it sideways.</text>
+
+  <!-- ===== PANEL C: ROPS ===== -->
+  <line x1="458" y1="46" x2="458" y2="348" stroke="#ccc" stroke-width="1"/>
+  <text x="474" y="58" font-size="13.5" font-weight="bold" fill="#2f5e16">3. ROLL BAR AND SEAT BELT</text>
+  <text x="474" y="86" font-size="12.5" fill="#222">Seen from behind, gone over on</text>
+  <text x="474" y="102" font-size="12.5" fill="#222">its side. The bar keeps a space;</text>
+  <text x="474" y="118" font-size="12.5" fill="#222">the belt keeps you inside it.</text>
+  <line x1="470" y1="236" x2="664" y2="236" stroke="#6b5a45" stroke-width="2.5"/>
+  <g transform="translate(528,236) rotate(74) scale(0.62)">
+    <use href="#trrear"/>
+  </g>
+  <path d="M608,164 L596,192" fill="none" stroke="#c87a1a" stroke-width="2"/>
+  <text x="664" y="156" text-anchor="end" font-size="12.5" font-weight="bold" fill="#c87a1a">the roll bar holds</text>
+  <text x="664" y="172" text-anchor="end" font-size="12.5" font-weight="bold" fill="#c87a1a">the ground off you</text>
+  <text x="474" y="272" font-size="12.5" font-weight="bold" fill="#c8431a">With a roll bar, fewer than 1 in</text>
+  <text x="474" y="288" font-size="12.5" font-weight="bold" fill="#c8431a">100 overturns killed anyone.</text>
+  <text x="474" y="312" font-size="12.5" font-weight="bold" fill="#c8431a">Never buckle up on a tractor that</text>
+  <text x="474" y="328" font-size="12.5" font-weight="bold" fill="#c8431a">has no roll bar.</text>
+
+  <!-- numbers -->
+  <line x1="16" y1="376" x2="664" y2="376" stroke="#ccc" stroke-width="1"/>
+  <g font-size="13.5" fill="#222">
+    <text x="16" y="402"><tspan font-weight="bold">85 of every 100 overturns are to the side</tspan>, and 15 to the rear.</text>
+    <text x="16" y="426"><tspan font-weight="bold">A rear overturn passes the point of no return in 0.75 seconds</tspan> and is over in about 1½. Your</text>
+    <text x="16" y="444">own reaction takes about half a second: you cannot jump clear.</text>
+    <text x="16" y="468">A homemade bar is not a roll bar. Use the tractor that has one for the risky jobs: slopes, ditches,</text>
+    <text x="16" y="486">mowing banks and road travel.</text>
+    <text x="16" y="510">Older tractors are the ones that kill: 63 per cent of fatal overturns were tractors over ten years old.</text>
+  </g>
+  <text x="16" y="538" font-size="13.5" font-weight="bold" fill="#c8431a">One seat, one person. A rider has nothing to hold, falls off on a bump, and is run over.</text>
+  <text x="16" y="556" font-size="13.5" font-weight="bold" fill="#c8431a">Carry a loader bucket low, and never haul a raised load across a slope.</text>
+</svg>
