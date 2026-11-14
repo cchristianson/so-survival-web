@@ -115,6 +115,11 @@ footer{color:var(--muted);font-size:13px;margin-top:22px}
 /* ---- Ask */
 form.ask{display:flex;gap:8px;position:sticky;top:var(--top);background:var(--bg);padding:8px 0;z-index:2}
 .opts{display:flex;gap:6px 16px;flex-wrap:wrap;color:var(--muted);font-size:14px;margin:4px 0 14px}
+.muted{color:var(--muted)}
+.meshlist{display:flex;flex-direction:column;gap:8px;margin:10px 0 14px;max-height:60vh;overflow:auto}
+.msg{border-left:3px solid var(--input);padding:2px 0 2px 10px}.msg.mine{border-left-color:var(--accent)}
+.msg .who{font-size:13px;color:var(--muted)}.msg .what{margin:2px 0 0;overflow-wrap:anywhere}
+#meshform{margin:0}#meshtext{min-height:62px}
 .opts label{display:flex;align-items:center;gap:6px;min-height:32px}#searchin{margin-top:-10px}#searchin>span{display:flex;align-items:center;min-height:32px}.opts input{width:18px;height:18px;margin:0;accent-color:var(--btn)}
 .examples{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
 .ex{font-size:13.5px;min-height:36px;padding:6px 12px;border-radius:999px;border:1px dashed var(--input);color:var(--muted);cursor:pointer;background:transparent;font-family:inherit}
@@ -312,6 +317,18 @@ body.osk-open{padding-bottom:236px}
 <section id="more" hidden><div id="morebody"></div></section>
 
 <section id="help" hidden><div id="helpbody"></div></section>
+
+<section id="mesh" hidden>
+  <div class="card" id="meshcard">
+    <p class="meta" id="meshstate">Looking for the mesh radio…</p>
+    <div id="meshlist" class="meshlist" aria-live="polite"></div>
+    <form class="ask" id="meshform" autocomplete="off">
+      <textarea id="meshtext" maxlength="200" rows="1" placeholder="Message everyone on the mesh" aria-label="Message to send over the mesh"></textarea>
+      <button type="submit" class="main" id="meshsend">Send</button>
+    </form>
+    <p class="meta" id="meshnote">Everyone on this Vault&#8217;s Wi&#8209;Fi can read these, and so can every radio in range on the same channel. It is a notice board, not a safe.</p>
+  </div>
+</section>
 
 <section id="setup" hidden>
   <div class="card" id="savecard" data-page="offline">
