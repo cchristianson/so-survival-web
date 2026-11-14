@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="330" viewBox="0 0 660 330" font-family="Arial, Helvetica, sans-serif">
+  <title>The end of a chisel or plane iron seen from the side: a long ground bevel of about 25 degrees, a narrow honed edge a little steeper, and the flat side kept flat</title>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker></defs>
+  <rect width="660" height="330" fill="#ffffff"/>
+  <path d="M40,110 H546 L520.9,128.2 L431.3,170.0 H40 Z" fill="#c9cfd3" stroke="#3d4448" stroke-width="2.2" stroke-linejoin="round"/>
+  <rect x="24" y="104" width="22" height="72" fill="#ffffff"/>
+  <path d="M44,110 l-8,12 l10,12 l-10,12 l10,12 l-8,12" fill="none" stroke="#3d4448" stroke-width="1.6"/>
+  <!-- the ground bevel carried on to the flat side, dashed -->
+  <path d="M520.9,128.2 L560.0,110.0 H590" fill="none" stroke="#777" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <!-- the angle of the ground bevel -->
+  <path d="M450,110 A110,110 0 0 0 460.3,156.5" fill="none" stroke="#1f4e79" stroke-width="2"/>
+  <text x="416" y="140" font-size="16" font-weight="bold" fill="#1f4e79">25°</text>
+  <!-- the honed facet, picked out -->
+  <path d="M520.9,128.2 L546.0,110.0" stroke="#c8431a" stroke-width="5" stroke-linecap="round"/>
+  <!-- length of the bevel -->
+  <line x1="431.3" y1="194" x2="560.0" y2="194" stroke="#333" stroke-width="1.4" marker-start="url(#a)" marker-end="url(#a)"/>
+  <line x1="431.3" y1="174" x2="431.3" y2="202" stroke="#333" stroke-width="1"/>
+  <line x1="560.0" y1="114" x2="560.0" y2="202" stroke="#333" stroke-width="1" stroke-dasharray="3 3"/>
+  <g font-size="17" fill="#222">
+    <text x="50" y="70" font-weight="bold">Flat side: keep it dead flat on the stone</text>
+    <text x="50" y="92">to rub off the burr; never tip it up</text>
+    <text x="496" y="228" text-anchor="middle" font-weight="bold">Ground bevel, about 25°:</text>
+    <text x="496" y="250" text-anchor="middle">about 1/4 in long on a plane iron,</text>
+    <text x="496" y="272" text-anchor="middle">3/8–1/2 in on a chisel</text>
+    <text x="586" y="70" text-anchor="middle" font-weight="bold" fill="#c8431a">Honed edge:</text>
+    <text x="586" y="92" text-anchor="middle" fill="#c8431a">a little steeper</text>
+  </g>
+  <line x1="586" y1="100" x2="539.5" y2="119.1" stroke="#c8431a" stroke-width="1.4" marker-end="url(#a)"/>
+  <text x="20" y="310" font-size="14" fill="#555">Seen from the side, much enlarged; the honed edge is drawn wider than it is.</text>
+</svg>

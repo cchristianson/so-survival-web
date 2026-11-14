@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="440" viewBox="0 0 620 440" font-family="Arial, Helvetica, sans-serif">
+  <title>Reading a rising creek: a stake at the bank marked every foot, read every hour, and driftwood caught in a waterside tree showing an old flood level</title>
+  <rect width="620" height="440" fill="#ffffff"/>
+
+  <!-- old flood level, from the debris in the tree -->
+  <line x1="20" y1="124" x2="600" y2="124" stroke="#2a6fa8" stroke-width="1.8" stroke-dasharray="10 6"/>
+
+  <!-- the creek and its bank, in section -->
+  <path d="M20,300 H262 L300,272 L420,186 H600 V350 H20 z" fill="#c9a77c"/>
+  <path d="M20,300 H262 L262,350 H20 z" fill="#8fc1e3"/>
+  <path d="M20,336 C80,350 180,352 262,344 L262,350 H20 z" fill="#a98a62"/>
+  <path d="M20,300 H262" stroke="#2a6fa8" stroke-width="2"/>
+  <path d="M262,300 L300,272 L420,186 H600" fill="none" stroke="#6b5a45" stroke-width="2.5"/>
+  <!-- ripples -->
+  <g stroke="#ffffff" stroke-width="2" fill="none"><path d="M60,316 q10,-6 20,0 q10,6 20,0"/><path d="M150,322 q10,-6 20,0 q10,6 20,0"/></g>
+
+  <!-- the stake: bed at y 344, 40 px to the foot -->
+  <rect x="238" y="104" width="14" height="244" fill="#e9dcc2" stroke="#6b4a24" stroke-width="2"/>
+  <g stroke="#c8431a" stroke-width="4">
+    <line x1="238" y1="304" x2="252" y2="304"/><line x1="238" y1="264" x2="252" y2="264"/><line x1="238" y1="224" x2="252" y2="224"/>
+    <line x1="238" y1="184" x2="252" y2="184"/><line x1="238" y1="144" x2="252" y2="144"/>
+  </g>
+  <g font-size="14" font-weight="bold" fill="#c8431a" text-anchor="end" stroke="#ffffff" stroke-width="4" paint-order="stroke" stroke-linejoin="round">
+    <text x="232" y="309">1 ft</text><text x="232" y="269">2 ft</text><text x="232" y="229">3 ft</text><text x="232" y="189">4 ft</text><text x="232" y="149">5 ft</text>
+  </g>
+
+  <!-- the waterside tree, debris caught in its branches -->
+  <rect x="496" y="70" width="18" height="118" fill="#7a5a35"/>
+  <g stroke="#7a5a35" stroke-width="5" fill="none" stroke-linecap="round">
+    <path d="M505,130 L460,108"/><path d="M505,118 L556,96"/><path d="M505,92 L472,64"/><path d="M505,86 L540,60"/>
+  </g>
+  <g fill="#5f8f3e"><circle cx="470" cy="56" r="26"/><circle cx="510" cy="40" r="30"/><circle cx="548" cy="56" r="26"/><circle cx="530" cy="78" r="20"/><circle cx="484" cy="80" r="18"/></g>
+  <!-- driftwood and weeds at the old flood level -->
+  <g stroke="#8a6a3a" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M458,118 L492,126"/><path d="M462,128 L500,120"/><path d="M516,124 L552,116"/><path d="M520,116 L560,126"/>
+  </g>
+  <g stroke="#9aa65a" stroke-width="2" fill="none"><path d="M466,124 q4,10 0,18"/><path d="M474,124 q6,10 2,20"/><path d="M528,122 q4,10 0,18"/><path d="M538,122 q-4,10 0,18"/></g>
+
+  <!-- labels -->
+  <g font-size="15" fill="#222">
+    <text x="20" y="40" font-weight="bold">A stake at the bank,</text>
+    <text x="20" y="58" font-weight="bold">marked every foot</text>
+    <line x1="150" y1="64" x2="236" y2="112" stroke="#333" stroke-width="1.2"/>
+    <text x="300" y="40" font-weight="bold" fill="#2a6fa8">Driftwood and weeds</text>
+    <text x="300" y="58" font-weight="bold" fill="#2a6fa8">in the branches:</text>
+    <text x="300" y="76" font-weight="bold" fill="#2a6fa8">an old flood level</text>
+    <line x1="420" y1="82" x2="462" y2="116" stroke="#2a6fa8" stroke-width="1.2"/>
+    <text x="300" y="232">the creek now</text>
+    <line x1="296" y1="236" x2="258" y2="298" stroke="#333" stroke-width="1"/>
+  </g>
+  <g font-size="15" fill="#222">
+    <text x="20" y="384" font-weight="bold">Read it every hour through a rising night.</text>
+    <text x="20" y="404">Write down the time and the mark. Is the water standing or flowing?</text>
+    <text x="20" y="424">Rising, steady or falling?</text>
+  </g>
+</svg>

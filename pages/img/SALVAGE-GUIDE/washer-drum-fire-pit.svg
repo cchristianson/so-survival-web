@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="440" viewBox="0 0 600 440" font-family="Arial, Helvetica, sans-serif">
+  <title>A washing-machine drum as a fire pit: the drum stood on bricks, a grate across the top, the holes feeding air</title>
+  <rect width="600" height="440" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#2a6fa8"/></marker>
+    <pattern id="holes" width="16" height="16" patternUnits="userSpaceOnUse"><rect width="16" height="16" fill="#d9dde0"/><circle cx="8" cy="8" r="3" fill="#6b7378"/></pattern>
+    <pattern id="hotholes" width="16" height="16" patternUnits="userSpaceOnUse"><rect width="16" height="16" fill="#d9dde0"/><circle cx="8" cy="8" r="3" fill="#e8742a"/></pattern>
+    <pattern id="brick" width="40" height="20" patternUnits="userSpaceOnUse"><rect width="40" height="20" fill="#b5553a"/><path d="M0,0.5 H40 M0,10 H40 M20,0 V10 M0,10 V20 M40,10 V20" stroke="#e9d6c8" stroke-width="1.5" fill="none"/></pattern>
+  </defs>
+
+  <!-- ground -->
+  <line x1="20" y1="392" x2="580" y2="392" stroke="#6b5a45" stroke-width="2.5"/>
+  <!-- two brick piers, a gap between them -->
+  <rect x="200" y="352" width="60" height="40" fill="url(#brick)" stroke="#7a3522" stroke-width="1.5"/>
+  <rect x="340" y="352" width="60" height="40" fill="url(#brick)" stroke="#7a3522" stroke-width="1.5"/>
+
+  <!-- drum body: x 190-410, top rim y 132, bottom y 350 -->
+  <path d="M190,132 V340 A110,14 0 0 0 410,340 V132" fill="url(#holes)" stroke="#4a5257" stroke-width="2.5"/>
+  <!-- the lower rows glow: fire inside -->
+  <path d="M192,272 V340 A108,13 0 0 0 408,340 V272 A108,13 0 0 1 192,272 z" fill="url(#hotholes)"/>
+  <!-- top rim, open -->
+  <ellipse cx="300" cy="132" rx="110" ry="22" fill="#3a2a20" stroke="#4a5257" stroke-width="2.5"/>
+  <!-- flames showing above the rim -->
+  <path d="M232,132 C238,104 250,118 252,96 C262,116 270,100 276,82 C284,104 296,96 300,74 C306,98 320,92 324,110 C330,98 342,106 346,90 C352,112 360,118 368,132 z" fill="#f2a33a" stroke="#d8641a" stroke-width="1.5"/>
+  <!-- grate across the top -->
+  <g stroke="#222" stroke-width="3">
+    <line x1="172" y1="126" x2="428" y2="126"/>
+    <line x1="176" y1="112" x2="424" y2="112"/>
+    <line x1="182" y1="140" x2="418" y2="140"/>
+  </g>
+  <g stroke="#222" stroke-width="2"><line x1="200" y1="108" x2="196" y2="144"/><line x1="400" y1="108" x2="404" y2="144"/></g>
+
+  <!-- air arrows in through the holes and under -->
+  <g stroke="#2a6fa8" stroke-width="2.5" fill="none" marker-end="url(#a)">
+    <path d="M128,300 H180"/>
+    <path d="M128,250 H180"/>
+    <path d="M472,300 H420"/>
+    <path d="M300,384 V362"/>
+  </g>
+
+  <!-- labels -->
+  <g font-size="15" fill="#222">
+    <text x="20" y="40" font-weight="bold">Grate laid across the top</text>
+    <line x1="140" y1="48" x2="190" y2="108" stroke="#333" stroke-width="1.2"/>
+    <text x="410" y="40" font-weight="bold">Washer drum,</text>
+    <text x="410" y="58">usually stainless steel</text>
+    <text x="410" y="76">full of holes</text>
+    <line x1="450" y1="84" x2="409" y2="168" stroke="#333" stroke-width="1.2"/>
+    <text x="20" y="232" font-weight="bold" fill="#2a6fa8">The holes</text>
+    <text x="20" y="250" font-weight="bold" fill="#2a6fa8">feed air</text>
+    <text x="20" y="344" font-weight="bold">Stand it</text>
+    <text x="20" y="362" font-weight="bold">on bricks</text>
+    <line x1="96" y1="356" x2="196" y2="370" stroke="#333" stroke-width="1.2"/>
+  </g>
+  <!-- the plastic hub: cut off first -->
+  <g transform="translate(506,214)">
+    <circle cx="0" cy="0" r="26" fill="#9bb7c9" stroke="#3d5566" stroke-width="2"/>
+    <g stroke="#3d5566" stroke-width="3"><line x1="-20" y1="0" x2="20" y2="0"/><line x1="0" y1="-20" x2="0" y2="20"/><line x1="-14" y1="-14" x2="14" y2="14"/><line x1="-14" y1="14" x2="14" y2="-14"/></g>
+    <circle cx="0" cy="0" r="7" fill="#3d5566"/>
+    <g stroke="#c8431a" stroke-width="4"><line x1="-32" y1="-32" x2="32" y2="32"/><line x1="-32" y1="32" x2="32" y2="-32"/></g>
+  </g>
+  <g font-size="14" fill="#c8431a" font-weight="bold" text-anchor="middle">
+    <text x="506" y="266">plastic hub and fins:</text>
+    <text x="506" y="282">cut off, never burn</text>
+  </g>
+  <text x="300" y="426" text-anchor="middle" font-size="14" fill="#222">Outdoor fires only in the wet season.</text>
+</svg>

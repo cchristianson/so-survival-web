@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="460" viewBox="0 0 600 460" font-family="Arial, Helvetica, sans-serif">
+  <title>An old refrigerator as a smoker: the compressor removed, a vent in the top, and a pipe bringing smoke from a separate fire box into a vent low in one side</title>
+  <rect width="600" height="460" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#777"/></marker>
+    <pattern id="brick" width="30" height="16" patternUnits="userSpaceOnUse"><rect width="30" height="16" fill="#b5553a"/><path d="M0,0.5 H30 M0,8 H30 M15,0 V8 M0,8 V16 M30,8 V16" stroke="#e9d6c8" stroke-width="1.3" fill="none"/></pattern>
+  </defs>
+
+  <!-- ground -->
+  <line x1="20" y1="402" x2="580" y2="402" stroke="#6b5a45" stroke-width="2.5"/>
+
+  <!-- fridge cabinet, cut away to show inside: x 70-250, y 80-400 -->
+  <rect x="70" y="80" width="180" height="322" rx="10" fill="#eef0f1" stroke="#333" stroke-width="3"/>
+  <rect x="84" y="94" width="152" height="294" rx="4" fill="#f9f6ef" stroke="#999" stroke-width="1.5"/>
+  <!-- racks with hanging strips of meat -->
+  <g stroke="#555" stroke-width="2.5"><line x1="88" y1="140" x2="232" y2="140"/><line x1="88" y1="236" x2="232" y2="236"/></g>
+  <g fill="#a8442c" stroke="#6e2a18" stroke-width="1">
+    <rect x="100" y="142" width="12" height="62" rx="4"/><rect x="124" y="142" width="12" height="70" rx="4"/><rect x="148" y="142" width="12" height="58" rx="4"/><rect x="172" y="142" width="12" height="66" rx="4"/><rect x="196" y="142" width="12" height="60" rx="4"/>
+    <rect x="100" y="238" width="12" height="60" rx="4"/><rect x="124" y="238" width="12" height="68" rx="4"/><rect x="148" y="238" width="12" height="56" rx="4"/><rect x="172" y="238" width="12" height="64" rx="4"/><rect x="196" y="238" width="12" height="58" rx="4"/>
+  </g>
+  <!-- smoke drifting up inside -->
+  <g fill="none" stroke="#aaa" stroke-width="2.5" stroke-linecap="round">
+    <path d="M220,360 C200,340 230,320 210,300"/><path d="M180,370 C160,350 190,330 170,312"/>
+  </g>
+  <!-- vent in the top -->
+  <rect x="140" y="72" width="40" height="10" fill="#333"/>
+  <g fill="none" stroke="#aaa" stroke-width="3" stroke-linecap="round">
+    <path d="M152,66 C142,54 162,46 152,32"/><path d="M168,66 C158,54 178,46 168,32"/>
+  </g>
+  <!-- vent low in the side, where the pipe comes in -->
+  <rect x="244" y="344" width="12" height="22" fill="#333"/>
+
+  <!-- smoke pipe from the fire box, a long way -->
+  <path d="M256,355 H420 V330" fill="none" stroke="#555" stroke-width="12"/>
+  <path d="M256,355 H420 V330" fill="none" stroke="#9a9a9a" stroke-width="8"/>
+  <path d="M372,337 H296" fill="none" stroke="#777" stroke-width="2" marker-end="url(#a)"/>
+  <text x="334" y="330" text-anchor="middle" font-size="13" fill="#555">smoke</text>
+  <!-- break in the pipe: it can be longer -->
+  <g stroke="#ffffff" stroke-width="5"><line x1="322" y1="372" x2="332" y2="340"/><line x1="332" y1="372" x2="342" y2="340"/></g>
+  <g stroke="#333" stroke-width="1.5"><line x1="319" y1="372" x2="329" y2="340"/><line x1="335" y1="372" x2="345" y2="340"/></g>
+
+  <!-- fire box of brick: x 380-500, y 300-402 -->
+  <rect x="380" y="300" width="120" height="102" fill="url(#brick)" stroke="#7a3522" stroke-width="2"/>
+  <rect x="380" y="290" width="120" height="12" fill="#666" stroke="#333" stroke-width="1.5"/>
+  <!-- small air door low down -->
+  <rect x="470" y="372" width="22" height="22" fill="#333"/>
+  <path d="M473,394 C471,386 476,382 475,376 C480,382 482,378 484,374 C486,382 490,386 489,394 z" fill="#f2a33a"/>
+
+  <!-- labels -->
+  <g font-size="15" fill="#222">
+    <text x="200" y="30" font-weight="bold">Vent cut in the top</text>
+    <line x1="232" y1="36" x2="182" y2="74" stroke="#333" stroke-width="1.2"/>
+    <text x="300" y="118" font-weight="bold">Old fridge,</text>
+    <text x="300" y="136">compressor removed</text>
+    <line x1="298" y1="128" x2="252" y2="150" stroke="#333" stroke-width="1.2"/>
+    <text x="300" y="196" font-weight="bold">Pipe brings the smoke into</text>
+    <text x="300" y="214" font-weight="bold">a vent low in one side</text>
+    <line x1="330" y1="222" x2="280" y2="346" stroke="#333" stroke-width="1.2"/>
+    <text x="410" y="256" font-weight="bold">Fire box of</text>
+    <text x="410" y="274" font-weight="bold">brick or metal</text>
+    <text x="510" y="352">air door</text>
+    <text x="510" y="368">keeps the</text>
+    <text x="510" y="384">fire smoky</text>
+  </g>
+  <text x="300" y="432" text-anchor="middle" font-size="14" font-weight="bold" fill="#c8431a">Keep the fire well away: hot smoke softens the plastic liner.</text>
+  <text x="300" y="452" text-anchor="middle" font-size="14" fill="#222">Or line the box with sheet metal.</text>
+</svg>

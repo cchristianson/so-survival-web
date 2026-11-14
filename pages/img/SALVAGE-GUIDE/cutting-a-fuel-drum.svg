@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="440" viewBox="0 0 600 440" font-family="Arial, Helvetica, sans-serif">
+  <title>Cutting a steel drum that held fuel: cleaned, filled with water to just below the cut, a bung left open as a vent, cut with a cold chisel or hacksaw</title>
+  <rect width="600" height="440" fill="#ffffff"/>
+  <defs>
+    <clipPath id="drum"><path d="M210,92 V376 A90,16 0 0 0 390,376 V92 A90,16 0 0 0 210,92 z"/></clipPath>
+  </defs>
+
+  <!-- ground -->
+  <line x1="20" y1="396" x2="580" y2="396" stroke="#6b5a45" stroke-width="2.5"/>
+
+  <!-- drum, cut away to show the water: x 210-390 -->
+  <path d="M210,92 V376 A90,16 0 0 0 390,376 V92" fill="#dfe3e6" stroke="#333" stroke-width="3"/>
+  <!-- water inside, up to just below the cut line (cut at y 172) -->
+  <g clip-path="url(#drum)">
+    <rect x="200" y="204" width="200" height="220" fill="#9cc8e8"/>
+    <ellipse cx="300" cy="204" rx="90" ry="13" fill="#c4e0f3" stroke="#4a8dc0" stroke-width="1.5"/>
+  </g>
+  <!-- rolling hoops -->
+  <g fill="none" stroke="#555" stroke-width="2"><path d="M210,230 A90,14 0 0 0 390,230"/><path d="M210,310 A90,14 0 0 0 390,310"/></g>
+  <!-- the top, with two bungs -->
+  <ellipse cx="300" cy="92" rx="90" ry="16" fill="#c9ced2" stroke="#333" stroke-width="3"/>
+  <ellipse cx="256" cy="90" rx="10" ry="4" fill="#ffffff" stroke="#333" stroke-width="2"/>
+  <ellipse cx="342" cy="94" rx="7" ry="3" fill="#555"/>
+  <!-- vapour leaving the open bung -->
+  <g fill="none" stroke="#999" stroke-width="2.5" stroke-linecap="round">
+    <path d="M252,80 C244,68 262,60 252,46"/><path d="M262,80 C254,68 272,60 262,46"/>
+  </g>
+  <!-- the cut line -->
+  <path d="M210,172 A90,15 0 0 0 390,172" fill="none" stroke="#c8431a" stroke-width="3" stroke-dasharray="9 5"/>
+  <!-- cold chisel on the cut -->
+  <g transform="rotate(-28 402 172)">
+    <rect x="402" y="166" width="86" height="12" fill="#6b7378" stroke="#333" stroke-width="1.5"/>
+    <path d="M402,166 L390,172 L402,178 z" fill="#6b7378" stroke="#333" stroke-width="1.5"/>
+    <rect x="488" y="162" width="14" height="20" rx="2" fill="#8a8f93" stroke="#333" stroke-width="1.5"/>
+  </g>
+
+  <!-- labels -->
+  <g font-size="15" fill="#222">
+    <text x="20" y="40" font-weight="bold">First open the bungs slowly,</text>
+    <text x="20" y="62" font-weight="bold">then clean it with steam or</text>
+    <text x="20" y="80" font-weight="bold">a strong caustic wash.</text>
+    <text x="20" y="128" font-weight="bold">Leave a bung open</text>
+    <text x="20" y="146" font-weight="bold">as a vent while you cut.</text>
+    <line x1="200" y1="130" x2="250" y2="96" stroke="#333" stroke-width="1.2"/>
+    <text x="20" y="262" font-weight="bold" fill="#2a6fa8">Fill it with water</text>
+    <text x="20" y="280" font-weight="bold" fill="#2a6fa8">to just below the cut.</text>
+    <line x1="186" y1="268" x2="228" y2="222" stroke="#2a6fa8" stroke-width="1.2"/>
+    <text x="420" y="246" font-weight="bold" fill="#c8431a">the cut</text>
+    <line x1="430" y1="234" x2="386" y2="180" stroke="#c8431a" stroke-width="1.2"/>
+    <text x="420" y="300" font-weight="bold">Cut with a cold</text>
+    <text x="420" y="318" font-weight="bold">chisel or hacksaw,</text>
+    <text x="420" y="336">not a torch or</text>
+    <text x="420" y="354">grinder.</text>
+  </g>
+  <text x="300" y="428" text-anchor="middle" font-size="14" fill="#c8431a" font-weight="bold">Held pesticide, or you don't know what? Don't use it for anything.</text>
+</svg>

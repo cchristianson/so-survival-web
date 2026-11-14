@@ -1,0 +1,657 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Salvage: Useful Things From Broken Things</title><style>:root{--bg:#131915;--card:#1B2420;--ink:#E8EDE7;--muted:#A5B0A7;--accent:#8CC7A2;--accent2:#E0B65A;--line:#34413A;--code:#27322B}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--bg:#F5F2EA;--card:#FFFDF8;--ink:#1D2721;--muted:#566058;--accent:#315B43;--accent2:#7A5F1E;--line:#DCD6C8;--code:#E9E4D7}}:root[data-theme=light]{--bg:#F5F2EA;--card:#FFFDF8;--ink:#1D2721;--muted:#566058;--accent:#315B43;--accent2:#7A5F1E;--line:#DCD6C8;--code:#E9E4D7}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,Segoe UI,Roboto,Arial,sans-serif}.wrap{max-width:900px;margin:0 auto;padding:28px 20px 80px}h1{font-size:28px;}h2{font-size:22px;border-bottom:2px solid var(--line);padding-bottom:6px;margin-top:30px}h3{font-size:17px;color:var(--accent)}h4{font-size:15px;color:var(--accent2)}a{color:var(--accent)}code{background:var(--code);padding:2px 6px;border-radius:6px;font-family:Consolas,monospace;font-size:14px}pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow-x:auto}pre code{background:none;padding:0}table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}th{background:rgba(127,127,127,.12)}blockquote{border-left:4px solid var(--accent);background:rgba(140,199,162,.08);padding:10px 16px;margin:16px 0;border-radius:0 10px 10px 0}@media(max-width:600px){.wrap{padding:16px 14px 80px}.topnav{margin:-16px -14px 6px;padding:8px 14px 7px}ul,ol{padding-left:20px}blockquote{padding:8px 12px 8px 12px;border-left-width:3px}blockquote ul,blockquote ol{padding-left:18px}h1{font-size:24px;line-height:1.25}h2{font-size:20px;margin-top:26px}h3{font-size:16.5px}table{font-size:14px}th,td{padding:7px 8px}.toc{padding:8px 12px}.toc ol{padding-left:20px}.totop{padding:6px 11px;font-size:13px}li{margin:3px 0}}hr{border:none;border-top:1px solid var(--line);margin:26px 0}ul,ol{padding-left:26px}table{display:block;overflow-x:auto;max-width:100%}code,a{overflow-wrap:anywhere}img{max-width:100%}.wrap p>img{display:block;margin:14px auto 6px;max-width:min(100%,640px);height:auto;border-radius:10px;background:#fff;border:1px solid var(--line)}.wrap p>img+em{display:block;text-align:center;font-size:14px;color:var(--muted);margin-bottom:6px}a.lib{text-decoration-style:dotted}a.lib::before{content:"📖 ";text-decoration:none}.deeper{font-size:15px;opacity:.95}a.wiki::before{content:"📷 "}a.lib.pic::before{content:"🖼️ "}a.lib::before,a.wiki::before{display:inline-block;margin-right:3px}html{scroll-behavior:smooth}h2{scroll-margin-top:12px}.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 16px;margin:18px 0 8px}.toc summary{cursor:pointer;font-weight:600;color:var(--accent);font-size:17px}.toc ol{margin:8px 0 4px;padding-left:26px;columns:2 260px;column-gap:28px}.toc li{margin:4px 0;break-inside:avoid}.toc a{text-decoration:none}.toc a:hover{text-decoration:underline}.totop{position:fixed;right:14px;bottom:max(14px,env(safe-area-inset-bottom));background:var(--card);color:var(--accent);border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:14px;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:5}@media print{.totop{display:none}.toc details{display:block}}.topnav{font-size:14.5px;margin:-28px -20px 4px;padding:10px 20px 8px;color:var(--muted);position:sticky;top:0;z-index:4;background:var(--bg);border-bottom:1px solid var(--line)}h1,h2,h3,h4,[id]{scroll-margin-top:72px}.guidenav{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:36px 0 0;border-top:1px solid var(--line);padding-top:16px}.guidenav a{display:block;height:100%;box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;text-decoration:none;font-weight:600;line-height:1.3;font-size:15px}.guidenav small{display:block;font-weight:400;color:var(--muted);font-size:13px;margin-bottom:2px}.guidenav .up{text-align:center}.guidenav .next{text-align:right}@media(max-width:560px){.guidenav{grid-template-columns:1fr 1fr}.guidenav .up{grid-column:1/-1;order:3}}.topnav a{text-decoration:none;white-space:nowrap}h1 .h1e{-webkit-text-fill-color:initial;color:var(--ink);background:none}.azbar{display:flex;flex-wrap:wrap;gap:4px;background:var(--bg);padding:8px 0;margin:10px 0;border-bottom:1px solid var(--line)}.azbar a{display:inline-block;min-width:30px;text-align:center;padding:4px 6px;border:1px solid var(--line);border-radius:8px;background:var(--card);text-decoration:none;font-weight:600}</style><style>:root{color-scheme:dark}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){color-scheme:light}}:root[data-theme=light]{color-scheme:light}.themebtn{font:inherit;font-size:14px;line-height:1.3;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:3px 11px;cursor:pointer;white-space:nowrap;text-decoration:none}.themefloat{position:absolute;top:10px;right:12px;z-index:9}@media print{.themebtn{display:none}}</style><script>/* so-theme: light or dark screen */(function(){var K="so-theme",d=document.documentElement,L={auto:"Display: auto",dark:"Display: dark",light:"Display: light"},N={auto:"dark",dark:"light",light:"auto"},cur="dark";try{cur=localStorage.getItem(K)||"dark"}catch(e){}function a(){if(cur==="dark"||cur==="light")d.setAttribute("data-theme",cur);else d.removeAttribute("data-theme");var b=document.querySelectorAll(".themebtn");for(var i=0;i<b.length;i++){b[i].textContent=L[cur]||L.auto;b[i].title="Screen: "+cur+" - tap to change (Auto follows this device)"}}a();window.soTheme=function(){cur=N[cur]||"dark";try{localStorage.setItem(K,cur)}catch(e){}a()};function btn(){var b=document.createElement("button");b.type="button";b.className="themebtn";return b}document.addEventListener("DOMContentLoaded",function(){if(!document.querySelector(".themebtn")){var n=document.querySelector(".topnav"),b=btn();if(n){n.appendChild(document.createTextNode(" \u00B7 "));n.appendChild(b)}else{b.className+=" themefloat";document.body.appendChild(b)}}var all=document.querySelectorAll(".themebtn");for(var i=0;i<all.length;i++)all[i].onclick=window.soTheme;a()})})();</script><style>.backbtn{font-weight:700;text-decoration:none;white-space:nowrap}@media print{.backbtn{display:none}}@media(max-width:600px){.topnav{font-size:14px;line-height:1.8}.topnav a{white-space:nowrap}.topnav .themebtn{font-size:13px;padding:2px 9px}}</style><script>/* so-back: a Back button on every page after the first */(function(){function add(){var n=document.querySelector(".topnav");if(!n||n.querySelector(".backbtn"))return;var f=n.querySelector("a"),a=document.createElement("a");a.className="backbtn";a.href=f?f.href:"#";a.textContent="\u2190 Back";a.title="Back to the page you came from";a.onclick=function(e){if(history.length>1&&document.referrer){e.preventDefault();history.back()}};n.insertBefore(document.createTextNode(" \u00B7 "),n.firstChild);n.insertBefore(a,n.firstChild)}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",add);else add();document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a[href^=\"#\"]"):null;if(!a||e.defaultPrevented)return;var id=decodeURIComponent(a.getAttribute("href").slice(1)),t=id?document.getElementById(id):null;if(!t)return;e.preventDefault();t.scrollIntoView();try{history.replaceState(history.state,"","#"+id)}catch(x){}});if(window.matchMedia&&matchMedia("(display-mode: standalone)").matches||navigator.standalone)document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a[href]"):null;if(a&&!a.target&&/\.pdf(?![a-z0-9])/i.test(a.getAttribute("href")))a.target="_blank"},true)})();</script><style>/* so-fold: long sections folded away (tools/fold.py) */.fold{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:2px 16px;margin:12px 0}.fold>.fold-head{margin:0;padding:12px 30px 4px 0;position:relative;cursor:pointer;border:0}.fold>h2.fold-head{font-size:20px}.fold>.gist{margin:0 0 12px;color:var(--muted);font-size:15px;line-height:1.45;cursor:pointer}.fold-js .fold>.fold-body{display:none}.fold-js .fold.open>.fold-body{display:block}.fold-js .fold.open>.gist{display:none}.fold-js .fold>.fold-head::after{content:'';position:absolute;right:4px;top:19px;width:9px;height:9px;border-right:2.5px solid var(--accent);border-bottom:2.5px solid var(--accent);transform:rotate(45deg);transition:transform .15s}.fold-js .fold.open>.fold-head::after{transform:rotate(-135deg);top:24px}.fold>.fold-head:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}.fold>.fold-body{padding-bottom:6px}.fold .fold{background:transparent}.wrap p>img{cursor:zoom-in}.foldall{margin:10px 0 0;text-align:right}.foldall button{font:inherit;font-size:14px;font-weight:600;color:var(--accent);background:transparent;border:1px solid var(--line);border-radius:999px;padding:5px 13px;cursor:pointer}.jump{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}.jump a{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;text-decoration:none;color:var(--ink);line-height:1.35}.jump a b{display:block;color:var(--accent);font-size:17px;margin-bottom:3px}.jump a span{font-size:14px;color:var(--muted)}@media(max-width:600px){.jump{grid-template-columns:1fr}.fold{padding:2px 12px}.fold>h2.fold-head{font-size:18px}}.part{margin:34px 0 0;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent2);border-top:2px solid var(--line);padding-top:10px}@media print{.fold-js .fold>.fold-body{display:block!important}.fold>.gist,.foldall,.fold>.fold-head::after{display:none!important}.fold{border:0;padding:0;background:none}}</style><script>/* so-fold */(function(){var d=document.documentElement;d.className+=' fold-js';function set(f,on){if(on)f.classList.add('open');else f.classList.remove('open');var h=f.querySelector('.fold-head');if(h)h.setAttribute('aria-expanded',on?'true':'false')}function openTo(el){for(var p=el;p&&p!==document;p=p.parentNode)if(p.classList&&p.classList.contains('fold'))set(p,true)}function byId(h){var id='';try{id=decodeURIComponent((h||'').replace(/^#/,''))}catch(e){}return id?document.getElementById(id):null}function all(){return document.querySelectorAll('.fold')}function init(){var fs=all();if(!fs.length)return;for(var i=0;i<fs.length;i++){var h=fs[i].querySelector('.fold-head');if(h){h.tabIndex=0;h.setAttribute('role','button');h.setAttribute('aria-expanded','false')}}var bar=document.createElement('p'),b=document.createElement('button');bar.className='foldall';b.type='button';b.textContent='Open every section';b.onclick=function(){var f=all(),open=b.getAttribute('data-open')!=='1';for(var j=0;j<f.length;j++)set(f[j],open);b.setAttribute('data-open',open?'1':'0');b.textContent=open?'Fold every section':'Open every section'};bar.appendChild(b);var toc=document.getElementById('contents'),first=fs[0];if(toc&&toc.parentNode)toc.parentNode.insertBefore(bar,toc.nextSibling);else first.parentNode.insertBefore(bar,first);var t=byId(location.hash);if(t){openTo(t);var moved=false,go=function(){if(!moved)t.scrollIntoView()},stop=function(){moved=true};['wheel','touchstart','keydown','mousedown'].forEach(function(k){addEventListener(k,stop,{once:true,passive:true})});setTimeout(go,0);setTimeout(go,400);setTimeout(go,1200);addEventListener('load',go)}}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();document.addEventListener('click',function(e){var x=e.target;if(!x||!x.closest)return;var a=x.closest('a[href^="#"]');if(a){var t=byId(a.getAttribute('href'));if(t)openTo(t);return}var h=x.closest('.fold>.fold-head,.fold>.gist');if(h&&!x.closest('a')){var f=h.parentNode;set(f,!f.classList.contains('open'))}},true);document.addEventListener('keydown',function(e){var h=e.target;if((e.key==='Enter'||e.key===' ')&&h&&h.classList&&h.classList.contains('fold-head')){e.preventDefault();var f=h.parentNode;set(f,!f.classList.contains('open'))}});addEventListener('hashchange',function(){var t=byId(location.hash);if(t){openTo(t);t.scrollIntoView()}});var was=[];addEventListener('beforeprint',function(){var f=all();was=[];for(var i=0;i<f.length;i++){was.push(f[i].classList.contains('open'));set(f[i],true)}});addEventListener('afterprint',function(){var f=all();for(var i=0;i<f.length&&i<was.length;i++)set(f[i],was[i])});document.addEventListener('click',function(e){var im=e.target;if(!im||im.tagName!=='IMG'||!im.closest||im.closest('a')||!im.closest('.wrap'))return;if(im.naturalWidth>im.clientWidth*1.2)window.open(im.currentSrc||im.src,'_blank')});addEventListener('message',function(e){var m=e.data;if(!m||typeof m.arkFrameHeight!=='number')return;var f=document.getElementsByTagName('iframe');for(var i=0;i<f.length;i++)if(f[i].contentWindow===e.source)f[i].style.height=Math.max(200,Math.min(3000,m.arkFrameHeight))+'px'})})();</script>
+<style>/* the top bar keeps to the page's own edge on a phone (it used to stick out 6px each side) */@media(max-width:600px){.topnav{margin:-16px -14px 6px;padding:8px 14px 7px}}</style><style>/* ark-bar: the app's buttons on every page */:root{--side-bg:#0F1511;--side-on:#2C4A39}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--side-bg:#233F32;--side-on:#315B43}}:root[data-theme=light]{--side-bg:#233F32;--side-on:#315B43}.arkbar{position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));margin:0;padding:6px 4px calc(6px + env(safe-area-inset-bottom));background:var(--card);border-top:1px solid var(--line);font:600 11.5px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}.arkbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:48px;color:var(--muted);text-decoration:none}.arkbar a i{display:flex;align-items:center;justify-content:center;width:46px;max-width:100%;height:28px;border-radius:999px}.arkbar a.on{color:var(--ink);font-weight:700}.arkbar a.on i{background:rgba(127,160,135,.28)}.arkbar svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.arkbar .l,.arkbar .wideonly,.arkbar .bn{display:none}body.has-arkbar{padding-bottom:calc(61px + env(safe-area-inset-bottom))}body.has-arkbar .totop,body.has-arkbar .sop-fab{bottom:calc(76px + env(safe-area-inset-bottom))!important}@media(min-width:760px){.arkbar{top:0;right:auto;width:232px;display:flex;flex-direction:column;gap:4px;padding:16px 12px;border-top:0;background:var(--side-bg);font-size:15px;overflow-y:auto}.arkbar a,.arkbar a.wideonly{display:flex;flex-direction:row;justify-content:flex-start;gap:12px;min-height:44px;padding:0 12px;border-radius:10px;color:#E3EBE5;order:0!important}.arkbar a i{width:auto;height:auto;border-radius:0}.arkbar a.on i{background:none}.arkbar svg{width:20px;height:20px}.arkbar a.on{background:var(--side-on);color:#fff}.arkbar .s{display:none}.arkbar .l{display:inline}.arkbar a.bn{display:flex;gap:10px;min-height:0;padding:0 6px 14px;color:#fff;font-size:18px;font-weight:700}.arkbar .bn img{width:40px;height:40px;border-radius:9px}body.has-arkbar{padding-bottom:0;padding-left:232px}body.has-arkbar .totop,body.has-arkbar .sop-fab{bottom:14px!important}}@media print{.arkbar{display:none!important}body.has-arkbar{padding:0!important}}</style><script>/* ark-bar */(function(){function add(){if(document.querySelector(".arkbar")||location.protocol.indexOf("http")!==0||window.self!==window.top)return;var p=location.pathname,root=null;if(p.indexOf("/lib/")===0)root="/";else{var a=document.querySelector('.topnav a[href*="#tools"],.topnav a[href*="#kit"],a[href$="#kit"],a[href$="#ask"]');if(a)root=a.getAttribute("href").replace(/#.*$/,"")}if(root===null)return;var on=document.body.getAttribute("data-ark")||(/walking-routes|\/map\//i.test(p)?"maps":document.querySelector('.topnav a[href*="#kit"],.topnav a[data-app="/#kit"]')?"kit":"tools");var n=document.createElement("nav");n.className="arkbar";n.setAttribute("aria-label","Main");n.innerHTML='<a class="bn" data-v="home"><img src="'+root+'icon.svg" alt="">ARK</a><a data-v="home" style="order:1"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></i><span class="s">Home</span><span class="l">Home</span></a><a data-v="ask" style="order:3"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-7l-5 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg></i><span class="s">Ask</span><span class="l">Ask ARK</span></a><a data-v="tools" style="order:2"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-13c-3-.5-6 0-8 1.5z"/><path d="M12 6v13"/></svg></i><span class="s">Library</span><span class="l">Guides</span></a><a data-v="library" class="wideonly" style="order:0"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/></svg></i><span class="s"></span><span class="l">Books</span></a><a data-v="maps" style="order:4"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg></i><span class="s">Maps</span><span class="l">Maps &amp; Routes</span></a><a data-v="kit" style="order:5"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6.5a4 4 0 0 0-5.3 5.3L3 18l3 3 6.2-6.2a4 4 0 0 0 5.3-5.3l-2.7 2.7-2.5-.5-.5-2.5z"/></svg></i><span class="s">Tools</span><span class="l">Tools</span></a><a data-v="setup" class="wideonly" style="order:0"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></svg></i><span class="s"></span><span class="l">Offline &amp; downloads</span></a><a data-v="more" style="order:6"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="19" cy="12" r="1.3"/></svg></i><span class="s">More</span><span class="l">Settings &amp; help</span></a>';var l=n.querySelectorAll("a");for(var i=0;i<l.length;i++){l[i].href=root+"#"+l[i].getAttribute("data-v");if(l[i].getAttribute("data-v")===on&&l[i].className!=="bn")l[i].className+=" on"}document.body.appendChild(n);document.body.className+=" has-arkbar"}if(document.body)add();else document.addEventListener("DOMContentLoaded",add)})();</script></head><body><div class="wrap"><p class="topnav"><a class="guide" href="../#tools">Guides</a> › <a class="guide" href="../#tools:making">Making &amp; repair</a> · <a class="guide" href="EMERGENCY-FINDER.html">Emergency</a> · <a class="guide" href="SUBJECT-INDEX.html">Index A–Z</a></p>
+<h1 id="️-salvage-useful-things-from-broken-things"><span class="h1e"></span> Salvage: Useful Things From Broken Things</h1>
+<p>When the stores are shut, every dead washing machine, freezer and car around the Illinois Valley is a parts store. This guide takes the broken things you are most likely to find one at a time, always in the same order: what is inside worth keeping, what to make with it, and what can hurt you. It starts with the few things never to cut, burn or open, and a table to find a part fast. The books behind it are in <code>Engines-Motors\</code>, <code>Electronics-Repair\</code>, <code>Blacksmithing-Tools\</code> and <code>Homestead-Skills\</code>; each link opens a book at the right page. Much salvage know-how is in no book at all: those lines say <em>(rule of thumb)</em>.</p>
+<blockquote>
+<h3 id="the-short-version">The short version</h3>
+<ul>
+<li><strong>Make it dead before you open it.</strong> Unplug it, drain it, and discharge every capacitor: the charge left in one "is, in many cases, sufficient to cause a lethal shock" (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/neetsmodules_202003/NEETS%20MOD%2021%20NAVEDTRA%2014193A.pdf#page=32" title="NEETS Module 21 - Test Methods and Practices.pdf — page 32">NEETS 21, p. 32</a>).</li>
+<li><strong>A few things are never cut, burned or opened</strong> (the list is just below): gas and air tanks, fridge pipes, microwave high-voltage parts, picture tubes, smoke detectors, lithium packs, fluorescent tubes, and drums that held chemicals.</li>
+<li><strong>The box is often the best part.</strong> A dead freezer is an insulated chest, a washer's drum a fire pit, an electric water heater a glass-lined tank, an oil drum a stove <em>(rule of thumb)</em>.</li>
+<li><strong>Keep every motor.</strong> Washer and dryer motors turn grinders and pumps; the magnet motors in treadmills and cordless tools make power when you spin them (<a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html#motors-as-generators">Engines guide</a>).</li>
+<li><strong>Wind rarely pays.</strong> It needs an average wind of at least <strong>9 mph</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www.govinfo.gov/content/pkg/GOVPUB-E10-PURL-LPS101495/pdf/GOVPUB-E10-PURL-LPS101495.pdf#page=20" title="DOE Small Wind Electric Systems Consumers Guide.pdf — page 20">DOE <em>Small Wind</em>, p. 20</a>), and a car alternator on a small homemade rotor makes almost nothing (<a href="#the-alternator-and-the-wind-question">below</a>).</li>
+<li><strong>Never burn plastic, rubber, tires or treated wood, and never heat galvanized or old painted steel</strong> (<a class="lib" target="_blank" rel="noopener" href="https://hesperian.org/wp-content/uploads/pdf/en_cgeh_2012/en_cgeh_2012_18.pdf#page=24" title="Hesperian - Community Guide to Environmental Health Ch 18 Solid Waste (2012).pdf — page 24">Hesperian ch. 18, p. 24</a>; <a class="lib" target="_blank" rel="noopener" href="https://research.fs.usda.gov/download/treesearch/37440.pdf#page=329" title="Wood Handbook - Wood as an Engineering Material (USDA FPL GTR-190 2010).pdf — page 329"><em>Wood Handbook</em>, p. 329</a>; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/hospital-corpsman-nonresident-training-course-navedtra-14295/Hospital%20Corpsman%20-%20Nonresident%20Training%20Course%20-%20NAVEDTRA%2014295.pdf#page=220" title="Hospital Corpsman Nonresident Training Course NAVEDTRA 14295 (US Navy 2000).pdf — page 220">Navy <em>Hospital Corpsman</em>, p. 220</a>).</li>
+<li><strong>Sort metal as you go:</strong> a magnet, a grinder's sparks and the weight tell most scrap apart (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/steelworker1/steelworker1.pdf#page=21" title="US Navy NAVEDTRA 14250 - Steelworker Vol 1 (1996).pdf — page 21">Navy <em>Steelworker</em>, pp. 21–25</a>).</li>
+<li><strong>A dry, sorted, labelled parts store beats a pile</strong> <em>(rule of thumb)</em>.</li>
+</ul>
+</blockquote>
+<hr />
+<nav class="toc" id="contents" aria-label="Contents"><details open><summary>Contents</summary><ol><li><a href="#never-cut-burn-or-open-these">☠️ Never cut, burn or open these</a></li><li><a href="#i-need-where-to-find-it">I need… → where to find it</a></li><li><a href="#before-you-take-anything-apart">Before you take anything apart</a></li><li><a href="#washing-machines-and-dryers">Washing machines and dryers</a></li><li><a href="#water-heaters">Water heaters</a></li><li><a href="#fridges-and-freezers">Fridges and freezers</a></li><li><a href="#microwave-ovens">Microwave ovens</a></li><li><a href="#cars-and-trucks-a-whole-parts-store">Cars and trucks: a whole parts store</a></li><li><a href="#bicycles">Bicycles</a></li><li><a href="#lawn-mowers-and-small-engines">Lawn mowers and small engines</a></li><li><a href="#treadmills">Treadmills</a></li><li><a href="#ceiling-fans-drills-and-power-tools">Ceiling fans, drills and power tools</a></li><li><a href="#computers-ups-boxes-phones-and-tablets">Computers, UPS boxes, phones and tablets</a></li><li><a href="#solar-garden-lights-and-spent-batteries">Solar garden lights and spent batteries</a></li><li><a href="#55-gallon-drums-and-ibc-totes">55-gallon drums and IBC totes</a></li><li><a href="#pallets">Pallets</a></li><li><a href="#old-windows-and-doors">Old windows and doors</a></li><li><a href="#mattresses-box-springs-and-trampolines">Mattresses, box springs and trampolines</a></li><li><a href="#satellite-dishes">Satellite dishes</a></li><li><a href="#gutters-pvc-pipe-and-garden-hose">Gutters, PVC pipe and garden hose</a></li><li><a href="#tarps-and-plastic-sheeting">Tarps and plastic sheeting</a></li><li><a href="#tires-and-inner-tubes">Tires and inner tubes</a></li><li><a href="#the-scrap-pile-sorting-metals">The scrap pile: sorting metals</a></li><li><a href="#old-advice-in-the-library-to-ignore">⚠️ Old advice in the library to ignore</a></li><li><a href="#pictures-diagrams">Pictures &amp; diagrams</a></li><li><a href="#related-guides">Related guides</a></li></ol></details></nav>
+<h2 id="never-cut-burn-or-open-these">☠️ Never cut, burn or open these</h2>
+<p>These kill or poison people who salvage. Leave them whole, or use only what the last column says.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Thing</th>
+<th>Why</th>
+<th>Instead</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Propane tanks, gas cylinders, air tanks, fire extinguishers</strong></td>
+<td>An "empty" tank still holds gas: tanks and drums that held fuel are "potentially more dangerous than a filled container" (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM_10_67_1_P_S_O_1998/FM%2010-67-1%20Petroleum%20Supply%20Operations%20%281998%29.pdf#page=14" title="FM 10-67-1 Petroleum Supply Operations (US Army 1998).pdf — page 14">FM 10-67-1, p. 14</a>). A steel cylinder that bursts acts like "a bomb burst" (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM_10_67_2_P_T_1997/FM%2010-67-2%20Petroleum%20Testing%20%281997%29.pdf#page=118" title="FM 10-67-2 Petroleum Testing (US Army 1997).pdf — page 118">FM 10-67-2, p. 118</a>)</td>
+<td>Use a tank only for what it held. Never heat, weld or cut one, or make a stove or boiler of it (<a class="guide" href="HEAT-INTO-POWER-GUIDE.html#what-never-to-use-as-a-boiler">Heat into Power</a>)</td>
+</tr>
+<tr class="even">
+<td><strong>Fridge, freezer and air-conditioner pipes</strong></td>
+<td>The gas is under pressure; handle it with "extreme caution" (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/tm-9-8000-principles-of-automotive-vehicles-1985/TM9-8000_Principles_of_automotive_vehicles_1985.pdf#page=715" title="TM 9-8000 Principles of Automotive Vehicles.pdf — page 715">TM 9-8000, p. 715</a>). A gas (absorption) fridge holds ammonia, pressure-tested to 717 psi (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/performanceevalu1054reyn/performanceevalu1054reyn.pdf#page=9" title="Performance Evaluation of a Propane-Fired Absorption Refrigerator (NBS Report 10546 1971).pdf — page 9">NBS report, p. 9</a>)</td>
+<td>Keep the sealed pipes shut; use the cabinet (<a href="#fridges-and-freezers">Fridges and freezers</a>)</td>
+</tr>
+<tr class="odd">
+<td><strong>Microwave-oven transformer, capacitor and magnetron</strong></td>
+<td>Thousands of volts (<a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html#electronics-repair-and-salvage">Make-Do</a>), and a capacitor's leftover charge can be "sufficient to cause a lethal shock" (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/neetsmodules_202003/NEETS%20MOD%2021%20NAVEDTRA%2014193A.pdf#page=32" title="NEETS Module 21 - Test Methods and Practices.pdf — page 32">NEETS 21, p. 32</a>)</td>
+<td>Discharge it, keep the safe parts, never power the transformer (<a href="#microwave-ovens">Microwave ovens</a>)</td>
+</tr>
+<tr class="even">
+<td><strong>Old tube TVs and monitors (CRTs)</strong></td>
+<td>A broken tube implodes: "Almost two tons of force hurl glass fragments," and the face's coating "is extremely toxic" (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/neetsmodules_202003/NEETS%20MOD%206%20NAVEDTRA%2014178A.pdf#page=131" title="NEETS Module 06 - Electronic Emission Tubes and Power Supplies.pdf — page 131">NEETS 6, p. 131</a>). Up to 30,000 volts inside (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/neetsmodules_202003/NEETS%20MOD%207%20NAVEDTRA%2014179A.pdf#page=268" title="NEETS Module 07 - Solid-State Devices and Power Supplies.pdf — page 268">NEETS 7, p. 268</a>)</td>
+<td>Leave the tube whole; take only the case, knobs and speaker <em>(rule of thumb)</em></td>
+</tr>
+<tr class="odd">
+<td><strong>Smoke detectors</strong></td>
+<td>The common (ionization) kind holds "a small amount of radioactive material" (<a class="lib" target="_blank" rel="noopener" href="https://www.wbdg.org/FFC/NAVFAC/OPER/mo116.pdf#page=139" title="TM 5-683 Electrical Interior Facilities (Army Navy Air Force 1995).pdf — page 139">TM 5-683, p. 139</a>)</td>
+<td>Keep it working: smoke detectors "reduce the risk of deaths by over 70%" (<a class="lib" target="_blank" rel="noopener" href="https://iris.who.int/server/api/core/bitstreams/ca6497f7-7253-4568-8d86-18d9504a5977/content#page=107" title="World Report on Child Injury Prevention - Drowning Burns Falls Poisoning (WHO UNICEF 2008).pdf — page 107">WHO, p. 107</a>). Never open, crush or burn one <em>(rule of thumb)</em></td>
+</tr>
+<tr class="even">
+<td><strong>Lithium batteries</strong> (phones, laptops, tools, e-bikes)</td>
+<td>A charged cell is "a fire or explosion hazard if crushed, punctured, or incinerated" (<a class="lib" target="_blank" rel="noopener" href="https://www.lightingglobal.org/wp-content/uploads/2019/06/Lithium-Ion_TechNote-2019_update-1.pdf#page=8" title="Lighting Global - Lithium-ion Batteries Part I Overview (World Bank 2019).pdf — page 8">Lighting Global, p. 8</a>)</td>
+<td>Never cut a pack open; reuse it whole (<a class="guide" href="OFF-GRID-POWER-GUIDE.html#lithium-lifepo4-and-salvaged-packs">Off-Grid Power</a>)</td>
+</tr>
+<tr class="odd">
+<td><strong>Fluorescent tubes and CFL bulbs</strong></td>
+<td>Mercury: burning turns it "into even more harmful gas" (<a class="lib" target="_blank" rel="noopener" href="https://hesperian.org/wp-content/uploads/pdf/en_cgeh_2012/en_cgeh_2012_19.pdf#page=23" title="Hesperian - Community Guide to Environmental Health Ch 19 Health Care Waste (2012).pdf — page 23">Hesperian ch. 19, p. 23</a>)</td>
+<td>Store them whole with the toxics; a broken one: <a class="guide" href="SANITATION-GUIDE.html#hazardous-waste-batteries-oil-fuel-chemicals-medicines">Sanitation</a></td>
+</tr>
+<tr class="even">
+<td><strong>Treated lumber, tires, plastic, wire insulation</strong>: never burn</td>
+<td>Treated wood "should not be burned in open fires or in stoves" (<a class="lib" target="_blank" rel="noopener" href="https://research.fs.usda.gov/download/treesearch/37440.pdf#page=329" title="Wood Handbook - Wood as an Engineering Material (USDA FPL GTR-190 2010).pdf — page 329"><em>Wood Handbook</em>, p. 329</a>); "burning even small amounts of plastic or rubber releases toxic chemicals such as dioxins, furans, and PCBs" (<a class="lib" target="_blank" rel="noopener" href="https://hesperian.org/wp-content/uploads/pdf/en_cgeh_2012/en_cgeh_2012_18.pdf#page=24" title="Hesperian - Community Guide to Environmental Health Ch 18 Solid Waste (2012).pdf — page 24">Hesperian ch. 18, p. 24</a>)</td>
+<td>Strip wire with a knife, not a fire <em>(rule of thumb)</em>. Reuse or bury the rest (<a class="guide" href="SANITATION-GUIDE.html#burning-trash-and-brush-and-ash">Sanitation</a>)</td>
+</tr>
+<tr class="odd">
+<td><strong>Galvanized steel</strong>, heated or welded</td>
+<td>Vaporized zinc from its coating causes metal fume fever (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/hospital-corpsman-nonresident-training-course-navedtra-14295/Hospital%20Corpsman%20-%20Nonresident%20Training%20Course%20-%20NAVEDTRA%2014295.pdf#page=220" title="Hospital Corpsman Nonresident Training Course NAVEDTRA 14295 (US Navy 2000).pdf — page 220">Navy <em>Hospital Corpsman</em>, p. 220</a>): "temporary sickness, or death" (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/tc9-524/tc9_524.pdf#page=15" title="US Army TC 9-524 - Fundamentals of Machine Tools (1996).pdf — page 15">TC 9-524, p. 15</a>)</td>
+<td>Never a fire pit, grill, stove or forge part. Cut it cold, with snips or a hacksaw <em>(rule of thumb)</em></td>
+</tr>
+<tr class="even">
+<td><strong>Lead paint and asbestos</strong> in old appliances, cars and buildings</td>
+<td>Lead paint was used on houses until 1976 and "is still manufactured … for metal products, particularly those made of steel" (<a class="lib" target="_blank" rel="noopener" href="https://research.fs.usda.gov/download/treesearch/37440.pdf#page=391" title="Wood Handbook - Wood as an Engineering Material (USDA FPL GTR-190 2010).pdf — page 391"><em>Wood Handbook</em>, pp. 391–392</a>). Asbestos was used in heat insulation, "brake linings and clutch facings" and gaskets, and causes fatal lung disease (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/NEETSModules/NEETS%20Module%2004%20-%20Introduction%20to%20Electrical%20Conductors%2C%20Wiring%20Techniques%2C%20and%20Schematic%20Reading.pdf#page=110" title="NEETS Module 04 - Conductors Wiring Techniques and Schematics.pdf — page 110">NEETS 4, p. 110</a>)</td>
+<td>Never torch, grind or burn painted scrap. Leave old heat shields, pipe wrap and brake dust alone <em>(rule of thumb)</em></td>
+</tr>
+<tr class="odd">
+<td><strong>Drums and tanks that held fuel or chemicals</strong></td>
+<td>Heat or sparks on used barrels "is extremely dangerous and could lead to property damage or loss of life" (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/steelworker1/steelworker1.pdf#page=95" title="US Navy NAVEDTRA 14250 - Steelworker Vol 1 (1996).pdf — page 95">Navy <em>Steelworker</em>, pp. 95–96</a>). Pesticide drums: "Do not attempt to use the drums" where they could reach feed or water (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/ERIC_ED241766/ERIC_ED241766.pdf#page=421" title="Small Farm Grain Storage - Peace Corps VITA Manual M-2 (1976).pdf — page 421">Peace Corps M-2, p. 421</a>)</td>
+<td>Read the label first. Cut a fuel drum only as in <a href="#55-gallon-drums-and-ibc-totes">55-gallon drums</a>; never reuse a pesticide drum</td>
+</tr>
+</tbody>
+</table>
+<h2 id="i-need-where-to-find-it">I need… → where to find it</h2>
+<table>
+<thead>
+<tr class="header">
+<th>I need…</th>
+<th>Look in</th>
+<th>See</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>A motor</strong></td>
+<td>Washers and dryers, furnace blowers, treadmills and cordless tools (magnet motors that also make power), drills, fans</td>
+<td><a href="#washing-machines-and-dryers">Washers</a>, <a href="#treadmills">Treadmills</a>, <a href="#ceiling-fans-drills-and-power-tools">Power tools</a></td>
+</tr>
+<tr class="even">
+<td><strong>12-volt power</strong></td>
+<td>A car's battery and alternator, battery-backup (UPS) boxes, computer power supplies, solar garden lights</td>
+<td><a href="#battery-wire-lights-and-horn">Cars</a>, <a href="#computers-ups-boxes-phones-and-tablets">Computers</a>, <a href="#solar-garden-lights-and-spent-batteries">Garden lights</a></td>
+</tr>
+<tr class="odd">
+<td><strong>Wire</strong></td>
+<td>Extension and appliance cords, car wiring, motors and transformers (fine "magnet wire")</td>
+<td><a href="#battery-wire-lights-and-horn">Cars</a>, <a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html#electronics-repair-and-salvage">Make-Do</a></td>
+</tr>
+<tr class="even">
+<td><strong>Steel and springs</strong></td>
+<td>Leaf and coil springs, old files, saw and mower blades, bed and trampoline frames, drums</td>
+<td><a href="#leaf-and-coil-springs">Springs</a>, <a href="#the-scrap-pile-sorting-metals">Scrap pile</a></td>
+</tr>
+<tr class="odd">
+<td><strong>A stove or fire pit</strong></td>
+<td>A washer drum, a steel drum, a water-heater tank, a brake drum</td>
+<td><a href="#washing-machines-and-dryers">Washers</a>, <a href="#55-gallon-drums-and-ibc-totes">Drums</a>, <a href="#water-heaters">Water heaters</a></td>
+</tr>
+<tr class="even">
+<td><strong>Water storage</strong></td>
+<td>Food-grade drums and IBC totes, a water heater's tank, gutters to fill them</td>
+<td><a href="#55-gallon-drums-and-ibc-totes">Drums</a>, <a href="#water-heaters">Water heaters</a></td>
+</tr>
+<tr class="odd">
+<td><strong>Insulation</strong></td>
+<td>Fridge and freezer walls, water-heater foam, mattress and seat foam</td>
+<td><a href="#fridges-and-freezers">Fridges</a>, <a href="#water-heaters">Water heaters</a></td>
+</tr>
+<tr class="even">
+<td><strong>Glass and mirrors</strong></td>
+<td>Old windows and doors, car mirrors, oven doors, microwave plates</td>
+<td><a href="#old-windows-and-doors">Windows</a>, <a href="#mirrors-and-glass">Car mirrors</a></td>
+</tr>
+<tr class="odd">
+<td><strong>Wheels</strong></td>
+<td>Bicycles, lawn mowers, strollers, wheelbarrows, car hubs</td>
+<td><a href="#bicycles">Bicycles</a>, <a href="#lawn-mowers-and-small-engines">Mowers</a></td>
+</tr>
+<tr class="even">
+<td><strong>Fans</strong></td>
+<td>Computers (12 V), car radiators (12 V), microwaves, dryers, furnaces</td>
+<td><a href="#computers-ups-boxes-phones-and-tablets">Computers</a>, <a href="#washing-machines-and-dryers">Dryers</a></td>
+</tr>
+<tr class="odd">
+<td><strong>Pumps</strong></td>
+<td>Washer and dishwasher drain pumps, a car's windshield-washer pump (12 V)</td>
+<td><a href="#washing-machines-and-dryers">Washers</a>, <a href="#battery-wire-lights-and-horn">Cars</a></td>
+</tr>
+<tr class="even">
+<td><strong>Lights</strong></td>
+<td>Car lights (12 V), solar garden lights, flashlights</td>
+<td><a href="#battery-wire-lights-and-horn">Cars</a>, <a href="#solar-garden-lights-and-spent-batteries">Garden lights</a></td>
+</tr>
+<tr class="odd">
+<td><strong>Hose and pipe</strong></td>
+<td>Washer hoses, garden hose, gutters, PVC, car heater hose</td>
+<td><a href="#gutters-pvc-pipe-and-garden-hose">Gutters, PVC and hose</a></td>
+</tr>
+<tr class="even">
+<td><strong>Rope and straps</strong></td>
+<td>Seat belts, inner tubes, trampoline mats and springs, ratchet straps</td>
+<td><a href="#seats-belts-fuel-and-fluids">Seat belts</a>, <a href="#tires-and-inner-tubes">Inner tubes</a></td>
+</tr>
+</tbody>
+</table>
+<div class="fold"><h2 class="fold-head" id="before-you-take-anything-apart">Before you take anything apart</h2>
+<p class="gist noprint">Make it dead, let stored force out, photograph it, and sort what comes off</p>
+<div class="fold-body">
+<ol type="1">
+<li><strong>Make it dead.</strong> Unplug it, take out the batteries, drain fuel, oil and water into marked cans, and pull the spark plug wire off any engine <em>(rule of thumb)</em>.</li>
+<li><strong>Discharge the capacitors</strong> in microwaves, TVs, power supplies, inverters and motors: ground clip on first, then touch each terminal several times, hands off the metal (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/neetsmodules_202003/NEETS%20MOD%2021%20NAVEDTRA%2014193A.pdf#page=33" title="NEETS Module 21 - Test Methods and Practices.pdf — page 33">NEETS 21, p. 33</a>).</li>
+<li><strong>Let stored force out:</strong> springs, struts, tires on rims, anything under pressure. Leave a garage door's big wound spring alone: it breaks bones <em>(rule of thumb)</em>.</li>
+<li><strong>Photograph, tag and mark</strong> every wire and part before you pull it (<a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html#taking-it-apart-safely">Engines guide</a>).</li>
+<li><strong>Safety glasses and gloves;</strong> cut, grind and strip outdoors <em>(rule of thumb)</em>.</li>
+<li><strong>Sort as you go</strong> into labelled bins: motors, wire, fasteners, bearings, belts, springs, magnets, glass. Store motors "in a dry place and kept free from dirt" (<a class="lib" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED013943.pdf#page=23" title="Electric Motors for Farm Use (University of Illinois 1962).pdf — page 23">Illinois <em>Electric Motors for Farm Use</em>, p. 23</a>).</li>
+<li><strong>Test before you trust it</strong> (<a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html#testing-what-you-salvaged">Engines guide</a>).</li>
+</ol>
+<p><img loading="lazy" src="img/SALVAGE-GUIDE/capacitor-shorting-probe.png" alt="A Navy safety shorting probe: an insulated handle about 25¾ inches long with a hooked metal rod at one end, a short straight probe beside it, and a long wire from the handle ending in a clip that goes on a ground" /> <em>A shorting probe for step 2: clip the wire to a good ground first, then hold the handle and touch the rod's tip to each terminal several times, never touching the metal (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/neetsmodules_202003/NEETS%20MOD%2021%20NAVEDTRA%2014193A.pdf#page=33" title="NEETS Module 21 - Test Methods and Practices.pdf — page 33">NEETS 21, p. 33</a>).</em></p>
+</div><!--/fold--></div>
+<div class="fold"><h2 class="fold-head" id="washing-machines-and-dryers">Washing machines and dryers</h2>
+<p class="gist noprint">The drum makes a fire pit or a sieve; the motor runs a grinder; the dryer's fan blows a forge</p>
+<div class="fold-body">
+<p><strong>Inside, worth keeping</strong> <em>(rule of thumb)</em>: the <strong>drum</strong>, usually stainless steel full of holes; the <strong>motor</strong>, an <strong>induction motor</strong> of about ⅓–½ horsepower in older top-loaders and dryers, and in newer washers a brushed <strong>"universal" motor</strong> or a flat <strong>magnet motor</strong> on the drum; the <strong>drain pump, belts, pulleys, springs, hoses and water valves</strong>; a dryer's <strong>blower wheel</strong>.</p>
+<p><strong>Make with it:</strong></p>
+<ul>
+<li><strong>Fire pit or brazier:</strong> cut off the plastic hub and fins (don't burn them), stand the drum on bricks and lay a grate across it; the holes feed air <em>(rule of thumb)</em>. Outdoor fires belong in the wet season (<a class="guide" href="WILDFIRE-GUIDE.html#burning-on-purpose-wet-season-only">Wildfire</a>). Oregon counts "a fire in a burn barrel" as open burning, and bans burning plastic, rubber, tires and "auto parts, including frames" anywhere, any time (<a class="lib" target="_blank" rel="noopener" href="https://www.oregon.gov/deq/aq/Documents/BurnSoORburnguide.pdf#page=1" title="Oregon DEQ - Southern Oregon Outdoor Burning Guide.pdf — page 1">DEQ, p. 1</a>). Here: no open fires June–October, until real rain <em>(rule of thumb)</em>. As a burn barrel, for dry paper and clean wood only: <a class="guide" href="SANITATION-GUIDE.html#burning-trash-and-brush-and-ash">Sanitation</a>.</li>
+</ul>
+<p><img loading="lazy" src="img/SALVAGE-GUIDE/washer-drum-fire-pit.svg" alt="A washing-machine drum standing on two brick piers, a fire inside showing through its holes, a grate laid across the open top, arrows showing air coming in through the holes and from underneath, and the drum&#39;s plastic hub crossed out" /> <em>The drum on bricks with a grate across it; the plastic hub and fins come off first and are never burned (a diagram drawn for this guide).</em></p>
+<ul>
+<li><strong>Sieve or composter:</strong> on its side on a frame with a crank, the drum sifts compost and soil, washes potatoes, or tumbles compost under a lid <em>(rule of thumb)</em>.</li>
+<li><strong>Smoker firebox:</strong> the drum holds the smoky fire, and a pipe takes the smoke to a fridge cabinet (<a href="#fridges-and-freezers">below</a>).</li>
+<li><strong>Grinder, buffer or lathe drive</strong> from an induction motor. A 4-pole motor turns about <strong>1,725 rpm</strong> (<a class="lib" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED013943.pdf#page=10" title="Electric Motors for Farm Use (University of Illinois 1962).pdf — page 10">Illinois, p. 10</a>). Choose pulleys so that <strong>motor pulley × motor rpm = machine pulley × machine rpm</strong> (<a class="lib" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED013943.pdf#page=17" title="Electric Motors for Farm Use (University of Illinois 1962).pdf — page 17">p. 17</a>). Swap the starting winding's two leads to reverse it. A <strong>split-phase</strong> motor starts only easy loads; a <strong>capacitor-start</strong> motor starts pumps and compressors (<a class="lib" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED013943.pdf#page=11" title="Electric Motors for Farm Use (University of Illinois 1962).pdf — page 11">p. 11</a>). Never run a grinding wheel faster than the speed printed on it <em>(rule of thumb)</em>.</li>
+<li><strong>A slow generator</strong> for a water wheel, from a flat magnet motor: test it first (<a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html#testing-what-you-salvaged">Engines guide</a>) <em>(rule of thumb)</em>.</li>
+<li><strong>Forge blower</strong> from a dryer's blower (<a class="guide" href="BLACKSMITHING-GUIDE.html#a-simple-forge-and-anvil">Blacksmithing</a>) <em>(rule of thumb)</em>. With no power, an old bicycle can turn the washer (<a href="#bicycles">Bicycles</a>).</li>
+</ul>
+<p><strong>Watch out:</strong> a universal motor "runs as fast as the load permits" (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/constelect1/constelect1.pdf#page=241" title="US Navy Construction Electrician Basic (NAVEDTRA 14026).pdf — page 241">Navy <em>Construction Electrician</em>, p. 241</a>): never run one with nothing on it. Discharge the motor's capacitor (<a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html#electric-motors-testing-and-repair">Engines guide</a>). The cabinet may be galvanized under its paint, so never burn or weld it, and cap a gas dryer's gas line first <em>(rule of thumb)</em>.</p>
+</div><!--/fold--></div>
+<div class="fold"><h2 class="fold-head" id="water-heaters">Water heaters</h2>
+<p class="gist noprint">The tank becomes a solar heater, a cistern or a stove body; the elements soak up spare power</p>
+<div class="fold-body">
+<p><strong>Before you scrap a working one:</strong> its tank holds <strong>20 to 60 gallons</strong> of drinking water (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/h-20-protection-in-the-nuclear-age-1985/H-20%20Protection%20In%20The%20Nuclear%20Age%20%201985.pdf#page=31" title="Protection in the Nuclear Age (FEMA H-20 1985).pdf — page 31">FEMA H-20, p. 31</a>). Shut off the power or gas, open a hot tap, and drain it from the bottom valve <em>(rule of thumb)</em>.</p>
+<p><strong>Inside, worth keeping</strong> <em>(rule of thumb)</em>: a steel tank, <strong>glass-lined</strong> in most and <strong>galvanized</strong> in some old ones; foam or fiberglass insulation; the relief and drain valves. Electric ones have two <strong>heating elements</strong>; gas ones a burner and a flue pipe up the middle.</p>
+<p><strong>Make with it:</strong></p>
+<ul>
+<li><strong>Solar water heater:</strong> the cheapest tanks "are those from discarded electric, glass-lined water heaters. You should use glass-lined tanks instead of galvanized tanks, which may rust." Test it for leaks with a garden hose, strip it and paint it flat black (<a class="lib" target="_blank" rel="noopener" href="https://www.osti.gov/servlets/purl/5704575#page=19" title="Breadbox Solar Water Heaters - Principles and Construction (DOE Region IV).pdf — page 19">DOE <em>Breadbox</em>, p. 19</a>; the build: <a class="guide" href="STORING-ENERGY-GUIDE.html#solar-water-heaters-you-can-build">Storing Energy</a>).</li>
+<li><strong>A cistern:</strong> stood upright and open to the air at the top, it stores 30 to 80 gallons. Rusty water means the lining has failed: keep that one for washing water <em>(rule of thumb)</em>.</li>
+<li><strong>Dump loads:</strong> a wind or hydro controller sends spare power into a water-heater element in a tank of water (<a class="guide" href="STORING-ENERGY-GUIDE.html#hot-water-where-spare-electricity-should-go">Storing Energy</a>). An element made for 240 volts gives only a quarter of its heat on 120 volts <em>(arithmetic: heat goes with the voltage squared)</em>.</li>
+<li><strong>Stove or smoker body:</strong> a drained, opened, glass-lined tank. The glass flakes off the first time it is heated, so wear safety glasses <em>(rule of thumb)</em>. Stovepipe and clearances: <a class="guide" href="FIREWOOD-GUIDE.html#burning-safely-stoves-chimneys-ashes">Firewood</a>.</li>
+<li><strong>The foam</strong> insulates a cool box, a hay-box cooker or a cellar door; keep it away from stoves, as it burns fast with poisonous smoke <em>(rule of thumb)</em>.</li>
+</ul>
+<p><strong>Watch out:</strong> never make a boiler of one, and never heat a closed tank. Old water heaters are on the list of things never to use as a boiler (<a class="guide" href="HEAT-INTO-POWER-GUIDE.html#what-never-to-use-as-a-boiler">Heat into Power</a>); even carefully built wood-fired showers "occasionally leaked or even exploded!" (<a class="lib" target="_blank" rel="noopener" href="https://aprovecho.org/?paybox_id=72#page=9" title="Aprovecho - Capturing Heat Three Designing Home Made Wood Heating Stoves.pdf — page 9">Aprovecho, p. 9</a>). Check the lining: a galvanized tank is never heated.</p>
+</div><!--/fold--></div>
+<div class="fold"><h2 class="fold-head" id="fridges-and-freezers">Fridges and freezers</h2>
+<p class="gist noprint">The insulated box becomes a cool box, a buried cellar, a smoker or a seed starter</p>
+<div class="fold-body">
+<p><strong>Inside, worth keeping:</strong> an insulated cabinet with a tight door seal, shelves and bins, a thermostat, light and small fan, and at the back the <strong>compressor</strong> (the black dome) on its sealed pipes <em>(rule of thumb)</em>.</p>
+<p><strong>Make with it:</strong></p>
+<ul>
+<li><strong>Cool box:</strong> block ice, or jugs frozen on winter nights, in the bottom. A chest freezer holds the cold best, because cold air stays in when the lid opens <em>(rule of thumb)</em>. More: <a class="guide" href="ROOT-CELLAR-GUIDE.html#cooling-without-power">Root Cellars</a>.</li>
+<li><strong>A buried cellar box:</strong> a chest freezer, lid up, sunk into a shaded bank with a small vent <em>(rule of thumb)</em>; see <a class="guide" href="ROOT-CELLAR-GUIDE.html#pits-clamps-buried-barrels-and-the-garden-itself">Root Cellars</a>.</li>
+<li><strong>Smoker:</strong> "A simple indirect smoker can be constructed from an old refrigerator by removing the compressor, cutting a vent in the top of the cabinet and fitting an adjustable air vent in the bottom of one side." The fire sits in a separate brick or metal box, and "a pipe is connected from the smoke generator to the hole in the side" (<a class="lib" target="_blank" rel="noopener" href="https://infohub.practicalaction.org/server/api/core/bitstreams/1c3e0d52-e4d2-4bde-9c92-e80d088595be/content#page=7" title="Practical Action - Cured Meat Products.pdf — page 7">Practical Action <em>Cured Meat Products</em>, p. 7</a>). The plastic liner softens if the smoke comes in too hot: keep the fire well away, or line the box with sheet metal <em>(rule of thumb)</em>. Smoking safely: <a class="guide" href="PRESERVING-FOOD-GUIDE.html#fish-smoking-canning-and-salting">Preserving Food</a>.</li>
+</ul>
+<p><img loading="lazy" src="img/SALVAGE-GUIDE/fridge-smoker.svg" alt="An old refrigerator standing upright, cut away to show strips of meat hanging from two racks, smoke leaving through a vent cut in the top; a pipe runs from a separate brick fire box with a small air door into a vent low in the fridge&#39;s side" /> <em>The fire stays in its own box, and a pipe brings only its smoke into the fridge (<a class="lib" target="_blank" rel="noopener" href="https://infohub.practicalaction.org/server/api/core/bitstreams/1c3e0d52-e4d2-4bde-9c92-e80d088595be/content#page=7" title="Practical Action - Cured Meat Products.pdf — page 7">Practical Action, p. 7</a>; a diagram drawn for this guide).</em></p>
+<ul>
+<li><strong>Seed-starting box:</strong> a jug of hot water changed morning and night, or a small bulb where there is power, keeps seeds warm enough to sprout <em>(rule of thumb)</em>.</li>
+<li><strong>Hay-box cooker:</strong> a pot at a full boil, on a board, packed round with blankets in a chest freezer (<a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html#hay-box-cooking-saves-fuel">Make-Do</a>). Or a mouse-proof bin for grain and seed.</li>
+<li><strong>The compressor</strong> makes a small air or vacuum pump, but only from a fridge whose gas has already leaked out: cut it free outdoors, in goggles <em>(rule of thumb)</em>.</li>
+<li><strong>12-volt camping coolers and wine fridges</strong> have no gas: they hold a Peltier module, which makes a little power on a stove top (<a class="guide" href="HEAT-INTO-POWER-GUIDE.html#choosing-modules-teg-or-salvaged-peltier">Heat into Power</a>).</li>
+</ul>
+<p><strong>Watch out:</strong> take the door off, or break the latch, of any fridge left where children play; a child shut inside suffocates <em>(rule of thumb)</em>. <strong>Gas fridges</strong> from cabins and RVs hold ammonia under high pressure (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/performanceevalu1054reyn/performanceevalu1054reyn.pdf#page=9" title="Performance Evaluation of a Propane-Fired Absorption Refrigerator (NBS Report 10546 1971).pdf — page 9">NBS report, p. 9</a>): never cut or heat the pipes, and keep a working one working (<a class="guide" href="HEAT-INTO-POWER-GUIDE.html#keeping-an-absorption-refrigerator-running">Heat into Power</a>).</p>
+</div><!--/fold--></div>
+<div class="fold"><h2 class="fold-head" id="microwave-ovens">Microwave ovens</h2>
+<p class="gist noprint">Keep the fan, turntable motor, glass plate, wire and case; leave the high-voltage parts</p>
+<div class="fold-body">
+<p><strong>First:</strong> unplug it, wait, and discharge the capacitor before a hand goes inside (<a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html#electronics-repair-and-salvage">Make-Do</a>; <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/neetsmodules_202003/NEETS%20MOD%2021%20NAVEDTRA%2014193A.pdf#page=33" title="NEETS Module 21 - Test Methods and Practices.pdf — page 33">NEETS 21, p. 33</a>).</p>
+<table>
+<thead>
+<tr class="header">
+<th>Part</th>
+<th>Keep it?</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cooling fan</td>
+<td>Yes</td>
+<td>A small 120-volt shaded-pole motor, the kind "used with small fans, timers" (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/constelect1/constelect1.pdf#page=242" title="US Navy Construction Electrician Basic (NAVEDTRA 14026).pdf — page 242"><em>Construction Electrician</em>, p. 242</a>)</td>
+</tr>
+<tr class="even">
+<td>Turntable motor</td>
+<td>Yes</td>
+<td>A slow 120-volt gear motor: a turning spit <em>(rule of thumb)</em></td>
+</tr>
+<tr class="odd">
+<td>Glass plate, roller ring, light, switches, fuses, wire, screws</td>
+<td>Yes</td>
+<td>Spares, and an oven-proof glass dish</td>
+</tr>
+<tr class="even">
+<td>The whole steel case, unplugged</td>
+<td>Yes</td>
+<td>A ready-made shield for small electronics; test it first (<a class="guide" href="EMP-GUIDE.html#faraday-containers-building-one-that-works">EMP guide</a>)</td>
+</tr>
+<tr class="odd">
+<td>Magnetron</td>
+<td>Only its two ring magnets</td>
+<td>Strong magnets. Don't break its ceramic parts: some hold beryllium oxide, toxic as dust <em>(rule of thumb)</em></td>
+</tr>
+<tr class="even">
+<td>High-voltage capacitor and diode</td>
+<td><strong>No</strong></td>
+<td>Discharged, they go with the toxic waste <em>(rule of thumb)</em></td>
+</tr>
+<tr class="odd">
+<td>Transformer</td>
+<td><strong>Never powered</strong></td>
+<td>Once it is dead and discharged, its copper may be unwound for wire; never rewire it or plug it in <em>(rule of thumb)</em></td>
+</tr>
+</tbody>
+</table>
+</div><!--/fold--></div>
+<div class="fold"><h2 class="fold-head" id="cars-and-trucks-a-whole-parts-store">Cars and trucks: a whole parts store</h2>
+<p class="gist noprint">Alternator, battery, wire, lights, horn, mirrors, glass, springs, seats, belts, fuel and fluids</p>
+<div class="fold-body">
+<p>One dead car holds a generator, a battery, a wire store, spring steel, glass, wheels, fuel and cloth. Drain the fuel first (<a class="guide" href="FUEL-GUIDE.html#drums-and-vehicles">Fuel guide</a>), and leave the airbags and seat-belt tensioners in place: they hold explosive charges <em>(rule of thumb)</em>.</p>
+<h3 id="the-alternator-and-the-wind-question">The alternator, and the wind question</h3>
+<ul>
+<li><strong>What it is:</strong> a 12-volt generator with its own rectifier and regulator. It needs <strong>fast</strong> turning and a battery connected to power its field (<a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html#motors-as-generators">Engines guide</a>).</li>
+<li><strong>The catch:</strong> the field draws "about three amperes" (<a class="lib" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED021119.pdf#page=11" title="Alternator and Regulator Servicing and Testing (1967).pdf — page 11"><em>Alternator and Regulator Servicing</em>, p. 11</a>), about <strong>36 watts</strong> from the battery before it makes anything <em>(arithmetic)</em>.</li>
+<li><strong>Wind:</strong> power goes with the <strong>cube</strong> of the wind speed (<a class="lib" target="_blank" rel="noopener" href="https://www.govinfo.gov/content/pkg/GOVPUB-E10-PURL-LPS101495/pdf/GOVPUB-E10-PURL-LPS101495.pdf#page=11" title="DOE Small Wind Electric Systems Consumers Guide.pdf — page 11">DOE <em>Small Wind</em>, p. 11</a>): half the wind, one-eighth the power. By that page's formula a homemade 6-ft rotor in a 10-mph wind makes about <strong>40 watts</strong>, little more than the field uses, and turns too slowly for an alternator without about 5-to-1 gearing <em>(arithmetic)</em>. Wind pays only where it averages <strong>9 mph</strong> or more (<a class="lib" target="_blank" rel="noopener" href="https://www.govinfo.gov/content/pkg/GOVPUB-E10-PURL-LPS101495/pdf/GOVPUB-E10-PURL-LPS101495.pdf#page=20" title="DOE Small Wind Electric Systems Consumers Guide.pdf — page 20">p. 20</a>), with the rotor <strong>30 ft above anything within 300 ft</strong> (<a class="lib" target="_blank" rel="noopener" href="https://www.govinfo.gov/content/pkg/GOVPUB-E10-PURL-LPS101495/pdf/GOVPUB-E10-PURL-LPS101495.pdf#page=7" title="DOE Small Wind Electric Systems Consumers Guide.pdf — page 7">p. 7</a>). Here, small wind is usually poor: only exposed ridgetops are worth testing, and solar and creek power come first <em>(rule of thumb)</em>. The full comparison: <a class="guide" href="OFF-GRID-POWER-GUIDE.html#creek-hydro-and-why-not-wind">Off-Grid Power</a>.</li>
+<li><strong>Where it works:</strong> belted up to speed on a fast water wheel, or kept as a spare for a running vehicle. For slow wind or water, use a magnet generator; a car's wheel hub and bearing make a good mount for one (<a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html#matching-it-to-a-water-wheel-or-wind-rotor">Engines guide</a>).</li>
+</ul>
+<h3 id="battery-wire-lights-and-horn">Battery, wire, lights and horn</h3>
+<ul>
+<li><strong>Battery:</strong> a starting battery, ruined after about 20 deep discharges (<a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html#electronics-repair-and-salvage">Make-Do</a>). Care and safety: <a class="guide" href="OFF-GRID-POWER-GUIDE.html#keeping-lead-acid-alive">Off-Grid Power</a>.</li>
+<li><strong>Wire:</strong> the wiring harness is fine stranded copper; keep the fuses, relays, switches and plugs. Thin wire on a heavy load gets hot (<a class="guide" href="OFF-GRID-POWER-GUIDE.html#wiring-fuses-and-grounding">Off-Grid Power</a>).</li>
+<li><strong>Lights:</strong> headlights, tail lights and dome lights run on 12 volts; LED ones use least <em>(rule of thumb)</em>.</li>
+<li><strong>Horn:</strong> a loud alarm for the neighborhood (<a class="guide" href="SIGNALS-MORSE-GUIDE.html#whistles-bells-and-alarm-codes">Signals</a>).</li>
+<li><strong>12-volt motors</strong> <em>(rule of thumb)</em>: the <strong>wiper motor</strong> (slow and strong: a winch, a spit), the <strong>radiator fan</strong>, the <strong>heater blower</strong>, and the <strong>windshield-washer pump</strong>, a small water pump.</li>
+</ul>
+<h3 id="mirrors-and-glass">Mirrors and glass</h3>
+<ul>
+<li><strong>Signal mirror:</strong> a flat mirror, not the curved passenger-side one <em>(rule of thumb)</em>. A mirror flash "has been visible up to 100 miles under ideal conditions" (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/afh-10-644-survival-evasion-resistance-escape-operations-2017/AFH10-644_Survival_evasion_resistance_escape_operations_2017.pdf#page=509" title="AFH 10-644 Survival Evasion Resistance Escape Operations - Signaling Chapter 21 (US Air Force 2017).pdf — page 509">AFH 10-644, p. 509</a>); aiming it: <a class="guide" href="SIGNALS-MORSE-GUIDE.html#signal-mirrors">Signals</a>.</li>
+<li><strong>Glass</strong> <em>(rule of thumb)</em>: side and back windows are <strong>tempered</strong>: they can't be cut and burst into small cubes when struck, so use them whole, as cold-frame lids. A windshield is two glued layers: hard to break or cut.</li>
+</ul>
+<h3 id="leaf-and-coil-springs">Leaf and coil springs</h3>
+<ul>
+<li><strong>The best tool steel in the car:</strong> chisels, punches, knives, axes and pry bars; axles and torsion bars too (<a class="guide" href="BLACKSMITHING-GUIDE.html#which-scrap-steel-to-use">Blacksmithing</a>).</li>
+<li><strong>Watch out</strong> <em>(rule of thumb)</em>: a coil spring on a strut is held squeezed. Take the strut out whole and never undo its top nut until the spring is clamped. Gas struts and shock absorbers hold pressure: never heat or cut them.</li>
+<li><strong>Brake drums</strong> make a forge's fire pot (<a class="guide" href="BLACKSMITHING-GUIDE.html#a-simple-forge-and-anvil">Blacksmithing</a>). Old brake shoes and clutch plates may hold asbestos (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/NEETSModules/NEETS%20Module%2004%20-%20Introduction%20to%20Electrical%20Conductors%2C%20Wiring%20Techniques%2C%20and%20Schematic%20Reading.pdf#page=110" title="NEETS Module 04 - Conductors Wiring Techniques and Schematics.pdf — page 110">NEETS 4, p. 110</a>): never blow or grind the dust.</li>
+</ul>
+<h3 id="seats-belts-fuel-and-fluids">Seats, belts, fuel and fluids</h3>
+<ul>
+<li><strong>Seat belts:</strong> strong webbing for straps, slings, pack frames and hinges. Cut the belt; leave the reel <em>(rule of thumb)</em>.</li>
+<li><strong>Seats:</strong> foam for cushions and insulation, cloth, steel frames. The foam burns fast with poisonous smoke <em>(rule of thumb)</em>.</li>
+<li><strong>Tires and wheels:</strong> <a href="#tires-and-inner-tubes">Tires and inner tubes</a>; wheels and axles for carts: <a class="guide" href="BICYCLES-CARTS-GUIDE.html#wheelbarrows-handcarts-sledges-and-travois">Bicycles &amp; Carts</a>.</li>
+<li><strong>Fuel:</strong> drain it into cans and test it before you trust it (<a class="guide" href="FUEL-GUIDE.html#drums-and-vehicles">Fuel guide</a>).</li>
+<li><strong>Fluids</strong> <em>(rule of thumb)</em>: keep motor oil for chains and rust-proofing tools. <strong>Antifreeze is poison</strong> with a sweet taste that draws children, dogs and stock: lock it up. Leave the air-conditioning gas sealed. Waste fluids: <a class="guide" href="SANITATION-GUIDE.html#hazardous-waste-batteries-oil-fuel-chemicals-medicines">Sanitation</a>.</li>
+</ul>
+</div><!--/fold--></div>
+<div class="fold"><h2 class="fold-head" id="bicycles">Bicycles</h2>
+<p class="gist noprint">Ride a whole one; a dead one gives wheels, pulleys, pedal power, tubes, chain and wire</p>
+<div class="fold-body">
+<ul>
+<li><strong>A rideable bike beats any part of it.</strong> Repair first: <a class="guide" href="BICYCLES-CARTS-GUIDE.html#wheels-hub-bearings-and-chains">Bicycles &amp; Carts</a>.</li>
+<li><strong>Wheels</strong> carry carts and trailers (<a class="guide" href="BICYCLES-CARTS-GUIDE.html#bicycle-trailers-welded-steel-or-no-weld-pallets">Bicycles &amp; Carts</a>). With the tire off, the rim is a pulley: wind twine on it to hold a belt (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/cu31924080109832/cu31924080109832.pdf#page=63" title="Handy Farm Devices and How to Make Them (1912).pdf — page 63"><em>Handy Farm Devices</em>, p. 63</a>).</li>
+<li><strong>Pedal power:</strong> a 1912 farm book props an old bike up and belts it to a washing machine or an emery wheel (same page). A fit adult keeps up only about 75 watts for an hour <em>(rule of thumb)</em>: pedal to grind, pump, sharpen or wash, not to make electricity. To charge by pedal, a magnet motor beats a car alternator (<a href="#the-alternator-and-the-wind-question">above</a>).</li>
+</ul>
+<p><img loading="lazy" src="img/SALVAGE-GUIDE/bicycle-turning-a-washer.png" alt="An old bicycle propped in a wooden frame with its back wheel off the ground; a long belt runs from the back rim to the pulley on top of a washing machine standing on legs" /> <em>The 1912 pedal-power washer: the back wheel's rim, its tire off, belted to the machine (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/cu31924080109832/cu31924080109832.pdf#page=63" title="Handy Farm Devices and How to Make Them (1912).pdf — page 63"><em>Handy Farm Devices</em>, p. 63</a>).</em></p>
+<ul>
+<li><strong>Also</strong> <em>(rule of thumb)</em>: spokes are stiff steel wire for pins and hooks; brake cables work latches; the chain and sprockets drive things; hub bearings spin small wheels. Check the frame with a magnet: aluminum can't be forged.</li>
+</ul>
+</div><!--/fold--></div>
+<div class="fold"><h2 class="fold-head" id="lawn-mowers-and-small-engines">Lawn mowers and small engines</h2>
+<p class="gist noprint">The engine runs a pump or a mill; the blade is good steel; a reel mower cuts feed</p>
+<div class="fold-body">
+<ul>
+<li><strong>The engine,</strong> if it runs, turns a water pump, small generator, grain mill or saw by belt <em>(rule of thumb)</em>. Getting it to start: <a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html#small-gas-engines-why-it-won-t-start">Engines guide</a>; running an engine on wood gas, and pulling a magnet flywheel safely: <a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html#reusing-a-generator-for-water-or-wind-power">Engines guide</a>.</li>
+<li><strong>A reel mower:</strong> "an old lawn mower can be arranged to make a fairly satisfactory straw or feed cutter", fed from a hopper and turned by a crank and belt (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/cu31924080109832/cu31924080109832.pdf#page=120" title="Handy Farm Devices and How to Make Them (1912).pdf — page 120"><em>Handy Farm Devices</em>, pp. 120–121</a>).</li>
+<li><strong>The blade</strong> is hardened steel for a machete, hoe or scraper: file-test it (<a class="guide" href="BLACKSMITHING-GUIDE.html#which-scrap-steel-to-use">Blacksmithing</a>) <em>(rule of thumb)</em>.</li>
+<li><strong>Also</strong> <em>(rule of thumb)</em>: wheels and axles for carts, handle tubes, the pull cord and its spring, throttle cables, a riding mower's battery.</li>
+<li><strong>Watch out:</strong> pull the spark plug wire before you touch the blade. Drain the tank; an empty fuel tank still holds vapor (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM_10_67_1_P_S_O_1998/FM%2010-67-1%20Petroleum%20Supply%20Operations%20%281998%29.pdf#page=14" title="FM 10-67-1 Petroleum Supply Operations (US Army 1998).pdf — page 14">FM 10-67-1, p. 14</a>).</li>
+</ul>
+</div><!--/fold--></div>
+<div class="fold"><h2 class="fold-head" id="treadmills">Treadmills</h2>
+<p class="gist noprint">The magnet motor makes power when spun; the flywheel, rollers and frame are useful too</p>
+<div class="fold-body">
+<ul>
+<li><strong>The motor</strong> is a permanent-magnet DC motor. Spun, it makes DC directly; to charge a 12-volt battery it must make <strong>14–15 volts</strong> at the speed you can turn it, with a blocking diode so the battery can't run it as a motor (<a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html#motors-as-generators">Engines guide</a>). These are fast motors: gear them up from a water wheel or pedals <em>(rule of thumb)</em>.</li>
+<li><strong>Also</strong> <em>(rule of thumb)</em>: the heavy flywheel, the rollers and their bearings, the steel frame, the belt (tough cloth for hinges and gaskets), and the <strong>incline motor</strong>, a slow, strong gear motor that pushes or lifts. An exercise bike's flywheel and stand make a ready pedal drive.</li>
+<li><strong>Watch out:</strong> the control board holds charged capacitors; discharge it and keep it for parts. Never let a magnet generator spin fast with nothing connected: its voltage climbs with speed (<a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html#matching-it-to-a-water-wheel-or-wind-rotor">Engines guide</a>).</li>
+</ul>
+</div><!--/fold--></div>
+<div class="fold"><h2 class="fold-head" id="ceiling-fans-drills-and-power-tools">Ceiling fans, drills and power tools</h2>
+<p class="gist noprint">Fan and drill motors, gearboxes, tool batteries, blades and bits</p>
+<div class="fold-body">
+<ul>
+<li><strong>Ceiling fans</strong> <em>(rule of thumb)</em>: an ordinary one has a slow AC induction motor that makes no power when spun. Newer "DC" fans have magnet motors that do: test one like any salvaged generator (<a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html#testing-what-you-salvaged">Engines guide</a>).</li>
+<li><strong>Corded drills, saws and grinders</strong> have brushed universal motors, used in "vacuum cleaners, sewing machines, food mixers, and power hand tools" (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/constelect1/constelect1.pdf#page=241" title="US Navy Construction Electrician Basic (NAVEDTRA 14026).pdf — page 241"><em>Construction Electrician</em>, p. 241</a>). Worn brushes are the usual fault (<a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html#electric-motors-testing-and-repair">Engines guide</a>).</li>
+<li><strong>Cordless tools</strong> have magnet motors with gearboxes: a cordless drill's motor and gearbox, turned by a hand crank, charges small batteries slowly <em>(rule of thumb)</em>. Their packs are lithium (<a class="guide" href="OFF-GRID-POWER-GUIDE.html#lithium-lifepo4-and-salvaged-packs">Off-Grid Power</a>); keep each charger with its packs.</li>
+<li><strong>Blades and bits</strong> are high-carbon steel for knives and scrapers (<a class="guide" href="BLACKSMITHING-GUIDE.html#which-scrap-steel-to-use">Blacksmithing</a>).</li>
+<li><strong>Watch out:</strong> "Never grind nonferrous metals on a wheel intended for ferrous metals": the clogged wheel can become "unbalanced and fly apart" (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/steelworker1/steelworker1.pdf#page=22" title="US Navy NAVEDTRA 14250 - Steelworker Vol 1 (1996).pdf — page 22">Navy <em>Steelworker</em>, p. 22</a>).</li>
+</ul>
+</div><!--/fold--></div>
+<div class="fold"><h2 class="fold-head" id="computers-ups-boxes-phones-and-tablets">Computers, UPS boxes, phones and tablets</h2>
+<p class="gist noprint">An old phone becomes a library reader; a computer gives 12-volt power and fans; a UPS a battery</p>
+<div class="fold-body">
+<ul>
+<li><strong>Old phones, tablets and laptops:</strong> a phone that will never call again still reads this library, shows the maps and takes pictures. Set them up now and store them about half charged (<a class="guide" href="START-ON-ANY-DEVICE.html#put-old-devices-to-work-set-them-up-now">Start on any device</a>; <a class="guide" href="USE-ON-PHONE.html">Use on a phone</a>). A swollen battery goes out of the house.</li>
+<li><strong>Desktop computers:</strong> the power supply gives 12 and 5 volts (<a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html#electronics-repair-and-salvage">Make-Do</a>); keep the 12-volt fans, heat sinks, wire and plugs. A hard drive holds two very strong magnets <em>(rule of thumb)</em>.</li>
+<li><strong>UPS (battery-backup) boxes:</strong> a 12-volt sealed lead-acid battery (often worn out: test it) and a small inverter built to run for minutes, not hours. On a car battery, give it light loads only and let it cool <em>(rule of thumb)</em>. Real inverters: <a class="guide" href="OFF-GRID-POWER-GUIDE.html#charge-controllers-and-inverters">Off-Grid Power</a>.</li>
+<li><strong>Watch out:</strong> power supplies hold charged capacitors; tube monitors are on the list at the top.</li>
+</ul>
+</div><!--/fold--></div>
+<div class="fold"><h2 class="fold-head" id="solar-garden-lights-and-spent-batteries">Solar garden lights and spent batteries</h2>
+<p class="gist noprint">Garden lights are tiny solar chargers and night lights; what to do with each kind of dead battery</p>
+<div class="fold-body">
+<p><strong>Solar garden lights</strong> hold a small solar panel, a rechargeable AA or AAA cell, an LED and a light sensor. Leave them in the sun all day and bring them in at night for the outhouse, the hall or a child's room; swap in fresh rechargeable cells as the old ones fade <em>(rule of thumb)</em>.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Battery</th>
+<th>Found in</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Lead-acid</td>
+<td>Cars, UPS boxes, golf carts, riding mowers</td>
+<td>Test and reuse; keep upright, never break open (<a class="guide" href="SANITATION-GUIDE.html#hazardous-waste-batteries-oil-fuel-chemicals-medicines">Sanitation</a>; <a class="guide" href="OFF-GRID-POWER-GUIDE.html#battery-safety">Off-Grid Power</a>)</td>
+</tr>
+<tr class="even">
+<td>Lithium-ion</td>
+<td>Phones, laptops, tools, e-bikes</td>
+<td>Reuse whole, with its management board; swollen ones out (<a class="guide" href="OFF-GRID-POWER-GUIDE.html#lithium-lifepo4-and-salvaged-packs">Off-Grid Power</a>)</td>
+</tr>
+<tr class="odd">
+<td>Nickel (NiMH, NiCd)</td>
+<td>Garden lights, cordless phones, old tools</td>
+<td>Recharge; store NiCd apart (<a class="guide" href="SANITATION-GUIDE.html#hazardous-waste-batteries-oil-fuel-chemicals-medicines">Sanitation</a>)</td>
+</tr>
+<tr class="even">
+<td>Alkaline (ordinary AA, C, D)</td>
+<td>Flashlights, radios, remotes</td>
+<td>Run them down in a radio, then finish them in a flashlight (<a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html#electronics-repair-and-salvage">Make-Do</a>); never recharge them <em>(rule of thumb)</em></td>
+</tr>
+<tr class="odd">
+<td>Button cells</td>
+<td>Watches, remotes, scales</td>
+<td>Keep from small children: a swallowed one burns the gut <em>(rule of thumb)</em></td>
+</tr>
+</tbody>
+</table>
+</div><!--/fold--></div>
+<div class="fold"><h2 class="fold-head" id="55-gallon-drums-and-ibc-totes">55-gallon drums and IBC totes</h2>
+<p class="gist noprint">What the drum held decides what it may become: food and water, a stove, or nothing</p>
+<div class="fold-body">
+<p><strong>First, find out what it held</strong> from the label, the stencil or the smell:</p>
+<table>
+<thead>
+<tr class="header">
+<th>It held</th>
+<th>Good for</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Food or drink</strong> (food-grade)</td>
+<td>Water, grain and food. Food goes only in food-grade containers, never "fiber barrels that have been used for non-food purposes" (<a class="lib" target="_blank" rel="noopener" href="https://ccfruitandnuts.ucanr.edu/sites/default/files/2020-09/336114.pdf#page=12" title="Food Storage in the Home - Grain Insect Control - USU.pdf — page 12">USU, p. 12</a>)</td>
+</tr>
+<tr class="even">
+<td><strong>Oil or fuel</strong></td>
+<td>Once cleaned: a stove, burn barrel, smoker, compost bin or trough. Never food or drinking water <em>(rule of thumb)</em></td>
+</tr>
+<tr class="odd">
+<td><strong>Pesticide, or you don't know</strong></td>
+<td>Nothing: "Old pesticide drums used as floats corrode and thus cause serious fish kills" (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/ERIC_ED241766/ERIC_ED241766.pdf#page=421" title="Small Farm Grain Storage - Peace Corps VITA Manual M-2 (1976).pdf — page 421">Peace Corps M-2, p. 421</a>)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Cutting a drum that held fuel:</strong> open the bungs slowly (<a class="guide" href="FUEL-GUIDE.html#drums-and-vehicles">Fuel guide</a>), clean it with steam or a strong caustic wash, then fill it with water to just below the cut and leave a bung open as a vent while you cut (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/steelworker1/steelworker1.pdf#page=96" title="US Navy NAVEDTRA 14250 - Steelworker Vol 1 (1996).pdf — page 96">Navy <em>Steelworker</em>, p. 96</a>). A cold chisel or hacksaw is safer than a torch or grinder <em>(rule of thumb)</em>.</li>
+</ul>
+<p><img loading="lazy" src="img/SALVAGE-GUIDE/cutting-a-fuel-drum.svg" alt="A steel drum cut away to show it filled with water to just below a dashed cut line near the top, one bung open with vapor rising from it, and a cold chisel set on the cut line" /> <em>Filled with water to just below the cut, with a bung open as a vent (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/steelworker1/steelworker1.pdf#page=96" title="US Navy NAVEDTRA 14250 - Steelworker Vol 1 (1996).pdf — page 96">Navy <em>Steelworker</em>, p. 96</a>), and cut with a cold chisel or hacksaw (a diagram drawn for this guide).</em></p>
+<ul>
+<li><strong>Barrel stove:</strong> Aprovecho made heat exchangers "cheaply out of 33 and 55-gallon drums" (<a class="lib" target="_blank" rel="noopener" href="https://aprovecho.org/?paybox_id=72#page=10" title="Aprovecho - Capturing Heat Three Designing Home Made Wood Heating Stoves.pdf — page 10">Aprovecho, p. 10</a>), and "Firebrick protects the thin walls of the combustion chamber, which then can last for ten years!" (<a class="lib" target="_blank" rel="noopener" href="https://aprovecho.org/?paybox_id=72#page=11" title="Aprovecho - Capturing Heat Three Designing Home Made Wood Heating Stoves.pdf — page 11">p. 11</a>). Burn the paint off once, outdoors and upwind, before it goes indoors <em>(rule of thumb)</em>.</li>
+<li><strong>Grain:</strong> a clean, tight drum keeps out insects and rodents if the grain goes in dry (12% moisture or less) and the drum stays out of the sun (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/ERIC_ED241766/ERIC_ED241766.pdf#page=291" title="Small Farm Grain Storage - Peace Corps VITA Manual M-2 (1976).pdf — page 291">Peace Corps M-2, pp. 291–292</a>). Use only a drum that held food.</li>
+<li><strong>Rain barrels:</strong> the tank "should not have previously been used to store toxic materials", should be opaque, and covered with screened vents (<a class="lib" target="_blank" rel="noopener" href="https://extension.oregonstate.edu/sites/extd8/files/documents/em9101.pdf#page=7" title="OSU - Harvesting Rainwater for Use in the Garden (EM 9101).pdf — page 7">OSU EM 9101, p. 7</a>); a 50- to 75-gallon drum with a spigot waters garden beds (<a class="lib" target="_blank" rel="noopener" href="https://www.twdb.texas.gov/publications/brochures/conservation/doc/RainwaterHarvestingManual_3rdedition.pdf#page=20" title="Texas Manual on Rainwater Harvesting 3rd ed (TWDB 2005).pdf — page 20">Texas <em>Rainwater</em>, p. 20</a>). The whole system: <a class="guide" href="WATER-WELLS-GUIDE.html#cisterns-and-rainwater">Water Wells</a>.</li>
+<li><strong>IBC totes</strong> <em>(rule of thumb)</em>: a 275- or 330-gallon plastic tank in a steel cage, with the same label rule. The white plastic lets in light (algae) and goes brittle in sun: shade or paint it. A spare cage makes pen panels.</li>
+</ul>
+</div><!--/fold--></div>
+<div class="fold"><h2 class="fold-head" id="pallets">Pallets</h2>
+<p class="gist noprint">Free lumber for trailers, compost bins, racks and store floors; read the stamp first</p>
+<div class="fold-body">
+<ul>
+<li><strong>Read the stamp</strong> <em>(rule of thumb)</em>: <strong>HT</strong> means heat-treated, fine to use. <strong>MB</strong> means fumigated with methyl bromide, one of the dangerous gases fuel handlers are warned about (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM_10_67_1_P_S_O_1998/FM%2010-67-1%20Petroleum%20Supply%20Operations%20%281998%29.pdf#page=38" title="FM 10-67-1 Petroleum Supply Operations (US Army 1998).pdf — page 38">FM 10-67-1, p. 38</a>): not for food, bedding or firewood. Stained or painted pallets: outdoor jobs only.</li>
+<li><strong>Make with them:</strong> a no-weld bike trailer (<a class="guide" href="BICYCLES-CARTS-GUIDE.html#bicycle-trailers-welded-steel-or-no-weld-pallets">Bicycles &amp; Carts</a>), compost bins (<a class="guide" href="SANITATION-GUIDE.html#composting-food-yard-waste-and-manure">Sanitation</a>), firewood racks (<a class="guide" href="FIREWOOD-GUIDE.html#seasoning-drying-wood-in-a-wet-climate">Firewood</a>), fences and coops. In a food store, food goes "on pallets or on shelves off the floor at a minimum height of 45 cm", with no pallet against a wall (<a class="lib" target="_blank" rel="noopener" href="https://iris.who.int/server/api/core/bitstreams/a724030b-5825-4b5e-8577-b94ffa807f2d/content#page=68" title="Communicable Disease Control in Emergencies - A Field Manual (WHO 2005).pdf — page 68">WHO <em>Communicable Disease Control</em>, p. 68</a>).</li>
+<li><strong>Taking one apart:</strong> a pry bar and hammer, or saw the boards off beside the blocks; pull every nail <em>(rule of thumb)</em>.</li>
+</ul>
+</div><!--/fold--></div>
+<div class="fold"><h2 class="fold-head" id="old-windows-and-doors">Old windows and doors</h2>
+<p class="gist noprint">Windows make cold frames and solar heaters; doors make benches and tables</p>
+<div class="fold-body">
+<ul>
+<li><strong>Cold frame:</strong> a bottomless box with an old window on top. "The back or north side … should be 12 or 15 inches high, while the front should slope down to 8 inches" (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/cu31924080109832/cu31924080109832.pdf#page=148" title="Handy Farm Devices and How to Make Them (1912).pdf — page 148"><em>Handy Farm Devices</em>, p. 148</a>). Face it "south or southeast", sheltered from the north wind, with "great attention … to water and ventilation" (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/cu31924080109832/cu31924080109832.pdf#page=149" title="Handy Farm Devices and How to Make Them (1912).pdf — page 149">p. 149</a>). Prop the window open on warm days <em>(rule of thumb)</em>.</li>
+</ul>
+<p><img loading="lazy" src="img/SALVAGE-GUIDE/cold-frame-from-a-window.svg" alt="A cold frame seen from the side: a bottomless wooden box on the soil with seedlings inside, its back board on the north side 12 to 15 inches high and its front board on the south side 8 inches high, an old window lying on top hinged at the back and propped open with a stick, the sun to the south" /> <em>The back, 12–15 inches high, on the north; the front, 8 inches, facing south (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/cu31924080109832/cu31924080109832.pdf#page=148" title="Handy Farm Devices and How to Make Them (1912).pdf — page 148"><em>Handy Farm Devices</em>, pp. 148–149</a>; a diagram drawn for this guide).</em></p>
+<ul>
+<li><strong>Glazing</strong> for a solar water heater (<a class="guide" href="STORING-ENERGY-GUIDE.html#solar-water-heaters-you-can-build">Storing Energy</a>) or a solar food dryer (<a class="guide" href="ROOT-CELLAR-GUIDE.html#drying-food">Root Cellars</a>).</li>
+<li><strong>Doors:</strong> a solid door is a workbench, table top or shelf; a hollow one is light and weak <em>(rule of thumb)</em>.</li>
+<li><strong>Watch out:</strong> "When working on old painted surfaces, assume that one or more of the paint coats contain lead": never sand, burn or heat them (<a class="lib" target="_blank" rel="noopener" href="https://research.fs.usda.gov/download/treesearch/37440.pdf#page=392" title="Wood Handbook - Wood as an Engineering Material (USDA FPL GTR-190 2010).pdf — page 392"><em>Wood Handbook</em>, p. 392</a>). Tempered glass can't be cut, and a sealed double pane can't be split: use them whole <em>(rule of thumb)</em>. Reglazing: <a class="guide" href="SHELTER-BUILDING-GUIDE.html#reglazing-and-saving-windows">Shelter</a>.</li>
+</ul>
+</div><!--/fold--></div>
+<div class="fold"><h2 class="fold-head" id="mattresses-box-springs-and-trampolines">Mattresses, box springs and trampolines</h2>
+<p class="gist noprint">Spring wire, foam and cloth; a trampoline frame makes hoops for a greenhouse or a run</p>
+<div class="fold-body">
+<p><em>(All rule of thumb.)</em></p>
+<ul>
+<li><strong>Springs:</strong> hard steel wire for trellis, fence ties and hooks; cut it with bolt cutters.</li>
+<li><strong>Foam:</strong> cushions, kneeling pads, insulation. It burns fast with poisonous smoke: keep it away from stoves.</li>
+<li><strong>Cloth and frames:</strong> the cover makes sacks; a box spring's frame is light lumber.</li>
+<li><strong>Trampoline:</strong> the curved frame tubes make hoops for a greenhouse, a chicken run or a shade frame. They are galvanized: cut and bolt them, never weld or heat them. The <strong>springs</strong> pull gates and doors shut; the <strong>mat</strong> is sun-proof woven cloth for shade or a ground sheet. Wear glasses taking the springs off: they snap back.</li>
+<li><strong>Watch out:</strong> a mattress stored in a shed is often a mouse nest; wet it down before you touch it (<a class="guide" href="SANITATION-GUIDE.html#mice-hantavirus-fleas-and-plague">Sanitation</a>).</li>
+</ul>
+</div><!--/fold--></div>
+<div class="fold"><h2 class="fold-head" id="satellite-dishes">Satellite dishes</h2>
+<p class="gist noprint">Lined with foil, a dish heats a pot of water in the sun; mind your eyes and dry grass</p>
+<div class="fold-body">
+<ul>
+<li><strong>Heating water:</strong> a solar cooker can be "a reflective 'satellite dish', on which the water pot sits", with the water in a blackened pot (<a class="lib" target="_blank" rel="noopener" href="https://bdd.pseau.org/outils/ouvrages/cawst_household_water_treatment_safe_storage_factsheets_compilation_2011.pdf#page=75" title="Household Water Treatment and Safe Storage Fact Sheets - Detailed (CAWST 2011).pdf — page 75">CAWST, p. 75</a>). Pasteurizing water: <a class="guide" href="WATER-PURIFICATION-GUIDE.html#step-3-kill-the-germs">Water Purification</a>.</li>
+<li><strong>Making it shine</strong> <em>(rule of thumb)</em>: line it with mirror film or kitchen foil, shiny side out. Most TV dishes are "offset": the hot spot is where the arm held the receiver, not in front of the middle.</li>
+<li><strong>Its limits:</strong> dish cookers heat one pot at a time, "need constant refocusing towards the sun" and are "susceptible to being blown over by strong winds" (<a class="lib" target="_blank" rel="noopener" href="https://sswm.info/sites/default/files/reference_attachments/CIOCHETTI%20and%20METCALF%201984%20Pasteurization%20of%20Naturally%20Contaminated%20Water%20with%20Solar%20Energy.pdf#page=1" title="Pasteurization of Naturally Contaminated Water with Solar Energy (Ciochetti &amp; Metcalf 1984).pdf — page 1">Ciochetti &amp; Metcalf, p. 1</a>).</li>
+<li><strong>Watch out</strong> <em>(rule of thumb)</em>: never look into the bright spot; it burns eyes and lights dry grass, so in fire season use it only on bare ground. The arm and pole are galvanized: cut them cold.</li>
+</ul>
+</div><!--/fold--></div>
+<div class="fold"><h2 class="fold-head" id="gutters-pvc-pipe-and-garden-hose">Gutters, PVC pipe and garden hose</h2>
+<p class="gist noprint">Gutters catch rain, PVC carries water and makes frames, hose siphons and drips</p>
+<div class="fold-body">
+<p><em>(Rule of thumb, unless a link says otherwise.)</em></p>
+<ul>
+<li><strong>Gutters</strong> fill rain barrels (<a class="guide" href="WATER-WELLS-GUIDE.html#cisterns-and-rainwater">Water Wells</a>) and make shallow planters, troughs and small water channels.</li>
+<li><strong>PVC pipe</strong> carries water and makes hoop-house frames, fences and racks. Sun makes it brittle: paint it or shade it. Never burn it, and never use it for compressed air: it shatters.</li>
+<li><strong>Garden hose</strong> siphons water and makes drip lines; ordinary hose is not made for drinking water. A split length guards a saw blade or pads a bucket handle.</li>
+</ul>
+</div><!--/fold--></div>
+<div class="fold"><h2 class="fold-head" id="tarps-and-plastic-sheeting">Tarps and plastic sheeting</h2>
+<p class="gist noprint">Roofs, rain catchers, ground sheets and greenhouse film, fixed so they don't tear</p>
+<div class="fold-body">
+<ul>
+<li><strong>Uses:</strong> emergency roofs and shelters, rain catchers, ground sheets, greenhouse and cold-frame covers <em>(rule of thumb)</em>.</li>
+<li><strong>Fixing it so it doesn't tear:</strong> nail through wooden battens or bottle caps, never bare nails, and fold the sheet over on itself wherever you fasten it (<a class="guide" href="SHELTER-BUILDING-GUIDE.html#emergency-tarp-and-plastic-shelters">Shelter</a>).</li>
+<li><strong>Watch out:</strong> sunlight rots most plastic in a season or two <em>(rule of thumb)</em>; never burn it.</li>
+</ul>
+</div><!--/fold--></div>
+<div class="fold"><h2 class="fold-head" id="tires-and-inner-tubes">Tires and inner tubes</h2>
+<p class="gist noprint">Tires hold firewood for splitting and pad loads; tubes give straps and gaskets; never burn either</p>
+<div class="fold-body">
+<ul>
+<li><strong>Splitting ring:</strong> "Some folks use old tires to keep from having to stoop to pick up split firewood"; the tire is fixed on top of the splitting block (<a class="lib" target="_blank" rel="noopener" href="https://forestry.extension.wisc.edu/files/2017/09/GWQ060.pdf#page=16" title="UW-Extension - Harvesting Firewood from Your Woods GWQ060 (2012).pdf — page 16">UW Extension <em>Harvesting Firewood</em>, p. 16</a>; splitting safely: <a class="guide" href="FIREWOOD-GUIDE.html#splitting">Firewood</a>).</li>
+<li><strong>Padding:</strong> "old rubber tires are excellent materials to use as padding" where a sling crosses a sharp edge (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/constelect1/constelect1.pdf#page=21" title="US Navy Construction Electrician Basic (NAVEDTRA 14026).pdf — page 21"><em>Construction Electrician</em>, p. 21</a>).</li>
+<li><strong>Inner tubes:</strong> cut in rings they are strong rubber bands; in strips, straps; in pieces, gaskets. "Pieces of rubber cut from old tires, and inner tubes" seal airtight grain stores (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/ERIC_ED241766/ERIC_ED241766.pdf#page=279" title="Small Farm Grain Storage - Peace Corps VITA Manual M-2 (1976).pdf — page 279">Peace Corps M-2, p. 279</a>), and one hitches a no-weld trailer (<a class="guide" href="BICYCLES-CARTS-GUIDE.html#bicycle-trailers-welded-steel-or-no-weld-pallets">Bicycles &amp; Carts</a>).</li>
+<li><strong>Also</strong> <em>(rule of thumb)</em>: tread for sandal soles and door mats; whole tires as steps and bumpers.</li>
+<li><strong>Watch out:</strong> a tire left lying fills with water and breeds mosquitoes: "Remove old tires or any items that collect water" (<a class="lib" target="_blank" rel="noopener" href="https://hesperian.org/wp-content/uploads/pdf/en_wtnd_2025/en_wtnd_2025_14.pdf#page=9" title="Where There Is No Doctor - 14 Serious illnesses that need special medical attention.pdf — page 9"><em>Where There Is No Doctor</em>, ch. 14, p. 9</a>). Let all the air out before cutting one, and leave split-rim truck wheels alone: the ring can fly off <em>(rule of thumb)</em>.</li>
+</ul>
+</div><!--/fold--></div>
+<div class="fold"><h2 class="fold-head" id="the-scrap-pile-sorting-metals">The scrap pile: sorting metals</h2>
+<p class="gist noprint">A magnet, the sparks and the weight sort scrap; what each metal is good for</p>
+<div class="fold-body">
+<p><strong>Three quick tests:</strong></p>
+<ol type="1">
+<li><strong>Magnet:</strong> iron and steel "normally are magnetic, and nonferrous metals are nonmagnetic", but "some stainless steels are nonmagnetic" (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/steelworker1/steelworker1.pdf#page=25" title="US Navy NAVEDTRA 14250 - Steelworker Vol 1 (1996).pdf — page 25">Navy <em>Steelworker</em>, p. 25</a>).</li>
+<li><strong>Sparks</strong> on a grinder: low-carbon steel throws long, plain streams; high-carbon steel, bushy streams full of bursts; cast iron, short dull-red ones (<a class="guide" href="BLACKSMITHING-GUIDE.html#which-scrap-steel-to-use">Blacksmithing</a>).</li>
+<li><strong>Weight and look:</strong> aluminum is light; lead "weighs about 710 pounds per cubic foot" and is gray, but white where scratched (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/steelworker1/steelworker1.pdf#page=19" title="US Navy NAVEDTRA 14250 - Steelworker Vol 1 (1996).pdf — page 19">p. 19</a>). Cast iron "usually shows evidence of the sand mold" (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/steelworker1/steelworker1.pdf#page=21" title="US Navy NAVEDTRA 14250 - Steelworker Vol 1 (1996).pdf — page 21">p. 21</a>).</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th>Metal</th>
+<th>Where it turns up</th>
+<th>Good for</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mild steel</td>
+<td>Car bodies, drums, pipe, bolts, bed frames</td>
+<td>Brackets, hinges, hooks, stoves; forge-welds easily (<a class="guide" href="BLACKSMITHING-GUIDE.html#which-scrap-steel-to-use">Blacksmithing</a>)</td>
+</tr>
+<tr class="even">
+<td>Spring and tool steel</td>
+<td>Leaf and coil springs, files, saw and mower blades</td>
+<td>Knives, chisels, axes, punches (same)</td>
+</tr>
+<tr class="odd">
+<td>Cast iron</td>
+<td>Engine blocks, old stoves, pans, pulleys</td>
+<td>Anvils, weights, cookware; brittle and hard to weld <em>(rule of thumb)</em></td>
+</tr>
+<tr class="even">
+<td>Stainless steel</td>
+<td>Washer drums, sinks, dishwasher tubs</td>
+<td>Fire pits, food tubs, anything wet <em>(rule of thumb)</em></td>
+</tr>
+<tr class="odd">
+<td>Aluminum</td>
+<td>Engine parts, ladders, window frames, cans</td>
+<td>Light frames and sheet; never a firebox, as it melts <em>(rule of thumb)</em></td>
+</tr>
+<tr class="even">
+<td>Copper and brass</td>
+<td>Wire, pipe, radiators, valves</td>
+<td>Wiring, tubing, bushings; brass softens if heated to 550–600 °F and left to cool (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/steelworker1/steelworker1.pdf#page=19" title="US Navy NAVEDTRA 14250 - Steelworker Vol 1 (1996).pdf — page 19"><em>Steelworker</em>, p. 19</a>)</td>
+</tr>
+<tr class="odd">
+<td>Lead</td>
+<td>Wheel weights, old pipe, battery plates</td>
+<td>Weights and sinkers only: "the dust, fumes, or vapors from it are highly poisonous" (same page)</td>
+</tr>
+<tr class="even">
+<td>Galvanized steel</td>
+<td>Roofing, fence posts, garbage cans, trampoline frames</td>
+<td>Rust-proof sheet and pipe, used cold; never heated (the list at the top)</td>
+</tr>
+</tbody>
+</table>
+</div><!--/fold--></div>
+<h2 id="old-advice-in-the-library-to-ignore">⚠️ Old advice in the library to ignore</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Book says</th>
+<th>Do this instead</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A boy "used a piece of old iron pipe for the boiler" of his steam engine (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/boysbookofengine00coll/boysbookofengine00coll_bw.pdf#page=11" title="The Boys Book of Engine-Building - Steam Hot Air and Gas Engines (Collins 1918).pdf — page 11">Collins, p. 11</a>)</td>
+<td>Never make a boiler from pipe, a tank or a water heater (<a class="guide" href="HEAT-INTO-POWER-GUIDE.html#what-never-to-use-as-a-boiler">Heat into Power</a>)</td>
+</tr>
+<tr class="even">
+<td>An ice maker "built from 5 and 3 gallon propane cylinders" (<a class="lib" target="_blank" rel="noopener" href="https://aprovecho.org/?paybox_id=72#page=37" title="Aprovecho - Capturing Heat Three Designing Home Made Wood Heating Stoves.pdf — page 37">Aprovecho, p. 37</a>)</td>
+<td>Its builders "became worried about the potential for explosion" and handed the project on (same page). Never re-pressurize a salvaged cylinder</td>
+</tr>
+<tr class="odd">
+<td>Dissolve old rubber by heating it "under pressure, for several hours, with a strong solution of caustic soda" (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/cu31924003643172/cu31924003643172.pdf#page=624" title="Henleys Twentieth Century Formulas Recipes and Processes (1916).pdf — page 624">Henley's, p. 624</a>)</td>
+<td>Hot lye under pressure blinds and bursts pots. Use rubber as it is: cut tubes into straps and gaskets <em>(rule of thumb)</em></td>
+</tr>
+<tr class="even">
+<td>Store grain in "220-litre oil drums" (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/ERIC_ED241766/ERIC_ED241766.pdf#page=291" title="Small Farm Grain Storage - Peace Corps VITA Manual M-2 (1976).pdf — page 291">Peace Corps M-2, p. 291</a>)</td>
+<td>Only a drum that held food: food goes only in food-grade containers (<a class="lib" target="_blank" rel="noopener" href="https://ccfruitandnuts.ucanr.edu/sites/default/files/2020-09/336114.pdf#page=12" title="Food Storage in the Home - Grain Insect Control - USU.pdf — page 12">USU, p. 12</a>)</td>
+</tr>
+<tr class="odd">
+<td>Dip cold-frame posts in kerosene overnight: "This will preserve them indefinitely" (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/cu31924080109832/cu31924080109832.pdf#page=148" title="Handy Farm Devices and How to Make Them (1912).pdf — page 148"><em>Handy Farm Devices</em>, p. 148</a>)</td>
+<td>Kerosene evaporates and keeps little rot away. Use rot-resistant heartwood, or set posts on stones <em>(rule of thumb)</em>; see <a class="guide" href="SHELTER-BUILDING-GUIDE.html#rot-termites-carpenter-ants-and-woods-that-last">Shelter</a></td>
+</tr>
+<tr class="even">
+<td>"Line a wooden packing case with galvanized iron" for an ice chest (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/pnaas277/pnaas277.pdf#page=273" title="Village Technology Handbook - VITA (USAID).pdf — page 273">VITA, p. 273</a>)</td>
+<td>Fine for ice, but keep acid foods and drinks off zinc: "Do not eat foods or drink beverages that have been prepared in galvanized containers" (<a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/ost-military-doctrine-fm21_10/fm21_10.pdf#page=37" title="US Army FM 21-10 Field Hygiene and Sanitation (2000).pdf — page 37">FM 21-10, p. 37</a>). A dead chest freezer is already lined and insulated</td>
+</tr>
+</tbody>
+</table>
+<h2 id="pictures-diagrams">Pictures &amp; diagrams</h2>
+<p>🖼️ = drawings in the books on this drive; the other links are photos in the offline Wikipedia.</p>
+<ul>
+<li>A 33-gallon drum inside a 55 as a stove's heat exchanger — <a class="lib pic" target="_blank" rel="noopener" href="https://aprovecho.org/?paybox_id=72#page=11" title="Aprovecho - Capturing Heat Three Designing Home Made Wood Heating Stoves.pdf — page 11">Aprovecho, p. 11</a></li>
+<li>A meat smoker — <a class="lib pic" target="_blank" rel="noopener" href="https://infohub.practicalaction.org/server/api/core/bitstreams/1c3e0d52-e4d2-4bde-9c92-e80d088595be/content#page=7" title="Practical Action - Cured Meat Products.pdf — page 7">Practical Action, p. 7</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Smokehouse" data-title="Smokehouse" target="_blank" rel="noopener" title="Wikipedia: Smokehouse (offline copy with photos when opened through the Library Assistant)">Smokehouse</a></li>
+<li>A lawn mower as a feed cutter — <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/cu31924080109832/cu31924080109832.pdf#page=120" title="Handy Farm Devices and How to Make Them (1912).pdf — page 120"><em>Handy Farm Devices</em>, p. 120</a></li>
+<li>Motors: a split-phase motor's leads and a capacitor-start motor — <a class="lib pic" target="_blank" rel="noopener" href="https://files.eric.ed.gov/fulltext/ED013943.pdf#page=11" title="Electric Motors for Farm Use (University of Illinois 1962).pdf — page 11">Illinois, p. 11</a>; a universal motor's wiring, <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/constelect1/constelect1.pdf#page=241" title="US Navy Construction Electrician Basic (NAVEDTRA 14026).pdf — page 241"><em>Construction Electrician</em>, p. 241</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Universal_motor" data-title="Universal_motor" target="_blank" rel="noopener" title="Wikipedia: Universal motor (offline copy with photos when opened through the Library Assistant)">Universal motor</a></li>
+<li>A car generator made into a wind charger, 1939 — <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/fe_Home_Built_6-Volt_Wind_Electric_Plants/Home_Built_6-Volt_Wind_Electric_Plants.pdf#page=8" title="Homemade Six-Volt Wind-Electric Plants (North Dakota Extension 1939).pdf — page 8">North Dakota, p. 8</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Alternator_%28automotive%29" data-title="Alternator_(automotive)" target="_blank" rel="noopener" title="Wikipedia: Alternator (automotive) (offline copy with photos when opened through the Library Assistant)">Alternator (automotive)</a></li>
+<li>A picture tube cut open — <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/neetsmodules_202003/NEETS%20MOD%206%20NAVEDTRA%2014178A.pdf#page=114" title="NEETS Module 06 - Electronic Emission Tubes and Power Supplies.pdf — page 114">NEETS 6, p. 114</a></li>
+<li>Food-grade barrels linked for rainwater — <a class="lib pic" target="_blank" rel="noopener" href="https://extension.oregonstate.edu/sites/extd8/files/documents/em9101.pdf#page=7" title="OSU - Harvesting Rainwater for Use in the Garden (EM 9101).pdf — page 7">OSU EM 9101, p. 7</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Intermediate_bulk_container" data-title="Intermediate_bulk_container" target="_blank" rel="noopener" title="Wikipedia: Intermediate bulk container (offline copy with photos when opened through the Library Assistant)">Intermediate bulk container</a></li>
+<li>Spark patterns of common metals — <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/steelworker1/steelworker1.pdf#page=23" title="US Navy NAVEDTRA 14250 - Steelworker Vol 1 (1996).pdf — page 23">Navy <em>Steelworker</em>, p. 23</a>; <a class="wiki" href="https://en.wikipedia.org/wiki/Spark_testing" data-title="Spark_testing" target="_blank" rel="noopener" title="Wikipedia: Spark testing (offline copy with photos when opened through the Library Assistant)">Spark testing</a></li>
+<li>Photos: <a class="wiki" href="https://en.wikipedia.org/wiki/Washing_machine" data-title="Washing_machine" target="_blank" rel="noopener" title="Wikipedia: Washing machine (offline copy with photos when opened through the Library Assistant)">Washing machine</a>, <a class="wiki" href="https://en.wikipedia.org/wiki/Water_heating" data-title="Water_heating" target="_blank" rel="noopener" title="Wikipedia: Water heating (offline copy with photos when opened through the Library Assistant)">Water heating</a>, <a class="wiki" href="https://en.wikipedia.org/wiki/Pallet" data-title="Pallet" target="_blank" rel="noopener" title="Wikipedia: Pallet (offline copy with photos when opened through the Library Assistant)">Pallet</a>, <a class="wiki" href="https://en.wikipedia.org/wiki/Cold_frame" data-title="Cold_frame" target="_blank" rel="noopener" title="Wikipedia: Cold frame (offline copy with photos when opened through the Library Assistant)">Cold frame</a>, <a class="wiki" href="https://en.wikipedia.org/wiki/Solar_cooker" data-title="Solar_cooker" target="_blank" rel="noopener" title="Wikipedia: Solar cooker (offline copy with photos when opened through the Library Assistant)">Solar cooker</a>, <a class="wiki" href="https://en.wikipedia.org/wiki/Leaf_spring" data-title="Leaf_spring" target="_blank" rel="noopener" title="Wikipedia: Leaf spring (offline copy with photos when opened through the Library Assistant)">Leaf spring</a>, <a class="wiki" href="https://en.wikipedia.org/wiki/Galvanization" data-title="Galvanization" target="_blank" rel="noopener" title="Wikipedia: Galvanization (offline copy with photos when opened through the Library Assistant)">Galvanization</a>, <a class="wiki" href="https://en.wikipedia.org/wiki/Metal_fume_fever" data-title="Metal_fume_fever" target="_blank" rel="noopener" title="Wikipedia: Metal fume fever (offline copy with photos when opened through the Library Assistant)">Metal fume fever</a>, <a class="wiki" href="https://en.wikipedia.org/wiki/Smoke_detector" data-title="Smoke_detector" target="_blank" rel="noopener" title="Wikipedia: Smoke detector (offline copy with photos when opened through the Library Assistant)">Smoke detector</a>, <a class="wiki" href="https://en.wikipedia.org/wiki/Cathode_ray_tube" data-title="Cathode_ray_tube" target="_blank" rel="noopener" title="Wikipedia: Cathode ray tube (offline copy with photos when opened through the Library Assistant)">Cathode-ray tube</a></li>
+</ul>
+<h2 id="related-guides">Related guides</h2>
+<ul>
+<li><a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html">Engines, Motors and Generators</a> — testing and repairing salvaged motors, motors as generators, reusing a generator for water or wind</li>
+<li><a class="guide" href="OFF-GRID-POWER-GUIDE.html">Off-Grid Power</a> — salvaged solar panels and battery packs, and why creek power beats wind</li>
+<li><a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html">Make-Do Household</a> — electronics repair and salvage, containers and storage</li>
+<li><a class="guide" href="BLACKSMITHING-GUIDE.html">Blacksmithing</a> — which scrap steel to use, and a forge from a brake drum</li>
+<li><a class="guide" href="HEAT-INTO-POWER-GUIDE.html">Heat into Work and Power</a> — salvaged Peltier modules, and what never to use as a boiler</li>
+<li><a class="guide" href="BICYCLES-CARTS-GUIDE.html">Bicycles &amp; Carts</a> — wheels, trailers and carts</li>
+<li><a class="guide" href="SANITATION-GUIDE.html">Sanitation</a> — burning trash, and hazardous waste</li>
+<li><a class="guide" href="WILDFIRE-GUIDE.html">Wildfire</a> — open fires only in the wet season</li>
+<li><a class="guide" href="ROOT-CELLAR-GUIDE.html">Root Cellars</a> and <a class="guide" href="PRESERVING-FOOD-GUIDE.html">Preserving Food</a> — cool boxes and smokers</li>
+<li><a class="guide" href="STORING-ENERGY-GUIDE.html">Storing Energy</a> — solar water heaters and hot-water tanks</li>
+<li><a class="guide" href="FUEL-GUIDE.html">Fuel</a> — drums, vehicles, propane</li>
+<li><a class="guide" href="EMP-GUIDE.html">EMP</a> — a dead microwave as a shield for spare electronics</li>
+<li><a class="guide" href="VEHICLES-EQUIPMENT-GUIDE.html">Vehicles, Tractors &amp; Heavy Equipment</a> — what is worth keeping on a dead car, truck or tractor</li>
+</ul>
+<nav class="guidenav"><div class="prev"><a class="guide" href="KNOTS-ROPE-GUIDE.html"><small>← Previous</small>Knots, rope &amp; cordage</a></div><div class="up"><a class="guide" href="../#tools:making"><small>All guides in</small>🛠️ Making &amp; repair</a></div><div class="next"><a class="guide" href="CLOTHING-LEATHER-GUIDE.html"><small>Next →</small>Clothing, leather &amp; shoes</a></div></nav></div><a class="totop" href="#contents" aria-label="Back to contents">↑ Contents</a></body></html>

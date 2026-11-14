@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="592" viewBox="0 24 640 592" font-family="Arial, Helvetica, sans-serif">
+  <title>How little moving water it takes: 6 inches knocks a person off their feet, 1 foot floats many vehicles, 2 feet carries away most vehicles including SUVs and pickups</title>
+  <rect y="24" width="640" height="592" fill="#ffffff"/>
+  <defs>
+    <marker id="d" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#1d4f7a"/></marker>
+    <marker id="f" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#ffffff"/></marker>
+  </defs>
+  <!-- drawn to one scale: 24 px to the foot -->
+
+  <!-- ROW 1: a person, 6 in -->
+  <g stroke="#333" stroke-width="2.5" stroke-linecap="round" fill="none">
+    <path d="M114,180 L118,124 M128,180 L124,124"/>
+    <path d="M110,90 L98,124 M134,90 L144,122"/>
+  </g>
+  <rect x="108" y="84" width="28" height="44" rx="8" fill="#8a9aa8" stroke="#333" stroke-width="2"/>
+  <circle cx="122" cy="68" r="12" fill="#e6c6a6" stroke="#333" stroke-width="2"/>
+  <rect x="92" y="168" width="528" height="12" fill="#4a90c8" opacity="0.6"/>
+  <line x1="40" y1="181" x2="620" y2="181" stroke="#6b5a45" stroke-width="2.5"/>
+  <line x1="86" y1="169" x2="86" y2="179" stroke="#1d4f7a" stroke-width="1.5" marker-start="url(#d)" marker-end="url(#d)"/>
+  <text x="78" y="179" text-anchor="end" font-size="15" font-weight="bold" fill="#1d4f7a">6 in</text>
+  <g font-size="15" fill="#222">
+    <text x="190" y="92" font-weight="bold">6 inches can knock you off your feet.</text>
+    <text x="190" y="116">It reaches the bottom of most cars:</text>
+    <text x="190" y="136">loss of control and possible stalling.</text>
+  </g>
+  <text x="612" y="162" text-anchor="end" font-size="14" font-weight="bold" fill="#1d4f7a">moving water →</text>
+
+  <!-- ROW 2: a car, 1 ft -->
+  <path d="M100,338 V306 C100,300 104,298 112,297 L170,294 L200,246 C204,240 210,236 220,236 L330,236 C340,236 346,240 352,246 L388,294 L428,298 C434,300 436,304 436,310 V338 z" fill="#c8513a" stroke="#333" stroke-width="2.5"/>
+  <path d="M184,292 L210,252 C212,248 216,246 222,246 L268,246 V292 z M278,246 L328,246 C334,246 338,248 340,252 L370,292 L278,292 z" fill="#cfe6f2" stroke="#333" stroke-width="2"/>
+  <circle cx="160" cy="325" r="25" fill="#333"/><circle cx="160" cy="325" r="10" fill="#aaa"/>
+  <circle cx="376" cy="325" r="25" fill="#333"/><circle cx="376" cy="325" r="10" fill="#aaa"/>
+  <rect x="92" y="326" width="528" height="24" fill="#4a90c8" opacity="0.6"/>
+  <g stroke="#ffffff" stroke-width="2" marker-end="url(#f)"><line x1="470" y1="338" x2="500" y2="338"/><line x1="540" y1="338" x2="570" y2="338"/></g>
+  <line x1="40" y1="351" x2="620" y2="351" stroke="#6b5a45" stroke-width="2.5"/>
+  <line x1="86" y1="327" x2="86" y2="349" stroke="#1d4f7a" stroke-width="1.5" marker-start="url(#d)" marker-end="url(#d)"/>
+  <text x="78" y="344" text-anchor="end" font-size="15" font-weight="bold" fill="#1d4f7a">1 ft</text>
+  <g font-size="15" fill="#222">
+    <text x="456" y="258" font-weight="bold">1 foot will float</text>
+    <text x="456" y="278" font-weight="bold">many vehicles.</text>
+  </g>
+
+  <!-- ROW 3: a pickup, 2 ft -->
+  <path d="M100,531 V478 C100,470 106,466 114,465 L176,462 L194,414 C196,410 200,408 206,408 L292,408 C298,408 302,412 302,418 V476 L532,476 V531 z" fill="#5b7a92" stroke="#333" stroke-width="2.5"/>
+  <path d="M190,460 L206,420 L250,420 V460 z M258,420 L290,420 V460 L258,460 z" fill="#cfe6f2" stroke="#333" stroke-width="2"/>
+  <line x1="302" y1="476" x2="302" y2="531" stroke="#333" stroke-width="2"/>
+  <circle cx="175" cy="529" r="31" fill="#333"/><circle cx="175" cy="529" r="12" fill="#aaa"/>
+  <circle cx="455" cy="529" r="31" fill="#333"/><circle cx="455" cy="529" r="12" fill="#aaa"/>
+  <rect x="92" y="512" width="528" height="48" fill="#4a90c8" opacity="0.6"/>
+  <g stroke="#ffffff" stroke-width="2" marker-end="url(#f)"><line x1="550" y1="536" x2="580" y2="536"/><line x1="230" y1="545" x2="260" y2="545"/><line x1="330" y1="545" x2="360" y2="545"/></g>
+  <line x1="40" y1="561" x2="620" y2="561" stroke="#6b5a45" stroke-width="2.5"/>
+  <line x1="86" y1="513" x2="86" y2="559" stroke="#1d4f7a" stroke-width="1.5" marker-start="url(#d)" marker-end="url(#d)"/>
+  <text x="78" y="541" text-anchor="end" font-size="15" font-weight="bold" fill="#1d4f7a">2 ft</text>
+  <g font-size="15" fill="#222">
+    <text x="322" y="430" font-weight="bold">2 feet carries away most vehicles,</text>
+    <text x="322" y="450" font-weight="bold">SUVs and pickups too.</text>
+  </g>
+
+  <text x="320" y="600" text-anchor="middle" font-size="15" font-weight="bold" fill="#c8431a">You can't see the depth, or whether the road is still there. Turn around.</text>
+</svg>

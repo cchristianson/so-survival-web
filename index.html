@@ -115,7 +115,7 @@ footer{color:var(--muted);font-size:13px;margin-top:22px}
 /* ---- Ask */
 form.ask{display:flex;gap:8px;position:sticky;top:var(--top);background:var(--bg);padding:8px 0;z-index:2}
 .opts{display:flex;gap:6px 16px;flex-wrap:wrap;color:var(--muted);font-size:14px;margin:4px 0 14px}
-.opts label{display:flex;align-items:center;gap:6px;min-height:32px}.opts input{width:18px;height:18px;margin:0;accent-color:var(--btn)}
+.opts label{display:flex;align-items:center;gap:6px;min-height:32px}#searchin{margin-top:-10px}#searchin>span{display:flex;align-items:center;min-height:32px}.opts input{width:18px;height:18px;margin:0;accent-color:var(--btn)}
 .examples{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
 .ex{font-size:13.5px;min-height:36px;padding:6px 12px;border-radius:999px;border:1px dashed var(--input);color:var(--muted);cursor:pointer;background:transparent;font-family:inherit}
 .best{border-left:3px solid var(--accent);padding:2px 0 2px 12px;margin:6px 0}.best .bh{font-size:14px;color:var(--muted)}.best p{margin:6px 0 0}.best mark{background:rgba(224,182,90,.35);color:inherit;border-radius:3px;padding:0 1px}
@@ -272,7 +272,11 @@ body.osk-open{padding-bottom:236px}
   <div class="opts">
     <label><input type="checkbox" id="useai" checked> AI writes an answer</label>
     <label>Sources <select id="nsrc"><option value="4">4 (faster)</option><option value="6" selected>6</option><option value="8">8</option></select></label>
-    <label><input type="checkbox" id="usewiki" checked> <span id="wikilabel">Include Wikipedia</span></label>
+  </div>
+  <div class="opts" id="searchin" role="group" aria-label="Search in"><span>Search in:</span>
+    <label><input type="checkbox" id="useguides" checked> Guides</label>
+    <label><input type="checkbox" id="usebooks" checked> Books</label>
+    <label><input type="checkbox" id="usewiki" checked> <span id="wikilabel">Wikipedia</span></label>
   </div>
   <div class="examples" id="examples"></div>
   <div id="out"></div>
