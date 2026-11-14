@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="572" viewBox="0 0 680 572" font-family="Arial, Helvetica, sans-serif">
+  <title>Seen from above: a fallen wire on the ground with the voltage falling away in rings around it, one person shocked because their feet are apart, one shuffling out with feet together, a roped-off circle 50 feet all round, and a car with a wire lying on it</title>
+  <rect width="680" height="572" fill="#ffffff"/>
+  <defs>
+    <marker id="rr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#c8431a"/></marker>
+    <marker id="gg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#2f5e16"/></marker>
+    <marker id="dd" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+  </defs>
+
+  <text x="340" y="24" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">A wire on the ground pushes current out through the earth.</text>
+  <text x="340" y="44" text-anchor="middle" font-size="15" fill="#222">The voltage falls away in rings around it — seen here from above.</text>
+
+  <!-- voltage rings -->
+  <g>
+    <circle cx="210" cy="290" r="170" fill="#fdf1ec"/>
+    <circle cx="210" cy="290" r="132" fill="#fbe2d7"/>
+    <circle cx="210" cy="290" r="92" fill="#f6cbb8"/>
+    <circle cx="210" cy="290" r="56" fill="#f0ab8c"/>
+    <circle cx="210" cy="290" r="26" fill="#e58a62"/>
+  </g>
+  <g fill="none" stroke="#c8431a" stroke-width="1.2" opacity="0.85">
+    <circle cx="210" cy="290" r="26"/><circle cx="210" cy="290" r="56"/>
+    <circle cx="210" cy="290" r="92"/><circle cx="210" cy="290" r="132"/>
+    <circle cx="210" cy="290" r="170"/>
+  </g>
+
+  <!-- roped-off circle -->
+  <circle cx="210" cy="290" r="195" fill="none" stroke="#c8431a" stroke-width="2.5" stroke-dasharray="12 8"/>
+  <g fill="#c8431a">
+    <polygon points="210,95 220,100 210,105"/><polygon points="405,290 400,300 395,290"/>
+    <polygon points="210,485 200,480 210,475"/><polygon points="15,290 20,280 25,290"/>
+  </g>
+  <line x1="210" y1="290" x2="18" y2="290" stroke="#333" stroke-width="1.4" marker-start="url(#dd)" marker-end="url(#dd)"/>
+  <text x="112" y="282" text-anchor="middle" font-size="14" font-weight="bold" fill="#222">50 ft</text>
+
+  <!-- pole and the fallen wire -->
+  <circle cx="110" cy="170" r="9" fill="#7a5a35" stroke="#333" stroke-width="2"/>
+  <line x1="92" y1="158" x2="128" y2="182" stroke="#7a5a35" stroke-width="4"/>
+  <text x="110" y="148" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#222">pole</text>
+  <path d="M112,180 C140,210 150,240 182,268 C196,280 220,294 246,320" fill="none" stroke="#222" stroke-width="3"/>
+  <circle cx="210" cy="290" r="5" fill="#222"/>
+  <text x="252" y="338" font-size="12.5" font-weight="bold" fill="#222">the wire, down and live</text>
+
+  <!-- the second wire, lying on a car -->
+  <path d="M104,182 C92,230 96,300 104,352" fill="none" stroke="#222" stroke-width="3"/>
+  <g transform="translate(96,392) rotate(-8)">
+    <rect x="-34" y="-20" width="68" height="40" rx="9" fill="#5b7a92" stroke="#333" stroke-width="2"/>
+    <rect x="-20" y="-13" width="18" height="26" rx="3" fill="#cfe6f2" stroke="#333" stroke-width="1.4"/>
+    <rect x="4" y="-13" width="16" height="26" rx="3" fill="#cfe6f2" stroke="#333" stroke-width="1.4"/>
+  </g>
+  <path d="M104,352 C110,368 86,386 80,404" fill="none" stroke="#222" stroke-width="3"/>
+
+  <!-- FEET APART: shocked -->
+  <g transform="translate(272,252) rotate(-35)">
+    <ellipse cx="0" cy="0" rx="7" ry="13" fill="#c8431a" stroke="#8a2a10" stroke-width="1.4"/>
+  </g>
+  <g transform="translate(310,226) rotate(-35)">
+    <ellipse cx="0" cy="0" rx="7" ry="13" fill="#c8431a" stroke="#8a2a10" stroke-width="1.4"/>
+  </g>
+  <line x1="277" y1="245" x2="305" y2="234" stroke="#c8431a" stroke-width="2" stroke-dasharray="4 3"/>
+  <path d="M283,238 L291,234 L287,243 L295,239" fill="none" stroke="#c8431a" stroke-width="2.5"/>
+  <text x="292" y="204" text-anchor="middle" font-size="13" font-weight="bold" fill="#c8431a">shocked</text>
+
+  <!-- FEET TOGETHER: shuffling out -->
+  <g transform="translate(284,424) rotate(62)">
+    <ellipse cx="0" cy="-12" rx="6" ry="11" fill="#2f5e16" stroke="#1d3a0d" stroke-width="1.4"/>
+    <ellipse cx="0" cy="12" rx="6" ry="11" fill="#2f5e16" stroke="#1d3a0d" stroke-width="1.4"/>
+  </g>
+  <g stroke="#2f5e16" stroke-width="2.5" fill="none" marker-end="url(#gg)">
+    <line x1="302" y1="440" x2="330" y2="464"/>
+  </g>
+  <text x="318" y="408" font-size="13" font-weight="bold" fill="#2f5e16">shuffle out</text>
+
+  <!-- leader lines to the labels -->
+  <line x1="318" y1="222" x2="420" y2="150" stroke="#888" stroke-width="1"/>
+  <line x1="300" y1="430" x2="420" y2="308" stroke="#888" stroke-width="1"/>
+  <line x1="96" y1="416" x2="86" y2="486" stroke="#888" stroke-width="1"/>
+
+  <!-- labels -->
+  <g font-size="13" fill="#222">
+    <text x="426" y="100" font-size="14" font-weight="bold" fill="#c8431a">FEET APART</text>
+    <text x="426" y="120">The two feet stand on different</text>
+    <text x="426" y="138">rings, so they are at different</text>
+    <text x="426" y="156">voltages. The difference goes up</text>
+    <text x="426" y="174">one leg and down the other.</text>
+    <text x="426" y="192" font-weight="bold">You never touched the wire.</text>
+
+    <text x="426" y="240" font-size="14" font-weight="bold" fill="#2f5e16">FEET TOGETHER</text>
+    <text x="426" y="260">If a wire comes down near you,</text>
+    <text x="426" y="278">keep your feet together and</text>
+    <text x="426" y="296">shuffle or hop away, both feet</text>
+    <text x="426" y="314">touching, until you are well clear.</text>
+
+    <text x="16" y="506" font-size="14" font-weight="bold" fill="#222">A WIRE ON A VEHICLE</text>
+    <text x="16" y="526">Stay inside until the power company comes. If it burns, jump clear</text>
+    <text x="16" y="544">with both feet together, touch nothing, and shuffle away.</text>
+  </g>
+
+  <g font-size="13" font-weight="bold" fill="#c8431a">
+    <text x="426" y="372">Treat every fallen wire as live,</text>
+    <text x="426" y="390">even a dark, quiet one.</text>
+    <text x="426" y="412">Rope it off 50 ft all round and</text>
+    <text x="426" y="430">keep everyone back.</text>
+  </g>
+</svg>

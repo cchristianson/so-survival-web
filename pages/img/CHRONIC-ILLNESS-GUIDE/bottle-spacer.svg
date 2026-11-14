@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="360" viewBox="0 0 600 360" font-family="Arial, Helvetica, sans-serif">
+  <title>A homemade spacer: a 500 ml plastic bottle with the inhaler's mouthpiece pushed into a hole cut in the bottom; the person breathes from the neck</title>
+  <rect width="600" height="360" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#2a6fa8"/></marker>
+  </defs>
+
+  <!-- the bottle, lying down: neck to the left, bottom to the right -->
+  <path d="M86,150 H128 C150,150 160,114 196,112 H448 C462,112 470,124 470,140 V196 C470,212 462,224 448,224 H196 C160,222 150,186 128,186 H86 z" fill="#e6f1f7" stroke="#4f7fa6" stroke-width="3"/>
+  <rect x="70" y="146" width="18" height="44" rx="3" fill="#cfe2ee" stroke="#4f7fa6" stroke-width="2.5"/>
+  <!-- the puff spreading inside -->
+  <g fill="#9cc0dc" opacity="0.8">
+    <circle cx="420" cy="168" r="14"/><circle cx="392" cy="160" r="18"/><circle cx="360" cy="172" r="20"/><circle cx="326" cy="162" r="16"/><circle cx="300" cy="174" r="14"/><circle cx="272" cy="166" r="11"/>
+  </g>
+  <!-- the inhaler, its mouthpiece pushed into a hole in the bottom -->
+  <rect x="452" y="154" width="54" height="28" rx="4" fill="#5b8bb0" stroke="#333" stroke-width="2"/>
+  <rect x="500" y="72" width="40" height="110" rx="8" fill="#5b8bb0" stroke="#333" stroke-width="2"/>
+  <rect x="507" y="44" width="26" height="46" rx="5" fill="#b9c2c8" stroke="#333" stroke-width="2"/>
+  <!-- breath out of the neck -->
+  <path d="M64,168 H24" stroke="#2a6fa8" stroke-width="3.5" marker-end="url(#a)"/>
+
+  <!-- labels -->
+  <g font-size="15" fill="#222">
+    <text x="20" y="40" font-weight="bold">Lips sealed round the neck;</text>
+    <text x="20" y="58" font-weight="bold">breathe in and out from it</text>
+    <line x1="80" y1="66" x2="80" y2="142" stroke="#333" stroke-width="1.2"/>
+    <text x="230" y="80" font-weight="bold">A plastic bottle</text>
+    <text x="230" y="98">(MSF uses 500 ml)</text>
+    <line x1="290" y1="104" x2="290" y2="112" stroke="#333" stroke-width="1.2"/>
+    <text x="350" y="276" font-weight="bold">Inhaler pushed into</text>
+    <text x="350" y="294" font-weight="bold">a hole cut in the bottom</text>
+    <line x1="430" y1="262" x2="470" y2="186" stroke="#333" stroke-width="1.2"/>
+  </g>
+  <g font-size="15" fill="#222">
+    <text x="20" y="324">One puff into the bottle, then breathe from it. With a child, one puff</text>
+    <text x="20" y="344">at a time and 4 or 5 breaths before the next.</text>
+  </g>
+</svg>

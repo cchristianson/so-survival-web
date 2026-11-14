@@ -88,7 +88,7 @@ async function init() {
   } catch {}
   if (mode === 'drive') {
     $('tagline').textContent = 'Searches every manual, guide and offline encyclopedia on this drive, then has the offline AI answer from what it finds. Everything runs on this device (or the one sharing it with you) — no internet.';
-    $('wikilabel').textContent = 'Include Wikipedia & archives';
+    $('wikilabel').textContent = 'Wikipedia & archives';
     setInterval(refreshServer, 5000);
     const pr = document.createElement('script'); pr.src = '/print.js'; pr.defer = true; document.head.appendChild(pr); // receipt printer (print.go)
   } else {
@@ -211,7 +211,8 @@ function setLowMem(on) { try { sessionStorage.setItem('so-lowmem', on ? '1' : '0
 let aiStart = null;
 function wantAI() { if (mode === 'public' && store.get('aiModel') && ai.kind === 'none' && !ai.loading && !aiStart) aiStart = initWebLLM(store.get('aiModel'), true).finally(() => { aiStart = null; }); return aiStart; }
 function stopAI() { if (!ai.engine) return; try { ai.engine.unload?.(); } catch {} ai.engine = null; ai.kind = 'none'; }
-function wantFull(force) { if (mode === 'public' && worker && !fullAsked && (force === true || !lowMem())) { fullAsked = true; worker.postMessage({ type: 'more' }); renderStatus(); } }
+const booksOn = () => !$('usebooks') || $('usebooks').checked;
+function wantFull(force) { if (mode === 'public' && worker && !fullAsked && (force === true || (!lowMem() && booksOn()))) { fullAsked = true; worker.postMessage({ type: 'more' }); renderStatus(); } }
 function stopWorker() {
   if (!worker) return;
   worker.terminate(); worker = null; workerReady = workerSearchable = false; fullAsked = false;
@@ -219,18 +220,18 @@ function stopWorker() {
 }
 const pending = new Map(); let reqId = 0, docsWaiter = null;
 // Resolves { results, partial, loaded, total } or { results: [], notReady: true }.
-function workerSearch(q, n) {
+function workerSearch(q, n, only) {
   if (!worker) { startWorker(); wantFull(); }   // stopped when the page was left (see stopWorker)
   return new Promise(res => {
     if (!workerSearchable) {   // first part of the library still downloading: wait for it (never fail silently)
       const t0 = Date.now();
       const t = setInterval(() => {
-        if (workerSearchable) { clearInterval(t); workerSearch(q, n).then(res); }
+        if (workerSearchable) { clearInterval(t); workerSearch(q, n, only).then(res); }
         else if (workerInfo.error || Date.now() - t0 > 90000) { clearInterval(t); res({ results: [], notReady: true }); }
       }, 300);
       return;
     }
-    const id = ++reqId; pending.set(id, res); worker.postMessage({ type: 'search', q, n, id });
+    const id = ++reqId; pending.set(id, res); worker.postMessage({ type: 'search', q, n, id, only });
   });
 }
 
@@ -312,6 +313,16 @@ function bindUI() {
     'How do I signal a plane for help?', 'How much food does a family need for a year?'];
   $('examples').innerHTML = EX.map(x => `<button class="ex" type="button">${esc(x)}</button>`).join('');
   $('examples').addEventListener('click', e => { if (e.target.classList.contains('ex')) { $('q').value = e.target.textContent; ask(); } });
+  // Search in: Guides, Books, Wikipedia. Remembered on this device; at least one stays ticked.
+  let si = {}; try { si = JSON.parse(store.get('ask-in') || '{}') || {}; } catch {}
+  for (const [id, k] of [['useguides', 'g'], ['usebooks', 'b'], ['usewiki', 'w']]) {
+    if (si[k] === false) $(id).checked = false;
+    $(id).addEventListener('change', e => {
+      if (!$('useguides').checked && !$('usebooks').checked && !$('usewiki').checked) e.target.checked = true;
+      store.set('ask-in', JSON.stringify({ g: $('useguides').checked, b: $('usebooks').checked, w: $('usewiki').checked }));
+      if (id === 'usebooks' && e.target.checked) wantFull();
+    });
+  }
   $('f').addEventListener('submit', e => { e.preventDefault(); ask(); });
   $('q').addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); ask(); } });
   // the example questions are only for an empty page: they go as soon as you type (and stay gone once there are answers)
@@ -352,6 +363,8 @@ async function ask() { wantFull(); wantAI(); writing++; try { await askOnce(); }
 async function askOnce() {
   const q = $('q').value.trim(); if (!q) return;
   const id = ++counter, n = +$('nsrc').value, useAI = $('useai').checked, useWiki = $('usewiki').checked;
+  const useGuides = $('useguides').checked, useBooks = $('usebooks').checked, useLib = useGuides || useBooks;
+  const only = useGuides && !useBooks ? 'guides' : useBooks && !useGuides ? 'books' : '';
   const box = document.createElement('div'); box.className = 'qa';
   box.innerHTML = `<div class="q">${esc(q)}</div><div class="meta" id="m${id}"><span class="spin"></span>Searching the library…</div><div class="answer" id="a${id}"></div><div class="sources" id="s${id}" hidden></div>`;
   $('out').prepend(box); $('q').value = ''; $('examples').hidden = true;
@@ -362,17 +375,17 @@ async function askOnce() {
   // Ask for a few extra encyclopedia articles and keep only those whose title has one of the question's
   // key words and whose text has two (a search for "small creek power" also turns up cartoon characters,
   // and one for bleach in water a fake cure); the library fills any gap.
-  const nWiki = useWiki ? Math.max(1, Math.round(n / 3)) : 0, qt = qterms(q), need = Math.min(2, qt.size);
+  const nWiki = !useWiki ? 0 : useLib ? Math.max(1, Math.round(n / 3)) : n, qt = qterms(q), need = Math.min(2, qt.size);
   const shared = s => { let k = 0; for (const x of qt) if (qterms(s).has(x)) k++; return k; };
   const onTopic = s => shared(s.title) >= 1 && shared(s.title + ' ' + (s.text || s.snippet || '')) >= need;
   let docs = [], wiki = [], note = '';
   if (mode === 'drive') {
     [docs, wiki] = await Promise.all([
-      fetch('api/search?q=' + encodeURIComponent(q) + '&n=' + n).then(r => r.json()).catch(() => []),
+      useLib ? fetch('api/search?q=' + encodeURIComponent(q) + '&n=' + n + (only ? '&in=' + only : '')).then(r => r.json()).catch(() => []) : [],
       nWiki ? fetch('api/kiwix?q=' + encodeURIComponent(q) + '&n=' + (nWiki + 2)).then(r => r.json()).catch(() => []) : [],
     ]);
   } else {
-    let ws; [ws, wiki] = await Promise.all([workerSearch(q, n), nWiki && navigator.onLine ? wikiSearch(keywords(q) || q, nWiki + 2) : []]);
+    let ws; [ws, wiki] = await Promise.all([useLib ? workerSearch(q, n, only) : { results: [] }, nWiki && navigator.onLine ? wikiSearch(keywords(q) || q, nWiki + 2) : []]);
     docs = ws.results;
     if (ws.notReady) note = ' ⚠️ The library search is still downloading — try again in a minute (needs a connection the first time).';
     else if (ws.partial && lowMem()) note = ' To save this phone\'s memory, only the guides and book titles were searched. <button class="link" data-full="1">Search every book page too</button>';
@@ -383,7 +396,9 @@ async function askOnce() {
   const srcs = d.slice(0, Math.max(n - z.length, n - nWiki)).concat(z);
   renderSources(id, srcs);
   const meta = $('m' + id);
-  if (!srcs.length) meta.textContent = note ? '' : 'Nothing in the library matched. Try other words (e.g. "bleeding" instead of "cut").';
+  const where = [useGuides && 'the guides', useBooks && 'the books', useWiki && 'Wikipedia'].filter(Boolean).join(' or ');
+  if (!srcs.length) meta.textContent = note ? '' : `Nothing in ${where} matched. Try other words (e.g. "bleeding" instead of "cut")` +
+    (useGuides && useBooks && useWiki ? '.' : ', or tick more boxes under "Search in".');
   else meta.textContent = `${srcs.length} sources found.`;
   meta.innerHTML = esc(meta.textContent) + note;
   const mc = morseAsk(q);
@@ -815,17 +830,17 @@ async function loadLibrary() {
 // pages use for their "Guides › group" bar and Previous / Next links; tools/guide_nav.py --check keeps them in step.
 const SHELVES = [
   ['start', '🧭', 'Start here', 'Emergency finder, A–Z index, Illinois Valley quick reference'],
-  ['health', '🩹', 'Health & medicine', 'Injuries, recovering from injuries, medicines, childbirth and children, sanitation, garbage and disease'],
-  ['water', '💧', 'Water', 'Purifying water, wells, pumps, springs and cisterns'],
-  ['food', '🍞', 'Food', 'Food when it is scarce, cooking from scratch, preserving, milk, butter and cheese, root cellars, seeds'],
+  ['health', '🩹', 'Health & medicine', 'Injuries, recovering from injuries, medicines, childbirth and children, chronic illness, sanitation, garbage and disease'],
+  ['water', '💧', 'Water', 'Purifying water, wells, pumps, springs and cisterns, town water and sewer, dams, ponds and ditches'],
+  ['food', '🍞', 'Food', 'Food when it is scarce, cooking from scratch, preserving, milk, butter and cheese, root cellars, seeds, building soil'],
   ['wild', '🌲', 'Living off the land', 'Hunting, trapping and fishing, wild plants and mushrooms, skills of the valley’s first peoples'],
   ['animals', '🐐', 'Animals', 'Chickens, rabbits, goats, bees, horses and draft animals'],
   ['shelter', '🏠', 'Shelter & building', 'Repairs and building, natural building, mortar, concrete and roads'],
-  ['power', '💡', 'Heat, light & power', 'Firewood, fuel, off-grid power, storing energy, candles and lamps, engines and generators'],
-  ['making', '🛠️', 'Making & repair', 'Practical math, household make-do, blacksmithing, clothing and leather, paper and ink, electronics'],
+  ['power', '💡', 'Heat, light & power', 'Firewood, fuel, off-grid power, the power grid, vehicles and tractors, storing energy, candles and lamps, engines and generators'],
+  ['making', '🛠️', 'Making & repair', 'Practical math, household make-do, blacksmithing, woodworking, knots and rope, salvage, clothing and leather, paper and ink, electronics'],
   ['travel', '🥾', 'Getting around', 'Travel on foot, bicycles and carts, maps, navigation and weather'],
   ['comms', '📡', 'Radio, community & protection', 'Radio, signals and Morse, organizing neighbors and barter, protecting your home'],
-  ['disaster', '🚨', 'Disasters', 'What to expect, wildfire, earthquakes, nuclear fallout, EMP and solar storms'],
+  ['disaster', '🚨', 'Disasters', 'What to expect, wildfire, earthquakes, floods, ice storms and heat waves, nuclear fallout, EMP and solar storms'],
   ['fun', '📖', 'Stories & fun', 'Classic books for every age, picture books and rhymes, games, songs and things to make'],
   ['library', '💾', 'Using this library', 'Starting it on any device, the ARK Vault (ammo-can computer), getting the whole library, Wikipedia, apps and the offline AI'],
   ['other', '📁', 'Programs & other files', 'Everything else on the drive']];
@@ -923,15 +938,19 @@ const GUIDE_CARDS = { // guide cards, by shelf (same groups and order as SHELVES
     ['rehab', '🦵 Recovering from injuries', 'Rehab without a clinic: when to move, exercises for every joint, sprains, backs and shoulders, getting up after bed rest, crutches and walkers you can make.'],
     ['med', '💊 Medical & found medicines', 'What medical books there are and how to use found or expired medicines safely.'],
     ['birth', '👶 Childbirth & small kids', 'Birth with no hospital, newborn care, child illness, teaching kids at home'],
+    ['chronic', '🩺 Chronic illness with no pharmacy', 'Diabetes, blood pressure, heart, asthma, seizures, thyroid and mental illness when the pills run out: emergencies, doses from the books, and medicines never to stop suddenly.'],
     ['sanit', '🧼 Sanitation, waste & disease', 'Toilets with no sewer, handwashing, laundry, garbage and compost, stopping outbreaks, safe burial']],
   water: [['purify', '🚰 Water purification', 'Settling, cloth, alum and ash, biosand and clay-pot filters, charcoal done right, boiling, bleach and pool shock, sunlight, solar stills, tests.'],
-    ['wells', '💧 Wells, pumps, springs & cisterns', 'Your well records, running the well pump on a generator or solar, hand and rope pumps, ram pumps, spring boxes, cisterns, testing.']],
+    ['wells', '💧 Wells, pumps, springs & cisterns', 'Your well records, running the well pump on a generator or solar, hand and rope pumps, ram pumps, spring boxes, cisterns, testing.'],
+    ['townwater', '🚿 How town water & sewer work', 'From river intake to tap and drain to river, how long the water lasts with no power, keeping a small system going by hand, and never going into a manhole.'],
+    ['dams', '🏞️ Dams, weirs, ditches & ponds', 'How dams work and fail, farm ponds, measuring a creek with a weir, diversions and ditches, water power, salmon passage, and the low-dam drowning machine.']],
   food: [['scarce', '🥫 Food when it is scarce', 'A year of food, fair rationing, deficiency diseases, babies, foraging calendar'],
     ['food', '🌾 Food from scratch', 'Acorn and grain flour, masa, sourdough, salt, maple syrup, lard — then bread, tortillas, pasta, hardtack and beans.'],
     ['preserve', '🫙 Preserving food', 'Safe canning at our elevation, drying, smoking, curing, fermenting, eggs'],
     ['cellar', '🥔 Root cellars & food storage', 'Cellars, pits and buried barrels for our warm ground, what each crop needs, cooling without power, sun drying, curing meat, kraut and eggs.'],
     ['dairy', '🧀 Milk, butter & cheese', 'Clean milk, cooling with no fridge, butter and ghee, yogurt and kefir, soft and hard cheeses, homemade rennet.'],
-    ['seeds', '🌱 Your seed bank', 'Planting calendar for all 39 kit varieties, storing and testing seed, which varieties cross, saving seed from fruits, grafting fruit trees.']],
+    ['seeds', '🌱 Your seed bank', 'Planting calendar for all 39 kit varieties, storing and testing seed, which varieties cross, saving seed from fruits, grafting fruit trees.'],
+    ['soil', '🪱 Building soil: permaculture, hugelkultur & more', 'What the research backs: compost, mulch and no-dig beds, cover crops, biochar, hugelkultur, swales and keeping water in the soil, food forests and the three sisters.']],
   wild: [['huntfish', '🦌 Hunting, trapping & fishing', 'Local game, field dressing in hot weather, snares, nets, game diseases'],
     ['mush', '🍄 Mushrooms', 'Local deadly mushrooms and their look-alikes, spore prints, what to do after a bad meal, good edibles, drying, and growing shiitake and oysters.'],
     ['native', '🌰 Skills of the valley’s first peoples', 'How the Takelma and their neighbors lived here year-round: acorns, camas, salmon, cordage and baskets, houses, and tending the land with fire.']],
@@ -953,14 +972,19 @@ const GUIDE_CARDS = { // guide cards, by shelf (same groups and order as SHELVES
   power: [['firewood', '🪵 Firewood', 'Heat value of local trees, how much you need, felling and bucking safely, splitting, drying in a wet climate, chimneys, ashes, coppicing.'],
     ['fuel', '⛽ Fuel: storing, reviving, finding', 'How long gas and diesel keep, testing and rescuing old fuel, diesel care, and pumping fuel from station tanks, drums and vehicles with no power.'],
     ['offgrid', '☀️ Off-grid power', 'Solar sizing for our sun, salvaged panels and batteries, wiring safely, creek hydro'],
+    ['grid', '🗼 How the power grid works', 'From power plant to plug, why one fault blacks out a region and restarting takes months, downed-line dangers, and running a small neighborhood grid.'],
     ['storage', '🔋 Storing energy without batteries', 'Why gravity batteries hold so little, and what works: water tanks, hot water, masonry heaters, ice and cold water, timing the work.'],
     ['heatpower', '♨️ Heat into work & power', 'Stove-top generators for phones and lights, small steam engines and boiler safety, hot-air engines, fridges that run on a flame, and the honest numbers.'],
     ['light', '🕯️ Candles, lamps & lamp oil', 'Dipped and moulded candles, wicks, rushlights, which oils burn, homemade lamps, more light from a small flame, and fire safety.'],
-    ['eng', '🔧 Engines, motors & generators', 'Why a small engine will not start, carburetors, chainsaw filing, generator care, testing and rewinding motors, turning motors into generators, and reusing a generator for water or wind when the fuel is gone.']],
+    ['eng', '🔧 Engines, motors & generators', 'Why a small engine will not start, carburetors, chainsaw filing, generator care, testing and rewinding motors, turning motors into generators, and reusing a generator for water or wind when the fuel is gone.'],
+    ['vehicles', '🚜 Vehicles, tractors & heavy equipment', 'Keeping cars, pickups and tractors going with no shop: batteries, brakes, cooling and tires; tractor rollovers and the PTO; hydraulics and injected oil; air brakes; electric cars.']],
   making: [['math', '📐 Practical math & measuring', 'Measuring with no tools, square corners, area and volume, slopes and roof pitch, heights and distances, levers, electricity and water math.'],
     ['md', '🧰 Make-Do household guide', 'Cleaners, laundry soap, tooth powder, fire starters, oil lamps, glue, mending, plumbing, electronics repair and salvage.'],
     ['smith', '⚒️ Blacksmithing & hand tools', 'A simple forge, which scrap steel to use, heat colors, hardening and tempering, making chisels, tongs and knives, axe handles and sharpening.'],
-    ['clothing', '🧵 Clothing, leather & shoes', 'Dressing for wet winters, mending, wool to yarn, tanning, shoe repair'],
+    ['wood', '🪚 Woodworking with hand tools', 'Sharpening, choosing and drying wood, splitting green wood, joints with no glue or nails, handles, a bench, stools, a ladder, and mending furniture.'],
+    ['knots', '🪢 Knots, rope & cordage', 'The dozen knots that do nearly every job, what rope can hold, lashing, blocks and tackle, and making cord.'],
+    ['salvage', '♻️ Salvage: useful things from broken things', 'What to take from dead washers, freezers, cars and more, what to make with it, and what never to cut, burn or open.'],
+    ['clothing', '🧵 Clothing, leather & shoes', 'Dressing for wet winters, mending, wool to yarn, tanning, clothes from furs and buckskin, shoe repair'],
     ['paper', '📜 Paper, ink & toilet paper', 'Making paper by hand, iron-gall and soot inks, pens, pencils and slates, and toilet paper alternatives with safe washing.']],
   travel: [['onfoot', '🎒 On foot: backpacking & travel', 'Planning a trip, how much to carry, packs, feet and blisters, water and food on the move, safe camps, river crossings, snow, and staying safe on the road.'],
     ['bikes', '🚲 Bicycles & carts', 'Hauling without fuel: loads, trailers, handcarts, bike repair with few tools'],
@@ -972,6 +996,7 @@ const GUIDE_CARDS = { // guide cards, by shelf (same groups and order as SHELVES
     ['defense', '🛡️ Home & property protection', 'Defensive only: not being a target, doors and locks, barriers and fences, early warning, a safe room, watch rosters, the law on self-defense.']],
   disaster: [['expect', '⏳ What to expect: scenarios & timelines', 'Wildfire, the big quake, storms, heat, long blackouts, pandemic, shortages, EMP, fallout — what happens hour by hour, week by week, and what to do.'],
     ['wildfire', '🔥 Wildfire with no fire department', 'Reading fire danger, hardening the house, clearing with hand tools, water with no power, stay or go, the fire front, and the days after.'],
+    ['floods', '🌊 Floods, ice storms & heat waves', 'The first hour of a flood, reading rising water, cleaning up, ice storms and frozen pipes, carbon monoxide, keeping cool with no power.'],
     ['nuke', '☢️ Nuclear fallout', 'Where to shelter, how long (the 7-10 rule), shielding, potassium iodide doses, decontamination, food, water and livestock.'],
     ['emp', '⚡ EMP, solar storms & Faraday cages', 'What tests really showed, unplugging, building and testing a Faraday container, solar-storm warnings, checking and repairing gear after.']],
   fun: [['stories', '📖 Stories, games & fun', 'Classic books for every age to read aloud or alone, games with no power, string figures, songs and things to make — for long evenings and kids.']],
@@ -983,18 +1008,18 @@ const GUIDE_CARDS = { // guide cards, by shelf (same groups and order as SHELVES
 // Every page the cards link to: key -> the guide's file name. On the website it is pages/NAME.html; on the
 // drive Southern-Oregon/NAME.html, unless DRIVE_AT / WEB_AT say otherwise (null = not in that edition).
 const PAGES = { sos: 'EMERGENCY-FINDER', az: 'SUBJECT-INDEX', iv: 'ILLINOIS-VALLEY-START-HERE',
-  fieldcare: 'FIELD-CARE-GUIDE', rehab: 'REHAB-GUIDE', med: 'Medical-READ-ME-FIRST', birth: 'CHILDBIRTH-CHILDREN-GUIDE', sanit: 'SANITATION-GUIDE',
-  purify: 'WATER-PURIFICATION-GUIDE', wells: 'WATER-WELLS-GUIDE',
-  scarce: 'FOOD-SECURITY-GUIDE', food: 'FOOD-FROM-SCRATCH-GUIDE', preserve: 'PRESERVING-FOOD-GUIDE', cellar: 'ROOT-CELLAR-GUIDE', seeds: 'SEED-BANK-GUIDE',
+  fieldcare: 'FIELD-CARE-GUIDE', rehab: 'REHAB-GUIDE', med: 'Medical-READ-ME-FIRST', birth: 'CHILDBIRTH-CHILDREN-GUIDE', chronic: 'CHRONIC-ILLNESS-GUIDE', sanit: 'SANITATION-GUIDE',
+  purify: 'WATER-PURIFICATION-GUIDE', wells: 'WATER-WELLS-GUIDE', townwater: 'TOWN-WATER-SEWER-GUIDE', dams: 'DAMS-DITCHES-GUIDE',
+  scarce: 'FOOD-SECURITY-GUIDE', food: 'FOOD-FROM-SCRATCH-GUIDE', preserve: 'PRESERVING-FOOD-GUIDE', cellar: 'ROOT-CELLAR-GUIDE', seeds: 'SEED-BANK-GUIDE', soil: 'GROWING-SOIL-GUIDE',
   huntfish: 'HUNTING-TRAPPING-FISHING-GUIDE', mush: 'MUSHROOM-GUIDE', native: 'NATIVE-SKILLS-GUIDE',
   rabbits: 'RABBITS-GUIDE', chickens: 'CHICKENS-GUIDE', goats: 'GOATS-GUIDE', bees: 'BEES-GUIDE', horse: 'HORSE-GUIDE', dairy: 'DAIRY-GUIDE',
   ducks: 'DUCKS-GUIDE', geese: 'GEESE-GUIDE', turkeys: 'TURKEYS-GUIDE', sheep: 'SHEEP-GUIDE', pigs: 'PIGS-GUIDE', cattle: 'CATTLE-GUIDE', dogs: 'DOGS-GUIDE',
   shelter: 'SHELTER-BUILDING-GUIDE', natural: 'NATURAL-BUILDING-GUIDE', masonry: 'MASONRY-ROADS-GUIDE',
-  firewood: 'FIREWOOD-GUIDE', fuel: 'FUEL-GUIDE', offgrid: 'OFF-GRID-POWER-GUIDE', storage: 'STORING-ENERGY-GUIDE', heatpower: 'HEAT-INTO-POWER-GUIDE', light: 'LIGHTING-GUIDE', eng: 'ENGINES-AND-MOTORS-GUIDE',
-  math: 'PRACTICAL-MATH-GUIDE', md: 'MAKE-DO-HOUSEHOLD-GUIDE', smith: 'BLACKSMITHING-GUIDE', clothing: 'CLOTHING-LEATHER-GUIDE', paper: 'PAPER-INK-GUIDE',
+  firewood: 'FIREWOOD-GUIDE', fuel: 'FUEL-GUIDE', offgrid: 'OFF-GRID-POWER-GUIDE', grid: 'POWER-GRID-GUIDE', storage: 'STORING-ENERGY-GUIDE', heatpower: 'HEAT-INTO-POWER-GUIDE', light: 'LIGHTING-GUIDE', eng: 'ENGINES-AND-MOTORS-GUIDE', vehicles: 'VEHICLES-EQUIPMENT-GUIDE',
+  math: 'PRACTICAL-MATH-GUIDE', md: 'MAKE-DO-HOUSEHOLD-GUIDE', smith: 'BLACKSMITHING-GUIDE', wood: 'WOODWORKING-GUIDE', knots: 'KNOTS-ROPE-GUIDE', salvage: 'SALVAGE-GUIDE', clothing: 'CLOTHING-LEATHER-GUIDE', paper: 'PAPER-INK-GUIDE',
   onfoot: 'ON-FOOT-GUIDE', bikes: 'BICYCLES-CARTS-GUIDE', nav: 'NAVIGATION-WEATHER-GUIDE',
   radio: 'RADIO-GUIDE', mesh: 'MESH-RADIO-GUIDE', signals: 'SIGNALS-MORSE-GUIDE', community: 'COMMUNITY-BARTER-GUIDE', defense: 'HOME-DEFENSE-GUIDE',
-  expect: 'WHAT-TO-EXPECT-GUIDE', wildfire: 'WILDFIRE-GUIDE', nuke: 'NUCLEAR-FALLOUT-GUIDE', emp: 'EMP-GUIDE',
+  expect: 'WHAT-TO-EXPECT-GUIDE', wildfire: 'WILDFIRE-GUIDE', floods: 'FLOODS-STORMS-HEAT-GUIDE', nuke: 'NUCLEAR-FALLOUT-GUIDE', emp: 'EMP-GUIDE',
   stories: 'STORIES-GAMES-GUIDE',
   device: 'START-ON-ANY-DEVICE', ammocan: 'AMMO-CAN-COMPUTER-GUIDE', get: 'GET-THE-LIBRARY', all: 'README',
   calc: 'CALCULATOR', sci: 'CALCULATOR', conv: 'UNIT-CONVERTER', morse: 'MORSE-CODE', pill: 'PILL-IDENTIFIER', walk: 'WALKING-ROUTES', plantid: 'PLANT-ID', map: 'MAP', cad: 'CAD' };

@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="470" viewBox="0 0 660 470" font-family="Arial, Helvetica, sans-serif">
+  <title>From the power plant to the plug, with the voltage at each step, and the red path by which a generator plugged into a wall outlet sends power back out onto the line</title>
+  <rect width="660" height="470" fill="#ffffff"/>
+  <defs>
+    <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#2f5e16"/></marker>
+    <marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#c8431a"/></marker>
+  </defs>
+
+  <text x="330" y="26" text-anchor="middle" font-size="15" fill="#222">Higher voltage means less current, and less lost in the wire.</text>
+  <text x="330" y="50" text-anchor="middle" font-size="15" font-weight="bold" fill="#2f5e16">Power travels this way. Each transformer steps the voltage down.</text>
+  <g stroke="#2f5e16" stroke-width="3" marker-end="url(#g)" fill="none">
+    <line x1="150" y1="70" x2="186" y2="70"/>
+    <line x1="252" y1="70" x2="288" y2="70"/>
+    <line x1="394" y1="70" x2="430" y2="70"/>
+    <line x1="502" y1="70" x2="538" y2="70"/>
+  </g>
+
+  <!-- ground -->
+  <line x1="16" y1="236" x2="644" y2="236" stroke="#6b5a45" stroke-width="2.5"/>
+
+  <!-- 1 POWER PLANT -->
+  <g stroke="#333" stroke-width="2" fill="#dfe4e8">
+    <rect x="26" y="176" width="78" height="60"/>
+    <rect x="40" y="128" width="20" height="48"/>
+    <rect x="74" y="142" width="16" height="34"/>
+  </g>
+  <path d="M46,122 C40,108 56,106 50,94" fill="none" stroke="#9aa5ad" stroke-width="3"/>
+  <text x="65" y="258" text-anchor="middle" font-size="14" font-weight="bold" fill="#222">1. Power plant</text>
+  <text x="65" y="276" text-anchor="middle" font-size="12.5" fill="#222">a turbine turns</text>
+  <text x="65" y="292" text-anchor="middle" font-size="12.5" fill="#222">a generator</text>
+
+  <!-- step-up transformer -->
+  <rect x="112" y="196" width="26" height="40" rx="3" stroke="#333" stroke-width="2" fill="#dfe4e8"/>
+  <text x="125" y="190" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#2f5e16">step up</text>
+
+  <!-- 2 TRANSMISSION TOWER -->
+  <g stroke="#333" stroke-width="2" fill="none">
+    <path d="M186,236 L202,122 M240,236 L224,122 M202,122 H224"/>
+    <path d="M196,180 H230 M191,208 H235"/>
+  </g>
+  <g fill="#333"><circle cx="203" cy="120" r="3.5"/><circle cx="223" cy="120" r="3.5"/><circle cx="196" cy="179" r="3.5"/><circle cx="230" cy="179" r="3.5"/></g>
+  <text x="213" y="258" text-anchor="middle" font-size="14" font-weight="bold" fill="#222">2. Long lines</text>
+  <text x="213" y="276" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#1d4f7a">69,000 to</text>
+  <text x="213" y="292" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#1d4f7a">765,000 V</text>
+  <path d="M138,206 C160,198 176,186 196,179" fill="none" stroke="#333" stroke-width="1.6"/>
+
+  <!-- 3 SUBSTATION -->
+  <rect x="286" y="172" width="98" height="64" fill="#f2f2f0" stroke="#333" stroke-width="2"/>
+  <g stroke="#cfcfc8" stroke-width="1.2"><path d="M300,174 V236 M316,174 V236 M332,174 V236 M348,174 V236 M364,174 V236 M378,174 V236"/></g>
+  <g stroke="#333" stroke-width="2" fill="#dfe4e8">
+    <rect x="300" y="196" width="28" height="34" rx="3"/>
+    <rect x="344" y="196" width="28" height="34" rx="3"/>
+  </g>
+  <text x="335" y="258" text-anchor="middle" font-size="14" font-weight="bold" fill="#222">3. Substation</text>
+  <text x="335" y="276" text-anchor="middle" font-size="12.5" fill="#222">transformers,</text>
+  <text x="335" y="292" text-anchor="middle" font-size="12.5" fill="#222">breakers, relays</text>
+  <path d="M230,179 C252,176 268,172 286,168" fill="none" stroke="#333" stroke-width="1.6"/>
+
+  <!-- 4 POLE AND TRANSFORMER -->
+  <line x1="466" y1="236" x2="466" y2="122" stroke="#7a5a35" stroke-width="7"/>
+  <line x1="442" y1="134" x2="490" y2="134" stroke="#7a5a35" stroke-width="5"/>
+  <g fill="#333"><circle cx="446" cy="130" r="3.5"/><circle cx="466" cy="130" r="3.5"/><circle cx="486" cy="130" r="3.5"/></g>
+  <rect x="452" y="152" width="28" height="38" rx="12" fill="#8a9aa8" stroke="#333" stroke-width="2"/>
+  <path d="M384,172 C408,168 430,134 446,130" fill="none" stroke="#333" stroke-width="1.6"/>
+  <text x="466" y="258" text-anchor="middle" font-size="14" font-weight="bold" fill="#222">4. Your pole</text>
+  <text x="466" y="276" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#1d4f7a">2,400 to 34,500 V</text>
+  <text x="466" y="292" text-anchor="middle" font-size="12.5" fill="#222">the can steps it</text>
+  <text x="466" y="308" text-anchor="middle" font-size="12.5" fill="#222">down to 120/240</text>
+
+  <!-- 5 HOUSE -->
+  <polygon points="540,176 590,142 640,176" fill="#c8a07a" stroke="#333" stroke-width="2"/>
+  <rect x="548" y="176" width="84" height="60" fill="#f0e6d8" stroke="#333" stroke-width="2"/>
+  <rect x="604" y="200" width="22" height="36" fill="#c8a07a" stroke="#333" stroke-width="1.6"/>
+  <circle cx="544" cy="198" r="9" fill="#ffffff" stroke="#333" stroke-width="2"/>
+  <text x="590" y="258" text-anchor="middle" font-size="14" font-weight="bold" fill="#222">5. Your house</text>
+  <text x="590" y="276" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#1d4f7a">120 V outlets,</text>
+  <text x="590" y="292" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#1d4f7a">240 V big loads</text>
+
+  <!-- service drop, transformer low side to the meter -->
+  <path d="M480,176 C500,180 520,190 536,194" fill="none" stroke="#333" stroke-width="1.6"/>
+  <text x="512" y="222" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#2f5e16">service drop</text>
+  <text x="512" y="162" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#222">meter</text>
+  <line x1="528" y1="166" x2="541" y2="190" stroke="#333" stroke-width="1"/>
+
+  <!-- BACKFEED: generator inside the house, into an outlet, back up the drop -->
+  <rect x="580" y="196" width="22" height="16" rx="2" fill="#ffffff" stroke="#c8431a" stroke-width="2"/>
+  <text x="591" y="209" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#c8431a">GEN</text>
+  <rect x="556" y="198" width="11" height="13" fill="#ffffff" stroke="#c8431a" stroke-width="2"/>
+  <path d="M580,204 H567" stroke="#c8431a" stroke-width="2"/>
+  <path d="M553,204 L548,201" stroke="#c8431a" stroke-width="2.5"/>
+  <path d="M538,202 C518,198 500,190 486,182" fill="none" stroke="#c8431a" stroke-width="3.5" marker-end="url(#r)"/>
+  <path d="M466,150 L466,136 L448,132 C420,126 400,104 374,100" fill="none" stroke="#c8431a" stroke-width="3.5" marker-end="url(#r)"/>
+  <text x="366" y="94" text-anchor="end" font-size="13" font-weight="bold" fill="#c8431a">back out at thousands of volts</text>
+
+  <line x1="16" y1="330" x2="644" y2="330" stroke="#ccc" stroke-width="1"/>
+
+  <g font-size="14" fill="#c8431a" font-weight="bold">
+    <text x="16" y="356">BACKFEED KILLS.</text>
+    <text x="16" y="376">A generator plugged into</text>
+    <text x="16" y="394">a wall outlet pushes 240 V</text>
+    <text x="16" y="412">into the house wiring and</text>
+    <text x="16" y="430">out through the meter.</text>
+  </g>
+  <g font-size="13.5" fill="#222">
+    <text x="300" y="356">The transformer on the pole works both ways:</text>
+    <text x="300" y="374">240 V in at the bottom comes out as thousands</text>
+    <text x="300" y="392">of volts on the line outside.</text>
+    <text x="300" y="416" font-weight="bold">A lineworker, or a neighbour on the same</text>
+    <text x="300" y="434" font-weight="bold">transformer, is killed by a line everyone</text>
+    <text x="300" y="452" font-weight="bold">believed was dead.</text>
+  </g>
+</svg>

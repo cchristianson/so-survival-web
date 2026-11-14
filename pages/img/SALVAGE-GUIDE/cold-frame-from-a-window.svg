@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400" font-family="Arial, Helvetica, sans-serif">
+  <title>A cold frame seen from the side: a bottomless box 12 to 15 inches high at the back (north) and 8 inches at the front (south), an old window on top, propped open on warm days</title>
+  <rect width="600" height="400" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+    <marker id="s" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#d89a16"/></marker>
+  </defs>
+
+  <!-- soil -->
+  <rect x="20" y="300" width="560" height="40" fill="#8a6a48"/>
+  <line x1="20" y1="300" x2="580" y2="300" stroke="#5a4028" stroke-width="2.5"/>
+  <!-- box: back (north) board 12-15 in high, front (south) 8 in. Scale 10 px per inch -->
+  <rect x="140" y="160" width="14" height="140" fill="#c9a26b" stroke="#6b4a24" stroke-width="2"/>
+  <rect x="426" y="220" width="14" height="80" fill="#c9a26b" stroke="#6b4a24" stroke-width="2"/>
+  <!-- side board, sloping -->
+  <path d="M154,166 L426,226 V300 H154 z" fill="#e7d3b0" stroke="#6b4a24" stroke-width="1.5" opacity="0.55"/>
+  <!-- seedlings on bare soil inside: no bottom -->
+  <g fill="#3f8a2a">
+    <path d="M200,300 C196,288 188,284 182,284 C190,288 196,294 200,300 z"/><path d="M200,300 C204,286 212,282 220,284 C210,288 206,294 200,300 z"/>
+    <path d="M270,300 C266,288 258,284 252,284 C260,288 266,294 270,300 z"/><path d="M270,300 C274,286 282,282 290,284 C280,288 276,294 270,300 z"/>
+    <path d="M340,300 C336,288 328,284 322,284 C330,288 336,294 340,300 z"/><path d="M340,300 C344,286 352,282 360,284 C350,288 346,294 340,300 z"/>
+  </g>
+  <!-- the old window, hinged at the back, propped open -->
+  <g transform="rotate(-14 148 160)">
+    <rect x="148" y="150" width="310" height="14" fill="#cfe6f2" stroke="#333" stroke-width="2.5"/>
+    <line x1="252" y1="150" x2="252" y2="164" stroke="#333" stroke-width="2"/>
+    <line x1="356" y1="150" x2="356" y2="164" stroke="#333" stroke-width="2"/>
+  </g>
+  <!-- prop stick -->
+  <line x1="432" y1="219" x2="440" y2="104" stroke="#6b4a24" stroke-width="5" stroke-linecap="round"/>
+  <!-- closed position, dashed -->
+  <line x1="148" y1="158" x2="440" y2="222" stroke="#555" stroke-width="2" stroke-dasharray="8 5"/>
+
+  <!-- dimensions -->
+  <line x1="120" y1="160" x2="120" y2="298" stroke="#333" stroke-width="1.5" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="112" y="222" text-anchor="end" font-size="15" font-weight="bold" fill="#222">12–15 in</text>
+  <line x1="470" y1="222" x2="470" y2="298" stroke="#333" stroke-width="1.5" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="478" y="266" font-size="15" font-weight="bold" fill="#222">8 in</text>
+
+  <!-- north and south -->
+  <text x="40" y="290" font-size="22" font-weight="bold" fill="#2a6fa8">N</text>
+  <text x="540" y="290" font-size="22" font-weight="bold" fill="#c8431a">S</text>
+  <!-- the sun to the south -->
+  <circle cx="540" cy="52" r="22" fill="#f6c343" stroke="#d89a16" stroke-width="2"/>
+  <path d="M514,68 L470,94" stroke="#d89a16" stroke-width="2.5" marker-end="url(#s)"/>
+  <!-- labels -->
+  <g font-size="15" fill="#222">
+    <text x="20" y="40" font-weight="bold">An old window on top</text>
+    <line x1="120" y1="48" x2="210" y2="134" stroke="#333" stroke-width="1.2"/>
+    <text x="250" y="40" font-weight="bold">Prop it open</text>
+    <text x="250" y="58" font-weight="bold">on warm days</text>
+    <line x1="350" y1="56" x2="434" y2="110" stroke="#333" stroke-width="1.2"/>
+    <text x="20" y="364" font-weight="bold">Back on the north side, sheltered from the north wind.</text>
+    <text x="20" y="384" font-weight="bold">Face it south or southeast. A box with no bottom, on the soil.</text>
+  </g>
+</svg>

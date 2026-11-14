@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="404" viewBox="0 0 600 404" font-family="Arial, Helvetica, sans-serif">
+  <title>A blank medicine card to copy: name, illness, each medicine with its strength and the times to take it, allergies, and the doctor</title>
+  <rect width="600" height="404" fill="#ffffff"/>
+  <rect x="20" y="16" width="560" height="350" rx="10" fill="#fdfbf5" stroke="#333" stroke-width="2.5"/>
+  <rect x="20" y="16" width="560" height="42" rx="10" fill="#2f5e16"/>
+  <rect x="20" y="40" width="560" height="18" fill="#2f5e16"/>
+  <text x="300" y="45" text-anchor="middle" font-size="20" font-weight="bold" fill="#ffffff">MEDICINE CARD</text>
+
+  <g font-size="16" fill="#222" font-weight="bold">
+    <text x="40" y="92">Name</text>
+    <text x="40" y="128">Illness</text>
+  </g>
+  <g stroke="#999" stroke-width="1.2">
+    <line x1="100" y1="94" x2="560" y2="94"/>
+    <line x1="100" y1="130" x2="560" y2="130"/>
+  </g>
+
+  <!-- the medicines table -->
+  <rect x="40" y="148" width="520" height="30" fill="#e6ede0"/>
+  <g font-size="15" fill="#222" font-weight="bold">
+    <text x="50" y="168">Medicine</text>
+    <text x="250" y="168">Strength (mg)</text>
+    <text x="390" y="168">Times to take it</text>
+  </g>
+  <g stroke="#999" stroke-width="1.2">
+    <line x1="40" y1="208" x2="560" y2="208"/>
+    <line x1="40" y1="238" x2="560" y2="238"/>
+    <line x1="40" y1="268" x2="560" y2="268"/>
+    <line x1="240" y1="148" x2="240" y2="268"/>
+    <line x1="380" y1="148" x2="380" y2="268"/>
+  </g>
+  <rect x="40" y="148" width="520" height="120" fill="none" stroke="#666" stroke-width="1.5"/>
+
+  <g font-size="16" fill="#222" font-weight="bold">
+    <text x="40" y="304" fill="#c8431a">Allergies</text>
+    <text x="40" y="340">Doctor</text>
+  </g>
+  <g stroke="#999" stroke-width="1.2">
+    <line x1="124" y1="306" x2="560" y2="306"/>
+    <line x1="104" y1="342" x2="560" y2="342"/>
+  </g>
+
+  <text x="300" y="392" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">One for each person. One copy with the medicines, one in the grab bag.</text>
+</svg>

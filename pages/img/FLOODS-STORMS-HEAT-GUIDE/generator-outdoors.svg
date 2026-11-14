@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="470" viewBox="0 0 640 470" font-family="Arial, Helvetica, sans-serif">
+  <title>Where a generator goes: outdoors, at least 20 feet from windows, exhaust pointed away from the house, under an open roof on a dry raised surface in rain, never inside the house, garage, basement, crawlspace or shed</title>
+  <rect width="640" height="470" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+    <marker id="g" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#777"/></marker>
+  </defs>
+
+  <!-- ground -->
+  <line x1="20" y1="300" x2="620" y2="300" stroke="#6b5a45" stroke-width="2.5"/>
+
+  <!-- house -->
+  <path d="M30,300 V170 L125,96 L220,170 V300 z" fill="#efe6d6" stroke="#6b5a45" stroke-width="2.5"/>
+  <rect x="44" y="230" width="36" height="70" fill="#a8835a" stroke="#6b5a45" stroke-width="2"/>
+  <rect x="150" y="196" width="50" height="50" fill="#cfe6f2" stroke="#333" stroke-width="2.5"/>
+  <line x1="175" y1="196" x2="175" y2="246" stroke="#333" stroke-width="1.5"/>
+  <!-- CO alarm inside -->
+  <rect x="96" y="182" width="30" height="18" rx="3" fill="#ffffff" stroke="#333" stroke-width="1.5"/>
+  <text x="111" y="195" text-anchor="middle" font-size="10" font-weight="bold" fill="#222">CO</text>
+  <text x="125" y="324" text-anchor="middle" font-size="14" fill="#222">battery CO alarm</text>
+  <text x="125" y="340" text-anchor="middle" font-size="14" fill="#222">near the bedrooms</text>
+  <line x1="112" y1="310" x2="111" y2="202" stroke="#333" stroke-width="1"/>
+
+  <!-- distance from the window -->
+  <line x1="222" y1="262" x2="454" y2="262" stroke="#333" stroke-width="1.5" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="338" y="252" text-anchor="middle" font-size="16" font-weight="bold" fill="#222">at least 20 ft</text>
+  <text x="338" y="282" text-anchor="middle" font-size="14" fill="#222">from windows</text>
+
+  <!-- open roof on posts -->
+  <path d="M420,176 L470,150 L590,150 L612,176 z" fill="#b9c2c8" stroke="#555" stroke-width="2"/>
+  <g stroke="#6b4a24" stroke-width="5"><line x1="430" y1="176" x2="430" y2="300"/><line x1="600" y1="176" x2="600" y2="300"/></g>
+  <!-- raised dry platform -->
+  <rect x="446" y="282" width="120" height="18" fill="#9a9a9a" stroke="#555" stroke-width="1.5"/>
+  <!-- generator -->
+  <rect x="456" y="226" width="96" height="56" rx="6" fill="#e0a51c" stroke="#333" stroke-width="2.5"/>
+  <rect x="470" y="238" width="40" height="22" rx="3" fill="#555"/>
+  <rect x="518" y="214" width="26" height="12" rx="2" fill="#555"/>
+  <!-- exhaust out the far side -->
+  <rect x="552" y="250" width="14" height="10" fill="#555"/>
+  <g fill="none" stroke="#777" stroke-width="2.5" stroke-linecap="round">
+    <path d="M572,255 C584,247 592,263 606,253" marker-end="url(#g)"/>
+  </g>
+
+  <!-- labels -->
+  <g font-size="15" fill="#222">
+    <text x="390" y="40" font-weight="bold">In rain: under an open roof,</text>
+    <text x="390" y="58" font-weight="bold">on a dry, raised surface</text>
+    <text x="390" y="76" font-weight="bold">water can't reach</text>
+    <line x1="470" y1="84" x2="500" y2="148" stroke="#333" stroke-width="1.2"/>
+    <text x="420" y="336" font-weight="bold">Exhaust pointed</text>
+    <text x="420" y="354" font-weight="bold">away from the house</text>
+    <line x1="560" y1="322" x2="584" y2="262" stroke="#333" stroke-width="1.2"/>
+  </g>
+
+  <!-- never inside -->
+  <rect x="20" y="378" width="600" height="80" rx="6" fill="#fbeae4" stroke="#c8431a" stroke-width="2"/>
+  <g font-size="15" fill="#222">
+    <text x="36" y="402" font-weight="bold" fill="#c8431a">NEVER inside the house, garage, basement, crawlspace or shed,</text>
+    <text x="36" y="422" font-weight="bold" fill="#c8431a">even with fans running or doors and windows open.</text>
+    <text x="36" y="444">The gas can linger for hours after the generator stops.</text>
+  </g>
+</svg>

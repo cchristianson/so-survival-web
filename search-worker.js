@@ -19,7 +19,7 @@ function tokenize(s) {
   for (const w of s.toLowerCase().split(/[^\p{L}\p{N}]+/u)) if (w.length >= 2 && !STOP.has(w)) out.push(stem(w));
   return out;
 }
-let docs = [], chunks = [], post = new Map(), lens = [], avg = 0, titleTok = [], ready = false, full = false;
+let docs = [], chunks = [], post = new Map(), lens = [], avg = 0, titleTok = [], guide = [], ready = false, full = false;
 let shardsLoaded = 0, shardsTotal = 0, totalToks = 0;
 // Index each shard as soon as it arrives, so search works after the first one. The first shards
 // ("light" in the manifest) hold our guides plus every document's title and description; page text
@@ -48,6 +48,8 @@ async function load(b) {
   man = await (await fetch(base + 'data/manifest.json', { cache: 'no-cache' })).json();
   docs = await (await fetch(base + 'data/' + man.docs)).json();
   titleTok = docs.map(d => new Set(tokenize(d.t + ' ' + d.f)));
+  // our own pages (guides, tools, walking routes) are web pages; the books are PDFs and e-books
+  guide = docs.map(d => !d.pdf && /\.html?$/i.test(d.u.split('#')[0]));
   shardsTotal = man.shards.length; lightN = Math.min(man.light || shardsTotal, shardsTotal);
   await loadShards(lightN);
   postMessage({ type: 'light', docs: docs.length, loaded: shardsLoaded, total: shardsTotal });
@@ -90,7 +92,8 @@ const SYN = new Map(Object.entries(SAID).map(([k, v]) => [stem(k), tokenize(v)])
 function variants(t) { const out = []; for (const v of post.keys()) if (v !== t && isVariant(v, t)) out.push(v); return out; }
 const headTok = new Map();   // guide section id -> its heading's words
 const headWords = id => { let h = headTok.get(id); if (!h) headTok.set(id, h = new Set(tokenize(id.replace(/-/g, ' ')))); return h; };
-function search(q, n) {
+// only: 'guides' or 'books' searches just those (the Ask page's "Search in" boxes); anything else both.
+function search(q, n, only) {
   const terms = [...new Set(tokenize(q))]; if (!terms.length || !ready) return [];
   const N = chunks.length, scores = new Map(), k1 = 1.2, b = 0.75;
   const weighted = terms.map(t => [t, 1]), have = new Set(terms);
@@ -110,7 +113,9 @@ function search(q, n) {
   const hitsIn = h => { let k = 0; for (const t of terms) if (h.has(t) || [...h].some(x => isVariant(x, t) || (SYN.get(t) || []).includes(x))) k++; return k; };
   const titleHits = new Map();
   for (const [c, s] of scores) {
-    const d = chunks[c][0]; let hits = titleHits.get(d); if (hits === undefined) titleHits.set(d, hits = hitsIn(titleTok[d]));
+    const d = chunks[c][0];
+    if ((only === 'guides' && !guide[d]) || (only === 'books' && guide[d])) continue;
+    let hits = titleHits.get(d); if (hits === undefined) titleHits.set(d, hits = hitsIn(titleTok[d]));
     // a guide section whose heading has the question's words ("How long to stay in" for "how long ... fallout")
     const sec = chunks[c][3], head = sec ? hitsIn(headWords(sec)) : 0;
     all.push([c, s * (1 + 0.25 * hits) * (1 + 0.3 * head) * (docs[d].w || 1)]);
@@ -168,6 +173,6 @@ onmessage = async e => {
   const m = e.data;
   if (m.type === 'load') { try { loading = load(m.base); await loading; } catch (err) { postMessage({ type: 'error', message: String(err) }); } }
   else if (m.type === 'more') { try { if (!moreP) moreP = loading.then(loadMore); await moreP; } catch (err) { postMessage({ type: 'error', message: String(err) }); } }
-  else if (m.type === 'search') postMessage({ type: 'results', id: m.id, results: search(m.q, m.n), partial: !full, loaded: shardsLoaded, total: shardsTotal });
+  else if (m.type === 'search') postMessage({ type: 'results', id: m.id, results: search(m.q, m.n, m.only), partial: !full && m.only !== 'guides', loaded: shardsLoaded, total: shardsTotal });
   else if (m.type === 'docs') postMessage({ type: 'docs', docs });
 };

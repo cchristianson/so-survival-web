@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="430" viewBox="0 0 620 430" font-family="Arial, Helvetica, sans-serif">
+  <title>A fur seam seen end on: two pieces fur sides together, the hair pushed down away from the edge, an over-and-over stitch around both edges; then opened out flat, skin side up, the hair closing over the seam</title>
+  <rect width="620" height="430" fill="#ffffff"/>
+
+  <!-- ===== 1. SEW (seen end on) ===== -->
+  <text x="20" y="32" font-size="18" font-weight="bold" fill="#222">1. Sew</text>
+  <!-- hair between the skins, pushed down away from the edge -->
+  <g stroke="#8a5a32" stroke-width="2.2" stroke-linecap="round">
+    <path d="M128,118 L146,138"/><path d="M128,138 L146,158"/><path d="M128,158 L146,178"/><path d="M128,178 L146,198"/><path d="M128,198 L146,218"/><path d="M128,218 L146,238"/><path d="M128,238 L146,258"/>
+    <path d="M172,118 L154,138"/><path d="M172,138 L154,158"/><path d="M172,158 L154,178"/><path d="M172,178 L154,198"/><path d="M172,198 L154,218"/><path d="M172,218 L154,238"/><path d="M172,238 L154,258"/>
+  </g>
+  <!-- the two skins: apart below, edges pressed together at the top -->
+  <path d="M120,270 V124 C120,108 145,104 145,90 V70" fill="none" stroke="#6b4a24" stroke-width="8" stroke-linecap="butt"/>
+  <path d="M180,270 V124 C180,108 155,104 155,90 V70" fill="none" stroke="#6b4a24" stroke-width="8" stroke-linecap="butt"/>
+  <!-- the stitch through both edges and over the top -->
+  <path d="M141,84 H134 C126,84 126,58 150,56 C174,58 174,84 166,84 H159" fill="none" stroke="#1d3557" stroke-width="3"/>
+  <!-- labels -->
+  <g font-size="15" fill="#222">
+    <text x="230" y="60" font-weight="bold">Close over-and-over stitches</text>
+    <text x="230" y="78">through both edges, worked</text>
+    <text x="230" y="96">from the skin side</text>
+    <line x1="226" y1="74" x2="172" y2="66" stroke="#333" stroke-width="1.2"/>
+    <text x="230" y="140" font-weight="bold">Hair pushed down,</text>
+    <text x="230" y="158">away from the edge,</text>
+    <text x="230" y="176">so it isn't sewn in</text>
+    <line x1="226" y1="146" x2="168" y2="122" stroke="#333" stroke-width="1.2"/>
+    <text x="230" y="220" font-weight="bold">Fur sides together</text>
+    <line x1="226" y1="216" x2="160" y2="214" stroke="#333" stroke-width="1.2"/>
+    <text x="20" y="196" font-weight="bold" text-anchor="start">skin</text>
+    <line x1="56" y1="192" x2="114" y2="192" stroke="#333" stroke-width="1.2"/>
+  </g>
+
+  <!-- ===== 2. OPEN IT OUT ===== -->
+  <line x1="20" y1="296" x2="600" y2="296" stroke="#ccc" stroke-width="1.5"/>
+  <text x="20" y="326" font-size="18" font-weight="bold" fill="#222">2. Open it out</text>
+  <!-- skins lying flat, skin side up, the seam in the middle -->
+  <path d="M40,350 H146 C150,350 150,344 150,340" fill="none" stroke="#6b4a24" stroke-width="8" stroke-linecap="round"/>
+  <path d="M260,350 H154 C150,350 150,344 150,340" fill="none" stroke="#6b4a24" stroke-width="8" stroke-linecap="round"/>
+  <path d="M142,346 C140,330 160,330 158,346" fill="none" stroke="#1d3557" stroke-width="3"/>
+  <!-- hair hanging down, closing over the join -->
+  <g stroke="#8a5a32" stroke-width="2.2" stroke-linecap="round">
+    <path d="M50,356 L58,380"/><path d="M66,356 L74,380"/><path d="M82,356 L90,380"/><path d="M98,356 L106,380"/><path d="M114,356 L122,380"/><path d="M130,356 L140,382"/>
+    <path d="M250,356 L242,380"/><path d="M234,356 L226,380"/><path d="M218,356 L210,380"/><path d="M202,356 L194,380"/><path d="M186,356 L178,380"/><path d="M170,356 L160,382"/>
+  </g>
+  <g font-size="15" fill="#222">
+    <text x="290" y="346" font-weight="bold">Skin side up: dampen it, stretch it</text>
+    <text x="290" y="364" font-weight="bold">and tack it flat to dry. The hair</text>
+    <text x="290" y="382" font-weight="bold">closes over the seam.</text>
+    <text x="290" y="408" fill="#c8431a" font-weight="bold">No hot iron on fur.</text>
+  </g>
+</svg>

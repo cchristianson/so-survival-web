@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="440" viewBox="0 0 640 440" font-family="Arial, Helvetica, sans-serif">
+  <title>Cooling a house with no power: at night the windows are open and a fan pushes hot air out; by day the windows and shades are shut and the glass is shaded from outside</title>
+  <rect width="640" height="440" fill="#ffffff"/>
+  <defs>
+    <marker id="b" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#2a6fa8"/></marker>
+    <marker id="r" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#c8431a"/></marker>
+    <marker id="y" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#d89a16"/></marker>
+  </defs>
+
+  <!-- ===== NIGHT ===== -->
+  <rect x="10" y="10" width="300" height="300" rx="8" fill="#e3e8f2"/>
+  <text x="26" y="40" font-size="20" font-weight="bold" fill="#1d3557">NIGHT</text>
+  <path d="M272,30 a16,16 0 1 0 12,28 a12,12 0 1 1 -12,-28 z" fill="#f2e6a8" stroke="#b9a64a" stroke-width="1.5"/>
+  <!-- house -->
+  <path d="M60,286 V170 L160,104 L260,170 V286 z" fill="#ffffff" stroke="#555" stroke-width="2.5"/>
+  <line x1="60" y1="170" x2="260" y2="170" stroke="#555" stroke-width="2"/>
+  <!-- open windows: gaps in the walls -->
+  <rect x="54" y="204" width="12" height="42" fill="#e3e8f2"/>
+  <rect x="254" y="204" width="12" height="42" fill="#e3e8f2"/>
+  <!-- fan in the right window -->
+  <circle cx="246" cy="225" r="17" fill="#ffffff" stroke="#333" stroke-width="2"/>
+  <path d="M246,225 L246,210 A15,15 0 0 1 259,218 z M246,225 L259,232 A15,15 0 0 1 246,240 z M246,225 L233,232 A15,15 0 0 1 233,218 z" fill="#888"/>
+  <!-- cool air in, hot air out -->
+  <path d="M14,225 H96" stroke="#2a6fa8" stroke-width="4" marker-end="url(#b)"/>
+  <path d="M100,236 C140,250 180,250 222,232" stroke="#2a6fa8" stroke-width="2.5" fill="none" stroke-dasharray="6 4"/>
+  <path d="M266,225 H302" stroke="#c8431a" stroke-width="4" marker-end="url(#r)"/>
+  <text x="284" y="198" text-anchor="middle" font-size="14" font-weight="bold" fill="#c8431a">hot</text><text x="284" y="214" text-anchor="middle" font-size="14" font-weight="bold" fill="#c8431a">air out</text>
+  <g font-size="15" fill="#222">
+    <text x="16" y="194" font-weight="bold" fill="#2a6fa8">cool</text>
+    <text x="16" y="212" font-weight="bold" fill="#2a6fa8">air in</text>
+  </g>
+
+  <!-- ===== DAY ===== -->
+  <rect x="330" y="10" width="300" height="300" rx="8" fill="#fbf3dc"/>
+  <text x="346" y="40" font-size="20" font-weight="bold" fill="#8a5a00">DAY</text>
+  <circle cx="598" cy="44" r="18" fill="#f6c343" stroke="#d89a16" stroke-width="2"/>
+  <!-- house -->
+  <path d="M380,286 V170 L480,104 L580,170 V286 z" fill="#ffffff" stroke="#555" stroke-width="2.5"/>
+  <line x1="380" y1="170" x2="580" y2="170" stroke="#555" stroke-width="2"/>
+  <!-- shut windows with shades drawn -->
+  <rect x="376" y="204" width="8" height="42" fill="#cfe6f2" stroke="#333" stroke-width="1.5"/>
+  <rect x="576" y="204" width="8" height="42" fill="#cfe6f2" stroke="#333" stroke-width="1.5"/>
+  <rect x="386" y="202" width="6" height="46" fill="#6b7d8c"/>
+  <rect x="568" y="202" width="6" height="46" fill="#6b7d8c"/>
+  <!-- awning outside the sunny window -->
+  <path d="M584,194 L618,214" stroke="#2f5e16" stroke-width="6" stroke-linecap="round"/>
+  <text x="608" y="236" text-anchor="middle" font-size="12" font-weight="bold" fill="#2f5e16">awning</text>
+  <!-- sun's heat bouncing off the awning -->
+  <path d="M590,64 L606,196" stroke="#d89a16" stroke-width="2.5"/>
+  <path d="M606,196 L626,150" stroke="#d89a16" stroke-width="2.5" marker-end="url(#y)"/>
+  <text x="480" y="232" text-anchor="middle" font-size="15" font-weight="bold" fill="#2a6fa8">cool air</text>
+  <text x="480" y="250" text-anchor="middle" font-size="15" font-weight="bold" fill="#2a6fa8">kept in</text>
+
+  <!-- what to do -->
+  <g font-size="15" fill="#222">
+    <text x="10" y="340" font-weight="bold">Windows open when it is cooler</text>
+    <text x="10" y="358" font-weight="bold">outside; fans push hot air out</text>
+    <text x="10" y="376" font-weight="bold">or pull cool air in.</text>
+    <text x="330" y="340" font-weight="bold">Before it heats up: windows,</text>
+    <text x="330" y="358" font-weight="bold">shades and blinds shut.</text>
+    <text x="330" y="380">Shade the glass from outside:</text>
+    <text x="330" y="398">an awning cuts the heat that</text>
+    <text x="330" y="416">gets in by up to 80 percent.</text>
+  </g>
+</svg>
