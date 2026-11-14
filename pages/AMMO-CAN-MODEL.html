@@ -30,9 +30,14 @@ button:focus-visible,.chk input:focus-visible,a:focus-visible{outline:2px solid 
 .legend button[aria-pressed="false"] .sw{background:transparent!important;outline:1.5px dashed var(--muted)!important}
 .legend .act button{font-weight:600;padding:5px 12px;border-style:dashed}
 .lghint{margin:6px 0 0;font-size:13px;color:var(--muted)}
-body.embed .full{display:none!important}body.embed .wrap{padding:0 0 4px;max-width:none;display:flex;flex-direction:column;height:100vh}
-body.embed .stage{border-radius:12px;max-height:none;aspect-ratio:auto;flex:1 1 auto;min-height:220px}
-@media(max-width:560px){body.embed .legend{gap:5px;margin-top:8px}body.embed .legend button{font-size:13px;padding:4px 10px 4px 8px}body.embed .controls{gap:6px 8px;margin-top:8px}body.embed .seg button,body.embed .ghost{padding:6px 11px}}
+body.embed .full{display:none!important}body.embed .wrap{padding:0 0 4px;max-width:none}
+body.embed .stage{border-radius:12px;aspect-ratio:4/3;max-height:540px}
+body.embed .more:not(.open){display:none}body.embed .controls{gap:6px 8px;margin-top:8px}
+body.embed .seg button,body.embed .ghost{font-size:13px;padding:6px 11px}body.embed .chk{font-size:14px}
+body.embed .legend{gap:5px;margin-top:8px}body.embed .legend button{font-size:13px;padding:4px 10px 4px 8px}body.embed .lghint{font-size:12px}
+#moretog::after{content:'';display:inline-block;width:6px;height:6px;margin:0 2px 2px 8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg)}
+#moretog[aria-expanded="true"]::after{transform:rotate(-135deg);margin-bottom:-2px}
+@media(max-width:560px){body.embed .seg button,body.embed .ghost{padding:5px 10px}}
 body:not(.embed) .only-embed{display:none!important}
 [hidden]{display:none!important}
 </style>
@@ -54,6 +59,10 @@ body:not(.embed) .only-embed{display:none!important}
     <button type="button" data-mode="see" aria-pressed="false">See-through</button>
     <button type="button" data-mode="open" aria-pressed="true">Lid open</button>
   </div>
+  <button type="button" class="ghost only-embed" id="moretog" aria-expanded="false" aria-controls="more">Parts and views</button>
+</div>
+<div class="more" id="more">
+<div class="controls">
   <button type="button" class="ghost" id="close" aria-pressed="false">Close-up of the Pi</button>
   <button type="button" class="ghost" id="lift" aria-pressed="false">Lift out the printer riser</button>
   <label class="chk"><input type="checkbox" id="etch" checked> Etching</label>
@@ -77,6 +86,7 @@ body:not(.embed) .only-embed{display:none!important}
   <li class="act"><button type="button" id="hideall">Hide all</button></li>
 </ul>
 <p class="lghint">Tap a part to hide or show it. To see one part on its own: <b>Hide all</b>, then tap it.</p>
+</div>
 
 <p class="lghint full">How to build it, the parts list and the wiring: the <a href="AMMO-CAN-COMPUTER-GUIDE.html">ARK Vault guide</a>.</p>
 </div>
@@ -4054,6 +4064,19 @@ glb:"Z2xURgIAAABguw4AcOIAAEpTT057InNjZW5lIjowLCJzY2VuZXMiOlt7Im5vZGVzIjpbMCwxLDI
   var target = toWorld(-110, -13, -25);                   // the can with its lid swung right over past the hinge end
   function home() { close = false; press('close', false, '', 'Close-up of the Pi'); var up = lifting.position.z * 0.5; camera.position.copy(toWorld(-110 + 740, -13 + 930, -25 + 990 + up)); controls.target.copy(target).add(new T.Vector3(0, up, 0)); controls.update(); render(); }
   document.getElementById('reset').addEventListener('click', home);
+  // for tools/maintenance/make_vault_pictures.js: the guide's labelled pictures are taken from this page
+  window.ARKVIEW = { T: T, scene: scene, camera: camera, controls: controls, renderer: renderer, parts: parts, setMode: setMode, setLift: setLift,
+    setLidAngle: setLidAngle, applyVis: applyVis, shown: shown, toWorld: toWorld, render: function () { renderer.render(scene, camera); }, home: home };
+  var more = document.getElementById('more'), moretog = document.getElementById('moretog');
+  moretog.addEventListener('click', function () { var on = !more.classList.contains('open'); more.classList.toggle('open', on); moretog.setAttribute('aria-expanded', String(on)); tellHeight(); });
+  // shown inside a guide: tell the guide how tall this page is, so the frame fits it (tools/doc-style.html listens)
+  function tellHeight() {
+    if (!embed || window.parent === window) return;
+    var w = document.querySelector('.wrap');
+    try { window.parent.postMessage({ arkFrameHeight: Math.ceil(w.getBoundingClientRect().height) + 2 }, '*'); } catch (e) {}
+  }
+  if (embed && window.ResizeObserver) new ResizeObserver(tellHeight).observe(document.querySelector('.wrap'));
+  tellHeight();
   function resize() {
     var w = stage.clientWidth, h = stage.clientHeight; if (!w || !h) return;
     renderer.setSize(w, h, false); camera.aspect = w / h;

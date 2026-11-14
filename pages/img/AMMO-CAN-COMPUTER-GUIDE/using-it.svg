@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="560" viewBox="0 0 780 560" font-family="Arial, Helvetica, sans-serif">
+  <title>Using the ARK Vault in five steps: 1, open the lid all the way (screw the mesh antenna on first, if fitted); 2, flip the red switch on; 3, take out the phone and wait 2 to 3 minutes; 4, join the Vault's Wi-Fi and open its address; 5, when done, switch off, close the lid and tape the seam</title>
+  <rect width="780" height="560" fill="#ffffff"/>
+  <rect x="8" y="8" width="244" height="264" rx="14" fill="#fbfaf6" stroke="#dcd6c8" stroke-width="1.5"/>
+  <circle cx="34" cy="34" r="15" fill="#2f7d4f" stroke="#2f7d4f" stroke-width="0"/>
+  <text x="34" y="40" font-size="17" fill="#ffffff" text-anchor="middle" font-weight="bold">1</text>
+  <text x="130" y="228" font-size="21" fill="#1d2721" text-anchor="middle" font-weight="bold">Open the lid</text>
+  <text x="130" y="254" font-size="17" fill="#555555" text-anchor="middle">all the way</text>
+  <rect x="268" y="8" width="244" height="264" rx="14" fill="#fbfaf6" stroke="#dcd6c8" stroke-width="1.5"/>
+  <circle cx="294" cy="34" r="15" fill="#2f7d4f" stroke="#2f7d4f" stroke-width="0"/>
+  <text x="294" y="40" font-size="17" fill="#ffffff" text-anchor="middle" font-weight="bold">2</text>
+  <text x="390" y="228" font-size="21" fill="#1d2721" text-anchor="middle" font-weight="bold">Flip the switch on</text>
+  <rect x="528" y="8" width="244" height="264" rx="14" fill="#fbfaf6" stroke="#dcd6c8" stroke-width="1.5"/>
+  <circle cx="554" cy="34" r="15" fill="#2f7d4f" stroke="#2f7d4f" stroke-width="0"/>
+  <text x="554" y="40" font-size="17" fill="#ffffff" text-anchor="middle" font-weight="bold">3</text>
+  <text x="650" y="228" font-size="21" fill="#1d2721" text-anchor="middle" font-weight="bold">Take out the phone</text>
+  <text x="650" y="254" font-size="17" fill="#555555" text-anchor="middle">wait 2–3 minutes</text>
+  <rect x="138" y="288" width="244" height="264" rx="14" fill="#fbfaf6" stroke="#dcd6c8" stroke-width="1.5"/>
+  <circle cx="164" cy="314" r="15" fill="#2f7d4f" stroke="#2f7d4f" stroke-width="0"/>
+  <text x="164" y="320" font-size="17" fill="#ffffff" text-anchor="middle" font-weight="bold">4</text>
+  <text x="260" y="508" font-size="21" fill="#1d2721" text-anchor="middle" font-weight="bold">Join its Wi-Fi</text>
+  <text x="260" y="534" font-size="17" fill="#555555" text-anchor="middle">open the address</text>
+  <rect x="398" y="288" width="244" height="264" rx="14" fill="#fbfaf6" stroke="#dcd6c8" stroke-width="1.5"/>
+  <circle cx="424" cy="314" r="15" fill="#2f7d4f" stroke="#2f7d4f" stroke-width="0"/>
+  <text x="424" y="320" font-size="17" fill="#ffffff" text-anchor="middle" font-weight="bold">5</text>
+  <text x="520" y="508" font-size="21" fill="#1d2721" text-anchor="middle" font-weight="bold">Done? Switch off,</text>
+  <text x="520" y="534" font-size="17" fill="#555555" text-anchor="middle">close and tape it</text>
+  <rect x="85" y="128" width="130" height="70" rx="6" fill="#2a2d31" stroke="#1d2721" stroke-width="2"/>
+  <rect x="93" y="152" width="114" height="8" rx="2" fill="#5b6168" stroke="#5b6168" stroke-width="0"/>
+  <polygon points="89.0,128.0 55.4,2.4 43.8,5.5 77.4,131.1" fill="#2a2d31" stroke="#1d2721" stroke-width="2"/>
+  <text x="238" y="66" font-size="13" fill="#555555" text-anchor="end">Mesh radio?</text>
+  <text x="238" y="82" font-size="13" fill="#555555" text-anchor="end">Antenna on</text>
+  <text x="238" y="98" font-size="13" fill="#555555" text-anchor="end">first.</text>
+  <rect x="335" y="95" width="110" height="70" rx="8" fill="#1f2328" stroke="#1d2721" stroke-width="2"/>
+  <rect x="344" y="104" width="92" height="52" rx="5" fill="#c8221c" stroke="#7a1f17" stroke-width="1.5"/>
+  <rect x="344" y="104" width="46" height="52" rx="5" fill="#e2483d" stroke="#7a1f17" stroke-width="1.5"/>
+  <text x="367" y="139" font-size="22" fill="#ffffff" text-anchor="middle" font-weight="bold">I</text>
+  <circle cx="413" cy="131" r="9" fill="none" stroke="#ffffff" stroke-width="3"/>
+  <path d="M390 200 L362 172" fill="none" stroke="#d03b2f" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M362 172 L372.7 174.4 L364.4 182.7 Z" fill="#d03b2f"/>
+  <rect x="570" y="60" width="70" height="128" rx="12" fill="#ffffff" stroke="#1d2721" stroke-width="3"/>
+  <rect x="577" y="74" width="56" height="98" rx="3" fill="#eef4f0" stroke="#eef4f0" stroke-width="0"/>
+  <circle cx="605" cy="180" r="3.5" fill="#ffffff" stroke="#1d2721" stroke-width="1.5"/>
+  <circle cx="700" cy="126" r="30" fill="#ffffff" stroke="#1d2721" stroke-width="3"/>
+  <path d="M700 126 L700 106 M700 126 L714 134" fill="none" stroke="#1d2721" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="223" y="330" width="84" height="140" rx="12" fill="#ffffff" stroke="#1d2721" stroke-width="3"/>
+  <rect x="230" y="344" width="70" height="110" rx="3" fill="#eef4f0" stroke="#eef4f0" stroke-width="0"/>
+  <circle cx="265" cy="462" r="3.5" fill="#ffffff" stroke="#1d2721" stroke-width="1.5"/>
+  <path d="M257.5 398.4 A 10.0 10.0 0 0 1 272.5 398.4" fill="none" stroke="#2f7d4f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M250.0 391.8 A 20.0 20.0 0 0 1 280.0 391.8" fill="none" stroke="#2f7d4f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M242.5 385.2 A 30.0 30.0 0 0 1 287.5 385.2" fill="none" stroke="#2f7d4f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="265" cy="405" r="3.5" fill="#2f7d4f" stroke="#2f7d4f" stroke-width="0"/>
+  <text x="265" y="432" font-size="10.5" fill="#1d2721" text-anchor="middle" font-weight="bold">Emergency-</text>
+  <text x="265" y="445" font-size="10.5" fill="#1d2721" text-anchor="middle" font-weight="bold">Library</text>
+  <text x="352" y="380" font-size="12.5" fill="#2f7d4f" text-anchor="start" font-weight="bold">192.168.4.1</text>
+  <text x="352" y="396" font-size="12.5" fill="#2f7d4f" text-anchor="start" font-weight="bold">:8096</text>
+  <path d="M345 388 L312 392" fill="none" stroke="#2f7d4f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M312 392 L320.5 385.0 L321.9 396.7 Z" fill="#2f7d4f"/>
+  <rect x="455" y="392" width="130" height="70" rx="6" fill="#2a2d31" stroke="#1d2721" stroke-width="2"/>
+  <rect x="463" y="416" width="114" height="8" rx="2" fill="#5b6168" stroke="#5b6168" stroke-width="0"/>
+  <rect x="453" y="378" width="134" height="16" rx="4" fill="#2a2d31" stroke="#1d2721" stroke-width="2"/>
+  <rect x="587" y="382" width="9" height="22" rx="2" fill="#5b6168" stroke="#1d2721" stroke-width="1.5"/>
+  <rect x="449" y="386" width="148" height="15" rx="3" fill="#d8a26a" stroke="#9a6b33" stroke-width="1.5"/>
+  <path d="M461 388 l10 11" fill="none" stroke="#f3d3ad" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M481 388 l10 11" fill="none" stroke="#f3d3ad" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M501 388 l10 11" fill="none" stroke="#f3d3ad" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M521 388 l10 11" fill="none" stroke="#f3d3ad" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M541 388 l10 11" fill="none" stroke="#f3d3ad" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M561 388 l10 11" fill="none" stroke="#f3d3ad" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M581 388 l10 11" fill="none" stroke="#f3d3ad" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="520" y="340" font-size="13" fill="#555555" text-anchor="middle">switch off, lid shut,</text>
+  <text x="520" y="356" font-size="13" fill="#555555" text-anchor="middle">foil tape round the seam</text>
+</svg>
