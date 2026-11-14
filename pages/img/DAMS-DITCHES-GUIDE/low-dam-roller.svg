@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="570" viewBox="0 0 680 570" font-family="Arial, Helvetica, sans-serif">
+  <title>The roller below a low dam, cut through: water pouring over the smooth wall dives to the bottom and the surface water flows back upstream into the falls, holding anything caught; the way out is to dive deep and go downstream along the bottom, or, seen from above, to swim sideways out the end of the roller</title>
+  <rect width="680" height="570" fill="#ffffff"/>
+  <defs>
+    <marker id="rr3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#c8431a"/></marker>
+    <marker id="gr3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#2f5e16"/></marker>
+    <marker id="bl3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#1d6fa8"/></marker>
+  </defs>
+
+  <text x="340" y="24" text-anchor="middle" font-size="15" font-weight="bold" fill="#c8431a">The drowning machine below a low dam</text>
+
+  <!-- ===== SIDE VIEW ===== -->
+  <text x="16" y="52" font-size="13.5" font-weight="bold" fill="#2f5e16">Cut through, from the side</text>
+
+  <text x="16" y="100" font-size="13" font-weight="bold" fill="#222">From upstream it is only a line on the water:</text>
+  <text x="16" y="118" font-size="13" fill="#222">"there is no frothing, no obvious curling</text>
+  <text x="16" y="136" font-size="13" fill="#222">water, and little noise."</text>
+
+  <text x="664" y="100" text-anchor="end" font-size="13" font-weight="bold" fill="#c8431a">the surface water flows</text>
+  <text x="664" y="118" text-anchor="end" font-size="13" font-weight="bold" fill="#c8431a">BACK upstream, into the falls</text>
+  <path d="M560,126 C520,170 470,216 440,240" fill="none" stroke="#c8431a" stroke-width="1.2"/>
+
+  <rect x="16" y="300" width="648" height="40" fill="#efe8dc"/>
+  <line x1="16" y1="300" x2="664" y2="300" stroke="#6b5a45" stroke-width="2.5"/>
+
+  <rect x="16" y="182" width="286" height="118" fill="#cfe6f2"/>
+  <line x1="16" y1="182" x2="302" y2="182" stroke="#1d6fa8" stroke-width="2"/>
+  <rect x="296" y="186" width="14" height="114" fill="#b4b0a6" stroke="#555" stroke-width="2"/>
+  <rect x="310" y="236" width="354" height="64" fill="#cfe6f2"/>
+  <line x1="330" y1="236" x2="664" y2="236" stroke="#1d6fa8" stroke-width="2"/>
+  <path d="M296,182 C308,182 316,196 322,214 C328,232 332,256 334,276 L352,276 C348,250 344,222 334,200 C326,184 312,178 296,178 z" fill="#8cc3e6" stroke="#1d6fa8" stroke-width="1.6"/>
+
+  <ellipse cx="392" cy="266" rx="62" ry="28" fill="none" stroke="#c8431a" stroke-width="3"/>
+  <path d="M434,248 C414,238 372,238 352,248" fill="none" stroke="#c8431a" stroke-width="3.5" marker-end="url(#rr3)"/>
+  <path d="M352,286 C372,296 414,296 434,286" fill="none" stroke="#c8431a" stroke-width="3.5" marker-end="url(#rr3)"/>
+  <text x="392" y="212" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#c8431a">THE ROLLER</text>
+
+  <g stroke="#c8431a" stroke-width="2.6" fill="none" stroke-linecap="round">
+    <circle cx="392" cy="252" r="6" fill="#c8431a" stroke="none"/>
+    <path d="M392,258 V272 M392,262 L382,256 M392,262 L402,268 M392,272 L384,282 M392,272 L400,282"/>
+  </g>
+
+  <g stroke="#1d6fa8" stroke-width="2.5" fill="none" marker-end="url(#bl3)">
+    <path d="M80,212 H150"/><path d="M576,268 H634"/>
+  </g>
+
+  <path d="M396,284 C404,294 420,294 446,294 C488,294 514,290 538,280" fill="none" stroke="#2f5e16" stroke-width="3.5" marker-end="url(#gr3)"/>
+  <text x="664" y="320" text-anchor="end" font-size="13" font-weight="bold" fill="#2f5e16">dive deep and go downstream with</text>
+  <text x="664" y="336" text-anchor="end" font-size="13" font-weight="bold" fill="#2f5e16">the current, along the bottom</text>
+
+  <!-- ===== PLAN VIEW ===== -->
+  <line x1="16" y1="360" x2="664" y2="360" stroke="#ccc" stroke-width="1"/>
+  <text x="16" y="384" font-size="13.5" font-weight="bold" fill="#2f5e16">Seen from above</text>
+  <text x="252" y="384" font-size="13" font-weight="bold" fill="#2f5e16">or swim sideways, out the end of the roller</text>
+
+  <rect x="40" y="396" width="350" height="94" fill="#cfe6f2"/>
+  <rect x="40" y="396" width="350" height="12" fill="#efe8dc"/>
+  <rect x="40" y="478" width="350" height="12" fill="#efe8dc"/>
+  <line x1="40" y1="408" x2="390" y2="408" stroke="#6b5a45" stroke-width="2"/>
+  <line x1="40" y1="478" x2="390" y2="478" stroke="#6b5a45" stroke-width="2"/>
+  <rect x="140" y="408" width="11" height="70" fill="#b4b0a6" stroke="#555" stroke-width="2"/>
+  <rect x="151" y="414" width="110" height="58" fill="#f6cbb8" stroke="#c8431a" stroke-width="2.5"/>
+  <text x="206" y="448" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#c8431a">the roller</text>
+  <g stroke="#1d6fa8" stroke-width="2.5" fill="none" marker-end="url(#bl3)"><path d="M62,440 H116"/></g>
+  <g stroke="#c8431a" stroke-width="2" fill="none" marker-end="url(#rr3)"><path d="M244,426 H176"/><path d="M244,464 H176"/></g>
+  <path d="M212,432 C246,420 266,410 282,402" fill="none" stroke="#2f5e16" stroke-width="3.5" marker-end="url(#gr3)"/>
+  <text x="96" y="508" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#222">the low dam</text>
+  <line x1="120" y1="500" x2="142" y2="482" stroke="#333" stroke-width="1"/>
+
+  <g font-size="13" font-weight="bold" fill="#c8431a">
+    <text x="412" y="414">It can pull a person wearing a</text>
+    <text x="412" y="432">life jacket under, carry them a</text>
+    <text x="412" y="450">little way and bring them back</text>
+    <text x="412" y="468">to be pushed under again.</text>
+    <text x="412" y="486">Floating things stay in it.</text>
+  </g>
+
+  <line x1="16" y1="524" x2="664" y2="524" stroke="#ccc" stroke-width="1"/>
+  <text x="16" y="546" font-size="13.5" font-weight="bold" fill="#222">No swimming, wading or boating near a low dam, above or below. Carry boats round.</text>
+  <text x="16" y="564" font-size="13.5" font-weight="bold" fill="#222">Never walk the crest. To help someone caught, throw a rope or a float from the bank — don't go in.</text>
+</svg>

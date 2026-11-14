@@ -830,7 +830,7 @@ async function loadLibrary() {
 // pages use for their "Guides › group" bar and Previous / Next links; tools/guide_nav.py --check keeps them in step.
 const SHELVES = [
   ['start', '🧭', 'Start here', 'Emergency finder, A–Z index, Illinois Valley quick reference'],
-  ['health', '🩹', 'Health & medicine', 'Injuries, recovering from injuries, medicines, childbirth and children, chronic illness, sanitation, garbage and disease'],
+  ['health', '🩹', 'Health & medicine', 'Injuries, recovering from injuries, medicines, making medicines, childbirth and children, chronic illness, sanitation, garbage and disease'],
   ['water', '💧', 'Water', 'Purifying water, wells, pumps, springs and cisterns, town water and sewer, dams, ponds and ditches'],
   ['food', '🍞', 'Food', 'Food when it is scarce, cooking from scratch, preserving, milk, butter and cheese, root cellars, seeds, building soil'],
   ['wild', '🌲', 'Living off the land', 'Hunting, trapping and fishing, wild plants and mushrooms, skills of the valley’s first peoples'],
@@ -939,6 +939,8 @@ const GUIDE_CARDS = { // guide cards, by shelf (same groups and order as SHELVES
     ['med', '💊 Medical & found medicines', 'What medical books there are and how to use found or expired medicines safely.'],
     ['birth', '👶 Childbirth & small kids', 'Birth with no hospital, newborn care, child illness, teaching kids at home'],
     ['chronic', '🩺 Chronic illness with no pharmacy', 'Diabetes, blood pressure, heart, asthma, seizures, thyroid and mental illness when the pills run out: emergencies, doses from the books, and medicines never to stop suddenly.'],
+    ['meds', '🌿 Making medicines with no pharmacy', 'What works and what does not: the rehydration drink, honey and Dakin\u2019s solution for wounds, willow bark, the plants with real evidence, and what is dangerous to try.'],
+    ['medhist', '🧫 How antibiotics came to be', 'What life was like before them, how penicillin, the sulfa drugs, streptomycin and insulin were found and made, what restarting would take, and why they stop working.'],
     ['sanit', '🧼 Sanitation, waste & disease', 'Toilets with no sewer, handwashing, laundry, garbage and compost, stopping outbreaks, safe burial']],
   water: [['purify', '🚰 Water purification', 'Settling, cloth, alum and ash, biosand and clay-pot filters, charcoal done right, boiling, bleach and pool shock, sunlight, solar stills, tests.'],
     ['wells', '💧 Wells, pumps, springs & cisterns', 'Your well records, running the well pump on a generator or solar, hand and rope pumps, ram pumps, spring boxes, cisterns, testing.'],
@@ -1008,7 +1010,7 @@ const GUIDE_CARDS = { // guide cards, by shelf (same groups and order as SHELVES
 // Every page the cards link to: key -> the guide's file name. On the website it is pages/NAME.html; on the
 // drive Southern-Oregon/NAME.html, unless DRIVE_AT / WEB_AT say otherwise (null = not in that edition).
 const PAGES = { sos: 'EMERGENCY-FINDER', az: 'SUBJECT-INDEX', iv: 'ILLINOIS-VALLEY-START-HERE',
-  fieldcare: 'FIELD-CARE-GUIDE', rehab: 'REHAB-GUIDE', med: 'Medical-READ-ME-FIRST', birth: 'CHILDBIRTH-CHILDREN-GUIDE', chronic: 'CHRONIC-ILLNESS-GUIDE', sanit: 'SANITATION-GUIDE',
+  fieldcare: 'FIELD-CARE-GUIDE', rehab: 'REHAB-GUIDE', med: 'Medical-READ-ME-FIRST', birth: 'CHILDBIRTH-CHILDREN-GUIDE', chronic: 'CHRONIC-ILLNESS-GUIDE', meds: 'MAKING-MEDICINES-GUIDE', medhist: 'MEDICINE-HISTORY-GUIDE', sanit: 'SANITATION-GUIDE',
   purify: 'WATER-PURIFICATION-GUIDE', wells: 'WATER-WELLS-GUIDE', townwater: 'TOWN-WATER-SEWER-GUIDE', dams: 'DAMS-DITCHES-GUIDE',
   scarce: 'FOOD-SECURITY-GUIDE', food: 'FOOD-FROM-SCRATCH-GUIDE', preserve: 'PRESERVING-FOOD-GUIDE', cellar: 'ROOT-CELLAR-GUIDE', seeds: 'SEED-BANK-GUIDE', soil: 'GROWING-SOIL-GUIDE',
   huntfish: 'HUNTING-TRAPPING-FISHING-GUIDE', mush: 'MUSHROOM-GUIDE', native: 'NATIVE-SKILLS-GUIDE',

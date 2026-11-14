@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="520" viewBox="0 0 660 520" font-family="Arial, Helvetica, sans-serif">
+  <title>Making Dakin's solution for washing wounds, and how much bleach of each strength to use</title>
+  <rect width="660" height="520" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+  </defs>
+
+  <text x="20" y="30" font-size="17" font-weight="bold" fill="#222">Dakin's solution for washing wounds (0.025%)</text>
+
+  <!-- 1: jug of water -->
+  <path d="M40,96 H120 L126,104 V196 C126,202 122,206 116,206 H44 C38,206 34,202 34,196 V104 Z" fill="#eef5fb" stroke="#2b4c7e" stroke-width="1.8"/>
+  <path d="M36,126 H124 V196 C124,201 121,204 116,204 H44 C39,204 36,201 36,196 Z" fill="#cfe2f3"/>
+  <path d="M126,112 C146,112 150,126 150,140 C150,156 142,168 126,170" fill="none" stroke="#2b4c7e" stroke-width="5"/>
+  <text x="80" y="160" text-anchor="middle" font-size="15" font-weight="bold" fill="#2b4c7e">1 liter</text>
+  <text x="80" y="232" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#222">Water</text>
+  <text x="80" y="249" text-anchor="middle" font-size="12.5" fill="#444">boiled, then cooled</text>
+
+  <text x="174" y="160" text-anchor="middle" font-size="28" font-weight="bold" fill="#555">+</text>
+
+  <!-- 2: bleach bottle and teaspoon -->
+  <path d="M206,98 H236 V90 H252 V98 H262 C268,98 272,102 272,108 V200 C272,204 268,206 264,206 H206 C202,206 198,204 198,200 V106 C198,101 201,98 206,98 Z" fill="#f4f4f4" stroke="#666" stroke-width="1.8"/>
+  <rect x="207" y="128" width="56" height="44" rx="3" fill="#ffffff" stroke="#999" stroke-width="1"/>
+  <text x="235" y="146" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#333">BLEACH</text>
+  <text x="235" y="162" text-anchor="middle" font-size="11" fill="#333">plain, 5.25%</text>
+  <path d="M276,186 L312,164" stroke="#888" stroke-width="5" stroke-linecap="round"/>
+  <ellipse cx="320" cy="160" rx="12" ry="7" fill="#d9d9d9" stroke="#777" stroke-width="1.5" transform="rotate(-30 320 160)"/>
+  <text x="250" y="232" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#222">1 teaspoon (5 ml)</text>
+  <text x="250" y="249" text-anchor="middle" font-size="12.5" fill="#444">unscented household</text>
+  <text x="250" y="264" text-anchor="middle" font-size="12.5" fill="#444">bleach, 5.25%</text>
+
+  <text x="352" y="160" text-anchor="middle" font-size="28" font-weight="bold" fill="#555">+</text>
+
+  <!-- 3: baking soda -->
+  <path d="M384,112 H448 V206 H384 Z" fill="#fff6e8" stroke="#a5743a" stroke-width="1.8"/>
+  <path d="M384,112 L392,98 H456 L448,112" fill="#f2e2c6" stroke="#a5743a" stroke-width="1.8"/>
+  <path d="M448,112 L456,98 V192 L448,206" fill="#ead6b3" stroke="#a5743a" stroke-width="1.8"/>
+  <text x="416" y="150" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#7a4f1d">BAKING</text>
+  <text x="416" y="165" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#7a4f1d">SODA</text>
+  <text x="420" y="232" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#222">½ teaspoon</text>
+  <text x="420" y="249" text-anchor="middle" font-size="12.5" fill="#444">baking soda (can be</text>
+  <text x="420" y="264" text-anchor="middle" font-size="12.5" fill="#444">left out if you have none)</text>
+
+  <line x1="476" y1="152" x2="512" y2="152" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- 4: labelled bottle -->
+  <path d="M548,96 H572 V112 C586,116 594,126 594,140 V200 C594,204 590,206 586,206 H534 C530,206 526,204 526,200 V140 C526,126 534,116 548,112 Z" fill="#f3fbf1" stroke="#3e7d3a" stroke-width="1.8"/>
+  <rect x="546" y="86" width="28" height="12" rx="2" fill="#3e7d3a"/>
+  <rect x="532" y="140" width="56" height="48" rx="3" fill="#ffffff" stroke="#3e7d3a" stroke-width="1"/>
+  <text x="560" y="157" text-anchor="middle" font-size="11" font-weight="bold" fill="#2c5a29">DAKIN'S</text>
+  <text x="560" y="171" text-anchor="middle" font-size="11" fill="#2c5a29">0.025%</text>
+  <text x="560" y="184" text-anchor="middle" font-size="10.5" fill="#2c5a29">made: date</text>
+  <text x="560" y="232" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#222">Mix, label</text>
+  <text x="560" y="249" text-anchor="middle" font-size="12.5" fill="#444">with the date</text>
+
+  <line x1="20" y1="286" x2="640" y2="286" stroke="#ccc" stroke-width="1"/>
+
+  <!-- TABLE -->
+  <text x="20" y="314" font-size="15" font-weight="bold" fill="#222">Read the strength on the bleach label</text>
+  <rect x="20" y="326" width="620" height="34" fill="#eef1f5"/>
+  <text x="32" y="348" font-size="13" font-weight="bold" fill="#222">Bleach on the label</text>
+  <text x="214" y="342" font-size="13" font-weight="bold" fill="#2c5a29">0.025%: washing wounds (JTS)</text>
+  <text x="214" y="356" font-size="11.5" fill="#444">bleach in 1 liter of water</text>
+  <text x="440" y="342" font-size="13" font-weight="bold" fill="#8a2a0a">0.5%: Dakin's own (1917)</text>
+  <text x="440" y="356" font-size="11.5" fill="#444">bleach in 1 liter of finished mix</text>
+  <g font-size="14" fill="#222">
+    <text x="32" y="386" font-weight="bold">5.25%</text><text x="214" y="386">5 ml (1 teaspoon)</text><text x="440" y="386">95 ml</text>
+    <text x="32" y="414" font-weight="bold">6%</text><text x="214" y="414">4 ml (a scant teaspoon)</text><text x="440" y="414">80 ml</text>
+    <text x="32" y="442" font-weight="bold">8.25%</text><text x="214" y="442">3 ml (a little over ½ tsp)</text><text x="440" y="442">60 ml</text>
+  </g>
+  <g stroke="#ddd" stroke-width="1">
+    <line x1="20" y1="396" x2="640" y2="396"/><line x1="20" y1="424" x2="640" y2="424"/><line x1="20" y1="452" x2="640" y2="452"/>
+  </g>
+
+  <text x="20" y="478" font-size="13" font-weight="bold" fill="#8a2a0a">Mix it fresh. Never heat it, never mix it with alcohol, ammonia or vinegar,</text>
+  <text x="20" y="496" font-size="13" font-weight="bold" fill="#8a2a0a">never inject it. It eats metal tools.</text>
+  <text x="20" y="514" font-size="12" fill="#555">Old bleach is weaker: it can lose half its strength in 6 months.</text>
+</svg>

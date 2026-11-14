@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="540" viewBox="0 0 660 540" font-family="Arial, Helvetica, sans-serif">
+  <title>A sugar or honey dressing in four steps: rinse, fill, cover, repeat</title>
+  <rect width="660" height="540" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+    <pattern id="sugar" width="10" height="10" patternUnits="userSpaceOnUse">
+      <rect width="10" height="10" fill="#fbfaf5"/>
+      <rect x="1" y="1" width="3" height="3" fill="#ffffff" stroke="#b9b4a6" stroke-width="0.7"/>
+      <rect x="6" y="5" width="3" height="3" fill="#ffffff" stroke="#b9b4a6" stroke-width="0.7"/>
+    </pattern>
+    <pattern id="gauze" width="8" height="8" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" fill="#ffffff"/>
+      <path d="M0,4 H8 M4,0 V8" stroke="#d6d2c8" stroke-width="1"/>
+    </pattern>
+    <!-- skin seen from the side, with an open wound: reused in each panel -->
+    <g id="skin">
+      <path d="M0,0 H70 C80,0 86,4 90,14 L100,44 C104,52 116,52 120,44 L130,14 C134,4 140,0 150,0 H220 V64 H0 Z" fill="#e9b7a0" stroke="#9b6250" stroke-width="1.5"/>
+      <path d="M0,10 H66 M154,10 H220" stroke="#d39b84" stroke-width="1"/>
+      <path d="M96,40 C104,50 116,50 124,40" fill="none" stroke="#b5413a" stroke-width="3"/>
+    </g>
+  </defs>
+
+  <!-- PANEL 1: RINSE -->
+  <circle cx="34" cy="34" r="14" fill="#2b4c7e"/><text x="34" y="39" text-anchor="middle" font-size="15" font-weight="bold" fill="#fff">1</text>
+  <text x="56" y="40" font-size="17" font-weight="bold" fill="#222">Rinse</text>
+  <use href="#skin" x="50" y="150"/>
+  <!-- squeeze bottle, nozzle down toward the wound -->
+  <g transform="translate(262,58) rotate(37)">
+    <rect x="-17" y="0" width="34" height="62" rx="7" fill="#dfe9f3" stroke="#2b4c7e" stroke-width="1.5"/>
+    <path d="M-9,62 L-5,74 H5 L9,62 Z" fill="#dfe9f3" stroke="#2b4c7e" stroke-width="1.5"/>
+    <rect x="-3" y="74" width="6" height="10" fill="#2b4c7e"/>
+  </g>
+  <path d="M208,128 Q176,146 162,186" fill="none" stroke="#4a86c5" stroke-width="3" stroke-dasharray="5 4"/>
+  <text x="34" y="244" font-size="13.5" fill="#222">Wash it out with boiled salt water</text>
+  <text x="34" y="261" font-size="13.5" fill="#222">(1 tsp salt in 2 cups boiled water)</text>
+  <text x="34" y="278" font-size="13.5" fill="#222">or the cleanest water you have.</text>
+
+  <!-- PANEL 2: FILL -->
+  <circle cx="364" cy="34" r="14" fill="#2b4c7e"/><text x="364" y="39" text-anchor="middle" font-size="15" font-weight="bold" fill="#fff">2</text>
+  <text x="386" y="40" font-size="17" font-weight="bold" fill="#222">Fill</text>
+  <use href="#skin" x="390" y="150"/>
+  <path d="M461,151 C470,152 474,156 478,164 L488,192 C492,200 504,200 508,192 L518,164 C522,156 526,152 535,151 Z" fill="url(#sugar)" stroke="#b9b4a6" stroke-width="1"/>
+  <!-- spoon pouring sugar -->
+  <path d="M520,70 L470,100" stroke="#777" stroke-width="5" stroke-linecap="round"/>
+  <ellipse cx="462" cy="106" rx="20" ry="10" fill="#cfcfcf" stroke="#777" stroke-width="1.5" transform="rotate(-30 462 106)"/>
+  <g fill="#ffffff" stroke="#b9b4a6" stroke-width="0.8">
+    <rect x="470" y="122" width="4" height="4"/><rect x="478" y="132" width="4" height="4"/><rect x="474" y="142" width="4" height="4"/>
+    <rect x="488" y="128" width="4" height="4"/>
+  </g>
+  <text x="364" y="244" font-size="13.5" fill="#222">Fill the wound with sugar,</text>
+  <text x="364" y="261" font-size="13.5" fill="#222">or spread honey over it.</text>
+  <text x="364" y="278" font-size="13.5" fill="#222">Shake off sugar that won't stick.</text>
+
+  <line x1="20" y1="300" x2="640" y2="300" stroke="#ccc" stroke-width="1"/>
+
+  <!-- PANEL 3: COVER -->
+  <circle cx="34" cy="332" r="14" fill="#2b4c7e"/><text x="34" y="337" text-anchor="middle" font-size="15" font-weight="bold" fill="#fff">3</text>
+  <text x="56" y="338" font-size="17" font-weight="bold" fill="#222">Cover</text>
+  <use href="#skin" x="50" y="420"/>
+  <path d="M121,421 C130,422 134,426 138,434 L148,462 C152,470 164,470 168,462 L178,434 C182,426 186,422 195,421 Z" fill="url(#sugar)" stroke="#b9b4a6" stroke-width="1"/>
+  <rect x="96" y="400" width="124" height="20" rx="3" fill="url(#gauze)" stroke="#9e998c" stroke-width="1.5"/>
+  <rect x="70" y="386" width="176" height="14" rx="3" fill="#f3efe4" stroke="#9e998c" stroke-width="1.5"/>
+  <text x="252" y="398" font-size="12.5" fill="#444">bandage</text>
+  <text x="226" y="418" font-size="12.5" fill="#444">dry gauze</text>
+  <text x="34" y="512" font-size="13.5" fill="#222">Cover with a clean, dry dressing.</text>
+
+  <!-- PANEL 4: REPEAT -->
+  <circle cx="364" cy="332" r="14" fill="#2b4c7e"/><text x="364" y="337" text-anchor="middle" font-size="15" font-weight="bold" fill="#fff">4</text>
+  <text x="386" y="338" font-size="17" font-weight="bold" fill="#222">Repeat</text>
+  <circle cx="440" cy="424" r="44" fill="#ffffff" stroke="#333" stroke-width="2.5"/>
+  <g stroke="#333" stroke-width="2">
+    <line x1="440" y1="384" x2="440" y2="390"/><line x1="440" y1="458" x2="440" y2="464"/>
+    <line x1="400" y1="424" x2="406" y2="424"/><line x1="474" y1="424" x2="480" y2="424"/>
+  </g>
+  <line x1="440" y1="424" x2="440" y2="398" stroke="#333" stroke-width="3" stroke-linecap="round"/>
+  <line x1="440" y1="424" x2="458" y2="434" stroke="#333" stroke-width="3" stroke-linecap="round"/>
+  <path d="M492,394 A58,58 0 0 1 492,456" fill="none" stroke="#c8431a" stroke-width="2.5" marker-end="url(#a)"/>
+  <text x="506" y="420" font-size="16" font-weight="bold" fill="#c8431a">every</text>
+  <text x="506" y="440" font-size="16" font-weight="bold" fill="#c8431a">24 hours</text>
+  <text x="364" y="495" font-size="13.5" fill="#222">Rinse and redo it every day, and sooner</text>
+  <text x="364" y="512" font-size="13.5" fill="#222">if it turns runny: wet sugar feeds germs.</text>
+
+  <text x="330" y="534" text-anchor="middle" font-size="12.5" fill="#555">For wounds that ooze or are infected. Never feed honey to a baby under 1 year.</text>
+</svg>

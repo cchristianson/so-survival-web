@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="580" viewBox="0 0 680 580" font-family="Arial, Helvetica, sans-serif">
+  <title>A measuring weir: a side view showing the gauge post at least five feet upstream with its top level with the bottom of the notch, the water springing clear with air under it and at least a foot of drop below; and below, the rectangular notch three times as wide as it is deep, the ninety degree V-notch, and the sharp upstream edge with its eighth-inch flat and forty-five degree bevel</title>
+  <rect width="680" height="580" fill="#ffffff"/>
+  <defs>
+    <marker id="d3" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+    <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#1d6fa8"/></marker>
+  </defs>
+
+  <text x="340" y="24" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">A measuring weir: one pool depth for each flow, so a ruler reading gives the flow</text>
+
+  <!-- ============ SIDE VIEW ============ -->
+  <text x="16" y="52" font-size="13.5" font-weight="bold" fill="#2f5e16">Seen from the side</text>
+
+  <!-- bed and banks -->
+  <rect x="16" y="252" width="648" height="46" fill="#efe8dc"/>
+  <line x1="16" y1="252" x2="400" y2="252" stroke="#6b5a45" stroke-width="2"/>
+  <line x1="440" y1="252" x2="664" y2="252" stroke="#6b5a45" stroke-width="2"/>
+
+  <!-- upstream pool -->
+  <rect x="16" y="172" width="380" height="80" fill="#cfe6f2"/>
+  <line x1="16" y1="172" x2="396" y2="172" stroke="#1d6fa8" stroke-width="2"/>
+  <!-- the weir board -->
+  <rect x="396" y="184" width="9" height="68" fill="#c8a07a" stroke="#333" stroke-width="2"/>
+  <!-- the nappe: water springing clear -->
+  <path d="M396,172 C404,172 412,178 420,190 C432,208 438,224 442,240 L458,240 C454,220 448,198 436,182 C428,172 414,168 396,168 z" fill="#8cc3e6" stroke="#1d6fa8" stroke-width="1.6"/>
+  <!-- tailwater -->
+  <rect x="440" y="240" width="224" height="12" fill="#cfe6f2"/>
+  <line x1="440" y1="240" x2="664" y2="240" stroke="#1d6fa8" stroke-width="2"/>
+  <text x="388" y="208" text-anchor="end" font-size="12.5" font-weight="bold" fill="#222">air under the</text>
+  <text x="388" y="224" text-anchor="end" font-size="12.5" font-weight="bold" fill="#222">falling water</text>
+  <path d="M392,218 C408,222 420,226 430,230" fill="none" stroke="#333" stroke-width="1.2"/>
+
+  <!-- gauge post -->
+  <rect x="246" y="184" width="10" height="68" fill="#c8a07a" stroke="#333" stroke-width="2"/>
+  <rect x="244" y="138" width="14" height="48" fill="#ffffff" stroke="#333" stroke-width="1.6"/>
+  <g stroke="#333" stroke-width="1"><path d="M244,146 H252 M244,154 H256 M244,162 H252 M244,170 H256 M244,178 H252"/></g>
+  <line x1="256" y1="184" x2="396" y2="184" stroke="#333" stroke-width="1.2" stroke-dasharray="4 3"/>
+
+  <!-- head dimension -->
+  <line x1="236" y1="172" x2="236" y2="184" stroke="#333" stroke-width="1.5" marker-start="url(#d3)" marker-end="url(#d3)"/>
+  <text x="228" y="182" text-anchor="end" font-size="12.5" font-weight="bold" fill="#222">the head</text>
+  <text x="228" y="166" text-anchor="end" font-size="12" fill="#222">read it to the nearest ⅛ in</text>
+
+  <!-- 5 ft dimension -->
+  <line x1="251" y1="276" x2="400" y2="276" stroke="#333" stroke-width="1.5" marker-start="url(#d3)" marker-end="url(#d3)"/>
+  <text x="325" y="292" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#222">at least 5 ft upstream, and reachable from the bank</text>
+
+  <!-- 1 ft drop -->
+  <line x1="630" y1="184" x2="630" y2="240" stroke="#333" stroke-width="1.5" marker-start="url(#d3)" marker-end="url(#d3)"/>
+  <line x1="405" y1="184" x2="632" y2="184" stroke="#333" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="620" y="206" text-anchor="end" font-size="12.5" font-weight="bold" fill="#222">at least 1 ft</text>
+  <text x="620" y="222" text-anchor="end" font-size="12.5" font-weight="bold" fill="#222">of drop below</text>
+
+  <text x="140" y="120" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#222">the post's top is level with</text>
+  <text x="140" y="136" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#222">the bottom of the notch</text>
+  <path d="M190,130 C216,138 232,156 244,176" fill="none" stroke="#888" stroke-width="1"/>
+  <text x="398" y="120" font-size="12.5" font-weight="bold" fill="#222">the weir board,</text>
+  <text x="398" y="136" font-size="12.5" font-weight="bold" fill="#222">set level and square</text>
+  <path d="M414,142 C410,156 404,168 400,178" fill="none" stroke="#888" stroke-width="1"/>
+  <g stroke="#1d6fa8" stroke-width="2.5" marker-end="url(#a3)" fill="none"><path d="M60,212 H120"/></g>
+
+  <!-- ============ FRONT VIEWS ============ -->
+  <line x1="16" y1="318" x2="664" y2="318" stroke="#ccc" stroke-width="1"/>
+  <text x="16" y="342" font-size="13.5" font-weight="bold" fill="#2f5e16">Seen from downstream: the two notches</text>
+
+  <!-- rectangular notch -->
+  <path d="M30,370 H92 V414 H182 V370 H244 V470 H30 z" fill="#c8a07a" stroke="#333" stroke-width="2"/>
+  <line x1="92" y1="414" x2="182" y2="414" stroke="#333" stroke-width="2"/>
+  <line x1="92" y1="384" x2="182" y2="384" stroke="#1d6fa8" stroke-width="2"/>
+  <rect x="93" y="384" width="88" height="30" fill="#8cc3e6" opacity="0.6"/>
+  <line x1="92" y1="360" x2="182" y2="360" stroke="#333" stroke-width="1.4" marker-start="url(#d3)" marker-end="url(#d3)"/>
+  <text x="137" y="354" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#222">width</text>
+  <line x1="200" y1="370" x2="200" y2="414" stroke="#333" stroke-width="1.4" marker-start="url(#d3)" marker-end="url(#d3)"/>
+  <line x1="182" y1="370" x2="202" y2="370" stroke="#333" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="208" y="396" font-size="12.5" font-weight="bold" fill="#222">depth</text>
+  <text x="137" y="492" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">RECTANGULAR NOTCH</text>
+  <text x="137" y="510" text-anchor="middle" font-size="12.5" fill="#222">at least 3 times as wide as</text>
+  <text x="137" y="526" text-anchor="middle" font-size="12.5" fill="#222">it is deep; rough under 2½ in</text>
+
+  <!-- V-notch -->
+  <path d="M276,370 H318 L354,406 L390,370 H432 V470 H276 z" fill="#c8a07a" stroke="#333" stroke-width="2"/>
+  <path d="M330,382 L354,406 L378,382 z" fill="#8cc3e6"/>
+  <line x1="330" y1="382" x2="378" y2="382" stroke="#1d6fa8" stroke-width="2"/>
+  <path d="M340,392 A 20,20 0 0 1 368,392" fill="none" stroke="#333" stroke-width="1.2"/>
+  <text x="354" y="432" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#222">90°</text>
+  <text x="354" y="492" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">90° V-NOTCH</text>
+  <text x="354" y="510" text-anchor="middle" font-size="12.5" fill="#222">for small flows; use it from</text>
+  <text x="354" y="526" text-anchor="middle" font-size="12.5" fill="#222">2½ to 15 in of head</text>
+
+  <!-- bevel detail -->
+  <g stroke="#1d6fa8" stroke-width="2.5" marker-end="url(#a3)" fill="none"><path d="M470,392 H506"/></g>
+  <text x="470" y="382" font-size="12" font-weight="bold" fill="#1d6fa8">flow</text>
+  <polygon points="516,398 516,470 572,470 572,428 528,398" fill="#c8a07a" stroke="#333" stroke-width="2"/>
+  <line x1="516" y1="398" x2="528" y2="398" stroke="#c8431a" stroke-width="3.5"/>
+  <line x1="516" y1="388" x2="528" y2="388" stroke="#333" stroke-width="1.4" marker-start="url(#d3)" marker-end="url(#d3)"/>
+  <text x="522" y="378" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#c8431a">⅛ in flat</text>
+  <text x="664" y="414" text-anchor="end" font-size="12.5" font-weight="bold" fill="#222">45° bevel on the</text>
+  <text x="664" y="430" text-anchor="end" font-size="12.5" font-weight="bold" fill="#222">downstream side</text>
+  <path d="M582,420 L552,414" fill="none" stroke="#888" stroke-width="1"/>
+  <text x="568" y="492" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">THE EDGE, CUT THROUGH</text>
+  <text x="568" y="510" text-anchor="middle" font-size="12.5" fill="#222">sharp on the upstream side, so</text>
+  <text x="568" y="526" text-anchor="middle" font-size="12.5" fill="#222">the water springs clear of it</text>
+
+  <text x="16" y="556" font-size="13.5" fill="#222">Keep the pool quiet, with no sand bars or weeds, and check often that the water is not cutting round the weir.</text>
+  <text x="16" y="574" font-size="13.5" fill="#222">Multiply the table's gallons a minute by the notch width in inches.</text>
+</svg>

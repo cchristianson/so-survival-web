@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="520" viewBox="0 0 680 520" font-family="Arial, Helvetica, sans-serif">
+  <title>A small earth dam cut through: the clay core keyed into firm ground by a cutoff trench, a 3 to 1 slope on the water side and 2 to 1 on the dry side, a crest 8 to 12 ft wide with 12 to 20 inches of freeboard, the outlet pipe with its anti-seep collars, riprap on the wet face, grass on the dry face, and the toe where wet spots are watched for</title>
+  <rect width="680" height="520" fill="#ffffff"/>
+  <defs>
+    <marker id="dm2" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+    <marker id="rd2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#c8431a"/></marker>
+    <pattern id="rock" width="12" height="12" patternUnits="userSpaceOnUse">
+      <path d="M0,12 L12,0 M-3,3 L3,-3 M9,15 L15,9" stroke="#9a8f78" stroke-width="1.2"/>
+    </pattern>
+  </defs>
+
+  <text x="340" y="24" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">A small earth dam, cut through</text>
+
+  <!-- watertight ground -->
+  <rect x="16" y="372" width="648" height="48" fill="url(#rock)"/>
+  <rect x="16" y="372" width="648" height="48" fill="none" stroke="#9a8f78" stroke-width="1.5"/>
+  <text x="26" y="402" font-size="12.5" font-weight="bold" fill="#6b5a45">watertight ground: firm clay or rock</text>
+  <rect x="16" y="330" width="648" height="42" fill="#efe8dc"/>
+  <line x1="16" y1="330" x2="664" y2="330" stroke="#6b5a45" stroke-width="2"/>
+
+  <!-- water -->
+  <polygon points="16,250 320,250 80,330 16,330" fill="#cfe6f2"/>
+  <line x1="16" y1="250" x2="320" y2="250" stroke="#1d6fa8" stroke-width="2"/>
+
+  <!-- the bank -->
+  <polygon points="80,330 350,240 400,240 580,330" fill="#e4d7bd" stroke="#6b5a45" stroke-width="2"/>
+  <!-- clay core and cutoff trench -->
+  <polygon points="352,240 392,240 406,330 400,392 346,392 338,330" fill="#b8a98c" stroke="#6b5a45" stroke-width="2"/>
+  <!-- riprap on the wet face -->
+  <g fill="#a9a195" stroke="#6b5a45" stroke-width="1"><circle cx="110" cy="320" r="6"/><circle cx="134" cy="313" r="7"/><circle cx="160" cy="304" r="6"/><circle cx="186" cy="296" r="7"/><circle cx="212" cy="287" r="6"/><circle cx="238" cy="279" r="7"/><circle cx="264" cy="270" r="6"/><circle cx="290" cy="262" r="7"/><circle cx="314" cy="254" r="6"/></g>
+  <!-- grass on the dry face -->
+  <g stroke="#2f5e16" stroke-width="1.6" fill="none">
+    <path d="M430,262 l-3,-7 M434,263 l2,-8 M470,282 l-3,-7 M474,283 l2,-8 M510,302 l-3,-7 M514,303 l2,-8 M548,321 l-3,-7 M552,322 l2,-8"/>
+  </g>
+
+  <!-- outlet pipe with anti-seep collars -->
+  <path d="M170,300 L560,320" stroke="#555" stroke-width="7"/>
+  <path d="M170,300 V254" stroke="#555" stroke-width="7"/>
+  <g stroke="#555" stroke-width="4"><path d="M420,294 V324 M470,296 V326 M520,299 V329"/></g>
+  <circle cx="170" cy="252" r="7" fill="#fff" stroke="#555" stroke-width="3"/>
+
+  <!-- crest dimension -->
+  <line x1="350" y1="228" x2="400" y2="228" stroke="#333" stroke-width="1.4" marker-start="url(#dm2)" marker-end="url(#dm2)"/>
+  <text x="375" y="220" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#222">8 to 12 ft</text>
+
+  <!-- freeboard -->
+  <line x1="262" y1="240" x2="352" y2="240" stroke="#333" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="268" y1="240" x2="268" y2="250" stroke="#333" stroke-width="1.4" marker-start="url(#dm2)" marker-end="url(#dm2)"/>
+  <text x="262" y="234" text-anchor="end" font-size="12.5" font-weight="bold" fill="#222">freeboard 12 to 20 in</text>
+
+  <!-- slope triangles -->
+  <g stroke="#333" stroke-width="1.4" fill="none"><path d="M120,322 H186 V300"/></g>
+  <text x="152" y="338" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#222">3 across</text>
+  <text x="192" y="316" font-size="12.5" font-weight="bold" fill="#222">1 up</text>
+  <g stroke="#333" stroke-width="1.4" fill="none"><path d="M496,296 H542 V320"/></g>
+  <text x="520" y="290" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#222">2 across</text>
+  <text x="548" y="312" font-size="12.5" font-weight="bold" fill="#222">1 up</text>
+
+  <!-- labels with leaders -->
+  <g stroke="#888" stroke-width="1" fill="none">
+    <path d="M200,290 L150,120"/>
+    <path d="M372,300 L340,150"/>
+    <path d="M470,300 L470,160"/>
+    <path d="M170,270 L96,186"/>
+    <path d="M576,330 L600,372"/>
+  </g>
+  <g font-size="12.5" fill="#222">
+    <text x="16" y="60" font-weight="bold">RIPRAP on the wet face</text>
+    <text x="16" y="78">rock against the waves; the dry</text>
+    <text x="16" y="96">face is kept grassed</text>
+
+    <text x="16" y="176" font-weight="bold">PRINCIPAL SPILLWAY</text>
+    <text x="16" y="194">a pipe or notch carries</text>
+    <text x="16" y="212">the normal flow</text>
+
+    <text x="250" y="60" font-weight="bold">CLAY CORE and CUTOFF TRENCH</text>
+    <text x="250" y="78">a trench of rammed clay down into firm</text>
+    <text x="250" y="96">ground, with the watertight middle rising</text>
+    <text x="250" y="114">from it. Leave it out and the water finds</text>
+    <text x="250" y="132">a path underneath.</text>
+
+    <text x="440" y="178" font-weight="bold">ANTI-SEEP COLLARS</text>
+    <text x="440" y="196">water creeps along the outside</text>
+    <text x="440" y="214">of a pipe: a collar stops it. Bed</text>
+    <text x="440" y="232">the pipe in rammed clay.</text>
+  </g>
+
+  <text x="664" y="348" text-anchor="end" font-size="13" font-weight="bold" fill="#c8431a">WATCH THE TOE: new wet ground,</text>
+  <text x="664" y="366" text-anchor="end" font-size="13" font-weight="bold" fill="#c8431a">muddy seeps, or a boil of sand</text>
+  <path d="M612,340 C600,338 592,336 586,334" fill="none" stroke="#c8431a" stroke-width="2.5" marker-end="url(#rd2)"/>
+
+  <line x1="16" y1="448" x2="664" y2="448" stroke="#ccc" stroke-width="1"/>
+  <g font-size="13.5" fill="#222">
+    <text x="16" y="470">Strip the topsoil, roots and brush first, then build in damp layers about 8 in thick, each rammed hard.</text>
+    <text x="16" y="490">Build a tenth higher than planned, for settling. Keep trees and burrowing animals off the bank.</text>
+  </g>
+  <text x="16" y="512" font-size="13.5" font-weight="bold" fill="#c8431a">The emergency spillway goes in undisturbed ground round one end — never over the fill.</text>
+</svg>

@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="500" viewBox="0 0 680 500" font-family="Arial, Helvetica, sans-serif">
+  <title>A town-sized slow sand filter cut through: a watertight box 2.5 to 3 m tall holding 1 to 1.5 m of raw water over 0.8 to 0.9 m of fine sand, over 0.3 to 0.5 m of graded gravel and perforated drains, with the living skin on top of the sand and an outlet weir just above it</title>
+  <rect width="680" height="500" fill="#ffffff"/>
+  <defs>
+    <marker id="dw" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+    <marker id="aq" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#1d6fa8"/></marker>
+  </defs>
+
+  <text x="340" y="24" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">A slow sand filter for a whole town, cut through</text>
+
+  <!-- the box -->
+  <rect x="130" y="110" width="300" height="272" fill="#ffffff" stroke="#555" stroke-width="7"/>
+  <!-- gravel and drains -->
+  <rect x="134" y="340" width="292" height="38" fill="#cfc6b4"/>
+  <g fill="#9a8f78"><circle cx="160" cy="352" r="4"/><circle cx="186" cy="364" r="5"/><circle cx="214" cy="350" r="4.5"/><circle cx="244" cy="366" r="4"/><circle cx="272" cy="352" r="5"/><circle cx="300" cy="364" r="4"/><circle cx="330" cy="350" r="4.5"/><circle cx="360" cy="364" r="4"/><circle cx="392" cy="354" r="5"/></g>
+  <g fill="#ffffff" stroke="#555" stroke-width="1.6"><rect x="150" y="370" width="260" height="8" rx="4"/></g>
+  <g fill="#555"><circle cx="172" cy="374" r="1.6"/><circle cx="208" cy="374" r="1.6"/><circle cx="244" cy="374" r="1.6"/><circle cx="280" cy="374" r="1.6"/><circle cx="316" cy="374" r="1.6"/><circle cx="352" cy="374" r="1.6"/><circle cx="388" cy="374" r="1.6"/></g>
+  <!-- sand -->
+  <rect x="134" y="256" width="292" height="84" fill="#ead9b0"/>
+  <g fill="#cbb784"><circle cx="150" cy="276" r="1.5"/><circle cx="184" cy="300" r="1.5"/><circle cx="220" cy="268" r="1.5"/><circle cx="250" cy="314" r="1.5"/><circle cx="286" cy="284" r="1.5"/><circle cx="320" cy="322" r="1.5"/><circle cx="352" cy="272" r="1.5"/><circle cx="392" cy="306" r="1.5"/><circle cx="410" cy="282" r="1.5"/><circle cx="170" cy="330" r="1.5"/><circle cx="300" cy="258" r="1.5"/></g>
+  <!-- the living skin -->
+  <rect x="134" y="250" width="292" height="7" fill="#5d7a3a"/>
+  <!-- raw water -->
+  <rect x="134" y="132" width="292" height="118" fill="#cfe6f2"/>
+  <line x1="134" y1="132" x2="426" y2="132" stroke="#1d6fa8" stroke-width="2"/>
+
+  <!-- inlet -->
+  <path d="M44,106 H118 V128" fill="none" stroke="#1d6fa8" stroke-width="5"/>
+  <text x="44" y="96" font-size="12.5" font-weight="bold" fill="#1d6fa8">raw water in</text>
+  <rect x="104" y="128" width="28" height="6" fill="#8a8a85"/>
+
+  <!-- flow arrows down through the bed -->
+  <g stroke="#1d6fa8" stroke-width="2.5" fill="none" marker-end="url(#aq)" opacity="0.9">
+    <path d="M368,150 V236"/><path d="M368,266 V330"/>
+  </g>
+
+  <!-- outlet weir chamber -->
+  <rect x="430" y="110" width="52" height="272" fill="#ffffff" stroke="#555" stroke-width="7"/>
+  <rect x="434" y="246" width="44" height="132" fill="#cfe6f2"/>
+  <path d="M426,374 H434" stroke="#1d6fa8" stroke-width="6"/>
+  <rect x="426" y="240" width="12" height="7" fill="#555"/>
+  <path d="M478,330 H544" fill="none" stroke="#1d6fa8" stroke-width="5"/>
+  <text x="550" y="326" font-size="12.5" font-weight="bold" fill="#1d6fa8">out, and only</text>
+  <text x="550" y="344" font-size="12.5" font-weight="bold" fill="#1d6fa8">then chlorine</text>
+
+  <!-- depths, written in the layers -->
+  <g text-anchor="middle" font-weight="bold" fill="#222">
+    <text x="250" y="196" font-size="14">1 to 1.5 m of raw water</text>
+    <text x="250" y="212" font-size="12">(3 to 5 ft)</text>
+    <text x="250" y="300" font-size="14">0.8 to 0.9 m of fine sand</text>
+    <text x="250" y="316" font-size="12">(about 3 ft)</text>
+    <text x="280" y="358" font-size="12">0.3 to 0.5 m of gravel over perforated drains</text>
+  </g>
+
+  <!-- overall height -->
+  <line x1="104" y1="110" x2="104" y2="382" stroke="#333" stroke-width="1.5" marker-start="url(#dw)" marker-end="url(#dw)"/>
+  <g font-size="13" font-weight="bold" fill="#222" text-anchor="end">
+    <text x="96" y="228">2.5 to 3 m</text>
+    <text x="96" y="246">(8 to 10 ft)</text>
+    <text x="96" y="264">tall, and</text>
+    <text x="96" y="282">watertight</text>
+  </g>
+
+  <!-- right-hand labels -->
+  <line x1="300" y1="252" x2="546" y2="150" stroke="#888" stroke-width="1"/>
+  <line x1="438" y1="243" x2="546" y2="206" stroke="#888" stroke-width="1"/>
+  <g font-size="12.5" fill="#222">
+    <text x="552" y="126" font-weight="bold" fill="#2f5e16">the living skin</text>
+    <text x="552" y="144">a slimy layer that</text>
+    <text x="552" y="162">grows on the sand</text>
+    <text x="552" y="180">and eats the germs</text>
+    <text x="552" y="208" font-weight="bold">outlet weir</text>
+    <text x="552" y="226">just above the sand,</text>
+    <text x="552" y="244">so the sand is never</text>
+    <text x="552" y="262">left dry</text>
+  </g>
+
+  <text x="340" y="412" text-anchor="middle" font-size="13" fill="#222">Water trickles down at 0.1 to 0.3 m (4 to 12 in) an hour. Grains 0.15 to 0.30 mm, no clay or soil.</text>
+
+  <line x1="16" y1="430" x2="664" y2="430" stroke="#ccc" stroke-width="1"/>
+  <g font-size="13.5" fill="#222">
+    <text x="16" y="452"><tspan font-weight="bold">How big:</tspan> 0.02 to 0.08 m² (¼ to 1 sq ft) of sand per person — 20 to 80 m² for a thousand people.</text>
+    <text x="16" y="472"><tspan font-weight="bold">Build two or more beds</tspan> and run them at 0.1 to 0.2 m an hour, so one can be cleaned while the other runs.</text>
+    <text x="16" y="492" font-weight="bold" fill="#c8431a">Run it steadily, day and night. Never chlorinate before the filter: that kills the living layer.</text>
+  </g>
+</svg>

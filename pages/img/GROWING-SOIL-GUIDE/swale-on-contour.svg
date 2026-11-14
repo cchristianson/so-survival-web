@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="520" viewBox="0 0 680 520" font-family="Arial, Helvetica, sans-serif">
+  <title>A swale on the contour, in two views. Cut through the slope: a level channel with its soil heaped downhill as a bank, water standing in it and soaking four feet deep where bare gullied ground took only six inches. Seen from above: the swale following one contour, with cross ties along it and a level grassed spillway at one end onto ground that can take the overflow</title>
+  <rect width="680" height="520" fill="#ffffff"/>
+  <defs>
+    <marker id="aw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#1d6fa8"/></marker>
+  </defs>
+
+  <text x="340" y="24" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">A swale: a ditch dug exactly level across a slope, so the rain stops and soaks in</text>
+
+  <!-- ================= SECTION ================= -->
+  <text x="16" y="56" font-size="13.5" font-weight="bold" fill="#2f5e16">Cut through the slope</text>
+
+  <path d="M24,146 L130,196 L142,214 L196,214 L206,196 L222,178 L248,224 L336,276 L336,384 L24,384 z" fill="#e4d7bd" stroke="#6b5a45" stroke-width="2.5"/>
+  <rect x="142" y="200" width="54" height="14" fill="#cfe6f2"/>
+  <line x1="142" y1="200" x2="196" y2="200" stroke="#1d6fa8" stroke-width="2"/>
+
+  <g stroke="#1d6fa8" stroke-width="2.5" fill="none" marker-end="url(#aw)">
+    <path d="M154,220 V266"/><path d="M170,220 V290"/><path d="M186,220 V266"/>
+  </g>
+  <rect x="136" y="218" width="76" height="82" fill="none" stroke="#1d6fa8" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <text x="130" y="262" text-anchor="end" font-size="13" font-weight="bold" fill="#1d6fa8">the rain soaked</text>
+  <text x="130" y="278" text-anchor="end" font-size="13" font-weight="bold" fill="#1d6fa8">4 feet deep</text>
+
+  <rect x="60" y="170" width="48" height="10" fill="none" stroke="#9a8f78" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <line x1="84" y1="150" x2="84" y2="168" stroke="#9a8f78" stroke-width="1"/>
+  <text x="28" y="104" font-size="12.5" fill="#222">On bare, gullied ground</text>
+  <text x="28" y="120" font-size="12.5" fill="#222">the rain went in only</text>
+  <text x="28" y="136" font-size="12.5" font-weight="bold" fill="#222">six inches.</text>
+
+  <text x="340" y="112" text-anchor="end" font-size="12.5" font-weight="bold" fill="#222">the soil thrown</text>
+  <text x="340" y="128" text-anchor="end" font-size="12.5" font-weight="bold" fill="#222">downhill, as a bank</text>
+  <path d="M276,134 L226,174" fill="none" stroke="#888" stroke-width="1"/>
+
+  <text x="28" y="226" font-size="12.5" font-weight="bold" fill="#222">the channel, dug level</text>
+  <path d="M132,222 L148,212" fill="none" stroke="#888" stroke-width="1"/>
+
+  <text x="340" y="304" text-anchor="end" font-size="12.5" fill="#222">plant the thirstiest</text>
+  <text x="340" y="320" text-anchor="end" font-size="12.5" fill="#222">crops just above or</text>
+  <text x="340" y="336" text-anchor="end" font-size="12.5" fill="#222">below the bank</text>
+  <path d="M262,298 L272,244" fill="none" stroke="#888" stroke-width="1"/>
+  <g stroke="#2f5e16" stroke-width="2" fill="none">
+    <path d="M272,238 l-5,-10 M272,238 l6,-9 M272,238 v-12"/>
+    <path d="M136,196 l-5,-10 M136,196 l6,-9 M136,196 v-12"/>
+  </g>
+  <text x="24" y="402" font-size="12.5" font-weight="bold" fill="#222">uphill ←</text>
+  <text x="336" y="402" text-anchor="end" font-size="12.5" font-weight="bold" fill="#222">→ downhill</text>
+
+  <!-- ================= PLAN ================= -->
+  <line x1="352" y1="44" x2="352" y2="404" stroke="#ccc" stroke-width="1"/>
+  <text x="372" y="56" font-size="13.5" font-weight="bold" fill="#2f5e16">Seen from above</text>
+
+  <rect x="372" y="72" width="292" height="296" fill="#efe8dc" stroke="#d8cfbc" stroke-width="1"/>
+  <g fill="none" stroke="#c0b49a" stroke-width="1.4">
+    <path d="M372,116 C440,102 520,104 600,122 C628,128 648,134 664,138"/>
+    <path d="M372,276 C440,262 520,264 600,282 C628,288 648,294 664,298"/>
+    <path d="M372,326 C440,312 520,314 600,332 C628,338 648,344 664,348"/>
+  </g>
+
+  <path d="M388,224 C452,210 524,212 596,230" fill="none" stroke="#1d6fa8" stroke-width="9"/>
+  <path d="M388,234 C452,220 524,222 596,240" fill="none" stroke="#7a5a35" stroke-width="6"/>
+  <g stroke="#6b5a45" stroke-width="3" fill="none">
+    <path d="M428,212 v22"/><path d="M470,208 v24"/><path d="M512,210 v24"/><path d="M554,216 v24"/>
+  </g>
+  <text x="390" y="196" font-size="12.5" font-weight="bold" fill="#1d6fa8">the swale, on one contour</text>
+  <text x="400" y="272" font-size="12.5" font-weight="bold" fill="#6b5a45">cross ties, so the water</text>
+  <text x="400" y="288" font-size="12.5" font-weight="bold" fill="#6b5a45">can't run along it and break out</text>
+  <path d="M452,262 L468,238" fill="none" stroke="#888" stroke-width="1"/>
+
+  <path d="M596,230 L626,238" fill="none" stroke="#2f5e16" stroke-width="9"/>
+  <path d="M626,238 C638,254 642,276 642,300" fill="none" stroke="#1d6fa8" stroke-width="3.5" marker-end="url(#aw)"/>
+  <g stroke="#2f5e16" stroke-width="1.6" fill="none">
+    <path d="M608,244 v-6 M616,246 v-6 M624,248 v-6 M632,246 v-6"/>
+  </g>
+  <text x="660" y="156" text-anchor="end" font-size="12.5" font-weight="bold" fill="#2f5e16">a level, grassed or</text>
+  <text x="660" y="172" text-anchor="end" font-size="12.5" font-weight="bold" fill="#2f5e16">rocked spillway</text>
+  <path d="M622,178 L616,230" fill="none" stroke="#888" stroke-width="1"/>
+  <text x="660" y="326" text-anchor="end" font-size="12.5" fill="#222">onto ground that</text>
+  <text x="660" y="342" text-anchor="end" font-size="12.5" fill="#222">can take the overflow</text>
+  <text x="380" y="100" font-size="12.5" font-weight="bold" fill="#8a7f68">contour lines; uphill is up the page</text>
+
+  <line x1="16" y1="420" x2="664" y2="420" stroke="#ccc" stroke-width="1"/>
+  <g font-size="13.5" fill="#222">
+    <text x="16" y="444">Level it with an A-frame or a water level. A swale that is not level runs to its low end and cuts a gully.</text>
+    <text x="16" y="466">Contour banks suit slopes of 1 to 25 per cent, and are <tspan font-weight="bold">not for clay</tspan>.</text>
+  </g>
+  <text x="16" y="492" font-size="13.5" font-weight="bold" fill="#c8431a">With wet winters: no swales on steep or slumping slopes, or above a house, road, well or septic</text>
+  <text x="16" y="510" font-size="13.5" font-weight="bold" fill="#c8431a">field. Use mulch, grass strips and trees there instead.</text>
+</svg>

@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="470" viewBox="0 0 660 470" font-family="Arial, Helvetica, sans-serif">
+  <title>A pressure canner used as a sterilizer: tools on a raised rack in steam, above the water</title>
+  <rect width="660" height="470" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+    <pattern id="cloth" width="8" height="8" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" fill="#f5f0e4"/><path d="M0,8 L8,0" stroke="#d8cdb4" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <text x="20" y="30" font-size="17" font-weight="bold" fill="#222">A pressure canner as a sterilizer</text>
+
+  <!-- canner body (cut open) -->
+  <path d="M60,130 V380 C60,394 70,404 84,404 H296 C310,404 320,394 320,380 V130" fill="#f7f7f7" stroke="#555" stroke-width="3"/>
+  <!-- lid -->
+  <path d="M50,130 H330 C330,108 296,92 190,92 C84,92 50,108 50,130 Z" fill="#d9d9d9" stroke="#555" stroke-width="2.5"/>
+  <rect x="36" y="124" width="22" height="12" rx="3" fill="#444"/><rect x="322" y="124" width="22" height="12" rx="3" fill="#444"/>
+  <!-- vent pipe and weight -->
+  <rect x="226" y="72" width="8" height="22" fill="#777"/>
+  <path d="M214,74 H246 L242,58 H218 Z" fill="#555"/>
+  <text x="230" y="70" text-anchor="middle" font-size="9" font-weight="bold" fill="#fff">15</text>
+  <!-- water -->
+  <path d="M62,352 H318 V380 C318,392 310,402 296,402 H84 C70,402 62,392 62,380 Z" fill="#cfe2f3"/>
+  <path d="M62,352 H318" stroke="#4a86c5" stroke-width="2"/>
+  <!-- raised rack -->
+  <rect x="78" y="292" width="224" height="7" fill="#888"/>
+  <g fill="#888"><rect x="90" y="299" width="6" height="101"/><rect x="284" y="299" width="6" height="101"/><rect x="187" y="299" width="6" height="101"/></g>
+  <!-- wrapped packs on the rack -->
+  <rect x="90" y="246" width="90" height="46" rx="8" fill="url(#cloth)" stroke="#9e8f6b" stroke-width="1.5"/>
+  <path d="M135,246 V292 M90,269 H180" stroke="#b5a47b" stroke-width="1.2"/>
+  <rect x="196" y="252" width="94" height="40" rx="8" fill="url(#cloth)" stroke="#9e8f6b" stroke-width="1.5"/>
+  <path d="M243,252 V292 M196,272 H290" stroke="#b5a47b" stroke-width="1.2"/>
+  <!-- steam -->
+  <g fill="none" stroke="#9bb8d6" stroke-width="2" stroke-linecap="round">
+    <path d="M110,340 q-6,-8 0,-16 q6,-8 0,-16"/><path d="M190,340 q-6,-8 0,-16 q6,-8 0,-16"/><path d="M270,340 q-6,-8 0,-16 q6,-8 0,-16"/>
+    <path d="M120,236 q-6,-8 0,-16 q6,-8 0,-16"/><path d="M200,236 q-6,-8 0,-16 q6,-8 0,-16"/><path d="M280,236 q-6,-8 0,-16 q6,-8 0,-16"/>
+  </g>
+  <!-- heat -->
+  <g fill="#e8833a"><path d="M110,430 q8,-14 0,-20 q16,8 8,20 Z"/><path d="M180,430 q8,-14 0,-20 q16,8 8,20 Z"/><path d="M250,430 q8,-14 0,-20 q16,8 8,20 Z"/></g>
+  <line x1="70" y1="432" x2="310" y2="432" stroke="#555" stroke-width="3"/>
+
+  <!-- labels -->
+  <g font-size="12.5" fill="#222">
+    <line x1="250" y1="62" x2="292" y2="50" stroke="#333" stroke-width="1"/>
+    <text x="296" y="48">15-pound weight</text>
+    <line x1="182" y1="262" x2="352" y2="214" stroke="#333" stroke-width="1"/>
+    <text x="356" y="210">Tools and dressings, wrapped:</text>
+    <text x="356" y="226">only steam touches them</text>
+    <line x1="302" y1="296" x2="352" y2="290" stroke="#333" stroke-width="1"/>
+    <text x="356" y="294">A raised rack</text>
+    <line x1="318" y1="372" x2="352" y2="372" stroke="#333" stroke-width="1"/>
+    <text x="356" y="368">Water below the rack, never</text>
+    <text x="356" y="384">over the packs</text>
+  </g>
+
+  <!-- steps -->
+  <g font-size="14" fill="#222">
+    <text x="356" y="84" font-size="15" font-weight="bold">Steps</text>
+    <text x="356" y="106"><tspan font-weight="bold">1.</tspan> Scrub tools with soap and water</text>
+    <text x="356" y="126"><tspan font-weight="bold">2.</tspan> Wrap them in cloth or paper</text>
+    <text x="356" y="146"><tspan font-weight="bold">3.</tspan> Heat; let steam vent 10 minutes</text>
+    <text x="356" y="166"><tspan font-weight="bold">4.</tspan> Weight on: hold 60 minutes</text>
+    <text x="356" y="186"><tspan font-weight="bold">5.</tspan> Cool; keep the packs wrapped</text>
+  </g>
+  <text x="356" y="430" font-size="12.5" fill="#555">Boiling alone cleans tools;</text>
+  <text x="356" y="446" font-size="12.5" fill="#555">it does not sterilize them.</text>
+</svg>
