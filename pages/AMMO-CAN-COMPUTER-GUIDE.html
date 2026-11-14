@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ARK Vault: the Ammo-Can Library Computer</title><style>:root{--bg:#131915;--card:#1B2420;--ink:#E8EDE7;--muted:#A5B0A7;--accent:#8CC7A2;--accent2:#E0B65A;--line:#34413A;--code:#27322B}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--bg:#F5F2EA;--card:#FFFDF8;--ink:#1D2721;--muted:#566058;--accent:#315B43;--accent2:#7A5F1E;--line:#DCD6C8;--code:#E9E4D7}}:root[data-theme=light]{--bg:#F5F2EA;--card:#FFFDF8;--ink:#1D2721;--muted:#566058;--accent:#315B43;--accent2:#7A5F1E;--line:#DCD6C8;--code:#E9E4D7}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,Segoe UI,Roboto,Arial,sans-serif}.wrap{max-width:900px;margin:0 auto;padding:28px 20px 80px}h1{font-size:28px;}h2{font-size:22px;border-bottom:2px solid var(--line);padding-bottom:6px;margin-top:30px}h3{font-size:17px;color:var(--accent)}h4{font-size:15px;color:var(--accent2)}a{color:var(--accent)}code{background:var(--code);padding:2px 6px;border-radius:6px;font-family:Consolas,monospace;font-size:14px}pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow-x:auto}pre code{background:none;padding:0}table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}th{background:rgba(127,127,127,.12)}blockquote{border-left:4px solid var(--accent);background:rgba(140,199,162,.08);padding:10px 16px;margin:16px 0;border-radius:0 10px 10px 0}@media(max-width:600px){.wrap{padding:16px 14px 80px}.topnav{margin:-16px -14px 6px;padding:8px 14px 7px}ul,ol{padding-left:20px}blockquote{padding:8px 12px 8px 12px;border-left-width:3px}blockquote ul,blockquote ol{padding-left:18px}h1{font-size:24px;line-height:1.25}h2{font-size:20px;margin-top:26px}h3{font-size:16.5px}table{font-size:14px}th,td{padding:7px 8px}.toc{padding:8px 12px}.toc ol{padding-left:20px}.totop{padding:6px 11px;font-size:13px}li{margin:3px 0}}hr{border:none;border-top:1px solid var(--line);margin:26px 0}ul,ol{padding-left:26px}table{display:block;overflow-x:auto;max-width:100%}code,a{overflow-wrap:anywhere}img{max-width:100%}.wrap p>img{display:block;margin:14px auto 6px;max-width:min(100%,640px);height:auto;border-radius:10px;background:#fff;border:1px solid var(--line)}.wrap p>img+em{display:block;text-align:center;font-size:14px;color:var(--muted);margin-bottom:6px}a.lib{text-decoration-style:dotted}a.lib::before{content:"📖 ";text-decoration:none}.deeper{font-size:15px;opacity:.95}a.wiki::before{content:"📷 "}a.lib.pic::before{content:"🖼️ "}a.lib::before,a.wiki::before{display:inline-block;margin-right:3px}html{scroll-behavior:smooth}h2{scroll-margin-top:12px}.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 16px;margin:18px 0 8px}.toc summary{cursor:pointer;font-weight:600;color:var(--accent);font-size:17px}.toc ol{margin:8px 0 4px;padding-left:26px;columns:2 260px;column-gap:28px}.toc li{margin:4px 0;break-inside:avoid}.toc a{text-decoration:none}.toc a:hover{text-decoration:underline}.totop{position:fixed;right:14px;bottom:max(14px,env(safe-area-inset-bottom));background:var(--card);color:var(--accent);border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:14px;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:5}@media print{.totop{display:none}.toc details{display:block}}.topnav{font-size:14.5px;margin:-28px -20px 4px;padding:10px 20px 8px;color:var(--muted);position:sticky;top:0;z-index:4;background:var(--bg);border-bottom:1px solid var(--line)}h1,h2,h3,h4,[id]{scroll-margin-top:72px}.guidenav{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:36px 0 0;border-top:1px solid var(--line);padding-top:16px}.guidenav a{display:block;height:100%;box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;text-decoration:none;font-weight:600;line-height:1.3;font-size:15px}.guidenav small{display:block;font-weight:400;color:var(--muted);font-size:13px;margin-bottom:2px}.guidenav .up{text-align:center}.guidenav .next{text-align:right}@media(max-width:560px){.guidenav{grid-template-columns:1fr 1fr}.guidenav .up{grid-column:1/-1;order:3}}.topnav a{text-decoration:none;white-space:nowrap}h1 .h1e{-webkit-text-fill-color:initial;color:var(--ink);background:none}.azbar{display:flex;flex-wrap:wrap;gap:4px;background:var(--bg);padding:8px 0;margin:10px 0;border-bottom:1px solid var(--line)}.azbar a{display:inline-block;min-width:30px;text-align:center;padding:4px 6px;border:1px solid var(--line);border-radius:8px;background:var(--card);text-decoration:none;font-weight:600}</style><style>:root{color-scheme:dark}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){color-scheme:light}}:root[data-theme=light]{color-scheme:light}.themebtn{font:inherit;font-size:14px;line-height:1.3;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:3px 11px;cursor:pointer;white-space:nowrap;text-decoration:none}.themefloat{position:absolute;top:10px;right:12px;z-index:9}@media print{.themebtn{display:none}}</style><script>/* so-theme: light or dark screen */(function(){var K="so-theme",d=document.documentElement,L={auto:"Display: auto",dark:"Display: dark",light:"Display: light"},N={auto:"dark",dark:"light",light:"auto"},cur="dark";try{cur=localStorage.getItem(K)||"dark"}catch(e){}function a(){if(cur==="dark"||cur==="light")d.setAttribute("data-theme",cur);else d.removeAttribute("data-theme");var b=document.querySelectorAll(".themebtn");for(var i=0;i<b.length;i++){b[i].textContent=L[cur]||L.auto;b[i].title="Screen: "+cur+" - tap to change (Auto follows this device)"}}a();window.soTheme=function(){cur=N[cur]||"dark";try{localStorage.setItem(K,cur)}catch(e){}a()};function btn(){var b=document.createElement("button");b.type="button";b.className="themebtn";return b}document.addEventListener("DOMContentLoaded",function(){if(!document.querySelector(".themebtn")){var n=document.querySelector(".topnav"),b=btn();if(n){n.appendChild(document.createTextNode(" \u00B7 "));n.appendChild(b)}else{b.className+=" themefloat";document.body.appendChild(b)}}var all=document.querySelectorAll(".themebtn");for(var i=0;i<all.length;i++)all[i].onclick=window.soTheme;a()})})();</script><style>.backbtn{font-weight:700;text-decoration:none;white-space:nowrap}@media print{.backbtn{display:none}}@media(max-width:600px){.topnav{font-size:14px;line-height:1.8}.topnav a{white-space:nowrap}.topnav .themebtn{font-size:13px;padding:2px 9px}}</style><script>/* so-back: a Back button on every page after the first */(function(){function add(){var n=document.querySelector(".topnav");if(!n||n.querySelector(".backbtn"))return;var f=n.querySelector("a"),a=document.createElement("a");a.className="backbtn";a.href=f?f.href:"#";a.textContent="\u2190 Back";a.title="Back to the page you came from";a.onclick=function(e){if(history.length>1&&document.referrer){e.preventDefault();history.back()}};n.insertBefore(document.createTextNode(" \u00B7 "),n.firstChild);n.insertBefore(a,n.firstChild)}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",add);else add();document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a[href^=\"#\"]"):null;if(!a||e.defaultPrevented)return;var id=decodeURIComponent(a.getAttribute("href").slice(1)),t=id?document.getElementById(id):null;if(!t)return;e.preventDefault();t.scrollIntoView();try{history.replaceState(history.state,"","#"+id)}catch(x){}});if(window.matchMedia&&matchMedia("(display-mode: standalone)").matches||navigator.standalone)document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a[href]"):null;if(a&&!a.target&&/\.pdf(?![a-z0-9])/i.test(a.getAttribute("href")))a.target="_blank"},true)})();</script>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ARK Vault: the Ammo-Can Library Computer</title><style>:root{--bg:#131915;--card:#1B2420;--ink:#E8EDE7;--muted:#A5B0A7;--accent:#8CC7A2;--accent2:#E0B65A;--line:#34413A;--code:#27322B}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--bg:#F5F2EA;--card:#FFFDF8;--ink:#1D2721;--muted:#566058;--accent:#315B43;--accent2:#7A5F1E;--line:#DCD6C8;--code:#E9E4D7}}:root[data-theme=light]{--bg:#F5F2EA;--card:#FFFDF8;--ink:#1D2721;--muted:#566058;--accent:#315B43;--accent2:#7A5F1E;--line:#DCD6C8;--code:#E9E4D7}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,Segoe UI,Roboto,Arial,sans-serif}.wrap{max-width:900px;margin:0 auto;padding:28px 20px 80px}h1{font-size:28px;}h2{font-size:22px;border-bottom:2px solid var(--line);padding-bottom:6px;margin-top:30px}h3{font-size:17px;color:var(--accent)}h4{font-size:15px;color:var(--accent2)}a{color:var(--accent)}code{background:var(--code);padding:2px 6px;border-radius:6px;font-family:Consolas,monospace;font-size:14px}pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow-x:auto}pre code{background:none;padding:0}table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}th{background:rgba(127,127,127,.12)}blockquote{border-left:4px solid var(--accent);background:rgba(140,199,162,.08);padding:10px 16px;margin:16px 0;border-radius:0 10px 10px 0}@media(max-width:600px){.wrap{padding:16px 14px 80px}.topnav{margin:-16px -14px 6px;padding:8px 14px 7px}ul,ol{padding-left:20px}blockquote{padding:8px 12px 8px 12px;border-left-width:3px}blockquote ul,blockquote ol{padding-left:18px}h1{font-size:24px;line-height:1.25}h2{font-size:20px;margin-top:26px}h3{font-size:16.5px}table{font-size:14px}th,td{padding:7px 8px}.toc{padding:8px 12px}.toc ol{padding-left:20px}.totop{padding:6px 11px;font-size:13px}li{margin:3px 0}}hr{border:none;border-top:1px solid var(--line);margin:26px 0}ul,ol{padding-left:26px}table{display:block;overflow-x:auto;max-width:100%}code,a{overflow-wrap:anywhere}img{max-width:100%}.wrap p>img{display:block;margin:14px auto 6px;max-width:min(100%,640px);height:auto;border-radius:10px;background:#fff;border:1px solid var(--line)}.wrap p>img+em{display:block;text-align:center;font-size:14px;color:var(--muted);margin-bottom:6px}a.lib{text-decoration-style:dotted}a.lib::before{content:"📖 ";text-decoration:none}.deeper{font-size:15px;opacity:.95}a.wiki::before{content:"📷 "}a.lib.pic::before{content:"🖼️ "}a.lib::before,a.wiki::before{display:inline-block;margin-right:3px}html{scroll-behavior:smooth}h2{scroll-margin-top:12px}.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 16px;margin:18px 0 8px}.toc summary{cursor:pointer;font-weight:600;color:var(--accent);font-size:17px}.toc ol{margin:8px 0 4px;padding-left:26px;columns:2 260px;column-gap:28px}.toc li{margin:4px 0;break-inside:avoid}.toc a{text-decoration:none}.toc a:hover{text-decoration:underline}.totop{position:fixed;right:14px;bottom:max(14px,env(safe-area-inset-bottom));background:var(--card);color:var(--accent);border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:14px;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:5}@media print{.totop{display:none}.toc details{display:block}}.topnav{font-size:14.5px;margin:-28px -20px 4px;padding:10px 20px 8px;color:var(--muted);position:sticky;top:0;z-index:4;background:var(--bg);border-bottom:1px solid var(--line)}h1,h2,h3,h4,[id]{scroll-margin-top:72px}.guidenav{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:36px 0 0;border-top:1px solid var(--line);padding-top:16px}.guidenav a{display:block;height:100%;box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;text-decoration:none;font-weight:600;line-height:1.3;font-size:15px}.guidenav small{display:block;font-weight:400;color:var(--muted);font-size:13px;margin-bottom:2px}.guidenav .up{text-align:center}.guidenav .next{text-align:right}@media(max-width:560px){.guidenav{grid-template-columns:1fr 1fr}.guidenav .up{grid-column:1/-1;order:3}}.topnav a{text-decoration:none;white-space:nowrap}h1 .h1e{-webkit-text-fill-color:initial;color:var(--ink);background:none}.azbar{display:flex;flex-wrap:wrap;gap:4px;background:var(--bg);padding:8px 0;margin:10px 0;border-bottom:1px solid var(--line)}.azbar a{display:inline-block;min-width:30px;text-align:center;padding:4px 6px;border:1px solid var(--line);border-radius:8px;background:var(--card);text-decoration:none;font-weight:600}</style><style>:root{color-scheme:dark}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){color-scheme:light}}:root[data-theme=light]{color-scheme:light}.themebtn{font:inherit;font-size:14px;line-height:1.3;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:3px 11px;cursor:pointer;white-space:nowrap;text-decoration:none}.themefloat{position:absolute;top:10px;right:12px;z-index:9}@media print{.themebtn{display:none}}</style><script>/* so-theme: light or dark screen */(function(){var K="so-theme",d=document.documentElement,L={auto:"Display: auto",dark:"Display: dark",light:"Display: light"},N={auto:"dark",dark:"light",light:"auto"},cur="dark";try{cur=localStorage.getItem(K)||"dark"}catch(e){}function a(){if(cur==="dark"||cur==="light")d.setAttribute("data-theme",cur);else d.removeAttribute("data-theme");var b=document.querySelectorAll(".themebtn");for(var i=0;i<b.length;i++){b[i].textContent=L[cur]||L.auto;b[i].title="Screen: "+cur+" - tap to change (Auto follows this device)"}}a();window.soTheme=function(){cur=N[cur]||"dark";try{localStorage.setItem(K,cur)}catch(e){}a()};function btn(){var b=document.createElement("button");b.type="button";b.className="themebtn";return b}document.addEventListener("DOMContentLoaded",function(){if(!document.querySelector(".themebtn")){var n=document.querySelector(".topnav"),b=btn();if(n){n.appendChild(document.createTextNode(" \u00B7 "));n.appendChild(b)}else{b.className+=" themefloat";document.body.appendChild(b)}}var all=document.querySelectorAll(".themebtn");for(var i=0;i<all.length;i++)all[i].onclick=window.soTheme;a()})})();</script><style>.backbtn{font-weight:700;text-decoration:none;white-space:nowrap}@media print{.backbtn{display:none}}@media(max-width:600px){.topnav{font-size:14px;line-height:1.8}.topnav a{white-space:nowrap}.topnav .themebtn{font-size:13px;padding:2px 9px}}</style><script>/* so-back: a Back button on every page after the first */(function(){function add(){var n=document.querySelector(".topnav");if(!n||n.querySelector(".backbtn"))return;var f=n.querySelector("a"),a=document.createElement("a");a.className="backbtn";a.href=f?f.href:"#";a.textContent="\u2190 Back";a.title="Back to the page you came from";a.onclick=function(e){if(history.length>1&&document.referrer){e.preventDefault();history.back()}};n.insertBefore(document.createTextNode(" \u00B7 "),n.firstChild);n.insertBefore(a,n.firstChild)}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",add);else add();document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a[href^=\"#\"]"):null;if(!a||e.defaultPrevented)return;var id=decodeURIComponent(a.getAttribute("href").slice(1)),t=id?document.getElementById(id):null;if(!t)return;e.preventDefault();t.scrollIntoView();try{history.replaceState(history.state,"","#"+id)}catch(x){}});if(window.matchMedia&&matchMedia("(display-mode: standalone)").matches||navigator.standalone)document.addEventListener("click",function(e){var a=e.target&&e.target.closest?e.target.closest("a[href]"):null;if(a&&!a.target&&/\.pdf(?![a-z0-9])/i.test(a.getAttribute("href")))a.target="_blank"},true)})();</script><style>/* so-fold: long sections folded away (tools/fold.py) */.fold{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:2px 16px;margin:12px 0}.fold>.fold-head{margin:0;padding:12px 30px 4px 0;position:relative;cursor:pointer;border:0}.fold>h2.fold-head{font-size:20px}.fold>.gist{margin:0 0 12px;color:var(--muted);font-size:15px;line-height:1.45;cursor:pointer}.fold-js .fold>.fold-body{display:none}.fold-js .fold.open>.fold-body{display:block}.fold-js .fold.open>.gist{display:none}.fold-js .fold>.fold-head::after{content:'';position:absolute;right:4px;top:19px;width:9px;height:9px;border-right:2.5px solid var(--accent);border-bottom:2.5px solid var(--accent);transform:rotate(45deg);transition:transform .15s}.fold-js .fold.open>.fold-head::after{transform:rotate(-135deg);top:24px}.fold>.fold-head:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}.fold>.fold-body{padding-bottom:6px}.fold .fold{background:transparent}.wrap p>img{cursor:zoom-in}.foldall{margin:10px 0 0;text-align:right}.foldall button{font:inherit;font-size:14px;font-weight:600;color:var(--accent);background:transparent;border:1px solid var(--line);border-radius:999px;padding:5px 13px;cursor:pointer}.jump{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}.jump a{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;text-decoration:none;color:var(--ink);line-height:1.35}.jump a b{display:block;color:var(--accent);font-size:17px;margin-bottom:3px}.jump a span{font-size:14px;color:var(--muted)}@media(max-width:600px){.jump{grid-template-columns:1fr}.fold{padding:2px 12px}.fold>h2.fold-head{font-size:18px}}.part{margin:34px 0 0;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent2);border-top:2px solid var(--line);padding-top:10px}@media print{.fold-js .fold>.fold-body{display:block!important}.fold>.gist,.foldall,.fold>.fold-head::after{display:none!important}.fold{border:0;padding:0;background:none}}</style><script>/* so-fold */(function(){var d=document.documentElement;d.className+=' fold-js';function set(f,on){if(on)f.classList.add('open');else f.classList.remove('open');var h=f.querySelector('.fold-head');if(h)h.setAttribute('aria-expanded',on?'true':'false')}function openTo(el){for(var p=el;p&&p!==document;p=p.parentNode)if(p.classList&&p.classList.contains('fold'))set(p,true)}function byId(h){var id='';try{id=decodeURIComponent((h||'').replace(/^#/,''))}catch(e){}return id?document.getElementById(id):null}function all(){return document.querySelectorAll('.fold')}function init(){var fs=all();if(!fs.length)return;for(var i=0;i<fs.length;i++){var h=fs[i].querySelector('.fold-head');if(h){h.tabIndex=0;h.setAttribute('role','button');h.setAttribute('aria-expanded','false')}}var bar=document.createElement('p'),b=document.createElement('button');bar.className='foldall';b.type='button';b.textContent='Open every section';b.onclick=function(){var f=all(),open=b.getAttribute('data-open')!=='1';for(var j=0;j<f.length;j++)set(f[j],open);b.setAttribute('data-open',open?'1':'0');b.textContent=open?'Fold every section':'Open every section'};bar.appendChild(b);var toc=document.getElementById('contents'),first=fs[0];if(toc&&toc.parentNode)toc.parentNode.insertBefore(bar,toc.nextSibling);else first.parentNode.insertBefore(bar,first);var t=byId(location.hash);if(t){openTo(t);var moved=false,go=function(){if(!moved)t.scrollIntoView()},stop=function(){moved=true};['wheel','touchstart','keydown','mousedown'].forEach(function(k){addEventListener(k,stop,{once:true,passive:true})});setTimeout(go,0);setTimeout(go,400);setTimeout(go,1200);addEventListener('load',go)}}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();document.addEventListener('click',function(e){var x=e.target;if(!x||!x.closest)return;var a=x.closest('a[href^="#"]');if(a){var t=byId(a.getAttribute('href'));if(t)openTo(t);return}var h=x.closest('.fold>.fold-head,.fold>.gist');if(h&&!x.closest('a')){var f=h.parentNode;set(f,!f.classList.contains('open'))}},true);document.addEventListener('keydown',function(e){var h=e.target;if((e.key==='Enter'||e.key===' ')&&h&&h.classList&&h.classList.contains('fold-head')){e.preventDefault();var f=h.parentNode;set(f,!f.classList.contains('open'))}});addEventListener('hashchange',function(){var t=byId(location.hash);if(t){openTo(t);t.scrollIntoView()}});var was=[];addEventListener('beforeprint',function(){var f=all();was=[];for(var i=0;i<f.length;i++){was.push(f[i].classList.contains('open'));set(f[i],true)}});addEventListener('afterprint',function(){var f=all();for(var i=0;i<f.length&&i<was.length;i++)set(f[i],was[i])});document.addEventListener('click',function(e){var im=e.target;if(!im||im.tagName!=='IMG'||!im.closest||im.closest('a')||!im.closest('.wrap'))return;if(im.naturalWidth>im.clientWidth*1.2)window.open(im.currentSrc||im.src,'_blank')});addEventListener('message',function(e){var m=e.data;if(!m||typeof m.arkFrameHeight!=='number')return;var f=document.getElementsByTagName('iframe');for(var i=0;i<f.length;i++)if(f[i].contentWindow===e.source)f[i].style.height=Math.max(200,Math.min(3000,m.arkFrameHeight))+'px'})})();</script>
 <style>/* the top bar keeps to the page's own edge on a phone (it used to stick out 6px each side) */@media(max-width:600px){.topnav{margin:-16px -14px 6px;padding:8px 14px 7px}}</style><style>/* ark-bar: the app's buttons on every page */:root{--side-bg:#0F1511;--side-on:#2C4A39}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--side-bg:#233F32;--side-on:#315B43}}:root[data-theme=light]{--side-bg:#233F32;--side-on:#315B43}.arkbar{position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));margin:0;padding:6px 4px calc(6px + env(safe-area-inset-bottom));background:var(--card);border-top:1px solid var(--line);font:600 11.5px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}.arkbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:48px;color:var(--muted);text-decoration:none}.arkbar a i{display:flex;align-items:center;justify-content:center;width:46px;max-width:100%;height:28px;border-radius:999px}.arkbar a.on{color:var(--ink);font-weight:700}.arkbar a.on i{background:rgba(127,160,135,.28)}.arkbar svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.arkbar .l,.arkbar .wideonly,.arkbar .bn{display:none}body.has-arkbar{padding-bottom:calc(61px + env(safe-area-inset-bottom))}body.has-arkbar .totop,body.has-arkbar .sop-fab{bottom:calc(76px + env(safe-area-inset-bottom))!important}@media(min-width:760px){.arkbar{top:0;right:auto;width:232px;display:flex;flex-direction:column;gap:4px;padding:16px 12px;border-top:0;background:var(--side-bg);font-size:15px;overflow-y:auto}.arkbar a,.arkbar a.wideonly{display:flex;flex-direction:row;justify-content:flex-start;gap:12px;min-height:44px;padding:0 12px;border-radius:10px;color:#E3EBE5;order:0!important}.arkbar a i{width:auto;height:auto;border-radius:0}.arkbar a.on i{background:none}.arkbar svg{width:20px;height:20px}.arkbar a.on{background:var(--side-on);color:#fff}.arkbar .s{display:none}.arkbar .l{display:inline}.arkbar a.bn{display:flex;gap:10px;min-height:0;padding:0 6px 14px;color:#fff;font-size:18px;font-weight:700}.arkbar .bn img{width:40px;height:40px;border-radius:9px}body.has-arkbar{padding-bottom:0;padding-left:232px}body.has-arkbar .totop,body.has-arkbar .sop-fab{bottom:14px!important}}@media print{.arkbar{display:none!important}body.has-arkbar{padding:0!important}}</style><script>/* ark-bar */(function(){function add(){if(document.querySelector(".arkbar")||location.protocol.indexOf("http")!==0||window.self!==window.top)return;var p=location.pathname,root=null;if(p.indexOf("/lib/")===0)root="/";else{var a=document.querySelector('.topnav a[href*="#tools"],.topnav a[href*="#kit"],a[href$="#kit"],a[href$="#ask"]');if(a)root=a.getAttribute("href").replace(/#.*$/,"")}if(root===null)return;var on=document.body.getAttribute("data-ark")||(/walking-routes|\/map\//i.test(p)?"maps":document.querySelector('.topnav a[href*="#kit"],.topnav a[data-app="/#kit"]')?"kit":"tools");var n=document.createElement("nav");n.className="arkbar";n.setAttribute("aria-label","Main");n.innerHTML='<a class="bn" data-v="home"><img src="'+root+'icon.svg" alt="">ARK</a><a data-v="home" style="order:1"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></i><span class="s">Home</span><span class="l">Home</span></a><a data-v="ask" style="order:3"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-7l-5 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg></i><span class="s">Ask</span><span class="l">Ask ARK</span></a><a data-v="tools" style="order:2"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-13c-3-.5-6 0-8 1.5z"/><path d="M12 6v13"/></svg></i><span class="s">Library</span><span class="l">Guides</span></a><a data-v="library" class="wideonly" style="order:0"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/></svg></i><span class="s"></span><span class="l">Books</span></a><a data-v="maps" style="order:4"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg></i><span class="s">Maps</span><span class="l">Maps &amp; Routes</span></a><a data-v="kit" style="order:5"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6.5a4 4 0 0 0-5.3 5.3L3 18l3 3 6.2-6.2a4 4 0 0 0 5.3-5.3l-2.7 2.7-2.5-.5-.5-2.5z"/></svg></i><span class="s">Tools</span><span class="l">Tools</span></a><a data-v="setup" class="wideonly" style="order:0"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></svg></i><span class="s"></span><span class="l">Offline &amp; downloads</span></a><a data-v="more" style="order:6"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="19" cy="12" r="1.3"/></svg></i><span class="s">More</span><span class="l">Settings &amp; help</span></a>';var l=n.querySelectorAll("a");for(var i=0;i<l.length;i++){l[i].href=root+"#"+l[i].getAttribute("data-v");if(l[i].getAttribute("data-v")===on&&l[i].className!=="bn")l[i].className+=" on"}document.body.appendChild(n);document.body.className+=" has-arkbar"}if(document.body)add();else document.addEventListener("DOMContentLoaded",add)})();</script></head><body><div class="wrap"><p class="topnav"><a class="guide" href="../#tools">Guides</a> › <a class="guide" href="../#tools:library">Using this library</a> · <a class="guide" href="EMERGENCY-FINDER.html">Emergency</a> · <a class="guide" href="SUBJECT-INDEX.html">Index A–Z</a></p>
 <h1 id="-ark-vault-the-ammo-can-library-computer"><span class="h1e"></span> ARK Vault: the Ammo-Can Library Computer</h1>
 <img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/ark-vault-logo.svg" alt="The ARK Vault logo: ARK in stencil letters inside a crate-label frame, with VAULT cut out of a solid bar below, its V drawn as an open book" width="260">
@@ -18,9 +18,212 @@
 <li><strong>Practice now.</strong> Build it, test it with the internet off, and check it every few months.</li>
 </ul>
 </blockquote>
-<hr />
-<nav class="toc" id="contents" aria-label="Contents"><details open><summary>Contents</summary><ol><li><a href="#the-idea">The idea</a></li><li><a href="#see-it-in-3d">See it in 3D</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#what-to-buy">What to buy</a></li><li><a href="#the-parts-to-print-and-etch">The parts to print and etch</a></li><li><a href="#build-it-step-by-step">Build it, step by step</a></li><li><a href="#set-up-the-pi-no-tv-or-keyboard">Set up the Pi (no TV or keyboard)</a></li><li><a href="#using-it">Using it</a></li><li><a href="#the-mesh-radio-optional">The mesh radio (optional)</a></li><li><a href="#printing-on-paper">Printing on paper</a></li><li><a href="#power-and-charging">Power and charging</a></li><li><a href="#packing-and-sealing">Packing and sealing</a></li><li><a href="#if-something-goes-wrong">If something goes wrong</a></li><li><a href="#other-ways-to-build-it">Other ways to build it</a></li><li><a href="#every-few-months">Every few months</a></li><li><a href="#pictures-diagrams">Pictures &amp; diagrams</a></li></ol></details></nav>
-<h2 id="the-idea">The idea</h2>
+<div class="jump">
+<a href="#using-it"><b>Use it</b><span>Switch on, join its Wi-Fi, charge it, seal it</span></a>
+<a href="#the-idea"><b>Look inside</b><span>What's in the can, in 3D, and how it works</span></a>
+<a href="#what-to-buy"><b>Build one</b><span>Buy, print, wire and set up, step by step</span></a>
+</div>
+
+<nav class="toc" id="contents" aria-label="Contents"><details open><summary>Contents</summary><ol><li><a href="#using-it">Using it</a></li><li><a href="#power-and-charging">Power and charging</a></li><li><a href="#printing-on-paper">Printing on paper</a></li><li><a href="#the-mesh-radio-optional">The mesh radio (optional)</a></li><li><a href="#packing-and-sealing">Packing and sealing</a></li><li><a href="#every-few-months">Every few months</a></li><li><a href="#if-something-goes-wrong">If something goes wrong</a></li><li><a href="#the-idea">The idea</a></li><li><a href="#see-it-in-3d">See it in 3D</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#what-to-buy">What to buy</a></li><li><a href="#the-parts-to-print-and-etch">The parts to print and etch</a></li><li><a href="#build-it-step-by-step">Build it, step by step</a></li><li><a href="#set-up-the-pi-no-tv-or-keyboard">Set up the Pi (no TV or keyboard)</a></li><li><a href="#other-ways-to-build-it">Other ways to build it</a></li><li><a href="#pictures-diagrams">Pictures &amp; diagrams</a></li></ol></details></nav>
+<p class="part">Use it</p>
+
+<h2 id="using-it">Using it</h2>
+<p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/using-it.svg" alt="Using it in five steps: 1, open the lid all the way (mesh radio fitted? screw its antenna on first); 2, flip the red switch on; 3, take out the phone and wait 2 to 3 minutes; 4, join the Vault&#39;s Wi-Fi and open its address; 5, when done, switch off, close the lid and tape the seam" /></p>
+<ol type="1">
+<li><strong>Open the lid</strong> all the way. <em>Mesh radio fitted?</em> <strong>Screw its antenna on now</strong>, before the switch.</li>
+<li><strong>Flip the red switch on</strong>. Keep it in the shade.</li>
+<li><strong>Take out the phone</strong> and wait <strong>2–3 minutes</strong>.</li>
+<li><strong>Join the Pi's Wi-Fi</strong> and open the address from the card in the lid.</li>
+<li><strong>When you're done,</strong> flip the switch off, close the lid and <strong>tape the seam</strong> again.</li>
+</ol>
+<p>If a <strong>solar-storm warning</strong> comes, switch off and seal it right away (see the <a class="guide" href="EMP-GUIDE.html">EMP guide</a>). Switch off when nobody's using it to save the battery; the AI uses the most power.</p>
+<p><strong>The map:</strong> <strong>Tools → Map</strong> shows roads, topo lines, property lines and satellite photos on any phone on the Vault's Wi-Fi. For sharp satellite photos close up, download them onto the library drive first, on a computer with internet: <strong>More → Offline &amp; downloads → Sharp satellite photos</strong>. <strong>📍</strong> shows where you are (the phone warns once; the map says what to tap), and <strong>🖨️</strong> prints the part on screen in strips. See <a class="guide" href="HOW-TO-VIEW-MAPS.html">Offline maps</a>.</p>
+<p><strong>Family photos:</strong> plug a USB drive of photos into a free USB port. They show under <strong>Tools → 🖼️ Family photos &amp; videos</strong>. Nothing on that drive can be changed.</p>
+<p><strong>Drawings:</strong> <strong>Tools → CAD</strong> draws a plan, a part or a pattern to scale, on any phone or laptop on the Vault's Wi-Fi. To keep drawings <strong>on the Vault</strong>, where everyone can open them:</p>
+<ol type="1">
+<li>On any computer, make a folder named <strong><code>ARK-Saved</code></strong> on a small thumb drive (any size will do).</li>
+<li>Plug it into a free USB port on the Pi, then switch on.</li>
+</ol>
+<p>That folder is how the Vault knows it may save there. It is the <strong>only</strong> drive the Vault ever writes to; the library drive and a photo drive can't be changed. With no such drive, a drawing is saved to the phone or laptop you are using instead. <em>A Vault set up before November 2026 has to learn this: finish the Pi's card again (<a href="#the-steps">The steps</a>, step 3).</em></p>
+<div class="fold"><h2 class="fold-head" id="power-and-charging">Power and charging</h2>
+<p class="gist noprint">How long it runs, how full it is, and charging it from the wall or the sun</p>
+<div class="fold-body">
+<p><strong>How long it runs:</strong> a full battery runs the Pi for about <strong>30–40 hours</strong> of use: a long day of use every day for a week <em>(rule of thumb)</em>.</p>
+<p><strong>Checking the battery:</strong> hold the meter button. About <strong>13.3 V</strong> is full, <strong>13.0 V</strong> half, and <strong>12.0 V</strong> nearly empty: charge it then <em>(rule of thumb)</em>.</p>
+<p><strong>From the wall:</strong> with the lid open, plug the wall charger in (set to <strong>lithium</strong>). About <strong>10 hours</strong> from empty. Unplug it when the <strong>Full</strong> light comes on.</p>
+<p><strong>From the sun (after an event):</strong></p>
+<ol type="1">
+<li>Set the controller up once in the <strong>VictronConnect</strong> phone app (battery type <strong>LiFePO4</strong>, charge current about <strong>10 A</strong>). The BlueSolar needs a Victron <strong>VE.Direct</strong> Bluetooth dongle or USB cable to talk to the app.</li>
+<li>Wire the <strong>battery first</strong>, in <strong>12 AWG</strong>: BATT+ → battery + through the <strong>20 A fuse</strong> (the fuse close to the battery), BATT− → battery −.</li>
+<li>Then the <strong>panel</strong>: PV+ and PV−, with the panel's own leads.</li>
+<li>When done, unplug the <strong>panel first</strong>, then the battery, and store the panel outside with nothing plugged in.</li>
+</ol>
+<p>A 100 W panel fills it in about a sunny day. More in <a class="guide" href="OFF-GRID-POWER-GUIDE.html">Off-Grid Power</a>.</p>
+<p><strong>The phone:</strong> charge it from any phone charger, or from the Pi's USB port while it runs. Keep it about half charged in storage.</p>
+<blockquote>
+<p>⚠️ Never charge with the lid shut, never run a cable through a hole in the can, and <strong>never connect the panel straight to the battery</strong>.</p>
+</blockquote>
+</div><!--/fold--></div>
+<div class="fold"><h2 class="fold-head" id="printing-on-paper">Printing on paper</h2>
+<p class="gist noprint">Print a guide, an AI answer or a book page on the little printer</p>
+<div class="fold-body">
+<p>Anyone on the Vault's Wi-Fi can print a guide section, an AI answer or a book page on the little receipt printer. It uses heat-sensitive paper: <strong>no ink</strong> to run out.</p>
+<ul>
+<li><strong>🖨️ Print</strong> is at the top of every guide and page, and under each AI answer (<strong>🖨️ Print this answer</strong>). Every book has a <strong>🖨️</strong> button too.</li>
+<li><strong>Pick a size:</strong> <strong>Tiny</strong> fits the most on the paper; <strong>Small</strong> or <strong>Medium</strong> are easier to read; <strong>Large</strong> for weak eyes. The preview shows how much paper it will take.</li>
+<li><strong>Book pages:</strong> print the <strong>words</strong> (re-flowed to fit, least paper) or a <strong>picture</strong> of the page (for drawings and tables). A picture can be printed <strong>bigger</strong>, in strips you tape together; each strip is labelled (A1, A2, B1…) so you know where it goes.</li>
+<li><strong>Doses and measurements:</strong> in <strong>Tiny</strong>, check every number, or print in Small.</li>
+</ul>
+<p><strong>Paper:</strong> <strong>57 × 30 mm</strong> thermal rolls (2¼ in wide). If the paper comes out blank, the roll is in upside down. Prints fade in heat and sun, so copy anything important in pencil. Keep spare rolls cool and dark.</p>
+</div><!--/fold--></div>
+<div class="fold"><h2 class="fold-head" id="the-mesh-radio-optional">The mesh radio (optional)</h2>
+<p class="gist noprint">Texting with no cell service, and what to set up now, while there's internet</p>
+<div class="fold-body">
+<p>A <strong>mesh radio</strong> sends short <strong>text messages</strong> and <strong>positions</strong> from one radio to another, with no cell service and no internet. Every radio in range passes messages along. It needs no license. The software is <strong>Meshtastic</strong>, which is free.</p>
+<ul>
+<li><strong>One radio stays with the Vault,</strong> under the lid. The Vault powers it whenever the switch is on.</li>
+<li><strong>The pocket radio</strong> (the card) goes with whoever leaves, along with the <strong>second phone</strong>.</li>
+<li><strong>Each radio talks to its own phone</strong> by Bluetooth, through the <strong>Meshtastic app</strong>. You type and read messages in the app. The Vault's library page does <strong>not</strong> show mesh messages yet.</li>
+</ul>
+<blockquote>
+<p>⚠️ <strong>Antenna first, every time.</strong> Screw the antenna on <strong>before</strong> you flip the switch. A radio that sends with no antenna can burn itself out.</p>
+</blockquote>
+<p><strong>Do these now, while there is internet:</strong></p>
+<ol type="1">
+<li>Put the <strong>Meshtastic app</strong> on both phones.</li>
+<li>Check each radio has Meshtastic on it and set its region to <strong>US</strong> (the app asks). The pocket card comes with it. The Vault's board may need it put on first, from a computer, at <strong>flasher.meshtastic.org</strong>.</li>
+<li>Pair each radio with its phone, give both radios the <strong>same channel</strong>, and send a test message each way.</li>
+</ol>
+<p><strong>How far it reaches</strong> <em>(rule of thumb)</em>: through thick forest or hills, ¼ to 1 mile; around town, 1 to 3 miles; with a clear view across a valley, 5 miles or more. A ridge in between often blocks it. <strong>Height helps most:</strong> after an event, raise the Vault's antenna as high as you can.</p>
+<p><strong>Stored, everything is inside the sealed can:</strong> the radio, its antenna (unscrewed), the pocket radio and both phones. Nothing goes through the can's wall.</p>
+<p>Setting the radios up, private channels, range, relays and a neighborhood mesh: the <a class="guide" href="MESH-RADIO-GUIDE.html">Mesh radio guide</a>. The project's own manual and the Android app are on the library drive, in <code>Comms-Signals\Mesh-Radio</code>.</p>
+</div><!--/fold--></div>
+<div class="fold"><h2 class="fold-head" id="packing-and-sealing">Packing and sealing</h2>
+<p class="gist noprint">Switch off, charge it to half, tape the seam and test the seal</p>
+<div class="fold-body">
+<ol type="1">
+<li><strong>Switch off,</strong> unplug the chargers, and put the phone back. <em>Mesh radio fitted?</em> Unscrew its antenna and stand it back in its corner, and put the pocket radio and second phone back.</li>
+<li><strong>Charge the battery to about half</strong> for storage, and top it up every few months.</li>
+<li><strong>Close and latch the lid,</strong> then run <strong>one band of foil tape right round the can</strong> over the bare strips (about 1 m), over the hinge and the latch, overlapping at the end. Press it down well (<a class="lib pic" target="_blank" rel="noopener" href="https://www.wbdg.org/FFC/NAVFAC/DMMHNAV/hdbk419a_vol1.pdf#page=275" title="MIL-HDBK-419A Grounding Bonding and Shielding Vol 1 Basic Theory (DoD 1987).pdf — page 275">why seams matter</a>).</li>
+<li><strong>Test the seal:</strong> tape a phone inside and call it. If it doesn't ring, the seal is good. (More in the <a class="guide" href="EMP-GUIDE.html">EMP guide</a>.)</li>
+</ol>
+<p>Store it somewhere cool and dry, not in a hot car or shed.</p>
+</div><!--/fold--></div>
+<div class="fold"><h2 class="fold-head" id="every-few-months">Every few months</h2>
+<p class="gist noprint">The battery, a test run, an update and the tape</p>
+<div class="fold-body">
+<ul>
+<li><strong>Check the battery</strong> with the meter button, and top it and the phone up to about half. The second phone and the pocket mesh radio too, if you have them.</li>
+<li><strong>Switch on and run the <a href="#test-it">test</a>.</strong> Then switch off and re-tape the seam.</li>
+<li><strong>Update the library:</strong> run the installer on the library drive again, then finish the Pi's card again (see <a href="#the-steps">The steps</a>).</li>
+<li>Replace the foil tape if it's torn or loose.</li>
+</ul>
+</div><!--/fold--></div>
+<div class="fold"><h2 class="fold-head" id="if-something-goes-wrong">If something goes wrong</h2>
+<p class="gist noprint">Problems and their fixes, from no lights at all to a slow AI</p>
+<div class="fold-body">
+<table>
+<thead>
+<tr class="header">
+<th>Problem</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>First setup: the green light <strong>blinks fast</strong> and keeps blinking</td>
+<td>It got stuck. Read <strong>ark/setup-log.txt</strong> on the card. Usually: plug in the library drive and switch on again</td>
+</tr>
+<tr class="even">
+<td>Nothing lights up</td>
+<td>Check the fuse, the battery (hold the meter button) and the switch. Check the converter gives <strong>5.0–5.25 V</strong></td>
+</tr>
+<tr class="odd">
+<td>The Wi-Fi doesn't show up</td>
+<td>Wait the full 3 minutes with the lid open. Switch off, wait 10 seconds, switch on</td>
+</tr>
+<tr class="even">
+<td>Joined the Wi-Fi, but the page won't open</td>
+<td>On an iPhone, use <strong>Safari</strong>. Type the address exactly, with <code>http://</code> and <code>:8096</code>. Try <strong>airplane mode</strong> on, then Wi-Fi back on</td>
+</tr>
+<tr class="odd">
+<td>The AI says it isn't ready</td>
+<td>Give it a minute or two. Search works meanwhile</td>
+</tr>
+<tr class="even">
+<td>An answer sits on <strong>Writing…</strong> and goes no further</td>
+<td>It picks up again by itself. If it doesn't, press <strong>Stop</strong>, then <strong>Try again</strong>: that's quick, because the AI keeps what it already read</td>
+</tr>
+<tr class="odd">
+<td><strong>⚠️ Power too weak</strong>, the AI takes minutes, or the Pi keeps restarting</td>
+<td>The Pi isn't getting enough power. See <a href="#power-too-weak-or-the-ai-takes-minutes">below</a></td>
+</tr>
+<tr class="even">
+<td>The meter stays dark</td>
+<td>Its thin red wire must go to the microswitch's <strong>COM</strong> and <strong>NO</strong> (not NC)</td>
+</tr>
+<tr class="odd">
+<td>The fan never runs</td>
+<td>It only runs when the Pi is hot (above 60 °C). Check the blue wire is on pin 8</td>
+</tr>
+<tr class="even">
+<td>A setting I changed was gone</td>
+<td>That's normal: see <a href="#changing-a-setting-later">Changing a setting later</a></td>
+</tr>
+<tr class="odd">
+<td>Printer: <em>No printer found</em></td>
+<td>Check its USB cable is in the Pi. Close the print window and open it again</td>
+</tr>
+<tr class="even">
+<td>Printer: <em>not allowed to use the printer</em></td>
+<td>Finish the card again and let it set itself up again</td>
+</tr>
+<tr class="odd">
+<td>Printer feeds blank paper</td>
+<td>Turn the paper roll over</td>
+</tr>
+<tr class="even">
+<td>Print is faint or stops</td>
+<td>The battery is low. Charge it</td>
+</tr>
+<tr class="odd">
+<td>Forgot the Wi-Fi password</td>
+<td>Plug the library drive into any computer and open <strong><code>PI-WIFI-CARD.html</code></strong></td>
+</tr>
+<tr class="even">
+<td>No phone at all</td>
+<td>Plug a TV (micro-HDMI) and keyboard into the Pi, log in (user <strong>ark</strong>, the Wi-Fi password), and run <strong>SETUP-Raspberry-Pi.sh</strong> with <code>--screen</code> (make the card writable first: see <a href="#changing-a-setting-later">Changing a setting later</a>). This needs the desktop version of Raspberry Pi OS, not Lite</td>
+</tr>
+<tr class="odd">
+<td>Want home internet on the Pi (for updates)</td>
+<td>Plug in a network cable</td>
+</tr>
+<tr class="even">
+<td>The lid won't shut since adding the mesh radio</td>
+<td>Something is under it. Move the wall charger's cord and plug toward the latch end, and take the antenna off</td>
+</tr>
+<tr class="odd">
+<td>The mesh radio's screen stays dark</td>
+<td>Check its USB cable at both ends. It only has power while the switch is on</td>
+</tr>
+</tbody>
+</table>
+<h3 id="power-too-weak-or-the-ai-takes-minutes">"Power too weak", or the AI takes minutes</h3>
+<p>The Pi isn't getting a full 5 volts. It can then slow itself down to about a third of its speed, and the AI suffers most: an answer can take 10 minutes instead of one or two. Weak power can also make the Pi or its drive misbehave, so fix it even if the AI seems fine.</p>
+<p><strong>Quick test:</strong> switch off, unplug the Pi's power plugs from pins 2 and 14, and run the Pi from an <strong>official Raspberry Pi USB-C power supply</strong> instead (never both at once). If the warning goes away, the can's power wiring is the problem.</p>
+<p>To see what the Pi is doing, open <strong>More → Vault system status</strong> on the phone, while the AI is answering. It shows the power, the temperature and how fast the processor is running.</p>
+<ol type="1">
+<li><strong>Check the battery:</strong> hold the meter button. Under about 12.5 V, charge it.</li>
+<li><strong>Check the converter:</strong> ask the AI a question, and <strong>while it's working</strong>, touch a multimeter to the converter's two <strong>output</strong> screws. It should read <strong>5.1 to 5.25 V</strong>. Lower than that? If the converter has a small adjusting screw, turn it up to about 5.2 V; if not, replace it.</li>
+<li><strong>Check the wires to the Pi:</strong> if the converter reads fine, the power is lost on the way to the Pi. The usual weak spot is the two little plugs on <strong>pins 2 and 14</strong> and the joints to them: the 18 AWG must be <strong>soldered</strong> to the jumper leads' short wires, not crimped into the plugs (see <a href="#7-wiring">Wiring</a>). Redo any joint that wiggles, and keep the wires as short as the route allows.</li>
+<li><strong>Switch off and on again</strong> so the old warning clears, and ask the same question. A healthy Pi should start writing within a minute or two.</li>
+</ol>
+</div><!--/fold--></div>
+<p class="part">Look inside</p>
+
+<div class="fold"><h2 class="fold-head" id="the-idea">The idea</h2>
+<p class="gist noprint">What's inside the can, what stays outside, and when it's sealed</p>
+<div class="fold-body">
 <p><strong>Inside the can:</strong></p>
 <ul>
 <li>the <strong>Raspberry Pi</strong> stuck under the <strong>lid</strong>, with the <strong>library drive</strong> (a small thumb drive) plugged in</li>
@@ -58,15 +261,16 @@
 </tr>
 </tbody>
 </table>
-<hr />
+</div><!--/fold--></div>
 <h2 id="see-it-in-3d">See it in 3D</h2>
-<p>Turn it, open the lid, or tap a part's name to hide or show it. Every wire is in it too.</p>
-<iframe src="AMMO-CAN-MODEL.html?embed" title="The ARK Vault in 3D" loading="lazy" style="width:100%;height:760px;max-height:92vh;border:0;border-radius:12px;background:#e6ebf2"></iframe>
+<p>Turn it with a finger, and pick <strong>Closed</strong>, <strong>See-through</strong> or <strong>Lid open</strong>. <strong>Parts and views</strong> hides or shows each part, lifts out the printer riser and shows the Pi close up. Every wire is in it too.</p>
+<iframe src="AMMO-CAN-MODEL.html?embed" title="The ARK Vault in 3D" loading="lazy" style="display:block;width:100%;height:440px;border:0;border-radius:12px;background:transparent"></iframe>
 
 <p><a class="guide" href="AMMO-CAN-MODEL.html">Open the 3D model full size</a></p>
 <p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/the-build.png" alt="Two views of the ARK Vault from its 3D model. Left: the lid swung right over past the hinge, with the Raspberry Pi lying face-up on it just beyond the can&#39;s end and the small mesh radio beside it, the meter and power switch on the riser at the hinge end, and the battery at the latch end. Right: see-through, with the printer on its riser at the hinge end, the radio and the phone along the front wall, the battery along the back at the latch end, and the wall charger on the solar controller in front of it, with the mesh antenna standing in the latch-end corner" /> <em>Lid open (left) and see-through (right).</em></p>
-<hr />
-<h2 id="how-it-works">How it works</h2>
+<div class="fold"><h2 class="fold-head" id="how-it-works">How it works</h2>
+<p class="gist noprint">Why it's sealed, and what the switch, the meter and the phone do</p>
+<div class="fold-body">
 <ul>
 <li><strong>Lid shut and taped:</strong> the steel can acts as a shield (a Faraday cage) and keeps an EMP out. Nothing is switched on.</li>
 <li><strong>Lid open, switch on:</strong> the Pi starts in 2–3 minutes and makes its own Wi-Fi. Phones join it and use the library. An EMP lasts only seconds, and solar storms come with hours of warning, so having it open is fine the rest of the time.</li>
@@ -75,8 +279,12 @@
 <li><strong>The meter</strong> stays dark. <strong>Hold the little red button</strong> and it shows the battery's <strong>volts</strong> (top) and the <strong>amps</strong> being used (bottom).</li>
 <li><strong>The phone is the screen.</strong> Several phones can use it at once. The AI answers one person at a time, in about a minute.</li>
 </ul>
-<hr />
-<h2 id="what-to-buy">What to buy</h2>
+</div><!--/fold--></div>
+<p class="part">Build one</p>
+
+<div class="fold"><h2 class="fold-head" id="what-to-buy">What to buy</h2>
+<p class="gist noprint">Every part, with its size and the model used here</p>
+<div class="fold-body">
 <table>
 <thead>
 <tr class="header">
@@ -163,8 +371,10 @@
 </tr>
 </tbody>
 </table>
-<hr />
-<h2 id="the-parts-to-print-and-etch">The parts to print and etch</h2>
+</div><!--/fold--></div>
+<div class="fold"><h2 class="fold-head" id="the-parts-to-print-and-etch">The parts to print and etch</h2>
+<p class="gist noprint">Four printed parts, and the bare strips for the tape</p>
+<div class="fold-body">
 <p><strong><a href="../download/ark-can-parts.zip">⬇️ Download the parts (ark-can-parts.zip)</a></strong>. It has every measurement and the wiring in one file (<strong>READ-ME-FIRST.txt</strong>), and the whole Vault to scale as a Rhino file (<strong>ARK-Vault-assembly.3dm</strong>).</p>
 <ul>
 <li><p><strong>printed/</strong>: four parts to 3D-print in <strong>ABS</strong>, <strong>no supports</strong>, <strong>3 walls</strong> (0.4 mm nozzle):</p>
@@ -179,14 +389,21 @@
 </ul>
 <p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/can-plan.png" alt="The ammo can after etching: the ARK Vault logo on a long side, and two bare-metal strips along the lid seam, the same on both long sides, with foil tape over the closed seam" /> <em>The long sides (both the same).</em></p>
 <p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/can-plan-ends.png" alt="The two ends after etching: on each end a bare band at the same height as the lower strip on the long sides, on the hinge plate under the hinge at one end and around the latch at the other; taped, one band of foil tape runs right round the can, over the hinge and over the closed latch" /> <em>The ends: one band of tape goes right round the can, over the hinge and the latch.</em></p>
-<hr />
+</div><!--/fold--></div>
 <h2 id="build-it-step-by-step">Build it, step by step</h2>
-<h3 id="1-get-the-can-ready">1. Get the can ready</h3>
+<p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/where-things-go.png" alt="The ammo can seen from above with its lid swung open, and where everything goes: the battery at the latch end against the back wall, the wall charger lying on the solar controller in front of it, the printer riser at the hinge end with the printer on top and the meter, switch and button in its front strip, the radio and the phone along the front wall, and on the open lid the Raspberry Pi and the mesh radio" /> <em>Where everything goes. The steps say <strong>hinge end</strong>, <strong>latch end</strong>, <strong>front</strong> and <strong>back</strong> as in this picture.</em></p>
+<p>Tap a step to open it. The <a href="#see-it-in-3d">3D model</a> shows each part from any side.</p>
+<div class="fold"><h3 class="fold-head" id="1-get-the-can-ready">1. Get the can ready</h3>
+<p class="gist noprint">Bare metal round the lid's seam, and nothing bare inside</p>
+<div class="fold-body">
 <ol type="1">
 <li><strong>Bare metal around the seam:</strong> etch or scrape the paint off a strip on the lid's edge and one on the body just below it, all the way round (see the pictures above). The foil tape sticks here, metal to metal.</li>
 <li><strong>Cover every bare wire end and bolt</strong> (rubber boots, heat-shrink or tape) so nothing metal touches the can.</li>
 </ol>
-<h3 id="2-fit-the-inserts">2. Fit the inserts</h3>
+</div><!--/fold--></div>
+<div class="fold"><h3 class="fold-head" id="2-fit-the-inserts">2. Fit the inserts</h3>
+<p class="gist noprint">Six brass inserts, melted into the printed parts with a soldering iron</p>
+<div class="fold-body">
 <p>The screws go into brass <strong>heat-set inserts</strong>, melted into the printed parts with a soldering iron, so they can go in and out many times. Every insert hole has a small <strong>bevel</strong> at its mouth to start the insert straight.</p>
 <table>
 <thead>
@@ -220,11 +437,21 @@
 <li>Rest the iron's tip in the insert and let it sink in under its own weight with light pressure. Keep it straight. Stop when it is <strong>flush</strong> with the surface.</li>
 <li>Lift the iron away and, while the plastic is still soft, press the insert flat with something cool and flat (the side of a screwdriver). Let it cool for a minute.</li>
 </ol>
-<h3 id="3-the-battery">3. The battery</h3>
+<p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/fit-insert.svg" alt="Fitting a heat-set insert in four pictures: 1, the soldering iron at 230 °C; 2, the insert standing on the hole&#39;s bevel, small end down; 3, the iron&#39;s tip in the insert, which sinks in straight until it is flush; 4, the insert pressed flat with the side of a screwdriver while the plastic is soft" /></p>
+</div><!--/fold--></div>
+<div class="fold"><h3 class="fold-head" id="3-the-battery">3. The battery</h3>
+<p class="gist noprint">At the latch end, against the back wall</p>
+<div class="fold-body">
 <p>Stand it at the <strong>latch end</strong>, against the <strong>back</strong> wall, terminals toward the back. Bolt on the main <strong>+</strong> and <strong>−</strong> leads and the wall charger's leads, then push the <strong>rubber boots</strong> over both terminals.</p>
-<h3 id="4-the-chargers">4. The chargers</h3>
+</div><!--/fold--></div>
+<div class="fold"><h3 class="fold-head" id="4-the-chargers">4. The chargers</h3>
+<p class="gist noprint">The solar controller on its edge, the wall charger on top</p>
+<div class="fold-body">
 <p>In front of the battery: stand the <strong>solar controller</strong> on its long edge, terminals toward the hinge end (stored, not wired). Lay the <strong>wall charger</strong> flat on top, with its cord coiled on top of it.</p>
-<h3 id="5-the-printer-riser">5. The printer riser</h3>
+</div><!--/fold--></div>
+<div class="fold"><h3 class="fold-head" id="5-the-printer-riser">5. The printer riser</h3>
+<p class="gist noprint">Meter, switch, button, converter and fuse on the riser; the printer on top</p>
+<div class="fold-body">
 <ol type="1">
 <li>Snap the <strong>meter</strong> and <strong>power switch</strong> into their holes in the riser's front strip. Screw the <strong>microswitch</strong> into its slot, button up (2 × M2).</li>
 <li>On the inside of the riser's <strong>leg</strong>: set the <strong>converter</strong> on the raised frame, <strong>terminals toward the front</strong>, its two ears over the two inserts. Put an <strong>M2.5 × 6 mm</strong> screw with a washer through each ear. (The ears' holes are a little bigger than the screws, so there's room to line them up.) Stick the <strong>fuse holder</strong> across the leg below it, about 1 cm up from the bottom.</li>
@@ -232,7 +459,11 @@
 <li>Stick the <strong>wall cleat</strong> inside the can's <strong>hinge-end wall</strong>, thick edge up, its top corners about <strong>29 mm (1⅛ in) below the rim</strong> and about 6 mm from the back wall.</li>
 <li>Wire it (step 7), then lower the riser into the <strong>hinge end</strong>: its leg stands beside the battery and its other end hooks onto the cleat. It lifts straight out for repairs.</li>
 </ol>
-<h3 id="6-the-pi-on-the-lid">6. The Pi on the lid</h3>
+<p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/the-riser.png" alt="The printer riser lifted out of the can: the printer on top; in the front strip the volt/amp meter, the red power switch and the meter button; on the inside of the leg the 5 V converter and, low down, the fuse holder; the wall cleat stays on the can&#39;s hinge-end wall" /> <em>The riser lifted out, with everything it holds.</em></p>
+</div><!--/fold--></div>
+<div class="fold"><h3 class="fold-head" id="6-the-pi-on-the-lid">6. The Pi on the lid</h3>
+<p class="gist noprint">The cooler on the Pi, the Pi on its base, the base under the lid</p>
+<div class="fold-body">
 <ol type="1">
 <li>Put the <strong>cooler</strong>'s thermal pads on and set the cooler on the Pi, but <strong>leave its two little screws out</strong>: longer ones take their place. Plug its fan onto <strong>pins 4, 6 and 8</strong> (red, black, blue).</li>
 <li>Set the Pi, cooler up, on its printed <strong>base</strong>: the two posts with a hole right through go under the cooler's two screw holes (diagonal corners).</li>
@@ -241,8 +472,12 @@
 <li>Stick the base under the <strong>lid</strong> at the <strong>hinge end</strong>, <strong>USB ports toward the front</strong>, about <strong>13 mm</strong> in from the hinge wall and <strong>9 mm</strong> in from the back wall.</li>
 <li>Plug the <strong>library drive</strong> into a <strong>blue</strong> USB port and the printer's cable into a black one.</li>
 </ol>
-<h3 id="7-wiring">7. Wiring</h3>
-<p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/wiring.svg" alt="The ARK Vault wiring. Battery plus goes through a 7.5 amp fuse and the power switch to the printer and the 5 volt converter. Battery minus goes through the volt/amp meter&#39;s thick wires (black in, red out) to the printer and the converter. The meter&#39;s thin black wire goes to battery minus, its thin yellow wire to plus after the fuse, and its thin red wire through the meter button to plus after the fuse, so it lights only while the button is held. The converter&#39;s 5 volt output goes to the Pi&#39;s pin 2 (plus) and pin 14 (ground); the fan is on pins 4, 6 and 8; the printer&#39;s USB lead goes to a Pi USB port" /> <em>The whole wiring, with each wire's size. The 3D model shows where each one runs.</em></p>
+<p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/under-the-lid.png" alt="The underside of the open lid: the Raspberry Pi on its printed base at the hinge end, USB ports toward the front, about 13 mm from the hinge wall and 9 mm from the back wall, with the library drive in a blue port; the mesh radio in its own base beside it on the latch side" /> <em>Under the lid: the Pi, and the mesh radio beside it.</em></p>
+</div><!--/fold--></div>
+<div class="fold"><h3 class="fold-head" id="7-wiring">7. Wiring</h3>
+<p class="gist noprint">Every wire, with its size, and the wiring diagram</p>
+<div class="fold-body">
+<p><a class="img" target="_blank" href="img/AMMO-CAN-COMPUTER-GUIDE/wiring.svg"><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/wiring.svg" alt="The ARK Vault wiring, every part drawn as it looks with all of its terminals. The battery from above, its plus and minus bolts also taking the wall charger&#39;s leads. Plus: battery, run 1 to the inline fuse holder (7.5 A), run 2 to the rocker switch&#39;s input pin, whose one spade also takes the meter&#39;s thin yellow wire (run 11) and the microswitch&#39;s NO tab (run 13); the switch&#39;s output pin, run 3, to a splice, then run 4 to the converter&#39;s Input plus and run 5 to the printer&#39;s power plug. Minus: battery, run 6 to the meter&#39;s thick black wire, where the meter&#39;s thin black wire (run 10) joins; the meter&#39;s thick red wire, run 7, to a splice, then run 8 to the converter&#39;s Input minus and run 9 to the printer. The meter&#39;s thin red wire, run 12, to the microswitch&#39;s C tab; its NC tab not used. The converter&#39;s four screw terminals as printed: Input plus, Input minus, Output minus, Output plus; Output plus to the Pi&#39;s pin 2 and Output minus to pin 14 (runs 14 and 15, 18 AWG). The printer&#39;s sockets: power, USB (to a black Pi USB port, run 17), TTL serial and 485 not used. The Raspberry Pi 4 from above with every port: the library drive in the lower blue USB port, the mesh radio in the upper blue one (run 18), the fan on pins 4, 6 and 8 (run 16); USB-C power, HDMI and audio not used. The 40 pins enlarged, every pin named. Later, the solar controller&#39;s terminals" /></a> <em>Every part with all of its terminals, and each wire's size. <strong>Tap the picture</strong> to open it full size and zoom in. The 3D model shows where each wire runs.</em></p>
 <p><strong>Every run, with its wire.</strong> Lengths include some spare; cut to fit as you go.</p>
 <table>
 <thead>
@@ -396,13 +631,19 @@
 </ul>
 <p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/pi-pins-ark.svg" alt="The Raspberry Pi pins the ARK Vault uses, at the end of the 40-pin row farthest from the USB ports, all on the row along the board&#39;s edge: pin 2 (5 volts) takes the converter&#39;s plus wire, pins 4, 6 and 8 take the cooler fan&#39;s red, black and blue wires (5 volts, ground, GPIO 14), and pin 14 (ground) takes the converter&#39;s minus wire" /> <em>All five wires go on the outer row. Pin 2 is the corner pin farthest from the USB ports.</em></p>
 <p><strong>Pi 5:</strong> its cooler plugs into its own fan socket instead; the power still goes on pins 2 and 14.</p>
-<h3 id="8-the-rest">8. The rest</h3>
+</div><!--/fold--></div>
+<div class="fold"><h3 class="fold-head" id="8-the-rest">8. The rest</h3>
+<p class="gist noprint">The radio, the phone, and the spare parts</p>
+<div class="fold-body">
 <ul>
 <li>The <strong>radio</strong> stands on the floor in front of the riser, and the <strong>phone</strong> stands on its end against the front wall beside it.</li>
 <li><em>If you add them:</em> tape the <strong>pocket mesh radio</strong> to the back of the <strong>second phone</strong>, clear of the camera. The pair lies on its long edge in the slot between the solar controller and the battery, screen toward the controller (lift the wall charger to reach it). The mesh radio's <strong>antenna</strong>, folded at its joint, stands in the corner between the battery and the latch end. These are packed for storage and come out after an event.</li>
 <li>Keep loose metal off the can's walls (<a class="lib" target="_blank" rel="noopener" href="https://www.cisa.gov/sites/default/files/publications/19_0307_CISA_EMP-Protection-Resilience-Guidelines.pdf#page=45" title="EMP Protection and Resilience Guidelines for Critical Infrastructure and Equipment (CISA 2019).pdf — page 45">CISA, p. 45</a>).</li>
 </ul>
-<h3 id="9-the-mesh-radio-optional">9. The mesh radio (optional)</h3>
+</div><!--/fold--></div>
+<div class="fold"><h3 class="fold-head" id="9-the-mesh-radio-optional">9. The mesh radio (optional)</h3>
+<p class="gist noprint">The board in its base, beside the Pi</p>
+<div class="fold-body">
 <blockquote>
 <p>⚠️ This part is new and has <strong>not been built or tried yet</strong>. Check the printed base against your own board before you stick it down.</p>
 </blockquote>
@@ -414,8 +655,10 @@
 <li><strong>Plug it into the Pi:</strong> the short USB cable goes from the board to the <strong>blue</strong> USB port above the library drive. Run it along the lid between the Pi and the base, and tape the slack flat.</li>
 <li>Keep the wall charger's <strong>coiled cord and plug toward the latch end</strong>, so nothing sits under the radio when the lid shuts.</li>
 </ol>
-<hr />
-<h2 id="set-up-the-pi-no-tv-or-keyboard">Set up the Pi (no TV or keyboard)</h2>
+</div><!--/fold--></div>
+<div class="fold"><h2 class="fold-head" id="set-up-the-pi-no-tv-or-keyboard">Set up the Pi (no TV or keyboard)</h2>
+<p class="gist noprint">The Pi's own card and the library drive, set up from your computer</p>
+<div class="fold-body">
 <p>The library installer prepares the Pi's memory card, and the Pi <strong>sets itself up</strong> the first time it starts.</p>
 <h3 id="two-separate-pieces-the-pis-card-and-the-library-drive">Two separate pieces: the Pi's card and the library drive</h3>
 <p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/two-pieces.svg" alt="The Raspberry Pi seen from the side: a small memory card in the card slot underneath holds the Pi&#39;s own system; the library drive, a USB stick, a small SSD or a big microSD card in a USB card reader, plugs into a blue USB port" /></p>
@@ -450,6 +693,7 @@
 <p>⚠️ <strong>Never point Raspberry Pi Imager at the library drive.</strong> It erases whatever it writes to. Check the size before you write: about 32 GB is the Pi's card; 256 GB is the library.</p>
 </blockquote>
 <h3 id="the-steps">The steps</h3>
+<p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/setup-steps.svg" alt="Setting up the Pi in four steps: 1, fill the library drive with the installer kit on your computer; 2, write the Pi&#39;s small card with Raspberry Pi Imager (Raspberry Pi OS Lite, 64-bit); 3, finish the card with the installer and write down the Wi-Fi name and password; 4, the card in the Pi, the drive in a blue port, switch on: the green light flickers for 5 to 10 minutes, then the Wi-Fi appears" /></p>
 <ol type="1">
 <li><strong>Fill the library drive</strong> with the installer kit, like any library drive: <strong><a href="../download/ark-illinois-valley-kit.zip">⬇️ Download the installer kit (ark-illinois-valley-kit.zip)</a></strong> (see <a class="guide" href="GET-THE-LIBRARY.html">Get the whole library</a>). Keep <strong>Offline AI</strong> and <strong>Works on every kind of device</strong> ticked. <em>Want maps beyond the local area?</em> With the drive still in your computer, start the library and use <strong>More → Offline &amp; downloads → Detailed offline map</strong> (see <a class="guide" href="HOW-TO-VIEW-MAPS.html">Offline maps</a>).</li>
 <li><strong>Write the Pi's own small card</strong> with <strong>Raspberry Pi Imager</strong> (free, from raspberrypi.com). Unplug the library drive first.
@@ -479,193 +723,16 @@
 <li>Search, open a guide, ask the AI, print something, and hold the meter button.</li>
 <li>Switch off. Then do it all again with your home internet off.</li>
 </ol>
-<hr />
-<h2 id="using-it">Using it</h2>
-<ol type="1">
-<li><strong>Open the lid</strong> all the way. <em>Mesh radio fitted?</em> <strong>Screw its antenna on now</strong>, before the switch.</li>
-<li><strong>Flip the red switch on</strong>. Keep it in the shade.</li>
-<li><strong>Take out the phone</strong> and wait <strong>2–3 minutes</strong>.</li>
-<li><strong>Join the Pi's Wi-Fi</strong> and open the address from the card in the lid.</li>
-<li><strong>When you're done,</strong> flip the switch off, close the lid and <strong>tape the seam</strong> again.</li>
-</ol>
-<p>If a <strong>solar-storm warning</strong> comes, switch off and seal it right away (see the <a class="guide" href="EMP-GUIDE.html">EMP guide</a>). Switch off when nobody's using it to save the battery; the AI uses the most power.</p>
-<p><strong>The map:</strong> <strong>Tools → Map</strong> shows roads, topo lines, property lines and satellite photos on any phone on the Vault's Wi-Fi. For sharp satellite photos close up, download them onto the library drive first, on a computer with internet: <strong>More → Offline &amp; downloads → Sharp satellite photos</strong>. <strong>📍</strong> shows where you are (the phone warns once; the map says what to tap), and <strong>🖨️</strong> prints the part on screen in strips. See <a class="guide" href="HOW-TO-VIEW-MAPS.html">Offline maps</a>.</p>
-<p><strong>Family photos:</strong> plug a USB drive of photos into a free USB port. They show under <strong>Tools → 🖼️ Family photos &amp; videos</strong>. Nothing on that drive can be changed.</p>
-<p><strong>Drawings:</strong> <strong>Tools → CAD</strong> draws a plan, a part or a pattern to scale, on any phone or laptop on the Vault's Wi-Fi. To keep drawings <strong>on the Vault</strong>, where everyone can open them:</p>
-<ol type="1">
-<li>On any computer, make a folder named <strong><code>ARK-Saved</code></strong> on a small thumb drive (any size will do).</li>
-<li>Plug it into a free USB port on the Pi, then switch on.</li>
-</ol>
-<p>That folder is how the Vault knows it may save there. It is the <strong>only</strong> drive the Vault ever writes to; the library drive and a photo drive can't be changed. With no such drive, a drawing is saved to the phone or laptop you are using instead. <em>A Vault set up before November 2026 has to learn this: finish the Pi's card again (step 3).</em></p>
-<hr />
-<h2 id="the-mesh-radio-optional">The mesh radio (optional)</h2>
-<p>A <strong>mesh radio</strong> sends short <strong>text messages</strong> and <strong>positions</strong> from one radio to another, with no cell service and no internet. Every radio in range passes messages along. It needs no license. The software is <strong>Meshtastic</strong>, which is free.</p>
-<ul>
-<li><strong>One radio stays with the Vault,</strong> under the lid. The Vault powers it whenever the switch is on.</li>
-<li><strong>The pocket radio</strong> (the card) goes with whoever leaves, along with the <strong>second phone</strong>.</li>
-<li><strong>Each radio talks to its own phone</strong> by Bluetooth, through the <strong>Meshtastic app</strong>. You type and read messages in the app. The Vault's library page does <strong>not</strong> show mesh messages yet.</li>
-</ul>
-<blockquote>
-<p>⚠️ <strong>Antenna first, every time.</strong> Screw the antenna on <strong>before</strong> you flip the switch. A radio that sends with no antenna can burn itself out.</p>
-</blockquote>
-<p><strong>Do these now, while there is internet:</strong></p>
-<ol type="1">
-<li>Put the <strong>Meshtastic app</strong> on both phones.</li>
-<li>Check each radio has Meshtastic on it and set its region to <strong>US</strong> (the app asks). The pocket card comes with it. The Vault's board may need it put on first, from a computer, at <strong>flasher.meshtastic.org</strong>.</li>
-<li>Pair each radio with its phone, give both radios the <strong>same channel</strong>, and send a test message each way.</li>
-</ol>
-<p><strong>How far it reaches</strong> <em>(rule of thumb)</em>: through thick forest or hills, ¼ to 1 mile; around town, 1 to 3 miles; with a clear view across a valley, 5 miles or more. A ridge in between often blocks it. <strong>Height helps most:</strong> after an event, raise the Vault's antenna as high as you can.</p>
-<p><strong>Stored, everything is inside the sealed can:</strong> the radio, its antenna (unscrewed), the pocket radio and both phones. Nothing goes through the can's wall.</p>
-<p>Setting the radios up, private channels, range, relays and a neighborhood mesh: the <a class="guide" href="MESH-RADIO-GUIDE.html">Mesh radio guide</a>. The project's own manual and the Android app are on the library drive, in <code>Comms-Signals\Mesh-Radio</code>.</p>
-<hr />
-<h2 id="printing-on-paper">Printing on paper</h2>
-<p>Anyone on the Vault's Wi-Fi can print a guide section, an AI answer or a book page on the little receipt printer. It uses heat-sensitive paper: <strong>no ink</strong> to run out.</p>
-<ul>
-<li><strong>🖨️ Print</strong> is at the top of every guide and page, and under each AI answer (<strong>🖨️ Print this answer</strong>). Every book has a <strong>🖨️</strong> button too.</li>
-<li><strong>Pick a size:</strong> <strong>Tiny</strong> fits the most on the paper; <strong>Small</strong> or <strong>Medium</strong> are easier to read; <strong>Large</strong> for weak eyes. The preview shows how much paper it will take.</li>
-<li><strong>Book pages:</strong> print the <strong>words</strong> (re-flowed to fit, least paper) or a <strong>picture</strong> of the page (for drawings and tables). A picture can be printed <strong>bigger</strong>, in strips you tape together; each strip is labelled (A1, A2, B1…) so you know where it goes.</li>
-<li><strong>Doses and measurements:</strong> in <strong>Tiny</strong>, check every number, or print in Small.</li>
-</ul>
-<p><strong>Paper:</strong> <strong>57 × 30 mm</strong> thermal rolls (2¼ in wide). If the paper comes out blank, the roll is in upside down. Prints fade in heat and sun, so copy anything important in pencil. Keep spare rolls cool and dark.</p>
-<hr />
-<h2 id="power-and-charging">Power and charging</h2>
-<p><strong>How long it runs:</strong> a full battery runs the Pi for about <strong>30–40 hours</strong> of use: a long day of use every day for a week <em>(rule of thumb)</em>.</p>
-<p><strong>Checking the battery:</strong> hold the meter button. About <strong>13.3 V</strong> is full, <strong>13.0 V</strong> half, and <strong>12.0 V</strong> nearly empty: charge it then <em>(rule of thumb)</em>.</p>
-<p><strong>From the wall:</strong> with the lid open, plug the wall charger in (set to <strong>lithium</strong>). About <strong>10 hours</strong> from empty. Unplug it when the <strong>Full</strong> light comes on.</p>
-<p><strong>From the sun (after an event):</strong></p>
-<ol type="1">
-<li>Set the controller up once in the <strong>VictronConnect</strong> phone app (battery type <strong>LiFePO4</strong>, charge current about <strong>10 A</strong>). The BlueSolar needs a Victron <strong>VE.Direct</strong> Bluetooth dongle or USB cable to talk to the app.</li>
-<li>Wire the <strong>battery first</strong>, in <strong>12 AWG</strong>: BATT+ → battery + through the <strong>20 A fuse</strong> (the fuse close to the battery), BATT− → battery −.</li>
-<li>Then the <strong>panel</strong>: PV+ and PV−, with the panel's own leads.</li>
-<li>When done, unplug the <strong>panel first</strong>, then the battery, and store the panel outside with nothing plugged in.</li>
-</ol>
-<p>A 100 W panel fills it in about a sunny day. More in <a class="guide" href="OFF-GRID-POWER-GUIDE.html">Off-Grid Power</a>.</p>
-<p><strong>The phone:</strong> charge it from any phone charger, or from the Pi's USB port while it runs. Keep it about half charged in storage.</p>
-<blockquote>
-<p>⚠️ Never charge with the lid shut, never run a cable through a hole in the can, and <strong>never connect the panel straight to the battery</strong>.</p>
-</blockquote>
-<hr />
-<h2 id="packing-and-sealing">Packing and sealing</h2>
-<ol type="1">
-<li><strong>Switch off,</strong> unplug the chargers, and put the phone back. <em>Mesh radio fitted?</em> Unscrew its antenna and stand it back in its corner, and put the pocket radio and second phone back.</li>
-<li><strong>Charge the battery to about half</strong> for storage, and top it up every few months.</li>
-<li><strong>Close and latch the lid,</strong> then run <strong>one band of foil tape right round the can</strong> over the bare strips (about 1 m), over the hinge and the latch, overlapping at the end. Press it down well (<a class="lib pic" target="_blank" rel="noopener" href="https://www.wbdg.org/FFC/NAVFAC/DMMHNAV/hdbk419a_vol1.pdf#page=275" title="MIL-HDBK-419A Grounding Bonding and Shielding Vol 1 Basic Theory (DoD 1987).pdf — page 275">why seams matter</a>).</li>
-<li><strong>Test the seal:</strong> tape a phone inside and call it. If it doesn't ring, the seal is good. (More in the <a class="guide" href="EMP-GUIDE.html">EMP guide</a>.)</li>
-</ol>
-<p>Store it somewhere cool and dry, not in a hot car or shed.</p>
-<hr />
-<h2 id="if-something-goes-wrong">If something goes wrong</h2>
-<table>
-<thead>
-<tr class="header">
-<th>Problem</th>
-<th>Fix</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>First setup: the green light <strong>blinks fast</strong> and keeps blinking</td>
-<td>It got stuck. Read <strong>ark/setup-log.txt</strong> on the card. Usually: plug in the library drive and switch on again</td>
-</tr>
-<tr class="even">
-<td>Nothing lights up</td>
-<td>Check the fuse, the battery (hold the meter button) and the switch. Check the converter gives <strong>5.0–5.25 V</strong></td>
-</tr>
-<tr class="odd">
-<td>The Wi-Fi doesn't show up</td>
-<td>Wait the full 3 minutes with the lid open. Switch off, wait 10 seconds, switch on</td>
-</tr>
-<tr class="even">
-<td>Joined the Wi-Fi, but the page won't open</td>
-<td>On an iPhone, use <strong>Safari</strong>. Type the address exactly, with <code>http://</code> and <code>:8096</code>. Try <strong>airplane mode</strong> on, then Wi-Fi back on</td>
-</tr>
-<tr class="odd">
-<td>The AI says it isn't ready</td>
-<td>Give it a minute or two. Search works meanwhile</td>
-</tr>
-<tr class="even">
-<td>An answer sits on <strong>Writing…</strong> and goes no further</td>
-<td>It picks up again by itself. If it doesn't, press <strong>Stop</strong>, then <strong>Try again</strong>: that's quick, because the AI keeps what it already read</td>
-</tr>
-<tr class="odd">
-<td><strong>⚠️ Power too weak</strong>, the AI takes minutes, or the Pi keeps restarting</td>
-<td>The Pi isn't getting enough power. See <a href="#power-too-weak-or-the-ai-takes-minutes">below</a></td>
-</tr>
-<tr class="even">
-<td>The meter stays dark</td>
-<td>Its thin red wire must go to the microswitch's <strong>COM</strong> and <strong>NO</strong> (not NC)</td>
-</tr>
-<tr class="odd">
-<td>The fan never runs</td>
-<td>It only runs when the Pi is hot (above 60 °C). Check the blue wire is on pin 8</td>
-</tr>
-<tr class="even">
-<td>A setting I changed was gone</td>
-<td>That's normal: see <a href="#changing-a-setting-later">Changing a setting later</a></td>
-</tr>
-<tr class="odd">
-<td>Printer: <em>No printer found</em></td>
-<td>Check its USB cable is in the Pi. Close the print window and open it again</td>
-</tr>
-<tr class="even">
-<td>Printer: <em>not allowed to use the printer</em></td>
-<td>Finish the card again and let it set itself up again</td>
-</tr>
-<tr class="odd">
-<td>Printer feeds blank paper</td>
-<td>Turn the paper roll over</td>
-</tr>
-<tr class="even">
-<td>Print is faint or stops</td>
-<td>The battery is low. Charge it</td>
-</tr>
-<tr class="odd">
-<td>Forgot the Wi-Fi password</td>
-<td>Plug the library drive into any computer and open <strong><code>PI-WIFI-CARD.html</code></strong></td>
-</tr>
-<tr class="even">
-<td>No phone at all</td>
-<td>Plug a TV (micro-HDMI) and keyboard into the Pi, log in (user <strong>ark</strong>, the Wi-Fi password), and run <strong>SETUP-Raspberry-Pi.sh</strong> with <code>--screen</code> (make the card writable first; see above). This needs the desktop version of Raspberry Pi OS, not Lite</td>
-</tr>
-<tr class="odd">
-<td>Want home internet on the Pi (for updates)</td>
-<td>Plug in a network cable</td>
-</tr>
-<tr class="even">
-<td>The lid won't shut since adding the mesh radio</td>
-<td>Something is under it. Move the wall charger's cord and plug toward the latch end, and take the antenna off</td>
-</tr>
-<tr class="odd">
-<td>The mesh radio's screen stays dark</td>
-<td>Check its USB cable at both ends. It only has power while the switch is on</td>
-</tr>
-</tbody>
-</table>
-<h3 id="power-too-weak-or-the-ai-takes-minutes">"Power too weak", or the AI takes minutes</h3>
-<p>The Pi isn't getting a full 5 volts. It can then slow itself down to about a third of its speed, and the AI suffers most: an answer can take 10 minutes instead of one or two. Weak power can also make the Pi or its drive misbehave, so fix it even if the AI seems fine.</p>
-<p><strong>Quick test:</strong> switch off, unplug the Pi's power plugs from pins 2 and 14, and run the Pi from an <strong>official Raspberry Pi USB-C power supply</strong> instead (never both at once). If the warning goes away, the can's power wiring is the problem.</p>
-<p>To see what the Pi is doing, open <strong>More → Vault system status</strong> on the phone, while the AI is answering. It shows the power, the temperature and how fast the processor is running.</p>
-<ol type="1">
-<li><strong>Check the battery:</strong> hold the meter button. Under about 12.5 V, charge it.</li>
-<li><strong>Check the converter:</strong> ask the AI a question, and <strong>while it's working</strong>, touch a multimeter to the converter's two <strong>output</strong> screws. It should read <strong>5.1 to 5.25 V</strong>. Lower than that? If the converter has a small adjusting screw, turn it up to about 5.2 V; if not, replace it.</li>
-<li><strong>Check the wires to the Pi:</strong> if the converter reads fine, the power is lost on the way to the Pi. The usual weak spot is the two little plugs on <strong>pins 2 and 14</strong> and the joints to them: the 18 AWG must be <strong>soldered</strong> to the jumper leads' short wires, not crimped into the plugs (see <a href="#7-wiring">Wiring</a>). Redo any joint that wiggles, and keep the wires as short as the route allows.</li>
-<li><strong>Switch off and on again</strong> so the old warning clears, and ask the same question. A healthy Pi should start writing within a minute or two.</li>
-</ol>
-<hr />
-<h2 id="other-ways-to-build-it">Other ways to build it</h2>
+</div><!--/fold--></div>
+<div class="fold"><h2 class="fold-head" id="other-ways-to-build-it">Other ways to build it</h2>
+<p class="gist noprint">With a touchscreen, or a Pi on a shelf</p>
+<div class="fold-body">
 <ul>
 <li><strong>With a touchscreen</strong> (for a bigger box): use the desktop version of <strong>Raspberry Pi OS (64-bit)</strong>, not Lite, and tick <strong>touchscreen</strong> when you finish the card.</li>
 <li><strong>No power switch</strong> (a Pi on a shelf): untick <strong>It's in the ARK ammo can</strong> when you finish the card, and power it with a normal USB-C supply. Shut it down before unplugging: a <strong>Pi 5</strong> has a power button; on a <strong>Pi 4</strong>, add a push button on <strong>pins 5 and 6</strong>.</li>
 </ul>
 <p><img loading="lazy" src="img/AMMO-CAN-COMPUTER-GUIDE/pi4-power-button-pins.svg" alt="A Raspberry Pi 4 seen from above, with the USB ports at the right end; the push button&#39;s two wires go onto the third pair of pins counted from the left end of the 40-pin row, pins 5 and 6" /> <em>A push button on pins 5 and 6 shuts a Pi 4 down safely.</em></p>
-<hr />
-<h2 id="every-few-months">Every few months</h2>
-<ul>
-<li><strong>Check the battery</strong> with the meter button, and top it and the phone up to about half. The second phone and the pocket mesh radio too, if you have them.</li>
-<li><strong>Switch on and run the test</strong> above. Then switch off and re-tape the seam.</li>
-<li><strong>Update the library:</strong> run the installer on the library drive again, then finish the Pi's card again (see <a href="#the-steps">The steps</a>).</li>
-<li>Replace the foil tape if it's torn or loose.</li>
-</ul>
+</div><!--/fold--></div>
 <hr />
 <h2 id="pictures-diagrams">Pictures &amp; diagrams</h2>
 <ul>

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="440" viewBox="0 0 900 440" font-family="Arial, Helvetica, sans-serif">
+  <title>Setting up the Pi in four steps: 1, fill the library drive with the installer kit on your computer; 2, write the Pi's small card with Raspberry Pi Imager (Raspberry Pi OS Lite, 64-bit, no customisation); 3, finish the card with the installer and write down the Wi-Fi name and password; 4, the card in the Pi, the drive in a blue USB port, switch on: the green light flickers for 5 to 10 minutes, then the Wi-Fi appears</title>
+  <rect width="900" height="440" fill="#ffffff"/>
+  <rect x="6" y="6" width="433" height="204" rx="14" fill="#fbfaf6" stroke="#dcd6c8" stroke-width="1.5"/>
+  <circle cx="32" cy="34" r="15" fill="#2f7d4f" stroke="#2f7d4f" stroke-width="0"/>
+  <text x="32" y="40" font-size="17" fill="#ffffff" text-anchor="middle" font-weight="bold">1</text>
+  <text x="180" y="52" font-size="21" fill="#1d2721" text-anchor="start" font-weight="bold">Fill the library drive</text>
+  <text x="180" y="84" font-size="16" fill="#555555" text-anchor="start">With the installer kit,</text>
+  <text x="180" y="106" font-size="16" fill="#555555" text-anchor="start">on your computer.</text>
+  <rect x="461" y="6" width="433" height="204" rx="14" fill="#fbfaf6" stroke="#dcd6c8" stroke-width="1.5"/>
+  <circle cx="487" cy="34" r="15" fill="#2f7d4f" stroke="#2f7d4f" stroke-width="0"/>
+  <text x="487" y="40" font-size="17" fill="#ffffff" text-anchor="middle" font-weight="bold">2</text>
+  <text x="635" y="52" font-size="21" fill="#1d2721" text-anchor="start" font-weight="bold">Write the Pi’s small card</text>
+  <text x="635" y="84" font-size="16" fill="#555555" text-anchor="start">Raspberry Pi Imager:</text>
+  <text x="635" y="106" font-size="16" fill="#555555" text-anchor="start">Raspberry Pi OS Lite (64-bit).</text>
+  <text x="635" y="128" font-size="16" fill="#555555" text-anchor="start">Customisation: No.</text>
+  <rect x="6" y="226" width="433" height="204" rx="14" fill="#fbfaf6" stroke="#dcd6c8" stroke-width="1.5"/>
+  <circle cx="32" cy="254" r="15" fill="#2f7d4f" stroke="#2f7d4f" stroke-width="0"/>
+  <text x="32" y="260" font-size="17" fill="#ffffff" text-anchor="middle" font-weight="bold">3</text>
+  <text x="180" y="272" font-size="21" fill="#1d2721" text-anchor="start" font-weight="bold">Finish the card</text>
+  <text x="180" y="304" font-size="16" fill="#555555" text-anchor="start">In the installer: Finish a Raspberry</text>
+  <text x="180" y="326" font-size="16" fill="#555555" text-anchor="start">Pi memory card. Write down the</text>
+  <text x="180" y="348" font-size="16" fill="#555555" text-anchor="start">Wi-Fi name and password.</text>
+  <rect x="461" y="226" width="433" height="204" rx="14" fill="#fbfaf6" stroke="#dcd6c8" stroke-width="1.5"/>
+  <circle cx="487" cy="254" r="15" fill="#2f7d4f" stroke="#2f7d4f" stroke-width="0"/>
+  <text x="487" y="260" font-size="17" fill="#ffffff" text-anchor="middle" font-weight="bold">4</text>
+  <text x="635" y="272" font-size="21" fill="#1d2721" text-anchor="start" font-weight="bold">Switch on</text>
+  <text x="635" y="304" font-size="16" fill="#555555" text-anchor="start">Card in the Pi, drive in a blue</text>
+  <text x="635" y="326" font-size="16" fill="#555555" text-anchor="start">USB port. The green light flickers</text>
+  <text x="635" y="348" font-size="16" fill="#555555" text-anchor="start">5–10 minutes, then its Wi-Fi shows.</text>
+  <rect x="40" y="80" width="96" height="60" rx="5" fill="#eef4f0" stroke="#1d2721" stroke-width="3"/>
+  <path d="M28 144 H148 L140 154 H36 Z" fill="#d6d9dd" stroke="#1d2721" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="144" y="132" width="26" height="12" rx="3" fill="#3a3e44" stroke="#1d2721" stroke-width="2"/>
+  <rect x="138" y="134" width="8" height="8" rx="1" fill="#b8bcc2" stroke="#1d2721" stroke-width="1.5"/>
+  <path d="M525 82 L537 70 H577 V140 H525 Z" fill="#2f3a45" stroke="#1d2721" stroke-width="2.5"/>
+  <rect x="533" y="92" width="36" height="30" rx="3" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+  <text x="551" y="112" font-size="13" fill="#2f3a45" text-anchor="middle" font-weight="bold">SD</text>
+  <path d="M70 302 L82 290 H122 V360 H70 Z" fill="#2f3a45" stroke="#1d2721" stroke-width="2.5"/>
+  <rect x="78" y="312" width="36" height="30" rx="3" fill="#ffffff" stroke="#ffffff" stroke-width="0"/>
+  <text x="96" y="332" font-size="13" fill="#2f3a45" text-anchor="middle" font-weight="bold">SD</text>
+  <circle cx="124" cy="356" r="15" fill="#2f7d4f" stroke="#2f7d4f" stroke-width="0"/>
+  <path d="M117 356 l5 6 l10 -12" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="478" y="312" width="110" height="72" rx="7" fill="#2f7d4f" stroke="#1d5233" stroke-width="2.5"/>
+  <rect x="488" y="317" width="4" height="4" rx="1" fill="#e8d48a" stroke="#e8d48a" stroke-width="0"/>
+  <rect x="494.2" y="317" width="4" height="4" rx="1" fill="#e8d48a" stroke="#e8d48a" stroke-width="0"/>
+  <rect x="500.4" y="317" width="4" height="4" rx="1" fill="#e8d48a" stroke="#e8d48a" stroke-width="0"/>
+  <rect x="506.6" y="317" width="4" height="4" rx="1" fill="#e8d48a" stroke="#e8d48a" stroke-width="0"/>
+  <rect x="512.8" y="317" width="4" height="4" rx="1" fill="#e8d48a" stroke="#e8d48a" stroke-width="0"/>
+  <rect x="519" y="317" width="4" height="4" rx="1" fill="#e8d48a" stroke="#e8d48a" stroke-width="0"/>
+  <rect x="525.2" y="317" width="4" height="4" rx="1" fill="#e8d48a" stroke="#e8d48a" stroke-width="0"/>
+  <rect x="531.4" y="317" width="4" height="4" rx="1" fill="#e8d48a" stroke="#e8d48a" stroke-width="0"/>
+  <rect x="537.6" y="317" width="4" height="4" rx="1" fill="#e8d48a" stroke="#e8d48a" stroke-width="0"/>
+  <rect x="543.8" y="317" width="4" height="4" rx="1" fill="#e8d48a" stroke="#e8d48a" stroke-width="0"/>
+  <rect x="550" y="317" width="4" height="4" rx="1" fill="#e8d48a" stroke="#e8d48a" stroke-width="0"/>
+  <rect x="556.2" y="317" width="4" height="4" rx="1" fill="#e8d48a" stroke="#e8d48a" stroke-width="0"/>
+  <rect x="562.4" y="317" width="4" height="4" rx="1" fill="#e8d48a" stroke="#e8d48a" stroke-width="0"/>
+  <rect x="568.6" y="317" width="4" height="4" rx="1" fill="#e8d48a" stroke="#e8d48a" stroke-width="0"/>
+  <rect x="574" y="328" width="22" height="18" rx="2" fill="#b8bcc2" stroke="#1d2721" stroke-width="1.5"/>
+  <rect x="574" y="352" width="22" height="18" rx="2" fill="#2b6cb0" stroke="#1d2721" stroke-width="1.5"/>
+  <circle cx="494" cy="370" r="6" fill="#7CFC7C" stroke="#2e7d32" stroke-width="1.5"/>
+  <path d="M484 370 A 10 10 0 0 1 504 370" fill="none" stroke="#7CFC7C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M479 370 A 15 15 0 0 1 509 370" fill="none" stroke="#7CFC7C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M527.0 294.7 A 8.0 8.0 0 0 1 539.0 294.7" fill="none" stroke="#2f7d4f" stroke-width="2.5600000000000005" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M521.0 289.4 A 16.0 16.0 0 0 1 545.0 289.4" fill="none" stroke="#2f7d4f" stroke-width="2.5600000000000005" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M515.0 284.2 A 24.0 24.0 0 0 1 551.0 284.2" fill="none" stroke="#2f7d4f" stroke-width="2.5600000000000005" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="533" cy="300" r="2.8" fill="#2f7d4f" stroke="#2f7d4f" stroke-width="0"/>
+  <path d="M432 108 L470 108" fill="none" stroke="#2f7d4f" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M470 108 L460.7 113.9 L460.7 102.1 Z" fill="#2f7d4f"/>
+  <path d="M560 206 L340 232" fill="none" stroke="#2f7d4f" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M340 232 L348.5 225.1 L349.9 236.8 Z" fill="#2f7d4f"/>
+  <path d="M432 328 L470 328" fill="none" stroke="#2f7d4f" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M470 328 L460.7 333.9 L460.7 322.1 Z" fill="#2f7d4f"/>
+</svg>
