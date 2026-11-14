@@ -2,7 +2,7 @@
 <style>/* the top bar keeps to the page's own edge on a phone (it used to stick out 6px each side) */@media(max-width:600px){.topnav{margin:-16px -14px 6px;padding:8px 14px 7px}}</style><style>/* ark-bar: the app's buttons on every page */:root{--side-bg:#0F1511;--side-on:#2C4A39}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--side-bg:#233F32;--side-on:#315B43}}:root[data-theme=light]{--side-bg:#233F32;--side-on:#315B43}.arkbar{position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));margin:0;padding:6px 4px calc(6px + env(safe-area-inset-bottom));background:var(--card);border-top:1px solid var(--line);font:600 11.5px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}.arkbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:48px;color:var(--muted);text-decoration:none}.arkbar a i{display:flex;align-items:center;justify-content:center;width:46px;max-width:100%;height:28px;border-radius:999px}.arkbar a.on{color:var(--ink);font-weight:700}.arkbar a.on i{background:rgba(127,160,135,.28)}.arkbar svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.arkbar .l,.arkbar .wideonly,.arkbar .bn{display:none}body.has-arkbar{padding-bottom:calc(61px + env(safe-area-inset-bottom))}body.has-arkbar .totop,body.has-arkbar .sop-fab{bottom:calc(76px + env(safe-area-inset-bottom))!important}@media(min-width:760px){.arkbar{top:0;right:auto;width:232px;display:flex;flex-direction:column;gap:4px;padding:16px 12px;border-top:0;background:var(--side-bg);font-size:15px;overflow-y:auto}.arkbar a,.arkbar a.wideonly{display:flex;flex-direction:row;justify-content:flex-start;gap:12px;min-height:44px;padding:0 12px;border-radius:10px;color:#E3EBE5;order:0!important}.arkbar a i{width:auto;height:auto;border-radius:0}.arkbar a.on i{background:none}.arkbar svg{width:20px;height:20px}.arkbar a.on{background:var(--side-on);color:#fff}.arkbar .s{display:none}.arkbar .l{display:inline}.arkbar a.bn{display:flex;gap:10px;min-height:0;padding:0 6px 14px;color:#fff;font-size:18px;font-weight:700}.arkbar .bn img{width:40px;height:40px;border-radius:9px}body.has-arkbar{padding-bottom:0;padding-left:232px}body.has-arkbar .totop,body.has-arkbar .sop-fab{bottom:14px!important}}@media print{.arkbar{display:none!important}body.has-arkbar{padding:0!important}}</style><script>/* ark-bar */(function(){function add(){if(document.querySelector(".arkbar")||location.protocol.indexOf("http")!==0||window.self!==window.top)return;var p=location.pathname,root=null;if(p.indexOf("/lib/")===0)root="/";else{var a=document.querySelector('.topnav a[href*="#tools"],.topnav a[href*="#kit"],a[href$="#kit"],a[href$="#ask"]');if(a)root=a.getAttribute("href").replace(/#.*$/,"")}if(root===null)return;var on=document.body.getAttribute("data-ark")||(/walking-routes|\/map\//i.test(p)?"maps":document.querySelector('.topnav a[href*="#kit"],.topnav a[data-app="/#kit"]')?"kit":"tools");var n=document.createElement("nav");n.className="arkbar";n.setAttribute("aria-label","Main");n.innerHTML='<a class="bn" data-v="home"><img src="'+root+'icon.svg" alt="">ARK</a><a data-v="home" style="order:1"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></i><span class="s">Home</span><span class="l">Home</span></a><a data-v="ask" style="order:3"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-7l-5 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg></i><span class="s">Ask</span><span class="l">Ask ARK</span></a><a data-v="tools" style="order:2"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-13c-3-.5-6 0-8 1.5z"/><path d="M12 6v13"/></svg></i><span class="s">Library</span><span class="l">Guides</span></a><a data-v="library" class="wideonly" style="order:0"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/></svg></i><span class="s"></span><span class="l">Books</span></a><a data-v="maps" style="order:4"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg></i><span class="s">Maps</span><span class="l">Maps &amp; Routes</span></a><a data-v="kit" style="order:5"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6.5a4 4 0 0 0-5.3 5.3L3 18l3 3 6.2-6.2a4 4 0 0 0 5.3-5.3l-2.7 2.7-2.5-.5-.5-2.5z"/></svg></i><span class="s">Tools</span><span class="l">Tools</span></a><a data-v="setup" class="wideonly" style="order:0"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></svg></i><span class="s"></span><span class="l">Offline &amp; downloads</span></a><a data-v="more" style="order:6"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="19" cy="12" r="1.3"/></svg></i><span class="s">More</span><span class="l">Settings &amp; help</span></a>';var l=n.querySelectorAll("a");for(var i=0;i<l.length;i++){l[i].href=root+"#"+l[i].getAttribute("data-v");if(l[i].getAttribute("data-v")===on&&l[i].className!=="bn")l[i].className+=" on"}document.body.appendChild(n);document.body.className+=" has-arkbar"}if(document.body)add();else document.addEventListener("DOMContentLoaded",add)})();</script></head><body><div class="wrap"><p class="topnav"><a class="guide" href="../#tools">Guides</a> › <a class="guide" href="../#tools:start">Start here</a> · <a class="guide" href="EMERGENCY-FINDER.html">Emergency</a> · <a class="guide" href="SUBJECT-INDEX.html">Index A–Z</a></p>
 <h1 id="-subject-index-az"><span class="h1e"></span> Subject Index A–Z</h1>
 <p>Look things up the way you would in the index at the back of a book — no search box, AI or internet needed. Each entry jumps straight to the right section of a guide; 📖 opens a book page on this drive, 🖼️ a drawing, 📷 photos. In a hurry? Use the <a class="guide" href="EMERGENCY-FINDER.html">🆘 Emergency finder</a>. To browse by subject instead, see the <a class="guide" href="../#tools">guides by subject</a>.</p>
-<p><em>4290 subjects, 6496 links, from 70 guides.</em></p>
+<p><em>4389 subjects, 6638 links, from 72 guides.</em></p>
 <!-- az-index -->
 
 <nav class="azbar" id="letters" aria-label="Jump to a letter"><a href="#0-9">0–9</a><a href="#a">A</a><a href="#b">B</a><a href="#c">C</a><a href="#d">D</a><a href="#e">E</a><a href="#f">F</a><a href="#g">G</a><a href="#h">H</a><a href="#i">I</a><a href="#j">J</a><a href="#k">K</a><a href="#l">L</a><a href="#m">M</a><a href="#n">N</a><a href="#o">O</a><a href="#p">P</a><a href="#q">Q</a><a href="#r">R</a><a href="#s">S</a><a href="#t">T</a><a href="#u">U</a><a href="#v">V</a><a href="#w">W</a><a href="#x">X</a><a href="#y">Y</a><a href="#z">Z</a></nav>
@@ -288,6 +288,14 @@
 <ul>
 <li>bells, cans and gravel — <a class="guide" href="HOME-DEFENSE-GUIDE.html#early-warning-with-no-grid">Home protection › Early warning with no grid</a></li>
 </ul></li>
+<li><span id="t-albert-alexander"></span><strong>Albert Alexander</strong>
+<ul>
+<li>the first penicillin patient, and how it ended — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html">How antibiotics came to be › 1939–1941: Oxford, and the first patient</a></li>
+</ul></li>
+<li><span id="t-alcohol"></span><strong>Alcohol</strong>
+<ul>
+<li>the strength that kills germs — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#alcohol-the-strength-that-works">Making medicines › Alcohol: the strength that works</a></li>
+</ul></li>
 <li><span id="t-alcohol-fuel"></span><strong>Alcohol fuel</strong>
 <ul>
 <li>making and using — <a class="guide" href="FUEL-GUIDE.html#when-the-stored-fuel-runs-out">Fuel › When the stored fuel runs out</a></li>
@@ -311,6 +319,10 @@
 <li>swelling, trouble breathing — <a class="guide" href="Medical-READ-ME-FIRST.html#using-found-or-expired-medicines">Medicines › Using found or expired medicines</a></li>
 </ul></li>
 <li><span id="t-allergic-reaction-to-stings"></span><strong>Allergic reaction to stings</strong> — see <a href="#t-bee-stings"><strong>Bee stings</strong></a></li>
+<li><span id="t-aloe"></span><strong>Aloe</strong>
+<ul>
+<li>burns — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Medicinal plants with real evidence</a></li>
+</ul></li>
 <li><span id="t-alpha-bravo-charlie"></span><strong>Alpha Bravo Charlie</strong> — see <a href="#t-phonetic-alphabet"><strong>Phonetic alphabet</strong></a></li>
 <li><span id="t-alternating-current"></span><strong>Alternating current</strong> — <a class="guide" href="POWER-GRID-GUIDE.html">Power grid › AC, 60 cycles and staying in step</a></li>
 <li><span id="t-alternator"></span><strong>Alternator</strong> — see <a href="#t-car-alternator"><strong>Car alternator</strong></a>
@@ -402,6 +414,10 @@
 <li>piglets on floors — <a class="guide" href="PIGS-GUIDE.html#piglets-crushing-cold-teeth-and-iron">Pigs › Piglets: crushing, cold, teeth and iron</a></li>
 </ul></li>
 <li><span id="t-angel-wings"></span><strong>Angel wings</strong> — <a class="guide" href="MUSHROOM-GUIDE.html#good-edibles-and-their-look-alikes">Mushrooms › Good edibles and their look-alikes</a></li>
+<li><span id="t-angel-s-trumpet"></span><strong>Angel's trumpet</strong>
+<ul>
+<li>poisonous — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#dangerous-to-try">Making medicines › Dangerous to try</a></li>
+</ul></li>
 <li><span id="t-angles"></span><strong>Angles</strong>
 <ul>
 <li>by hand at arm's length — <a class="guide" href="PRACTICAL-MATH-GUIDE.html#slope-grade-pitch-and-stairs">Practical math › Slope, grade, pitch and stairs</a></li>
@@ -452,11 +468,17 @@
 </ul></li>
 <li><span id="t-anti-seep-collar"></span><strong>Anti-seep collar</strong> — <a class="guide" href="DAMS-DITCHES-GUIDE.html#pipes-trees-and-burrowing-animals">Dams, weirs &amp; ditches › Pipes, trees and burrowing animals</a></li>
 <li><span id="t-anti-siphon-screen"></span><strong>Anti-siphon screen</strong> — <a class="guide" href="FUEL-GUIDE.html#drums-and-vehicles">Fuel › Drums and vehicles</a></li>
+<li><span id="t-antibiotic-resistance"></span><strong>Antibiotic resistance</strong>
+<ul>
+<li>why antibiotics stop working, with the numbers — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#why-antibiotics-stop-working">How antibiotics came to be › Why antibiotics stop working</a></li>
+</ul></li>
 <li><span id="t-antibiotics"></span><strong>Antibiotics</strong>
 <ul>
 <li>finish the course — <a class="guide" href="Medical-READ-ME-FIRST.html#using-found-or-expired-medicines">Medicines › Using found or expired medicines</a></li>
 <li>livestock need a prescription — <a class="guide" href="ILLINOIS-VALLEY-START-HERE.html#animals-and-vet-care">Illinois Valley › Animals and vet care</a></li>
 <li>not helping — <a class="guide" href="Medical-READ-ME-FIRST.html#if-this-goes-wrong">Medicines › If this goes wrong</a></li>
+<li>where they came from, and what it would take again — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#the-stories-who-when-and-how-long">How antibiotics came to be › The stories: who, when, and how long</a></li>
+<li>why home-made ones fail — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#why-most-home-made-antibiotics-fail">Making medicines › Why most home-made antibiotics fail</a></li>
 </ul></li>
 <li><span id="t-antidepressants"></span><strong>Antidepressants</strong>
 <ul>
@@ -468,6 +490,10 @@
 <li>poison — <a class="guide" href="SALVAGE-GUIDE.html#seats-belts-fuel-and-fluids">Salvage &amp; repurposing › Seats, belts, fuel and fluids</a></li>
 <li>poisoning of animals and children — <a class="guide" href="VEHICLES-EQUIPMENT-GUIDE.html#cooling-radiator-hoses-and-belts">Vehicles, tractors &amp; equipment › Cooling: radiator, hoses and belts</a></li>
 <li>salt brine (old advice) — <a class="guide" href="VEHICLES-EQUIPMENT-GUIDE.html#old-advice-in-the-library-to-ignore">Vehicles, tractors &amp; equipment › Old advice in the library to ignore</a></li>
+</ul></li>
+<li><span id="t-antiseptics"></span><strong>Antiseptics</strong>
+<ul>
+<li>alcohol, iodine, bleach, soap — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#antiseptics-alcohol-and-sterilizing">Making medicines › Antiseptics, alcohol and sterilizing</a></li>
 </ul></li>
 <li><span id="t-antivenom"></span><strong>Antivenom</strong>
 <ul>
@@ -541,6 +567,10 @@
 <ul>
 <li>testing — <a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html#electric-motors-testing-and-repair">Engines › Electric motors: testing and repair</a></li>
 </ul></li>
+<li><span id="t-arnica"></span><strong>Arnica</strong>
+<ul>
+<li>outside only — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#other-pain-helpers">Making medicines › Other pain helpers</a></li>
+</ul></li>
 <li><span id="t-arrow-ground-symbol"></span><strong>Arrow (ground symbol)</strong>
 <ul>
 <li>proceeding this way — <a class="guide" href="SIGNALS-MORSE-GUIDE.html#ground-to-air-symbols-print-this">Signals &amp; Morse › Ground-to-air symbols (print this)</a></li>
@@ -612,6 +642,7 @@
 <li><span id="t-aspirin"></span><strong>Aspirin</strong>
 <ul>
 <li>chewed for a heart attack — <a class="guide" href="CHRONIC-ILLNESS-GUIDE.html#chest-pain">Chronic illness › Chest pain</a></li>
+<li>compared with willow bark — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#willow-bark-️">Making medicines › Willow bark ⚠️</a></li>
 <li>low-dose against pre-eclampsia — <a class="guide" href="CHILDBIRTH-CHILDREN-GUIDE.html#pregnancy-checkups-and-danger-signs">Childbirth &amp; kids › Pregnancy: checkups and danger signs</a></li>
 <li>never for children or teens — <a class="guide" href="Medical-READ-ME-FIRST.html#using-found-or-expired-medicines">Medicines › Using found or expired medicines</a></li>
 </ul></li>
@@ -652,6 +683,7 @@
 <li>seen as far south as Oregon — <a class="guide" href="EMP-GUIDE.html#when-a-solar-storm-warning-comes">EMP › When a solar-storm warning comes</a></li>
 <li>sign of a strong solar storm — <a class="guide" href="WHAT-TO-EXPECT-GUIDE.html#9-solar-storm-or-emp">What to expect › 9. Solar storm or EMP</a></li>
 </ul></li>
+<li><span id="t-autoclave"></span><strong>Autoclave</strong> — see <a href="#t-pressure-canner"><strong>Pressure canner</strong></a></li>
 <li><span id="t-avalanche"></span><strong>Avalanche</strong>
 <ul>
 <li>warning signs — <a class="guide" href="ON-FOOT-GUIDE.html#snow-and-the-passes">On foot › Snow and the passes</a></li>
@@ -788,6 +820,7 @@
 </ul></li>
 <li><span id="t-baking-soda"></span><strong>Baking soda</strong>
 <ul>
+<li>in Dakin's solution — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#dakins-solution-weak-bleach-for-dirty-wounds">Making medicines › Dakin's solution: weak bleach for dirty wounds</a></li>
 <li>with sour milk or buttermilk — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#leavening-without-store-yeast-or-baking-powder">Food from scratch › Leavening without store yeast or baking powder</a></li>
 </ul></li>
 <li><span id="t-balance"></span><strong>Balance</strong>
@@ -806,6 +839,10 @@
 <li><span id="t-bantams"></span><strong>Bantams</strong>
 <ul>
 <li>small eaters, spare broodies — <a class="guide" href="CHICKENS-GUIDE.html#choosing-breeds-that-renew-themselves">Chickens › Choosing breeds that renew themselves</a></li>
+</ul></li>
+<li><span id="t-banting"></span><strong>Banting</strong>
+<ul>
+<li>the Toronto insulin work — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#19211923-insulin-the-fastest-of-them-all">How antibiotics came to be › 1921–1923: insulin, the fastest of them all</a></li>
 </ul></li>
 <li><span id="t-barbed-wire-entanglements"></span><strong>Barbed wire entanglements</strong>
 <ul>
@@ -987,6 +1024,10 @@
 <ul>
 <li>trichinella, cook to 165 °F — <a class="guide" href="ILLINOIS-VALLEY-START-HERE.html#hunting-and-fishing">Illinois Valley › Hunting and 🎣 Fishing</a></li>
 </ul></li>
+<li><span id="t-bearberry-uva-ursi-kinnikinnick"></span><strong>Bearberry (uva-ursi, kinnikinnick)</strong>
+<ul>
+<li>bladder — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Medicinal plants with real evidence</a></li>
+</ul></li>
 <li><span id="t-beargrass"></span><strong>Beargrass</strong>
 <ul>
 <li>pull, never cut; burn for new leaves — <a class="guide" href="NATIVE-SKILLS-GUIDE.html#baskets">First peoples' skills › Baskets</a></li>
@@ -1097,6 +1138,10 @@
 <li>crossing with chard — <a class="guide" href="SEED-BANK-GUIDE.html#which-of-your-seeds-cross-and-what-to-do">Seed bank › Which of your seeds cross — and what to do</a></li>
 <li>saving seed — <a class="guide" href="SEED-BANK-GUIDE.html#biennials-seed-in-the-second-year">Seed bank › Biennials: seed in the second year</a></li>
 <li>storing — <a class="guide" href="ROOT-CELLAR-GUIDE.html#what-each-crop-needs">Root cellars › What each crop needs</a></li>
+</ul></li>
+<li><span id="t-before-antibiotics"></span><strong>Before antibiotics</strong>
+<ul>
+<li>what people died of, and how often — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#what-it-was-like-before">How antibiotics came to be › What it was like before</a></li>
 </ul></li>
 <li><span id="t-bell"></span><strong>Bell</strong>
 <ul>
@@ -1296,6 +1341,10 @@
 <ul>
 <li>why one fault spreads — <a class="guide" href="POWER-GRID-GUIDE.html">Power grid › Why one fault can black out a region</a></li>
 </ul></li>
+<li><span id="t-bladder-infection"></span><strong>Bladder infection</strong>
+<ul>
+<li>cranberry, bearberry — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Medicinal plants with real evidence</a></li>
+</ul></li>
 <li><span id="t-blanket-roll"></span><strong>Blanket roll</strong> — <a class="guide" href="ON-FOOT-GUIDE.html#packs-you-can-make">On foot › Packs you can make</a></li>
 <li><span id="t-blast-wave"></span><strong>Blast wave</strong>
 <ul>
@@ -1313,6 +1362,7 @@
 <li>dose for drinking water (8 drops 6%) — <a class="guide" href="NUCLEAR-FALLOUT-GUIDE.html#food-and-water">Nuclear fallout › Food and water</a></li>
 <li>drops per gallon of water — <a class="guide" href="WATER-PURIFICATION-GUIDE.html#step-3-kill-the-germs">Water purification › Step 3 — Kill the germs</a></li>
 <li>for drinking water — <a class="lib" target="_blank" rel="noopener" href="https://www.epa.gov/sites/default/files/2017-09/documents/emergency_disinfection_of_drinking_water_sept2017.pdf#page=1" title="EPA - Emergency Disinfection of Drinking Water (2017).pdf — page 1">📖 EPA dosing table</a></li>
+<li>for washing wounds (Dakin's) — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#dakins-solution-weak-bleach-for-dirty-wounds">Making medicines › Dakin's solution: weak bleach for dirty wounds</a></li>
 <li>never mix with ammonia or vinegar — <a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html#cleaning-and-disinfecting">Make-do household › Cleaning and disinfecting</a></li>
 <li>never mix with urine, ammonia or vinegar — <a class="guide" href="SANITATION-GUIDE.html#chlorine-strengths-from-household-bleach">Sanitation › Chlorine strengths from household bleach</a></li>
 <li>shelf life — use within a year — <a class="guide" href="WATER-PURIFICATION-GUIDE.html#step-3-kill-the-germs">Water purification › Step 3 — Kill the germs</a></li>
@@ -1385,7 +1435,10 @@
 <li>prevent, spot, never rub — <a class="guide" href="REHAB-GUIDE.html#blood-clots-prevent-them-spot-them-never-rub-them">Rehab &amp; recovery › Blood clots: prevent them, spot them, never rub them</a></li>
 </ul></li>
 <li><span id="t-blood-loss"></span><strong>Blood loss</strong> — see <a href="#t-bleeding"><strong>Bleeding</strong></a></li>
-<li><span id="t-blood-poisoning"></span><strong>Blood poisoning</strong> — see <a href="#t-sepsis"><strong>Sepsis</strong></a></li>
+<li><span id="t-blood-poisoning"></span><strong>Blood poisoning</strong> — see <a href="#t-sepsis"><strong>Sepsis</strong></a>
+<ul>
+<li>what it meant before antibiotics — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#what-it-was-like-before">How antibiotics came to be › What it was like before</a></li>
+</ul></li>
 <li><span id="t-blood-pressure"></span><strong>Blood pressure</strong>
 <ul>
 <li>140/90 in pregnancy — <a class="guide" href="CHILDBIRTH-CHILDREN-GUIDE.html#pregnancy-checkups-and-danger-signs">Childbirth &amp; kids › Pregnancy: checkups and danger signs</a></li>
@@ -1534,6 +1587,10 @@
 <ul>
 <li>keeping them from mold — <a class="guide" href="PAPER-INK-GUIDE.html#keeping-paper-and-books-from-mold">Paper &amp; ink › Keeping paper and books from mold</a></li>
 <li>printing a page on the receipt printer — <a class="guide" href="AMMO-CAN-COMPUTER-GUIDE.html">ARK Vault (ammo-can computer) › Printing on paper</a></li>
+</ul></li>
+<li><span id="t-books-worth-finding"></span><strong>Books worth finding</strong>
+<ul>
+<li>what to add if you ever come across it — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#worth-adding-if-you-ever-find-them">How antibiotics came to be › Worth adding if you ever find them</a></li>
 </ul></li>
 <li><span id="t-booster-cables"></span><strong>Booster cables</strong> — see <a href="#t-jump-starting"><strong>Jump-starting</strong></a></li>
 <li><span id="t-booster-pump"></span><strong>Booster pump</strong> — <a class="guide" href="TOWN-WATER-SEWER-GUIDE.html">Town water &amp; sewer › Tanks on the hill, pumps and pressure</a></li>
@@ -1974,6 +2031,7 @@
 <li>dressings and daily care — <a class="guide" href="FIELD-CARE-GUIDE.html#burns">Injuries › Burns</a></li>
 <li>drinking schedule for big burns — <a class="guide" href="FIELD-CARE-GUIDE.html#burns">Injuries › Burns</a></li>
 <li>first aid, cool water — <a class="guide" href="FIELD-CARE-GUIDE.html#burns">Injuries › Burns</a></li>
+<li>honey and oil dressing — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#honey-and-sugar-dressings">Making medicines › Honey and sugar dressings</a></li>
 <li>hot wax and fat — <a class="guide" href="LIGHTING-GUIDE.html#fire-fumes-burns-and-children">Candles &amp; lamps › Fire, fumes, burns and children</a></li>
 <li>how big — palm and rule of nines — <a class="guide" href="FIELD-CARE-GUIDE.html#burns">Injuries › Burns</a></li>
 <li>keeping children safe; cooling a burn — <a class="guide" href="CHILDBIRTH-CHILDREN-GUIDE.html#accidents-drowning-burns-poisoning">Childbirth &amp; kids › Accidents: drowning, burns, poisoning</a></li>
@@ -2067,6 +2125,10 @@
 </ul></li>
 <li><span id="t-calcium-hypochlorite"></span><strong>Calcium hypochlorite</strong> — see <a href="#t-pool-shock"><strong>Pool shock</strong></a></li>
 <li><span id="t-calendar"></span><strong>Calendar</strong> — see <a href="#t-storage-calendar"><strong>Storage calendar</strong></a></li>
+<li><span id="t-calendula"></span><strong>Calendula</strong>
+<ul>
+<li>skin — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Medicinal plants with real evidence</a></li>
+</ul></li>
 <li><span id="t-calf-stuck"></span><strong>Calf stuck</strong> — see <a href="#t-calving"><strong>Calving</strong></a></li>
 <li><span id="t-california-bay-laurel"></span><strong>California bay laurel</strong> — see <a href="#t-bay-nuts"><strong>Bay nuts</strong></a></li>
 <li><span id="t-california-black-oak"></span><strong>California black oak</strong>
@@ -2191,6 +2253,10 @@
 <ul>
 <li>#10 cans for long storage — <a class="guide" href="FOOD-SECURITY-GUIDE.html#storing-it-for-years">Food when scarce › Storing it for years</a></li>
 <li>dented, bulging or rusty — <a class="guide" href="PRESERVING-FOOD-GUIDE.html#jars-lids-storage-and-spoilage">Preserving food › Jars, lids, storage and spoilage</a></li>
+</ul></li>
+<li><span id="t-cantaloupe-mould"></span><strong>Cantaloupe mould</strong>
+<ul>
+<li>the strain found on a market melon — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html">How antibiotics came to be › 1941–1945: the farm laboratory, and the jump to a factory</a></li>
 </ul></li>
 <li><span id="t-canvas"></span><strong>Canvas</strong>
 <ul>
@@ -2346,6 +2412,10 @@
 <li>shaking map — <a class="lib pic" target="_blank" rel="noopener" href="https://www.oregon.gov/oem/Documents/Oregon_Resilience_Plan_Final.pdf#page=34" title="Oregon Resilience Plan - Full Report (OSSPAC 2013).pdf — page 34">Shaking map, Resilience Plan p. 34</a></li>
 </ul></li>
 <li><span id="t-cascading-failure"></span><strong>Cascading failure</strong> — <a class="guide" href="POWER-GRID-GUIDE.html">Power grid › Why one fault can black out a region</a></li>
+<li><span id="t-cascara"></span><strong>Cascara</strong>
+<ul>
+<li>constipation — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Medicinal plants with real evidence</a></li>
+</ul></li>
 <li><span id="t-casein-glue"></span><strong>Casein glue</strong> — <a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html#glue-patching-and-waterproofing">Make-do household › Glue, patching and waterproofing</a> · <a class="guide" href="WOODWORKING-GUIDE.html">Woodworking › Glue without a store</a></li>
 <li><span id="t-cash"></span><strong>Cash</strong>
 <ul>
@@ -2468,6 +2538,10 @@
 <li>organization chart — <a class="lib pic" target="_blank" rel="noopener" href="https://em.uci.edu/training/_pdf/cert-participant-manual-english.pdf#page=37" title="CERT Basic Training Participant Manual (FEMA 2019).pdf — page 37">CERT organization, CERT p. 37</a></li>
 <li>team organization — <a class="guide" href="COMMUNITY-BARTER-GUIDE.html#forming-a-neighborhood-group">Community &amp; barter › Forming a neighborhood group</a></li>
 </ul></li>
+<li><span id="t-chain"></span><strong>Chain</strong>
+<ul>
+<li>Oxford, 1939 to 1941 — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html">How antibiotics came to be › 1939–1941: Oxford, and the first patient</a></li>
+</ul></li>
 <li><span id="t-chain-bicycle"></span><strong>Chain (bicycle)</strong>
 <ul>
 <li>cleaning — <a class="guide" href="BICYCLES-CARTS-GUIDE.html#wheels-hub-bearings-and-chains">Bicycles &amp; carts › Wheels, hub bearings and chains</a></li>
@@ -2496,6 +2570,10 @@
 <li><span id="t-chalkbrood"></span><strong>Chalkbrood</strong>
 <ul>
 <li>mummies, damp hives — <a class="guide" href="BEES-GUIDE.html#foulbrood-and-other-brood-diseases">Bees › Foulbrood and other brood diseases</a></li>
+</ul></li>
+<li><span id="t-chamomile"></span><strong>Chamomile</strong>
+<ul>
+<li>stomach and sleep — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Medicinal plants with real evidence</a></li>
 </ul></li>
 <li><span id="t-channel-19-cb"></span><strong>Channel 19 (CB)</strong>
 <ul>
@@ -2686,6 +2764,10 @@
 <li>homemade chick feed — <a class="guide" href="CHICKENS-GUIDE.html#raising-chicks-with-no-heat-lamp">Chickens › Raising chicks with no heat lamp</a></li>
 </ul></li>
 <li><span id="t-child-swallowed-medicine"></span><strong>Child swallowed medicine</strong> — <a class="guide" href="Medical-READ-ME-FIRST.html#if-this-goes-wrong">Medicines › If this goes wrong</a></li>
+<li><span id="t-childbed-fever"></span><strong>Childbed fever</strong>
+<ul>
+<li>deaths before and after clean birth — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#what-it-was-like-before">How antibiotics came to be › What it was like before</a></li>
+</ul></li>
 <li><span id="t-children"></span><strong>Children</strong>
 <ul>
 <li>KI dose and liquid KI — <a class="guide" href="NUCLEAR-FALLOUT-GUIDE.html#potassium-iodide-ki">Nuclear fallout › Potassium iodide (KI)</a></li>
@@ -2903,6 +2985,14 @@
 <ul>
 <li>zeer — <a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html#containers-and-storage">Make-do household › Containers and storage</a></li>
 </ul></li>
+<li><span id="t-clean-hands"></span><strong>Clean hands</strong>
+<ul>
+<li>what they did to childbed fever — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#prevention-is-the-lever-you-actually-have">How antibiotics came to be › Prevention is the lever you actually have</a></li>
+</ul></li>
+<li><span id="t-clean-water"></span><strong>Clean water</strong>
+<ul>
+<li>what it did to typhoid — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#prevention-is-the-lever-you-actually-have">How antibiotics came to be › Prevention is the lever you actually have</a></li>
+</ul></li>
 <li><span id="t-cleaning"></span><strong>Cleaning</strong>
 <ul>
 <li>homemade cleaners — <a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html#cleaning-and-disinfecting">Make-do household › Cleaning and disinfecting</a></li>
@@ -2954,6 +3044,10 @@
 <li>settling, straining, coagulants — <a class="guide" href="WATER-PURIFICATION-GUIDE.html#step-1-clear-the-water">Water purification › Step 1 — Clear the water</a></li>
 </ul></li>
 <li><span id="t-clove-hitch"></span><strong>Clove hitch</strong> — <a class="guide" href="KNOTS-ROPE-GUIDE.html">Knots &amp; rope › Clove hitch: quick tie to a post</a></li>
+<li><span id="t-cloves-oil-of"></span><strong>Cloves, oil of</strong>
+<ul>
+<li>toothache — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#other-pain-helpers">Making medicines › Other pain helpers</a></li>
+</ul></li>
 <li><span id="t-co"></span><strong>CO</strong> — see <a href="#t-carbon-monoxide"><strong>Carbon monoxide</strong></a></li>
 <li><span id="t-co-alarm"></span><strong>CO alarm</strong> — <a class="guide" href="FIREWOOD-GUIDE.html#burning-safely-stoves-chimneys-ashes">Firewood › Burning safely: stoves, chimneys, ashes</a> · <a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html#generators">Engines › Generators</a> · <a class="guide" href="FLOODS-STORMS-HEAT-GUIDE.html#carbon-monoxide-the-quiet-killer">Floods, storms &amp; heat › Carbon monoxide: the quiet killer</a></li>
 <li><span id="t-coagulants"></span><strong>Coagulants</strong>
@@ -3084,6 +3178,10 @@
 <ul>
 <li>how to dress — <a class="guide" href="CLOTHING-LEATHER-GUIDE.html#dressing-for-our-cold-wet-winters">Clothing &amp; leather › Dressing for our cold-wet winters</a></li>
 </ul></li>
+<li><span id="t-colds"></span><strong>Colds</strong>
+<ul>
+<li>antibiotics do nothing for them — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#why-antibiotics-stop-working">How antibiotics came to be › Why antibiotics stop working</a></li>
+</ul></li>
 <li><span id="t-colic"></span><strong>Colic</strong>
 <ul>
 <li>feeding rules that prevent it — <a class="guide" href="HORSE-GUIDE.html#feeding-and-water">Horses › Feeding and water</a></li>
@@ -3131,6 +3229,7 @@
 <li><span id="t-comfrey"></span><strong>Comfrey</strong>
 <ul>
 <li>liver harm, foxglove look-alike — <a class="guide" href="Medical-READ-ME-FIRST.html#medicinal-plants-go-carefully">Medicines › Medicinal plants — go carefully</a></li>
+<li>never by mouth — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#dangerous-to-try">Making medicines › Dangerous to try</a></li>
 </ul></li>
 <li><span id="t-communication-site"></span><strong>Communication site</strong>
 <ul>
@@ -3237,6 +3336,11 @@
 <ul>
 <li>principled negotiation — <a class="guide" href="COMMUNITY-BARTER-GUIDE.html#settling-disputes-and-dealing-with-theft">Community &amp; barter › Settling disputes and dealing with theft</a></li>
 </ul></li>
+<li><span id="t-constipation"></span><strong>Constipation</strong>
+<ul>
+<li>cascara — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Medicinal plants with real evidence</a></li>
+</ul></li>
+<li><span id="t-consumption"></span><strong>Consumption</strong> — see <a href="#t-tuberculosis"><strong>Tuberculosis</strong></a></li>
 <li><span id="t-contact-list"></span><strong>Contact list</strong> — <a class="guide" href="COMMUNITY-BARTER-GUIDE.html#skills-tools-and-the-neighborhood-map">Community &amp; barter › Skills, tools and the neighborhood map</a></li>
 <li><span id="t-contacts"></span><strong>Contacts</strong> — see <a href="#t-phone-numbers"><strong>Phone numbers</strong></a></li>
 <li><span id="t-contagious"></span><strong>Contagious?</strong>
@@ -3385,6 +3489,10 @@
 <li>treat it to prevent pellagra — <a class="guide" href="FOOD-SECURITY-GUIDE.html#hunger-diseases-spot-them-prevent-them">Food when scarce › Hunger diseases: spot them, prevent them</a></li>
 <li>when to plant — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#the-year-at-a-glance">Food from scratch › The year at a glance</a></li>
 </ul></li>
+<li><span id="t-corn-steep-liquor"></span><strong>Corn steep liquor</strong>
+<ul>
+<li>the waste liquid that raised the yield tenfold — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html">How antibiotics came to be › 1941–1945: the farm laboratory, and the jump to a factory</a></li>
+</ul></li>
 <li><span id="t-corn-husk-dolls"></span><strong>Corn-husk dolls</strong>
 <ul>
 <li>step by step — <a class="guide" href="STORIES-GAMES-GUIDE.html#things-to-make">Stories &amp; games › Things to make</a></li>
@@ -3439,6 +3547,10 @@
 <li>shut goats in every night — <a class="guide" href="GOATS-GUIDE.html#fences-shelter-and-predators">Goats › Fences, shelter and predators</a></li>
 <li>shut stock in at night — <a class="guide" href="CHICKENS-GUIDE.html#predators-of-the-illinois-valley">Chickens › Predators of the Illinois Valley</a></li>
 </ul></li>
+<li><span id="t-cough"></span><strong>Cough</strong>
+<ul>
+<li>thyme tea — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Medicinal plants with real evidence</a></li>
+</ul></li>
 <li><span id="t-couldn-t-find-the-library"></span><strong>Couldn't find the library</strong>
 <ul>
 <li>Android — <a class="guide" href="START-ON-ANY-DEVICE.html#if-something-goes-wrong">Start on any device › If something goes wrong</a></li>
@@ -3483,6 +3595,10 @@
 <li>at corners — <a class="guide" href="NATURAL-BUILDING-GUIDE.html#if-this-goes-wrong">Natural building › If this goes wrong</a></li>
 <li>diagonal, after a quake — <a class="guide" href="NATURAL-BUILDING-GUIDE.html#if-this-goes-wrong">Natural building › If this goes wrong</a></li>
 <li>while hammering — <a class="guide" href="BLACKSMITHING-GUIDE.html#heat-colors-in-shade-not-sunlight">Blacksmithing › Heat colors (in shade, not sunlight)</a></li>
+</ul></li>
+<li><span id="t-cranberry"></span><strong>Cranberry</strong>
+<ul>
+<li>bladder infections — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Medicinal plants with real evidence</a></li>
 </ul></li>
 <li><span id="t-crawfish"></span><strong>Crawfish</strong>
 <ul>
@@ -3669,6 +3785,10 @@
 <ul>
 <li>what to make each season — <a class="guide" href="DAIRY-GUIDE.html#the-dairy-year-in-the-valley">Milk, butter &amp; cheese › The dairy year in the valley</a></li>
 </ul></li>
+<li><span id="t-dakin-s-solution"></span><strong>Dakin's solution</strong>
+<ul>
+<li>recipe and strengths — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#dakins-solution-weak-bleach-for-dirty-wounds">Making medicines › Dakin's solution: weak bleach for dirty wounds</a></li>
+</ul></li>
 <li><span id="t-dam-failure"></span><strong>Dam failure</strong>
 <ul>
 <li>overtopping, piping, slides — <a class="guide" href="DAMS-DITCHES-GUIDE.html#how-dams-fail">Dams, weirs &amp; ditches › How dams fail</a></li>
@@ -3686,6 +3806,10 @@
 <li>living downstream — <a class="guide" href="DAMS-DITCHES-GUIDE.html#living-downstream-of-a-dam">Dams, weirs &amp; ditches › Living downstream of a dam</a></li>
 <li>parts: core, crest, spillways, outlet — <a class="guide" href="DAMS-DITCHES-GUIDE.html#the-parts-of-a-dam">Dams, weirs &amp; ditches › The parts of a dam</a></li>
 <li>warning signs — <a class="guide" href="DAMS-DITCHES-GUIDE.html#warning-signs-at-a-dam">Dams, weirs &amp; ditches › Warning signs at a dam</a></li>
+</ul></li>
+<li><span id="t-dandelion"></span><strong>Dandelion</strong>
+<ul>
+<li>medicinal use — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Medicinal plants with real evidence</a></li>
 </ul></li>
 <li><span id="t-danger-zone"></span><strong>Danger zone</strong>
 <ul>
@@ -3784,6 +3908,10 @@
 <li>photos — <a class="wiki" href="https://en.wikipedia.org/wiki/Amanita_phalloides" data-title="Amanita_phalloides" target="_blank" rel="noopener" title="Wikipedia: Amanita phalloides (offline copy with photos when opened through the Library Assistant)">photos</a></li>
 <li>under oaks — <a class="guide" href="ILLINOIS-VALLEY-START-HERE.html#wild-plants-the-deadly-look-alikes">Illinois Valley › Wild plants — the deadly look-alikes</a></li>
 </ul></li>
+<li><span id="t-death-rates"></span><strong>Death rates</strong>
+<ul>
+<li>before antibiotics, with the numbers — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#what-it-was-like-before">How antibiotics came to be › What it was like before</a></li>
+</ul></li>
 <li><span id="t-debris-flow"></span><strong>Debris flow</strong>
 <ul>
 <li>erosion after a fire — <a class="guide" href="WILDFIRE-GUIDE.html#debris-flows-and-erosion">Wildfire › Debris flows and erosion</a></li>
@@ -3811,6 +3939,10 @@
 <ul>
 <li>14° East for the Illinois Valley — <a class="guide" href="NAVIGATION-WEATHER-GUIDE.html#compass-and-declination">Navigation &amp; weather › Compass and declination</a></li>
 <li>which way to add or subtract — <a class="guide" href="NAVIGATION-WEATHER-GUIDE.html#compass-and-declination">Navigation &amp; weather › Compass and declination</a></li>
+</ul></li>
+<li><span id="t-decoction"></span><strong>Decoction</strong>
+<ul>
+<li>roots and bark — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Teas, tinctures, salves and poultices</a></li>
 </ul></li>
 <li><span id="t-decontamination"></span><strong>Decontamination</strong>
 <ul>
@@ -3865,6 +3997,7 @@
 <li>pinch-test drawing — <a class="lib pic" target="_blank" rel="noopener" href="https://hesperian.org/wp-content/uploads/pdf/en_wtnd_2025/en_wtnd_2025_13.pdf#page=1" title="Where There Is No Doctor - 13 Some very common sicknesses.pdf — page 1">Signs of dehydration, WTND p. 151</a></li>
 <li>severe signs in a child — <a class="guide" href="CHILDBIRTH-CHILDREN-GUIDE.html#sick-children-under-5-fever-breathing-diarrhea-measles-worms">Childbirth &amp; kids › Sick children under 5: fever, breathing, diarrhea, measles, worms</a></li>
 <li>signs — <a class="guide" href="Medical-READ-ME-FIRST.html#diarrhea-and-dehydration-the-homemade-drink">Medicines › Diarrhea and dehydration: the homemade drink</a></li>
+<li>the homemade drink — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#rehydration-drink-the-cheapest-life-saver">Making medicines › Rehydration drink: the cheapest life-saver</a></li>
 <li>urine color, thirst — <a class="guide" href="FLOODS-STORMS-HEAT-GUIDE.html#water-in-the-heat">Floods, storms &amp; heat › Water in the heat</a></li>
 </ul></li>
 <li><span id="t-dementia"></span><strong>Dementia</strong>
@@ -3878,6 +4011,10 @@
 <li><span id="t-deodorant"></span><strong>Deodorant</strong>
 <ul>
 <li>baking soda or cornstarch — <a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html#personal-care">Make-do household › Personal care</a></li>
+</ul></li>
+<li><span id="t-depression"></span><strong>Depression</strong>
+<ul>
+<li>St John's wort — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Medicinal plants with real evidence</a></li>
 </ul></li>
 <li><span id="t-depression-economic"></span><strong>Depression (economic)</strong>
 <ul>
@@ -3908,6 +4045,7 @@
 <ul>
 <li>signs, type 1 and type 2 — <a class="guide" href="CHRONIC-ILLNESS-GUIDE.html">Chronic illness › Diabetes</a></li>
 <li>type 2 diet, metformin, sugar pills — <a class="guide" href="CHRONIC-ILLNESS-GUIDE.html#type-2-food-and-work-are-medicine">Chronic illness › Type 2: food and work are medicine</a></li>
+<li>what it meant before insulin — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#19211923-insulin-the-fastest-of-them-all">How antibiotics came to be › 1921–1923: insulin, the fastest of them all</a></li>
 </ul></li>
 <li><span id="t-diagonals"></span><strong>Diagonals</strong>
 <ul>
@@ -3938,6 +4076,7 @@
 <li>outbreak in the neighborhood — <a class="guide" href="SANITATION-GUIDE.html#how-germs-spread-and-stopping-an-outbreak">Sanitation › How germs spread, and stopping an outbreak</a></li>
 <li>rabbits — <a class="guide" href="RABBITS-GUIDE.html#other-troubles">Rabbits › Other troubles</a></li>
 <li>rehydration drink — <a class="guide" href="SANITATION-GUIDE.html#how-germs-spread-and-stopping-an-outbreak">Sanitation › How germs spread, and stopping an outbreak</a></li>
+<li>the drink that saves lives — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#rehydration-drink-the-cheapest-life-saver">Making medicines › Rehydration drink: the cheapest life-saver</a></li>
 <li>the homemade drink — <a class="guide" href="Medical-READ-ME-FIRST.html#diarrhea-and-dehydration-the-homemade-drink">Medicines › Diarrhea and dehydration: the homemade drink</a></li>
 </ul></li>
 <li><span id="t-diazepam"></span><strong>Diazepam</strong>
@@ -3969,6 +4108,10 @@
 <li>running too lightly loaded — <a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html#diesel-engines">Engines › Diesel engines</a></li>
 </ul></li>
 <li><span id="t-diesel-in-gasoline"></span><strong>Diesel in gasoline</strong> — <a class="guide" href="FUEL-GUIDE.html#rescuing-old-fuel">Fuel › Rescuing old fuel</a></li>
+<li><span id="t-diethylene-glycol"></span><strong>Diethylene glycol</strong>
+<ul>
+<li>the poison in the 1937 elixir — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#19321937-the-sulfa-drugs-and-the-price-of-skipping-the-safety-test">How antibiotics came to be › 1932–1937: the sulfa drugs, and the price of skipping the safety test</a></li>
+</ul></li>
 <li><span id="t-digging-a-well"></span><strong>Digging a well</strong> — see <a href="#t-hand-dug-well"><strong>Hand-dug well</strong></a></li>
 <li><span id="t-dilution"></span><strong>Dilution</strong>
 <ul>
@@ -4070,6 +4213,10 @@
 <ul>
 <li>dogs — <a class="guide" href="DOGS-GUIDE.html#vaccinate-now-parvo-distemper-and-rabies">Dogs › Vaccinate now: parvo, distemper and rabies</a></li>
 </ul></li>
+<li><span id="t-distilling"></span><strong>Distilling</strong>
+<ul>
+<li>federal permit, proof — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#alcohol-the-strength-that-works">Making medicines › Alcohol: the strength that works</a></li>
+</ul></li>
 <li><span id="t-distilling-water"></span><strong>Distilling water</strong> — see <a href="#t-solar-still"><strong>Solar still</strong></a></li>
 <li><span id="t-distress-call"></span><strong>Distress call</strong> — see <a href="#t-mayday"><strong>Mayday</strong></a></li>
 <li><span id="t-distress-signals"></span><strong>Distress signals</strong>
@@ -4153,6 +4300,10 @@
 <li>corn husk, handkerchief — <a class="guide" href="STORIES-GAMES-GUIDE.html#things-to-make">Stories &amp; games › Things to make</a></li>
 </ul></li>
 <li><span id="t-dolomitic-lime"></span><strong>Dolomitic lime</strong> — <a class="guide" href="NATURAL-BUILDING-GUIDE.html#making-lime">Natural building › Making lime</a></li>
+<li><span id="t-domagk"></span><strong>Domagk</strong>
+<ul>
+<li>the first medicine that stopped a spreading infection — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#19321937-the-sulfa-drugs-and-the-price-of-skipping-the-safety-test">How antibiotics came to be › 1932–1937: the sulfa drugs, and the price of skipping the safety test</a></li>
+</ul></li>
 <li><span id="t-dominoes"></span><strong>Dominoes</strong>
 <ul>
 <li>double-six set — <a class="guide" href="STORIES-GAMES-GUIDE.html#card-games-and-board-games">Stories &amp; games › Card games and board games</a></li>
@@ -4301,6 +4452,10 @@
 <ul>
 <li>mushroomed chisel heads — <a class="guide" href="BLACKSMITHING-GUIDE.html#making-basic-tools">Blacksmithing › Making basic tools</a></li>
 </ul></li>
+<li><span id="t-dressings"></span><strong>Dressings</strong>
+<ul>
+<li>sterile ones baked in an oven — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#water-soap-and-salt-water">Making medicines › Water, soap and salt water</a></li>
+</ul></li>
 <li><span id="t-dried-fruit"></span><strong>Dried fruit</strong>
 <ul>
 <li>is it dry yet? — <a class="guide" href="PRESERVING-FOOD-GUIDE.html#drying-in-our-dry-summers">Preserving food › Drying in our dry summers</a></li>
@@ -4375,6 +4530,10 @@
 <li>small children watched only by children — <a class="guide" href="STORIES-GAMES-GUIDE.html#group-and-outdoor-games">Stories &amp; games › Group and outdoor games</a></li>
 </ul></li>
 <li><span id="t-drowning-machine"></span><strong>Drowning machine</strong> — see <a href="#t-low-head-dam"><strong>Low-head dam</strong></a></li>
+<li><span id="t-drug-safety"></span><strong>Drug safety</strong>
+<ul>
+<li>why a medicine must be tested before anyone takes it — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#19321937-the-sulfa-drugs-and-the-price-of-skipping-the-safety-test">How antibiotics came to be › 1932–1937: the sulfa drugs, and the price of skipping the safety test</a></li>
+</ul></li>
 <li><span id="t-drum-pump"></span><strong>Drum pump</strong> — <a class="guide" href="FUEL-GUIDE.html#drums-and-vehicles">Fuel › Drums and vehicles</a>
 <ul>
 <li>drawing — <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/FM_10_67_1_P_S_O_1998/FM%2010-67-1%20Petroleum%20Supply%20Operations%20%281998%29.pdf#page=354" title="FM 10-67-1 Petroleum Supply Operations (US Army 1998).pdf — page 354">Drum pumps, FM 10-67-1 p. 354</a></li>
@@ -4434,6 +4593,10 @@
 <ul>
 <li>sun and solar drying — <a class="guide" href="PRESERVING-FOOD-GUIDE.html#drying-in-our-dry-summers">Preserving food › Drying in our dry summers</a></li>
 <li>trays and sun drying — <a class="guide" href="ROOT-CELLAR-GUIDE.html#drying-food">Root cellars › Drying food</a></li>
+</ul></li>
+<li><span id="t-drying-herbs"></span><strong>Drying herbs</strong>
+<ul>
+<li>and storing them — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Teas, tinctures, salves and poultices</a></li>
 </ul></li>
 <li><span id="t-drying-lumber"></span><strong>Drying lumber</strong> — see <a href="#t-lumber"><strong>Lumber</strong></a>, <a href="#t-seasoning-lumber"><strong>Seasoning lumber</strong></a></li>
 <li><span id="t-drying-mushrooms"></span><strong>Drying mushrooms</strong>
@@ -4652,6 +4815,10 @@
 <li>calcium, dark nests — <a class="guide" href="CHICKENS-GUIDE.html#health-with-no-vet">Chickens › Health with no vet</a></li>
 </ul></li>
 <li><span id="t-eaves"></span><strong>Eaves</strong> — see <a href="#t-roof-overhang"><strong>Roof overhang</strong></a></li>
+<li><span id="t-echinacea"></span><strong>Echinacea</strong>
+<ul>
+<li>colds — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Medicinal plants with real evidence</a></li>
+</ul></li>
 <li><span id="t-economic-crisis"></span><strong>Economic crisis</strong>
 <ul>
 <li>what to expect — <a class="guide" href="WHAT-TO-EXPECT-GUIDE.html#6-economic-crisis-fuel-and-supply-chain-breakdown">What to expect › 6. Economic crisis, fuel and supply-chain breakdown</a></li>
@@ -4690,6 +4857,10 @@
 <li><span id="t-eggshells"></span><strong>Eggshells</strong>
 <ul>
 <li>feeding back to hens — <a class="guide" href="CHICKENS-GUIDE.html#calcium-grit-and-salt">Chickens › Calcium, grit and salt</a></li>
+</ul></li>
+<li><span id="t-elder"></span><strong>Elder</strong>
+<ul>
+<li>flowers for fever and colds — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Medicinal plants with real evidence</a></li>
 </ul></li>
 <li><span id="t-elderberry"></span><strong>Elderberry</strong>
 <ul>
@@ -4761,6 +4932,10 @@
 <li><span id="t-elevation"></span><strong>Elevation</strong> — see <a href="#t-altitude"><strong>Altitude</strong></a>
 <ul>
 <li>height of any spot on the map — <a class="guide" href="HOW-TO-VIEW-MAPS.html#easiest-the-map-in-the-web-browser">HOW-TO-VIEW-MAPS › Easiest: the map in the web browser</a></li>
+</ul></li>
+<li><span id="t-elixir-sulfanilamide"></span><strong>Elixir sulfanilamide</strong>
+<ul>
+<li>the 93 people killed in 1937 — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#19321937-the-sulfa-drugs-and-the-price-of-skipping-the-safety-test">How antibiotics came to be › 1932–1937: the sulfa drugs, and the price of skipping the safety test</a></li>
 </ul></li>
 <li><span id="t-elk"></span><strong>Elk</strong>
 <ul>
@@ -4902,6 +5077,7 @@
 </ul></li>
 <li><span id="t-ergot"></span><strong>Ergot</strong>
 <ul>
+<li>never — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#dangerous-to-try">Making medicines › Dangerous to try</a></li>
 <li>on grain heads — <a class="guide" href="FOOD-SECURITY-GUIDE.html#foraging-safety-rules">Food when scarce › Foraging safety rules</a></li>
 </ul></li>
 <li><span id="t-error-signal"></span><strong>Error signal</strong>
@@ -5250,10 +5426,15 @@
 <li>in a child — paracetamol dose — <a class="guide" href="CHILDBIRTH-CHILDREN-GUIDE.html#sick-children-under-5-fever-breathing-diarrhea-measles-worms">Childbirth &amp; kids › Sick children under 5: fever, breathing, diarrhea, measles, worms</a></li>
 <li>in the mother after birth — <a class="guide" href="CHILDBIRTH-CHILDREN-GUIDE.html#breastfeeding-and-the-mother-s-recovery">Childbirth &amp; kids › Breastfeeding and the mother's recovery</a></li>
 <li>with a stiff neck — <a class="guide" href="CHILDBIRTH-CHILDREN-GUIDE.html#sick-children-under-5-fever-breathing-diarrhea-measles-worms">Childbirth &amp; kids › Sick children under 5: fever, breathing, diarrhea, measles, worms</a></li>
+<li>without medicine, willow bark — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#pain-and-fever">Making medicines › Pain and fever</a></li>
 </ul></li>
 <li><span id="t-fever-in-a-baby"></span><strong>Fever in a baby</strong>
 <ul>
 <li>99.5 °F or more — <a class="guide" href="CHILDBIRTH-CHILDREN-GUIDE.html#warmth-small-babies-and-newborn-danger-signs">Childbirth &amp; kids › Warmth, small babies and newborn danger signs</a></li>
+</ul></li>
+<li><span id="t-feverfew"></span><strong>Feverfew</strong>
+<ul>
+<li>preventing migraine — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#other-pain-helpers">Making medicines › Other pain helpers</a></li>
 </ul></li>
 <li><span id="t-field-dressing"></span><strong>Field dressing</strong>
 <ul>
@@ -5524,6 +5705,10 @@
 <li>skirting, rolling, tying — <a class="guide" href="SHEEP-GUIDE.html#shearing-by-hand">Sheep › Shearing by hand</a></li>
 <li>washing without felting — <a class="guide" href="CLOTHING-LEATHER-GUIDE.html#wool-from-sheep-to-yarn">Clothing &amp; leather › Wool: from sheep to yarn</a></li>
 </ul></li>
+<li><span id="t-fleming"></span><strong>Fleming</strong>
+<ul>
+<li>the plate, the mould and the 1929 paper — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html">How antibiotics came to be › 1928–1929: Fleming's mould, and the decade it sat still</a></li>
+</ul></li>
 <li><span id="t-flies"></span><strong>Flies</strong>
 <ul>
 <li>breeding in garbage and compost — <a class="guide" href="SANITATION-GUIDE.html#garbage-bears-and-pests">Sanitation › Garbage, bears and pests</a></li>
@@ -5587,6 +5772,10 @@
 <li><span id="t-floors"></span><strong>Floors</strong>
 <ul>
 <li>earth — see <a href="#t-earthen-floors"><strong>Earthen floors</strong></a></li>
+</ul></li>
+<li><span id="t-florey"></span><strong>Florey</strong>
+<ul>
+<li>Oxford, 1939 to 1941 — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html">How antibiotics came to be › 1939–1941: Oxford, and the first patient</a></li>
 </ul></li>
 <li><span id="t-flour"></span><strong>Flour</strong>
 <ul>
@@ -5772,6 +5961,10 @@
 <li>toxic to chickens — <a class="guide" href="CHICKENS-GUIDE.html#plants-that-poison-chickens">Chickens › Plants that poison chickens</a></li>
 <li>toxic to stock — <a class="guide" href="RABBITS-GUIDE.html#poisonous-plants">Rabbits › Poisonous plants</a></li>
 </ul></li>
+<li><span id="t-foxglove-digitalis"></span><strong>Foxglove (digitalis)</strong>
+<ul>
+<li>never as medicine — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#dangerous-to-try">Making medicines › Dangerous to try</a></li>
+</ul></li>
 <li><span id="t-foxtails"></span><strong>Foxtails</strong>
 <ul>
 <li>in dogs' ears, noses, feet — <a class="guide" href="DOGS-GUIDE.html#health-with-no-vet-parasites-foxtails-and-sickness">Dogs › Health with no vet: parasites, foxtails and sickness</a></li>
@@ -5944,6 +6137,10 @@
 <ul>
 <li>can catch fire from static — <a class="lib" target="_blank" rel="noopener" href="https://archive.org/download/FM_10_67_1_P_S_O_1998/FM%2010-67-1%20Petroleum%20Supply%20Operations%20%281998%29.pdf#page=23" title="FM 10-67-1 Petroleum Supply Operations (US Army 1998).pdf — page 23">📖 FM 10-67-1, p. 23</a></li>
 </ul></li>
+<li><span id="t-full-course"></span><strong>Full course</strong>
+<ul>
+<li>finish it every time — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#why-antibiotics-stop-working">How antibiotics came to be › Why antibiotics stop working</a></li>
+</ul></li>
 <li><span id="t-fullers"></span><strong>Fullers</strong> — <a class="guide" href="BLACKSMITHING-GUIDE.html#making-basic-tools">Blacksmithing › Making basic tools</a></li>
 <li><span id="t-funeral-meals"></span><strong>Funeral meals</strong>
 <ul>
@@ -6085,6 +6282,7 @@
 </ul></li>
 <li><span id="t-garlic"></span><strong>Garlic</strong> — <a class="guide" href="SEED-BANK-GUIDE.html#filling-the-calorie-gap">Seed bank › Filling the calorie gap</a>
 <ul>
+<li>cholesterol, pinworms — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Medicinal plants with real evidence</a></li>
 <li>storing — <a class="guide" href="ROOT-CELLAR-GUIDE.html#what-each-crop-needs">Root cellars › What each crop needs</a></li>
 </ul></li>
 <li><span id="t-gas-cans"></span><strong>Gas cans</strong> — see <a href="#t-jerry-cans"><strong>Jerry cans</strong></a></li>
@@ -6248,6 +6446,10 @@
 <li><span id="t-gills"></span><strong>Gills</strong>
 <ul>
 <li>gills, pores, teeth or ridges — <a class="guide" href="MUSHROOM-GUIDE.html#how-to-identify-a-mushroom">Mushrooms › How to identify a mushroom</a></li>
+</ul></li>
+<li><span id="t-ginger"></span><strong>Ginger</strong>
+<ul>
+<li>nausea, travel sickness — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Medicinal plants with real evidence</a></li>
 </ul></li>
 <li><span id="t-glass-block"></span><strong>Glass block</strong>
 <ul>
@@ -6751,6 +6953,7 @@
 <li><span id="t-hand-sanitizer"></span><strong>Hand sanitizer</strong>
 <ul>
 <li>60% alcohol — <a class="guide" href="SANITATION-GUIDE.html#handwashing-and-water-for-hygiene">Sanitation › Handwashing and water for hygiene</a> · <a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html#cleaning-and-disinfecting">Make-do household › Cleaning and disinfecting</a></li>
+<li>alcohol strength — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#alcohol-the-strength-that-works">Making medicines › Alcohol: the strength that works</a></li>
 </ul></li>
 <li><span id="t-hand-saw"></span><strong>Hand saw</strong>
 <ul>
@@ -6932,6 +7135,7 @@
 <li><span id="t-head-pulls-back-like-a-turtle"></span><strong>Head pulls back like a turtle</strong> — see <a href="#t-stuck-shoulders"><strong>Stuck shoulders</strong></a></li>
 <li><span id="t-headache"></span><strong>Headache</strong>
 <ul>
+<li>peppermint oil — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#other-pain-helpers">Making medicines › Other pain helpers</a></li>
 <li>strong, in pregnancy — <a class="guide" href="CHILDBIRTH-CHILDREN-GUIDE.html#pregnancy-checkups-and-danger-signs">Childbirth &amp; kids › Pregnancy: checkups and danger signs</a></li>
 </ul></li>
 <li><span id="t-headgate"></span><strong>Headgate</strong> — <a class="guide" href="DAMS-DITCHES-GUIDE.html#headgates-and-checks">Dams, weirs &amp; ditches › Headgates and checks</a></li>
@@ -7036,6 +7240,10 @@
 <li>in diesel engines — <a class="guide" href="FUEL-GUIDE.html#diesel-care">Fuel › Diesel care</a></li>
 </ul></li>
 <li><span id="t-heating-one-room"></span><strong>Heating one room</strong> — <a class="guide" href="SHELTER-BUILDING-GUIDE.html#one-warm-room-drafts-plastic-and-heat">Shelter › One warm room: drafts, plastic and heat</a></li>
+<li><span id="t-heatley"></span><strong>Heatley</strong>
+<ul>
+<li>Oxford, 1939 to 1941 — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html">How antibiotics came to be › 1939–1941: Oxford, and the first patient</a></li>
+</ul></li>
 <li><span id="t-hedge-trimmings"></span><strong>Hedge trimmings</strong>
 <ul>
 <li>never feed them — <a class="guide" href="GOATS-GUIDE.html#plants-that-poison-goats-here">Goats › Plants that poison goats here</a></li>
@@ -7081,6 +7289,11 @@
 <ul>
 <li>no Tylenol — <a class="guide" href="SANITATION-GUIDE.html#how-germs-spread-and-stopping-an-outbreak">Sanitation › How germs spread, and stopping an outbreak</a></li>
 </ul></li>
+<li><span id="t-herbal-tea"></span><strong>Herbal tea</strong>
+<ul>
+<li>how to make — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Teas, tinctures, salves and poultices</a></li>
+</ul></li>
+<li><span id="t-herbs"></span><strong>Herbs</strong> — see <a href="#t-medicinal-plants"><strong>Medicinal plants</strong></a></li>
 <li><span id="t-herding-dogs"></span><strong>Herding dogs</strong>
 <ul>
 <li>training and commands — <a class="guide" href="DOGS-GUIDE.html#herding-dogs-basic-training">Dogs › Herding dogs: basic training</a></li>
@@ -7184,6 +7397,10 @@
 <li><span id="t-hip-belt-cart"></span><strong>Hip-belt cart</strong> — <a class="guide" href="BICYCLES-CARTS-GUIDE.html#wheelbarrows-handcarts-sledges-and-travois">Bicycles &amp; carts › Wheelbarrows, handcarts, sledges and travois</a></li>
 <li><span id="t-hissing-firewood"></span><strong>Hissing firewood</strong> — see <a href="#t-is-my-firewood-dry"><strong>Is my firewood dry?</strong></a></li>
 <li><span id="t-histomoniasis"></span><strong>Histomoniasis</strong> — see <a href="#t-blackhead"><strong>Blackhead</strong></a></li>
+<li><span id="t-history-of-medicine"></span><strong>History of medicine</strong>
+<ul>
+<li>the four discoveries and what each took — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#the-stories-who-when-and-how-long">How antibiotics came to be › The stories: who, when, and how long</a></li>
+</ul></li>
 <li><span id="t-hitch"></span><strong>Hitch</strong>
 <ul>
 <li>for a bicycle trailer — <a class="guide" href="BICYCLES-CARTS-GUIDE.html#bicycle-trailers-welded-steel-or-no-weld-pallets">Bicycles &amp; carts › Bicycle trailers: welded steel or no-weld pallets</a></li>
@@ -7227,6 +7444,7 @@
 </ul></li>
 <li><span id="t-home-remedies"></span><strong>Home remedies</strong>
 <ul>
+<li>rated: what works and what doesn't — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#everything-in-this-guide-rated">Making medicines › Everything in this guide, rated</a></li>
 <li>signs they don't work — <a class="guide" href="Medical-READ-ME-FIRST.html#medicinal-plants-go-carefully">Medicines › Medicinal plants — go carefully</a></li>
 </ul></li>
 <li><span id="t-home-screen-icon"></span><strong>Home screen icon</strong>
@@ -7240,6 +7458,10 @@
 <li><span id="t-home-made-books"></span><strong>Home-made books</strong>
 <ul>
 <li>cloth books, card covers — <a class="guide" href="STORIES-GAMES-GUIDE.html#making-your-own-books-plays-and-newspapers">Stories &amp; games › Making your own books, plays and newspapers</a></li>
+</ul></li>
+<li><span id="t-home-made-medicines"></span><strong>Home-made medicines</strong>
+<ul>
+<li>why they poison far more often than they cure — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#what-it-would-actually-take-again">How antibiotics came to be › What it would actually take again</a></li>
 </ul></li>
 <li><span id="t-homemade-infant-formula"></span><strong>Homemade infant formula</strong>
 <ul>
@@ -7261,6 +7483,7 @@
 <li>in place of sugar — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#salt-sweeteners-and-fat">Food from scratch › Salt, 🍯 sweeteners and 🥓 fat</a></li>
 <li>not for babies under 12 months — <a class="guide" href="PRESERVING-FOOD-GUIDE.html#botulism-why-low-acid-food-needs-a-pressure-canner">Preserving food › Botulism: why low-acid food needs a pressure canner</a></li>
 <li>on burns — <a class="guide" href="FIELD-CARE-GUIDE.html#burns">Injuries › Burns</a></li>
+<li>on wounds and burns — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#honey-and-sugar-dressings">Making medicines › Honey and sugar dressings</a></li>
 <li>straining and storing — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#salt-sweeteners-and-fat">Food from scratch › Salt, 🍯 sweeteners and 🥓 fat</a></li>
 </ul></li>
 <li><span id="t-honey-locust"></span><strong>Honey locust</strong>
@@ -7283,6 +7506,7 @@
 <li><span id="t-hops"></span><strong>Hops</strong>
 <ul>
 <li>how many radios a message passes through — <a class="guide" href="MESH-RADIO-GUIDE.html#1-what-it-is-and-what-it-is-not">Mesh radio (Meshtastic) › 1. What it is, and what it is not</a></li>
+<li>sleep — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Medicinal plants with real evidence</a></li>
 </ul></li>
 <li><span id="t-horn-or-bugle"></span><strong>Horn or bugle</strong>
 <ul>
@@ -7316,6 +7540,10 @@
 <li>18 months after Cascadia — <a class="guide" href="WHAT-TO-EXPECT-GUIDE.html#7-cascadia-m9-earthquake-and-the-coast-tsunami">What to expect › 7. Cascadia M9 earthquake (and the coast tsunami)</a></li>
 </ul></li>
 <li><span id="t-hot-chisel"></span><strong>Hot chisel</strong> — <a class="guide" href="BLACKSMITHING-GUIDE.html#making-basic-tools">Blacksmithing › Making basic tools</a></li>
+<li><span id="t-hot-compresses"></span><strong>Hot compresses</strong>
+<ul>
+<li>infected wounds and boils — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#water-soap-and-salt-water">Making medicines › Water, soap and salt water</a></li>
+</ul></li>
 <li><span id="t-hot-water"></span><strong>Hot water</strong>
 <ul>
 <li>relief valves and scalds — <a class="guide" href="STORING-ENERGY-GUIDE.html#hot-water-where-spare-electricity-should-go">Storing energy › Hot water: where spare electricity should go</a></li>
@@ -7637,6 +7865,10 @@
 <ul>
 <li>how much to store — <a class="guide" href="FOOD-SECURITY-GUIDE.html#babies-and-toddlers-in-a-shortage">Food when scarce › Babies and toddlers in a shortage</a></li>
 </ul></li>
+<li><span id="t-infected-wounds"></span><strong>Infected wounds</strong>
+<ul>
+<li>honey, sugar, Dakin's, hot compresses — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#wound-care-that-prevents-infection">Making medicines › Wound care that prevents infection</a></li>
+</ul></li>
 <li><span id="t-infection"></span><strong>Infection</strong>
 <ul>
 <li>in a wound — pen line around the redness — <a class="guide" href="FIELD-CARE-GUIDE.html#wounds-and-infection-when-there-s-no-hospital">Injuries › Wounds and infection when there's no hospital</a></li>
@@ -7651,6 +7883,11 @@
 <li><span id="t-injection-lines"></span><strong>Injection lines</strong>
 <ul>
 <li>high-pressure danger — <a class="lib" target="_blank" rel="noopener" href="https://infohub.practicalaction.org/server/api/core/bitstreams/0931c6b8-9414-47c8-a6e5-070df9155077/content#page=13" title="Diesel Engine Repair and Maintenance (Practical Action 2007).pdf — page 13">📖 Practical Action Diesel Engine Repair, p. 13</a></li>
+</ul></li>
+<li><span id="t-injections"></span><strong>Injections</strong>
+<ul>
+<li>never inject anything home-made — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#dangerous-to-try">Making medicines › Dangerous to try</a></li>
+<li>never inject anything made outside a factory — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#what-it-would-actually-take-again">How antibiotics came to be › What it would actually take again</a></li>
 </ul></li>
 <li><span id="t-injector"></span><strong>Injector</strong>
 <ul>
@@ -7705,6 +7942,7 @@
 </ul></li>
 <li><span id="t-insulin"></span><strong>Insulin</strong>
 <ul>
+<li>Banting, Best, Collip and Macleod, 1921 to 1923 — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#19211923-insulin-the-fastest-of-them-all">How antibiotics came to be › 1921–1923: insulin, the fastest of them all</a></li>
 <li>storing without a fridge, doses, adjusting — <a class="guide" href="CHRONIC-ILLNESS-GUIDE.html#type-1-insulin-without-a-fridge">Chronic illness › Type 1: insulin without a fridge</a></li>
 <li>when it runs out — <a class="guide" href="CHRONIC-ILLNESS-GUIDE.html#high-sugar-and-ketoacidosis">Chronic illness › High sugar and ketoacidosis</a></li>
 <li>without a fridge — <a class="guide" href="Medical-READ-ME-FIRST.html#using-found-or-expired-medicines">Medicines › Using found or expired medicines</a></li>
@@ -7751,6 +7989,7 @@
 <li>daily need, iodized salt — <a class="guide" href="FOOD-SECURITY-GUIDE.html#hunger-diseases-spot-them-prevent-them">Food when scarce › Hunger diseases: spot them, prevent them</a></li>
 <li>drops per quart — <a class="guide" href="WATER-PURIFICATION-GUIDE.html#step-3-kill-the-germs">Water purification › Step 3 — Kill the germs</a></li>
 <li>not for months or in pregnancy — <a class="guide" href="WATER-PURIFICATION-GUIDE.html#step-3-kill-the-germs">Water purification › Step 3 — Kill the germs</a></li>
+<li>on skin and wounds — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#iodine-and-maggots">Making medicines › Iodine and maggots</a></li>
 </ul></li>
 <li><span id="t-iodine-pills"></span><strong>Iodine pills</strong> — see <a href="#t-potassium-iodide-ki"><strong>Potassium iodide (KI)</strong></a></li>
 <li><span id="t-iodine-tincture"></span><strong>Iodine tincture</strong>
@@ -7884,6 +8123,10 @@
 <ul>
 <li>don't poke with wire — <a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html#small-gas-engines-why-it-won-t-start">Engines › Small gas engines: why it won't start</a></li>
 </ul></li>
+<li><span id="t-jimsonweed"></span><strong>Jimsonweed</strong>
+<ul>
+<li>poisonous — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#dangerous-to-try">Making medicines › Dangerous to try</a></li>
+</ul></li>
 <li><span id="t-joining-two-ropes"></span><strong>Joining two ropes</strong> — <a class="guide" href="KNOTS-ROPE-GUIDE.html">Knots &amp; rope › Sheet bend: joining two ropes</a></li>
 <li><span id="t-jointing-a-saw"></span><strong>Jointing a saw</strong> — <a class="guide" href="WOODWORKING-GUIDE.html">Woodworking › Sharpening hand saws</a></li>
 <li><span id="t-joints"></span><strong>Joints</strong>
@@ -7927,6 +8170,10 @@
 <li>drawing — <a class="lib pic" target="_blank" rel="noopener" href="https://www.osti.gov/servlets/purl/814213#page=182" title="Nuclear War Survival Skills - 1979 Original ORNL-5037 (Kearny).pdf — page 182">KAP in a doorway, NWSS 1979 p. 182</a></li>
 </ul></li>
 <li><span id="t-kearny-fallout-meter"></span><strong>Kearny fallout meter</strong> — see <a href="#t-kfm-kearny-fallout-meter"><strong>KFM (Kearny fallout meter)</strong></a></li>
+<li><span id="t-keeping-books"></span><strong>Keeping books</strong>
+<ul>
+<li>which ones to protect, and how — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#keeping-the-knowledge">How antibiotics came to be › Keeping the knowledge</a></li>
+</ul></li>
 <li><span id="t-kefir"></span><strong>Kefir</strong>
 <ul>
 <li>no warm box needed — <a class="guide" href="DAIRY-GUIDE.html#cultured-milk-yogurt-and-kefir">Milk, butter &amp; cheese › Cultured milk, yogurt and kefir</a></li>
@@ -7942,6 +8189,7 @@
 <li><span id="t-kerosene"></span><strong>Kerosene</strong>
 <ul>
 <li>1-K grade, blue cans — <a class="guide" href="FUEL-GUIDE.html#kerosene-and-propane">Fuel › Kerosene and propane</a></li>
+<li>as a worm remedy: never — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#old-advice-in-the-library-to-ignore">Making medicines › Old advice in the library to ignore</a></li>
 <li>how long it keeps — <a class="guide" href="FUEL-GUIDE.html#how-long-fuel-keeps">Fuel › How long fuel keeps</a></li>
 <li>poisoning in children — <a class="guide" href="LIGHTING-GUIDE.html#fire-fumes-burns-and-children">Candles &amp; lamps › Fire, fumes, burns and children</a></li>
 <li>testing doubtful oil — <a class="guide" href="LIGHTING-GUIDE.html#never-gasoline-or-mixed-fuels-in-an-open-lamp">Candles &amp; lamps › Never gasoline or mixed fuels in an open lamp</a></li>
@@ -8108,6 +8356,10 @@
 <ul>
 <li>haying, planting — <a class="guide" href="COMMUNITY-BARTER-GUIDE.html#sharing-the-work">Community &amp; barter › Sharing the work</a></li>
 </ul></li>
+<li><span id="t-laboratory"></span><strong>Laboratory</strong>
+<ul>
+<li>what a real one needs before it can make a medicine — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#what-it-would-actually-take-again">How antibiotics came to be › What it would actually take again</a></li>
+</ul></li>
 <li><span id="t-lacto-fermentation"></span><strong>Lacto-fermentation</strong> — see <a href="#t-fermenting-vegetables"><strong>Fermenting vegetables</strong></a></li>
 <li><span id="t-ladder"></span><strong>Ladder</strong>
 <ul>
@@ -8224,6 +8476,10 @@
 <ul>
 <li>poles — <a class="guide" href="KNOTS-ROPE-GUIDE.html#lashing-poles-together">Knots &amp; rope › Lashing poles together</a></li>
 </ul></li>
+<li><span id="t-last-antibiotics"></span><strong>Last antibiotics</strong>
+<ul>
+<li>how to use a supply that cannot be replaced — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#why-antibiotics-stop-working">How antibiotics came to be › Why antibiotics stop working</a></li>
+</ul></li>
 <li><span id="t-last-frost"></span><strong>Last frost</strong> — see <a href="#t-frost-dates"><strong>Frost dates</strong></a>
 <ul>
 <li>May 1, safe after May 23 — <a class="guide" href="ILLINOIS-VALLEY-START-HERE.html#gardening-and-food">Illinois Valley › Gardening and food</a></li>
@@ -8264,6 +8520,10 @@
 <li><span id="t-laundry-soap"></span><strong>Laundry soap</strong>
 <ul>
 <li>homemade — <a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html#laundry">Make-do household › Laundry</a></li>
+</ul></li>
+<li><span id="t-lavender"></span><strong>Lavender</strong>
+<ul>
+<li>restlessness — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Medicinal plants with real evidence</a></li>
 </ul></li>
 <li><span id="t-law-and-order-breaking-down"></span><strong>Law and order breaking down</strong> — <a class="guide" href="WHAT-TO-EXPECT-GUIDE.html#8-riots-and-law-and-order-breaking-down">What to expect › 8. Riots and law and order breaking down</a></li>
 <li><span id="t-lawn-mower"></span><strong>Lawn mower</strong>
@@ -8383,6 +8643,10 @@
 <li><span id="t-leghorn"></span><strong>Leghorn</strong>
 <ul>
 <li>eggs, but poor mothers — <a class="guide" href="CHICKENS-GUIDE.html#choosing-breeds-that-renew-themselves">Chickens › Choosing breeds that renew themselves</a></li>
+</ul></li>
+<li><span id="t-lemon-balm"></span><strong>Lemon balm</strong>
+<ul>
+<li>sleep, stomach — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Medicinal plants with real evidence</a></li>
 </ul></li>
 <li><span id="t-lenticular-clouds"></span><strong>Lenticular clouds</strong>
 <ul>
@@ -8853,6 +9117,10 @@
 <li>photos — <a class="wiki" href="https://en.wikipedia.org/wiki/Arbutus_menziesii" data-title="Arbutus_menziesii" target="_blank" rel="noopener" title="Wikipedia: Arbutus menziesii (offline copy with photos when opened through the Library Assistant)">photos</a></li>
 <li>woodworking — <a class="guide" href="WOODWORKING-GUIDE.html">Woodworking › Which wood for which job</a></li>
 </ul></li>
+<li><span id="t-maggot-therapy"></span><strong>Maggot therapy</strong>
+<ul>
+<li>cleaning dead flesh from a wound — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#iodine-and-maggots">Making medicines › Iodine and maggots</a></li>
+</ul></li>
 <li><span id="t-maggots"></span><strong>Maggots</strong>
 <ul>
 <li>growing them safely for hens — <a class="guide" href="CHICKENS-GUIDE.html#range-bugs-and-worms">Chickens › Range, bugs and worms</a></li>
@@ -8893,6 +9161,10 @@
 <li><span id="t-making-a-child-vomit"></span><strong>Making a child vomit</strong>
 <ul>
 <li>old advice — don't — <a class="guide" href="CHILDBIRTH-CHILDREN-GUIDE.html#old-advice-in-the-library-to-ignore">Childbirth &amp; kids › Old advice in the library to ignore</a></li>
+</ul></li>
+<li><span id="t-making-medicines-again"></span><strong>Making medicines again</strong>
+<ul>
+<li>what each effort really rested on — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#what-it-would-actually-take-again">How antibiotics came to be › What it would actually take again</a></li>
 </ul></li>
 <li><span id="t-malnutrition"></span><strong>Malnutrition</strong> — see <a href="#t-starvation"><strong>Starvation</strong></a>
 <ul>
@@ -9077,6 +9349,7 @@
 <li><span id="t-medicinal-plants"></span><strong>Medicinal plants</strong>
 <ul>
 <li>go carefully — <a class="guide" href="Medical-READ-ME-FIRST.html#medicinal-plants-go-carefully">Medicines › Medicinal plants — go carefully</a></li>
+<li>proven and traditional, doses — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Medicinal plants with real evidence</a></li>
 </ul></li>
 <li><span id="t-medicine"></span><strong>Medicine</strong>
 <ul>
@@ -9091,6 +9364,8 @@
 <ul>
 <li>90-day supply, questions for the doctor — <a class="guide" href="CHRONIC-ILLNESS-GUIDE.html#ask-your-doctor-and-pharmacist-now">Chronic illness › Ask your doctor and pharmacist now</a></li>
 <li>destroying old ones — <a class="guide" href="SANITATION-GUIDE.html#hazardous-waste-batteries-oil-fuel-chemicals-medicines">Sanitation › Hazardous waste: batteries, oil, fuel, chemicals, medicines</a></li>
+<li>making a supply last, storing — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Making a supply last and storing medicines</a></li>
+<li>making your own with no pharmacy — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#everything-in-this-guide-rated">Making medicines › Everything in this guide, rated</a></li>
 <li>stockpiling and rotating — <a class="guide" href="CHRONIC-ILLNESS-GUIDE.html#build-a-stock-and-keep-it-rotating">Chronic illness › Build a stock and keep it rotating</a></li>
 </ul></li>
 <li><span id="t-medicines-to-buy-ahead"></span><strong>Medicines to buy ahead</strong>
@@ -9154,6 +9429,7 @@
 <li><span id="t-mercury"></span><strong>Mercury</strong>
 <ul>
 <li>broken thermometer or bulb — <a class="guide" href="SANITATION-GUIDE.html#hazardous-waste-batteries-oil-fuel-chemicals-medicines">Sanitation › Hazardous waste: batteries, oil, fuel, chemicals, medicines</a></li>
+<li>in old ointments — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#old-advice-in-the-library-to-ignore">Making medicines › Old advice in the library to ignore</a></li>
 </ul></li>
 <li><span id="t-mercury-in-fish"></span><strong>Mercury in fish</strong>
 <ul>
@@ -9270,6 +9546,10 @@
 <li>as an emergency shield — <a class="guide" href="EMP-GUIDE.html#faraday-containers-building-one-that-works">EMP › Faraday containers: building one that works</a></li>
 <li>dangerous capacitor; salvage — <a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html#electronics-repair-and-salvage">Make-do household › Electronics: repair and salvage</a></li>
 <li>safe and unsafe parts — <a class="guide" href="SALVAGE-GUIDE.html">Salvage &amp; repurposing › Microwave ovens</a></li>
+</ul></li>
+<li><span id="t-migraine"></span><strong>Migraine</strong>
+<ul>
+<li>feverfew — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#other-pain-helpers">Making medicines › Other pain helpers</a></li>
 </ul></li>
 <li><span id="t-mild-steel"></span><strong>Mild steel</strong> — <a class="guide" href="BLACKSMITHING-GUIDE.html#which-scrap-steel-to-use">Blacksmithing › Which scrap steel to use</a></li>
 <li><span id="t-military-load-limits"></span><strong>Military load limits</strong>
@@ -9493,6 +9773,14 @@
 <ul>
 <li>which work best — <a class="guide" href="ENGINES-AND-MOTORS-GUIDE.html#motors-as-generators">Engines › Motors as generators</a></li>
 </ul></li>
+<li><span id="t-mould"></span><strong>Mould</strong>
+<ul>
+<li>why home-grown mould is not penicillin — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html">How antibiotics came to be › 1928–1929: Fleming's mould, and the decade it sat still</a></li>
+</ul></li>
+<li><span id="t-mould-mold"></span><strong>Mould (mold)</strong>
+<ul>
+<li>home-made penicillin — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#why-most-home-made-antibiotics-fail">Making medicines › Why most home-made antibiotics fail</a></li>
+</ul></li>
 <li><span id="t-mould-and-deckle"></span><strong>Mould and deckle</strong>
 <ul>
 <li>building one — <a class="guide" href="PAPER-INK-GUIDE.html#the-mould-deckle-and-vat">Paper &amp; ink › The mould, deckle and vat</a></li>
@@ -9662,7 +9950,10 @@
 <ul>
 <li>which wall system to choose — <a class="guide" href="NATURAL-BUILDING-GUIDE.html#choosing-a-system-for-our-conditions">Natural building › Choosing a system for our conditions</a></li>
 </ul></li>
-<li><span id="t-nausea"></span><strong>Nausea</strong> — see <a href="#t-vomiting"><strong>Vomiting</strong></a></li>
+<li><span id="t-nausea"></span><strong>Nausea</strong> — see <a href="#t-vomiting"><strong>Vomiting</strong></a>
+<ul>
+<li>ginger — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Medicinal plants with real evidence</a></li>
+</ul></li>
 <li><span id="t-navel"></span><strong>Navel</strong>
 <ul>
 <li>red or draining pus — <a class="guide" href="CHILDBIRTH-CHILDREN-GUIDE.html#warmth-small-babies-and-newborn-danger-signs">Childbirth &amp; kids › Warmth, small babies and newborn danger signs</a></li>
@@ -9835,6 +10126,10 @@
 <li>all seven frequencies — <a class="guide" href="RADIO-GUIDE.html#14-print-and-keep-frequency-card">Radio › 14. Print-and-keep frequency card</a></li>
 <li>frequencies 162.400, 162.475, 162.550 — <a class="guide" href="ILLINOIS-VALLEY-START-HERE.html#noaa-weather-radio">Illinois Valley › NOAA Weather Radio</a></li>
 <li>poor coverage in the valley — <a class="guide" href="ILLINOIS-VALLEY-START-HERE.html#noaa-weather-radio">Illinois Valley › NOAA Weather Radio</a></li>
+</ul></li>
+<li><span id="t-nobel-prize"></span><strong>Nobel Prize</strong>
+<ul>
+<li>insulin 1923, sulfa 1939, streptomycin 1952 — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#the-stories-who-when-and-how-long">How antibiotics came to be › The stories: who, when, and how long</a></li>
 </ul></li>
 <li><span id="t-nobody-answers"></span><strong>Nobody answers</strong> — <a class="guide" href="RADIO-GUIDE.html#12-if-this-goes-wrong">Radio › 12. If this goes wrong</a></li>
 <li><span id="t-non-lethal-fortification"></span><strong>Non-lethal fortification</strong> — see <a href="#t-fortifying-a-property"><strong>Fortifying a property</strong></a></li>
@@ -10073,6 +10368,10 @@
 <li>use as a screen — <a class="guide" href="AMMO-CAN-COMPUTER-GUIDE.html">ARK Vault (ammo-can computer) › How it works</a></li>
 <li>using a shared library — <a class="guide" href="START-ON-ANY-DEVICE.html#share-one-library-with-every-phone-nearby">Start on any device › Share one library with every phone nearby</a></li>
 </ul></li>
+<li><span id="t-old-remedies"></span><strong>Old remedies</strong>
+<ul>
+<li>to ignore — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#old-advice-in-the-library-to-ignore">Making medicines › Old advice in the library to ignore</a></li>
+</ul></li>
 <li><span id="t-old-seed"></span><strong>Old seed</strong>
 <ul>
 <li>how long it stays good — <a class="guide" href="SEED-BANK-GUIDE.html#keeping-the-seed-bank-alive">Seed bank › Keeping the seed bank alive</a></li>
@@ -10125,10 +10424,15 @@
 <li>can stop breathing — <a class="guide" href="Medical-READ-ME-FIRST.html#using-found-or-expired-medicines">Medicines › Using found or expired medicines</a></li>
 <li>withdrawal — <a class="guide" href="CHRONIC-ILLNESS-GUIDE.html#medicines-you-must-never-stop-suddenly">Chronic illness › Medicines you must never stop suddenly</a></li>
 </ul></li>
+<li><span id="t-opium-and-poppy"></span><strong>Opium and poppy</strong>
+<ul>
+<li>why not — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#opioids-no-">Making medicines › Opioids: no ⛔</a></li>
+</ul></li>
 <li><span id="t-opp"></span><strong>OPP</strong>
 <ul>
 <li>ovine progressive pneumonia — <a class="guide" href="SHEEP-GUIDE.html#sheep-health-with-no-vet">Sheep › Sheep health with no vet</a></li>
 </ul></li>
+<li><span id="t-oral-rehydration-ors"></span><strong>Oral rehydration (ORS)</strong> — see <a href="#t-rehydration-drink"><strong>Rehydration drink</strong></a></li>
 <li><span id="t-orange-cables"></span><strong>Orange cables</strong>
 <ul>
 <li>high voltage — <a class="guide" href="VEHICLES-EQUIPMENT-GUIDE.html#electric-cars-and-hybrids">Vehicles, tractors &amp; equipment › Electric cars and hybrids</a></li>
@@ -10182,6 +10486,10 @@
 <li><span id="t-ors-161-209-to-161-229"></span><strong>ORS 161.209 to 161.229</strong>
 <ul>
 <li>use of force — <a class="guide" href="HOME-DEFENSE-GUIDE.html#oregon-law-on-force-in-defense-of-people-and-property">Home protection › Oregon law on force in defense of people and property</a></li>
+</ul></li>
+<li><span id="t-osler"></span><strong>Osler</strong>
+<ul>
+<li>the medical textbook written before antibiotics — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#what-it-was-like-before">How antibiotics came to be › What it was like before</a></li>
 </ul></li>
 <li><span id="t-osmand"></span><strong>OsmAnd</strong>
 <ul>
@@ -10330,6 +10638,7 @@
 </ul></li>
 <li><span id="t-pain"></span><strong>Pain</strong>
 <ul>
+<li>home remedies — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#pain-and-fever">Making medicines › Pain and fever</a></li>
 <li>how much is OK when exercising — <a class="guide" href="REHAB-GUIDE.html#pain-and-progress-rules">Rehab &amp; recovery › Pain and progress rules</a></li>
 </ul></li>
 <li><span id="t-pain-medicines"></span><strong>Pain medicines</strong>
@@ -10538,9 +10847,22 @@
 <ul>
 <li>turkeys in hot weather — <a class="guide" href="TURKEYS-GUIDE.html#health-with-no-vet">Turkeys › Health with no vet</a></li>
 </ul></li>
+<li><span id="t-penicillin"></span><strong>Penicillin</strong>
+<ul>
+<li>Fleming's mould, 1928 to 1929 — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html">How antibiotics came to be › 1928–1929: Fleming's mould, and the decade it sat still</a></li>
+<li>from mould: why not — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#why-most-home-made-antibiotics-fail">Making medicines › Why most home-made antibiotics fail</a></li>
+</ul></li>
 <li><span id="t-people-who-need-extra-help"></span><strong>People who need extra help</strong>
 <ul>
 <li>marking them on the map — <a class="guide" href="COMMUNITY-BARTER-GUIDE.html#skills-tools-and-the-neighborhood-map">Community &amp; barter › Skills, tools and the neighborhood map</a></li>
+</ul></li>
+<li><span id="t-peoria"></span><strong>Peoria</strong>
+<ul>
+<li>the farm laboratory that made penicillin possible — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html">How antibiotics came to be › 1941–1945: the farm laboratory, and the jump to a factory</a></li>
+</ul></li>
+<li><span id="t-peppermint"></span><strong>Peppermint</strong>
+<ul>
+<li>indigestion — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Medicinal plants with real evidence</a></li>
 </ul></li>
 <li><span id="t-peppers"></span><strong>Peppers</strong>
 <ul>
@@ -10659,6 +10981,10 @@
 <li><span id="t-picture-books"></span><strong>Picture books</strong>
 <ul>
 <li>ages 2-6, Beatrix Potter, Mother Goose — <a class="guide" href="STORIES-GAMES-GUIDE.html#ages-26-picture-books-and-rhymes">Stories &amp; games › Ages 2–6: picture books and rhymes</a></li>
+</ul></li>
+<li><span id="t-pictures"></span><strong>Pictures</strong>
+<ul>
+<li>the plate, the death rates, the timeline — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#pictures-diagrams">How antibiotics came to be › Pictures &amp; diagrams</a></li>
 </ul></li>
 <li><span id="t-pig-breeds"></span><strong>Pig breeds</strong>
 <ul>
@@ -10872,6 +11198,7 @@
 <li><span id="t-pneumonia"></span><strong>Pneumonia</strong>
 <ul>
 <li>counting breaths — <a class="guide" href="CHILDBIRTH-CHILDREN-GUIDE.html#sick-children-under-5-fever-breathing-diarrhea-measles-worms">Childbirth &amp; kids › Sick children under 5: fever, breathing, diarrhea, measles, worms</a></li>
+<li>deaths before antibiotics — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#what-it-was-like-before">How antibiotics came to be › What it was like before</a></li>
 </ul></li>
 <li><span id="t-pocket-plan"></span><strong>Pocket Plan</strong>
 <ul>
@@ -10942,6 +11269,7 @@
 <li>hemlock, lupine, bracken, foxglove — <a class="guide" href="GOATS-GUIDE.html#plants-that-poison-goats-here">Goats › Plants that poison goats here</a></li>
 <li>identifying pasture plants from a photo — <a class="guide" href="GOATS-GUIDE.html#plants-that-poison-goats-here">Goats › Plants that poison goats here</a></li>
 <li>ponderosa pine, bracken, tansy, hemlocks — <a class="guide" href="CATTLE-GUIDE.html#plants-that-poison-cattle-here">Cattle › Plants that poison cattle here</a></li>
+<li>used as medicine — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#dangerous-to-try">Making medicines › Dangerous to try</a></li>
 <li>yew, azalea, oleander, chokecherry — <a class="guide" href="GOATS-GUIDE.html#plants-that-poison-goats-here">Goats › Plants that poison goats here</a></li>
 </ul></li>
 <li><span id="t-polaris"></span><strong>Polaris</strong> — see <a href="#t-north-star"><strong>North Star</strong></a></li>
@@ -11034,6 +11362,10 @@
 <li>gravel road — <a class="guide" href="MASONRY-ROADS-GUIDE.html#potholes-ruts-and-washboard">Mortar, concrete &amp; roads › Potholes, ruts and washboard</a></li>
 </ul></li>
 <li><span id="t-potted-meat"></span><strong>Potted meat</strong> — see <a href="#t-confit"><strong>Confit</strong></a></li>
+<li><span id="t-poultice"></span><strong>Poultice</strong>
+<ul>
+<li>what it is — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Teas, tinctures, salves and poultices</a></li>
+</ul></li>
 <li><span id="t-poultry-and-eggs"></span><strong>Poultry and eggs</strong> — <a class="guide" href="NUCLEAR-FALLOUT-GUIDE.html#livestock-and-gardens">Nuclear fallout › Livestock and gardens</a></li>
 <li><span id="t-poults"></span><strong>Poults</strong>
 <ul>
@@ -11162,6 +11494,7 @@
 </ul></li>
 <li><span id="t-pressure-canner"></span><strong>Pressure canner</strong>
 <ul>
+<li>as a sterilizer — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#a-pressure-canner-as-a-sterilizer">Making medicines › A pressure canner as a sterilizer</a></li>
 <li>gaskets and safety plugs — <a class="guide" href="PRESERVING-FOOD-GUIDE.html#running-a-pressure-canner-off-grid">Preserving food › Running a pressure canner off-grid</a></li>
 <li>none — what to do instead — <a class="guide" href="PRESERVING-FOOD-GUIDE.html#botulism-why-low-acid-food-needs-a-pressure-canner">Preserving food › Botulism: why low-acid food needs a pressure canner</a></li>
 <li>on a wood stove or campfire — <a class="guide" href="PRESERVING-FOOD-GUIDE.html#running-a-pressure-canner-off-grid">Preserving food › Running a pressure canner off-grid</a></li>
@@ -11197,6 +11530,14 @@
 <ul>
 <li>photos — <a class="wiki" href="https://en.wikipedia.org/wiki/Presta_valve" data-title="Presta_valve" target="_blank" rel="noopener" title="Wikipedia: Presta valve (offline copy with photos when opened through the Library Assistant)">photos</a></li>
 </ul></li>
+<li><span id="t-preventing-infection"></span><strong>Preventing infection</strong>
+<ul>
+<li>the lever you actually have — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#prevention-is-the-lever-you-actually-have">How antibiotics came to be › Prevention is the lever you actually have</a></li>
+</ul></li>
+<li><span id="t-primary-sources"></span><strong>Primary sources</strong>
+<ul>
+<li>the original papers in this library — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#what-this-library-already-holds">How antibiotics came to be › What this library already holds</a></li>
+</ul></li>
 <li><span id="t-printer"></span><strong>Printer</strong>
 <ul>
 <li>receipt printer for the library — <a class="guide" href="AMMO-CAN-COMPUTER-GUIDE.html">ARK Vault (ammo-can computer) › Printing on paper</a></li>
@@ -11210,6 +11551,7 @@
 <li>a book page as words or as a picture — <a class="guide" href="AMMO-CAN-COMPUTER-GUIDE.html">ARK Vault (ammo-can computer) › Printing on paper</a></li>
 <li>a page bigger, in strips and pieces to tape together — <a class="guide" href="AMMO-CAN-COMPUTER-GUIDE.html">ARK Vault (ammo-can computer) › Printing on paper</a></li>
 <li>a section of the map — <a class="guide" href="HOW-TO-VIEW-MAPS.html#easiest-the-map-in-the-web-browser">HOW-TO-VIEW-MAPS › Easiest: the map in the web browser</a></li>
+<li>making paper copies of what matters — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#how-to-keep-them">How antibiotics came to be › How to keep them</a></li>
 <li>printer not found, blank paper — <a class="guide" href="AMMO-CAN-COMPUTER-GUIDE.html">ARK Vault (ammo-can computer) › If something goes wrong</a></li>
 <li>sizes, saving paper — <a class="guide" href="AMMO-CAN-COMPUTER-GUIDE.html">ARK Vault (ammo-can computer) › Printing on paper</a></li>
 </ul></li>
@@ -11230,6 +11572,10 @@
 <li><span id="t-prolapse"></span><strong>Prolapse</strong>
 <ul>
 <li>hen — see <a href="#t-egg-bound-hen"><strong>Egg-bound hen</strong></a></li>
+</ul></li>
+<li><span id="t-proof-alcohol"></span><strong>Proof (alcohol)</strong>
+<ul>
+<li>percent — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#alcohol-the-strength-that-works">Making medicines › Alcohol: the strength that works</a></li>
 </ul></li>
 <li><span id="t-propane"></span><strong>Propane</strong>
 <ul>
@@ -11311,6 +11657,7 @@
 <ul>
 <li>fire-season shutoffs — <a class="guide" href="WHAT-TO-EXPECT-GUIDE.html#4-long-power-outage-including-fire-season-shutoffs">What to expect › 4. Long power outage, including fire-season shutoffs</a></li>
 </ul></li>
+<li><span id="t-puerperal-fever"></span><strong>Puerperal fever</strong> — see <a href="#t-childbed-fever"><strong>Childbed fever</strong></a></li>
 <li><span id="t-puffballs"></span><strong>Puffballs</strong>
 <ul>
 <li>slice test — <a class="guide" href="MUSHROOM-GUIDE.html#good-edibles-and-their-look-alikes">Mushrooms › Good edibles and their look-alikes</a></li>
@@ -11934,6 +12281,7 @@
 <li>home mix — <a class="guide" href="CHILDBIRTH-CHILDREN-GUIDE.html#sick-children-under-5-fever-breathing-diarrhea-measles-worms">Childbirth &amp; kids › Sick children under 5: fever, breathing, diarrhea, measles, worms</a></li>
 <li>recipe — <a class="guide" href="SANITATION-GUIDE.html#how-germs-spread-and-stopping-an-outbreak">Sanitation › How germs spread, and stopping an outbreak</a></li>
 <li>recipes — <a class="guide" href="FIELD-CARE-GUIDE.html#nursing-a-bedridden-person-for-days-and-weeks">Injuries › Nursing a bedridden person for days and weeks</a></li>
+<li>recipes and how much — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#rehydration-drink-the-cheapest-life-saver">Making medicines › Rehydration drink: the cheapest life-saver</a></li>
 <li>salt and sugar recipe — <a class="guide" href="Medical-READ-ME-FIRST.html#diarrhea-and-dehydration-the-homemade-drink">Medicines › Diarrhea and dehydration: the homemade drink</a></li>
 </ul></li>
 <li><span id="t-reishi"></span><strong>Reishi</strong> — <a class="guide" href="MUSHROOM-GUIDE.html#medicinal-mushrooms">Mushrooms › Medicinal mushrooms</a></li>
@@ -12010,6 +12358,7 @@
 </ul></li>
 <li><span id="t-reset-button"></span><strong>Reset button</strong> — see <a href="#t-thermal-protector"><strong>Thermal protector</strong></a></li>
 <li><span id="t-residual-magnetism"></span><strong>Residual magnetism</strong> — see <a href="#t-flashing-the-field"><strong>Flashing the field</strong></a></li>
+<li><span id="t-resistance"></span><strong>Resistance</strong> — see <a href="#t-antibiotic-resistance"><strong>Antibiotic resistance</strong></a></li>
 <li><span id="t-resistor-color-code"></span><strong>Resistor color code</strong> — <a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html#electronics-repair-and-salvage">Make-do household › Electronics: repair and salvage</a>
 <ul>
 <li>chart — <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/NEETSModules/NEETS%20Module%2001%20-%20Introduction%20to%20Matter%20Energy%20and%20Direct%20Current.pdf#page=55" title="NEETS Module 01 - Matter Energy and Direct Current.pdf — page 55">Resistor color codes, NEETS 1 p. 55</a></li>
@@ -12449,6 +12798,10 @@
 <ul>
 <li>puffs and tablets — <a class="guide" href="CHRONIC-ILLNESS-GUIDE.html">Chronic illness › Asthma and COPD</a></li>
 </ul></li>
+<li><span id="t-saline-salt-water"></span><strong>Saline (salt water)</strong>
+<ul>
+<li>making it for wounds — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#water-soap-and-salt-water">Making medicines › Water, soap and salt water</a></li>
+</ul></li>
 <li><span id="t-salmon"></span><strong>Salmon</strong>
 <ul>
 <li>canning time — <a class="guide" href="PRESERVING-FOOD-GUIDE.html#settings-for-the-illinois-valley-about-1-300-ft">Preserving food › Settings for the Illinois Valley (about 1,300 ft)</a></li>
@@ -12493,6 +12846,7 @@
 </ul></li>
 <li><span id="t-salt-water"></span><strong>Salt water</strong>
 <ul>
+<li>for wounds — see <a href="#t-saline-salt-water"><strong>Saline (salt water)</strong></a></li>
 <li>making it drinkable — <a class="guide" href="WATER-PURIFICATION-GUIDE.html#salty-or-chemical-water-the-solar-still">Water purification › Salty or chemical water: the solar still</a></li>
 </ul></li>
 <li><span id="t-salted-vegetables"></span><strong>Salted vegetables</strong>
@@ -12524,7 +12878,7 @@
 </ul></li>
 <li><span id="t-salve"></span><strong>Salve</strong>
 <ul>
-<li>beeswax and oil — <a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html#personal-care">Make-do household › Personal care</a></li>
+<li>beeswax and oil — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Teas, tinctures, salves and poultices</a> · <a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html#personal-care">Make-do household › Personal care</a></li>
 </ul></li>
 <li><span id="t-same-code"></span><strong>SAME code</strong>
 <ul>
@@ -12648,6 +13002,10 @@
 <li>rounded, not hollow — <a class="guide" href="BLACKSMITHING-GUIDE.html#heat-colors-in-shade-not-sunlight">Blacksmithing › Heat colors (in shade, not sunlight)</a></li>
 </ul></li>
 <li><span id="t-scenarios"></span><strong>Scenarios</strong> — see <a href="#t-disaster-scenarios"><strong>Disaster scenarios</strong></a></li>
+<li><span id="t-schatz"></span><strong>Schatz</strong>
+<ul>
+<li>who isolated streptomycin — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#1943-streptomycin-out-of-the-dirt">How antibiotics came to be › 1943: streptomycin, out of the dirt</a></li>
+</ul></li>
 <li><span id="t-schmutzdecke"></span><strong>Schmutzdecke</strong> — <a class="guide" href="TOWN-WATER-SEWER-GUIDE.html">Town water &amp; sewer › A slow sand filter for a whole town</a>
 <ul>
 <li>living layer on the sand — <a class="guide" href="WATER-PURIFICATION-GUIDE.html#biosand-filter-best-household-filter-you-can-build">Water purification › Biosand filter (best household filter you can build)</a></li>
@@ -12813,7 +13171,7 @@
 <ul>
 <li>pocket mesh radio — <a class="guide" href="MESH-RADIO-GUIDE.html#2-what-to-buy">Mesh radio (Meshtastic) › 2. What to buy</a></li>
 </ul></li>
-<li><span id="t-sepsis"></span><strong>Sepsis</strong>
+<li><span id="t-sepsis"></span><strong>Sepsis</strong> — see <a href="#t-blood-poisoning"><strong>Blood poisoning</strong></a>
 <ul>
 <li>pulse over 90, fast breathing — <a class="guide" href="FIELD-CARE-GUIDE.html#if-this-goes-wrong">Injuries › If this goes wrong</a></li>
 <li>signs: fever, fast pulse, confusion — <a class="guide" href="FIELD-CARE-GUIDE.html#wounds-and-infection-when-there-s-no-hospital">Injuries › Wounds and infection when there's no hospital</a></li>
@@ -13323,6 +13681,10 @@
 <li><span id="t-sledge"></span><strong>Sledge</strong>
 <ul>
 <li>when to use one — <a class="guide" href="BICYCLES-CARTS-GUIDE.html#wheelbarrows-handcarts-sledges-and-travois">Bicycles &amp; carts › Wheelbarrows, handcarts, sledges and travois</a></li>
+</ul></li>
+<li><span id="t-sleep"></span><strong>Sleep</strong>
+<ul>
+<li>valerian, chamomile, hops — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Medicinal plants with real evidence</a></li>
 </ul></li>
 <li><span id="t-sleeping-bag"></span><strong>Sleeping bag</strong>
 <ul>
@@ -13920,6 +14282,10 @@
 <ul>
 <li>library drive for the Pi — <a class="guide" href="AMMO-CAN-COMPUTER-GUIDE.html#two-separate-pieces-the-pis-card-and-the-library-drive">ARK Vault (ammo-can computer) › Two separate pieces: the Pi's card and the library drive</a></li>
 </ul></li>
+<li><span id="t-st-john-s-wort"></span><strong>St John's wort</strong>
+<ul>
+<li>depression; mixing with medicines — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Medicinal plants with real evidence</a></li>
+</ul></li>
 <li><span id="t-st-johnswort"></span><strong>St. Johnswort</strong>
 <ul>
 <li>newly shorn sheep burn — <a class="guide" href="SHEEP-GUIDE.html#plants-that-poison-sheep-here">Sheep › Plants that poison sheep here</a></li>
@@ -14043,6 +14409,10 @@
 <li>12 V to 5 V for the Pi — <a class="guide" href="AMMO-CAN-COMPUTER-GUIDE.html">ARK Vault (ammo-can computer) › 7. Wiring</a></li>
 </ul></li>
 <li><span id="t-steps-per-100-meters"></span><strong>Steps per 100 meters</strong> — <a class="guide" href="NAVIGATION-WEATHER-GUIDE.html#pace-count-measuring-distance-on-foot">Navigation &amp; weather › Pace count: measuring distance on foot</a></li>
+<li><span id="t-sterilizing"></span><strong>Sterilizing</strong>
+<ul>
+<li>boiling and the oven — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#soap-boiling-and-an-oven">Making medicines › Soap, boiling and an oven</a></li>
+</ul></li>
 <li><span id="t-sterilizing-instruments"></span><strong>Sterilizing instruments</strong>
 <ul>
 <li>pressure cooker, oven, bleach — <a class="guide" href="FIELD-CARE-GUIDE.html#wounds-and-infection-when-there-s-no-hospital">Injuries › Wounds and infection when there's no hospital</a></li>
@@ -14082,6 +14452,10 @@
 <ul>
 <li>drawing — <a class="lib pic" target="_blank" rel="noopener" href="https://archive.org/download/harnessmaking00hasl/harnessmaking00hasl.pdf#page=29" title="Harness Making (Hasluck 1904).pdf — page 29">Home-made clamp, Hasluck p. 29</a></li>
 <li>making one — <a class="guide" href="CLOTHING-LEATHER-GUIDE.html">Clothing &amp; leather › Tools and thread</a></li>
+</ul></li>
+<li><span id="t-stockpile"></span><strong>Stockpile</strong>
+<ul>
+<li>what to keep for making medicines — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Making a supply last and storing medicines</a></li>
 </ul></li>
 <li><span id="t-stolen-firearm"></span><strong>Stolen firearm</strong>
 <ul>
@@ -14139,6 +14513,10 @@
 <li><span id="t-storing-mushrooms"></span><strong>Storing mushrooms</strong>
 <ul>
 <li>fresh, in a paper bag — <a class="guide" href="MUSHROOM-GUIDE.html#cooking-drying-and-storing">Mushrooms › Cooking, drying and storing</a></li>
+</ul></li>
+<li><span id="t-storing-paper"></span><strong>Storing paper</strong>
+<ul>
+<li>dry, dark, more than one copy, more than one place — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#how-to-keep-them">How antibiotics came to be › How to keep them</a></li>
 </ul></li>
 <li><span id="t-storing-water"></span><strong>Storing water</strong> — see <a href="#t-water-storage"><strong>Water storage</strong></a></li>
 <li><span id="t-storm-drains"></span><strong>Storm drains</strong> — <a class="guide" href="TOWN-WATER-SEWER-GUIDE.html">Town water &amp; sewer › Storm drains and combined sewers</a></li>
@@ -14206,6 +14584,10 @@
 <ul>
 <li>sandbags and inner-tube bands — <a class="guide" href="REHAB-GUIDE.html#getting-strong-again">Rehab &amp; recovery › Getting strong again</a></li>
 <li>thigh and knee ladder — <a class="guide" href="REHAB-GUIDE.html#getting-strong-again">Rehab &amp; recovery › Getting strong again</a></li>
+</ul></li>
+<li><span id="t-streptomycin"></span><strong>Streptomycin</strong>
+<ul>
+<li>out of the soil, 1943 — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#1943-streptomycin-out-of-the-dirt">How antibiotics came to be › 1943: streptomycin, out of the dirt</a></li>
 </ul></li>
 <li><span id="t-stress"></span><strong>Stress</strong> — <a class="guide" href="COMMUNITY-BARTER-GUIDE.html#grief-stress-and-psychological-first-aid">Community &amp; barter › Grief, stress and psychological first aid</a> — see <a href="#t-mental-health"><strong>Mental health</strong></a>
 <ul>
@@ -14301,6 +14683,7 @@
 </ul></li>
 <li><span id="t-sugar"></span><strong>Sugar</strong>
 <ul>
+<li>on wounds — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#honey-and-sugar-dressings">Making medicines › Honey and sugar dressings</a></li>
 <li>substitutes — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#salt-sweeteners-and-fat">Food from scratch › Salt, 🍯 sweeteners and 🥓 fat</a></li>
 </ul></li>
 <li><span id="t-sugar-pine-nuts"></span><strong>Sugar pine nuts</strong> — <a class="guide" href="FOOD-FROM-SCRATCH-GUIDE.html#acorn-flour">Food from scratch › Acorn flour</a>
@@ -14316,6 +14699,10 @@
 <li>asking a new mother — <a class="guide" href="CHILDBIRTH-CHILDREN-GUIDE.html#breastfeeding-and-the-mother-s-recovery">Childbirth &amp; kids › Breastfeeding and the mother's recovery</a></li>
 <li>asking, watching — <a class="guide" href="CHRONIC-ILLNESS-GUIDE.html">Chronic illness › Mental illness and psychiatric medicines</a></li>
 <li>locking up guns in hard times — <a class="guide" href="HOME-DEFENSE-GUIDE.html#stress-fatigue-and-judgment">Home protection › Stress, fatigue and judgment</a></li>
+</ul></li>
+<li><span id="t-sulfa-drugs"></span><strong>Sulfa drugs</strong>
+<ul>
+<li>Domagk and Prontosil, 1932 to 1935 — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#19321937-the-sulfa-drugs-and-the-price-of-skipping-the-safety-test">How antibiotics came to be › 1932–1937: the sulfa drugs, and the price of skipping the safety test</a></li>
 </ul></li>
 <li><span id="t-sulfation"></span><strong>Sulfation</strong> — <a class="guide" href="OFF-GRID-POWER-GUIDE.html#keeping-lead-acid-alive">Off-grid power › Keeping lead-acid alive</a></li>
 <li><span id="t-sulfite-dips"></span><strong>Sulfite dips</strong>
@@ -14784,6 +15171,10 @@
 <ul>
 <li>what to do — <a class="guide" href="NAVIGATION-WEATHER-GUIDE.html#lightning-safety">Navigation &amp; weather › Lightning safety</a></li>
 </ul></li>
+<li><span id="t-thyme"></span><strong>Thyme</strong>
+<ul>
+<li>coughs — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Medicinal plants with real evidence</a></li>
+</ul></li>
 <li><span id="t-thyroid"></span><strong>Thyroid</strong>
 <ul>
 <li>levothyroxine doses, iodized salt — <a class="guide" href="CHRONIC-ILLNESS-GUIDE.html">Chronic illness › Thyroid</a></li>
@@ -14823,6 +15214,10 @@
 <li><span id="t-timing-morse"></span><strong>Timing (Morse)</strong>
 <ul>
 <li>dot, dash and gaps — <a class="guide" href="SIGNALS-MORSE-GUIDE.html#morse-quick-reference-print-this">Signals &amp; Morse › Morse quick reference (print this)</a></li>
+</ul></li>
+<li><span id="t-tincture"></span><strong>Tincture</strong>
+<ul>
+<li>how to make — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Teas, tinctures, salves and poultices</a></li>
 </ul></li>
 <li><span id="t-tincture-of-iodine"></span><strong>Tincture of iodine</strong> — see <a href="#t-iodine"><strong>Iodine</strong></a></li>
 <li><span id="t-tippy-tap"></span><strong>Tippy tap</strong>
@@ -14912,7 +15307,10 @@
 <ul>
 <li>push it back within an hour — <a class="guide" href="FIELD-CARE-GUIDE.html#teeth-pain-and-emergencies">Injuries › Teeth: pain and emergencies</a></li>
 </ul></li>
-<li><span id="t-toothache"></span><strong>Toothache</strong> — <a class="guide" href="FIELD-CARE-GUIDE.html#teeth-pain-and-emergencies">Injuries › Teeth: pain and emergencies</a></li>
+<li><span id="t-toothache"></span><strong>Toothache</strong> — <a class="guide" href="FIELD-CARE-GUIDE.html#teeth-pain-and-emergencies">Injuries › Teeth: pain and emergencies</a>
+<ul>
+<li>oil of cloves — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#other-pain-helpers">Making medicines › Other pain helpers</a></li>
+</ul></li>
 <li><span id="t-toothbrush"></span><strong>Toothbrush</strong>
 <ul>
 <li>chewed twig — <a class="guide" href="MAKE-DO-HOUSEHOLD-GUIDE.html#personal-care">Make-do household › Personal care</a></li>
@@ -15201,6 +15599,7 @@
 </ul></li>
 <li><span id="t-tuberculosis"></span><strong>Tuberculosis</strong>
 <ul>
+<li>deaths before antibiotics — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#what-it-was-like-before">How antibiotics came to be › What it was like before</a></li>
 <li>from raw milk and cheese — <a class="guide" href="DAIRY-GUIDE.html#raw-milk-dangers-brucellosis-tb-and-listeria">Milk, butter &amp; cheese › Raw milk dangers: brucellosis, TB and Listeria</a></li>
 </ul></li>
 <li><span id="t-tuck-pointing"></span><strong>Tuck-pointing</strong> — see <a href="#t-repointing"><strong>Repointing</strong></a></li>
@@ -15305,6 +15704,10 @@
 <ul>
 <li>carriers must not cook — <a class="guide" href="SANITATION-GUIDE.html#how-germs-spread-and-stopping-an-outbreak">Sanitation › How germs spread, and stopping an outbreak</a></li>
 </ul></li>
+<li><span id="t-typhoid-fever"></span><strong>Typhoid fever</strong>
+<ul>
+<li>fell with clean water, not with medicine — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#what-it-was-like-before">How antibiotics came to be › What it was like before</a></li>
+</ul></li>
 <li><span id="t-tyre"></span><strong>Tyre</strong>
 <ul>
 <li>cut or burst — booting it — <a class="guide" href="BICYCLES-CARTS-GUIDE.html#flat-tyres-patching-tubes-and-booting-tyres">Bicycles &amp; carts › Flat tyres: patching tubes and booting tyres</a></li>
@@ -15373,6 +15776,7 @@
 <li><span id="t-urine"></span><strong>Urine</strong>
 <ul>
 <li>as garden fertilizer — <a class="guide" href="SANITATION-GUIDE.html#composting-toilets-humanure-and-urine">Sanitation › Composting toilets, humanure and urine</a></li>
+<li>on wounds — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#old-advice-in-the-library-to-ignore">Making medicines › Old advice in the library to ignore</a></li>
 </ul></li>
 <li><span id="t-urine-diverting-toilet"></span><strong>Urine-diverting toilet</strong>
 <ul>
@@ -15417,6 +15821,10 @@
 <li><span id="t-vacuum-sealing"></span><strong>Vacuum sealing</strong>
 <ul>
 <li>only dry food — <a class="guide" href="FOOD-SECURITY-GUIDE.html#storing-it-for-years">Food when scarce › Storing it for years</a></li>
+</ul></li>
+<li><span id="t-valerian"></span><strong>Valerian</strong>
+<ul>
+<li>sleep — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Medicinal plants with real evidence</a></li>
 </ul></li>
 <li><span id="t-valuables"></span><strong>Valuables</strong>
 <ul>
@@ -15596,6 +16004,10 @@
 </ul>
 <h2 id="w">W</h2>
 <ul>
+<li><span id="t-waksman"></span><strong>Waksman</strong>
+<ul>
+<li>the soil search, and the word antibiotic — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html#1943-streptomycin-out-of-the-dirt">How antibiotics came to be › 1943: streptomycin, out of the dirt</a></li>
+</ul></li>
 <li><span id="t-walk-to-run"></span><strong>Walk to run</strong>
 <ul>
 <li>after a leg injury — <a class="guide" href="REHAB-GUIDE.html#balance-and-walking-again">Rehab &amp; recovery › Balance and walking again</a></li>
@@ -15664,6 +16076,10 @@
 <li><span id="t-warping"></span><strong>Warping</strong>
 <ul>
 <li>causes, kinds, prevention — <a class="guide" href="WOODWORKING-GUIDE.html">Woodworking › Green wood, drying and warping</a></li>
+</ul></li>
+<li><span id="t-wartime-production"></span><strong>Wartime production</strong>
+<ul>
+<li>what one year of penicillin took — <a class="guide" href="MEDICINE-HISTORY-GUIDE.html">How antibiotics came to be › 1941–1945: the farm laboratory, and the jump to a factory</a></li>
 </ul></li>
 <li><span id="t-washboard"></span><strong>Washboard</strong>
 <ul>
@@ -16347,6 +16763,10 @@
 <li>rabbits: coughing, watery eyes, evacuation — <a class="guide" href="RABBITS-GUIDE.html#predators-smoke-and-fire-season">Rabbits › Predators, smoke and fire season</a></li>
 </ul></li>
 <li><span id="t-will-my-car-run-after-an-emp"></span><strong>Will my car run after an EMP?</strong> — see <a href="#t-cars-and-trucks"><strong>Cars and trucks</strong></a></li>
+<li><span id="t-willow-bark"></span><strong>Willow bark</strong>
+<ul>
+<li>dose and limits — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#willow-bark-️">Making medicines › Willow bark ⚠️</a></li>
+</ul></li>
 <li><span id="t-winch"></span><strong>Winch</strong>
 <ul>
 <li>safe use, snatch block — <a class="guide" href="VEHICLES-EQUIPMENT-GUIDE.html#towing-and-getting-unstuck">Vehicles, tractors &amp; equipment › Towing and getting unstuck</a></li>
@@ -16616,6 +17036,7 @@
 <ul>
 <li>cleaning, pressure bandage — <a class="guide" href="HORSE-GUIDE.html#health-checks-and-first-aid">Horses › Health checks and first aid</a></li>
 <li>close it or leave it open — <a class="guide" href="FIELD-CARE-GUIDE.html#wounds-and-infection-when-there-s-no-hospital">Injuries › Wounds and infection when there's no hospital</a></li>
+<li>keeping them from getting infected — <a class="guide" href="MAKING-MEDICINES-GUIDE.html#wound-care-that-prevents-infection">Making medicines › Wound care that prevents infection</a></li>
 <li>red, hot, full of pus — <a class="guide" href="FIELD-CARE-GUIDE.html#wounds-and-infection-when-there-s-no-hospital">Injuries › Wounds and infection when there's no hospital</a></li>
 <li>washing out — how much water — <a class="guide" href="FIELD-CARE-GUIDE.html#wounds-and-infection-when-there-s-no-hospital">Injuries › Wounds and infection when there's no hospital</a></li>
 </ul></li>
@@ -16644,6 +17065,10 @@
 <li><span id="t-yarn"></span><strong>Yarn</strong>
 <ul>
 <li>spinning and setting the twist — <a class="guide" href="CLOTHING-LEATHER-GUIDE.html#wool-from-sheep-to-yarn">Clothing &amp; leather › Wool: from sheep to yarn</a></li>
+</ul></li>
+<li><span id="t-yarrow"></span><strong>Yarrow</strong>
+<ul>
+<li>uses and cautions — <a class="guide" href="MAKING-MEDICINES-GUIDE.html">Making medicines › Medicinal plants with real evidence</a></li>
 </ul></li>
 <li><span id="t-year-s-round"></span><strong>Year's round</strong>
 <ul>

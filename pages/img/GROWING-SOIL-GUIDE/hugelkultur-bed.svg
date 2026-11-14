@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="560" viewBox="0 0 680 560" font-family="Arial, Helvetica, sans-serif">
+  <title>A hugelkultur bed cut through, layer by layer: the biggest logs in a trench one to two feet deep and three to five feet wide, then branches, then twigs leaves and old hay, the sod laid upside down, manure or green stuff, and four to six inches of compost and topsoil, making a mound three to four feet high, built at least thirty feet from any building</title>
+  <rect width="680" height="560" fill="#ffffff"/>
+  <defs>
+    <marker id="dh" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#333"/></marker>
+    <clipPath id="mound"><path d="M120,320 C142,222 198,180 260,180 C322,180 378,222 400,320 Z"/></clipPath>
+    <clipPath id="trench"><rect x="180" y="320" width="160" height="60"/></clipPath>
+  </defs>
+
+  <text x="340" y="24" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">A hugelkultur bed, cut through: a buried woodpile with a garden on top</text>
+
+  <!-- ground -->
+  <rect x="16" y="320" width="648" height="68" fill="#efe8dc"/>
+  <line x1="16" y1="320" x2="180" y2="320" stroke="#6b5a45" stroke-width="2.5"/>
+  <line x1="340" y1="320" x2="664" y2="320" stroke="#6b5a45" stroke-width="2.5"/>
+
+  <!-- the trench and its logs -->
+  <path d="M180,320 V380 H340 V320" fill="#e6ddc8" stroke="#6b5a45" stroke-width="2.5"/>
+  <g clip-path="url(#trench)">
+    <g fill="#7a5a35" stroke="#4a3620" stroke-width="1.6">
+      <circle cx="206" cy="356" r="22"/><circle cx="254" cy="360" r="19"/><circle cx="298" cy="354" r="21"/><circle cx="330" cy="364" r="15"/>
+    </g>
+    <g fill="none" stroke="#4a3620" stroke-width="1"><circle cx="206" cy="356" r="12"/><circle cx="254" cy="360" r="10"/><circle cx="298" cy="354" r="11"/></g>
+  </g>
+
+  <!-- the mound, in layers -->
+  <g clip-path="url(#mound)">
+    <rect x="110" y="278" width="300" height="46" fill="#8a6a40"/>
+    <rect x="110" y="240" width="300" height="38" fill="#c8a05a"/>
+    <rect x="110" y="224" width="300" height="16" fill="#5d7a3a"/>
+    <rect x="110" y="206" width="300" height="18" fill="#6e5f36"/>
+    <rect x="110" y="178" width="300" height="28" fill="#4a3a26"/>
+    <!-- branches -->
+    <g stroke="#6b5230" stroke-width="3" fill="none">
+      <path d="M140,300 L200,292 M210,310 L280,302 M290,296 L360,306 M170,284 L240,280 M260,286 L330,290"/>
+    </g>
+    <!-- twigs and hay -->
+    <g stroke="#a88040" stroke-width="1.4" fill="none">
+      <path d="M140,262 L180,254 M190,268 L240,260 M250,252 L300,262 M310,266 L360,258 M160,248 L210,244 M270,246 L320,250"/>
+    </g>
+    <!-- the sod, grass side down -->
+    <g stroke="#2f5e16" stroke-width="1.6" fill="none">
+      <path d="M150,236 v6 M166,236 v6 M182,236 v6 M198,236 v6 M214,236 v6 M230,236 v6 M246,236 v6 M262,236 v6 M278,236 v6 M294,236 v6 M310,236 v6 M326,236 v6 M342,236 v6 M358,236 v6"/>
+    </g>
+  </g>
+  <path d="M120,320 C142,222 198,180 260,180 C322,180 378,222 400,320" fill="none" stroke="#4a3620" stroke-width="2.5"/>
+
+  <!-- plants on top -->
+  <g stroke="#2f5e16" stroke-width="2" fill="none">
+    <path d="M200,196 l-6,-12 M200,196 l7,-10 M200,196 v-14"/>
+    <path d="M260,181 l-6,-12 M260,181 l7,-10 M260,181 v-14"/>
+    <path d="M320,196 l-6,-12 M320,196 l7,-10 M320,196 v-14"/>
+  </g>
+
+  <!-- dimensions -->
+  <line x1="98" y1="180" x2="98" y2="320" stroke="#333" stroke-width="1.5" marker-start="url(#dh)" marker-end="url(#dh)"/>
+  <line x1="98" y1="180" x2="252" y2="180" stroke="#333" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="90" y="238" text-anchor="end" font-size="13" font-weight="bold" fill="#222">3 to 4 ft</text>
+  <text x="90" y="256" text-anchor="end" font-size="13" font-weight="bold" fill="#222">high</text>
+  <text x="90" y="274" text-anchor="end" font-size="12" fill="#222">it sinks as</text>
+  <text x="90" y="290" text-anchor="end" font-size="12" fill="#222">the wood rots</text>
+
+  <line x1="162" y1="320" x2="162" y2="380" stroke="#333" stroke-width="1.5" marker-start="url(#dh)" marker-end="url(#dh)"/>
+  <text x="154" y="356" text-anchor="end" font-size="13" font-weight="bold" fill="#222">1 to 2 ft</text>
+  <line x1="180" y1="396" x2="340" y2="396" stroke="#333" stroke-width="1.5" marker-start="url(#dh)" marker-end="url(#dh)"/>
+  <text x="260" y="414" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">trench 3 to 5 ft wide</text>
+
+  <!-- layer labels -->
+  <g stroke="#888" stroke-width="1" fill="none">
+    <path d="M334,194 L436,152"/><path d="M350,214 L436,196"/><path d="M362,232 L436,228"/>
+    <path d="M376,260 L436,268"/><path d="M394,300 L436,314"/><path d="M336,350 L436,358"/>
+  </g>
+  <g font-size="12.5" fill="#222">
+    <text x="442" y="140" font-weight="bold">4 to 6 in of compost</text>
+    <text x="442" y="156" font-weight="bold">and topsoil</text>
+    <text x="442" y="172">the crop's roots grow here</text>
+    <text x="442" y="200" font-weight="bold">manure or green stuff</text>
+    <text x="442" y="232" font-weight="bold">the sod, laid upside down</text>
+    <text x="442" y="272" font-weight="bold">twigs, leaves and old hay</text>
+    <text x="442" y="318" font-weight="bold">branches</text>
+    <text x="442" y="362" font-weight="bold">the biggest logs at the bottom</text>
+    <text x="442" y="378">soak the wood as you build</text>
+  </g>
+
+  <!-- the 30 ft -->
+  <line x1="16" y1="432" x2="664" y2="432" stroke="#ccc" stroke-width="1"/>
+  <line x1="16" y1="500" x2="664" y2="500" stroke="#6b5a45" stroke-width="2"/>
+  <polygon points="30,484 62,462 94,484" fill="#c8a07a" stroke="#333" stroke-width="2"/>
+  <rect x="38" y="484" width="48" height="16" fill="#f0e6d8" stroke="#333" stroke-width="2"/>
+  <path d="M380,500 C392,470 420,458 448,458 C476,458 504,470 516,500 z" fill="#4a3a26" stroke="#4a3620" stroke-width="2"/>
+  <line x1="96" y1="490" x2="376" y2="490" stroke="#333" stroke-width="1.5" marker-start="url(#dh)" marker-end="url(#dh)"/>
+  <text x="236" y="482" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#c8431a">at least 30 ft from any building</text>
+  <text x="236" y="464" text-anchor="middle" font-size="12.5" fill="#222">a hugelkultur bed is a buried woodpile</text>
+  <text x="552" y="476" font-size="12.5" font-weight="bold" fill="#222">on a slope, run it</text>
+  <text x="552" y="492" font-size="12.5" font-weight="bold" fill="#222">along the contour</text>
+
+  <g font-size="13.5" fill="#222">
+    <text x="16" y="524">Keep all the wood under at least 6 inches of soil, and never build against a fence, shed or woodpile.</text>
+    <text x="16" y="544">Use wood that rots fast. Not cedar, juniper or redwood; not black walnut; never treated or painted wood.</text>
+  </g>
+</svg>

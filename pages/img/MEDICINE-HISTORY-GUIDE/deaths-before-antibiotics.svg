@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="470" viewBox="0 0 660 470" font-family="Arial, Helvetica, sans-serif">
+  <title>United States death rates before antibiotics: tuberculosis, pneumonia, typhoid and childbirth, with childbed fever in maternity hospitals before and after clean birth</title>
+  <rect width="660" height="470" fill="#ffffff"/>
+
+  <text x="20" y="26" font-size="16" font-weight="bold" fill="#222">Before antibiotics: deaths a year for every 100,000 people</text>
+  <text x="20" y="45" font-size="12" fill="#555">United States death-registration area. Osler's textbook, 1920</text>
+
+  <!-- scale: 0-220 over 400 px, from x=230 to x=630 -->
+  <g stroke="#ddd" stroke-width="1">
+    <line x1="230" y1="58" x2="230" y2="268"/>
+    <line x1="321" y1="58" x2="321" y2="268"/>
+    <line x1="412" y1="58" x2="412" y2="268"/>
+    <line x1="503" y1="58" x2="503" y2="268"/>
+    <line x1="594" y1="58" x2="594" y2="268"/>
+  </g>
+  <g font-size="11" fill="#777" text-anchor="middle">
+    <text x="230" y="282">0</text><text x="321" y="282">50</text><text x="412" y="282">100</text>
+    <text x="503" y="282">150</text><text x="594" y="282">200</text>
+  </g>
+  <line x1="230" y1="268" x2="634" y2="268" stroke="#999" stroke-width="1.5"/>
+
+  <!-- bars -->
+  <g font-size="12.5" fill="#222">
+    <text x="222" y="80" text-anchor="end" font-weight="bold">Tuberculosis, 1900</text>
+    <rect x="230" y="66" width="367" height="19" fill="#7a2d1f"/>
+    <text x="605" y="80" font-size="12" fill="#222" font-weight="bold">201.9</text>
+
+    <text x="222" y="114" text-anchor="end" font-weight="bold">Tuberculosis, 1917</text>
+    <rect x="230" y="100" width="212" height="19" fill="#a65a4a"/>
+    <text x="450" y="114" font-size="12" fill="#222" font-weight="bold">116.4</text>
+
+    <text x="222" y="148" text-anchor="end" font-weight="bold">Pneumonia, 1917</text>
+    <rect x="230" y="134" width="272" height="19" fill="#2b4c7e"/>
+    <text x="510" y="148" font-size="12" fill="#222" font-weight="bold">149.8</text>
+
+    <text x="222" y="182" text-anchor="end" font-weight="bold">Typhoid fever, 1900</text>
+    <rect x="230" y="168" width="65" height="19" fill="#6b7f3a"/>
+    <text x="303" y="182" font-size="12" fill="#222" font-weight="bold">35.9</text>
+
+    <text x="222" y="216" text-anchor="end" font-weight="bold">Typhoid fever, 1917</text>
+    <rect x="230" y="202" width="24" height="19" fill="#93a86a"/>
+    <text x="262" y="216" font-size="12" fill="#222" font-weight="bold">13.4</text>
+
+    <text x="222" y="250" text-anchor="end" font-weight="bold">Childbirth, 1913</text>
+    <rect x="230" y="236" width="29" height="19" fill="#8a5a8a"/>
+    <text x="267" y="250" font-size="12" fill="#222" font-weight="bold">15.8</text>
+  </g>
+  <text x="230" y="300" font-size="11.5" fill="#555">Typhoid fell with clean water and clean food, not with medicine. Childbirth deaths</text>
+  <text x="230" y="315" font-size="11.5" fill="#555">are per 100,000 of everybody; counted per 100,000 women of child-bearing age they</text>
+  <text x="230" y="330" font-size="11.5" fill="#555">were about four times as high.</text>
+
+  <line x1="20" y1="348" x2="640" y2="348" stroke="#ccc" stroke-width="1"/>
+
+  <!-- panel 2 -->
+  <text x="20" y="374" font-size="15" font-weight="bold" fill="#222">Childbed fever: deaths for every 100 women giving birth in hospital</text>
+  <text x="20" y="392" font-size="12" fill="#555">Clean hands and clean instruments did this &#8212; sixty years before antibiotics</text>
+
+  <!-- scale 0-50 over 380 px from x=250 -->
+  <g font-size="12.5" fill="#222">
+    <text x="242" y="416" text-anchor="end" font-weight="bold">Before clean birth</text>
+    <rect x="250" y="404" width="30" height="16" fill="#7a2d1f"/>
+    <text x="288" y="417" font-size="12" font-weight="bold">3 to 4 in 100</text>
+
+    <text x="242" y="440" text-anchor="end" font-weight="bold">In an outbreak</text>
+    <rect x="250" y="428" width="380" height="16" fill="#7a2d1f"/>
+    <text x="434" y="441" font-size="12" font-weight="bold" fill="#ffffff">up to 50 in 100, and worse</text>
+
+    <text x="242" y="464" text-anchor="end" font-weight="bold">After clean birth</text>
+    <rect x="250" y="452" width="3" height="16" fill="#2f6b43"/>
+    <text x="261" y="465" font-size="12" font-weight="bold">fewer than 1 in 400</text>
+  </g>
+</svg>

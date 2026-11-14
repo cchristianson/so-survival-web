@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="624" viewBox="0 0 680 624" font-family="Arial, Helvetica, sans-serif">
+  <title>Two panels. Above, a gravity sewer working: house drains join a sewer that slopes all the way to a lift station, whose pumps lift the sewage to a higher sewer. Below, the same sewer with the power off: the pumps are dead, the wet well and the sewer fill, and sewage comes up the lowest drains first and then out of the manholes into the street</title>
+  <rect width="680" height="624" fill="#ffffff"/>
+  <defs>
+    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#6b7a4a"/></marker>
+    <marker id="rd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" fill="#c8431a"/></marker>
+  </defs>
+
+  <!-- ================= PANEL A: POWER ON ================= -->
+  <g transform="translate(0,34)">
+    <text x="16" y="0" font-size="15" font-weight="bold" fill="#2f5e16">POWER ON — gravity does the work</text>
+    <text x="16" y="20" font-size="12.5" fill="#222">The sewer slopes all the way, fast enough to scour itself: about 2 ft a second.</text>
+    <text x="16" y="36" font-size="12.5" fill="#222">Main sewers lie 5 to 10 ft under the road, with a manhole at every junction and bend.</text>
+
+    <!-- ground -->
+    <rect x="16" y="96" width="648" height="130" fill="#efe8dc"/>
+    <line x1="16" y1="96" x2="664" y2="96" stroke="#6b5a45" stroke-width="2.5"/>
+
+    <!-- houses -->
+    <polygon points="30,66 66,44 102,66" fill="#c8a07a" stroke="#333" stroke-width="2"/>
+    <rect x="38" y="66" width="56" height="30" fill="#f0e6d8" stroke="#333" stroke-width="2"/>
+    <polygon points="144,66 180,44 216,66" fill="#c8a07a" stroke="#333" stroke-width="2"/>
+    <rect x="152" y="66" width="56" height="30" fill="#f0e6d8" stroke="#333" stroke-width="2"/>
+    <g stroke="#777" stroke-width="5"><path d="M66,96 V135 M180,96 V147"/></g>
+
+    <!-- the sewer -->
+    <polygon points="24,130 420,172 420,186 24,144" fill="#ffffff" stroke="#333" stroke-width="2"/>
+    <polygon points="24,140 420,182 420,186 24,144" fill="#8f8a63"/>
+    <g stroke="#6b7a4a" stroke-width="2.5" marker-end="url(#fl)" fill="none">
+      <path d="M110,148 L160,153"/><path d="M250,163 L300,168"/>
+    </g>
+
+    <!-- manholes -->
+    <g stroke="#333" stroke-width="2" fill="#dcd8cc">
+      <rect x="112" y="96" width="16" height="48"/><rect x="292" y="96" width="16" height="67"/>
+    </g>
+    <g fill="#8a8a85" stroke="#333" stroke-width="1.6"><rect x="108" y="90" width="24" height="7" rx="2"/><rect x="288" y="90" width="24" height="7" rx="2"/></g>
+    <text x="122" y="86" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#222">manhole</text>
+
+    <!-- lift station -->
+    <rect x="430" y="96" width="60" height="124" fill="#ffffff" stroke="#333" stroke-width="2.5"/>
+    <rect x="432" y="176" width="56" height="42" fill="#8f8a63"/>
+    <circle cx="460" cy="196" r="10" fill="#fff" stroke="#333" stroke-width="2"/>
+    <path d="M455,191 L466,196 L455,201 z" fill="#333"/>
+    <path d="M460,186 V110 H520" fill="none" stroke="#1d4f7a" stroke-width="3.5"/>
+    <polygon points="520,106 664,124 664,134 520,116" fill="#ffffff" stroke="#333" stroke-width="2"/>
+    <polygon points="520,112 664,130 664,134 520,116" fill="#8f8a63"/>
+    <g stroke="#6b7a4a" stroke-width="2.5" marker-end="url(#fl)" fill="none"><path d="M570,124 L620,130"/></g>
+
+    <text x="460" y="240" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#222">wet well</text>
+    <text x="650" y="78" text-anchor="end" font-size="12.5" font-weight="bold" fill="#222">pumps lift it to a higher sewer,</text>
+    <text x="650" y="94" text-anchor="end" font-size="12.5" font-weight="bold" fill="#222">and on to the plant</text>
+    <text x="650" y="164" text-anchor="end" font-size="12.5" font-weight="bold" fill="#222">rising main</text>
+  </g>
+
+  <!-- ================= PANEL B: POWER OFF ================= -->
+  <g transform="translate(0,324)">
+    <line x1="16" y1="-34" x2="664" y2="-34" stroke="#ccc" stroke-width="1"/>
+    <text x="16" y="0" font-size="15" font-weight="bold" fill="#c8431a">POWER OFF — the pumps stop, and it comes back</text>
+    <text x="16" y="20" font-size="12.5" fill="#222">The wet well and the sewers behind it fill. Sewage comes up the lowest drains first —</text>
+    <text x="16" y="36" font-size="12.5" fill="#222">basement floor drains, low toilets and showers — and then out of the manholes.</text>
+
+    <rect x="16" y="96" width="648" height="130" fill="#efe8dc"/>
+    <line x1="16" y1="96" x2="664" y2="96" stroke="#6b5a45" stroke-width="2.5"/>
+
+    <polygon points="30,66 66,44 102,66" fill="#c8a07a" stroke="#333" stroke-width="2"/>
+    <rect x="38" y="66" width="56" height="30" fill="#f0e6d8" stroke="#333" stroke-width="2"/>
+    <polygon points="144,66 180,44 216,66" fill="#c8a07a" stroke="#333" stroke-width="2"/>
+    <rect x="152" y="66" width="56" height="30" fill="#f0e6d8" stroke="#333" stroke-width="2"/>
+    <g stroke="#777" stroke-width="5"><path d="M66,96 V135 M180,96 V147"/></g>
+    <g stroke="#8f8a63" stroke-width="3"><path d="M66,96 V135 M180,96 V147"/></g>
+
+    <!-- the sewer, full -->
+    <polygon points="24,130 420,172 420,186 24,144" fill="#ffffff" stroke="#333" stroke-width="2"/>
+    <polygon points="24,130 420,172 420,186 24,144" fill="#8f8a63"/>
+
+    <!-- manholes, full and overflowing -->
+    <g stroke="#333" stroke-width="2" fill="#8f8a63">
+      <rect x="112" y="96" width="16" height="48"/><rect x="292" y="96" width="16" height="67"/>
+    </g>
+    <g fill="#8a8a85" stroke="#333" stroke-width="1.6"><rect x="108" y="90" width="24" height="7" rx="2"/><rect x="288" y="90" width="24" height="7" rx="2"/></g>
+    <path d="M300,90 C298,76 306,70 318,66" fill="none" stroke="#c8431a" stroke-width="3" marker-end="url(#rd)"/>
+    <path d="M120,90 C118,76 110,70 98,66" fill="none" stroke="#c8431a" stroke-width="3" marker-end="url(#rd)"/>
+
+    <!-- back up the house drains -->
+    <g stroke="#c8431a" stroke-width="3" fill="none" marker-end="url(#rd)">
+      <path d="M66,130 V84"/><path d="M180,142 V84"/>
+      <path d="M250,168 L200,162"/><path d="M110,152 L60,147"/>
+    </g>
+
+    <!-- lift station, full, pump dead -->
+    <rect x="430" y="96" width="60" height="124" fill="#8f8a63" stroke="#333" stroke-width="2.5"/>
+    <circle cx="460" cy="196" r="10" fill="#fff" stroke="#333" stroke-width="2"/>
+    <path d="M452,188 L468,204 M468,188 L452,204" stroke="#c8431a" stroke-width="3"/>
+    <path d="M460,186 V110 H520" fill="none" stroke="#1d4f7a" stroke-width="3.5"/>
+    <polygon points="520,106 664,124 664,134 520,116" fill="#ffffff" stroke="#333" stroke-width="2"/>
+    <text x="460" y="240" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#c8431a">wet well full</text>
+    <text x="650" y="86" text-anchor="end" font-size="12.5" font-weight="bold" fill="#c8431a">pumps dead — nothing is lifted</text>
+
+    <text x="330" y="54" font-size="13" font-weight="bold" fill="#c8431a">out of the manholes, into streets and creeks</text>
+    <text x="16" y="262" font-size="13.5" font-weight="bold" fill="#c8431a">Stop flushing, even if your own pipes look fine. Plug the tub, sink and basement floor drains,</text>
+    <text x="16" y="280" font-size="13.5" font-weight="bold" fill="#c8431a">keep the cleanout capped, and switch to bucket toilets or latrines at once.</text>
+  </g>
+</svg>

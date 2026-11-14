@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="470" viewBox="0 0 660 470" font-family="Arial, Helvetica, sans-serif">
+  <title>How long each medicine took: from the first discovery, to the first patient, to enough of it to go round, for insulin, the sulfa drugs, penicillin and streptomycin</title>
+  <rect width="660" height="470" fill="#ffffff"/>
+
+  <text x="20" y="26" font-size="16" font-weight="bold" fill="#222">From a discovery to enough of it to go round</text>
+  <text x="20" y="45" font-size="12" fill="#555">Each bar runs from the first finding, through the first patient, to factory supply</text>
+
+  <!-- year scale: 1920 at x=150, 1950 at x=630 -> 16 px a year -->
+  <g stroke="#e4e4e4" stroke-width="1">
+    <line x1="150" y1="58" x2="150" y2="374"/>
+    <line x1="230" y1="58" x2="230" y2="374"/>
+    <line x1="310" y1="58" x2="310" y2="374"/>
+    <line x1="390" y1="58" x2="390" y2="374"/>
+    <line x1="470" y1="58" x2="470" y2="374"/>
+    <line x1="550" y1="58" x2="550" y2="374"/>
+    <line x1="630" y1="58" x2="630" y2="374"/>
+  </g>
+  <line x1="150" y1="374" x2="636" y2="374" stroke="#999" stroke-width="1.5"/>
+  <g font-size="11.5" fill="#777" text-anchor="middle">
+    <text x="150" y="390">1920</text><text x="230" y="390">1925</text><text x="310" y="390">1930</text>
+    <text x="390" y="390">1935</text><text x="470" y="390">1940</text><text x="550" y="390">1945</text><text x="630" y="390">1950</text>
+  </g>
+
+  <!-- INSULIN: 1921 found, Jan 1922 first patient, 1923 on sale -->
+  <text x="142" y="80" text-anchor="end" font-size="13" font-weight="bold" fill="#222">Insulin</text>
+  <line x1="166" y1="75" x2="198" y2="75" stroke="#8a5a8a" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="166" cy="75" r="7" fill="#8a5a8a"/>
+  <polygon points="182,66 190,75 182,84 174,75" fill="#ffffff" stroke="#8a5a8a" stroke-width="2.5"/>
+  <rect x="192" y="68" width="14" height="14" fill="#8a5a8a"/>
+  <text x="150" y="101" font-size="11.5" fill="#333">1921 dogs &#8212; January 1922 the first boy &#8212; 1923 on sale</text>
+  <text x="150" y="116" font-size="11.5" fill="#777">About 2 years: one university, one drug company, one hospital ward</text>
+
+  <!-- SULFA: 1932 found, 1935 published, 1937 in wide use -->
+  <text x="142" y="151" text-anchor="end" font-size="13" font-weight="bold" fill="#222">Sulfa drugs</text>
+  <line x1="342" y1="146" x2="422" y2="146" stroke="#6b7f3a" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="342" cy="146" r="7" fill="#6b7f3a"/>
+  <polygon points="390,137 398,146 390,155 382,146" fill="#ffffff" stroke="#6b7f3a" stroke-width="2.5"/>
+  <rect x="415" y="139" width="14" height="14" fill="#6b7f3a"/>
+  <text x="150" y="172" font-size="11.5" fill="#333">1932 mice &#8212; 1935 published &#8212; 1937 in use everywhere</text>
+  <text x="150" y="187" font-size="11.5" fill="#777">About 5 years, inside one of the largest chemical works in the world</text>
+  <circle cx="422" cy="146" r="8" fill="none" stroke="#c8431a" stroke-width="2.5"/>
+  <circle cx="156" cy="198" r="5" fill="#c8431a"/>
+  <text x="168" y="202" font-size="11.5" font-weight="bold" fill="#c8431a">1937: one untested liquid sulfa medicine killed 93 people</text>
+
+  <!-- PENICILLIN: 1928 noticed, 1941 first patient, 1943-45 factories -->
+  <text x="142" y="236" text-anchor="end" font-size="13" font-weight="bold" fill="#222">Penicillin</text>
+  <line x1="278" y1="231" x2="566" y2="231" stroke="#2b4c7e" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="278" cy="231" r="7" fill="#2b4c7e"/>
+  <polygon points="486,222 494,231 486,240 478,231" fill="#ffffff" stroke="#2b4c7e" stroke-width="2.5"/>
+  <rect x="552" y="224" width="14" height="14" fill="#2b4c7e"/>
+  <text x="278" y="214" font-size="11.5" fill="#333">1928 the mould</text>
+  <text x="486" y="214" text-anchor="middle" font-size="11.5" fill="#333">1941 the first patient</text>
+  <text x="150" y="257" font-size="11.5" fill="#333">1928 noticed &#8212; February 1941 the first patient, who died &#8212; 1943&#8211;45 factory supply</text>
+  <text x="150" y="272" font-size="11.5" fill="#777">15 years, two countries, a world war and about $30 million of new plant</text>
+  <text x="150" y="287" font-size="11.5" fill="#777">&#8212; and for eleven of those years almost nothing happened</text>
+
+  <!-- STREPTOMYCIN: 1943 isolated, 1944 first TB patients, 1948 in use -->
+  <text x="142" y="321" text-anchor="end" font-size="13" font-weight="bold" fill="#222">Streptomycin</text>
+  <line x1="518" y1="316" x2="598" y2="316" stroke="#a65a4a" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="518" cy="316" r="7" fill="#a65a4a"/>
+  <polygon points="534,307 542,316 534,325 526,316" fill="#ffffff" stroke="#a65a4a" stroke-width="2.5"/>
+  <rect x="591" y="309" width="14" height="14" fill="#a65a4a"/>
+  <text x="150" y="342" font-size="11.5" fill="#333">1943 found in soil &#8212; 1944 the first tuberculosis patients &#8212; 1948 in general use</text>
+  <text x="150" y="357" font-size="11.5" fill="#777">About 5 years, on top of everything penicillin had already built</text>
+
+  <!-- key -->
+  <g font-size="11.5" fill="#333">
+    <circle cx="28" cy="435" r="7" fill="#555"/><text x="42" y="439">found</text>
+    <polygon points="118,426 126,435 118,444 110,435" fill="#ffffff" stroke="#555" stroke-width="2.5"/><text x="134" y="439">first patient</text>
+    <rect x="224" y="428" width="14" height="14" fill="#555"/><text x="246" y="439">enough to go round</text>
+  </g>
+</svg>
