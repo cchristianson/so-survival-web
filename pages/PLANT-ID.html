@@ -95,8 +95,10 @@ garden plants from elsewhere, may be missing, so a confident answer can still be
         'Vault\'s Wi-Fi, then open <b>🔧 Tools → 📷 Identify a plant</b>.');
       return;
     }
-    fetch(PIDFILES.wasm, { method: 'HEAD' }).then(function (r) {
-      if (!r.ok) throw new Error('no');
+    // No HEAD probe here: a saved copy is a cached GET, and a cache never matches a HEAD request,
+    // so probing would say "not there" on exactly the phone this is for - one with no signal.
+    // The build leaves the model's name empty when there is no model to fetch; that is the test.
+    if (/\.bin$/.test(PIDFILES.model)) {
       notReady('<b>The library\'s program is not running, but this page can do it itself.</b> ' +
         'It fetches the picture model once &mdash; <b>83 MB</b> &mdash; and then takes <b>about twenty seconds a photo</b>, ' +
         'because a web page cannot use all of a machine\'s cores the way the library\'s program does. ' +
@@ -104,11 +106,11 @@ garden plants from elsewhere, may be missing, so a confident answer can still be
         '<p><button class="btn" type="button" id="useinpage">Use it here (83 MB)</button></p>' +
         '<p class="small">Faster: start the library with the START file for your computer, or join the ARK Vault\'s Wi-Fi.</p>');
       $('#useinpage').onclick = startInPage;
-    }).catch(function () {
+    } else {
       notReady('<b>This needs the Library Assistant.</b> The identifier runs inside the library\'s program, not in a plain web page. ' +
         'Start the library with the START file for your computer, or join the ARK Vault\'s Wi-Fi, then open <b>🔧 Tools → 📷 Identify a plant</b>. ' +
         'On a phone with the internet, the free <b>Seek by iNaturalist</b> app also identifies plants offline.');
-    });
+    }
   }
   function startInPage() {
     inPage = true;
