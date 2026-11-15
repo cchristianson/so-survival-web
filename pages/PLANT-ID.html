@@ -76,10 +76,63 @@ garden plants from elsewhere, may be missing, so a confident answer can still be
     if (!s.ready) { notReady('<b>The identifier isn\'t ready on this device.</b> ' + esc(s.error || '')); return; }
     $('#count').textContent = s.plants.toLocaleString() + ' plants and ' + s.fungi.toLocaleString() + ' mushrooms and other fungi';
   }).catch(function () {
-    notReady('<b>This needs the Library Assistant.</b> The identifier runs inside the library\'s program, not in a plain web page. ' +
-      'Start the library with the START file for your computer, or join the ARK Vault\'s Wi-Fi, then open <b>🔧 Tools → 📷 Identify a plant</b>. ' +
-      'On a phone with the internet, the free <b>Seek by iNaturalist</b> app also identifies plants offline.');
+    offerInPage();
   });
+
+  /* ---- identifying in the page itself, with no Library Assistant ---------------------
+     The same model, built for the browser (plantid.wasm) and run in a Web Worker so the page
+     stays alive. It costs an 83 MB download the first time and about twenty seconds a photo,
+     so it is offered, never forced. */
+  var worker = null, inPage = false;
+  /* where the identifier's own files are, from this page. The website keeps the picture model with
+     the downloads, because the installers already fetch it from there: one copy, not two. */
+  var PIDFILES = { worker: 'plant-id/plantid-worker.js', wasm: 'plant-id/plantid.wasm', emb: 'plant-id/species-emb.bin', tsv: 'plant-id/species.tsv',
+    model: '../download/plantid/bioclip-vitb16-int8.bin' };
+  function offerInPage() {
+    if (location.protocol.indexOf('http') !== 0) {           // opened as a file: the browser blocks all of this
+      notReady('<b>This needs the Library Assistant.</b> Opened straight off the drive as a file, a web page is not ' +
+        'allowed to load the identifier. Start the library with the START file for your computer, or join the ARK ' +
+        'Vault\'s Wi-Fi, then open <b>🔧 Tools → 📷 Identify a plant</b>.');
+      return;
+    }
+    fetch(PIDFILES.wasm, { method: 'HEAD' }).then(function (r) {
+      if (!r.ok) throw new Error('no');
+      notReady('<b>The library\'s program is not running, but this page can do it itself.</b> ' +
+        'It fetches the picture model once &mdash; <b>83 MB</b> &mdash; and then takes <b>about twenty seconds a photo</b>, ' +
+        'because a web page cannot use all of a machine\'s cores the way the library\'s program does. ' +
+        'Once fetched it works with no signal at all.' +
+        '<p><button class="btn" type="button" id="useinpage">Use it here (83 MB)</button></p>' +
+        '<p class="small">Faster: start the library with the START file for your computer, or join the ARK Vault\'s Wi-Fi.</p>');
+      $('#useinpage').onclick = startInPage;
+    }).catch(function () {
+      notReady('<b>This needs the Library Assistant.</b> The identifier runs inside the library\'s program, not in a plain web page. ' +
+        'Start the library with the START file for your computer, or join the ARK Vault\'s Wi-Fi, then open <b>🔧 Tools → 📷 Identify a plant</b>. ' +
+        'On a phone with the internet, the free <b>Seek by iNaturalist</b> app also identifies plants offline.');
+    });
+  }
+  function startInPage() {
+    inPage = true;
+    $('#notready').innerHTML = '<span class="spin"></span>Getting the identifier ready&hellip;';
+    worker = new Worker(PIDFILES.worker);
+    worker.onmessage = function (e) {
+      var d = e.data || {};
+      if (d.step) { var n = $('#status'); (n && !n.hidden && pending ? n : $('#notready')).innerHTML = '<span class="spin"></span>' + esc(d.step) + '&hellip;'; }
+      if (d.error) { $('#notready').innerHTML = '<b style="color:var(--bad)">' + esc(d.error) + '</b>'; pending = false; }
+      if (d.loaded) {
+        if (d.loaded.error) { $('#notready').innerHTML = '<b style="color:var(--bad)">' + esc(d.loaded.error) + '</b>'; return; }
+        $('#notready').hidden = true; $('#tool').hidden = false;
+        $('#count').textContent = d.loaded.plants.toLocaleString() + ' plants and ' + d.loaded.fungi.toLocaleString() +
+          ' mushrooms and other fungi \u00b7 about 20 seconds a photo in the page';
+      }
+      if (d.id) { pending = false; d.id.error ? ($('#status').innerHTML = '<span style="color:var(--bad)">' + esc(d.id.error) + '</span>') : show(d.id, d.id.ms); }
+    };
+    worker.onerror = function (e) { $('#notready').innerHTML = '<b style="color:var(--bad)">the identifier could not start: ' + esc(e.message || '') + '</b>'; };
+    // a worker resolves a plain address against ITSELF, not against this page: make them absolute first
+    var abs = {};
+    Object.keys(PIDFILES).forEach(function (k) { abs[k] = new URL(PIDFILES[k], location.href).href; });
+    worker.postMessage({ cmd: 'load', urls: abs });
+  }
+  var pending = false;
 
   function shrink(file) { // the photo, made smaller (the AI uses 224 x 224) and turned the right way up, as a JPEG
     return new Promise(function (ok, bad) {
@@ -96,7 +149,10 @@ garden plants from elsewhere, may be missing, so a confident answer can still be
     });
   }
   function pct(p) { return p >= 0.995 ? '99%' : p < 0.01 ? 'under 1%' : Math.round(p * 100) + '%'; }
-  function wiki(s) { return '/wiki/' + encodeURIComponent(s.replace(/ /g, '_')); }
+  function wiki(s) {
+    var n = encodeURIComponent(s.replace(/ /g, '_'));
+    return inPage ? 'https://en.wikipedia.org/wiki/' + n : '/wiki/' + n;   // no library here: the real Wikipedia
+  }
 
   async function go(file) {
     if (!file) return;
@@ -104,6 +160,12 @@ garden plants from elsewhere, may be missing, so a confident answer can still be
     try {
       var p = await shrink(file);
       $('#photo').src = p.url; $('#photo').hidden = false;
+      if (inPage) {                        // the model runs here, in a worker: no server to ask
+        $('#status').innerHTML = '<span class="spin"></span>Looking at the photo\u2026 about twenty seconds';
+        pending = true;
+        worker.postMessage({ cmd: 'id', photo: await p.blob.arrayBuffer() });
+        return;
+      }
       var t0 = Date.now(), r = await fetch(API, { method: 'POST', headers: { 'Content-Type': 'image/jpeg' }, body: p.blob });
       if (!r.ok) throw new Error(await r.text());
       var a = await r.json();
@@ -128,7 +190,7 @@ garden plants from elsewhere, may be missing, so a confident answer can still be
         (t.danger ? '<div class="danger">' + esc(DANGER[t.danger] || t.danger) + '</div>' : '') +
         '<div class="barw"><i style="width:' + Math.max(2, Math.round(t.p * 100)) + '%"></i></div><div class="small">' + pct(t.p) + ' likely</div>' +
         '<div class="links"><a href="' + wiki(t.sci) + '" target="_blank" rel="noopener">📷 Compare photos (Wikipedia)</a>' +
-        '<a href="/?q=' + encodeURIComponent((t.common ? t.common + ' ' : '') + t.sci) + '" target="_blank" rel="noopener">💬 Ask the library</a>' + (guides ? '<br>In the guides: ' + guides : '') + '</div></div>';
+        (inPage ? '' : '<a href="/?q=' + encodeURIComponent((t.common ? t.common + ' ' : '') + t.sci) + '" target="_blank" rel="noopener">💬 Ask the library</a>') + (guides ? '<br>In the guides: ' + guides : '') + '</div></div>';
     }).join('') + '</div>';
     h += '<p class="small">Compare the photos, the leaves and flowers, where it grows and the time of year. If the top answers disagree, or none is above about half, take another photo of a different part.</p>';
     $('#out').innerHTML = h;
