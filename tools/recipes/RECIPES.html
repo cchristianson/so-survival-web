@@ -114,6 +114,8 @@ body.osk-open{padding-bottom:300px}
 .warn b{display:block;margin-bottom:3px}
 .soon{color:#d98324;font-weight:600}.gone{color:#c9433a;font-weight:600}
 .est{color:var(--muted);font-size:13px}
+.stk.plenty b{color:var(--muted)}
+.stk .pick{white-space:nowrap}
 </style>
 <style>:root{color-scheme:dark}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){color-scheme:light}}:root[data-theme=light]{color-scheme:light}.themebtn{font:inherit;font-size:14px;line-height:1.3;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:3px 11px;cursor:pointer;white-space:nowrap;text-decoration:none}.themefloat{position:absolute;top:10px;right:12px;z-index:9}@media print{.themebtn{display:none}}</style><script>/* so-theme: light or dark screen */(function(){var K="so-theme",d=document.documentElement,L={auto:"Display: auto",dark:"Display: dark",light:"Display: light"},N={auto:"dark",dark:"light",light:"auto"},cur="dark";try{cur=localStorage.getItem(K)||"dark"}catch(e){}function a(){if(cur==="dark"||cur==="light")d.setAttribute("data-theme",cur);else d.removeAttribute("data-theme");var b=document.querySelectorAll(".themebtn");for(var i=0;i<b.length;i++){b[i].textContent=L[cur]||L.auto;b[i].title="Screen: "+cur+" - tap to change (Auto follows this device)"}}a();window.soTheme=function(){cur=N[cur]||"dark";try{localStorage.setItem(K,cur)}catch(e){}a()};function btn(){var b=document.createElement("button");b.type="button";b.className="themebtn";return b}document.addEventListener("DOMContentLoaded",function(){if(!document.querySelector(".themebtn")){var n=document.querySelector(".topnav"),b=btn();if(n){n.appendChild(document.createTextNode(" \u00B7 "));n.appendChild(b)}else{b.className+=" themefloat";document.body.appendChild(b)}}var all=document.querySelectorAll(".themebtn");for(var i=0;i<all.length;i++)all[i].onclick=window.soTheme;a()})})();</script><style>/* ark-bar: the app's buttons on every page */:root{--side-bg:#0F1511;--side-on:#2C4A39}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--side-bg:#233F32;--side-on:#315B43}}:root[data-theme=light]{--side-bg:#233F32;--side-on:#315B43}.arkbar{position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));margin:0;padding:6px 4px calc(6px + env(safe-area-inset-bottom));background:var(--card);border-top:1px solid var(--line);font:600 11.5px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}.arkbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:48px;color:var(--muted);text-decoration:none}.arkbar a i{display:flex;align-items:center;justify-content:center;width:46px;max-width:100%;height:28px;border-radius:999px}.arkbar a.on{color:var(--ink);font-weight:700}.arkbar a.on i{background:rgba(127,160,135,.28)}.arkbar svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.arkbar .l,.arkbar .wideonly,.arkbar .bn{display:none}body.has-arkbar{padding-bottom:calc(61px + env(safe-area-inset-bottom))}body.has-arkbar .totop,body.has-arkbar .sop-fab{bottom:calc(76px + env(safe-area-inset-bottom))!important}@media(min-width:760px){.arkbar{top:0;right:auto;width:232px;display:flex;flex-direction:column;gap:4px;padding:16px 12px;border-top:0;background:var(--side-bg);font-size:15px;overflow-y:auto}.arkbar a,.arkbar a.wideonly{display:flex;flex-direction:row;justify-content:flex-start;gap:12px;min-height:44px;padding:0 12px;border-radius:10px;color:#E3EBE5;order:0!important}.arkbar a i{width:auto;height:auto;border-radius:0}.arkbar a.on i{background:none}.arkbar svg{width:20px;height:20px}.arkbar a.on{background:var(--side-on);color:#fff}.arkbar .s{display:none}.arkbar .l{display:inline}.arkbar a.bn{display:flex;gap:10px;min-height:0;padding:0 6px 14px;color:#fff;font-size:18px;font-weight:700}.arkbar .bn img{width:40px;height:40px;border-radius:9px}body.has-arkbar{padding-bottom:0;padding-left:232px}body.has-arkbar .totop,body.has-arkbar .sop-fab{bottom:14px!important}}@media print{.arkbar{display:none!important}body.has-arkbar{padding:0!important}}</style><script>/* ark-bar */(function(){function add(){if(document.querySelector(".arkbar")||location.protocol.indexOf("http")!==0||window.self!==window.top)return;var p=location.pathname,root=null;if(p.indexOf("/lib/")===0)root="/";else{var a=document.querySelector('.topnav a[href*="#tools"],.topnav a[href*="#kit"],a[href$="#kit"],a[href$="#ask"]');if(a)root=a.getAttribute("href").replace(/#.*$/,"")}if(root===null)return;var on=document.body.getAttribute("data-ark")||(/walking-routes|\/map\//i.test(p)?"maps":document.querySelector('.topnav a[href*="#kit"],.topnav a[data-app="/#kit"]')?"kit":"tools");var n=document.createElement("nav");n.className="arkbar";n.setAttribute("aria-label","Main");n.innerHTML='<a class="bn" data-v="home"><img src="'+root+'icon.svg" alt="">ARK</a><a data-v="home" style="order:1"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></i><span class="s">Home</span><span class="l">Home</span></a><a data-v="ask" style="order:3"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-7l-5 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg></i><span class="s">Ask</span><span class="l">Ask ARK</span></a><a data-v="tools" style="order:2"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-13c-3-.5-6 0-8 1.5z"/><path d="M12 6v13"/></svg></i><span class="s">Library</span><span class="l">Guides</span></a><a data-v="library" class="wideonly" style="order:0"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/></svg></i><span class="s"></span><span class="l">Books</span></a><a data-v="maps" style="order:4"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg></i><span class="s">Maps</span><span class="l">Maps &amp; Routes</span></a><a data-v="kit" style="order:5"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6.5a4 4 0 0 0-5.3 5.3L3 18l3 3 6.2-6.2a4 4 0 0 0 5.3-5.3l-2.7 2.7-2.5-.5-.5-2.5z"/></svg></i><span class="s">Tools</span><span class="l">Tools</span></a><a data-v="setup" class="wideonly" style="order:0"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></svg></i><span class="s"></span><span class="l">Offline &amp; downloads</span></a><a data-v="more" style="order:6"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="19" cy="12" r="1.3"/></svg></i><span class="s">More</span><span class="l">Settings &amp; help</span></a>';var l=n.querySelectorAll("a");for(var i=0;i<l.length;i++){l[i].href=root+"#"+l[i].getAttribute("data-v");if(l[i].getAttribute("data-v")===on&&l[i].className!=="bn")l[i].className+=" on"}document.body.appendChild(n);document.body.className+=" has-arkbar"}if(document.body)add();else document.addEventListener("DOMContentLoaded",add)})();</script></head>
 <body data-ark="kit">
@@ -1873,7 +1875,7 @@ R.push(
  *  - Where USDA has no entry at all - camas, cattail, wild grass seed - the figure is marked
  *    est: 1. Those are careful estimates from the nearest food USDA does list, and the page says so
  *    where it uses them. Do not treat them as measured.
- *  - Shelf life is in months, SEALED and kept cool and dry. The long ones come from Utah State
+ *  - Shelf life is in DAYS, SEALED and kept cool and dry. The long ones come from Utah State
  *    Extension's Food Storage for Emergencies, through the Food Security guide's own table; the
  *    rest is ordinary kitchen guidance, marked rough: 1. An open packet keeps a fraction of this.
  *  - Nothing here is a reason to eat something that smells wrong, bulges, foams or has mould you
@@ -1912,93 +1914,93 @@ window.RATIONDATA = {
 
   /* ---- the foods ------------------------------------------------------------------------
      kcal / pro / fat are per 100 g. unit is what it is normally weighed or counted in.
-     cup = grams in a level cup, each = grams of one, keep = months sealed and cool. */
+     cup = grams in a level cup, each = grams of one, keep = DAYS it keeps sealed and cool; forever: 1 means it does not go off at all. */
   foods: {
     // --- water and salt
-    water: { kcal: 0, pro: 0, fat: 0, unit: 'qt', keep: 0, keeps: 'Stored water: rotate every 6 months unless treated', rough: 1 },
-    salt: { kcal: 0, pro: 0, fat: 0, unit: 'lb', cup: 273, keep: 0, keeps: 'Keeps forever if dry. Iodine in iodized salt fades in a few years', rough: 1 },
+    water: { kcal: 0, pro: 0, fat: 0, unit: 'qt', keep: 0, forever: 1, keeps: 'Stored water: rotate every 6 months unless treated', rough: 1 },
+    salt: { kcal: 0, pro: 0, fat: 0, unit: 'lb', cup: 273, keep: 0, forever: 1, keeps: 'Keeps forever if dry. Iodine in iodized salt fades in a few years', rough: 1 },
     // --- grain and flour
-    wheat: { kcal: 340, pro: 13.2, fat: 2.5, unit: 'lb', cup: 120, keep: 384, keeps: 'Whole wheat sealed with an oxygen absorber made good bread after 32 years (USU). FLOUR is different: a year at most, because the oil in it goes rancid' },
-    cornmeal: { kcal: 362, pro: 8.1, fat: 3.6, unit: 'lb', cup: 122, keep: 12, keeps: 'Whole dry corn keeps like wheat; once ground, cornmeal keeps about a year and whole-grain meal only 6 to 8 weeks' },
-    oats: { kcal: 389, pro: 16.9, fat: 6.9, unit: 'lb', cup: 81, keep: 360, keeps: 'Rolled oats sealed low-oxygen: up to about 30 years (USU)' },
-    barley: { kcal: 352, pro: 9.9, fat: 1.2, unit: 'lb', cup: 200, keep: 96, keeps: 'Pearled barley is not a long-storage grain - the bran is off and its oil goes rancid. Whole hulless barley keeps far longer' },
-    rye: { kcal: 324, pro: 10.3, fat: 1.6, unit: 'lb', cup: 102, keep: 12, keeps: 'Rye FLOUR about a year; whole rye berries keep like wheat', rough: 1 },
-    rice: { kcal: 365, pro: 7.1, fat: 0.7, unit: 'lb', cup: 185, keep: 330, keeps: 'WHITE rice sealed low-oxygen: 25 to 30 years (USU). BROWN rice is not for long storage - its oil goes rancid in months' },
-    hominy: { kcal: 371, pro: 8.8, fat: 1.2, unit: 'lb', cup: 160, keep: 120, keeps: 'Dry hominy and grits keep for years sealed; once ground, like cornmeal', rough: 1 },
+    wheat: { kcal: 340, pro: 13.2, fat: 2.5, unit: 'lb', cup: 120, keep: 11674, keeps: 'Whole wheat sealed with an oxygen absorber made good bread after 32 years (USU). FLOUR is different: a year at most, because the oil in it goes rancid' },
+    cornmeal: { kcal: 362, pro: 8.1, fat: 3.6, unit: 'lb', cup: 122, keep: 365, keeps: 'Whole dry corn keeps like wheat; once ground, cornmeal keeps about a year and whole-grain meal only 6 to 8 weeks' },
+    oats: { kcal: 389, pro: 16.9, fat: 6.9, unit: 'lb', cup: 81, keep: 10944, keeps: 'Rolled oats sealed low-oxygen: up to about 30 years (USU)' },
+    barley: { kcal: 352, pro: 9.9, fat: 1.2, unit: 'lb', cup: 200, keep: 2918, keeps: 'Pearled barley is not a long-storage grain - the bran is off and its oil goes rancid. Whole hulless barley keeps far longer' },
+    rye: { kcal: 324, pro: 10.3, fat: 1.6, unit: 'lb', cup: 102, keep: 365, keeps: 'Rye FLOUR about a year; whole rye berries keep like wheat', rough: 1 },
+    rice: { kcal: 365, pro: 7.1, fat: 0.7, unit: 'lb', cup: 185, keep: 10032, keeps: 'WHITE rice sealed low-oxygen: 25 to 30 years (USU). BROWN rice is not for long storage - its oil goes rancid in months' },
+    hominy: { kcal: 371, pro: 8.8, fat: 1.2, unit: 'lb', cup: 160, keep: 3648, keeps: 'Dry hominy and grits keep for years sealed; once ground, like cornmeal', rough: 1 },
     // --- beans
-    beans: { kcal: 341, pro: 21.6, fat: 1.2, unit: 'lb', cup: 190, keep: 300, keeps: 'Sealed low-oxygen: 20 to 30 years (USU). They stay safe far longer than they stay quick to cook - old beans need soaking and long boiling' },
-    lentils: { kcal: 352, pro: 24.6, fat: 1.1, unit: 'lb', cup: 192, keep: 240, keeps: 'Like dry beans. Lentils and split peas cook far faster, which saves fuel', rough: 1 },
+    beans: { kcal: 341, pro: 21.6, fat: 1.2, unit: 'lb', cup: 190, keep: 9120, keeps: 'Sealed low-oxygen: 20 to 30 years (USU). They stay safe far longer than they stay quick to cook - old beans need soaking and long boiling' },
+    lentils: { kcal: 352, pro: 24.6, fat: 1.1, unit: 'lb', cup: 192, keep: 7296, keeps: 'Like dry beans. Lentils and split peas cook far faster, which saves fuel', rough: 1 },
     // --- fats
-    lard: { kcal: 902, pro: 0, fat: 100, unit: 'lb', cup: 205, keep: 12, keeps: 'Rendered clean and sealed, about a year in a cool place; much longer cold. Rancid fat smells like old paint', rough: 1 },
-    tallow: { kcal: 902, pro: 0, fat: 100, unit: 'lb', cup: 205, keep: 24, keeps: 'Keeps better than lard - harder fat, less to go rancid', rough: 1 },
-    butter: { kcal: 717, pro: 0.9, fat: 81, unit: 'lb', cup: 227, keep: 3, keeps: 'Weeks cool, months frozen. Clarified into ghee it keeps a year without cold', rough: 1 },
-    oil: { kcal: 884, pro: 0, fat: 100, unit: 'qt', cup: 218, keep: 24, keeps: 'Sealed and cool, 2 years or so; opened, months. Heat and light are what kill it', rough: 1 },
-    saltpork: { kcal: 748, pro: 5.1, fat: 80, unit: 'lb', keep: 12, keeps: 'Hard-salted pork keeps a year or more cool; bacon far less', rough: 1 },
-    cracklings: { kcal: 550, pro: 20, fat: 50, unit: 'lb', keep: 2, keeps: 'Weeks in a cool dry jar. They go rancid faster than the lard they came from', rough: 1 },
+    lard: { kcal: 902, pro: 0, fat: 100, unit: 'lb', cup: 205, keep: 365, keeps: 'Rendered clean and sealed, about a year in a cool place; much longer cold. Rancid fat smells like old paint', rough: 1 },
+    tallow: { kcal: 902, pro: 0, fat: 100, unit: 'lb', cup: 205, keep: 730, keeps: 'Keeps better than lard - harder fat, less to go rancid', rough: 1 },
+    butter: { kcal: 717, pro: 0.9, fat: 81, unit: 'lb', cup: 227, keep: 91, keeps: 'Weeks cool, months frozen. Clarified into ghee it keeps a year without cold', rough: 1 },
+    oil: { kcal: 884, pro: 0, fat: 100, unit: 'qt', cup: 218, keep: 730, keeps: 'Sealed and cool, 2 years or so; opened, months. Heat and light are what kill it', rough: 1 },
+    saltpork: { kcal: 748, pro: 5.1, fat: 80, unit: 'lb', keep: 365, keeps: 'Hard-salted pork keeps a year or more cool; bacon far less', rough: 1 },
+    cracklings: { kcal: 550, pro: 20, fat: 50, unit: 'lb', keep: 61, keeps: 'Weeks in a cool dry jar. They go rancid faster than the lard they came from', rough: 1 },
     // --- dairy and eggs
-    milk: { kcal: 61, pro: 3.2, fat: 3.3, unit: 'qt', cup: 244, keep: 0, keeps: 'Days cold, hours warm. Dried milk is the storable form: 3 to 5 years cool, as little as 3 months hot (USU)' },
-    sourmilk: { kcal: 40, pro: 3.3, fat: 0.9, unit: 'qt', cup: 245, keep: 0, keeps: 'Days. It is already soured - use it in bread and pancakes', rough: 1 },
-    cream: { kcal: 340, pro: 2.8, fat: 36, unit: 'qt', cup: 238, keep: 0, keeps: 'Days cold. Churn it to butter to make it keep', rough: 1 },
-    cheese: { kcal: 403, pro: 23, fat: 33, unit: 'lb', keep: 6, keeps: 'A hard waxed cheese keeps months cool; a fresh cheese days. Mould on hard cheese can be cut away, on soft cheese it cannot', rough: 1 },
-    eggs: { kcal: 143, pro: 12.6, fat: 9.5, unit: 'each', each: 50, keep: 1, keeps: 'Unwashed and cool, weeks. In limewater, months - see the Preserving Food guide', rough: 1 },
-    rennet: { kcal: 0, pro: 0, fat: 0, unit: 'each', keep: 12, keeps: 'Tablets keep about a year cool, longer frozen', rough: 1, nofood: 1 },
-    culture: { kcal: 0, pro: 0, fat: 0, unit: 'each', keep: 1, keeps: 'A live culture must be fed - it is not stored, it is kept alive', rough: 1, nofood: 1 },
+    milk: { kcal: 61, pro: 3.2, fat: 3.3, unit: 'qt', cup: 244, keep: 3, keeps: 'Days cold, hours warm. Dried milk is the storable form: 3 to 5 years cool, as little as 3 months hot (USU)' },
+    sourmilk: { kcal: 40, pro: 3.3, fat: 0.9, unit: 'qt', cup: 245, keep: 5, keeps: 'Days. It is already soured - use it in bread and pancakes', rough: 1 },
+    cream: { kcal: 340, pro: 2.8, fat: 36, unit: 'qt', cup: 238, keep: 4, keeps: 'Days cold. Churn it to butter to make it keep', rough: 1 },
+    cheese: { kcal: 403, pro: 23, fat: 33, unit: 'lb', keep: 182, keeps: 'A hard waxed cheese keeps months cool; a fresh cheese days. Mould on hard cheese can be cut away, on soft cheese it cannot', rough: 1 },
+    eggs: { kcal: 143, pro: 12.6, fat: 9.5, unit: 'each', each: 50, keep: 30, keeps: 'Unwashed and cool, weeks. In limewater, months - see the Preserving Food guide', rough: 1 },
+    rennet: { kcal: 0, pro: 0, fat: 0, unit: 'each', keep: 365, keeps: 'Tablets keep about a year cool, longer frozen', rough: 1, nofood: 1 },
+    culture: { kcal: 0, pro: 0, fat: 0, unit: 'each', keep: 30, keeps: 'A live culture must be fed - it is not stored, it is kept alive', rough: 1, nofood: 1 },
     // --- meat and fish
-    venison: { kcal: 120, pro: 23, fat: 2.4, unit: 'lb', keep: 0, keeps: 'Fresh: days cool. Dried or smoked or canned is the storable form', rough: 1 },
-    rabbit: { kcal: 173, pro: 25, fat: 8, unit: 'lb', keep: 0, keeps: 'Fresh: days cool. Very lean - rabbit alone will not feed anyone, it needs fat with it', rough: 1 },
-    chicken: { kcal: 215, pro: 18, fat: 15, unit: 'lb', keep: 0, keeps: 'Fresh: days cool', rough: 1 },
-    duck: { kcal: 337, pro: 19, fat: 28, unit: 'lb', keep: 0, keeps: 'Fresh: days cool. Fatty - its fat is worth rendering', rough: 1 },
-    pork: { kcal: 242, pro: 27, fat: 14, unit: 'lb', keep: 0, keeps: 'Fresh: days cool. Cured and smoked it keeps months', rough: 1 },
-    beef: { kcal: 250, pro: 26, fat: 15, unit: 'lb', keep: 0, keeps: 'Fresh: days cool', rough: 1 },
-    fish: { kcal: 208, pro: 20, fat: 13, unit: 'lb', keep: 0, keeps: 'Fresh: a day or two. Salted and dried it keeps months', rough: 1 },
-    bones: { kcal: 30, pro: 2, fat: 1, unit: 'lb', keep: 0, keeps: 'Broth is water with flavour: count it for warmth and minerals, not for calories', rough: 1 },
-    liver: { kcal: 135, pro: 20, fat: 3.6, unit: 'lb', keep: 0, keeps: 'Fresh: 1 to 2 days. Worth eating first - it carries the vitamins muscle meat does not', rough: 1 },
+    venison: { kcal: 120, pro: 23, fat: 2.4, unit: 'lb', keep: 3, keeps: 'Fresh: days cool. Dried or smoked or canned is the storable form', rough: 1 },
+    rabbit: { kcal: 173, pro: 25, fat: 8, unit: 'lb', keep: 3, keeps: 'Fresh: days cool. Very lean - rabbit alone will not feed anyone, it needs fat with it', rough: 1 },
+    chicken: { kcal: 215, pro: 18, fat: 15, unit: 'lb', keep: 3, keeps: 'Fresh: days cool', rough: 1 },
+    duck: { kcal: 337, pro: 19, fat: 28, unit: 'lb', keep: 3, keeps: 'Fresh: days cool. Fatty - its fat is worth rendering', rough: 1 },
+    pork: { kcal: 242, pro: 27, fat: 14, unit: 'lb', keep: 3, keeps: 'Fresh: days cool. Cured and smoked it keeps months', rough: 1 },
+    beef: { kcal: 250, pro: 26, fat: 15, unit: 'lb', keep: 3, keeps: 'Fresh: days cool', rough: 1 },
+    fish: { kcal: 208, pro: 20, fat: 13, unit: 'lb', keep: 2, keeps: 'Fresh: a day or two. Salted and dried it keeps months', rough: 1 },
+    bones: { kcal: 30, pro: 2, fat: 1, unit: 'lb', keep: 3, keeps: 'Broth is water with flavour: count it for warmth and minerals, not for calories', rough: 1 },
+    liver: { kcal: 135, pro: 20, fat: 3.6, unit: 'lb', keep: 2, keeps: 'Fresh: 1 to 2 days. Worth eating first - it carries the vitamins muscle meat does not', rough: 1 },
     // --- roots and vegetables
-    potatoes: { kcal: 77, pro: 2, fat: 0.1, unit: 'lb', each: 170, keep: 6, keeps: 'A dark cellar at 40 F: months. Light turns them green and green potato is poisonous - see the Root Cellar guide', rough: 1 },
-    onions: { kcal: 40, pro: 1.1, fat: 0.1, unit: 'lb', each: 110, keep: 6, keeps: 'Cured and hung dry and cool: months', rough: 1 },
-    carrots: { kcal: 41, pro: 0.9, fat: 0.2, unit: 'lb', each: 61, keep: 5, keeps: 'In damp sand in a cellar: months', rough: 1 },
-    turnips: { kcal: 28, pro: 0.9, fat: 0.1, unit: 'lb', each: 122, keep: 5, keeps: 'Like carrots, in damp sand, cold', rough: 1 },
-    cabbage: { kcal: 25, pro: 1.3, fat: 0.1, unit: 'lb', each: 900, keep: 4, keeps: 'A whole head in a cold cellar: months. Krauted, far longer', rough: 1 },
-    squash: { kcal: 45, pro: 1, fat: 0.1, unit: 'lb', each: 1200, keep: 5, keeps: 'Winter squash cured and kept dry at about 55 F: months. Not in a damp cellar', rough: 1 },
-    greens: { kcal: 23, pro: 2.9, fat: 0.4, unit: 'lb', keep: 0, keeps: 'Days. Almost no calories but they carry the vitamin C that stops scurvy', rough: 1 },
-    tomatoes: { kcal: 18, pro: 0.9, fat: 0.2, unit: 'lb', each: 123, keep: 0, keeps: 'Fresh: days. Canned: 2 to 5 years, and they are one of the few acid foods a boiling-water canner handles', rough: 1 },
-    beets: { kcal: 43, pro: 1.6, fat: 0.2, unit: 'lb', each: 82, keep: 5, keeps: 'Like carrots, in damp sand, cold', rough: 1 },
-    sweetcorn: { kcal: 86, pro: 3.2, fat: 1.2, unit: 'lb', each: 90, keep: 0, keeps: 'Fresh: days, and the sugar turns to starch within hours of picking', rough: 1 },
-    cucumbers: { kcal: 15, pro: 0.7, fat: 0.1, unit: 'lb', each: 300, keep: 0, keeps: 'Days. Their whole point is pickling', rough: 1 },
-    peppers: { kcal: 31, pro: 1, fat: 0.3, unit: 'lb', each: 120, keep: 0, keeps: 'Fresh days; dried, a year or more', rough: 1 },
-    driedveg: { kcal: 300, pro: 10, fat: 1, unit: 'lb', keep: 24, keeps: 'Dried properly and sealed: 1 to 2 years for quality, longer safe', rough: 1 },
+    potatoes: { kcal: 77, pro: 2, fat: 0.1, unit: 'lb', each: 170, keep: 182, keeps: 'A dark cellar at 40 F: months. Light turns them green and green potato is poisonous - see the Root Cellar guide', rough: 1 },
+    onions: { kcal: 40, pro: 1.1, fat: 0.1, unit: 'lb', each: 110, keep: 182, keeps: 'Cured and hung dry and cool: months', rough: 1 },
+    carrots: { kcal: 41, pro: 0.9, fat: 0.2, unit: 'lb', each: 61, keep: 152, keeps: 'In damp sand in a cellar: months', rough: 1 },
+    turnips: { kcal: 28, pro: 0.9, fat: 0.1, unit: 'lb', each: 122, keep: 152, keeps: 'Like carrots, in damp sand, cold', rough: 1 },
+    cabbage: { kcal: 25, pro: 1.3, fat: 0.1, unit: 'lb', each: 900, keep: 122, keeps: 'A whole head in a cold cellar: months. Krauted, far longer', rough: 1 },
+    squash: { kcal: 45, pro: 1, fat: 0.1, unit: 'lb', each: 1200, keep: 152, keeps: 'Winter squash cured and kept dry at about 55 F: months. Not in a damp cellar', rough: 1 },
+    greens: { kcal: 23, pro: 2.9, fat: 0.4, unit: 'lb', keep: 4, keeps: 'Days. Almost no calories but they carry the vitamin C that stops scurvy', rough: 1 },
+    tomatoes: { kcal: 18, pro: 0.9, fat: 0.2, unit: 'lb', each: 123, keep: 5, keeps: 'Fresh: days. Canned: 2 to 5 years, and they are one of the few acid foods a boiling-water canner handles', rough: 1 },
+    beets: { kcal: 43, pro: 1.6, fat: 0.2, unit: 'lb', each: 82, keep: 152, keeps: 'Like carrots, in damp sand, cold', rough: 1 },
+    sweetcorn: { kcal: 86, pro: 3.2, fat: 1.2, unit: 'lb', each: 90, keep: 3, keeps: 'Fresh: days, and the sugar turns to starch within hours of picking', rough: 1 },
+    cucumbers: { kcal: 15, pro: 0.7, fat: 0.1, unit: 'lb', each: 300, keep: 5, keeps: 'Days. Their whole point is pickling', rough: 1 },
+    peppers: { kcal: 31, pro: 1, fat: 0.3, unit: 'lb', each: 120, keep: 7, keeps: 'Fresh days; dried, a year or more', rough: 1 },
+    driedveg: { kcal: 300, pro: 10, fat: 1, unit: 'lb', keep: 730, keeps: 'Dried properly and sealed: 1 to 2 years for quality, longer safe', rough: 1 },
     // --- fruit and sweeteners
-    apples: { kcal: 52, pro: 0.3, fat: 0.2, unit: 'lb', each: 182, keep: 4, keeps: 'Late keeping varieties in a cold cellar: months. One rotting apple spoils the box - check them over', rough: 1 },
-    berries: { kcal: 57, pro: 0.7, fat: 0.3, unit: 'lb', keep: 0, keeps: 'Days. Dry them or make them into jam', rough: 1 },
-    driedfruit: { kcal: 299, pro: 3.1, fat: 0.5, unit: 'lb', cup: 145, keep: 18, keeps: 'Sealed and cool: a year or two for quality', rough: 1 },
-    honey: { kcal: 304, pro: 0.3, fat: 0, unit: 'lb', cup: 340, keep: 0, keeps: 'Keeps forever sealed. It will go solid and grainy - warm it gently and it comes back', rough: 1 },
-    syrup: { kcal: 260, pro: 0, fat: 0.1, unit: 'qt', cup: 322, keep: 36, keeps: 'Molasses and corn syrup 2 to 5 years (USU); maple syrup keeps unopened, and moulds once opened unless kept cold' },
-    sugar: { kcal: 387, pro: 0, fat: 0, unit: 'lb', cup: 200, keep: 0, keeps: 'Indefinite - nothing grows in it. Kept dry it only goes lumpy, which is a nuisance, not spoilage (USU)' },
-    cider: { kcal: 46, pro: 0.1, fat: 0.1, unit: 'qt', cup: 240, keep: 0, keeps: 'Fresh: days before it starts to ferment, which may be what you want', rough: 1 },
-    vinegar: { kcal: 18, pro: 0, fat: 0, unit: 'qt', cup: 239, keep: 0, keeps: 'Keeps indefinitely. Cloudiness and a "mother" floating in it are harmless', rough: 1 },
+    apples: { kcal: 52, pro: 0.3, fat: 0.2, unit: 'lb', each: 182, keep: 122, keeps: 'Late keeping varieties in a cold cellar: months. One rotting apple spoils the box - check them over', rough: 1 },
+    berries: { kcal: 57, pro: 0.7, fat: 0.3, unit: 'lb', keep: 3, keeps: 'Days. Dry them or make them into jam', rough: 1 },
+    driedfruit: { kcal: 299, pro: 3.1, fat: 0.5, unit: 'lb', cup: 145, keep: 547, keeps: 'Sealed and cool: a year or two for quality', rough: 1 },
+    honey: { kcal: 304, pro: 0.3, fat: 0, unit: 'lb', cup: 340, keep: 0, forever: 1, keeps: 'Keeps forever sealed. It will go solid and grainy - warm it gently and it comes back', rough: 1 },
+    syrup: { kcal: 260, pro: 0, fat: 0.1, unit: 'qt', cup: 322, keep: 1094, keeps: 'Molasses and corn syrup 2 to 5 years (USU); maple syrup keeps unopened, and moulds once opened unless kept cold' },
+    sugar: { kcal: 387, pro: 0, fat: 0, unit: 'lb', cup: 200, keep: 0, forever: 1, keeps: 'Indefinite - nothing grows in it. Kept dry it only goes lumpy, which is a nuisance, not spoilage (USU)' },
+    cider: { kcal: 46, pro: 0.1, fat: 0.1, unit: 'qt', cup: 240, keep: 5, keeps: 'Fresh: days before it starts to ferment, which may be what you want', rough: 1 },
+    vinegar: { kcal: 18, pro: 0, fat: 0, unit: 'qt', cup: 239, keep: 0, forever: 1, keeps: 'Keeps indefinitely. Cloudiness and a "mother" floating in it are harmless', rough: 1 },
     // --- wild foods
-    acorns: { kcal: 509, pro: 8.1, fat: 31, unit: 'lb', keep: 12, keeps: 'In the shell, dry and cool: a year. Shelled meal goes rancid in weeks - it is fatty. MUST be leached first' },
-    camas: { kcal: 130, pro: 2, fat: 0.5, unit: 'lb', keep: 6, est: 1, rough: 1, keeps: 'Baked in an earth oven and dried, months. DEADLY LOOK-ALIKE: see the Food From Scratch guide before you dig any' },
-    cattail: { kcal: 120, pro: 2, fat: 0.3, unit: 'lb', keep: 1, est: 1, rough: 1, keeps: 'Shoots and heads are a few days; the root flour, dried, keeps months' },
-    nettles: { kcal: 42, pro: 2.7, fat: 0.1, unit: 'lb', keep: 0, keeps: 'Days fresh, a year dried. One of the best wild greens for iron and vitamin C', rough: 1 },
-    mushrooms: { kcal: 22, pro: 3.1, fat: 0.3, unit: 'lb', keep: 0, keeps: 'Fresh days; dried, a year or more. Almost no calories - they are flavour, not food', rough: 1 },
-    elderberries: { kcal: 73, pro: 0.7, fat: 0.5, unit: 'lb', keep: 0, keeps: 'Days fresh. MUST be cooked - raw elderberries make people sick', rough: 1 },
-    hazelnuts: { kcal: 628, pro: 15, fat: 61, unit: 'lb', cup: 135, keep: 12, keeps: 'In the shell, cool and dry: a year. Shelled, months before they go rancid. The richest wild food here', rough: 1 },
-    rosehips: { kcal: 162, pro: 1.6, fat: 0.3, unit: 'lb', keep: 12, keeps: 'Dried, a year. Very high in vitamin C, which is why they matter in a long winter', rough: 1 },
-    wildgreens: { kcal: 45, pro: 2.7, fat: 0.7, unit: 'lb', keep: 0, keeps: 'Days. Count them for vitamins, not calories', rough: 1 },
-    wildseed: { kcal: 350, pro: 12, fat: 5, unit: 'lb', keep: 24, est: 1, rough: 1, keeps: 'Dry and sealed, like grain' },
+    acorns: { kcal: 509, pro: 8.1, fat: 31, unit: 'lb', keep: 365, keeps: 'In the shell, dry and cool: a year. Shelled meal goes rancid in weeks - it is fatty. MUST be leached first' },
+    camas: { kcal: 130, pro: 2, fat: 0.5, unit: 'lb', keep: 182, est: 1, rough: 1, keeps: 'Baked in an earth oven and dried, months. DEADLY LOOK-ALIKE: see the Food From Scratch guide before you dig any' },
+    cattail: { kcal: 120, pro: 2, fat: 0.3, unit: 'lb', keep: 30, est: 1, rough: 1, keeps: 'Shoots and heads are a few days; the root flour, dried, keeps months' },
+    nettles: { kcal: 42, pro: 2.7, fat: 0.1, unit: 'lb', keep: 4, keeps: 'Days fresh, a year dried. One of the best wild greens for iron and vitamin C', rough: 1 },
+    mushrooms: { kcal: 22, pro: 3.1, fat: 0.3, unit: 'lb', keep: 5, keeps: 'Fresh days; dried, a year or more. Almost no calories - they are flavour, not food', rough: 1 },
+    elderberries: { kcal: 73, pro: 0.7, fat: 0.5, unit: 'lb', keep: 3, keeps: 'Days fresh. MUST be cooked - raw elderberries make people sick', rough: 1 },
+    hazelnuts: { kcal: 628, pro: 15, fat: 61, unit: 'lb', cup: 135, keep: 365, keeps: 'In the shell, cool and dry: a year. Shelled, months before they go rancid. The richest wild food here', rough: 1 },
+    rosehips: { kcal: 162, pro: 1.6, fat: 0.3, unit: 'lb', keep: 365, keeps: 'Dried, a year. Very high in vitamin C, which is why they matter in a long winter', rough: 1 },
+    wildgreens: { kcal: 45, pro: 2.7, fat: 0.7, unit: 'lb', keep: 3, keeps: 'Days. Count them for vitamins, not calories', rough: 1 },
+    wildseed: { kcal: 350, pro: 12, fat: 5, unit: 'lb', keep: 730, est: 1, rough: 1, keeps: 'Dry and sealed, like grain' },
     // --- flavourings and leavening: almost no calories, but they decide whether people eat
-    pepper: { kcal: 0, pro: 0, fat: 0, unit: 'oz', keep: 36, keeps: 'Whole peppercorns keep years; ground pepper loses its bite in about a year', rough: 1, nofood: 1 },
-    herbs: { kcal: 0, pro: 0, fat: 0, unit: 'oz', keep: 12, keeps: 'Dried herbs: about a year before they are hay', rough: 1, nofood: 1 },
-    spices: { kcal: 0, pro: 0, fat: 0, unit: 'oz', keep: 24, keeps: 'Whole spices years, ground about 2', rough: 1, nofood: 1 },
-    soda: { kcal: 0, pro: 0, fat: 0, unit: 'lb', keep: 0, keeps: 'Keeps indefinitely dry. Test it: a spoonful in vinegar must fizz hard', rough: 1, nofood: 1 },
-    bakingpowder: { kcal: 0, pro: 0, fat: 0, unit: 'lb', keep: 18, keeps: 'About 18 months, and it dies quietly. Test it: a spoonful in hot water must fizz', rough: 1, nofood: 1 },
-    tartar: { kcal: 0, pro: 0, fat: 0, unit: 'oz', keep: 0, keeps: 'Keeps indefinitely dry', rough: 1, nofood: 1 },
-    yeast: { kcal: 0, pro: 0, fat: 0, unit: 'oz', keep: 24, keeps: 'Sealed and cold, 2 years; opened, months. Proof it in warm sweet water before you trust a batch of dough to it', rough: 1, nofood: 1 },
-    starter: { kcal: 0, pro: 0, fat: 0, unit: 'each', keep: 0, keeps: 'Alive: feed it or lose it. Dried on a plate it waits for years', rough: 1, nofood: 1 },
-    lime: { kcal: 0, pro: 0, fat: 0, unit: 'lb', keep: 0, keeps: 'Keeps indefinitely sealed and dry. CAUSTIC - not a food', rough: 1, nofood: 1 },
-    lye: { kcal: 0, pro: 0, fat: 0, unit: 'lb', keep: 0, keeps: 'Keeps indefinitely in a sealed plastic container. DEADLY - not a food', rough: 1, nofood: 1 },
-    curesalt: { kcal: 0, pro: 0, fat: 0, unit: 'oz', keep: 24, keeps: 'Keeps dry. POISON in quantity - it is measured in grams per pound of meat, never guessed', rough: 1, nofood: 1 }
+    pepper: { kcal: 0, pro: 0, fat: 0, unit: 'oz', keep: 1094, keeps: 'Whole peppercorns keep years; ground pepper loses its bite in about a year', rough: 1, nofood: 1 },
+    herbs: { kcal: 0, pro: 0, fat: 0, unit: 'oz', keep: 365, keeps: 'Dried herbs: about a year before they are hay', rough: 1, nofood: 1 },
+    spices: { kcal: 0, pro: 0, fat: 0, unit: 'oz', keep: 730, keeps: 'Whole spices years, ground about 2', rough: 1, nofood: 1 },
+    soda: { kcal: 0, pro: 0, fat: 0, unit: 'lb', keep: 0, forever: 1, keeps: 'Keeps indefinitely dry. Test it: a spoonful in vinegar must fizz hard', rough: 1, nofood: 1 },
+    bakingpowder: { kcal: 0, pro: 0, fat: 0, unit: 'lb', keep: 547, keeps: 'About 18 months, and it dies quietly. Test it: a spoonful in hot water must fizz', rough: 1, nofood: 1 },
+    tartar: { kcal: 0, pro: 0, fat: 0, unit: 'oz', keep: 0, forever: 1, keeps: 'Keeps indefinitely dry', rough: 1, nofood: 1 },
+    yeast: { kcal: 0, pro: 0, fat: 0, unit: 'oz', keep: 730, keeps: 'Sealed and cold, 2 years; opened, months. Proof it in warm sweet water before you trust a batch of dough to it', rough: 1, nofood: 1 },
+    starter: { kcal: 0, pro: 0, fat: 0, unit: 'each', keep: 0, forever: 1, keeps: 'Alive: feed it or lose it. Dried on a plate it waits for years', rough: 1, nofood: 1 },
+    lime: { kcal: 0, pro: 0, fat: 0, unit: 'lb', keep: 0, forever: 1, keeps: 'Keeps indefinitely sealed and dry. CAUSTIC - not a food', rough: 1, nofood: 1 },
+    lye: { kcal: 0, pro: 0, fat: 0, unit: 'lb', keep: 0, forever: 1, keeps: 'Keeps indefinitely in a sealed plastic container. DEADLY - not a food', rough: 1, nofood: 1 },
+    curesalt: { kcal: 0, pro: 0, fat: 0, unit: 'oz', keep: 730, keeps: 'Keeps dry. POISON in quantity - it is measured in grams per pound of meat, never guessed', rough: 1, nofood: 1 }
   },
 
   // how to weigh it: what a unit is, in grams
@@ -2259,7 +2261,7 @@ R.push(
       if (old.amt && typeof old.amt === 'object') {
         Object.keys(old.amt).slice(0, 200).forEach(function (id) {
           var a = old.amt[id];
-          if (a && typeof a === 'object') S.amt[id] = { n: +a.n || 0, u: String(a.u || 'lb').slice(0, 4), d: String(a.d || '').slice(0, 10) };
+          if (a && typeof a === 'object') S.amt[id] = { n: +a.n || 0, u: String(a.u || 'lb').slice(0, 4), d: String(a.d || '').slice(0, 10), plenty: a.plenty ? 1 : 0 };
         });
       }
       if (old.days > 0) S.days = Math.min(3650, old.days | 0);
@@ -2493,7 +2495,7 @@ R.push(
   R.extra.forEach(function (e) { EX[e[0]] = { n: e[1], kcal: e[2], pro: e[3] }; });
 
   function gramsOf(a) {                       // one stock line -> grams
-    if (!a || !(a.n > 0)) return 0;
+    if (!a || a.plenty || !(a.n > 0)) return 0;
     var f = R.foods[a.id] || {};
     if (a.u === 'cup') return a.n * (f.cup || 0);
     if (a.u === 'each') return a.n * (f.each || 0);
@@ -2535,7 +2537,7 @@ R.push(
   function goesOff(line) {                     // when this one is past its best, and how sure we are
     if (line.a.d) return { t: Date.parse(line.a.d + 'T00:00'), said: 1 };
     if (!line.f.keep) return null;             // keeps indefinitely, or is not stored at all
-    return { t: Date.now() + line.f.keep * 30.4 * 86400000, said: 0 };
+    return { t: Date.now() + line.f.keep * 86400000, said: 0 };
   }
   function lbs(g) {                            // grams -> words a person can weigh out
     if (g <= 0) return '0';
@@ -2566,7 +2568,7 @@ R.push(
   }
   function drawNeed() {
     var d = dayNeed();
-    $('r-need').innerHTML = d.n ? '<b>' + d.n + (d.n === 1 ? ' person' : ' people') + '</b> eat about <b>' +
+    $('r-need').innerHTML = d.n ? '<b>' + d.n + (d.n === 1 ? ' person' : ' people') + '</b> ' + (d.n === 1 ? 'eats' : 'eat') + ' about <b>' +
       d.kcal.toLocaleString() + ' kcal</b> and <b>' + d.pro + ' g of protein</b> a day' +
       (S.cold ? ', with the cold months added' : '') + (S.work ? ', working hard' : '') + '.' : 'Add the people who are eating.';
   }
@@ -2577,13 +2579,17 @@ R.push(
       ? 'These are the things you ticked on the other tab. Weigh each one &mdash; a guess here is a guess in every number below. Add a <b>best-by or packed-on date</b> where you know it.'
       : 'Nothing ticked yet. Go to <b>What can I cook?</b> and tick what is in the house, then come back and weigh it.';
     $('stock').innerHTML = ids.map(function (id) {
-      var f = R.foods[id], a = S.amt[id] || { n: '', u: f.unit === 'qt' ? 'qt' : 'lb', d: '' };
-      return '<div class="stk"><b>' + esc(ING[id] || id) + (f.est ? ' <span class="est">(estimated)</span>' : '') + '</b>' +
-        '<input type="number" data-s="n" data-id="' + id + '" value="' + (a.n || '') + '" min="0" step="0.1" inputmode="decimal" placeholder="0" aria-label="How much ' + esc(ING[id] || id) + '">' +
-        '<select data-s="u" data-id="' + id + '" aria-label="Unit">' + unitsFor(id).map(function (u) {
+      var f = R.foods[id], a = S.amt[id] || { n: '', u: f.unit === 'qt' ? 'qt' : 'lb', d: '', plenty: 0 };
+      var off = a.plenty ? ' disabled' : '';
+      return '<div class="stk' + (a.plenty ? ' plenty' : '') + '"><b>' + esc(ING[id] || id) + (f.est ? ' <span class="est">(estimated)</span>' : '') + '</b>' +
+        '<input type="number" data-s="n" data-id="' + id + '" value="' + (a.n || '') + '" min="0" step="0.1" inputmode="decimal" placeholder="0" aria-label="How much ' + esc(ING[id] || id) + '"' + off + '>' +
+        '<select data-s="u" data-id="' + id + '" aria-label="Unit"' + off + '>' + unitsFor(id).map(function (u) {
           return '<option value="' + u + '"' + (a.u === u ? ' selected' : '') + '>' + (u === 'each' ? 'each' : u) + '</option>';
         }).join('') + '</select>' +
-        '<input type="date" data-s="d" data-id="' + id + '" value="' + (a.d || '') + '" aria-label="Best by">' +
+        /* a date box only where there is something to date: salt, sugar, honey and water do not go off */
+        (f.forever ? '<span class="est">keeps indefinitely</span>'
+                   : '<input type="date" data-s="d" data-id="' + id + '" value="' + (a.d || '') + '" aria-label="Best by"' + off + '>') +
+        '<label class="pick small"><input type="checkbox" data-s="plenty" data-id="' + id + '"' + (a.plenty ? ' checked' : '') + '> plenty</label>' +
         '</div>';
     }).join('');
   }
@@ -2637,6 +2643,12 @@ R.push(
       html += '<div class="warn"><b>There ' + (need.kids === 1 ? 'is a child' : 'are children') + ' in this household.</b>' +
         'Do not cut a child’s share the way you would cut an adult’s: they have no reserve and they go downhill fast and quietly. ' +
         'Give them smaller portions more often, and watch their weight, not the plate. ' + glink('FOOD-SECURITY-GUIDE', 'Babies and toddlers in a shortage', '#babies-and-toddlers-in-a-shortage') + '.</div>';
+    }
+    var plenty = Object.keys(S.amt).filter(function (id) { return S.amt[id].plenty && R.foods[id]; });
+    if (plenty.length) {
+      html += '<p class="small"><b>Not counted:</b> ' + plenty.map(function (id) { return esc(ING[id] || id); }).join(', ') +
+        ' &mdash; you said you have plenty. Nothing with plenty ticked is weighed into the days of food or the daily share, ' +
+        'because a number you did not measure would only make the rest of this look more certain than it is.</p>';
     }
     if (st.est) {
       html += '<p class="small">' + st.est + ' of the foods you weighed (camas, cattail or wild seed) are <b>estimates</b> &mdash; ' +
@@ -2802,9 +2814,12 @@ R.push(
     var a = S.amt[id] || (S.amt[id] = { n: 0, u: f.unit === 'qt' ? 'qt' : 'lb', d: '' });
     if (k === 'n') a.n = Math.max(0, +el.value || 0);
     else if (k === 'u') a.u = el.value;
+    else if (k === 'plenty') a.plenty = el.checked ? 1 : 0;
     else a.d = el.value;
-    if (!a.n && !a.d) delete S.amt[id];
-    save(); drawRation();
+    if (!a.n && !a.d && !a.plenty) delete S.amt[id];
+    save();
+    if (k === 'plenty') drawStock();          /* the boxes grey out, so this row is redrawn */
+    drawRation();
   }
   $('stock').addEventListener('input', stockEdit);
   $('stock').addEventListener('change', stockEdit);
