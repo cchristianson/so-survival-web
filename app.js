@@ -350,6 +350,7 @@ function bindUI() {
   $('aion').addEventListener('click', () => initWebLLM(document.querySelector('input[name=model]:checked').value, false));
   $('aioff').addEventListener('click', async () => { store.set('aiModel', null); try { await ai.engine?.unload?.(); } catch {} ai.engine = null; ai.kind = 'none'; renderSetup(); renderStatus(); });
   $('savelib').addEventListener('click', () => saveOffline('library'));
+  $('saveplant').addEventListener('click', () => saveOffline('plantid'));
   $('saveroutes').addEventListener('click', () => saveOffline('routes'));
   $('savemap').addEventListener('click', () => saveOffline('map'));
   $('widego').addEventListener('click', () => loadWide('start'));
@@ -737,9 +738,12 @@ async function renderSetup() {
     $('savelibsize').textContent = `≈ ${mb(manifest.offline.library.bytes)}`;
     $('saveroutessize').textContent = `≈ ${mb(manifest.offline.routes.bytes)}`;
     if (manifest.offline.map) $('savemapsize').textContent = `≈ ${mb(manifest.offline.map.bytes)}`;
+    if (manifest.offline.plantid) $('saveplantsize').textContent = `≈ ${mb(manifest.offline.plantid.bytes)}`;
   }
   $('savemaprow').hidden = !(manifest && manifest.offline.map) || mode === 'drive';
-  if (mode === 'drive') { $('savelib').disabled = $('saveroutes').disabled = $('savemap').disabled = true; $('saveprog').textContent = 'Not needed on the drive — everything is already here.'; }
+  // the plant identifier's picture model: only worth saving on a phone that has no drive and no Vault
+  $('saveplantrow').hidden = !(manifest && manifest.offline.plantid) || mode === 'drive';
+  if (mode === 'drive') { $('savelib').disabled = $('saveroutes').disabled = $('savemap').disabled = $('saveplant').disabled = true; $('saveprog').textContent = 'Not needed on the drive — everything is already here.'; }
   if (navigator.storage?.estimate) { const e = await navigator.storage.estimate(); $('storage').textContent = `This site is using ${mb(e.usage || 0)} of storage on this device.`; }
   renderSaved();
   $('about').innerHTML = `Free survival and self-reliance knowledge for the Illinois Valley and southern Oregon. Search runs on your device; the AI runs in your browser.
@@ -808,7 +812,7 @@ async function saveOffline(which) {
   try { await navigator.storage?.persist?.(); } catch {}
   const files = manifest.offline[which].files; let done = 0, failed = 0;
   SAVED[which] = 'busy'; { const p = $('st-' + which); if (p) { p.className = 'pill busy'; p.textContent = 'Downloading'; } }
-  $('savebarw').hidden = false; $('savelib').disabled = $('saveroutes').disabled = $('savemap').disabled = true;
+  $('savebarw').hidden = false; $('savelib').disabled = $('saveroutes').disabled = $('savemap').disabled = $('saveplant').disabled = true;
   const queue = files.slice(), workers = Array.from({ length: 6 }, async () => {
     while (queue.length) {
       const f = queue.shift();
@@ -817,8 +821,8 @@ async function saveOffline(which) {
     }
   });
   await Promise.all(workers);
-  $('saveprog').textContent = failed ? `Saved, but ${failed} files failed — try again with a better connection.` : `Saved ${files.length} files. They now work offline on this device.`;
-  $('savelib').disabled = $('saveroutes').disabled = $('savemap').disabled = false; store.set('saved-' + which, manifest.built); renderSetup();
+  $('saveprog').textContent = failed ? `Saved, but ${failed} files failed — try again with a better connection.` : `Saved ${files.length} file${files.length === 1 ? '' : 's'}. ${files.length === 1 ? 'It now works' : 'They now work'} offline on this device.`;
+  $('savelib').disabled = $('saveroutes').disabled = $('savemap').disabled = $('saveplant').disabled = false; store.set('saved-' + which, (manifest.offline[which] || {}).v || manifest.built); renderSetup();
 }
 
 // ------------------------------------------------------------------ library & tools tabs
@@ -1676,7 +1680,10 @@ function renderShareHelp() {
 async function savedState(which) {
   const set = manifest && manifest.offline && manifest.offline[which], flag = store.get('saved-' + which);
   if (!set || !flag) return 'none';
-  if (flag !== manifest.built) return 'update';
+  // most things go stale when the site is rebuilt; one that carries its own version (the plant
+  // identifier's picture model) only goes stale when THAT changes, or every publish would ask a
+  // phone to fetch the same 83 MB again
+  if (flag !== (set.v || manifest.built)) return 'update';
   try {
     const fs = set.files.filter(f => f !== './');
     for (const f of [fs[0], fs[fs.length >> 1], fs[fs.length - 1]]) if (f && !(await caches.match(new URL(f, BASE).href, { ignoreSearch: !f.includes('.pmtiles') }))) return 'gone';
@@ -1685,8 +1692,8 @@ async function savedState(which) {
 }
 async function renderSaved() {
   if (mode === 'drive' || !manifest) return;
-  for (const k of ['library', 'routes', 'map']) if (SAVED[k] !== 'busy' || !$('savelib').disabled) SAVED[k] = await savedState(k);
-  for (const [k, btn] of [['library', 'savelib'], ['routes', 'saveroutes'], ['map', 'savemap']]) {
+  for (const k of ['library', 'routes', 'map', 'plantid']) if (SAVED[k] !== 'busy' || !$('savelib').disabled) SAVED[k] = await savedState(k);
+  for (const [k, btn] of [['library', 'savelib'], ['routes', 'saveroutes'], ['map', 'savemap'], ['plantid', 'saveplant']]) {
     const [c, w] = SAVE_WORD[SAVED[k]], p = $('st-' + k); p.className = 'pill ' + c; p.textContent = w;
     $(btn).textContent = SAVED[k] === 'saved' ? 'Save again' : SAVED[k] === 'update' ? 'Update' : 'Save';
   }

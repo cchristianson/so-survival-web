@@ -1,7 +1,7 @@
 // Service worker: keeps the app and the saved library available offline.
 // - "shell" cache: the app itself, replaced on each new version
 // - "content" cache: search data, guides, tools, walking routes — kept across versions
-const BUILD = '72720cd956';
+const BUILD = 'c8dc5d681d';
 const SHELL = 'shell-' + BUILD, CONTENT = 'content-v1';
 const SHELL_FILES = ['./', 'index.html', 'app.js', 'search-worker.js', 'manifest.webmanifest', 'icon.svg', 'icon-192.png', 'icon-512.png', 'data/manifest.json'];
 const shellPaths = new Set(SHELL_FILES.map(f => new URL(f, self.registration.scope).pathname));
@@ -17,7 +17,10 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   const req = e.request, url = new URL(req.url);
   if (req.method !== 'GET' || url.origin !== location.origin) return; // Wikipedia, AI model downloads: handled elsewhere
-  if (url.pathname.includes('/download/')) return; // the installer kit zip: straight from the network, never stored
+  // /download/ is for things fetched once and kept on the real disk (the installer kit, the drive's
+  // own copies): straight from the network, never stored. The ONE exception is the plant
+  // identifier's picture model, which a phone with no drive and no Vault has to keep to work offline.
+  if (url.pathname.includes('/download/') && !url.pathname.includes('/download/plantid/')) return;
   if (url.pathname.includes('/media/')) return;    // the video: straight from the network (it asks for a piece at a time), never stored
   if (url.pathname.endsWith('.pmtiles')) { e.respondWith(mapFile(req)); return; }   // the map's files: read a piece at a time
   // asked for afresh each time (the saved copy is for when there is no network): pages, the app, and the map's lists

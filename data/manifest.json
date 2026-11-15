@@ -1,5 +1,5 @@
 {
-"built": "2026-11-15 06:08 UTC",
+"built": "2026-11-15 16:06 UTC",
 "docs": "docs-90f0bd0626.json",
 "shards": [
 "chunks00-f09c93c1b4.json",
@@ -629,7 +629,7 @@
 "vendor/README.md",
 "vendor/web-llm-0.2.85.js"
 ],
-"bytes": 237782955
+"bytes": 237784515
 },
 "routes": {
 "files": [
@@ -1355,6 +1355,13 @@
 "tools/walking-routes/tracks/Yuba-City-CA.json"
 ],
 "bytes": 29290949
+},
+"plantid": {
+"files": [
+"download/plantid/bioclip-vitb16-int8.bin"
+],
+"bytes": 87372883,
+"v": "bioclip-vitb16-int8.bin"
 },
 "map": {
 "files": [
