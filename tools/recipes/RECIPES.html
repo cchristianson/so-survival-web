@@ -86,6 +86,34 @@ body.osk-open{padding-bottom:300px}
   a{color:#000;text-decoration:none}
   .rec .src{color:#333}
 }
+
+/* the two halves of the page */
+.tabs{display:flex;gap:8px;margin:14px 0 4px;flex-wrap:wrap}
+.tab{font:inherit;font-size:15.5px;font-weight:600;padding:9px 16px;min-height:42px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.tab.on{background:var(--accent);color:var(--onaccent);border-color:var(--accent)}
+/* who is eating, and what you have */
+.eater,.stk{display:flex;flex-wrap:wrap;gap:7px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.eater select,.stk select{font:inherit;font-size:15px;padding:7px 8px;min-height:40px;border-radius:9px;border:1px solid var(--line);background:var(--bg);color:var(--ink);max-width:100%}
+.eater input,.stk input{font:inherit;font-size:15px;padding:7px 9px;min-height:40px;border-radius:9px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.eater input[type=text]{width:7.5em}.eater input[type=number]{width:5em}
+.stk b{flex:1 1 11em;min-width:9em;font-weight:600}
+.stk input[type=number]{width:5.5em}.stk input[type=date]{width:10em}
+.stk select{width:5.5em}
+.xbtn{font:inherit;font-size:18px;line-height:1;padding:6px 10px;min-height:40px;border-radius:9px;border:1px solid var(--line);background:var(--bg);color:var(--muted);cursor:pointer}
+/* the answers */
+.big{font-size:23px;font-weight:700;margin:2px 0 6px}
+.gauge{height:11px;border-radius:999px;background:var(--line);overflow:hidden;margin:8px 0}
+.gauge i{display:block;height:100%;background:var(--accent)}
+.gauge i.low{background:#d98324}.gauge i.bad{background:#c9433a}
+.rtab{width:100%;border-collapse:collapse;font-size:15px;margin:4px 0 10px}
+.rtab th,.rtab td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.rtab th{font-size:13.5px;color:var(--muted);font-weight:600}
+.rtab td.n{text-align:right;white-space:nowrap}
+.warn{border:1px solid #d98324;border-radius:12px;padding:10px 12px;margin:10px 0;background:rgba(217,131,36,.09)}
+.warn.bad{border-color:#c9433a;background:rgba(201,67,58,.10)}
+.warn b{display:block;margin-bottom:3px}
+.soon{color:#d98324;font-weight:600}.gone{color:#c9433a;font-weight:600}
+.est{color:var(--muted);font-size:13px}
 </style>
 <style>:root{color-scheme:dark}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){color-scheme:light}}:root[data-theme=light]{color-scheme:light}.themebtn{font:inherit;font-size:14px;line-height:1.3;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:3px 11px;cursor:pointer;white-space:nowrap;text-decoration:none}.themefloat{position:absolute;top:10px;right:12px;z-index:9}@media print{.themebtn{display:none}}</style><script>/* so-theme: light or dark screen */(function(){var K="so-theme",d=document.documentElement,L={auto:"Display: auto",dark:"Display: dark",light:"Display: light"},N={auto:"dark",dark:"light",light:"auto"},cur="dark";try{cur=localStorage.getItem(K)||"dark"}catch(e){}function a(){if(cur==="dark"||cur==="light")d.setAttribute("data-theme",cur);else d.removeAttribute("data-theme");var b=document.querySelectorAll(".themebtn");for(var i=0;i<b.length;i++){b[i].textContent=L[cur]||L.auto;b[i].title="Screen: "+cur+" - tap to change (Auto follows this device)"}}a();window.soTheme=function(){cur=N[cur]||"dark";try{localStorage.setItem(K,cur)}catch(e){}a()};function btn(){var b=document.createElement("button");b.type="button";b.className="themebtn";return b}document.addEventListener("DOMContentLoaded",function(){if(!document.querySelector(".themebtn")){var n=document.querySelector(".topnav"),b=btn();if(n){n.appendChild(document.createTextNode(" \u00B7 "));n.appendChild(b)}else{b.className+=" themefloat";document.body.appendChild(b)}}var all=document.querySelectorAll(".themebtn");for(var i=0;i<all.length;i++)all[i].onclick=window.soTheme;a()})})();</script><style>/* ark-bar: the app's buttons on every page */:root{--side-bg:#0F1511;--side-on:#2C4A39}@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--side-bg:#233F32;--side-on:#315B43}}:root[data-theme=light]{--side-bg:#233F32;--side-on:#315B43}.arkbar{position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));margin:0;padding:6px 4px calc(6px + env(safe-area-inset-bottom));background:var(--card);border-top:1px solid var(--line);font:600 11.5px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}.arkbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:48px;color:var(--muted);text-decoration:none}.arkbar a i{display:flex;align-items:center;justify-content:center;width:46px;max-width:100%;height:28px;border-radius:999px}.arkbar a.on{color:var(--ink);font-weight:700}.arkbar a.on i{background:rgba(127,160,135,.28)}.arkbar svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.arkbar .l,.arkbar .wideonly,.arkbar .bn{display:none}body.has-arkbar{padding-bottom:calc(61px + env(safe-area-inset-bottom))}body.has-arkbar .totop,body.has-arkbar .sop-fab{bottom:calc(76px + env(safe-area-inset-bottom))!important}@media(min-width:760px){.arkbar{top:0;right:auto;width:232px;display:flex;flex-direction:column;gap:4px;padding:16px 12px;border-top:0;background:var(--side-bg);font-size:15px;overflow-y:auto}.arkbar a,.arkbar a.wideonly{display:flex;flex-direction:row;justify-content:flex-start;gap:12px;min-height:44px;padding:0 12px;border-radius:10px;color:#E3EBE5;order:0!important}.arkbar a i{width:auto;height:auto;border-radius:0}.arkbar a.on i{background:none}.arkbar svg{width:20px;height:20px}.arkbar a.on{background:var(--side-on);color:#fff}.arkbar .s{display:none}.arkbar .l{display:inline}.arkbar a.bn{display:flex;gap:10px;min-height:0;padding:0 6px 14px;color:#fff;font-size:18px;font-weight:700}.arkbar .bn img{width:40px;height:40px;border-radius:9px}body.has-arkbar{padding-bottom:0;padding-left:232px}body.has-arkbar .totop,body.has-arkbar .sop-fab{bottom:14px!important}}@media print{.arkbar{display:none!important}body.has-arkbar{padding:0!important}}</style><script>/* ark-bar */(function(){function add(){if(document.querySelector(".arkbar")||location.protocol.indexOf("http")!==0||window.self!==window.top)return;var p=location.pathname,root=null;if(p.indexOf("/lib/")===0)root="/";else{var a=document.querySelector('.topnav a[href*="#tools"],.topnav a[href*="#kit"],a[href$="#kit"],a[href$="#ask"]');if(a)root=a.getAttribute("href").replace(/#.*$/,"")}if(root===null)return;var on=document.body.getAttribute("data-ark")||(/walking-routes|\/map\//i.test(p)?"maps":document.querySelector('.topnav a[href*="#kit"],.topnav a[data-app="/#kit"]')?"kit":"tools");var n=document.createElement("nav");n.className="arkbar";n.setAttribute("aria-label","Main");n.innerHTML='<a class="bn" data-v="home"><img src="'+root+'icon.svg" alt="">ARK</a><a data-v="home" style="order:1"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></i><span class="s">Home</span><span class="l">Home</span></a><a data-v="ask" style="order:3"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-7l-5 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg></i><span class="s">Ask</span><span class="l">Ask ARK</span></a><a data-v="tools" style="order:2"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-13c-3-.5-6 0-8 1.5z"/><path d="M12 6v13"/></svg></i><span class="s">Library</span><span class="l">Guides</span></a><a data-v="library" class="wideonly" style="order:0"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/></svg></i><span class="s"></span><span class="l">Books</span></a><a data-v="maps" style="order:4"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg></i><span class="s">Maps</span><span class="l">Maps &amp; Routes</span></a><a data-v="kit" style="order:5"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6.5a4 4 0 0 0-5.3 5.3L3 18l3 3 6.2-6.2a4 4 0 0 0 5.3-5.3l-2.7 2.7-2.5-.5-.5-2.5z"/></svg></i><span class="s">Tools</span><span class="l">Tools</span></a><a data-v="setup" class="wideonly" style="order:0"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></svg></i><span class="s"></span><span class="l">Offline &amp; downloads</span></a><a data-v="more" style="order:6"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="19" cy="12" r="1.3"/></svg></i><span class="s">More</span><span class="l">Settings &amp; help</span></a>';var l=n.querySelectorAll("a");for(var i=0;i<l.length;i++){l[i].href=root+"#"+l[i].getAttribute("data-v");if(l[i].getAttribute("data-v")===on&&l[i].className!=="bn")l[i].className+=" on"}document.body.appendChild(n);document.body.className+=" has-arkbar"}if(document.body)add();else document.addEventListener("DOMContentLoaded",add)})();</script></head>
 <body data-ark="kit">
@@ -96,11 +124,16 @@ body.osk-open{padding-bottom:300px}
 <a href="../../pages/SUBJECT-INDEX.html">Index A&ndash;Z</a></p>
 
 <h1>What can I cook?</h1>
-<p class="sub">Tick what you have in the house and what you can cook on. The page then shows what you can make now,
+<p class="sub" id="subcook">Tick what you have in the house and what you can cook on. The page then shows what you can make now,
 what you are <b>one thing short</b> of, and everything else. It remembers your ticks on this device, so you can
 keep it up to date like a pantry list. Works with no internet.</p>
 
 <div id="single" hidden></div>
+
+<div class="tabs noprint" role="tablist">
+  <button type="button" class="tab on" id="tab-cook" role="tab" aria-selected="true">What can I cook?</button>
+  <button type="button" class="tab" id="tab-ration" role="tab" aria-selected="false">How long will it last?</button>
+</div>
 
 <div id="main">
   <h2>1. Tick what you have</h2>
@@ -148,6 +181,79 @@ keep it up to date like a pantry list. Works with no internet.</p>
   <a href="../../pages/FOOD-SECURITY-GUIDE.html">Food when it's scarce</a>,
   <a href="../../pages/MUSHROOM-GUIDE.html">Mushrooms</a>,
   <a href="../../pages/HUNTING-TRAPPING-FISHING-GUIDE.html">Hunting &amp; fishing</a>.</p>
+</div>
+
+<div id="ration" hidden>
+  <p class="sub">Weigh what you have, say who is eating it, and this works out how many days it lasts, what a fair
+  daily share is, and what to use up first. It does the same arithmetic the
+  <a href="../../pages/FOOD-SECURITY-GUIDE.html#setting-and-running-a-fair-ration">Food Security guide</a>
+  sets out, with that guide's own numbers.</p>
+
+  <h2>1. Who is eating</h2>
+  <p class="small">Pick what each person is. The calories come from the guide's table, not from their weight &mdash;
+  weight is for <b>watching whether the ration is working</b>, further down.</p>
+  <div id="eaters"></div>
+  <p class="small"><button class="link" type="button" id="addeater">Add a person</button></p>
+  <div class="row">
+    <label class="pick"><input type="checkbox" id="working"> Hard physical work (wood, water, digging)</label>
+    <label class="pick"><input type="checkbox" id="coldmon"> Cold months (November&ndash;March)</label>
+  </div>
+  <p class="need" id="r-need"></p>
+
+  <h2>2. How long it has to last</h2>
+  <p class="small">Count the days to the next harvest, then add about three months of reserve &mdash; that is the
+  guide's rule.</p>
+  <div class="row">
+    <label class="pick">Days: <input type="number" id="days" min="1" max="3650" step="1" value="180" inputmode="numeric"></label>
+    <span class="small" id="r-until"></span>
+  </div>
+
+  <h2>3. What you have, weighed</h2>
+  <p class="small" id="stockhint"></p>
+  <div id="stock"></div>
+
+  <div class="row noprint">
+    <button class="btn alt" type="button" id="clearamt">Clear the weights</button>
+    <button class="btn alt" type="button" id="printration">Print this</button>
+  </div>
+
+  <h2 id="h-last">How long it lasts</h2>
+  <div id="r-sum"></div>
+
+  <h2>A fair daily share</h2>
+  <p class="small">Per person per day, with one marked scoop per food. Two people present whenever the stores are
+  opened, and a written log of what went out &mdash; the guide says why.</p>
+  <div id="r-ration"></div>
+
+  <h2>Use these first</h2>
+  <p class="small">Soonest to go off at the top. A date you entered beats the general guidance; where you gave no
+  date, this counts from today using how long that food keeps sealed and cool.</p>
+  <div id="r-first"></div>
+
+  <h2>Weigh-in</h2>
+  <p class="small">The ration on paper is not the ration people actually eat. Write everyone's weight down now and
+  again every week or two: the first sign that someone is not getting their share is that they lose weight faster
+  than the rest. Children and older people often give theirs away.</p>
+  <div class="row noprint">
+    <button class="btn alt" type="button" id="weighin">Record today's weights</button>
+    <button class="link" type="button" id="clearlog">Forget the weigh-ins</button>
+  </div>
+  <div id="r-weigh"></div>
+
+  <h2>Where these numbers come from</h2>
+  <p class="small">What a person needs a day is the
+  <a href="../../pages/FOOD-SECURITY-GUIDE.html#how-much-food-people-need">Food Security guide's table</a>
+  (the US Dietary Guidelines), planned from the top of each range because &quot;active&quot; there only means walking
+  three miles a day. The cold-weather addition and the 2,100 kcal planning figure are the WHO's, through the same
+  guide. How long food keeps sealed comes from Utah State Extension through that guide's storage table. Calories,
+  protein and fat per food are USDA FoodData Central's standard figures for the ordinary form of each food &mdash;
+  a planning figure, not a measurement of your sack of wheat. Three wild foods (camas, cattail, wild seed) are not
+  in USDA's tables at all and are marked as estimates wherever they appear.</p>
+  <p class="small"><b>This page does not decide anything for you.</b> It will not tell you to cut a child's food, it
+  does not know who is ill or pregnant beyond what you typed, and it cannot see the mould in the bottom of the
+  bucket. Hunger diseases, feeding someone who is already starving, and babies in a shortage are all in the
+  <a href="../../pages/FOOD-SECURITY-GUIDE.html">Food Security guide</a>,
+  and this page sends you there rather than repeating them.</p>
 </div>
 </div>
 
@@ -1755,6 +1861,150 @@ R.push(
 );
 })();
 </script>
+<script>/* Numbers for the rationing half of the ARK food tool (web/recipes/RECIPES.html).
+ *
+ * WHERE THESE COME FROM, and how far to trust them:
+ *
+ *  - Calories, protein and fat are per 100 g of the ordinary dry or raw form of each food, from
+ *    USDA FoodData Central's standard reference entries, rounded. They are a planning figure, not a
+ *    measurement of YOUR sack of wheat: a wet year, a different variety or a fattier deer all move
+ *    them. The Food Security guide's own cross-check is "1 lb of dry grain is about 1,500 kcal"
+ *    (Kearny, p. 90), and the grains below come out at 1,540 to 1,660, so they agree.
+ *  - Where USDA has no entry at all - camas, cattail, wild grass seed - the figure is marked
+ *    est: 1. Those are careful estimates from the nearest food USDA does list, and the page says so
+ *    where it uses them. Do not treat them as measured.
+ *  - Shelf life is in months, SEALED and kept cool and dry. The long ones come from Utah State
+ *    Extension's Food Storage for Emergencies, through the Food Security guide's own table; the
+ *    rest is ordinary kitchen guidance, marked rough: 1. An open packet keeps a fraction of this.
+ *  - Nothing here is a reason to eat something that smells wrong, bulges, foams or has mould you
+ *    did not put there. The date is the LESS important half of that decision.
+ *
+ * What a person needs a day is the Food Security guide's own table (US Dietary Guidelines), so the
+ * tool and the guide can never disagree: change one and change the other.
+ */
+window.RATIONDATA = {
+  v: 1,
+
+  /* ---- what a day's food is, per person -------------------------------------------------
+     [id, what to call them, kcal if quiet, kcal if working, protein g a day]
+     The guide says to plan from the TOP of each range, because "active" in the US tables only
+     means walking three miles a day, and wood, water and hand-digging are heavier than that. */
+  who: [
+    ['man', 'Man, 19 and over', 2600, 3000, 56],
+    ['woman', 'Woman, 19 and over', 2000, 2400, 46],
+    ['teenboy', 'Teenage boy', 2800, 3200, 52],
+    ['teengirl', 'Teenage girl', 2000, 2400, 46],
+    ['child913', 'Child 9 to 13', 1800, 2200, 34],
+    ['child28', 'Child 2 to 8', 1400, 2000, 19],
+    ['baby', 'Under 2', 900, 1000, 13]
+  ],
+  // added on top, from the same table
+  extra: [
+    ['preg2', 'Pregnant, middle months', 340, 71],
+    ['preg3', 'Pregnant, last months', 452, 71],
+    ['nurse6', 'Nursing, first 6 months', 330, 71],
+    ['nurse', 'Nursing, after 6 months', 400, 71]
+  ],
+  // WHO's cold-weather rule, as the guide works it out for this valley
+  cold: { add: 300, words: 'November to March in a poorly heated house: about +300 kcal each' },
+  // the floor the aid agencies plan to, and what has to come as protein and fat (Sphere)
+  plan: { kcal: 2100, pro: 53, fat: 40 },
+
+  /* ---- the foods ------------------------------------------------------------------------
+     kcal / pro / fat are per 100 g. unit is what it is normally weighed or counted in.
+     cup = grams in a level cup, each = grams of one, keep = months sealed and cool. */
+  foods: {
+    // --- water and salt
+    water: { kcal: 0, pro: 0, fat: 0, unit: 'qt', keep: 0, keeps: 'Stored water: rotate every 6 months unless treated', rough: 1 },
+    salt: { kcal: 0, pro: 0, fat: 0, unit: 'lb', cup: 273, keep: 0, keeps: 'Keeps forever if dry. Iodine in iodized salt fades in a few years', rough: 1 },
+    // --- grain and flour
+    wheat: { kcal: 340, pro: 13.2, fat: 2.5, unit: 'lb', cup: 120, keep: 384, keeps: 'Whole wheat sealed with an oxygen absorber made good bread after 32 years (USU). FLOUR is different: a year at most, because the oil in it goes rancid' },
+    cornmeal: { kcal: 362, pro: 8.1, fat: 3.6, unit: 'lb', cup: 122, keep: 12, keeps: 'Whole dry corn keeps like wheat; once ground, cornmeal keeps about a year and whole-grain meal only 6 to 8 weeks' },
+    oats: { kcal: 389, pro: 16.9, fat: 6.9, unit: 'lb', cup: 81, keep: 360, keeps: 'Rolled oats sealed low-oxygen: up to about 30 years (USU)' },
+    barley: { kcal: 352, pro: 9.9, fat: 1.2, unit: 'lb', cup: 200, keep: 96, keeps: 'Pearled barley is not a long-storage grain - the bran is off and its oil goes rancid. Whole hulless barley keeps far longer' },
+    rye: { kcal: 324, pro: 10.3, fat: 1.6, unit: 'lb', cup: 102, keep: 12, keeps: 'Rye FLOUR about a year; whole rye berries keep like wheat', rough: 1 },
+    rice: { kcal: 365, pro: 7.1, fat: 0.7, unit: 'lb', cup: 185, keep: 330, keeps: 'WHITE rice sealed low-oxygen: 25 to 30 years (USU). BROWN rice is not for long storage - its oil goes rancid in months' },
+    hominy: { kcal: 371, pro: 8.8, fat: 1.2, unit: 'lb', cup: 160, keep: 120, keeps: 'Dry hominy and grits keep for years sealed; once ground, like cornmeal', rough: 1 },
+    // --- beans
+    beans: { kcal: 341, pro: 21.6, fat: 1.2, unit: 'lb', cup: 190, keep: 300, keeps: 'Sealed low-oxygen: 20 to 30 years (USU). They stay safe far longer than they stay quick to cook - old beans need soaking and long boiling' },
+    lentils: { kcal: 352, pro: 24.6, fat: 1.1, unit: 'lb', cup: 192, keep: 240, keeps: 'Like dry beans. Lentils and split peas cook far faster, which saves fuel', rough: 1 },
+    // --- fats
+    lard: { kcal: 902, pro: 0, fat: 100, unit: 'lb', cup: 205, keep: 12, keeps: 'Rendered clean and sealed, about a year in a cool place; much longer cold. Rancid fat smells like old paint', rough: 1 },
+    tallow: { kcal: 902, pro: 0, fat: 100, unit: 'lb', cup: 205, keep: 24, keeps: 'Keeps better than lard - harder fat, less to go rancid', rough: 1 },
+    butter: { kcal: 717, pro: 0.9, fat: 81, unit: 'lb', cup: 227, keep: 3, keeps: 'Weeks cool, months frozen. Clarified into ghee it keeps a year without cold', rough: 1 },
+    oil: { kcal: 884, pro: 0, fat: 100, unit: 'qt', cup: 218, keep: 24, keeps: 'Sealed and cool, 2 years or so; opened, months. Heat and light are what kill it', rough: 1 },
+    saltpork: { kcal: 748, pro: 5.1, fat: 80, unit: 'lb', keep: 12, keeps: 'Hard-salted pork keeps a year or more cool; bacon far less', rough: 1 },
+    cracklings: { kcal: 550, pro: 20, fat: 50, unit: 'lb', keep: 2, keeps: 'Weeks in a cool dry jar. They go rancid faster than the lard they came from', rough: 1 },
+    // --- dairy and eggs
+    milk: { kcal: 61, pro: 3.2, fat: 3.3, unit: 'qt', cup: 244, keep: 0, keeps: 'Days cold, hours warm. Dried milk is the storable form: 3 to 5 years cool, as little as 3 months hot (USU)' },
+    sourmilk: { kcal: 40, pro: 3.3, fat: 0.9, unit: 'qt', cup: 245, keep: 0, keeps: 'Days. It is already soured - use it in bread and pancakes', rough: 1 },
+    cream: { kcal: 340, pro: 2.8, fat: 36, unit: 'qt', cup: 238, keep: 0, keeps: 'Days cold. Churn it to butter to make it keep', rough: 1 },
+    cheese: { kcal: 403, pro: 23, fat: 33, unit: 'lb', keep: 6, keeps: 'A hard waxed cheese keeps months cool; a fresh cheese days. Mould on hard cheese can be cut away, on soft cheese it cannot', rough: 1 },
+    eggs: { kcal: 143, pro: 12.6, fat: 9.5, unit: 'each', each: 50, keep: 1, keeps: 'Unwashed and cool, weeks. In limewater, months - see the Preserving Food guide', rough: 1 },
+    rennet: { kcal: 0, pro: 0, fat: 0, unit: 'each', keep: 12, keeps: 'Tablets keep about a year cool, longer frozen', rough: 1, nofood: 1 },
+    culture: { kcal: 0, pro: 0, fat: 0, unit: 'each', keep: 1, keeps: 'A live culture must be fed - it is not stored, it is kept alive', rough: 1, nofood: 1 },
+    // --- meat and fish
+    venison: { kcal: 120, pro: 23, fat: 2.4, unit: 'lb', keep: 0, keeps: 'Fresh: days cool. Dried or smoked or canned is the storable form', rough: 1 },
+    rabbit: { kcal: 173, pro: 25, fat: 8, unit: 'lb', keep: 0, keeps: 'Fresh: days cool. Very lean - rabbit alone will not feed anyone, it needs fat with it', rough: 1 },
+    chicken: { kcal: 215, pro: 18, fat: 15, unit: 'lb', keep: 0, keeps: 'Fresh: days cool', rough: 1 },
+    duck: { kcal: 337, pro: 19, fat: 28, unit: 'lb', keep: 0, keeps: 'Fresh: days cool. Fatty - its fat is worth rendering', rough: 1 },
+    pork: { kcal: 242, pro: 27, fat: 14, unit: 'lb', keep: 0, keeps: 'Fresh: days cool. Cured and smoked it keeps months', rough: 1 },
+    beef: { kcal: 250, pro: 26, fat: 15, unit: 'lb', keep: 0, keeps: 'Fresh: days cool', rough: 1 },
+    fish: { kcal: 208, pro: 20, fat: 13, unit: 'lb', keep: 0, keeps: 'Fresh: a day or two. Salted and dried it keeps months', rough: 1 },
+    bones: { kcal: 30, pro: 2, fat: 1, unit: 'lb', keep: 0, keeps: 'Broth is water with flavour: count it for warmth and minerals, not for calories', rough: 1 },
+    liver: { kcal: 135, pro: 20, fat: 3.6, unit: 'lb', keep: 0, keeps: 'Fresh: 1 to 2 days. Worth eating first - it carries the vitamins muscle meat does not', rough: 1 },
+    // --- roots and vegetables
+    potatoes: { kcal: 77, pro: 2, fat: 0.1, unit: 'lb', each: 170, keep: 6, keeps: 'A dark cellar at 40 F: months. Light turns them green and green potato is poisonous - see the Root Cellar guide', rough: 1 },
+    onions: { kcal: 40, pro: 1.1, fat: 0.1, unit: 'lb', each: 110, keep: 6, keeps: 'Cured and hung dry and cool: months', rough: 1 },
+    carrots: { kcal: 41, pro: 0.9, fat: 0.2, unit: 'lb', each: 61, keep: 5, keeps: 'In damp sand in a cellar: months', rough: 1 },
+    turnips: { kcal: 28, pro: 0.9, fat: 0.1, unit: 'lb', each: 122, keep: 5, keeps: 'Like carrots, in damp sand, cold', rough: 1 },
+    cabbage: { kcal: 25, pro: 1.3, fat: 0.1, unit: 'lb', each: 900, keep: 4, keeps: 'A whole head in a cold cellar: months. Krauted, far longer', rough: 1 },
+    squash: { kcal: 45, pro: 1, fat: 0.1, unit: 'lb', each: 1200, keep: 5, keeps: 'Winter squash cured and kept dry at about 55 F: months. Not in a damp cellar', rough: 1 },
+    greens: { kcal: 23, pro: 2.9, fat: 0.4, unit: 'lb', keep: 0, keeps: 'Days. Almost no calories but they carry the vitamin C that stops scurvy', rough: 1 },
+    tomatoes: { kcal: 18, pro: 0.9, fat: 0.2, unit: 'lb', each: 123, keep: 0, keeps: 'Fresh: days. Canned: 2 to 5 years, and they are one of the few acid foods a boiling-water canner handles', rough: 1 },
+    beets: { kcal: 43, pro: 1.6, fat: 0.2, unit: 'lb', each: 82, keep: 5, keeps: 'Like carrots, in damp sand, cold', rough: 1 },
+    sweetcorn: { kcal: 86, pro: 3.2, fat: 1.2, unit: 'lb', each: 90, keep: 0, keeps: 'Fresh: days, and the sugar turns to starch within hours of picking', rough: 1 },
+    cucumbers: { kcal: 15, pro: 0.7, fat: 0.1, unit: 'lb', each: 300, keep: 0, keeps: 'Days. Their whole point is pickling', rough: 1 },
+    peppers: { kcal: 31, pro: 1, fat: 0.3, unit: 'lb', each: 120, keep: 0, keeps: 'Fresh days; dried, a year or more', rough: 1 },
+    driedveg: { kcal: 300, pro: 10, fat: 1, unit: 'lb', keep: 24, keeps: 'Dried properly and sealed: 1 to 2 years for quality, longer safe', rough: 1 },
+    // --- fruit and sweeteners
+    apples: { kcal: 52, pro: 0.3, fat: 0.2, unit: 'lb', each: 182, keep: 4, keeps: 'Late keeping varieties in a cold cellar: months. One rotting apple spoils the box - check them over', rough: 1 },
+    berries: { kcal: 57, pro: 0.7, fat: 0.3, unit: 'lb', keep: 0, keeps: 'Days. Dry them or make them into jam', rough: 1 },
+    driedfruit: { kcal: 299, pro: 3.1, fat: 0.5, unit: 'lb', cup: 145, keep: 18, keeps: 'Sealed and cool: a year or two for quality', rough: 1 },
+    honey: { kcal: 304, pro: 0.3, fat: 0, unit: 'lb', cup: 340, keep: 0, keeps: 'Keeps forever sealed. It will go solid and grainy - warm it gently and it comes back', rough: 1 },
+    syrup: { kcal: 260, pro: 0, fat: 0.1, unit: 'qt', cup: 322, keep: 36, keeps: 'Molasses and corn syrup 2 to 5 years (USU); maple syrup keeps unopened, and moulds once opened unless kept cold' },
+    sugar: { kcal: 387, pro: 0, fat: 0, unit: 'lb', cup: 200, keep: 0, keeps: 'Indefinite - nothing grows in it. Kept dry it only goes lumpy, which is a nuisance, not spoilage (USU)' },
+    cider: { kcal: 46, pro: 0.1, fat: 0.1, unit: 'qt', cup: 240, keep: 0, keeps: 'Fresh: days before it starts to ferment, which may be what you want', rough: 1 },
+    vinegar: { kcal: 18, pro: 0, fat: 0, unit: 'qt', cup: 239, keep: 0, keeps: 'Keeps indefinitely. Cloudiness and a "mother" floating in it are harmless', rough: 1 },
+    // --- wild foods
+    acorns: { kcal: 509, pro: 8.1, fat: 31, unit: 'lb', keep: 12, keeps: 'In the shell, dry and cool: a year. Shelled meal goes rancid in weeks - it is fatty. MUST be leached first' },
+    camas: { kcal: 130, pro: 2, fat: 0.5, unit: 'lb', keep: 6, est: 1, rough: 1, keeps: 'Baked in an earth oven and dried, months. DEADLY LOOK-ALIKE: see the Food From Scratch guide before you dig any' },
+    cattail: { kcal: 120, pro: 2, fat: 0.3, unit: 'lb', keep: 1, est: 1, rough: 1, keeps: 'Shoots and heads are a few days; the root flour, dried, keeps months' },
+    nettles: { kcal: 42, pro: 2.7, fat: 0.1, unit: 'lb', keep: 0, keeps: 'Days fresh, a year dried. One of the best wild greens for iron and vitamin C', rough: 1 },
+    mushrooms: { kcal: 22, pro: 3.1, fat: 0.3, unit: 'lb', keep: 0, keeps: 'Fresh days; dried, a year or more. Almost no calories - they are flavour, not food', rough: 1 },
+    elderberries: { kcal: 73, pro: 0.7, fat: 0.5, unit: 'lb', keep: 0, keeps: 'Days fresh. MUST be cooked - raw elderberries make people sick', rough: 1 },
+    hazelnuts: { kcal: 628, pro: 15, fat: 61, unit: 'lb', cup: 135, keep: 12, keeps: 'In the shell, cool and dry: a year. Shelled, months before they go rancid. The richest wild food here', rough: 1 },
+    rosehips: { kcal: 162, pro: 1.6, fat: 0.3, unit: 'lb', keep: 12, keeps: 'Dried, a year. Very high in vitamin C, which is why they matter in a long winter', rough: 1 },
+    wildgreens: { kcal: 45, pro: 2.7, fat: 0.7, unit: 'lb', keep: 0, keeps: 'Days. Count them for vitamins, not calories', rough: 1 },
+    wildseed: { kcal: 350, pro: 12, fat: 5, unit: 'lb', keep: 24, est: 1, rough: 1, keeps: 'Dry and sealed, like grain' },
+    // --- flavourings and leavening: almost no calories, but they decide whether people eat
+    pepper: { kcal: 0, pro: 0, fat: 0, unit: 'oz', keep: 36, keeps: 'Whole peppercorns keep years; ground pepper loses its bite in about a year', rough: 1, nofood: 1 },
+    herbs: { kcal: 0, pro: 0, fat: 0, unit: 'oz', keep: 12, keeps: 'Dried herbs: about a year before they are hay', rough: 1, nofood: 1 },
+    spices: { kcal: 0, pro: 0, fat: 0, unit: 'oz', keep: 24, keeps: 'Whole spices years, ground about 2', rough: 1, nofood: 1 },
+    soda: { kcal: 0, pro: 0, fat: 0, unit: 'lb', keep: 0, keeps: 'Keeps indefinitely dry. Test it: a spoonful in vinegar must fizz hard', rough: 1, nofood: 1 },
+    bakingpowder: { kcal: 0, pro: 0, fat: 0, unit: 'lb', keep: 18, keeps: 'About 18 months, and it dies quietly. Test it: a spoonful in hot water must fizz', rough: 1, nofood: 1 },
+    tartar: { kcal: 0, pro: 0, fat: 0, unit: 'oz', keep: 0, keeps: 'Keeps indefinitely dry', rough: 1, nofood: 1 },
+    yeast: { kcal: 0, pro: 0, fat: 0, unit: 'oz', keep: 24, keeps: 'Sealed and cold, 2 years; opened, months. Proof it in warm sweet water before you trust a batch of dough to it', rough: 1, nofood: 1 },
+    starter: { kcal: 0, pro: 0, fat: 0, unit: 'each', keep: 0, keeps: 'Alive: feed it or lose it. Dried on a plate it waits for years', rough: 1, nofood: 1 },
+    lime: { kcal: 0, pro: 0, fat: 0, unit: 'lb', keep: 0, keeps: 'Keeps indefinitely sealed and dry. CAUSTIC - not a food', rough: 1, nofood: 1 },
+    lye: { kcal: 0, pro: 0, fat: 0, unit: 'lb', keep: 0, keeps: 'Keeps indefinitely in a sealed plastic container. DEADLY - not a food', rough: 1, nofood: 1 },
+    curesalt: { kcal: 0, pro: 0, fat: 0, unit: 'oz', keep: 24, keeps: 'Keeps dry. POISON in quantity - it is measured in grams per pound of meat, never guessed', rough: 1, nofood: 1 }
+  },
+
+  // how to weigh it: what a unit is, in grams
+  units: { lb: 453.6, oz: 28.35, kg: 1000, g: 1, qt: 946, cup: 0, each: 0 }
+};
+</script>
 <script>
 /* This area's own recipes, if it has any. tools/region.py puts them in from
    regions/<id>/notes/recipes.md, the same way the app's Tools cards are filled in; with no such
@@ -1995,7 +2245,7 @@ R.push(
   D.cats.forEach(function (c) { CAT[c[0]] = c[1]; });
 
   /* ---- what is ticked, remembered on this device ---------------------------------- */
-  var S = { have: {}, heat: {}, gear: {} };
+  var S = { have: {}, heat: {}, gear: {}, who: [], amt: {}, days: 180, work: 0, cold: 0, log: [] };
   try {
     var raw = localStorage.getItem(K);
     if (raw) {
@@ -2003,14 +2253,31 @@ R.push(
       ['have', 'heat', 'gear'].forEach(function (k) {
         if (old && old[k]) old[k].forEach(function (id) { S[k][id] = 1; });
       });
+      // the rationing half: people, weights and dates. Everything is checked on the way in,
+      // because this is whatever was in the browser's store, not necessarily what we wrote.
+      if (Array.isArray(old.who)) S.who = old.who.filter(function (p) { return p && typeof p.t === 'string'; }).slice(0, 40);
+      if (old.amt && typeof old.amt === 'object') {
+        Object.keys(old.amt).slice(0, 200).forEach(function (id) {
+          var a = old.amt[id];
+          if (a && typeof a === 'object') S.amt[id] = { n: +a.n || 0, u: String(a.u || 'lb').slice(0, 4), d: String(a.d || '').slice(0, 10) };
+        });
+      }
+      if (old.days > 0) S.days = Math.min(3650, old.days | 0);
+      S.work = old.work ? 1 : 0; S.cold = old.cold ? 1 : 0;
+      if (Array.isArray(old.log)) S.log = old.log.filter(function (e) { return e && e.d && e.w; }).slice(-200);
     }
   } catch (e) { /* a phone with saved data switched off: the page still works, it just forgets */ }
   function save() {
     try {
       localStorage.setItem(K, JSON.stringify({
-        have: Object.keys(S.have), heat: Object.keys(S.heat), gear: Object.keys(S.gear)
+        have: Object.keys(S.have), heat: Object.keys(S.heat), gear: Object.keys(S.gear),
+        who: S.who, amt: S.amt, days: S.days, work: S.work, cold: S.cold, log: S.log
       }));
     } catch (e) {}
+  }
+  /* a link into one of the guides, in the middle of a sentence */
+  function glink(page, words, anchor) {
+    return '<a href="' + guideHref(page, anchor ? anchor.replace('#', '') : '') + '">' + esc(words) + '</a>';
   }
 
   /* on the website the guide links point at pages/; on a drive, or through the library's own
@@ -2214,6 +2481,260 @@ R.push(
   };
   $('printall').onclick = function () { window.print(); };
   var reopened = [];
+  /* =========================================================== the rationing half
+     The arithmetic is the Food Security guide's, with that guide's numbers:
+       a day's need per person from its table, the top of each range, + cold, + work
+       days of food = all the calories you have / what the household eats in a day
+       a fair share  = that food's weight / (people x days you need it to last)
+     Nothing here is invented: where a number has no source it says so on the page. */
+  var R = window.RATIONDATA, UN = R.units;
+  var WHO = {}, EX = {};
+  R.who.forEach(function (w) { WHO[w[0]] = { n: w[1], quiet: w[2], work: w[3], pro: w[4] }; });
+  R.extra.forEach(function (e) { EX[e[0]] = { n: e[1], kcal: e[2], pro: e[3] }; });
+
+  function gramsOf(a) {                       // one stock line -> grams
+    if (!a || !(a.n > 0)) return 0;
+    var f = R.foods[a.id] || {};
+    if (a.u === 'cup') return a.n * (f.cup || 0);
+    if (a.u === 'each') return a.n * (f.each || 0);
+    return a.n * (UN[a.u] || 0);
+  }
+  function unitsFor(id) {                     // the units that make sense for this food
+    var f = R.foods[id] || {}, u = ['lb', 'oz', 'kg', 'g'];
+    if (f.unit === 'qt') u = ['qt', 'cup', 'lb', 'kg'];
+    if (f.cup) u.push('cup');
+    if (f.each) u.unshift('each');
+    return u;
+  }
+  function dayNeed() {                        // what the household eats in a day
+    var kcal = 0, pro = 0, n = 0, kids = 0;
+    S.who.forEach(function (p) {
+      var w = WHO[p.t]; if (!w) return;
+      n++; if (p.t === 'child28' || p.t === 'child913' || p.t === 'baby') kids++;
+      var k = S.work ? w.work : w.quiet, g = w.pro;
+      if (p.x && EX[p.x]) { k += EX[p.x].kcal; g = Math.max(g, EX[p.x].pro); }
+      if (S.cold) k += R.cold.add;
+      kcal += k; pro += g;
+    });
+    return { kcal: kcal, pro: pro, n: n, kids: kids };
+  }
+  function stockSums() {                      // everything you weighed, added up
+    var kcal = 0, pro = 0, fat = 0, est = 0, lines = [];
+    Object.keys(S.amt).forEach(function (id) {
+      var a = S.amt[id]; a.id = id;
+      var g = gramsOf(a), f = R.foods[id];
+      if (!f || !g) return;
+      var line = { id: id, g: g, kcal: g * f.kcal / 100, pro: g * f.pro / 100, fat: g * f.fat / 100, f: f, a: a };
+      lines.push(line);
+      if (f.nofood) return;                   // salt, lye, yeast: not something anyone lives on
+      kcal += line.kcal; pro += line.pro; fat += line.fat;
+      if (f.est) est++;
+    });
+    return { kcal: kcal, pro: pro, fat: fat, est: est, lines: lines };
+  }
+  function goesOff(line) {                     // when this one is past its best, and how sure we are
+    if (line.a.d) return { t: Date.parse(line.a.d + 'T00:00'), said: 1 };
+    if (!line.f.keep) return null;             // keeps indefinitely, or is not stored at all
+    return { t: Date.now() + line.f.keep * 30.4 * 86400000, said: 0 };
+  }
+  function lbs(g) {                            // grams -> words a person can weigh out
+    if (g <= 0) return '0';
+    if (g < 28) return Math.round(g) + ' g';
+    if (g < 454) return (g / 28.35).toFixed(1) + ' oz';
+    return (g / 453.6).toFixed(g < 4536 ? 2 : 1) + ' lb';
+  }
+  function dayWord(n) {
+    if (!isFinite(n) || n > 3650) return 'years';
+    if (n >= 730) return Math.round(n / 365.25) + ' years';
+    if (n >= 90) return Math.round(n / 30.4) + ' months';
+    return Math.round(n) + (Math.round(n) === 1 ? ' day' : ' days');
+  }
+
+  function drawEaters() {
+    $('eaters').innerHTML = S.who.map(function (p, i) {
+      return '<div class="eater"><input type="text" data-e="name" data-i="' + i + '" value="' + esc(p.name || '') + '" placeholder="Name" aria-label="Name">' +
+        '<select data-e="t" data-i="' + i + '" aria-label="Who">' + R.who.map(function (w) {
+          return '<option value="' + w[0] + '"' + (p.t === w[0] ? ' selected' : '') + '>' + esc(w[1]) + '</option>';
+        }).join('') + '</select>' +
+        '<select data-e="x" data-i="' + i + '" aria-label="Pregnant or nursing"><option value="">&mdash;</option>' + R.extra.map(function (e) {
+          return '<option value="' + e[0] + '"' + (p.x === e[0] ? ' selected' : '') + '>' + esc(e[1]) + '</option>';
+        }).join('') + '</select>' +
+        '<input type="number" data-e="w" data-i="' + i + '" value="' + (p.w || '') + '" placeholder="lb" min="1" max="600" step="0.5" inputmode="decimal" aria-label="Weight in pounds">' +
+        '<button class="xbtn" type="button" data-del="' + i + '" aria-label="Take this person off">&times;</button></div>';
+    }).join('');
+    drawNeed();
+  }
+  function drawNeed() {
+    var d = dayNeed();
+    $('r-need').innerHTML = d.n ? '<b>' + d.n + (d.n === 1 ? ' person' : ' people') + '</b> eat about <b>' +
+      d.kcal.toLocaleString() + ' kcal</b> and <b>' + d.pro + ' g of protein</b> a day' +
+      (S.cold ? ', with the cold months added' : '') + (S.work ? ', working hard' : '') + '.' : 'Add the people who are eating.';
+  }
+
+  function drawStock() {
+    var ids = Object.keys(R.foods).filter(function (id) { return S.have[id] || (S.amt[id] && S.amt[id].n); });
+    $('stockhint').innerHTML = ids.length
+      ? 'These are the things you ticked on the other tab. Weigh each one &mdash; a guess here is a guess in every number below. Add a <b>best-by or packed-on date</b> where you know it.'
+      : 'Nothing ticked yet. Go to <b>What can I cook?</b> and tick what is in the house, then come back and weigh it.';
+    $('stock').innerHTML = ids.map(function (id) {
+      var f = R.foods[id], a = S.amt[id] || { n: '', u: f.unit === 'qt' ? 'qt' : 'lb', d: '' };
+      return '<div class="stk"><b>' + esc(ING[id] || id) + (f.est ? ' <span class="est">(estimated)</span>' : '') + '</b>' +
+        '<input type="number" data-s="n" data-id="' + id + '" value="' + (a.n || '') + '" min="0" step="0.1" inputmode="decimal" placeholder="0" aria-label="How much ' + esc(ING[id] || id) + '">' +
+        '<select data-s="u" data-id="' + id + '" aria-label="Unit">' + unitsFor(id).map(function (u) {
+          return '<option value="' + u + '"' + (a.u === u ? ' selected' : '') + '>' + (u === 'each' ? 'each' : u) + '</option>';
+        }).join('') + '</select>' +
+        '<input type="date" data-s="d" data-id="' + id + '" value="' + (a.d || '') + '" aria-label="Best by">' +
+        '</div>';
+    }).join('');
+  }
+
+  function drawRation() {
+    var need = dayNeed(), st = stockSums(), want = Math.max(1, S.days | 0);
+    var until = new Date(Date.now() + want * 86400000);
+    $('r-until').textContent = 'that is until about ' + until.toLocaleDateString(undefined, { month: 'long', year: 'numeric' });
+    if (!need.n || !st.lines.length) {
+      $('r-sum').innerHTML = '<p class="small">Add the people, then weigh what you have.</p>';
+      $('r-ration').innerHTML = ''; $('r-first').innerHTML = ''; drawWeigh(); return;
+    }
+    var days = st.kcal / need.kcal;
+    var pct = Math.max(0, Math.min(100, days / want * 100));
+    var kcalEach = st.kcal / (need.n * want);           // if you spread it over the days you want
+    var proEach = st.pro / (need.n * want), fatEach = st.fat / (need.n * want);
+    var cls = pct >= 100 ? '' : pct >= 50 ? ' low' : ' bad';
+    var html = '<p class="big">' + dayWord(days) + ' of food</p>' +
+      '<div class="gauge"><i class="' + cls.trim() + '" style="width:' + pct.toFixed(0) + '%"></i></div>' +
+      '<p class="small">' + st.kcal.toLocaleString(undefined, { maximumFractionDigits: 0 }) + ' kcal weighed in, for ' + need.n +
+      (need.n === 1 ? ' person' : ' people') + ' eating ' + need.kcal.toLocaleString() + ' kcal a day. You asked it to last <b>' +
+      dayWord(want) + '</b>.</p>';
+    if (days < want) {
+      var short = need.kcal * (want - days);
+      html += '<div class="warn"><b>It is short by ' + dayWord(want - days) + '.</b>' +
+        'Spread over the ' + dayWord(want) + ' you want, that is <b>' + Math.round(kcalEach).toLocaleString() +
+        ' kcal a person a day</b> instead of the ' + Math.round(need.kcal / need.n).toLocaleString() + ' they need. ' +
+        'The gap &mdash; about ' + Math.round(short / 1000).toLocaleString() + ',000 kcal &mdash; is what the garden, hunting, ' +
+        'fishing, foraging and animals have to make up. Start them now, not when the sacks are empty.</div>';
+      if (kcalEach < 1200) {
+        html += '<div class="warn bad"><b>Below 1,200 kcal a day is not a ration, it is slow starvation.</b>' +
+          'People lose weight, then strength, then the will to work, and the work is what feeds you. Do not plan to live at ' +
+          'this level: plan to change something. Read ' + glink('FOOD-SECURITY-GUIDE', 'hunger diseases and refeeding', '#hunger-diseases-spot-them-prevent-them') + '.</div>';
+      }
+    } else {
+      html += '<p class="small">That covers the ' + dayWord(want) + ' you asked for, with ' + dayWord(days - want) + ' spare.</p>';
+    }
+    if (proEach < R.plan.pro || fatEach < R.plan.fat) {
+      html += '<div class="warn"><b>Calories are not the whole story.</b>' +
+        'Spread over those days this food gives about <b>' + proEach.toFixed(0) + ' g of protein</b> and <b>' + fatEach.toFixed(0) +
+        ' g of fat</b> a person a day. The aid agencies plan on at least ' + R.plan.pro + ' g and ' + R.plan.fat +
+        ' g. A pile of grain alone will not do it &mdash; beans, eggs, dairy, meat and fat are what close that gap.</div>';
+    }
+    var cfoods = ['greens', 'wildgreens', 'rosehips', 'potatoes', 'cabbage', 'berries', 'nettles', 'elderberries', 'peppers', 'tomatoes'];
+    if (!cfoods.some(function (id) { return S.amt[id] && S.amt[id].n > 0; })) {
+      html += '<div class="warn"><b>Nothing here carries vitamin C.</b>' +
+        'Grain, beans, meat and fat have none worth counting, and scurvy takes about three months of none at all. ' +
+        'Rose hips, green shoots, potatoes, sprouted beans and fresh meat all have it. ' + glink('FOOD-SECURITY-GUIDE', 'Hunger diseases', '#hunger-diseases-spot-them-prevent-them') + '.</div>';
+    }
+    if (need.kids) {
+      html += '<div class="warn"><b>There ' + (need.kids === 1 ? 'is a child' : 'are children') + ' in this household.</b>' +
+        'Do not cut a child’s share the way you would cut an adult’s: they have no reserve and they go downhill fast and quietly. ' +
+        'Give them smaller portions more often, and watch their weight, not the plate. ' + glink('FOOD-SECURITY-GUIDE', 'Babies and toddlers in a shortage', '#babies-and-toddlers-in-a-shortage') + '.</div>';
+    }
+    if (st.est) {
+      html += '<p class="small">' + st.est + ' of the foods you weighed (camas, cattail or wild seed) are <b>estimates</b> &mdash; ' +
+        'nobody has published calorie figures for them. Treat those lines as a guess.</p>';
+    }
+    $('r-sum').innerHTML = html;
+
+    // a fair daily share, per food
+    var share = st.lines.filter(function (l) { return !l.f.nofood; })
+      .sort(function (a, b) { return b.kcal - a.kcal; });
+    $('r-ration').innerHTML = share.length ? '<table class="rtab"><thead><tr><th>Food</th><th class="n">You have</th>' +
+      '<th class="n">Each person, each day</th><th class="n">kcal</th></tr></thead><tbody>' +
+      share.map(function (l) {
+        var per = l.g / (need.n * want);
+        return '<tr><td>' + esc(ING[l.id] || l.id) + '</td><td class="n">' + lbs(l.g) + '</td><td class="n">' + lbs(per) +
+          '</td><td class="n">' + Math.round(per * l.f.kcal / 100).toLocaleString() + '</td></tr>';
+      }).join('') + '</tbody></table>' : '';
+
+    // use these first
+    var soon = st.lines.map(function (l) {
+      var o = goesOff(l); return o ? { l: l, o: o } : null;
+    }).filter(Boolean).sort(function (a, b) { return a.o.t - b.o.t; });
+    var now = Date.now();
+    $('r-first').innerHTML = soon.length ? '<table class="rtab"><thead><tr><th>Food</th><th>Goes off</th><th>How we know</th></tr></thead><tbody>' +
+      soon.slice(0, 14).map(function (x) {
+        var d = (x.o.t - now) / 86400000, when, c = '';
+        if (d < 0) { when = 'past it by ' + dayWord(-d); c = 'gone'; }
+        else { when = 'in ' + dayWord(d); if (d < 60) c = 'soon'; }
+        return '<tr><td>' + esc(ING[x.l.id] || x.l.id) + '</td><td' + (c ? ' class="' + c + '"' : '') + '>' + when +
+          '</td><td class="small">' + (x.o.said ? 'the date you entered' : esc(x.l.f.keeps) + (x.l.f.rough ? ' <i>(general guidance)</i>' : '')) + '</td></tr>';
+      }).join('') + '</tbody></table>' +
+      '<p class="small">A date is the <i>less</i> important half of the decision. Something that smells wrong, bulges, foams, or has mould ' +
+      'you did not put there goes out whatever the label says &mdash; and something a year past a best-by date is usually fine. ' +
+      'Cook a sample before you throw a sack out.</p>' + firstRecipes(soon)
+      : '<p class="small">Nothing weighed in yet, or nothing with a date.</p>';
+    drawWeigh();
+  }
+
+  function firstRecipes(soon) {               // what to cook from the things that must go
+    var use = {}, n = 0;
+    soon.forEach(function (x) {
+      if (n >= 4) return;
+      if ((x.o.t - Date.now()) / 86400000 > 90) return;
+      if (x.l.f.nofood) return;
+      use[x.l.id] = 1; n++;
+    });
+    var ids = Object.keys(use);
+    if (!ids.length) return '';
+    var uses = function (r, id) {       /* does this recipe actually call for it? */
+      if ((r.need || []).indexOf(id) >= 0) return true;
+      return (r.any || []).some(function (gp) { return gp.indexOf(id) >= 0; });
+    };
+    var hits = D.recipes.filter(function (r) {
+      return cookable(r) && ids.some(function (id) { return uses(r, id); });
+    }).slice(0, 6);
+    if (!hits.length) return '';
+    return '<p class="small"><b>What you could cook from those:</b> ' + hits.map(function (r) {
+      return '<a href="#r=' + encodeURIComponent(r.id) + '">' + esc(r.n) + '</a>';
+    }).join(' &middot; ') + '</p>';
+  }
+
+  function drawWeigh() {
+    var named = S.who.map(function (p, i) { return p.name || (WHO[p.t] ? WHO[p.t].n : 'Person ' + (i + 1)); });
+    if (!S.log.length) {
+      $('r-weigh').innerHTML = '<p class="small">No weigh-ins yet. Put a weight against each person above, then press <b>Record today’s weights</b>.</p>';
+      return;
+    }
+    var first = S.log[0], last = S.log[S.log.length - 1];
+    var rows = named.map(function (nm, i) {
+      var a = first.w[i], b = last.w[i];
+      if (!(a > 0) || !(b > 0)) return '';
+      var ch = b - a, pc = ch / a * 100;
+      var days = (Date.parse(last.d) - Date.parse(first.d)) / 86400000;
+      var perMonth = days > 6 ? pc / days * 30.4 : 0;
+      var flag = '';
+      if (perMonth <= -5) flag = '<span class="gone">losing fast</span>';
+      else if (perMonth <= -2) flag = '<span class="soon">losing</span>';
+      return '<tr><td>' + esc(nm) + '</td><td class="n">' + a + ' lb</td><td class="n">' + b + ' lb</td><td class="n">' +
+        (ch > 0 ? '+' : '') + ch.toFixed(1) + ' lb</td><td>' + flag + '</td></tr>';
+    }).filter(Boolean).join('');
+    var html = '<p class="small">' + S.log.length + ' weigh-in' + (S.log.length === 1 ? '' : 's') + ', ' +
+      new Date(first.d).toLocaleDateString() + ' to ' + new Date(last.d).toLocaleDateString() + '.</p>';
+    html += rows ? '<table class="rtab"><thead><tr><th>Who</th><th class="n">First</th><th class="n">Now</th><th class="n">Change</th><th></th></tr></thead><tbody>' + rows + '</tbody></table>' : '';
+    var fast = named.some(function (nm, i) {
+      var a = first.w[i], b = last.w[i], days = (Date.parse(last.d) - Date.parse(first.d)) / 86400000;
+      return a > 0 && b > 0 && days > 6 && (b - a) / a * 100 / days * 30.4 <= -5;
+    });
+    if (fast) {
+      html += '<div class="warn bad"><b>Somebody is losing weight fast.</b>' +
+        'Losing more than about 5% of body weight in a month is the body eating itself <i>(rule of thumb)</i>. ' +
+        'First check the obvious: are they actually eating their share? People give theirs to children, and children give theirs away too. ' +
+        'Then look for the reason &mdash; illness, a bad tooth, grief, diarrhoea taking it all straight through. ' +
+        glink('FOOD-SECURITY-GUIDE', 'Starvation and refeeding slowly', '#starvation-and-refeeding-slowly') + ' says what to do, and why feeding a starved person ' +
+        'too much too fast can stop their heart.</div>';
+    }
+    $('r-weigh').innerHTML = html;
+  }
+
   function openForPrint() {
     reopened = [];
     document.querySelectorAll('details.pick, #l-now .rec, #l-short .rec').forEach(function (d) {
@@ -2232,7 +2753,87 @@ R.push(
   });
   addEventListener('hashchange', single);
 
+  /* ---- the two halves of the page ------------------------------------------------- */
+  function showTab(which) {
+    var r = which === 'ration';
+    $('main').hidden = r; $('ration').hidden = !r; $('subcook').hidden = r;
+    document.querySelector('h1').textContent = r ? 'How long will it last?' : 'What can I cook?';
+    $('tab-cook').classList.toggle('on', !r); $('tab-ration').classList.toggle('on', r);
+    $('tab-cook').setAttribute('aria-selected', String(!r));
+    $('tab-ration').setAttribute('aria-selected', String(r));
+    document.title = r ? 'How long will it last?' : 'What can I cook?';
+    if (r) { drawEaters(); drawStock(); drawRation(); }
+  }
+  $('tab-cook').onclick = function () { showTab('cook'); };
+  $('tab-ration').onclick = function () { showTab('ration'); };
+
+  /* who is eating */
+  $('addeater').onclick = function () {
+    if (S.who.length >= 40) return;
+    S.who.push({ t: 'man', x: '', name: '', w: 0 }); save(); drawEaters(); drawRation();
+  };
+  $('eaters').addEventListener('change', function (e) {
+    var el = e.target, k = el.getAttribute && el.getAttribute('data-e');
+    if (!k) return;
+    var p = S.who[+el.getAttribute('data-i')]; if (!p) return;
+    p[k] = k === 'w' ? (+el.value || 0) : el.value;
+    save(); drawNeed(); drawRation();   /* never redraw the rows here: it would eat the next tap */
+  });
+  $('eaters').addEventListener('input', function (e) {
+    var el = e.target;
+    if (el.getAttribute && el.getAttribute('data-e') === 'name') {
+      var p = S.who[+el.getAttribute('data-i')]; if (p) { p.name = el.value.slice(0, 24); save(); }
+    }
+  });
+  $('eaters').addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('button[data-del]');
+    if (!b) return;
+    S.who.splice(+b.getAttribute('data-del'), 1); save(); drawEaters(); drawRation();
+  });
+  $('working').onchange = function () { S.work = this.checked ? 1 : 0; save(); drawEaters(); drawRation(); };
+  $('coldmon').onchange = function () { S.cold = this.checked ? 1 : 0; save(); drawEaters(); drawRation(); };
+  $('days').oninput = function () { S.days = Math.max(1, Math.min(3650, +this.value || 1)); save(); drawRation(); };
+
+  /* what you have, weighed */
+  function stockEdit(e) {
+    var el = e.target, k = el.getAttribute && el.getAttribute('data-s');
+    if (!k) return;
+    var id = el.getAttribute('data-id'), f = R.foods[id]; if (!f) return;
+    var a = S.amt[id] || (S.amt[id] = { n: 0, u: f.unit === 'qt' ? 'qt' : 'lb', d: '' });
+    if (k === 'n') a.n = Math.max(0, +el.value || 0);
+    else if (k === 'u') a.u = el.value;
+    else a.d = el.value;
+    if (!a.n && !a.d) delete S.amt[id];
+    save(); drawRation();
+  }
+  $('stock').addEventListener('input', stockEdit);
+  $('stock').addEventListener('change', stockEdit);
+  $('clearamt').onclick = function () {
+    if (!confirm('Forget every weight and date you have entered?')) return;
+    S.amt = {}; save(); drawStock(); drawRation();
+  };
+  $('printration').onclick = function () { print(); };
+
+  /* the weigh-in */
+  $('weighin').onclick = function () {
+    var w = {}, any = false;
+    S.who.forEach(function (p, i) { if (p.w > 0) { w[i] = p.w; any = true; } });
+    if (!any) { alert('Put a weight against at least one person first.'); return; }
+    var today = new Date().toISOString().slice(0, 10);
+    if (S.log.length && S.log[S.log.length - 1].d === today) S.log[S.log.length - 1].w = w;
+    else S.log.push({ d: today, w: w });
+    if (S.log.length > 200) S.log = S.log.slice(-200);
+    save(); drawWeigh();
+  };
+  $('clearlog').onclick = function () {
+    if (!confirm('Forget every weigh-in?')) return;
+    S.log = []; save(); drawWeigh();
+  };
+
   drawGroups(); draw(); single();
+  $('working').checked = !!S.work; $('coldmon').checked = !!S.cold; $('days').value = S.days;
+  if (!S.who.length) S.who = [{ t: 'man', x: '', name: '', w: 0 }];
+  if (location.hash === '#ration') showTab('ration');
 
   /* ---- the ARK Vault's own touch screen: a keyboard on the page -------------------
      The same switch the library's own pages use (so-touch in this browser's storage): a screen
